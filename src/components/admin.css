@@ -8,7 +8,7 @@
 .admin-content { max-width:1580px;margin:auto;padding:40px clamp(20px,4vw,64px) 60px; }
 .admin-title-row { display:flex;align-items:flex-end;justify-content:space-between;gap:30px;margin-bottom:32px; }
 .admin-eyebrow { color:#ff751b;font-size:11px;font-weight:800;letter-spacing:.14em;margin:0 0 12px; }
-.admin-title-row h1 { font-size:clamp(36px,4.2vw,66px);line-height:1.03;letter-spacing:-.04em;margin:0 0 18px; }
+.admin-title-row h1 { font-family:"AiXESS Head","Arial Narrow",sans-serif;font-weight:700;text-transform:uppercase;font-size:clamp(46px,6.2vw,96px);line-height:.9;letter-spacing:-.012em;margin:0 0 18px; }
 .admin-title-row h1 span { color:#aebcb2; }
 .admin-muted { color:#aeb8b0;font-size:13px;line-height:1.55;margin:8px 0; }
 .admin-app button,.admin-app select,.admin-primary { font:inherit;font-size:13px;padding:11px 15px;min-height:44px;background:#202822;border:1px solid #535e55;color:#efefe9;cursor:pointer;text-decoration:none; }
@@ -30,7 +30,7 @@
 .admin-overview-grid { grid-template-columns:minmax(0,1.7fr) minmax(0,1fr); }
 .admin-three { grid-template-columns:repeat(3,minmax(0,1fr)); }
 .admin-panel { padding:24px;border:1px solid #39453c;background:#151c17;min-width:0; }
-.admin-panel h2 { font-size:21px;line-height:1.2;margin:0 0 14px;letter-spacing:-.02em; }
+.admin-panel h2 { font-family:"AiXESS Head","Arial Narrow",sans-serif;font-weight:700;text-transform:uppercase;font-size:30px;line-height:1;margin:0 0 14px;letter-spacing:0; }
 .admin-panel-heading { display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap; }
 .admin-panel-heading label { display:grid;gap:8px; }
 .admin-trend-bars { height:230px;display:flex;gap:clamp(2px,.4vw,7px);align-items:flex-end;margin-top:32px;border-bottom:1px solid #66776a; }
@@ -58,7 +58,7 @@
 .admin-pagination { display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:24px;font-size:12px; }
 .admin-delete-confirm { display:grid;gap:6px; }
 .admin-methodology { padding:32px 0 0;max-width:1000px;color:#aeb8b0;font-size:13px; }
-.admin-methodology h2 { font-size:17px;color:#dadfd8; }
+.admin-methodology h2 { font-size:24px;color:#dadfd8; }
 .admin-message { padding:28px;border:1px solid #b77943;background:#24221b;margin:30px 0; }
 .admin-message strong { font-size:22px; }
 .admin-message .admin-primary { display:inline-flex;margin:12px 0; }

@@ -1,39 +1,4 @@
-/* Open-licence (SIL OFL) stand-ins for Lasha's Figma type, built by scripts/make-lasha-condensed-fonts.py:
-   Antonio for Tusker Grotesk 3500M headlines ("Lasha Narrow/Tall/Display"), Sofia Sans Extra Condensed
-   for Albireo Cond M numbers ("Lasha Num/Num Tall"), Oswald for Cyrillic headlines, Inter for body copy.
-   Swap in the licensed Tusker/Albireo files when supplied. */
-@font-face {
-  font-family: "Barlow Condensed";
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url("/fonts/lasha/barlow-condensed-latin-ext-d0b8fa.woff2") format("woff2");
-  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}
-@font-face {
-  font-family: "Barlow Condensed";
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url("/fonts/lasha/barlow-condensed-latin-433928.woff2") format("woff2");
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-@font-face {
-  font-family: "Barlow Condensed";
-  font-style: normal;
-  font-weight: 500;
-  font-display: swap;
-  src: url("/fonts/lasha/barlow-condensed-latin-ext-477044.woff2") format("woff2");
-  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}
-@font-face {
-  font-family: "Barlow Condensed";
-  font-style: normal;
-  font-weight: 500;
-  font-display: swap;
-  src: url("/fonts/lasha/barlow-condensed-latin-79f19b.woff2") format("woff2");
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
+/* Inter for body copy (SIL OFL). */
 @font-face {
   font-family: "Inter";
   font-style: normal;
@@ -130,280 +95,73 @@
   src: url("/fonts/lasha/inter-latin-567244.woff2") format("woff2");
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
-@font-face {
-  font-family: "League Gothic";
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url("/fonts/lasha/league-gothic-latin-ext-a5f782.woff2") format("woff2");
-  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}
-@font-face {
-  font-family: "League Gothic";
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url("/fonts/lasha/league-gothic-latin-f94aa8.woff2") format("woff2");
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-@font-face {
-  font-family: "Oswald";
-  font-style: normal;
-  font-weight: 500;
-  font-display: swap;
-  src: url("/fonts/lasha/oswald-cyrillic-ext-ed25ae.woff2") format("woff2");
-  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
-}
-@font-face {
-  font-family: "Oswald";
-  font-style: normal;
-  font-weight: 500;
-  font-display: swap;
-  src: url("/fonts/lasha/oswald-cyrillic-36245d.woff2") format("woff2");
-  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
-}
-@font-face {
-  font-family: "Oswald";
-  font-style: normal;
-  font-weight: 500;
-  font-display: swap;
-  src: url("/fonts/lasha/oswald-latin-ext-47c4e3.woff2") format("woff2");
-  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}
-@font-face {
-  font-family: "Oswald";
-  font-style: normal;
-  font-weight: 500;
-  font-display: swap;
-  src: url("/fonts/lasha/oswald-latin-8c4a63.woff2") format("woff2");
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
 
-/* Horizontally condensed League Gothic / Oswald / Barlow at the three Tusker widths and the
-   narrower Albireo numerals measured on Lasha's frame (scripts/make-lasha-condensed-fonts.py). */
+/* AIXCO.Global v4 type (Kemo, 7 October 2026: "fonts same as AIXCO Global v4, as fat and big").
+   v4 sets headlines in Sofia Sans Extra Condensed (SIL OFL) at 700 and its hero at 800, stretched
+   vertically. scripts/make-v4-head-fonts.py pins those weights and builds the stretch into
+   "AiXESS Poster"; both cover Latin, Latin Extended and Cyrillic, so every locale shares one face.
+   Each file is a single static weight, so every font-weight requested renders that cut. */
 @font-face {
-  font-family: "Lasha Narrow";
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url("/fonts/lasha/lasha-narrow-cyrillic-ext.woff2") format("woff2");
-  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
-}
-@font-face {
-  font-family: "Lasha Narrow";
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url("/fonts/lasha/lasha-narrow-cyrillic.woff2") format("woff2");
-  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
-}
-@font-face {
-  font-family: "Lasha Narrow";
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url("/fonts/lasha/lasha-narrow-latin-ext.woff2") format("woff2");
-  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}
-@font-face {
-  font-family: "Lasha Narrow";
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url("/fonts/lasha/lasha-narrow-latin.woff2") format("woff2");
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-@font-face {
-  font-family: "Lasha Tall";
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url("/fonts/lasha/lasha-tall-cyrillic-ext.woff2") format("woff2");
-  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
-}
-@font-face {
-  font-family: "Lasha Tall";
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url("/fonts/lasha/lasha-tall-cyrillic.woff2") format("woff2");
-  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
-}
-@font-face {
-  font-family: "Lasha Tall";
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url("/fonts/lasha/lasha-tall-latin-ext.woff2") format("woff2");
-  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}
-@font-face {
-  font-family: "Lasha Tall";
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url("/fonts/lasha/lasha-tall-latin.woff2") format("woff2");
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-@font-face {
-  font-family: "Lasha Display";
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url("/fonts/lasha/lasha-display-cyrillic-ext.woff2") format("woff2");
-  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
-}
-@font-face {
-  font-family: "Lasha Display";
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url("/fonts/lasha/lasha-display-cyrillic.woff2") format("woff2");
-  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
-}
-@font-face {
-  font-family: "Lasha Display";
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url("/fonts/lasha/lasha-display-latin-ext.woff2") format("woff2");
-  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}
-@font-face {
-  font-family: "Lasha Display";
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url("/fonts/lasha/lasha-display-latin.woff2") format("woff2");
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-/* Numbers: Albireo Cond M stand-in (Sofia Sans Extra Condensed 600, OFL), one cut for every weight. */
-@font-face {
-  font-family: "Lasha Num";
+  font-family: "AiXESS Head";
   font-style: normal;
   font-weight: 100 900;
   font-display: swap;
-  src: url("/fonts/lasha/lasha-num-cyrillic-ext.woff2") format("woff2");
-  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+  src: url("/fonts/v4/aixess-head-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+2000-206F, U+20AC, U+2122, U+2190, U+2192, U+2212, U+2215;
 }
 @font-face {
-  font-family: "Lasha Num";
+  font-family: "AiXESS Head";
   font-style: normal;
   font-weight: 100 900;
   font-display: swap;
-  src: url("/fonts/lasha/lasha-num-cyrillic.woff2") format("woff2");
-  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+  src: url("/fonts/v4/aixess-head-latin-ext.woff2") format("woff2");
+  unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20C0;
 }
 @font-face {
-  font-family: "Lasha Num";
+  font-family: "AiXESS Head";
   font-style: normal;
   font-weight: 100 900;
   font-display: swap;
-  src: url("/fonts/lasha/lasha-num-latin-ext.woff2") format("woff2");
-  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+  src: url("/fonts/v4/aixess-head-cyrillic.woff2") format("woff2");
+  unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
 }
 @font-face {
-  font-family: "Lasha Num";
+  font-family: "AiXESS Head";
   font-style: normal;
   font-weight: 100 900;
   font-display: swap;
-  src: url("/fonts/lasha/lasha-num-latin.woff2") format("woff2");
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  src: url("/fonts/v4/aixess-head-cyrillic-ext.woff2") format("woff2");
+  unicode-range: U+0460-052F;
 }
 @font-face {
-  font-family: "Lasha Num Tall";
+  font-family: "AiXESS Poster";
   font-style: normal;
   font-weight: 100 900;
   font-display: swap;
-  src: url("/fonts/lasha/lasha-num-tall-cyrillic-ext.woff2") format("woff2");
-  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+  src: url("/fonts/v4/aixess-poster-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+2000-206F, U+20AC, U+2122, U+2190, U+2192, U+2212, U+2215;
 }
 @font-face {
-  font-family: "Lasha Num Tall";
+  font-family: "AiXESS Poster";
   font-style: normal;
   font-weight: 100 900;
   font-display: swap;
-  src: url("/fonts/lasha/lasha-num-tall-cyrillic.woff2") format("woff2");
-  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+  src: url("/fonts/v4/aixess-poster-latin-ext.woff2") format("woff2");
+  unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20C0;
 }
 @font-face {
-  font-family: "Lasha Num Tall";
+  font-family: "AiXESS Poster";
   font-style: normal;
   font-weight: 100 900;
   font-display: swap;
-  src: url("/fonts/lasha/lasha-num-tall-latin-ext.woff2") format("woff2");
-  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+  src: url("/fonts/v4/aixess-poster-cyrillic.woff2") format("woff2");
+  unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
 }
 @font-face {
-  font-family: "Lasha Num Tall";
+  font-family: "AiXESS Poster";
   font-style: normal;
   font-weight: 100 900;
   font-display: swap;
-  src: url("/fonts/lasha/lasha-num-tall-latin.woff2") format("woff2");
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-
-/* Hero headline: light Tusker stand-in (Oswald 350, condensed). */
-@font-face {
-  font-family: "Lasha Light";
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url("/fonts/lasha/lasha-light-cyrillic-ext.woff2") format("woff2");
-  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
-}
-
-@font-face {
-  font-family: "Lasha Light";
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url("/fonts/lasha/lasha-light-cyrillic.woff2") format("woff2");
-  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
-}
-
-@font-face {
-  font-family: "Lasha Light";
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url("/fonts/lasha/lasha-light-latin-ext.woff2") format("woff2");
-  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}
-
-@font-face {
-  font-family: "Lasha Light";
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url("/fonts/lasha/lasha-light-latin.woff2") format("woff2");
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-
-/* Morganite (Rajesh Rajput, freeware for personal and commercial use; licence in
-   public/fonts/morganite/License.pdf, which forbids modifying the files, so they ship as supplied).
-   Chosen by Kemo on 6 October 2026 for every headline. size-adjust and the metric overrides give it
-   the cap height and line box of the Lasha stand-ins it replaces, so frame sizes stay valid.
-   Morganite has no Cyrillic: Russian headlines fall through to the Lasha families below it. */
-@font-face {
-  font-family: "Morganite Display";
-  font-style: normal;
-  font-weight: 100 900;
-  font-display: swap;
-  src: url("/fonts/morganite/Morganite-ExtraBold.ttf") format("truetype");
-  size-adjust: 105.15%;
-  ascent-override: 109.8%;
-  descent-override: 13.2%;
-  line-gap-override: 0%;
-}
-@font-face {
-  font-family: "Morganite Light";
-  font-style: normal;
-  font-weight: 100 900;
-  font-display: swap;
-  src: url("/fonts/morganite/Morganite-Bold.ttf") format("truetype");
-  size-adjust: 104%;
-  ascent-override: 114.7%;
-  descent-override: 27.8%;
-  line-gap-override: 0%;
+  src: url("/fonts/v4/aixess-poster-cyrillic-ext.woff2") format("woff2");
+  unicode-range: U+0460-052F;
 }

@@ -4,12 +4,12 @@
 .admin-login-header>a:last-child { color:#c9cbc5;font-size:14px;text-decoration:none; }
 .admin-login-main { display:grid;grid-template-columns:minmax(0,1fr) minmax(0,480px);gap:clamp(40px,8vw,140px);align-items:center;max-width:1360px;margin:auto;padding:clamp(32px,7vw,100px) clamp(20px,5vw,80px); }
 .admin-login-context>p,.admin-login-eyebrow { font-size:12px;font-weight:800;letter-spacing:.15em;color:#ff791f; }
-.admin-login-context h1 { font-size:clamp(42px,5vw,72px);line-height:1.02;letter-spacing:-.045em;margin:25px 0; }
+.admin-login-context h1 { font-family:"AiXESS Head","Arial Narrow",sans-serif;font-weight:700;text-transform:uppercase;font-size:clamp(52px,7vw,110px);line-height:.9;letter-spacing:-.012em;margin:25px 0; }
 .admin-login-context h1 span { color:#a7aaa2; }
 .admin-login-rule { width:52px;height:3px;background:#ff6a00;margin:36px 0 25px; }
 .admin-login-context>span { color:#a7aaa2;font-size:12px;letter-spacing:.08em; }
 .admin-login-card { min-width:0;padding:clamp(24px,3vw,40px);border:1px solid #464741;background:#1b1c19; }
-.admin-login-card h2 { font-size:clamp(27px,3vw,36px);line-height:1.1;letter-spacing:-.035em;margin:14px 0; }
+.admin-login-card h2 { font-family:"AiXESS Head","Arial Narrow",sans-serif;font-weight:700;text-transform:uppercase;font-size:clamp(34px,3.6vw,48px);line-height:.92;letter-spacing:-.005em;margin:14px 0; }
 .admin-login-card>p:not(.admin-login-eyebrow) { font-size:15px;line-height:1.55;color:#bec0b9; }
 .admin-login-card form { margin-top:28px; }
 .admin-login-card form>label { display:block;font-size:14px;font-weight:600;margin:18px 0 8px; }

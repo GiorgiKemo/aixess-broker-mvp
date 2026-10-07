@@ -15,12 +15,16 @@
   --l-blue: #2557d6;
   --l-sage: #9bb69e;
   --l-line: #cecece;
-  --l-narrow: "Morganite Display", "Lasha Narrow", "League Gothic", "Arial Narrow", sans-serif;
-  --l-light: "Morganite Light", "Lasha Display", "Lasha Light", "Lasha Narrow", "Arial Narrow", sans-serif;
-  --l-tall: "Morganite Display", "Lasha Tall", "League Gothic", "Arial Narrow", sans-serif;
-  --l-display: "Morganite Display", "Lasha Display", "League Gothic", "Arial Narrow", sans-serif;
-  --l-num: "Lasha Num", "Barlow Condensed", "Arial Narrow", sans-serif;
-  --l-num-tall: "Lasha Num Tall", "Barlow Condensed", "Arial Narrow", sans-serif;
+  /* AIXCO.Global v4 type (see src/lasha-fonts.css): one heavy condensed face for every headline,
+     label and number, and its vertically stretched cut for the hero. */
+  --l-head: "AiXESS Head", "Arial Narrow", "Roboto Condensed", sans-serif;
+  --l-poster: "AiXESS Poster", "AiXESS Head", "Arial Narrow", sans-serif;
+  --l-narrow: var(--l-head);
+  --l-light: var(--l-head);
+  --l-tall: var(--l-head);
+  --l-display: var(--l-head);
+  --l-num: var(--l-head);
+  --l-num-tall: var(--l-head);
   --l-body: "Inter", "Gilroy", system-ui, sans-serif;
   overflow-x: clip;
   background: var(--l-paper);
@@ -51,7 +55,7 @@
 .lasha-arrow { flex: none; height: calc(8 * var(--u)); overflow: visible; }
 .lasha-arrow path { vector-effect: non-scaling-stroke; }
 
-.lasha-plus { font-family: var(--l-body); font-weight: 700; font-size: 0.6em; vertical-align: 0.27em; margin-left: 0.03em; }
+.lasha-plus { font-family: var(--l-head); font-weight: 700; font-size: 0.62em; vertical-align: 0.2em; margin-left: 0.02em; }
 
 .lasha-eyebrow {
   display: flex;
@@ -130,57 +134,76 @@
 .lasha-hero-copy {
   position: absolute;
   z-index: 2;
-  top: calc(273.4 * var(--u));
+  top: calc(118 * var(--u));
+  bottom: calc(70 * var(--u));
   left: calc(70 * var(--u));
   display: grid;
+  align-content: center;
   justify-items: start;
 }
 
+/* AIXESS / TO MARKET in AIXCO.Global v4's poster type (Kemo, 7 October 2026: "he liked how
+   AIXESS TO MARKET is written here"): Sofia Sans Extra Condensed 800, stretched 1.9× tall. */
 .lasha-hero h1 {
   position: relative;
-  /* Oswald-based caps sit lower in the line box than Tusker's: nudge onto the frame's 284 cap line. */
-  top: calc(-11 * var(--u));
-  left: calc(-3 * var(--u));
-  font-family: var(--l-light);
-  font-size: calc(147.3 * var(--u));
-  line-height: calc(131 * var(--u));
+  font-family: var(--l-poster);
+  font-size: calc(190 * var(--u));
+  font-weight: 800;
+  line-height: 1.5;
+  letter-spacing: -0.012em;
   white-space: nowrap;
-  color: #000;
+  color: var(--l-ink);
 }
 
-/* Longer translations shrink to stay clear of the building (frame x ≈ 712). */
+/* The headline fills the copy column and stays clear of the building (frame x ≈ 712). */
 .lasha-home .lasha-hero h1[data-fitted-heading] { width: calc(600 * var(--u)); }
-/* "FÜR" on the second line needs room for its umlaut under the first line. */
-.lasha-home:lang(de) .lasha-hero h1 { line-height: calc(152 * var(--u)); }
-/* The Cyrillic fallback's "У" descends below Morganite's line box: keep it off the subtitle. */
-@media (min-width: 900px) { .lasha-home:lang(ru) .lasha-hero-copy p { margin-top: calc(26 * var(--u)); } }
 
 .lasha-hero-copy p {
-  margin-top: calc(4.8 * var(--u));
-  max-width: max(calc(410 * var(--u)), 172px);
-  font-size: max(calc(18 * var(--u)), 7px);
-  line-height: 1.09;
+  margin-top: calc(8 * var(--u));
+  max-width: max(calc(430 * var(--u)), 172px);
+  font-size: max(calc(20 * var(--u)), 7px);
+  line-height: 1.3;
   white-space: pre-line;
   color: #000;
 }
 
+/* A solid blue button, as on phones: the link sits over the tree line on every screen size. */
 .lasha-hero-cta {
   display: inline-flex;
   align-items: center;
-  gap: calc(11.4 * var(--u));
-  margin-top: calc(39.1 * var(--u));
-  color: var(--l-blue);
-  font-size: max(calc(20.5 * var(--u)), 7px);
-  letter-spacing: -0.018em;
+  gap: calc(16 * var(--u));
+  margin-top: calc(30 * var(--u));
+  padding: calc(18 * var(--u)) calc(22 * var(--u)) calc(18 * var(--u)) calc(26 * var(--u));
+  background: var(--l-blue);
+  color: var(--l-paper);
+  font-size: max(calc(17 * var(--u)), 11px);
+  font-weight: 600;
+  letter-spacing: 0.04em;
   line-height: 1;
   text-transform: uppercase;
   text-decoration: none;
   white-space: nowrap;
+  transition: background 160ms ease;
 }
 
-.lasha-hero-cta .lasha-arrow { width: calc(24 * var(--u)); height: calc(11 * var(--u)); }
+.lasha-hero-cta .lasha-arrow { width: calc(30 * var(--u)); height: calc(11 * var(--u)); }
 .lasha-hero-cta .lasha-arrow path { stroke-width: 1.5; }
-.lasha-hero-cta:hover { text-decoration: underline; }
+.lasha-hero-cta:hover { background: #1b45b0; }
+.lasha-hero-cta:focus-visible { outline: 2px solid var(--l-ink); outline-offset: 3px; }
+
+/* A soft sky wash behind the copy column keeps the black poster type and the subtitle crisp
+   where the photo turns to sea and trees. */
+.lasha-hero-frame::after {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(226, 236, 247, 0.78) 0%, rgba(226, 236, 247, 0.6) 36%, rgba(226, 236, 247, 0) 54%);
+  /* Fade the wash in below the header so the white navigation keeps its contrast. */
+  -webkit-mask-image: linear-gradient(180deg, transparent calc(70 * var(--u)), #000 calc(190 * var(--u)));
+  mask-image: linear-gradient(180deg, transparent calc(70 * var(--u)), #000 calc(190 * var(--u)));
+  content: "";
+  pointer-events: none;
+}
 
 /* Metric strip: frame 992–1270. */
 .lasha-metrics {
@@ -216,7 +239,7 @@
   white-space: nowrap;
 }
 
-.lasha-metrics-value .lasha-plus { font-size: 0.6em; vertical-align: 0.27em; margin-left: 0.06em; }
+.lasha-metrics-value .lasha-plus { font-size: 0.62em; vertical-align: 0.2em; margin-left: 0.02em; }
 
 .lasha-home .lasha-metrics-value::after {
   display: block;
@@ -241,9 +264,9 @@
   padding: calc(52.5 * var(--u)) calc(10 * var(--u)) 0 calc(68 * var(--u));
   color: var(--l-sage);
   font-family: var(--l-tall);
-  font-size: calc(51.4 * var(--u));
-  line-height: calc(41.3 * var(--u));
-  letter-spacing: 0.03em;
+  font-size: calc(42 * var(--u));
+  line-height: 0.95;
+  letter-spacing: 0.01em;
   text-transform: uppercase;
 }
 
@@ -361,11 +384,12 @@
 
 .lasha-starting h2 {
   margin-top: calc(18.2 * var(--u));
-  font-size: calc(140.5 * var(--u));
-  line-height: calc(119 * var(--u));
+  max-width: calc(1300 * var(--u));
+  font-size: calc(112 * var(--u));
+  line-height: 0.9;
 }
 
-.lasha-starting h2 > span:first-child { max-width: calc(820 * var(--u)); }
+.lasha-starting h2 > span:first-child { max-width: calc(1000 * var(--u)); }
 
 .lasha-starting-grid {
   position: relative;
@@ -431,7 +455,7 @@
 .lasha-access {
   position: relative;
   display: grid;
-  grid-template-columns: calc(398 * var(--u)) calc(358 * var(--u)) minmax(0, 1fr);
+  grid-template-columns: calc(398 * var(--u)) auto minmax(0, 1fr);
   height: calc(339 * var(--u));
 }
 
@@ -451,7 +475,7 @@
   margin-top: calc(9.7 * var(--u));
   font-family: var(--l-narrow);
   font-size: calc(140.5 * var(--u));
-  line-height: calc(119 * var(--u));
+  line-height: 0.9;
   white-space: nowrap;
 }
 
@@ -479,16 +503,17 @@
 .lasha-access-count strong {
   color: var(--l-blue);
   font-family: var(--l-narrow);
-  font-size: calc(295.7 * var(--u));
+  font-size: calc(220 * var(--u));
   font-weight: 400;
   line-height: 1;
 }
 
 .lasha-access-count span {
-  margin-top: calc(155.6 * var(--u));
+  max-width: calc(190 * var(--u));
+  margin-top: calc(110 * var(--u));
   font-family: var(--l-narrow);
-  font-size: calc(60.8 * var(--u));
-  line-height: calc(52 * var(--u));
+  font-size: calc(46 * var(--u));
+  line-height: 0.95;
   text-transform: uppercase;
 }
 
@@ -735,7 +760,8 @@
 }
 
 /* Slovenian "RAZPOLOŽLJIVE" is the longest single word beside the 163 count. */
-.lasha-home:lang(sl) .lasha-access-count span { font-size: calc(50 * var(--u)); }
+.lasha-home:lang(sl) .lasha-access-count span { font-size: calc(38 * var(--u)); }
+.lasha-home:is(:lang(ru), :lang(pl)) .lasha-access-count span { max-width: calc(220 * var(--u)); font-size: calc(40 * var(--u)); }
 
 /* Residence dialog and explorer states: headlines in the shared headline face on every public page. */
 :is(.lasha-home, .lasha-page) :is(.floor-modal-header h2, .unit-detail h3, .inventory-intro h3, .explorer-error h3) {
@@ -747,6 +773,7 @@
 }
 :is(.lasha-home, .lasha-page) .floor-modal-header h2 { font-size: clamp(2.4rem, 3.6vw, 3.6rem); }
 :is(.lasha-home, .lasha-page) :is(.unit-detail h3, .inventory-intro h3, .explorer-error h3) { font-size: 2.1rem; }
+:is(.lasha-home, .lasha-page) .inventory-heading strong { font-family: var(--l-head); font-size: 3rem; line-height: 0.85; }
 
 /* Phones and small tablets: Lasha drew only the 1440 desktop frame, and scaling it down
    to a 390px screen leaves 6–7px text. Below 900px the sections keep her colours, type
@@ -769,6 +796,8 @@
     z-index: 1;
     background: linear-gradient(180deg, rgba(226, 236, 247, 0) 0, rgba(226, 236, 247, 0.72) 16%, rgba(226, 236, 247, 0.66) 62%, rgba(226, 236, 247, 0) 88%);
     content: "";
+    -webkit-mask-image: none;
+    mask-image: none;
   }
   /* The copy block sits centred in the photo below the header (Kemo, October 7). */
   .lasha-hero-copy {
@@ -778,9 +807,14 @@
     left: 1.25rem;
     align-content: center;
   }
-  .lasha-hero h1 { top: 0; left: 0; font-size: 7.2rem; line-height: 0.9; }
+  /* Grows with the screen on tablets, but two poster lines plus the copy (about 20rem with the
+     header gap) must fit the hero's own height, so landscape phones get a smaller size.
+     FittedHeading still shrinks long locales to the width. */
+  .lasha-hero h1 {
+    font-size: min(clamp(7.6rem, 31vw, 11rem), calc((clamp(36rem, 100svh, 52rem) - 20rem) / 3));
+    line-height: 1.5;
+  }
   .lasha-home .lasha-hero h1[data-fitted-heading] { width: 100%; }
-  .lasha-home:lang(de) .lasha-hero h1 { line-height: 1; }
   .lasha-hero-copy p { margin-top: 1.3rem; max-width: 23rem; font-size: 1.18rem; line-height: 1.38; }
   /* Kemo, October 7: the blue text link was unreadable over the trees, so phones get a solid button. */
   .lasha-hero-cta { justify-content: space-between; gap: 0.9rem; min-height: 3.4rem; margin-top: 1.7rem; padding: 0 1.1rem 0 1.25rem; background: var(--l-blue); color: var(--l-paper); font-size: 1rem; font-weight: 600; letter-spacing: 0.02em; }
@@ -796,16 +830,18 @@
   .lasha-home .lasha-metrics-label { min-height: 2.5em; font-size: 0.7rem; letter-spacing: 0.02em; line-height: 1.25; }
   /* Long German compounds hyphenate instead of splitting at an arbitrary letter. */
   .lasha-home :is(.lasha-metrics-label, .lasha-metrics-note) { overflow-wrap: break-word; hyphens: auto; }
-  .lasha-home .lasha-metrics-value { margin-top: 0.55rem; font-size: min(3.1rem, calc(17rem / var(--chars, 6))); }
+  .lasha-home .lasha-metrics-value { margin-top: 0.55rem; font-size: min(max(3.1rem, 9vw), calc((50vw - 2.5rem) * 1.75 / var(--chars, 6))); }
   .lasha-home .lasha-metrics-value::after { width: 3.5rem; margin-top: 0.8rem; }
   .lasha-home .lasha-metrics-note { max-width: none; margin-top: 0.75rem; font-size: 0.82rem; line-height: 1.35; }
   .lasha-home .lasha-metrics-tagline {
     align-content: center;
     padding: 1.6rem 1.1rem 1.7rem 1.25rem;
     border-bottom: 1px solid #4f5152;
-    font-size: 2.35rem;
+    font-size: min(2.35rem, calc((50vw - 2.35rem) / 4.4));
     line-height: 0.95;
   }
+  /* The longest tagline word ("OPPORTUNITY", "ВОЗМОЖНОСТИ") must fit the half-width cell. */
+  .lasha-home:lang(ru) .lasha-metrics-tagline { font-size: min(2.35rem, calc((50vw - 2.35rem) / 5.1)); }
 
   /* About: photo above the blue panel. */
   .lasha-about { grid-template-columns: minmax(0, 1fr); min-height: 0; }
@@ -829,6 +865,8 @@
   .lasha-starting > .lasha-eyebrow { font-size: 1.15rem; line-height: 1.1; }
   .lasha-starting h2 { margin-top: 0.8rem; font-size: 3.9rem; line-height: 0.92; }
   .lasha-starting h2 > span:first-child { max-width: none; }
+  /* "UNTERSCHIEDLICHE" is one unbreakable word. */
+  .lasha-home:lang(de) .lasha-starting h2 { font-size: min(3.9rem, calc((100vw - 2.5rem) / 6.2)); }
   .lasha-starting-grid {
     grid-template-columns: minmax(0, 1fr);
     min-height: 0;
@@ -855,7 +893,7 @@
   .lasha-home .lasha-access-count { align-items: flex-end; gap: 0.8rem; padding: 1.4rem 1.25rem 0; }
   .lasha-access-count strong { font-size: 8.5rem; line-height: 0.82; }
   .lasha-access-count span,
-  .lasha-home:lang(sl) .lasha-access-count span { margin: 0 0 0.2rem; font-size: 2rem; line-height: 0.95; }
+  .lasha-home:lang(sl) .lasha-access-count span { max-width: 10rem; margin: 0 0 0.2rem; font-size: 2rem; line-height: 0.95; }
   .lasha-access-actions { row-gap: 0.75rem; padding: 2rem 1.25rem 0; }
   .lasha-access-actions .lasha-button { width: 100%; height: 3.5rem; padding: 0 1.1rem 0 1.25rem; }
   .lasha-access-actions .lasha-arrow { width: 2.4rem; }

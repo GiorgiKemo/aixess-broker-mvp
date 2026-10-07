@@ -494,7 +494,7 @@ body .privacy-footer-panel nav :is(a, button):hover,
 body .privacy-footer-panel nav span { color: #2557d6; }
 
 body .cookie-notice { border-color: rgba(23, 26, 29, 0.25); background: #f4f4f1; color: #171a1d; }
-body .cookie-notice h2 { font-family: "Morganite Display", "Lasha Tall", "League Gothic", "Arial Narrow", sans-serif; font-size: 34px; font-weight: 400; letter-spacing: 0.005em; line-height: 0.95; text-transform: uppercase; }
+body .cookie-notice h2 { font-family: "AiXESS Head", "Arial Narrow", sans-serif; font-size: 34px; font-weight: 400; letter-spacing: 0.005em; line-height: 0.95; text-transform: uppercase; }
 body .cookie-actions button { border-color: #2557d6; background: #2557d6; font-weight: 500; letter-spacing: 0.026em; text-transform: uppercase; }
 body .cookie-actions button:hover { border-color: #1b45b0; background: #1b45b0; }
 body .access-form .privacy-acknowledgement input { accent-color: #2557d6; }
@@ -514,7 +514,7 @@ body .modal-eyebrow { color: #2557d6; font-weight: 500; }
 
 body .modal-panel h2 {
   color: #171a1d;
-  font-family: "Morganite Display", "Lasha Tall", "League Gothic", "Arial Narrow", sans-serif;
+  font-family: "AiXESS Head", "Arial Narrow", sans-serif;
   font-size: clamp(3rem, 7vw, 4.8rem);
   font-weight: 400;
   letter-spacing: 0.005em;
@@ -552,7 +552,7 @@ body .modal-panel :is(button, input, a):focus-visible { outline-color: #2557d6; 
 }
 
 /* Phone and tablet menu in Lasha's language (Kemo, 7 October 2026: the old black/orange
-   drawer had to go). A full-height ink panel under the header, Morganite links with a blue
+   drawer had to go). A full-height ink panel under the header, v4 headline-face links with a blue
    marker on the current page, a paper language row and square blue/outline actions. The
    panel lives at the end of <body> with its own logo and Close bar, so no section can cover it. */
 
