@@ -6,13 +6,14 @@ proportion of its brand sheet. AiXESS uses the same type, so this script ships:
 
   "AiXESS Head"    Sofia Sans Extra Condensed pinned at weight 700, unscaled (all headlines,
                    numbers and labels set in the display face).
-  "AiXESS Poster"  Sofia Sans Extra Condensed pinned at weight 800 with every glyph stretched
-                   vertically, for the AIXESS / TO MARKET hero. Kemo's reference (7 October 2026)
+  "AiXESS Poster"  Sofia Sans Extra Condensed pinned at its heaviest weight (the reference's
+                   strokes are that heavy) with every glyph stretched vertically, for the
+                   AIXESS / TO MARKET hero. Kemo's reference (7 October 2026)
                    sets both lines to the same width, AIXESS far taller than TO MARKET, almost
                    touching: "AiXESS Poster Tall" (POSTER_TALL_Y, Latin only) sets AIXESS and
                    "AiXESS Poster" (POSTER_Y) the translated second line, so each line keeps the
                    reference's height-to-width ratio once fitted. Their line box is trimmed to the
-                   cap height (ascent = cap height, descent 0), so line-height: 1 hugs the capitals
+                   cap height (ascent = cap height, descent 0), so line-height: normal hugs the capitals
                    and the gap between the lines is set exactly in CSS. Building the stretch into
                    the font keeps real line boxes, so the lines can be measured and fitted without
                    a CSS transform.
@@ -35,10 +36,11 @@ SOURCE = ROOT / "scripts" / "font-sources" / "sofia-sans-extra-condensed-variabl
 OUT = ROOT / "public" / "fonts" / "v4"
 
 HEAD_WEIGHT = 700
-POSTER_WEIGHT = 800
-# Height/width of each line in Kemo's reference: AIXESS 358/508, TO MARKET 208/530.
-POSTER_TALL_Y = 2.23
-POSTER_Y = 2.02
+POSTER_WEIGHT = 1000
+# Height/width of each line in Kemo's reference (AIXESS 358/508, TO MARKET 208/530), with the
+# hero's letter-spacing (0.008em and 0.03em).
+POSTER_TALL_Y = 2.59
+POSTER_Y = 2.42
 
 SUBSETS = {
     "latin": [*range(0x20, 0x100), 0x131, 0x152, 0x153, 0x2BB, 0x2BC, 0x2C6, 0x2DA, 0x2DC, 0x304, 0x308,

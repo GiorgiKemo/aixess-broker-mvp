@@ -147,6 +147,7 @@
 
 /* AIXESS / TO MARKET exactly as in Kemo's AIXCO v4 reference (7 October 2026): both lines span
    the same width, so AIXESS stands about 1.7× taller than TO MARKET, and the two almost touch.
+   The reference's strokes are as heavy as Sofia Sans's Black (1000), so the poster cuts use it.
    FittedHeading's fillLines sizes each line to the width; the poster cuts' line box is the
    capitals, so line-height: normal and the row gap set the spacing exactly. */
 .lasha-hero h1 {
@@ -159,12 +160,13 @@
   white-space: nowrap;
   color: var(--l-ink);
 }
-.lasha-hero h1 > span:first-child { font-family: var(--l-poster-tall); }
+/* Black is tight-fitting; the reference keeps a clear gap between letters. */
+.lasha-hero h1 > span:first-child { font-family: var(--l-poster-tall); letter-spacing: 0.008em; }
+.lasha-hero h1 > span + span { letter-spacing: 0.03em; }
+/* About 2% of the width between the inked lines, as in the reference; em of the fitted second line. */
+.lasha-hero h1 > span + span { margin-top: 0.11em; }
 
-.lasha-home .lasha-hero h1[data-fitted-heading] {
-  width: var(--poster-w);
-  row-gap: calc(var(--poster-w) * 0.021);
-}
+.lasha-home .lasha-hero h1[data-fitted-heading] { width: var(--poster-w); }
 
 .lasha-hero-copy p {
   margin-top: calc(var(--poster-w) * 0.075);
@@ -819,7 +821,6 @@
      landscape screens its width is capped by the hero's own height minus the copy (about 20rem). */
   .lasha-home .lasha-hero h1[data-fitted-heading] {
     width: min(100%, calc((clamp(36rem, 100svh, 52rem) - 20rem) / 1.12));
-    row-gap: 0.45rem;
   }
   .lasha-hero-copy p { margin-top: 1.5rem; max-width: 23rem; font-size: 1.18rem; line-height: 1.3; }
   /* Kemo, October 7: the blue text link was unreadable over the trees, so phones get a solid button. */
