@@ -24,7 +24,7 @@
 .admin-metrics article { padding:24px;border-right:1px solid #414b43;min-width:0; }
 .admin-metrics article:last-child { border-right:0; }
 .admin-metrics article>span { font-size:13px;color:#d1d8d2; }
-.admin-metrics strong { display:block;font-size:clamp(40px,4vw,60px);letter-spacing:-.04em;line-height:1.2;margin:12px 0; }
+.admin-metrics strong { display:block;font-family:"AiXESS Head","Arial Narrow",sans-serif;font-weight:700;font-size:clamp(48px,5vw,76px);letter-spacing:0;line-height:1;margin:12px 0; }
 .admin-metrics p { font-size:12px;color:#aeb8b0;margin:0; }
 .admin-grid { display:grid;gap:24px;margin-bottom:24px; }
 .admin-overview-grid { grid-template-columns:minmax(0,1.7fr) minmax(0,1fr); }
@@ -39,7 +39,7 @@
 .admin-axis { display:flex;justify-content:space-between;font-size:11px;color:#aeb8b0;margin:10px 0 18px; }
 .admin-app summary { cursor:pointer;font-size:12px;color:#c3cfc6; }
 .admin-signal { display:flex;justify-content:space-between;gap:20px;border-bottom:1px solid #39453c;padding:16px 0;font-size:14px; }
-.admin-signal strong { color:#f5f3eb;font-size:22px; }
+.admin-signal strong { color:#f5f3eb;font-family:"AiXESS Head","Arial Narrow",sans-serif;font-weight:700;font-size:30px;line-height:1; }
 .admin-callout { border-left:2px solid #ff751b;padding:12px 16px;background:#25251c;margin-top:20px;font-size:12px; }
 .admin-callout p { margin:8px 0 0;color:#c7c5b6; }
 .admin-breakdown { list-style:none;padding:0;margin:16px 0 0; }
@@ -58,7 +58,7 @@
 .admin-pagination { display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:24px;font-size:12px; }
 .admin-delete-confirm { display:grid;gap:6px; }
 .admin-methodology { padding:32px 0 0;max-width:1000px;color:#aeb8b0;font-size:13px; }
-.admin-methodology h2 { font-size:24px;color:#dadfd8; }
+.admin-methodology h2 { font-family:"AiXESS Head","Arial Narrow",sans-serif;font-weight:700;text-transform:uppercase;font-size:30px;line-height:1;letter-spacing:0;color:#dadfd8; }
 .admin-message { padding:28px;border:1px solid #b77943;background:#24221b;margin:30px 0; }
 .admin-message strong { font-size:22px; }
 .admin-message .admin-primary { display:inline-flex;margin:12px 0; }
