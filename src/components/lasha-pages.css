@@ -10,7 +10,6 @@
   color: var(--l-ink);
 }
 
-.lasha-page .lasha-eyebrow { font-size: clamp(0.78rem, 1.13vw, 1rem); }
 .lasha-page .lasha-eyebrow::after { flex-basis: clamp(3.5rem, 8.7vw, 7.8rem); margin-left: 1.1rem; }
 
 /* Page hero: the site header floats over the Reverance skyline, as on the homepage. */
@@ -75,10 +74,10 @@
   margin: clamp(0.9rem, 1.6vw, 1.4rem) 0 0;
   color: #000;
   font-family: var(--l-light);
-  font-size: clamp(3.6rem, 10.2vw, 9.2rem);
+  font-size: var(--v4-page-title);
   font-weight: 400;
-  letter-spacing: 0;
-  line-height: 0.89;
+  letter-spacing: -0.012em;
+  line-height: 0.86;
   text-transform: uppercase;
   overflow-wrap: anywhere;
 }
@@ -89,8 +88,9 @@
   max-width: 34rem;
   margin: clamp(1rem, 1.8vw, 1.5rem) 0 0;
   color: #000;
-  font-size: clamp(1rem, 1.25vw, 1.125rem);
-  line-height: 1.4;
+  font-size: var(--v4-lead);
+  letter-spacing: -0.01em;
+  line-height: 1.55;
 }
 
 .lasha-page-hero .page-cta-row { margin-top: clamp(1.5rem, 2.6vw, 2.4rem); }
@@ -113,9 +113,9 @@
   margin: 0 0 1rem;
   color: var(--l-blue);
   font-family: var(--l-body);
-  font-size: clamp(0.78rem, 1.13vw, 1rem);
-  font-weight: 500;
-  letter-spacing: 0.02em;
+  font-size: var(--v4-eyebrow);
+  font-weight: 600;
+  letter-spacing: 0.2em;
   line-height: 1.2;
   text-transform: uppercase;
   overflow-wrap: anywhere;
@@ -137,9 +137,9 @@
   background: transparent;
   color: var(--l-ink);
   font-family: var(--l-body);
-  font-size: 0.875rem;
-  font-weight: 500;
-  letter-spacing: 0.026em;
+  font-size: var(--v4-btn);
+  font-weight: 600;
+  letter-spacing: 0.16em;
 }
 
 .lasha-page .button-primary { border-color: var(--l-blue); background: var(--l-blue); color: var(--l-paper); }
@@ -147,15 +147,15 @@
 .lasha-page .button-ghost:hover { background: var(--l-ink); color: var(--l-paper); }
 .lasha-page .site-header .button-ghost { border-color: rgba(255, 255, 255, 0.82); color: #fff; }
 .lasha-page .site-header .button-ghost:hover { background: #fff; color: var(--l-ink); }
-.lasha-page .site-header .button { min-height: 3rem; padding-block: 0.85rem; font-size: 0.77rem; }
+.lasha-page .site-header .button { min-height: 3rem; padding-block: 0.85rem; }
 
 .lasha-page .text-link,
 .lasha-page .resource-link {
   color: var(--l-ink);
   font-family: var(--l-body);
-  font-size: 0.82rem;
-  font-weight: 500;
-  letter-spacing: 0.06em;
+  font-size: var(--v4-btn);
+  font-weight: 600;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
 }
 
@@ -180,19 +180,21 @@
   max-width: 18ch;
   margin: 0.4rem 0 0;
   font-family: var(--l-tall);
-  font-size: clamp(3rem, 7.4vw, 7.4rem);
+  font-size: var(--v4-h2);
   font-weight: 400;
-  letter-spacing: 0.005em;
-  line-height: 0.86;
+  letter-spacing: -0.012em;
+  line-height: 0.88;
   text-transform: uppercase;
+  text-wrap: balance;
 }
 
 .lasha-page .network-section .network-lead {
   max-width: 44rem;
   margin: clamp(1.4rem, 2.4vw, 2rem) 0 0;
   color: inherit;
-  font-size: clamp(1.02rem, 1.25vw, 1.15rem);
-  line-height: 1.45;
+  font-size: var(--v4-lead);
+  letter-spacing: -0.01em;
+  line-height: 1.55;
 }
 
 .lasha-page .network-intro-lead { font-weight: 500; }
@@ -203,10 +205,10 @@
   margin: clamp(2rem, 4vw, 3rem) 0 0;
   color: var(--l-blue);
   font-family: var(--l-display);
-  font-size: clamp(1.4rem, 2.2vw, 2rem);
+  font-size: var(--v4-kicker);
   font-weight: 400;
-  letter-spacing: 0.02em;
-  line-height: 1.05;
+  letter-spacing: 0;
+  line-height: 1;
   text-transform: uppercase;
 }
 
@@ -214,9 +216,9 @@
   max-width: 20ch;
   margin: clamp(3rem, 6vw, 5rem) 0 1rem;
   font-family: var(--l-tall);
-  font-size: clamp(2.6rem, 5.6vw, 5.6rem);
+  font-size: var(--v4-sub);
   font-weight: 400;
-  letter-spacing: 0.005em;
+  letter-spacing: -0.012em;
   line-height: 0.88;
   text-transform: uppercase;
 }
@@ -232,7 +234,7 @@
   display: block;
   color: var(--l-blue);
   font-family: var(--l-num);
-  font-size: clamp(1.8rem, 2.4vw, 2.2rem);
+  font-size: var(--v4-index);
   font-weight: 500;
   line-height: 1;
 }
@@ -240,17 +242,17 @@
 .lasha-page :is(.network-card, .network-steps) h3 {
   margin: 0.9rem 0 0.6rem;
   font-family: var(--l-display);
-  font-size: clamp(1.7rem, 2.9vw, 2.6rem);
+  font-size: var(--v4-h3-xl);
   font-weight: 400;
-  letter-spacing: 0.015em;
-  line-height: 1;
+  letter-spacing: 0;
+  line-height: 0.95;
   text-transform: uppercase;
 }
 
-.lasha-page :is(.network-card, .network-steps) p { font-size: 1rem; line-height: 1.45; }
+.lasha-page :is(.network-card, .network-steps) p { font-size: var(--v4-text); line-height: 1.65; }
 
 .lasha-page .network-actions { margin-top: clamp(2rem, 4vw, 3rem); }
-.lasha-page .network-section .button { min-height: 3.6rem; padding: 1rem 1.6rem; font-size: 0.875rem; }
+.lasha-page .network-section .button { min-height: 3.6rem; padding: 1rem 1.6rem; }
 .lasha-page .network-section .text-link { margin-top: 0.8rem; }
 
 .lasha-page .network-why .network-heading h2 { max-width: none; }
@@ -263,7 +265,7 @@
   letter-spacing: 0.005em;
   text-transform: uppercase;
 }
-.lasha-page .golden-premium-heading h3 { font-size: clamp(2.4rem, 4.6vw, 4.4rem); line-height: 0.9; }
+.lasha-page .golden-premium-heading h3 { font-size: var(--v4-sub); letter-spacing: -0.012em; line-height: 0.88; }
 .lasha-page .golden-premium-summary strong { font-family: var(--l-num); font-weight: 500; }
 
 /* Figures read like the homepage metric strip: blue condensed numerals over a short rule. */
@@ -274,9 +276,10 @@
   margin: 0;
   color: var(--l-blue);
   font-family: var(--l-num);
-  font-size: clamp(3rem, 6.4vw, 5.6rem);
-  font-weight: 500;
-  line-height: 1;
+  font-size: var(--v4-stat);
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  line-height: 0.85;
 }
 
 .lasha-page .network-stats dd::after {
@@ -290,10 +293,10 @@
 }
 
 .lasha-page .network-stats dt {
-  font-size: 0.82rem;
-  font-weight: 500;
-  letter-spacing: 0.04em;
-  line-height: 1.35;
+  font-size: var(--v4-stat-label);
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  line-height: 1.4;
   text-transform: uppercase;
 }
 
@@ -308,9 +311,9 @@
   gap: 1rem 2.4rem;
   margin-top: 1rem;
   font-family: var(--l-display);
-  font-size: clamp(1.4rem, 2.2vw, 2rem);
+  font-size: var(--v4-kicker);
   font-weight: 400;
-  letter-spacing: 0.02em;
+  letter-spacing: 0;
   text-transform: uppercase;
 }
 
@@ -335,7 +338,7 @@
 .lasha-page :is(.network-backing, .network-client) .button-ghost:hover { background: #fff; color: var(--l-ink); }
 
 /* The closing call to action echoes the homepage's broker access row. */
-.lasha-page .network-closing .network-heading h2 { max-width: 16ch; font-family: var(--l-narrow); font-size: clamp(3.4rem, 9.8vw, 8.8rem); line-height: 0.85; }
+.lasha-page .network-closing .network-heading h2 { max-width: 16ch; font-family: var(--l-narrow); font-size: var(--v4-closing); line-height: 0.88; }
 
 /* Insights. */
 .lasha-page .page-section {
@@ -350,10 +353,11 @@
   max-width: none;
   color: var(--l-ink);
   font-family: var(--l-tall);
-  font-size: clamp(3rem, 7.4vw, 7.4rem);
+  font-size: var(--v4-h2);
   font-weight: 400;
-  letter-spacing: 0.005em;
-  line-height: 0.86;
+  letter-spacing: -0.012em;
+  line-height: 0.88;
+  text-wrap: balance;
 }
 
 .lasha-page .resource-section { background: var(--l-mist); }
@@ -370,15 +374,15 @@
 .lasha-page .resource-card:first-child { padding-left: 0; border-left: 0; }
 
 .lasha-page .resource-card-top { color: rgba(23, 26, 29, 0.6); }
-.lasha-page .resource-card-top span:first-child { color: var(--l-blue); font-family: var(--l-num); font-size: 2rem; font-weight: 500; letter-spacing: 0; }
+.lasha-page .resource-card-top span:first-child { color: var(--l-blue); font-family: var(--l-num); font-size: var(--v4-index); font-weight: 500; letter-spacing: 0; }
 
 .lasha-page .resource-card h3 {
   color: var(--l-ink);
   font-family: var(--l-display);
-  font-size: clamp(1.7rem, 2.9vw, 2.6rem);
+  font-size: var(--v4-h3-xl);
   font-weight: 400;
-  letter-spacing: 0.015em;
-  line-height: 1;
+  letter-spacing: 0;
+  line-height: 0.95;
   text-transform: uppercase;
 }
 
@@ -386,9 +390,9 @@
 
 .lasha-page .faq-section { background: var(--l-paper); }
 .lasha-page .faq-list details { border-color: rgba(23, 26, 29, 0.2); }
-.lasha-page .faq-list summary { color: var(--l-ink); }
+.lasha-page .faq-list summary { color: var(--l-ink); font-size: var(--v4-faq); font-weight: 500; line-height: 1.35; }
 .lasha-page .faq-list summary span { color: var(--l-blue); }
-.lasha-page .faq-list p { color: rgba(23, 26, 29, 0.78); }
+.lasha-page .faq-list p { color: rgba(23, 26, 29, 0.78); font-size: 1.02rem; line-height: 1.7; }
 
 /* Broker tools. */
 .lasha-page .calculator-page { padding: clamp(4rem, 8.5vw, 7.8rem) var(--page-gutter); }
@@ -396,14 +400,14 @@
 .lasha-page .calculator-page h1 {
   margin: 0.4rem 0 0;
   font-family: var(--l-tall);
-  font-size: clamp(3rem, 7.4vw, 7.4rem);
+  font-size: var(--v4-h2);
   font-weight: 400;
-  letter-spacing: 0.005em;
-  line-height: 0.86;
+  letter-spacing: -0.012em;
+  line-height: 0.88;
   text-transform: uppercase;
 }
 
-.lasha-page .calculator-intro { margin-top: 1.4rem; font-size: clamp(1.02rem, 1.25vw, 1.15rem); line-height: 1.45; }
+.lasha-page .calculator-intro { margin-top: 1.4rem; font-size: var(--v4-lead); letter-spacing: -0.01em; line-height: 1.55; }
 
 .lasha-page .calculator-tabs { gap: 1px; margin: clamp(2rem, 4vw, 3rem) 0 2rem; border: 1px solid var(--l-ink); background: var(--l-ink); }
 
@@ -411,9 +415,9 @@
   border: 0;
   background: var(--l-paper);
   color: var(--l-ink);
-  font-size: 0.875rem;
-  font-weight: 500;
-  letter-spacing: 0.026em;
+  font-size: var(--v4-btn);
+  font-weight: 600;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
 }
 
@@ -422,10 +426,10 @@
 .lasha-page .calculator-layout h2,
 .lasha-page .client-pdf h2 {
   font-family: var(--l-display);
-  font-size: clamp(1.8rem, 3vw, 2.8rem);
+  font-size: var(--v4-h3-xl);
   font-weight: 400;
-  letter-spacing: 0.015em;
-  line-height: 1;
+  letter-spacing: 0;
+  line-height: 0.95;
   text-transform: uppercase;
 }
 
@@ -464,9 +468,10 @@
 
 .privacy-page.lasha-page h2 {
   font-family: var(--l-display);
-  font-size: clamp(1.5rem, 2.4vw, 2.1rem);
+  font-size: var(--v4-h3);
   font-weight: 400;
-  letter-spacing: 0.015em;
+  letter-spacing: 0;
+  line-height: 1;
   text-transform: uppercase;
 }
 
@@ -494,8 +499,8 @@ body .privacy-footer-panel nav :is(a, button):hover,
 body .privacy-footer-panel nav span { color: #2557d6; }
 
 body .cookie-notice { border-color: rgba(23, 26, 29, 0.25); background: #f4f4f1; color: #171a1d; }
-body .cookie-notice h2 { font-family: "AiXESS Head", "Arial Narrow", sans-serif; font-size: 34px; font-weight: 400; letter-spacing: 0.005em; line-height: 0.95; text-transform: uppercase; }
-body .cookie-actions button { border-color: #2557d6; background: #2557d6; font-weight: 500; letter-spacing: 0.026em; text-transform: uppercase; }
+body .cookie-notice h2 { font-family: "AiXESS Head", "Arial Narrow", sans-serif; font-size: var(--v4-h3); font-weight: 400; letter-spacing: 0; line-height: 1; text-transform: uppercase; }
+body .cookie-actions button { border-color: #2557d6; background: #2557d6; font-size: var(--v4-btn); font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; }
 body .cookie-actions button:hover { border-color: #1b45b0; background: #1b45b0; }
 body .access-form .privacy-acknowledgement input { accent-color: #2557d6; }
 
@@ -510,19 +515,20 @@ body .modal-panel {
 }
 
 body .modal-close { color: #171a1d; }
-body .modal-eyebrow { color: #2557d6; font-weight: 500; }
+body .modal-eyebrow { color: #2557d6; font-size: var(--v4-eyebrow); font-weight: 600; letter-spacing: 0.2em; }
 
 body .modal-panel h2 {
   color: #171a1d;
   font-family: "AiXESS Head", "Arial Narrow", sans-serif;
-  font-size: clamp(3rem, 7vw, 4.8rem);
+  font-size: var(--v4-panel-title);
   font-weight: 400;
-  letter-spacing: 0.005em;
-  line-height: 0.88;
+  letter-spacing: -0.012em;
+  line-height: 0.9;
   text-transform: uppercase;
 }
 
-body .modal-copy { color: rgba(23, 26, 29, 0.78); }
+body .modal-copy { color: rgba(23, 26, 29, 0.78); font-size: var(--v4-text); line-height: 1.65; }
+body .modal-panel .button { font-size: var(--v4-btn); font-weight: 600; letter-spacing: 0.16em; }
 body .access-form label span { color: rgba(23, 26, 29, 0.68); }
 
 body .access-form input {
@@ -579,9 +585,9 @@ body .modal-panel :is(button, input, a):focus-visible { outline-color: #2557d6; 
     background: none;
     color: var(--l-paper);
     font-family: var(--l-display);
-    font-size: 2.35rem;
+    font-size: var(--v4-menu);
     font-weight: 400;
-    letter-spacing: 0.005em;
+    letter-spacing: 0;
     line-height: 1;
     text-transform: uppercase;
   }
@@ -619,9 +625,9 @@ body .modal-panel :is(button, input, a):focus-visible { outline-color: #2557d6; 
     border: 1px solid var(--l-paper);
     background: transparent;
     color: var(--l-paper);
-    font-size: 0.9rem;
+    font-size: var(--v4-btn);
     font-weight: 600;
-    letter-spacing: 0.06em;
+    letter-spacing: 0.16em;
     text-transform: uppercase;
   }
   .mobile-nav.lasha-menu .mobile-register { margin-top: 1.4rem; border-color: var(--l-blue); background: var(--l-blue); }

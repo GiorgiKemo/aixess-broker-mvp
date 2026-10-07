@@ -1,5 +1,46 @@
 @import "../lasha-fonts.css";
 
+/* AIXCO.Global v4's type scale (its src/styles/v4.css), Kemo, 7 October 2026: titles and text
+   on every public page use v4's sizes; layout, colours and copy stay AiXESS's. Each token
+   names the v4 class it copies. German, Polish, Slovenian and Russian get v4's smaller
+   section and page titles, as on v4. */
+:root {
+  --v4-h2: clamp(2.9rem, 6.2vw, 6.4rem); /* .v2-h2, line-height 0.88 */
+  --v4-page-title: clamp(3.4rem, 8vw, 8.2rem); /* .v2-page-hero__title, line-height 0.86 */
+  --v4-closing: clamp(3.4rem, 9vw, 9.5rem); /* .v2-footer__cta .v2-h2 */
+  --v4-panel-title: clamp(2.2rem, 4vw, 3.4rem); /* .modal-panel .heading-section */
+  --v4-sub: clamp(1.9rem, 3.6vw, 3.4rem); /* Reverance page's Golden Premium title */
+  --v4-h3-xl: clamp(1.8rem, 2.7vw, 2.6rem); /* .v4-h3-xl, line-height 0.95 */
+  --v4-h3: clamp(1.55rem, 2.1vw, 2.05rem); /* .v2-h3, line-height 1 */
+  --v4-route: clamp(1.8rem, 2.6vw, 2.5rem); /* .v4-route__title */
+  --v4-kicker: clamp(1.4rem, 2.2vw, 2.2rem); /* .v4-band__label */
+  --v4-claim: clamp(1.9rem, 2.6vw, 2.6rem); /* .v4-metrics__claim */
+  --v4-metric: clamp(4rem, 6.4vw, 6.8rem); /* .v4-metrics__value, line-height 0.85 */
+  --v4-stat: clamp(3.2rem, 5.4vw, 5.6rem); /* .v4-stat-row__item dd */
+  --v4-benefit: clamp(3rem, 4.6vw, 4.6rem); /* .v4-benefits__value */
+  --v4-number: clamp(2.8rem, 4.4vw, 4.6rem); /* .v2-stat .v2-number */
+  --v4-index: 1.6rem; /* .v4-route__index, .v4-about__pillar-index */
+  --v4-menu: 2.1rem; /* .v2-drawer__group a */
+  --v4-lead: clamp(1.02rem, 1.2vw, 1.2rem); /* .v2-lead, line-height 1.55 */
+  --v4-hero-text: clamp(1rem, 1.15vw, 1.12rem); /* .v4-hero__intro p, line-height 1.4 */
+  --v4-faq: clamp(1.1rem, 1.4vw, 1.3rem); /* .v2-faq__question: 500, line-height 1.35 */
+  --v4-text: 0.98rem; /* .v2-text, line-height 1.65 */
+  --v4-small: 0.9rem; /* .v4-benefits dd, line-height 1.45 */
+  --v4-note: 0.86rem; /* .v4-metrics__note, line-height 1.5 */
+  --v4-pillar: 0.72rem; /* .v4-about__pillars li: 600, 0.16em */
+  --v4-btn: 0.72rem; /* .v2-btn: 600, 0.16em */
+  --v4-eyebrow: 0.7rem; /* .v2-eyebrow: 600, 0.2em */
+  --v4-label: 0.68rem; /* .v2-label: 600, 0.18em */
+  --v4-nav: 0.68rem; /* .v2-nav__link: 500, 0.1em */
+  --v4-stat-label: 0.66rem; /* .v4-stat-row__item dt: 600, 0.18em */
+  --v4-metric-label: 0.64rem; /* .v4-metrics__label: 600, 0.18em */
+}
+
+:root:is(:lang(de), :lang(pl), :lang(sl), :lang(ru)) {
+  --v4-h2: clamp(2.5rem, 5.2vw, 5.4rem);
+  --v4-page-title: clamp(3rem, 6.8vw, 7rem);
+}
+
 /* Homepage built to Lasha Bakashvili's Figma frame (HOME page, 1440 × 4948).
    Every size and position below is in Figma pixels: --u is one frame pixel at the
    current viewport width, so phones, tablets and desktops all show the same composition.
@@ -62,9 +103,11 @@
   display: flex;
   align-items: center;
   color: var(--l-blue);
-  font-size: max(calc(16.2 * var(--u)), 7px);
-  font-weight: 500;
-  line-height: 1;
+  font-size: var(--v4-eyebrow);
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  line-height: 1.2;
+  text-transform: uppercase;
 }
 
 .lasha-eyebrow::after {
@@ -85,10 +128,10 @@
   background: transparent;
   color: var(--l-ink);
   font-family: var(--l-body);
-  font-size: max(calc(15.3 * var(--u)), 6.5px);
-  font-weight: 500;
-  letter-spacing: 0.026em;
-  line-height: 1;
+  font-size: var(--v4-btn);
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  line-height: 1.1;
   text-align: left;
   text-transform: uppercase;
   text-decoration: none;
@@ -170,9 +213,9 @@
 
 .lasha-hero-copy p {
   margin-top: calc(var(--poster-w) * 0.075);
-  max-width: max(calc(400 * var(--u)), 172px);
-  font-size: max(calc(20 * var(--u)), 7px);
-  line-height: 1.2;
+  max-width: max(calc(400 * var(--u)), 23rem);
+  font-size: var(--v4-hero-text);
+  line-height: 1.4;
   white-space: pre-line;
   color: #000;
 }
@@ -186,9 +229,9 @@
   padding: calc(18 * var(--u)) calc(22 * var(--u)) calc(18 * var(--u)) calc(26 * var(--u));
   background: var(--l-blue);
   color: var(--l-paper);
-  font-size: max(calc(17 * var(--u)), 11px);
+  font-size: var(--v4-btn);
   font-weight: 600;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.16em;
   line-height: 1;
   text-transform: uppercase;
   text-decoration: none;
@@ -232,9 +275,12 @@
 
 .lasha-home .lasha-metrics-label {
   overflow-wrap: anywhere;
-  font-size: max(calc(13.4 * var(--u)), 5.5px);
-  letter-spacing: -0.03em;
-  line-height: 1;
+  /* Two lines held, so a label that wraps ("REAL ESTATE / TRANSACTION") keeps the values level. */
+  min-height: 2.8em;
+  font-size: var(--v4-metric-label);
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  line-height: 1.4;
   text-transform: uppercase;
 }
 
@@ -243,9 +289,10 @@
   color: var(--l-blue);
   font-family: var(--l-num);
   /* Longer translated values ("4,2 Mrd. $") shrink to stay inside their column. */
-  font-size: calc(666 / var(--chars, 6) * var(--u));
-  font-weight: 500;
-  line-height: 1;
+  font-size: min(var(--v4-metric), calc(666 / var(--chars, 6) * var(--u)));
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  line-height: 0.85;
   white-space: nowrap;
 }
 
@@ -264,8 +311,8 @@
   overflow-wrap: anywhere;
   margin-top: max(calc(11.8 * var(--u)), 5px);
   max-width: calc(240 * var(--u));
-  font-size: max(calc(12.8 * var(--u)), 5.5px);
-  line-height: 1.29;
+  font-size: var(--v4-note);
+  line-height: 1.5;
 }
 
 .lasha-home .lasha-metrics-tagline {
@@ -274,9 +321,10 @@
   padding: calc(52.5 * var(--u)) calc(10 * var(--u)) 0 calc(68 * var(--u));
   color: var(--l-sage);
   font-family: var(--l-tall);
-  font-size: calc(42 * var(--u));
+  /* v4's claim size, capped by the frame column so the longest word still fits. */
+  font-size: min(var(--v4-claim), calc(42 * var(--u)));
   line-height: 0.95;
-  letter-spacing: 0.01em;
+  letter-spacing: 0;
   text-transform: uppercase;
 }
 
@@ -299,10 +347,6 @@
   flex-direction: row-reverse;
   justify-content: flex-end;
   color: var(--l-paper);
-  font-size: max(calc(13.3 * var(--u)), 5.5px);
-  font-weight: 400;
-  letter-spacing: 0.005em;
-  text-transform: uppercase;
 }
 
 .lasha-eyebrow-lead::after {
@@ -315,9 +359,9 @@
   display: grid;
   justify-items: start;
   margin-top: calc(26.4 * var(--u));
-  font-size: calc(118.9 * var(--u));
-  line-height: calc(100 * var(--u));
-  letter-spacing: 0.01em;
+  font-size: var(--v4-h2);
+  line-height: 0.88;
+  letter-spacing: -0.012em;
   white-space: nowrap;
 }
 
@@ -333,8 +377,9 @@
 .lasha-home .lasha-about-body {
   margin-top: calc(20.1 * var(--u));
   max-width: calc(486 * var(--u));
-  font-size: max(calc(17.2 * var(--u)), 6.5px);
-  line-height: 1.035;
+  font-size: var(--v4-lead);
+  letter-spacing: -0.01em;
+  line-height: 1.55;
 }
 
 .lasha-home .lasha-about-points {
@@ -347,10 +392,11 @@
   list-style: none;
 }
 
-/* Lasha's single hairline between the two rows of points. */
-.lasha-about-points::before {
+/* Lasha's single hairline between the two rows of points, centred in the row gap. */
+.lasha-about-points li:nth-child(3) { position: relative; }
+.lasha-about-points li:nth-child(3)::before {
   position: absolute;
-  top: calc(73 * var(--u));
+  top: calc(-16.45 * var(--u));
   left: calc(-1 * var(--u));
   width: calc(414 * var(--u));
   height: 1px;
@@ -361,9 +407,10 @@
 .lasha-about-points li {
   display: grid;
   row-gap: calc(9.3 * var(--u));
-  font-size: max(calc(13.4 * var(--u)), 5.5px);
-  letter-spacing: 0.015em;
-  line-height: 1;
+  font-size: var(--v4-pillar);
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  line-height: 1.4;
   text-transform: uppercase;
 }
 
@@ -374,7 +421,7 @@
   line-height: 1;
 }
 
-.lasha-about-points .lasha-index { font-size: calc(29.3 * var(--u)); }
+.lasha-about-points .lasha-index { font-size: var(--v4-index); letter-spacing: 0; }
 
 /* Starting points: eyebrow, three-line statement, mist band 214 tall. */
 .lasha-starting { padding: calc(125 * var(--u)) 0 0; }
@@ -384,9 +431,10 @@
 
 .lasha-starting > .lasha-eyebrow {
   font-family: var(--l-display);
-  font-size: calc(26.1 * var(--u));
+  font-size: var(--v4-kicker);
   font-weight: 400;
-  letter-spacing: 0.035em;
+  letter-spacing: 0;
+  line-height: 1;
   text-transform: uppercase;
 }
 
@@ -395,8 +443,9 @@
 .lasha-starting h2 {
   margin-top: calc(18.2 * var(--u));
   max-width: calc(1300 * var(--u));
-  font-size: calc(112 * var(--u));
-  line-height: 0.9;
+  font-size: var(--v4-h2);
+  letter-spacing: -0.012em;
+  line-height: 0.88;
 }
 
 .lasha-starting h2 > span:first-child { max-width: calc(1000 * var(--u)); }
@@ -443,22 +492,22 @@
   color: var(--l-blue);
 }
 
-.lasha-starting-rule .lasha-index { font-size: calc(35.1 * var(--u)); }
+.lasha-starting-rule .lasha-index { font-size: var(--v4-index); }
 .lasha-starting-rule .lasha-arrow { width: calc(193 * var(--u)); }
 
 .lasha-starting-grid h3 {
   margin-top: calc(27.4 * var(--u));
   font-family: var(--l-display);
-  font-size: calc(41.6 * var(--u));
-  line-height: 1;
-  letter-spacing: 0.015em;
+  font-size: var(--v4-route);
+  line-height: 0.95;
+  letter-spacing: 0;
 }
 
 .lasha-starting-grid p {
   margin-top: calc(8.95 * var(--u));
-  max-width: calc(206 * var(--u));
-  font-size: max(calc(16.4 * var(--u)), 6px);
-  line-height: 1.073;
+  max-width: max(calc(206 * var(--u)), 13rem);
+  font-size: var(--v4-text);
+  line-height: 1.65;
 }
 
 /* Broker access: frame 4609–4948. */
@@ -471,12 +520,6 @@
 
 .lasha-access-copy { min-width: 0; padding: calc(27.8 * var(--u)) 0 0 calc(71 * var(--u)); }
 
-.lasha-access .lasha-eyebrow {
-  font-size: max(calc(15.3 * var(--u)), 6px);
-  letter-spacing: 0.025em;
-  text-transform: uppercase;
-}
-
 .lasha-access .lasha-eyebrow::after { content: none; }
 
 .lasha-access h2 {
@@ -484,8 +527,10 @@
   justify-items: start;
   margin-top: calc(9.7 * var(--u));
   font-family: var(--l-narrow);
-  font-size: calc(140.5 * var(--u));
-  line-height: 0.9;
+  /* v4's closing call-to-action size; FittedHeading keeps it inside the frame column. */
+  font-size: var(--v4-closing);
+  letter-spacing: -0.012em;
+  line-height: 0.88;
   white-space: nowrap;
 }
 
@@ -522,7 +567,7 @@
   max-width: calc(190 * var(--u));
   margin-top: calc(110 * var(--u));
   font-family: var(--l-narrow);
-  font-size: calc(46 * var(--u));
+  font-size: min(var(--v4-claim), calc(46 * var(--u)));
   line-height: 0.95;
   text-transform: uppercase;
 }
@@ -540,14 +585,14 @@
   height: calc(69 * var(--u));
   min-height: 22px;
   padding: 0 calc(21 * var(--u)) 0 calc(31 * var(--u));
-  letter-spacing: 0.027em;
 }
 
 .lasha-access-actions .lasha-arrow { width: calc(47 * var(--u)); }
 
 /* The site header follows Lasha's palette on the homepage and the inner pages. */
 :is(.lasha-home, .lasha-page) .desktop-nav { gap: clamp(0.6rem, 1.15vw, 1.8rem); }
-:is(.lasha-home, .lasha-page) .desktop-nav button { font-size: clamp(0.66rem, 0.86vw, 0.82rem); }
+:is(.lasha-home, .lasha-page) .desktop-nav button { font-size: var(--v4-nav); font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; }
+:is(.lasha-home, .lasha-page) .site-header .button { font-size: var(--v4-btn); font-weight: 600; letter-spacing: 0.16em; }
 :is(.lasha-home, .lasha-page) .header-actions { gap: 0.6rem; }
 :is(.lasha-home, .lasha-page) .register-button,
 :is(.lasha-home, .lasha-page) .login-button { min-width: 0; padding-inline: clamp(0.8rem, 1.3vw, 2rem); }
@@ -650,10 +695,11 @@
     margin-bottom: 0;
     color: var(--l-blue);
     font-family: var(--l-body);
-    font-size: calc(16.4 * var(--u));
-    font-weight: 400;
-    letter-spacing: -0.023em;
-    line-height: 1;
+    font-size: var(--v4-eyebrow);
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    line-height: 1.2;
+    text-transform: uppercase;
   }
   :is(.lasha-home, .lasha-page) .explorer-intro-panel .section-eyebrow::after {
     flex: 0 0 calc(125 * var(--u));
@@ -665,17 +711,19 @@
   :is(.lasha-home, .lasha-page) .explorer-intro-panel h2 {
     margin-top: calc(8.5 * var(--u));
     font-family: var(--l-tall);
-    font-size: calc(165.5 * var(--u));
-    line-height: calc(138 * var(--u));
-    letter-spacing: 0;
+    /* v4's section title; short laptop windows scale it with the copy (--u). */
+    font-size: min(var(--v4-h2), calc(89.3 * var(--u)));
+    line-height: 0.88;
+    letter-spacing: -0.012em;
   }
   :is(.lasha-home, .lasha-page) .explorer-intro-panel h2 span { display: block; }
   :is(.lasha-home, .lasha-page) .explorer-description {
     max-width: calc(480 * var(--u));
     margin-top: calc(7 * var(--u));
     color: var(--l-ink);
-    font-size: calc(21.5 * var(--u));
-    line-height: calc(24 * var(--u));
+    font-size: var(--v4-lead);
+    letter-spacing: -0.01em;
+    line-height: 1.55;
   }
   :is(.lasha-home, .lasha-page) .explorer-metrics {
     max-width: calc(482 * var(--u));
@@ -692,33 +740,33 @@
   :is(.lasha-home, .lasha-page) .explorer-metrics > div + div { padding-left: calc(48 * var(--u)); border-left-color: #cecece; }
   :is(.lasha-home, .lasha-page) .explorer-metrics strong {
     font-family: var(--l-num-tall);
-    font-size: calc(78 * var(--u));
-    letter-spacing: 0;
-    line-height: 1;
+    font-size: var(--v4-number);
+    letter-spacing: -0.01em;
+    line-height: 0.9;
   }
   :is(.lasha-home, .lasha-page) .explorer-metrics span {
     color: var(--l-ink);
-    font-size: calc(16.4 * var(--u));
+    font-size: var(--v4-label);
     font-weight: 600;
-    letter-spacing: 0.024em;
-    line-height: 1;
+    letter-spacing: 0.18em;
+    line-height: 1.35;
   }
   :is(.lasha-home, .lasha-page) .availability-legend {
     gap: calc(48 * var(--u));
     margin-top: calc(28 * var(--u));
     color: var(--l-ink);
-    font-size: calc(12 * var(--u));
-    font-weight: 500;
-    letter-spacing: 0.12em;
+    font-size: var(--v4-label);
+    font-weight: 600;
+    letter-spacing: 0.18em;
   }
   :is(.lasha-home, .lasha-page) .availability-legend span { gap: calc(14 * var(--u)); }
   :is(.lasha-home, .lasha-page) .availability-legend .status-swatch { width: calc(11 * var(--u)); height: calc(11 * var(--u)); }
   :is(.lasha-home, .lasha-page) .explorer-footnote {
     margin-top: calc(20 * var(--u));
     color: var(--l-ink);
-    font-size: calc(12 * var(--u));
+    font-size: var(--v4-label);
     font-weight: 600;
-    letter-spacing: 0.16em;
+    letter-spacing: 0.18em;
   }
   :is(.lasha-home, .lasha-page) .explorer-motion-caption {
     /* The model now fills the right half, so the steps stay under the copy column. */
@@ -731,9 +779,10 @@
     padding-top: calc(6 * var(--u));
     border-top: 1px solid #cecece;
     color: var(--l-blue);
-    font-size: calc(13.4 * var(--u));
-    font-weight: 400;
-    letter-spacing: -0.023em;
+    font-size: var(--v4-pillar);
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
   }
   :is(.lasha-home, .lasha-page) .explorer-motion-caption > span {
     display: flex;
@@ -754,11 +803,12 @@
   :is(.lasha-home, .lasha-page) .explorer-step-number {
     margin-right: calc(18 * var(--u));
     font-family: var(--l-num);
-    font-size: calc(35.1 * var(--u));
+    font-size: var(--v4-index);
     font-weight: 500;
     letter-spacing: 0;
     line-height: 1;
   }
+  :is(.lasha-home, .lasha-page) .residence-filter-panel h2 { font-size: var(--v4-panel-title); letter-spacing: -0.012em; line-height: 0.9; }
 }
 
 /* Mobile explorer chrome on the homepage follows Lasha's blue; the floor
@@ -770,8 +820,8 @@
 }
 
 /* Slovenian "RAZPOLOŽLJIVE" is the longest single word beside the 163 count. */
-.lasha-home:lang(sl) .lasha-access-count span { font-size: calc(38 * var(--u)); }
-.lasha-home:is(:lang(ru), :lang(pl)) .lasha-access-count span { max-width: calc(220 * var(--u)); font-size: calc(40 * var(--u)); }
+.lasha-home:lang(sl) .lasha-access-count span { font-size: min(var(--v4-claim), calc(38 * var(--u))); }
+.lasha-home:is(:lang(ru), :lang(pl)) .lasha-access-count span { max-width: calc(220 * var(--u)); font-size: min(var(--v4-claim), calc(40 * var(--u))); }
 
 /* Residence dialog and explorer states: headlines in the shared headline face on every public page. */
 :is(.lasha-home, .lasha-page) :is(.floor-modal-header h2, .unit-detail h3, .inventory-intro h3, .explorer-error h3) {
@@ -781,17 +831,16 @@
   line-height: 0.95;
   text-transform: uppercase;
 }
-:is(.lasha-home, .lasha-page) .floor-modal-header h2 { font-size: clamp(2.4rem, 3.6vw, 3.6rem); }
-:is(.lasha-home, .lasha-page) :is(.unit-detail h3, .inventory-intro h3, .explorer-error h3) { font-size: 2.1rem; }
+:is(.lasha-home, .lasha-page) .floor-modal-header h2 { font-size: var(--v4-panel-title); }
+:is(.lasha-home, .lasha-page) :is(.unit-detail h3, .inventory-intro h3, .explorer-error h3) { font-size: var(--v4-h3); line-height: 1; }
 :is(.lasha-home, .lasha-page) .inventory-heading strong { font-family: var(--l-head); font-size: 3rem; line-height: 0.85; }
 
 /* Phones and small tablets: Lasha drew only the 1440 desktop frame, and scaling it down
    to a 390px screen leaves 6–7px text. Below 900px the sections keep her colours, type
    and order but restack into a readable single column (Kemo, October 7). */
 @media (max-width: 899px) {
-  .lasha-home .lasha-eyebrow { font-size: 0.85rem; }
   .lasha-home .lasha-eyebrow::after { flex-basis: 3.5rem; margin-left: 0.8rem; }
-  .lasha-home .lasha-button { gap: 0.75rem; font-size: 0.8rem; letter-spacing: 0.02em; }
+  .lasha-home .lasha-button { gap: 0.75rem; }
   .lasha-home .lasha-arrow { height: 0.5rem; }
 
   /* Hero: full-height photo, copy on the sky with a soft wash so black type stays legible. */
@@ -822,9 +871,9 @@
   .lasha-home .lasha-hero h1[data-fitted-heading] {
     width: min(100%, calc((clamp(36rem, 100svh, 52rem) - 20rem) / 1.12));
   }
-  .lasha-hero-copy p { margin-top: 1.5rem; max-width: 23rem; font-size: 1.18rem; line-height: 1.3; }
+  .lasha-hero-copy p { margin-top: 1.5rem; max-width: 23rem; }
   /* Kemo, October 7: the blue text link was unreadable over the trees, so phones get a solid button. */
-  .lasha-hero-cta { justify-content: space-between; gap: 0.9rem; min-height: 3.4rem; margin-top: 1.7rem; padding: 0 1.1rem 0 1.25rem; background: var(--l-blue); color: var(--l-paper); font-size: 1rem; font-weight: 600; letter-spacing: 0.02em; }
+  .lasha-hero-cta { justify-content: space-between; gap: 0.9rem; min-height: 3.4rem; margin-top: 1.7rem; padding: 0 1.1rem 0 1.25rem; background: var(--l-blue); color: var(--l-paper); }
   .lasha-hero-cta:hover { background: #1b45b0; text-decoration: none; }
   .lasha-hero-cta:focus-visible { outline: 2px solid var(--l-ink); outline-offset: 3px; }
   .lasha-hero-cta .lasha-arrow { width: 1.8rem; height: 0.8rem; }
@@ -833,47 +882,43 @@
   .lasha-metrics { grid-template-columns: repeat(2, minmax(0, 1fr)); min-height: 0; }
   .lasha-metrics > div { padding: 1.6rem 1.1rem 1.7rem 1.25rem; border-bottom: 1px solid #4f5152; }
   .lasha-metrics > div:nth-child(2) { border-right: 0; }
-  /* Two-line labels ("REAL ESTATE / TRANSACTION") keep the values on one baseline. */
-  .lasha-home .lasha-metrics-label { min-height: 2.5em; font-size: 0.7rem; letter-spacing: 0.02em; line-height: 1.25; }
   /* Long German compounds hyphenate instead of splitting at an arbitrary letter. */
   .lasha-home :is(.lasha-metrics-label, .lasha-metrics-note) { overflow-wrap: break-word; hyphens: auto; }
-  .lasha-home .lasha-metrics-value { margin-top: 0.55rem; font-size: min(max(3.1rem, 9vw), calc((50vw - 2.5rem) * 1.75 / var(--chars, 6))); }
+  .lasha-home .lasha-metrics-value { margin-top: 0.55rem; font-size: min(var(--v4-metric), calc((50vw - 2.5rem) * 1.75 / var(--chars, 6))); }
   .lasha-home .lasha-metrics-value::after { width: 3.5rem; margin-top: 0.8rem; }
-  .lasha-home .lasha-metrics-note { max-width: none; margin-top: 0.75rem; font-size: 0.82rem; line-height: 1.35; }
+  .lasha-home .lasha-metrics-note { max-width: none; margin-top: 0.75rem; }
   .lasha-home .lasha-metrics-tagline {
     align-content: center;
     padding: 1.6rem 1.1rem 1.7rem 1.25rem;
     border-bottom: 1px solid #4f5152;
-    font-size: min(2.35rem, calc((50vw - 2.35rem) / 4.4));
+    font-size: min(var(--v4-claim), calc((50vw - 2.35rem) / 4.4));
     line-height: 0.95;
   }
   /* The longest tagline word ("OPPORTUNITY", "ВОЗМОЖНОСТИ") must fit the half-width cell. */
-  .lasha-home:lang(ru) .lasha-metrics-tagline { font-size: min(2.35rem, calc((50vw - 2.35rem) / 5.1)); }
+  .lasha-home:lang(ru) .lasha-metrics-tagline { font-size: min(var(--v4-claim), calc((50vw - 2.35rem) / 5.1)); }
 
   /* About: photo above the blue panel. */
   .lasha-about { grid-template-columns: minmax(0, 1fr); min-height: 0; }
   .lasha-about-media { height: auto; aspect-ratio: 4 / 3; }
   .lasha-about-panel { padding: 2.6rem 1.25rem 2.8rem; }
-  .lasha-eyebrow-lead { font-size: 0.74rem; }
   .lasha-home .lasha-eyebrow-lead::after { flex-basis: 3rem; margin: 0 0.7rem 0 0; }
-  .lasha-about-panel h2 { margin-top: 1.1rem; font-size: 4.6rem; line-height: 0.9; }
+  .lasha-about-panel h2 { margin-top: 1.1rem; }
   .lasha-about-panel h2::after { width: 100%; margin-top: 1.3rem; }
-  .lasha-home .lasha-about-body { max-width: 34rem; margin-top: 1.2rem; font-size: 1rem; line-height: 1.45; }
+  .lasha-home .lasha-about-body { max-width: 34rem; margin-top: 1.2rem; }
   .lasha-home .lasha-about-points { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.4rem 1rem; margin-top: 2.2rem; }
-  .lasha-about-points::before { content: none; }
-  .lasha-about-points li { align-content: start; row-gap: 0.45rem; font-size: 0.74rem; line-height: 1.25; }
+  .lasha-about-points li:nth-child(3)::before { content: none; }
+  .lasha-about-points li { align-content: start; row-gap: 0.45rem; }
   .lasha-about-points li:nth-child(n + 3) { padding-top: 1.3rem; border-top: 1px solid rgba(244, 244, 241, 0.25); }
-  .lasha-about-points .lasha-index { font-size: 1.7rem; }
 
   /* Starting points: one card per row. */
   .lasha-starting { padding-top: 3.6rem; }
   .lasha-starting > .lasha-eyebrow,
   .lasha-starting > h2 { margin-inline: 1.25rem; }
-  .lasha-starting > .lasha-eyebrow { font-size: 1.15rem; line-height: 1.1; }
-  .lasha-starting h2 { margin-top: 0.8rem; font-size: 3.9rem; line-height: 0.92; }
+  .lasha-starting > .lasha-eyebrow { line-height: 1.1; }
+  .lasha-starting h2 { margin-top: 0.8rem; }
   .lasha-starting h2 > span:first-child { max-width: none; }
   /* "UNTERSCHIEDLICHE" is one unbreakable word. */
-  .lasha-home:lang(de) .lasha-starting h2 { font-size: min(3.9rem, calc((100vw - 2.5rem) / 6.2)); }
+  .lasha-home:lang(de) .lasha-starting h2 { font-size: min(var(--v4-h2), calc((100vw - 2.5rem) / 6.2)); }
   .lasha-starting-grid {
     grid-template-columns: minmax(0, 1fr);
     min-height: 0;
@@ -885,22 +930,20 @@
   .lasha-starting-grid article + article { border-top: 1px solid #bfc4c9; }
   .lasha-starting-grid article + article::before { content: none; }
   .lasha-starting-rule { gap: 0.8rem; }
-  .lasha-starting-rule .lasha-index { font-size: 1.7rem; }
   .lasha-starting-rule .lasha-arrow { width: 7rem; }
-  .lasha-starting-grid h3 { margin-top: 0.9rem; font-size: 2.1rem; }
-  .lasha-starting-grid p { max-width: 24rem; margin-top: 0.45rem; font-size: 1rem; line-height: 1.4; }
+  .lasha-starting-grid h3 { margin-top: 0.9rem; }
+  .lasha-starting-grid p { max-width: 24rem; margin-top: 0.45rem; }
 
   /* Broker access: headline, count, then full-width actions. */
   .lasha-access { grid-template-columns: minmax(0, 1fr); height: auto; padding-bottom: 3.2rem; }
   .lasha-access-copy { padding: 3.2rem 1.25rem 0; }
-  .lasha-access .lasha-eyebrow { font-size: 0.8rem; }
-  .lasha-access h2 { margin-top: 0.7rem; font-size: 4.4rem; line-height: 0.9; }
+  .lasha-access h2 { margin-top: 0.7rem; }
   .lasha-access-count::before,
   .lasha-access-actions::before { content: none; }
   .lasha-home .lasha-access-count { align-items: flex-end; gap: 0.8rem; padding: 1.4rem 1.25rem 0; }
   .lasha-access-count strong { font-size: 8.5rem; line-height: 0.82; }
   .lasha-access-count span,
-  .lasha-home:lang(sl) .lasha-access-count span { max-width: 10rem; margin: 0 0 0.2rem; font-size: 2rem; line-height: 0.95; }
+  .lasha-home:is(:lang(sl), :lang(ru), :lang(pl)) .lasha-access-count span { max-width: 10rem; margin: 0 0 0.2rem; font-size: var(--v4-claim); line-height: 0.95; }
   .lasha-access-actions { row-gap: 0.75rem; padding: 2rem 1.25rem 0; }
   .lasha-access-actions .lasha-button { width: 100%; height: 3.5rem; padding: 0 1.1rem 0 1.25rem; }
   .lasha-access-actions .lasha-arrow { width: 2.4rem; }

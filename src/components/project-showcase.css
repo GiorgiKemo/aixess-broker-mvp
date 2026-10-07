@@ -2,12 +2,10 @@
    large render with a thumbnail strip, four metric tiles and a dark project card. */
 .lasha-home .project-showcase { padding: calc(47.6 * var(--u)) calc(70 * var(--u)) calc(22 * var(--u)); }
 
-.lasha-home .project-showcase-head .lasha-eyebrow { letter-spacing: 0; }
-
 .lasha-home .project-showcase h2 {
   margin-top: calc(6.6 * var(--u));
-  font-size: calc(129.5 * var(--u));
-  line-height: 1;
+  font-size: var(--v4-h2);
+  line-height: 0.88;
   letter-spacing: -0.012em;
   white-space: nowrap;
 }
@@ -96,9 +94,9 @@
 .lasha-home .project-facts dd {
   color: var(--l-blue);
   font-family: var(--l-num-tall);
-  font-size: calc(87.8 * var(--u));
-  font-weight: 500;
-  line-height: 1;
+  font-size: var(--v4-benefit);
+  font-weight: 700;
+  line-height: 0.85;
   white-space: nowrap;
 }
 
@@ -106,11 +104,11 @@
 
 .lasha-home .project-facts dt {
   margin-top: calc(1.3 * var(--u));
-  max-width: calc(135 * var(--u));
+  max-width: max(calc(135 * var(--u)), 9.5rem);
   overflow-wrap: anywhere;
   color: #505050;
-  font-size: max(calc(13 * var(--u)), 5.5px);
-  line-height: 1.077;
+  font-size: var(--v4-small);
+  line-height: 1.45;
 }
 
 .lasha-home .project-card {
@@ -123,16 +121,16 @@
 }
 
 .lasha-home .project-card h3 {
-  font-size: calc(62 * var(--u));
-  line-height: 1;
-  letter-spacing: -0.015em;
+  font-size: var(--v4-h3-xl);
+  line-height: 0.95;
+  letter-spacing: 0;
 }
 
 .lasha-home .project-card p {
   margin-top: calc(16.6 * var(--u));
   max-width: calc(412 * var(--u));
-  font-size: max(calc(16 * var(--u)), 6px);
-  line-height: 1.075;
+  font-size: var(--v4-text);
+  line-height: 1.65;
 }
 
 .lasha-home .project-card .project-card-meta {
@@ -140,8 +138,10 @@
   margin-top: calc(19.2 * var(--u));
   padding-top: calc(16 * var(--u));
   border-top: 1px solid #858787;
-  font-size: max(calc(16 * var(--u)), 6px);
-  line-height: 1;
+  font-size: var(--v4-label);
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  line-height: 1.4;
 }
 
 .lasha-home .project-card-actions {
@@ -207,7 +207,7 @@
 /* Phones and small tablets: the Batumi section restacks into one readable column. */
 @media (max-width: 899px) {
   .lasha-home .project-showcase { padding: 3.4rem 1.25rem 2.6rem; }
-  .lasha-home .project-showcase h2 { margin-top: 0.6rem; font-size: 3.9rem; line-height: 0.92; white-space: normal; }
+  .lasha-home .project-showcase h2 { margin-top: 0.6rem; white-space: normal; }
   .lasha-home .project-feature { grid-template-columns: minmax(0, 1fr); row-gap: 1.6rem; margin-top: 1.5rem; }
   .lasha-home .project-feature-gallery { row-gap: 0.5rem; }
   .lasha-home .project-feature-media { height: auto; aspect-ratio: 4 / 3; }
@@ -221,14 +221,12 @@
   .lasha-home .project-facts > div,
   .lasha-home .project-facts > div:nth-child(n + 3) { padding: 1rem 0.75rem 1.1rem 0; }
   .lasha-home .project-facts > div:nth-child(even) { padding-left: 1.1rem; }
-  .lasha-home .project-facts dd { font-size: 3.1rem; }
-  .lasha-home .project-facts dt { max-width: none; margin-top: 0.35rem; font-size: 0.82rem; line-height: 1.3; }
+  .lasha-home .project-facts dt { max-width: none; margin-top: 0.35rem; }
   .lasha-home .project-card { min-height: 0; margin-top: 0.4rem; padding: 1.8rem 1.25rem 1.6rem; }
-  .lasha-home .project-card h3 { font-size: 2.7rem; }
-  .lasha-home .project-card p { max-width: none; margin-top: 0.8rem; font-size: 1rem; line-height: 1.45; }
-  .lasha-home .project-card .project-card-meta { margin-top: 1.1rem; padding-top: 0.9rem; font-size: 0.82rem; line-height: 1.35; }
+  .lasha-home .project-card p { max-width: none; margin-top: 0.8rem; }
+  .lasha-home .project-card .project-card-meta { margin-top: 1.1rem; padding-top: 0.9rem; }
   .lasha-home .project-card-actions { flex-wrap: wrap; gap: 0.6rem; margin-top: 1.4rem; justify-self: stretch; }
   .lasha-home .project-card-actions .lasha-button,
-  .lasha-home .project-card-actions .lasha-button-dark { flex: 1 1 9rem; width: auto; height: 3.3rem; padding: 0 0.9rem 0 1rem; font-size: 0.78rem; letter-spacing: 0.02em; }
+  .lasha-home .project-card-actions .lasha-button-dark { flex: 1 1 9rem; width: auto; height: 3.3rem; padding: 0 0.9rem 0 1rem; }
   .lasha-home .project-card-actions .lasha-arrow { width: 1.6rem; }
 }
