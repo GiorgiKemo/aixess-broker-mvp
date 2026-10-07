@@ -99,7 +99,8 @@
 /* AIXCO.Global v4 type (Kemo, 7 October 2026: "fonts same as AIXCO Global v4, as fat and big").
    v4 sets headlines in Sofia Sans Extra Condensed (SIL OFL) at 700 and its hero at 800, stretched
    vertically. scripts/make-v4-head-fonts.py pins those weights and builds the stretch into
-   "AiXESS Poster"; both cover Latin, Latin Extended and Cyrillic, so every locale shares one face.
+   "AiXESS Poster" and the Latin-only "AiXESS Poster Tall" (hero lines, line box trimmed to the
+   capitals). Head and Poster cover Latin, Latin Extended and Cyrillic, so every locale shares one face.
    Each file is a single static weight, so every font-weight requested renders that cut. */
 @font-face {
   font-family: "AiXESS Head";
@@ -132,6 +133,15 @@
   font-display: swap;
   src: url("/fonts/v4/aixess-head-cyrillic-ext.woff2") format("woff2");
   unicode-range: U+0460-052F;
+}
+/* AIXESS itself, in a taller cut: never translated, so Latin only. */
+@font-face {
+  font-family: "AiXESS Poster Tall";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("/fonts/v4/aixess-poster-tall-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+2000-206F, U+20AC, U+2122, U+2190, U+2192, U+2212, U+2215;
 }
 @font-face {
   font-family: "AiXESS Poster";

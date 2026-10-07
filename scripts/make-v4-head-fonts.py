@@ -7,9 +7,15 @@ proportion of its brand sheet. AiXESS uses the same type, so this script ships:
   "AiXESS Head"    Sofia Sans Extra Condensed pinned at weight 700, unscaled (all headlines,
                    numbers and labels set in the display face).
   "AiXESS Poster"  Sofia Sans Extra Condensed pinned at weight 800 with every glyph stretched
-                   vertically by POSTER_Y, for the AIXESS / TO MARKET hero. Building the stretch
-                   into the font keeps real line boxes, so headings can be fitted and wrapped
-                   without a CSS transform.
+                   vertically, for the AIXESS / TO MARKET hero. Kemo's reference (7 October 2026)
+                   sets both lines to the same width, AIXESS far taller than TO MARKET, almost
+                   touching: "AiXESS Poster Tall" (POSTER_TALL_Y, Latin only) sets AIXESS and
+                   "AiXESS Poster" (POSTER_Y) the translated second line, so each line keeps the
+                   reference's height-to-width ratio once fitted. Their line box is trimmed to the
+                   cap height (ascent = cap height, descent 0), so line-height: 1 hugs the capitals
+                   and the gap between the lines is set exactly in CSS. Building the stretch into
+                   the font keeps real line boxes, so the lines can be measured and fitted without
+                   a CSS transform.
 
 Both are modified versions of an OFL font and ship under new family names, with the OFL text.
 Sofia Sans covers Latin, Latin Extended and Cyrillic, so every locale gets the same face.
@@ -30,7 +36,9 @@ OUT = ROOT / "public" / "fonts" / "v4"
 
 HEAD_WEIGHT = 700
 POSTER_WEIGHT = 800
-POSTER_Y = 1.9  # AIXCO.Global v4's desktop hero stretch
+# Height/width of each line in Kemo's reference: AIXESS 358/508, TO MARKET 208/530.
+POSTER_TALL_Y = 2.23
+POSTER_Y = 2.02
 
 SUBSETS = {
     "latin": [*range(0x20, 0x100), 0x131, 0x152, 0x153, 0x2BB, 0x2BC, 0x2C6, 0x2DA, 0x2DC, 0x304, 0x308,
@@ -41,7 +49,7 @@ SUBSETS = {
 }
 
 
-def build(dest, family, weight, unicodes, sy=1.0):
+def build(dest, family, weight, unicodes, sy=1.0, trim=False):
     font = instancer.instantiateVariableFont(TTFont(SOURCE), {"wght": weight})
     options = subset.Options()
     options.layout_features = ["kern", "liga", "tnum", "lnum", "pnum", "case"]
@@ -69,6 +77,12 @@ def build(dest, family, weight, unicodes, sy=1.0):
         os2.sTypoAscender, os2.sTypoDescender = round(os2.sTypoAscender * sy), round(os2.sTypoDescender * sy)
         os2.usWinAscent, os2.usWinDescent = round(os2.usWinAscent * sy), round(os2.usWinDescent * sy)
         os2.sCapHeight, os2.sxHeight = round(os2.sCapHeight * sy), round(os2.sxHeight * sy)
+    if trim:
+        # The line box is exactly the capitals; usWin keeps the full extent so nothing clips.
+        hhea, os2 = font["hhea"], font["OS/2"]
+        hhea.ascent, hhea.descent, hhea.lineGap = os2.sCapHeight, 0, 0
+        os2.sTypoAscender, os2.sTypoDescender, os2.sTypoLineGap = os2.sCapHeight, 0, 0
+        os2.fsSelection |= 1 << 7  # USE_TYPO_METRICS, so Windows uses the trimmed box too
     for table in ("HVAR", "MVAR", "STAT", "fvar", "gvar", "avar"):
         if table in font:
             del font[table]
@@ -85,6 +99,8 @@ def build(dest, family, weight, unicodes, sy=1.0):
 
 for name, unicodes in SUBSETS.items():
     build(f"aixess-head-{name}.woff2", "AiXESS Head", HEAD_WEIGHT, unicodes)
-    build(f"aixess-poster-{name}.woff2", "AiXESS Poster", POSTER_WEIGHT, unicodes, sy=POSTER_Y)
+    build(f"aixess-poster-{name}.woff2", "AiXESS Poster", POSTER_WEIGHT, unicodes, sy=POSTER_Y, trim=True)
+# AIXESS is never translated, so the tall cut only needs Latin.
+build("aixess-poster-tall-latin.woff2", "AiXESS Poster Tall", POSTER_WEIGHT, SUBSETS["latin"], sy=POSTER_TALL_Y, trim=True)
 
 (OUT / "OFL.txt").write_text((ROOT / "scripts" / "font-sources" / "OFL-SofiaSansExtraCondensed.txt").read_text())

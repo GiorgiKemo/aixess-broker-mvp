@@ -40,3 +40,27 @@ describe("translated heading sizing", () => {
     expect(Number.parseFloat(heading.style.fontSize)).toBeCloseTo(47.61);
   });
 });
+
+describe("poster lines", () => {
+  function renderPoster(second) {
+    vi.spyOn(HTMLElement.prototype, "clientWidth", "get").mockImplementation(() => 502);
+    vi.spyOn(HTMLElement.prototype, "getBoundingClientRect").mockImplementation(function () {
+      return { width: this.textContent.length * Number.parseFloat(this.style.fontSize || "100") / 10 };
+    });
+    render(<LanguageProvider><style>{"h1 { font-size: 100px; }"}</style>
+      <FittedHeading as="h1" fillLines maxLineRatio={0.64}><span>AIXESS</span><span>{second}</span></FittedHeading>
+    </LanguageProvider>);
+    return Array.from(screen.getByRole("heading").children, (line) => Number.parseFloat(line.style.fontSize));
+  }
+
+  it("sizes every line to the full width", () => {
+    const [first, second] = renderPoster("TO MARKETS");
+    expect(first).toBeCloseTo(833.33);
+    expect(second).toBeCloseTo(500);
+  });
+
+  it("keeps a short later line at most maxLineRatio of the first", () => {
+    const [first, second] = renderPoster("DO");
+    expect(second).toBeCloseTo(first * 0.64, 1);
+  });
+});

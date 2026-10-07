@@ -2,7 +2,10 @@ import { useLayoutEffect, useRef } from "react";
 import { useLanguage } from "../i18n.jsx";
 
 // Keep the art-directed line breaks while fitting the actual translated glyphs.
-export function FittedHeading({ as: Tag = "h2", children, ...props }) {
+// With fillLines, every line is sized on its own to the heading's full width (Kemo's AIXESS /
+// TO MARKET poster, 7 October 2026), and later lines stay at most maxLineRatio of the first
+// line's size so a short translation cannot outgrow it.
+export function FittedHeading({ as: Tag = "h2", children, fillLines = false, maxLineRatio = Infinity, ...props }) {
   const ref = useRef(null);
   const { locale } = useLanguage();
 
@@ -16,6 +19,22 @@ export function FittedHeading({ as: Tag = "h2", children, ...props }) {
     heading.dataset.fitReady = "false";
     const fit = () => {
       if (!active || !fontsSettled || !heading.clientWidth) return;
+      if (fillLines) {
+        const available = heading.clientWidth - 2;
+        const lines = Array.from(heading.children);
+        lines.forEach((line) => line.style.removeProperty("font-size"));
+        let first = 0;
+        lines.forEach((line, index) => {
+          const width = line.getBoundingClientRect().width;
+          if (!width) return;
+          const fitted = parseFloat(getComputedStyle(line).fontSize) * available / width;
+          if (index === 0) first = fitted;
+          const size = index === 0 ? fitted : Math.min(fitted, first * maxLineRatio);
+          line.style.fontSize = `${Math.floor(size * 100) / 100}px`;
+        });
+        heading.dataset.fitReady = "true";
+        return;
+      }
       heading.style.removeProperty("font-size");
       const maxSize = parseFloat(getComputedStyle(heading).fontSize);
       const available = heading.clientWidth;
@@ -74,7 +93,7 @@ export function FittedHeading({ as: Tag = "h2", children, ...props }) {
       lineObserver?.disconnect();
       window.removeEventListener("load", scheduleFit);
     };
-  }, [locale]);
+  }, [locale, fillLines, maxLineRatio]);
 
   return <Tag {...props} ref={ref} data-fitted-heading data-fit-ready="false">{children}</Tag>;
 }

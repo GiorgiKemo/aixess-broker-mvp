@@ -57,7 +57,7 @@ export function HomeHero({ children }) {
           decoding="async"
         />
         <div className="lasha-hero-copy">
-          <FittedHeading as="h1">{lines.map((line) => <span key={line}>{line}</span>)}</FittedHeading>
+          <FittedHeading as="h1" fillLines maxLineRatio={0.64}>{lines.map((line) => <span key={line}>{line}</span>)}</FittedHeading>
           <p>{copy.heroSubtitle}</p>
           <a className="lasha-hero-cta" href="#projects">{copy.heroCta}<LashaArrow length={24} /></a>
         </div>
