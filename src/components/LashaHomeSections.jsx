@@ -69,7 +69,7 @@ export function HomeHero({ children }) {
 // Each inner page opens on its own Reverance render (Kemo, 7 October 2026: not the same image everywhere).
 const PAGE_HERO_IMAGES = {
   skyline: { src: "reverance-skyline-1440", srcSet: "reverance-skyline-720 720w, reverance-skyline-1440 1440w, reverance-skyline-2160 2160w", position: "72% 30%" },
-  crown: { src: "reverance-hero-1200", srcSet: "reverance-hero-600 600w, reverance-hero-1200 1200w", position: "70% 22%" },
+  sunset: { src: "reverance-sunset-1600", srcSet: "reverance-sunset-800 800w, reverance-sunset-1600 1600w, reverance-sunset-2400 2400w", position: "72% 58%" },
   entrance: { src: "reverance-entrance-1200", srcSet: "reverance-entrance-600 600w, reverance-entrance-1200 1200w", position: "62% 58%" },
   front: { src: "reverance-front-1400", srcSet: "reverance-front-700 700w, reverance-front-1400 1400w", position: "70% 18%" },
   facade: { src: "reverance-facade-1200", srcSet: "reverance-facade-600 600w, reverance-facade-1200 1200w", position: "60% 40%" },

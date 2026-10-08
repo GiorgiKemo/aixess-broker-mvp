@@ -325,7 +325,7 @@ function NetworkPage({ sections, pageTitleKey, heroImage, ...props }) {
 }
 
 function WhyAixessPage(props) {
-  return <NetworkPage {...props} pageTitleKey="aixessAdvantage" heroImage="crown" sections={["introduction", "why", "advantage", "services", "backing", "closing"]} />;
+  return <NetworkPage {...props} pageTitleKey="aixessAdvantage" heroImage="sunset" sections={["introduction", "why", "advantage", "services", "backing", "closing"]} />;
 }
 
 function BrokerAccessPage(props) {
