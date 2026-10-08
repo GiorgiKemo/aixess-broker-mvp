@@ -7,8 +7,10 @@ import { NetworkSections } from "./components/NetworkSections.jsx";
 import { NETWORK_COPY } from "./network-copy.js";
 import { ProjectShowcase } from "./components/ProjectShowcase.jsx";
 import { HomeAbout, HomeAccess, HomeHero, HomeMetrics, HomeStartingPoints, LashaPageHero } from "./components/LashaHomeSections.jsx";
+import { TimeThemeMenu } from "./components/TimeThemeMenu.jsx";
 import "./components/lasha-home.css";
 import "./components/lasha-pages.css";
+import "./components/time-theme.css";
 const Calculators = lazy(() => import("./components/Calculators.jsx"));
 import { PrivacyControls, PrivacyPage } from "./components/Privacy.jsx";
 import { PRIVACY_COPY } from "./privacy-copy.js";
@@ -80,10 +82,14 @@ function SiteHeader({ currentPage, menuOpen, onToggleMenu, onNavigate, onOpenMod
       </nav>
 
       <div className="header-actions">
+        <TimeThemeMenu onOpen={() => setLanguageOpen(false)} />
         <LanguageSwitcher languageOpen={languageOpen} setLanguageOpen={setLanguageOpen} />
         <a className="button button-primary register-button" href={workwiseBrokerUrl("register", locale)}>{t("register")}</a>
         <a className="button button-ghost login-button" href={workwiseBrokerUrl("login", locale)}>{t("login")}</a>
       </div>
+
+      {/* Phones and tablets keep v4's theme icon in the bar, beside the menu button. */}
+      <TimeThemeMenu className="time-theme-menu--compact" />
 
       <button
         className="menu-toggle"

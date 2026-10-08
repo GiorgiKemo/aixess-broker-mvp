@@ -103,8 +103,8 @@
 :is(.lasha-home, .lasha-page, .lasha-menu) .language-switcher-trigger:is(:hover, :focus-visible) { border-color: #fff; }
 :is(.lasha-home, .lasha-page, .lasha-menu) .language-switcher-menu { border: 0; background: #f4f4f1; }
 :is(.lasha-home, .lasha-page, .lasha-menu) .language-switcher-menu button { color: #171a1d; }
-:is(.lasha-home, .lasha-page, .lasha-menu) .language-switcher-menu button:is(:hover, :focus-visible, .is-active) { background: rgba(37, 87, 214, 0.12); color: #171a1d; }
-:is(.lasha-home, .lasha-page, .lasha-menu) .language-switcher-menu button.is-active small { color: #2557d6; }
+:is(.lasha-home, .lasha-page, .lasha-menu) .language-switcher-menu button:is(:hover, :focus-visible, .is-active) { background: color-mix(in srgb, var(--l-blue) 12%, transparent); color: #171a1d; }
+:is(.lasha-home, .lasha-page, .lasha-menu) .language-switcher-menu button.is-active small { color: var(--l-blue); }
 
 /* Shared type and controls. */
 .lasha-page .section-eyebrow {
@@ -125,7 +125,7 @@
   flex: 0 0 clamp(3.5rem, 8.7vw, 7.8rem);
   height: 1px;
   margin-left: 1.1rem;
-  background: rgba(37, 87, 214, 0.5);
+  background: color-mix(in srgb, var(--l-blue) 50%, transparent);
   content: "";
 }
 
@@ -143,7 +143,7 @@
 }
 
 .lasha-page .button-primary { border-color: var(--l-blue); background: var(--l-blue); color: var(--l-paper); }
-.lasha-page .button-primary:hover { border-color: #1b45b0; background: #1b45b0; }
+.lasha-page .button-primary:hover { border-color: var(--l-blue-deep); background: var(--l-blue-deep); }
 .lasha-page .button-ghost:hover { background: var(--l-ink); color: var(--l-paper); }
 .lasha-page .site-header .button-ghost { border-color: rgba(255, 255, 255, 0.82); color: #fff; }
 .lasha-page .site-header .button-ghost:hover { background: #fff; color: var(--l-ink); }
@@ -324,7 +324,7 @@
 .lasha-page :is(.network-commercial, .network-services, .network-eligibility) { background: var(--l-mist); }
 .lasha-page :is(.network-process, .network-opportunity) { background: var(--l-paper); }
 
-.lasha-page :is(.network-advantage) { background: var(--l-blue); color: #fff; }
+.lasha-page :is(.network-advantage) { background: var(--l-field); color: #fff; }
 .lasha-page .network-advantage :is(.section-eyebrow, .network-number) { color: #fff; }
 .lasha-page .network-advantage .section-eyebrow::after { background: rgba(255, 255, 255, 0.6); }
 .lasha-page .network-advantage .network-card { border-top-color: rgba(255, 255, 255, 0.4); }
@@ -487,22 +487,22 @@ body .site-shell { background: #f4f4f1; }
 body .privacy-footer { color: #171a1d; }
 body .privacy-footer-toggle,
 body .privacy-footer-panel { border-color: rgba(23, 26, 29, 0.3); background: #f4f4f1; box-shadow: 0 0.5rem 1.5rem rgba(23, 26, 29, 0.14); }
-body .privacy-footer-toggle span { color: #2557d6; }
+body .privacy-footer-toggle span { color: var(--l-blue); }
 body .privacy-footer-toggle:hover,
-body .privacy-footer-toggle[aria-expanded="true"] { border-color: #2557d6; }
+body .privacy-footer-toggle[aria-expanded="true"] { border-color: var(--l-blue); }
 body .privacy-footer-brand { border-bottom-color: rgba(23, 26, 29, 0.18); }
 body .privacy-footer-brand span { color: rgba(23, 26, 29, 0.6); }
 
 body .privacy-footer-panel nav :is(a, button) { border-bottom-color: rgba(23, 26, 29, 0.12); }
 body .privacy-footer-panel nav a:last-child { color: rgba(23, 26, 29, 0.6); }
 body .privacy-footer-panel nav :is(a, button):hover,
-body .privacy-footer-panel nav span { color: #2557d6; }
+body .privacy-footer-panel nav span { color: var(--l-blue); }
 
 body .cookie-notice { border-color: rgba(23, 26, 29, 0.25); background: #f4f4f1; color: #171a1d; }
 body .cookie-notice h2 { font-family: "AiXESS Head", "Arial Narrow", sans-serif; font-size: var(--v4-h3); font-weight: 400; letter-spacing: 0; line-height: 1; text-transform: uppercase; }
-body .cookie-actions button { border-color: #2557d6; background: #2557d6; font-size: var(--v4-btn); font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; }
-body .cookie-actions button:hover { border-color: #1b45b0; background: #1b45b0; }
-body .access-form .privacy-acknowledgement input { accent-color: #2557d6; }
+body .cookie-actions button { border-color: var(--l-blue); background: var(--l-blue); font-size: var(--v4-btn); font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; }
+body .cookie-actions button:hover { border-color: var(--l-blue-deep); background: var(--l-blue-deep); }
+body .access-form .privacy-acknowledgement input { accent-color: var(--l-blue); }
 
 /* Sign-up, login and materials dialogs, on every page. */
 body .modal-backdrop { background: rgba(23, 26, 29, 0.72); }
@@ -515,7 +515,7 @@ body .modal-panel {
 }
 
 body .modal-close { color: #171a1d; }
-body .modal-eyebrow { color: #2557d6; font-size: var(--v4-eyebrow); font-weight: 600; letter-spacing: 0.2em; }
+body .modal-eyebrow { color: var(--l-blue); font-size: var(--v4-eyebrow); font-weight: 600; letter-spacing: 0.2em; }
 
 body .modal-panel h2 {
   color: #171a1d;
@@ -538,11 +538,11 @@ body .access-form input {
 }
 
 body .access-form input::placeholder { color: rgba(23, 26, 29, 0.42); }
-body .modal-panel .button-primary { border-color: #2557d6; background: #2557d6; color: #f4f4f1; }
-body .modal-panel .button-primary:hover { border-color: #1b45b0; background: #1b45b0; }
+body .modal-panel .button-primary { border-color: var(--l-blue); background: var(--l-blue); color: #f4f4f1; }
+body .modal-panel .button-primary:hover { border-color: var(--l-blue-deep); background: var(--l-blue-deep); }
 body .modal-panel .button-ghost { border-color: #171a1d; color: #171a1d; }
-body .modal-switch { color: #2557d6; }
-body .modal-panel :is(button, input, a):focus-visible { outline-color: #2557d6; }
+body .modal-switch { color: var(--l-blue); }
+body .modal-panel :is(button, input, a):focus-visible { outline-color: var(--l-blue); }
 
 @media (max-width: 1000px) {
   .lasha-page .resource-card { padding-left: 0; border-left: 0; border-top: 1px solid rgba(23, 26, 29, 0.18); }
@@ -631,7 +631,7 @@ body .modal-panel :is(button, input, a):focus-visible { outline-color: #2557d6; 
     text-transform: uppercase;
   }
   .mobile-nav.lasha-menu .mobile-register { margin-top: 1.4rem; border-color: var(--l-blue); background: var(--l-blue); }
-  .mobile-nav.lasha-menu .mobile-register:hover { border-color: #1b45b0; background: #1b45b0; }
+  .mobile-nav.lasha-menu .mobile-register:hover { border-color: var(--l-blue-deep); background: var(--l-blue-deep); }
   .mobile-nav.lasha-menu .mobile-login:hover { background: var(--l-paper); color: var(--l-ink); }
 
   .mobile-nav.lasha-menu .lasha-menu-bar {

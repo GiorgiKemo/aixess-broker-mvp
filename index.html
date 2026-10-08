@@ -17,6 +17,8 @@
       type="image/webp"
     />
     <title>AiXESS — Turn Your Network Into Opportunity</title>
+    <!-- Time-of-day theme before first paint (AIXCO.Global v4 rules; keep in sync with src/timeTheme.js). -->
+    <script>(function(){var m="auto";try{m=localStorage.getItem("aixess-time-theme")||"auto"}catch(e){}if(m!=="day"&&m!=="afternoon"&&m!=="night")m="auto";var h=new Date().getHours();var t=m==="auto"?(h>=6&&h<14?"day":h>=14&&h<19?"afternoon":"night"):m;var d=document.documentElement;d.dataset.timeTheme=t;d.dataset.timeThemeMode=m;})();</script>
   </head>
   <body>
     <div id="root"></div>

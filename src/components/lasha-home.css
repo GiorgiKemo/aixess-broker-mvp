@@ -53,7 +53,7 @@
   --l-ink: #171a1d;
   --l-paper: #f4f4f1;
   --l-mist: #dce7f0;
-  --l-blue: #2557d6;
+  /* --l-blue and the other time-of-day colours live on :root in time-theme.css. */
   --l-sage: #9bb69e;
   --l-line: #cecece;
   /* AIXCO.Global v4 type (see src/lasha-fonts.css): one heavy condensed face for every headline,
@@ -114,7 +114,7 @@
   flex: 0 0 calc(125 * var(--u));
   height: 1px;
   margin-left: calc(17.5 * var(--u));
-  background: rgba(37, 87, 214, 0.5);
+  background: color-mix(in srgb, var(--l-blue) 50%, transparent);
   content: "";
 }
 
@@ -140,7 +140,7 @@
 }
 
 .lasha-button-primary { border-color: var(--l-blue); background: var(--l-blue); color: var(--l-paper); }
-.lasha-button-primary:hover { border-color: #1b45b0; background: #1b45b0; }
+.lasha-button-primary:hover { border-color: var(--l-blue-deep); background: var(--l-blue-deep); }
 .lasha-button-dark { border-color: #fff; color: var(--l-paper); }
 .lasha-button-dark:hover { background: #fff; color: var(--l-ink); }
 .lasha-button-outline:hover { background: var(--l-ink); color: var(--l-paper); }
@@ -241,7 +241,7 @@
 
 .lasha-hero-cta .lasha-arrow { width: calc(30 * var(--u)); height: calc(11 * var(--u)); }
 .lasha-hero-cta .lasha-arrow path { stroke-width: 1.5; }
-.lasha-hero-cta:hover { background: #1b45b0; }
+.lasha-hero-cta:hover { background: var(--l-blue-deep); }
 .lasha-hero-cta:focus-visible { outline: 2px solid var(--l-ink); outline-offset: 3px; }
 
 /* A soft sky wash behind the copy column keeps the black poster type and the subtitle crisp
@@ -339,7 +339,7 @@
 
 .lasha-about-panel {
   padding: calc(73.6 * var(--u)) calc(40 * var(--u)) calc(40 * var(--u)) calc(71 * var(--u));
-  background: var(--l-blue);
+  background: var(--l-field);
   color: var(--l-paper);
 }
 
@@ -598,7 +598,7 @@
 :is(.lasha-home, .lasha-page) .login-button { min-width: 0; padding-inline: clamp(0.8rem, 1.3vw, 2rem); }
 :is(.lasha-home, .lasha-page) .button-primary,
 :is(.lasha-home, .lasha-page) .mobile-register { border-color: var(--l-blue); background: var(--l-blue); }
-:is(.lasha-home, .lasha-page) .button-primary:hover { border-color: #1b45b0; background: #1b45b0; }
+:is(.lasha-home, .lasha-page) .button-primary:hover { border-color: var(--l-blue-deep); background: var(--l-blue-deep); }
 
 @media (prefers-reduced-motion: reduce) {
   .lasha-button { transition: none; }
@@ -705,7 +705,7 @@
     flex: 0 0 calc(125 * var(--u));
     height: 1px;
     margin-left: calc(20 * var(--u));
-    background: rgba(37, 87, 214, 0.5);
+    background: color-mix(in srgb, var(--l-blue) 50%, transparent);
     content: "";
   }
   :is(.lasha-home, .lasha-page) .explorer-intro-panel h2 {
@@ -797,7 +797,7 @@
     max-width: calc(155 * var(--u));
     height: 1px;
     margin-left: calc(14 * var(--u));
-    background: rgba(37, 87, 214, 0.5);
+    background: color-mix(in srgb, var(--l-blue) 50%, transparent);
     content: "";
   }
   :is(.lasha-home, .lasha-page) .explorer-step-number {
@@ -874,7 +874,7 @@
   .lasha-hero-copy p { margin-top: 1.5rem; max-width: 23rem; }
   /* Kemo, October 7: the blue text link was unreadable over the trees, so phones get a solid button. */
   .lasha-hero-cta { justify-content: space-between; gap: 0.9rem; min-height: 3.4rem; margin-top: 1.7rem; padding: 0 1.1rem 0 1.25rem; background: var(--l-blue); color: var(--l-paper); }
-  .lasha-hero-cta:hover { background: #1b45b0; text-decoration: none; }
+  .lasha-hero-cta:hover { background: var(--l-blue-deep); text-decoration: none; }
   .lasha-hero-cta:focus-visible { outline: 2px solid var(--l-ink); outline-offset: 3px; }
   .lasha-hero-cta .lasha-arrow { width: 1.8rem; height: 0.8rem; }
 

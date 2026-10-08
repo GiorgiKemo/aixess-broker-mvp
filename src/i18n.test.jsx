@@ -58,7 +58,7 @@ describe("translation coverage", () => {
     }
   });
   it("defines every literal label used by the interface", () => {
-    for (const file of ["src/App.jsx", "src/components/ResidenceExplorer.jsx", "src/components/Reverance3D.jsx"]) {
+    for (const file of ["src/App.jsx", "src/components/ResidenceExplorer.jsx", "src/components/Reverance3D.jsx", "src/components/TimeThemeMenu.jsx"]) {
       const code = readFileSync(file, "utf8");
       const keys = [...code.matchAll(/\bt\(\s*"([^"]+)"/g)].map((match) => match[1]);
       expect(keys.filter((key) => !(key in ENGLISH)), file).toEqual([]);
