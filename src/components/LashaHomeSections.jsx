@@ -50,8 +50,10 @@ export function HomeHero({ children }) {
         <img
           className="lasha-hero-media"
           src="/assets/projects/reverance-skyline-1440.webp"
-          srcSet="/assets/projects/reverance-skyline-720.webp 720w, /assets/projects/reverance-skyline-1440.webp 1440w, /assets/projects/reverance-skyline-2160.webp 2160w"
-          sizes="100vw"
+          srcSet="/assets/projects/reverance-skyline-720.webp 720w, /assets/projects/reverance-skyline-1440.webp 1440w, /assets/projects/reverance-skyline-2160.webp 2160w, /assets/projects/reverance-skyline-2700.webp 2700w"
+          // Phones crop the photo to the hero's full height, so it is drawn about 1.45 × the
+          // screen height wide; asking for 100vw there picked an upscaled, soft image.
+          sizes="(max-width: 899px) and (orientation: portrait) 145vh, 100vw"
           alt=""
           fetchPriority="high"
           decoding="async"
@@ -68,7 +70,7 @@ export function HomeHero({ children }) {
 
 // Each inner page opens on its own Reverance render (Kemo, 7 October 2026: not the same image everywhere).
 const PAGE_HERO_IMAGES = {
-  skyline: { src: "reverance-skyline-1440", srcSet: "reverance-skyline-720 720w, reverance-skyline-1440 1440w, reverance-skyline-2160 2160w", position: "72% 30%" },
+  skyline: { src: "reverance-skyline-1440", srcSet: "reverance-skyline-720 720w, reverance-skyline-1440 1440w, reverance-skyline-2160 2160w, reverance-skyline-2700 2700w", position: "72% 30%" },
   sunset: { src: "reverance-sunset-1600", srcSet: "reverance-sunset-800 800w, reverance-sunset-1600 1600w, reverance-sunset-2400 2400w", position: "72% 58%" },
   entrance: { src: "reverance-entrance-1200", srcSet: "reverance-entrance-600 600w, reverance-entrance-1200 1200w", position: "62% 58%" },
   front: { src: "reverance-front-1400", srcSet: "reverance-front-700 700w, reverance-front-1400 1400w", position: "70% 18%" },

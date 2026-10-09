@@ -204,7 +204,8 @@
   line-height: 0.5;
   letter-spacing: 0;
   white-space: nowrap;
-  color: var(--l-ink);
+  /* Figma sets the title in pure black; the softer ink read as blurry over the sky (Kemo, 9 October). */
+  color: #000;
 }
 .lasha-hero h1 > span { display: block; width: max-content; padding-top: 0.199em; line-height: 0.5; }
 .lasha-hero h1 > span + span { margin-top: 0.07em; }
@@ -868,9 +869,9 @@
   }
   /* The poster block fills the column, but it stands about 0.92× its width, so on short or
      landscape screens its width is capped by the hero's own height minus the copy (about 20rem),
-     and at 26rem on tablets so the subtitle stays on the sky. */
+     and at 26rem on tablets so the subtitle stays on the sky; then 30% smaller (Kemo, 9 October 2026). */
   .lasha-home .lasha-hero h1[data-fitted-heading] {
-    width: min(100%, 26rem, calc((clamp(36rem, 100svh, 52rem) - 20rem) / 0.92));
+    width: calc(0.7 * min(100%, 26rem, calc((clamp(36rem, 100svh, 52rem) - 20rem) / 0.92)));
   }
   .lasha-hero-copy p { margin-top: 1.5rem; max-width: 23rem; }
   /* Kemo, October 7: the blue text link was unreadable over the trees, so phones get a solid button. */
