@@ -58,8 +58,9 @@
   /* AIXCO.Global v4 type (see src/lasha-fonts.css): one heavy condensed face for every headline,
      label and number, and its vertically stretched cut for the hero. */
   --l-head: "AiXESS Head", "Arial Narrow", "Roboto Condensed", sans-serif;
-  --l-poster: "AiXESS Poster", "AiXESS Head", "Arial Narrow", sans-serif;
-  --l-poster-tall: "AiXESS Poster Tall", "AiXESS Poster", "AiXESS Head", "Arial Narrow", sans-serif;
+  /* Hero title: Morganite ExtraBold, as in Lasha's Figma (Benjamin via Kemo, 9 October 2026). */
+  --l-poster: "AiXESS Hero", "AiXESS Head", "Arial Narrow", sans-serif;
+  --l-poster-tall: var(--l-poster);
   --l-narrow: var(--l-head);
   --l-light: var(--l-head);
   --l-tall: var(--l-head);
@@ -176,42 +177,39 @@
 
 .lasha-hero-copy {
   /* Width of the poster block; the reference's gaps are fractions of it. */
-  --poster-w: calc(500 * var(--u));
+  --poster-w: calc(542 * var(--u));
   position: absolute;
   z-index: 2;
-  top: calc(118 * var(--u));
+  /* Figma: the title's capitals start at y 155. */
+  top: calc(155 * var(--u));
   bottom: calc(70 * var(--u));
   left: calc(70 * var(--u));
   display: grid;
-  align-content: center;
+  align-content: start;
   justify-items: start;
 }
 
-/* AIXESS / TO MARKET exactly as in Kemo's AIXCO v4 reference (7 October 2026): both lines span
-   the same width, so AIXESS stands about 1.7× taller than TO MARKET, and the two almost touch.
-   The reference's strokes are as heavy as Sofia Sans's Black (1000), so the poster cuts use it.
-   FittedHeading's fillLines sizes each line to the width; the poster cuts' line box is the
-   capitals, so line-height: normal and the row gap set the spacing exactly. */
+/* AIXESS / TO MARKET exactly as in Lasha's Figma (node 154:13; Benjamin via Kemo, 9 October 2026,
+   replacing the stretched AIXCO v4 poster he found cartoonish): Morganite ExtraBold, AIXESS at 423px
+   over TO MARKET at 260px, both lines the same width, 18px between the capitals. FittedHeading's
+   fillLines sizes each line to the width (second line capped at 260/423 of the first); the face's
+   line box is trimmed to the capitals, so line-height: normal and the gap set the spacing exactly. */
 .lasha-hero h1 {
   position: relative;
   font-family: var(--l-poster);
-  font-size: calc(150 * var(--u));
+  font-size: calc(423 * var(--u));
   font-weight: 800;
   line-height: normal;
-  letter-spacing: -0.012em;
+  letter-spacing: 0;
   white-space: nowrap;
   color: var(--l-ink);
 }
-/* Black is tight-fitting; the reference keeps a clear gap between letters. */
-.lasha-hero h1 > span:first-child { font-family: var(--l-poster-tall); letter-spacing: 0.008em; }
-.lasha-hero h1 > span + span { letter-spacing: 0.03em; }
-/* About 2% of the width between the inked lines, as in the reference; em of the fitted second line. */
-.lasha-hero h1 > span + span { margin-top: 0.11em; }
+.lasha-hero h1 > span + span { margin-top: 0.07em; }
 
 .lasha-home .lasha-hero h1[data-fitted-heading] { width: var(--poster-w); }
 
 .lasha-hero-copy p {
-  margin-top: calc(var(--poster-w) * 0.075);
+  margin-top: calc(24 * var(--u));
   max-width: max(calc(400 * var(--u)), 23rem);
   font-size: var(--v4-hero-text);
   line-height: 1.4;
@@ -865,10 +863,10 @@
     left: 1.25rem;
     align-content: center;
   }
-  /* The poster block fills the column, but it stands about 1.12× its width, so on short or
+  /* The poster block fills the column, but it stands about 0.92× its width, so on short or
      landscape screens its width is capped by the hero's own height minus the copy (about 20rem). */
   .lasha-home .lasha-hero h1[data-fitted-heading] {
-    width: min(100%, calc((clamp(36rem, 100svh, 52rem) - 20rem) / 1.12));
+    width: min(100%, calc((clamp(36rem, 100svh, 52rem) - 20rem) / 0.92));
   }
   .lasha-hero-copy p { margin-top: 1.5rem; max-width: 23rem; }
   /* Kemo, October 7: the blue text link was unreadable over the trees, so phones get a solid button. */
@@ -946,31 +944,4 @@
   .lasha-access-actions { row-gap: 0.75rem; padding: 2rem 1.25rem 0; }
   .lasha-access-actions .lasha-button { width: 100%; height: 3.5rem; padding: 0 1.1rem 0 1.25rem; }
   .lasha-access-actions .lasha-arrow { width: 2.4rem; }
-}
-
-/* Hero headline previews (Benjamin found the stretched poster cartoonish; Kemo, 9 October 2026:
-   TO MARKET underneath in the same style, in the font of the other pages). Both lines use
-   AiXESS Head (Sofia Sans Extra Condensed 700, unstretched), the inner pages' headline face. */
-.lasha-hero[data-hero-variant] h1 {
-  font-family: var(--l-head);
-  font-size: calc(190 * var(--u));
-  font-weight: 700;
-  line-height: 0.86;
-  letter-spacing: 0;
-}
-.lasha-hero[data-hero-variant] h1 > span { display: block; font-family: inherit; letter-spacing: inherit; margin-top: 0; }
-.lasha-hero[data-hero-variant] .lasha-hero-copy p { margin-top: calc(34 * var(--u)); }
-
-/* 1 · Equal: both lines at one size. */
-/* 2 · Same width: each line fitted to the column, as the poster was, without the stretch. */
-.lasha-hero[data-hero-variant="2"] h1 { line-height: 0.84; }
-/* 3 · Accent: both lines at one size, TO MARKET in the theme blue. */
-.lasha-hero[data-hero-variant="3"] h1 > span + span { color: var(--l-blue); }
-
-@media (min-width: 900px) {
-  .lasha-home .lasha-hero[data-hero-variant] h1[data-fitted-heading] { width: calc(560 * var(--u)); }
-}
-@media (max-width: 899px) {
-  .lasha-home .lasha-hero[data-hero-variant] h1[data-fitted-heading] { width: 100%; font-size: 9rem; }
-  .lasha-hero[data-hero-variant] .lasha-hero-copy p { margin-top: 1.5rem; }
 }

@@ -42,12 +42,9 @@ export function HomeHero({ children }) {
   const { locale } = useLanguage();
   const copy = LASHA_HOME_COPY[locale] || LASHA_HOME_COPY.en;
   const lines = HOME_HERO_LINES[locale] ?? HOME_HERO_LINES.en;
-  // Benjamin's review (Kemo, 9 October 2026): ?hero=1|2|3 previews alternative hero headline styles.
-  const variant = typeof window === "undefined" ? null : new URLSearchParams(window.location.search).get("hero");
-  const heroVariant = ["1", "2", "3"].includes(variant) ? variant : null;
 
   return (
-    <section className="lasha-hero" id="project" data-hero-variant={heroVariant ?? undefined}>
+    <section className="lasha-hero" id="project">
       {children}
       <div className="lasha-hero-frame">
         <img
@@ -60,7 +57,7 @@ export function HomeHero({ children }) {
           decoding="async"
         />
         <div className="lasha-hero-copy">
-          <FittedHeading as="h1" fillLines={!heroVariant || heroVariant === "2"} maxLineRatio={heroVariant ? Infinity : 0.64}>{lines.map((line) => <span key={line}>{line}</span>)}</FittedHeading>
+          <FittedHeading as="h1" fillLines maxLineRatio={260 / 423}>{lines.map((line) => <span key={line}>{line}</span>)}</FittedHeading>
           <p>{copy.heroSubtitle}</p>
           <a className="lasha-hero-cta" href="#projects">{copy.heroCta}<LashaArrow length={24} /></a>
         </div>
