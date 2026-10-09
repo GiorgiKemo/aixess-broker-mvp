@@ -850,15 +850,8 @@
     height: clamp(36rem, 100svh, 52rem);
   }
   .lasha-hero-media { object-position: 34% 50%; }
-  .lasha-hero-frame::after {
-    position: absolute;
-    inset: 0;
-    z-index: 1;
-    background: linear-gradient(180deg, color-mix(in srgb, var(--l-wash) 0%, transparent) 0, color-mix(in srgb, var(--l-wash) 72%, transparent) 16%, color-mix(in srgb, var(--l-wash) 66%, transparent) 62%, color-mix(in srgb, var(--l-wash) 0%, transparent) 88%);
-    content: "";
-    -webkit-mask-image: none;
-    mask-image: none;
-  }
+  /* No white wash on phones (Kemo, 9 October 2026): the photo shows at full strength. */
+  .lasha-hero-frame::after { content: none; }
   /* The copy block sits centred in the photo below the header (Kemo, October 7). */
   .lasha-hero-copy {
     top: 5.5rem;
