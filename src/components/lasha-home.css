@@ -947,3 +947,45 @@
   .lasha-access-actions .lasha-button { width: 100%; height: 3.5rem; padding: 0 1.1rem 0 1.25rem; }
   .lasha-access-actions .lasha-arrow { width: 2.4rem; }
 }
+
+/* Hero headline previews (Benjamin found the stretched poster cartoonish, 9 October 2026).
+   Natural Sofia Sans proportions, no vertical stretch; FittedHeading fits the longest line. */
+.lasha-hero[data-hero-variant] h1 {
+  font-family: "AiXESS Sans", var(--l-head);
+  font-size: calc(190 * var(--u));
+  line-height: 0.84;
+  letter-spacing: 0;
+}
+.lasha-hero[data-hero-variant] h1 > span { display: block; font-family: inherit; letter-spacing: inherit; margin-top: 0; }
+.lasha-hero[data-hero-variant] .lasha-hero-copy p { margin-top: calc(34 * var(--u)); }
+
+/* 1 · Classic: one weight, one size, tight leading. */
+.lasha-hero[data-hero-variant="1"] h1 { font-weight: 700; letter-spacing: 0.004em; }
+
+/* 2 · Contrast: heavy AIXESS over a hairline-thin TO MARKET at the same size. */
+.lasha-hero[data-hero-variant="2"] h1 > span:first-child { font-weight: 800; }
+.lasha-hero[data-hero-variant="2"] h1 > span + span { font-weight: 200; letter-spacing: 0.01em; }
+
+/* 3 · Wordmark: AIXESS alone, TO MARKET as a tracked Inter label on a hairline. */
+.lasha-hero[data-hero-variant="3"] h1 > span:first-child { font-weight: 650; letter-spacing: 0.02em; }
+.lasha-hero[data-hero-variant="3"] h1 > span + span {
+  display: flex;
+  align-items: center;
+  gap: 0.9em;
+  margin-top: 1.5em;
+  font-family: "Inter", var(--l-sans, sans-serif);
+  font-size: 0.085em;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: 0.55em;
+}
+.lasha-hero[data-hero-variant="3"] h1 > span + span::before { flex: none; width: 4em; height: 1px; background: currentColor; content: ""; }
+
+@media (max-width: 899px) {
+  .lasha-home .lasha-hero[data-hero-variant] h1[data-fitted-heading] { width: 100%; font-size: 9rem; }
+  .lasha-hero[data-hero-variant] .lasha-hero-copy p { margin-top: 1.5rem; }
+  .lasha-hero[data-hero-variant="3"] h1 > span + span { font-size: 0.1em; letter-spacing: 0.45em; }
+}
+@media (min-width: 900px) {
+  .lasha-home .lasha-hero[data-hero-variant] h1[data-fitted-heading] { width: calc(580 * var(--u)); }
+}

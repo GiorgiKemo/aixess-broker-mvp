@@ -175,3 +175,12 @@
   src: url("/fonts/v4/aixess-poster-cyrillic-ext.woff2") format("woff2");
   unicode-range: U+0460-052F;
 }
+
+/* Sofia Sans Extra Condensed, variable and unstretched, for the hero style previews (?hero=1|2|3). */
+@font-face {
+  font-family: "AiXESS Sans";
+  font-style: normal;
+  font-weight: 1 1000;
+  font-display: swap;
+  src: url("/fonts/v4/aixess-sans-variable.woff2") format("woff2");
+}
