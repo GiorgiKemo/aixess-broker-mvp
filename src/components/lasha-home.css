@@ -192,18 +192,21 @@
 /* AIXESS / TO MARKET exactly as in Lasha's Figma (node 154:13; Benjamin via Kemo, 9 October 2026,
    replacing the stretched AIXCO v4 poster he found cartoonish): Morganite ExtraBold, AIXESS at 423px
    over TO MARKET at 260px, both lines the same width, 18px between the capitals. FittedHeading's
-   fillLines sizes each line to the width (second line capped at 260/423 of the first); the face's
-   line box is trimmed to the capitals, so line-height: normal and the gap set the spacing exactly. */
+   fillLines sizes each line to the width (second line capped at 260/423 of the first).
+   Each line's box is exactly its capitals in every browser, Safari included, without ascent-override:
+   the face's line box is 0.75em above the baseline and 0.25em below, so a 0.5em line puts the
+   baseline 0.5em down, and 0.199em of padding brings it to the cap height (0.699em). */
 .lasha-hero h1 {
   position: relative;
   font-family: var(--l-poster);
   font-size: calc(423 * var(--u));
   font-weight: 800;
-  line-height: normal;
+  line-height: 0.5;
   letter-spacing: 0;
   white-space: nowrap;
   color: var(--l-ink);
 }
+.lasha-hero h1 > span { display: block; width: max-content; padding-top: 0.199em; line-height: 0.5; }
 .lasha-hero h1 > span + span { margin-top: 0.07em; }
 
 .lasha-home .lasha-hero h1[data-fitted-heading] { width: var(--poster-w); }
@@ -864,9 +867,10 @@
     align-content: center;
   }
   /* The poster block fills the column, but it stands about 0.92× its width, so on short or
-     landscape screens its width is capped by the hero's own height minus the copy (about 20rem). */
+     landscape screens its width is capped by the hero's own height minus the copy (about 20rem),
+     and at 26rem on tablets so the subtitle stays on the sky. */
   .lasha-home .lasha-hero h1[data-fitted-heading] {
-    width: min(100%, calc((clamp(36rem, 100svh, 52rem) - 20rem) / 0.92));
+    width: min(100%, 26rem, calc((clamp(36rem, 100svh, 52rem) - 20rem) / 0.92));
   }
   .lasha-hero-copy p { margin-top: 1.5rem; max-width: 23rem; }
   /* Kemo, October 7: the blue text link was unreadable over the trees, so phones get a solid button. */

@@ -51,7 +51,7 @@ SUBSETS = {
 }
 
 
-def build(dest, family, weight, unicodes, sy=1.0, trim=False):
+def build(dest, family, weight, unicodes, sy=1.0, trim=False, morganite_metrics=False):
     font = instancer.instantiateVariableFont(TTFont(SOURCE), {"wght": weight})
     options = subset.Options()
     options.layout_features = ["kern", "liga", "tnum", "lnum", "pnum", "case"]
@@ -85,6 +85,14 @@ def build(dest, family, weight, unicodes, sy=1.0, trim=False):
         hhea.ascent, hhea.descent, hhea.lineGap = os2.sCapHeight, 0, 0
         os2.sTypoAscender, os2.sTypoDescender, os2.sTypoLineGap = os2.sCapHeight, 0, 0
         os2.fsSelection |= 1 << 7  # USE_TYPO_METRICS, so Windows uses the trimmed box too
+    if morganite_metrics:
+        # Same line box as Morganite ExtraBold (ascent 750, descent 250 in every table), so the
+        # hero's Cyrillic second line sits exactly like the Latin one in every browser.
+        hhea, os2 = font["hhea"], font["OS/2"]
+        hhea.ascent, hhea.descent, hhea.lineGap = 750, -250, 0
+        os2.sTypoAscender, os2.sTypoDescender, os2.sTypoLineGap = 750, -250, 0
+        os2.usWinAscent, os2.usWinDescent = 750, 250
+        os2.fsSelection |= 1 << 7
     for table in ("HVAR", "MVAR", "STAT", "fvar", "gvar", "avar"):
         if table in font:
             del font[table]
@@ -104,5 +112,9 @@ for name, unicodes in SUBSETS.items():
     build(f"aixess-poster-{name}.woff2", "AiXESS Poster", POSTER_WEIGHT, unicodes, sy=POSTER_Y, trim=True)
 # AIXESS is never translated, so the tall cut only needs Latin.
 build("aixess-poster-tall-latin.woff2", "AiXESS Poster Tall", POSTER_WEIGHT, SUBSETS["latin"], sy=POSTER_TALL_Y, trim=True)
+
+# Hero title (Lasha's Figma, 9 October 2026): Morganite has no Cyrillic, so Russian's second line
+# uses Sofia Sans Extra Condensed ExtraBold with Morganite's line metrics.
+build("aixess-hero-cyrillic.woff2", "AiXESS Hero Cyrillic", 800, SUBSETS["cyrillic"], morganite_metrics=True)
 
 (OUT / "OFL.txt").write_text((ROOT / "scripts" / "font-sources" / "OFL-SofiaSansExtraCondensed.txt").read_text())

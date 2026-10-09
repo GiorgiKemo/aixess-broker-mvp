@@ -178,17 +178,20 @@
 
 /* Hero title face from Lasha's Figma (Benjamin via Kemo, 9 October 2026): Morganite ExtraBold by
    Rajesh Rajput, freeware for personal and commercial use (public/fonts/morganite/License.pdf, which
-   forbids modifying the file, so it ships as supplied). The overrides trim the line box to the
-   capitals (cap height 699/1000). Morganite has no Cyrillic, so Russian uses AiXESS Head's
-   Cyrillic cut under the same family, trimmed the same way (cap height 655/1000). */
+   forbids modifying the file, so it ships as supplied). Safari ignores ascent-override, so the hero
+   never relies on it to trim the line box: the overrides only pin every browser to the font's own
+   hhea box (ascent 750, descent 250; Windows would otherwise use its 862/174 win metrics), and
+   lasha-home.css places the capitals from that box. Morganite has no Cyrillic, so Russian uses
+   aixess-hero-cyrillic (Sofia Sans Extra Condensed ExtraBold built with the same 750/250 box by
+   scripts/make-v4-head-fonts.py). */
 @font-face {
   font-family: "AiXESS Hero";
   font-style: normal;
   font-weight: 100 900;
   font-display: swap;
   src: url("/fonts/morganite/Morganite-ExtraBold.ttf") format("truetype");
-  ascent-override: 69.9%;
-  descent-override: 0%;
+  ascent-override: 75%;
+  descent-override: 25%;
   line-gap-override: 0%;
 }
 @font-face {
@@ -196,9 +199,6 @@
   font-style: normal;
   font-weight: 100 900;
   font-display: swap;
-  src: url("/fonts/v4/aixess-head-cyrillic.woff2") format("woff2");
+  src: url("/fonts/v4/aixess-hero-cyrillic.woff2") format("woff2");
   unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
-  ascent-override: 65.5%;
-  descent-override: 0%;
-  line-gap-override: 0%;
 }
