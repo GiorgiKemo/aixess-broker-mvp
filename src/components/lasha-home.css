@@ -852,6 +852,13 @@
   .lasha-hero-media { object-position: 34% 50%; }
   /* No white wash on phones (Kemo, 9 October 2026): the photo shows at full strength. */
   .lasha-hero-frame::after { content: none; }
+  /* Without the wash the text sits straight on the photo (Kemo: "now the text is hard to read"): a soft
+     light halo hugs only the letters, so the photo stays clear around them. */
+  .lasha-hero h1 { text-shadow: 0 0 0.12em rgb(255 255 255 / 0.45); }
+  .lasha-hero-copy p {
+    font-weight: 500;
+    text-shadow: 0 0 0.9rem rgb(255 255 255 / 0.95), 0 0 0.35rem rgb(255 255 255 / 0.9), 0 0 0.12rem rgb(255 255 255 / 0.8);
+  }
   /* The copy block sits centred in the photo below the header (Kemo, October 7). */
   .lasha-hero-copy {
     top: 5.5rem;
