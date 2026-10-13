@@ -84,6 +84,18 @@ describe("AIXESS navigation pages", () => {
     }
   });
 
+  it("shows Klem's brand photos on the Dubai, Switzerland and Lifestyle cards instead of colour blocks", () => {
+    window.history.replaceState({}, "", "/#insights");
+    render(<App />);
+    const sources = Array.from(document.querySelectorAll(".it-card-media img")).map((img) => img.getAttribute("src"));
+    expect(sources).toEqual(expect.arrayContaining([
+      expect.stringContaining("/assets/generic/dubai-skyline-"),
+      expect.stringContaining("/assets/generic/switzerland-lake-"),
+      expect.stringContaining("/assets/generic/coastal-terrace-"),
+    ]));
+    expect(document.querySelector(".lasha-page-hero-media").getAttribute("src")).toContain("/assets/generic/coastal-city-");
+  });
+
   it("puts the newer first-page brief on the homepage while retaining the existing structure", () => {
     window.history.replaceState({}, "", "/");
     const { container } = render(<App />);

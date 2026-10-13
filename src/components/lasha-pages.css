@@ -37,7 +37,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: 72% 30%;
+  object-position: var(--hero-position, 72% 30%);
 }
 
 /* A light shade under the header keeps the white navigation readable over pale sky. */
@@ -550,7 +550,7 @@ body .modal-panel :is(button, input, a):focus-visible { outline-color: var(--l-b
 
 @media (max-width: 767px) {
   .lasha-page-hero { min-height: clamp(26rem, 68svh, 34rem); }
-  .lasha-page-hero-media { object-position: 78% 30%; }
+  .lasha-page-hero-media { object-position: var(--hero-position-phone, 78% 30%); }
   .lasha-page-hero::before {
     background: linear-gradient(180deg, color-mix(in srgb, var(--l-wash-page) 10%, transparent) 0%, color-mix(in srgb, var(--l-wash-page) 78%, transparent) 45%, color-mix(in srgb, var(--l-wash-page) 86%, transparent) 100%);
   }

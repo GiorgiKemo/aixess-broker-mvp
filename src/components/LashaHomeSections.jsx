@@ -4,6 +4,7 @@ import { FittedHeading } from "./FittedHeading.jsx";
 import { NETWORK_COPY } from "../network-copy.js";
 import { LASHA_HOME_COPY } from "../lasha-home-copy.js";
 import { HOME_HERO_LINES } from "../project-showcase-copy.js";
+import { genericPhoto } from "../data/genericPhotos.js";
 
 // Lasha's hairline arrows (traced from the Figma frame); sized by the parent's CSS.
 export function LashaArrow({ className = "lasha-arrow", length = 24 }) {
@@ -46,8 +47,11 @@ export function HomeHero({ children }) {
         <img
           ref={mediaRef}
           className="lasha-hero-media"
-          src="/assets/projects/reverance-skyline-1440.webp"
-          srcSet="/assets/projects/reverance-skyline-720.webp 720w, /assets/projects/reverance-skyline-1440.webp 1440w, /assets/projects/reverance-skyline-2160.webp 2160w, /assets/projects/reverance-skyline-2700.webp 2700w"
+          // Klem's selected sunset skyline (13 October 2026); generated brand photography, see genericPhotos.js.
+          src={HERO_PHOTO.src}
+          srcSet={HERO_PHOTO.srcSet}
+          width={HERO_PHOTO.width}
+          height={HERO_PHOTO.height}
           // Phones crop the photo to the hero's full height, so it is drawn about 1.45 × the
           // screen height wide; asking for 100vw there picked an upscaled, soft image.
           sizes="(max-width: 899px) and (orientation: portrait) 145vh, 100vw"
@@ -67,8 +71,12 @@ export function HomeHero({ children }) {
   );
 }
 
-// Each inner page opens on its own Reverance render (Kemo, 7 October 2026: not the same image everywhere).
+// Each inner page opens on its own image (Kemo, 7 October 2026: not the same image everywhere).
+// Reverance renders stay on project pages; the brand pages use Klem's generated photography
+// (13 October 2026). Positions are desktop / phone focal points.
 const PAGE_HERO_IMAGES = {
+  "coastal-city": { generic: "coastal-city", position: "62% 45%", phonePosition: "70% 50%" },
+  "marina-towers": { generic: "marina-towers", position: "62% 40%", phonePosition: "50% 45%" },
   skyline: { src: "reverance-skyline-1440", srcSet: "reverance-skyline-720 720w, reverance-skyline-1440 1440w, reverance-skyline-2160 2160w, reverance-skyline-2700 2700w", position: "72% 30%" },
   sunset: { src: "reverance-sunset-1600", srcSet: "reverance-sunset-800 800w, reverance-sunset-1600 1600w, reverance-sunset-2400 2400w", position: "72% 58%" },
   entrance: { src: "reverance-entrance-1200", srcSet: "reverance-entrance-600 600w, reverance-entrance-1200 1200w", position: "62% 58%" },
@@ -78,21 +86,27 @@ const PAGE_HERO_IMAGES = {
   tower: { src: "reverance-tower-1990", srcSet: "reverance-tower-995 995w, reverance-tower-1990 1990w, reverance-tower-2985 2985w", position: "68% 40%" },
 };
 const projectImage = (name) => `/assets/projects/${name}.webp`;
+const HERO_PHOTO = genericPhoto("dubai-skyline", 1200);
+const pageHeroSources = (media) => {
+  if (media.generic) return genericPhoto(media.generic, 1200);
+  return { src: projectImage(media.src), srcSet: media.srcSet.split(", ").map((entry) => `/assets/projects/${entry.replace(" ", ".webp ")}`).join(", ") };
+};
 
 // Inner pages open with the homepage's language: the site header floating over a
 // Reverance render, a blue eyebrow and an oversized headline.
 export function LashaPageHero({ header, eyebrow, title, titleAs: Title = "h1", copy, image = "skyline", children }) {
   const lines = Array.isArray(title) ? title : [title];
   const media = PAGE_HERO_IMAGES[image] ?? PAGE_HERO_IMAGES.skyline;
+  const sources = pageHeroSources(media);
   return (
     <section className="lasha-page-hero">
       {header}
       <img
         className="lasha-page-hero-media"
-        src={projectImage(media.src)}
-        srcSet={media.srcSet.split(", ").map((entry) => `/assets/projects/${entry.replace(" ", ".webp ")}`).join(", ")}
+        src={sources.src}
+        srcSet={sources.srcSet}
         sizes="100vw"
-        style={{ objectPosition: media.position }}
+        style={{ "--hero-position": media.position, "--hero-position-phone": media.phonePosition ?? media.position }}
         alt=""
         decoding="async"
       />

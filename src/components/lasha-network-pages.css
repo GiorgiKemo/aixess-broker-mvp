@@ -89,7 +89,7 @@
 .lnp-hero-panel .lnp-button { margin-top: calc(42 * var(--u)); }
 
 .lnp-hero-media { position: relative; min-width: 0; overflow: hidden; background: var(--l-sky); }
-.lnp-hero-media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 100%; }
+.lnp-hero-media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: var(--lnp-position, 50% 100%); }
 
 /* A light shade under the header keeps the white navigation readable over pale renders. */
 .lnp-hero-media::after {
@@ -233,7 +233,7 @@
 
 /* Broker Access hero: panel 657, render 385, list. */
 .lnp-hero-broker { grid-template-columns: calc(657 * var(--u)) calc(385 * var(--u)) minmax(0, 1fr); }
-.lnp-hero-broker .lnp-hero-media img { object-position: 50% 60%; }
+.lnp-hero-broker .lnp-hero-media img { object-position: var(--lnp-position, 50% 60%); }
 
 /* The list column is paper, so the header's controls above it turn ink. */
 @media (min-width: 900px) {

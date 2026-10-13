@@ -5,6 +5,7 @@ import { NETWORK_COPY } from "../network-copy.js";
 import { LASHA_HOME_COPY } from "../lasha-home-copy.js";
 import { LASHA_PAGES_COPY } from "../lasha-pages-copy.js";
 import "./lasha-network-pages.css";
+import { genericPhoto } from "../data/genericPhotos.js";
 
 // AiXESS Advantage and Broker Access, built to Lasha Bakashvili's Figma frames (AIXESS
 // ADVANTAGE 1440 × 1865 and BROKER ACCESS 1440 × 1800, shared by Kemo on 9 October 2026).
@@ -51,7 +52,11 @@ function SplitHero({ header, eyebrow, title, body, action, media, aside, classNa
         <p className="lnp-hero-body">{body}</p>
         {action}
       </div>
-      <div className="lnp-hero-media"><img src={image(`${media.src}-${media.width * 2}`)} srcSet={srcSet(media.src, media.width)} sizes={media.sizes} width={media.width} height={media.height} alt="" decoding="async" fetchPriority="high" /></div>
+      <div className="lnp-hero-media">
+        {media.generic
+          ? <img src={media.generic.src} srcSet={media.generic.srcSet} sizes={media.sizes} width={media.generic.width} height={media.generic.height} style={{ "--lnp-position": media.position }} alt="" decoding="async" fetchPriority="high" />
+          : <img src={image(`${media.src}-${media.width * 2}`)} srcSet={srcSet(media.src, media.width)} sizes={media.sizes} width={media.width} height={media.height} alt="" decoding="async" fetchPriority="high" />}
+      </div>
       {aside}
     </section>
   );
@@ -69,7 +74,7 @@ export function AdvantagePageContent({ header }) {
         title={network.hero}
         body={network.intro}
         action={<PageButton variant="dark" flow="register">{network.request}</PageButton>}
-        media={{ src: "reverance-courtyard", width: 784, height: 686, sizes: "(max-width: 899px) 100vw, 55vw" }}
+        media={{ generic: genericPhoto("coastal-residence"), position: "82% 50%", sizes: "(max-width: 899px) 100vw, 55vw" }}
       />
 
       <section className="lnp-starting" aria-label={network.startingPointsTitle}>
@@ -125,7 +130,7 @@ export function BrokerAccessPageContent({ header }) {
         eyebrow={home.aboutEyebrow}
         title={splitBrokerTitle(network.eligibility[1])}
         body={page.brokerIntro}
-        media={{ src: "broker-lounge", width: 474, height: 843, sizes: "(max-width: 899px) 100vw, 27vw" }}
+        media={{ generic: genericPhoto("glass-tower", 800), position: "50% 30%", sizes: "(max-width: 899px) 100vw, 27vw" }}
         aside={
           <ol className="lnp-people">
             {people.map(([title, line], index) => (

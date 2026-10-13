@@ -874,7 +874,7 @@
     aspect-ratio: auto;
     height: clamp(36rem, 100svh, 52rem);
   }
-  .lasha-hero-media { object-position: 34% 50%; }
+  .lasha-hero-media { object-position: 8% 50%; }
   /* No white wash on phones (Kemo, 9 October 2026): the photo shows at full strength. */
   .lasha-hero-frame::after { content: none; }
   /* No glow behind the letters either (Kemo, 9 October 2026: "looks kinda ugly"): the title and

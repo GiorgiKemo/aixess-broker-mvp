@@ -12,7 +12,7 @@ from pathlib import Path
 
 from PIL import Image
 
-WIDTHS = (640, 1024, 1536, 2048)
+WIDTHS = (480, 800, 1200)
 OUT = Path(__file__).resolve().parent.parent / "public" / "assets" / "generic"
 
 

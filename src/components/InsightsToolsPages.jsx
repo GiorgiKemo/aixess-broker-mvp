@@ -4,6 +4,7 @@ import { AIXCO_FAQ } from "../aixco-faq-copy.js";
 import { INSIGHTS_TOOLS_COPY } from "../insights-tools-copy.js";
 import { LashaArrow, LashaPageHero } from "./LashaHomeSections.jsx";
 import "./insights-tools.css";
+import { genericPhoto } from "../data/genericPhotos.js";
 
 const asset = (path) => `/assets/${path}`;
 
@@ -34,14 +35,14 @@ export function InsightsPageContent({ header, onOpenModal }) {
   const faqs = AIXCO_FAQ[locale] || AIXCO_FAQ.en;
   const articleMedia = [
     { src: asset("projects/reverance-aerial-600.webp"), srcSet: `${asset("projects/reverance-aerial-600.webp")} 600w, ${asset("projects/reverance-aerial-1200.webp")} 1200w` },
-    null,
-    null,
+    genericPhoto("dubai-skyline", 800),
+    { ...genericPhoto("switzerland-lake", 800), position: "70% 50%" },
   ];
   const resourceMedia = [
     { src: asset("projects/reverance-front-700.webp") },
     { icon: BookOpenText },
     { icon: ChartLineUp },
-    { src: asset("projects/reverance-terrace-656.webp") },
+    { ...genericPhoto("coastal-terrace", 800), position: "62% 50%" },
   ];
   // Brochures and the lifestyle guide go through the existing materials request;
   // buyer guides and market reports are not published yet.
@@ -49,7 +50,7 @@ export function InsightsPageContent({ header, onOpenModal }) {
 
   return (
     <>
-      <LashaPageHero header={header} eyebrow={c.eyebrow} title={c.title} image="aerial" copy={c.copy} />
+      <LashaPageHero header={header} eyebrow={c.eyebrow} title={c.title} image="coastal-city" copy={c.copy} />
       <main className="page-main it-main">
         <section className="it-section it-ink" id="market-insights" aria-labelledby="it-market-title">
           <SectionHeading id="it-market-title" eyebrow={c.marketEyebrow} title={c.marketTitle} copy={c.marketCopy}>
@@ -121,7 +122,7 @@ function CardMedia({ media, label }) {
   }
   return (
     <div className="it-card-media">
-      <img src={media.src} srcSet={media.srcSet} sizes="(max-width: 899px) 100vw, 30vw" alt="" loading="lazy" decoding="async" />
+      <img src={media.src} srcSet={media.srcSet} sizes="(max-width: 899px) 100vw, 30vw" width={media.width} height={media.height} style={media.position ? { objectPosition: media.position } : undefined} alt="" loading="lazy" decoding="async" />
     </div>
   );
 }
@@ -158,7 +159,7 @@ export function BrokerToolsPageContent({ header, onOpenModal }) {
   const { tools: c } = useCopy();
   return (
     <>
-      <LashaPageHero header={header} eyebrow={c.eyebrow} title={c.title} image="tower" copy={c.copy}>
+      <LashaPageHero header={header} eyebrow={c.eyebrow} title={c.title} image="marina-towers" copy={c.copy}>
         <div className="page-cta-row it-hero-actions">
           <button className="button button-primary" type="button" onClick={() => onOpenModal("register")}>{c.partner}<LashaArrow length={24} /></button>
           <button className="button button-ghost" type="button" onClick={() => onOpenModal("login")}>{c.login}</button>
