@@ -427,7 +427,6 @@ function InsightsPage({ currentPage, menuOpen, onToggleMenu, onNavigate, onOpenM
       <InsightsPageContent
         header={<PageHeader {...{ currentPage, menuOpen, onToggleMenu, onNavigate, onOpenModal }} />}
         onOpenModal={onOpenModal}
-        availableResidences={availableResidenceCount}
       />
     </div>
   );

@@ -121,12 +121,12 @@ html:root:is([data-time-theme='afternoon'], [data-time-theme='night']) :is(
 
 /* Buttons on ink grounds keep the theme's ink colour in the afternoon (the light tint above is
    for text)... */
-html:root[data-time-theme='afternoon'] :is(.lasha-home .project-card, .lasha-page .network-backing, .lasha-page .network-client, .it-ink, .it-cta, .mobile-nav.lasha-menu, .floor-modal, .mobile-residence-dock) :is(.lasha-button-primary, .button-primary, .mobile-register, .mobile-dock-open) {
+html:root[data-time-theme='afternoon'] :is(.lasha-home .project-card, .lasha-page .network-backing, .lasha-page .network-client, .it-ink, .mobile-nav.lasha-menu, .floor-modal, .mobile-residence-dock) :is(.lasha-button-primary, .button-primary, .mobile-register, .mobile-dock-open) {
   border-color: #4d6e52;
   background: #4d6e52;
 }
 
-html:root[data-time-theme='afternoon'] :is(.lasha-home .project-card, .lasha-page .network-backing, .lasha-page .network-client, .it-ink, .it-cta, .mobile-nav.lasha-menu, .floor-modal, .mobile-residence-dock) :is(.lasha-button-primary, .button-primary, .mobile-register, .mobile-dock-open):hover {
+html:root[data-time-theme='afternoon'] :is(.lasha-home .project-card, .lasha-page .network-backing, .lasha-page .network-client, .it-ink, .mobile-nav.lasha-menu, .floor-modal, .mobile-residence-dock) :is(.lasha-button-primary, .button-primary, .mobile-register, .mobile-dock-open):hover {
   border-color: #3c5a41;
   background: #3c5a41;
 }
@@ -134,14 +134,14 @@ html:root[data-time-theme='afternoon'] :is(.lasha-home .project-card, .lasha-pag
 /* ...and at night they turn off-white with graphite text, as v4's buttons do on its dark sections
    and over its hero photos. */
 html:root[data-time-theme='night'] :is(.lasha-hero, .lasha-page-hero) .site-header .button-primary,
-html:root[data-time-theme='night'] :is(.lasha-home .project-card, .lasha-page .network-backing, .lasha-page .network-client, .it-ink, .it-cta, .mobile-nav.lasha-menu, .floor-modal, .mobile-residence-dock) :is(.lasha-button-primary, .button-primary, .mobile-register, .mobile-dock-open) {
+html:root[data-time-theme='night'] :is(.lasha-home .project-card, .lasha-page .network-backing, .lasha-page .network-client, .it-ink, .mobile-nav.lasha-menu, .floor-modal, .mobile-residence-dock) :is(.lasha-button-primary, .button-primary, .mobile-register, .mobile-dock-open) {
   border-color: #f7f7f4;
   background: #f7f7f4;
   color: #171a1d;
 }
 
 html:root[data-time-theme='night'] :is(.lasha-hero, .lasha-page-hero) .site-header .button-primary:hover,
-html:root[data-time-theme='night'] :is(.lasha-home .project-card, .lasha-page .network-backing, .lasha-page .network-client, .it-ink, .it-cta, .mobile-nav.lasha-menu, .floor-modal, .mobile-residence-dock) :is(.lasha-button-primary, .button-primary, .mobile-register, .mobile-dock-open):hover {
+html:root[data-time-theme='night'] :is(.lasha-home .project-card, .lasha-page .network-backing, .lasha-page .network-client, .it-ink, .mobile-nav.lasha-menu, .floor-modal, .mobile-residence-dock) :is(.lasha-button-primary, .button-primary, .mobile-register, .mobile-dock-open):hover {
   border-color: #dce7f0;
   background: #dce7f0;
   color: #171a1d;

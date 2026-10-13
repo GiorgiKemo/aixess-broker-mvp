@@ -33,8 +33,7 @@
 
 .it-ink .it-eyebrow { color: var(--l-blue-light); }
 
-.it-section h2,
-.it-cta h2 {
+.it-section h2 {
   margin: 0.8rem 0 0;
   font-family: var(--l-head);
   font-size: var(--v4-h2);
@@ -181,11 +180,12 @@
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 0 clamp(1.5rem, 3vw, 3rem);
+  align-items: start;
   margin-top: clamp(2rem, 3.6vw, 3rem);
 }
 
 .it-faq details { border-top: 1px solid rgba(23, 26, 29, 0.2); }
-.it-faq details:nth-last-child(-n + 2) { border-bottom: 1px solid rgba(23, 26, 29, 0.2); }
+.it-faq-column > details:last-child { border-bottom: 1px solid rgba(23, 26, 29, 0.2); }
 
 .it-faq summary {
   display: flex;
@@ -206,21 +206,6 @@
 .it-faq details[open] summary span { transform: rotate(45deg); }
 .it-faq summary:focus-visible { outline: 2px solid var(--l-blue); outline-offset: 2px; }
 .it-faq details p { max-width: 36rem; margin: 0 0 1.2rem; color: rgba(23, 26, 29, 0.78); font-size: var(--v4-text); line-height: 1.65; }
-
-/* Partner call to action: terrace render beside an ink panel. */
-.it-cta {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  background: var(--l-ink);
-  color: var(--l-paper);
-}
-
-.it-cta img { width: 100%; height: 100%; min-height: 20rem; object-fit: cover; }
-.it-cta > div { display: grid; align-content: center; justify-items: start; padding: clamp(3rem, 6vw, 5.5rem) var(--page-gutter); }
-.it-cta .it-eyebrow { color: var(--l-blue-light); }
-.it-cta .it-lead { color: rgba(244, 244, 241, 0.82); }
-.it-cta .button { display: inline-flex; gap: 1rem; align-items: center; min-height: 3.4rem; margin-top: 1.8rem; padding: 0 1.4rem; }
-.it-cta .button .lasha-arrow { width: 1.5rem; height: 0.5rem; }
 
 /* Broker Tools. */
 .it-workspace-intro {
@@ -283,9 +268,10 @@
 .it-preview-sketch { position: relative; display: grid; align-content: center; gap: 0.6rem; height: 100%; padding: 1.4rem 1.2rem 1rem; }
 .it-preview-label { position: absolute; top: 0.5rem; right: 0.6rem; color: rgba(23, 26, 29, 0.5); font-size: 0.62rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; }
 .it-preview-sketch i { display: block; height: 0.55rem; border-radius: 1px; background: rgba(23, 26, 29, 0.14); }
-.it-preview-sketch-2 i:nth-child(2) { width: 70%; }
-.it-preview-sketch-2 i:nth-child(3) { width: 85%; }
-.it-preview-sketch-2 b { display: block; width: 45%; height: 0.55rem; background: var(--l-blue); }
+.it-preview-network { justify-self: center; width: min(100%, 15rem); height: auto; }
+.it-preview-network path { fill: none; stroke: rgba(23, 26, 29, 0.22); stroke-width: 1.5; }
+.it-preview-network circle { fill: color-mix(in srgb, var(--l-blue) 30%, var(--l-paper)); stroke: var(--l-blue); stroke-width: 1.5; }
+.it-preview-network circle:first-of-type { fill: var(--l-blue); }
 .it-preview-sketch-3 i { height: 1.3rem; background: linear-gradient(90deg, rgba(23, 26, 29, 0.14) 0 55%, transparent 55% 70%, color-mix(in srgb, var(--l-blue) 35%, transparent) 70% 88%, transparent 88%); }
 .it-preview-sketch-4 { background: var(--l-ink); }
 .it-preview-sketch-4 .it-preview-label { color: rgba(244, 244, 241, 0.6); }
@@ -316,9 +302,7 @@
 @media (max-width: 899px) {
   .it-cards-3 { grid-template-columns: minmax(0, 1fr); }
   .it-faq { grid-template-columns: minmax(0, 1fr); }
-  .it-faq details:nth-last-child(2) { border-bottom: 0; }
-  .it-cta { grid-template-columns: minmax(0, 1fr); }
-  .it-cta img { min-height: 0; aspect-ratio: 4 / 3; }
+  .it-faq-column:first-child > details:last-child { border-bottom: 0; }
   .it-workspace-intro { grid-template-columns: minmax(0, 1fr); }
   .it-step-list { grid-template-columns: minmax(0, 1fr); }
   .lasha-page-hero .it-hero-actions .button { flex: 0 0 auto; width: 100%; justify-content: space-between; }

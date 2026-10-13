@@ -4,6 +4,7 @@ import { App } from "./App";
 import { NETWORK_COPY } from "./network-copy";
 import { HOME_HERO_LINES } from "./project-showcase-copy";
 import { LASHA_HOME_COPY } from "./lasha-home-copy";
+import { AIXCO_FAQ } from "./aixco-faq-copy";
 
 beforeEach(() => {
   window.history.replaceState({}, "", "/#why-aixess");
@@ -171,14 +172,34 @@ describe("AIXESS navigation pages", () => {
     expect(screen.getByRole("heading", { name: /request project materials/i })).toBeInTheDocument();
   });
 
-  it("answers the eight Insights questions in a native accordion", () => {
+  it("answers the twelve AIXCO.Global FAQ entries in a native accordion, in source order", () => {
     window.history.replaceState({}, "", "/#insights");
     const { container } = render(<App />);
 
-    const items = container.querySelectorAll(".it-faq details");
-    expect(items).toHaveLength(8);
-    expect(Array.from(items).every((item) => !item.open)).toBe(true);
-    expect(within(items[0]).getByText("Can foreigners own property in Georgia?").tagName).toBe("SUMMARY");
+    const items = Array.from(container.querySelectorAll(".it-faq details"));
+    expect(items).toHaveLength(12);
+    expect(items.every((item) => !item.open)).toBe(true);
+    expect(items.map((item) => item.querySelector("summary").textContent.replace("+", ""))).toEqual(AIXCO_FAQ.en.map(([question]) => question));
+    expect(within(items[1]).getByText("The minimum investment amount is €5,000.")).toBeInTheDocument();
+  });
+
+  it("drops the Insights hero actions and the closing partner banner", () => {
+    window.history.replaceState({}, "", "/#insights");
+    const { container } = render(<App />);
+
+    expect(container.querySelector(".lasha-page-hero-copy .button")).not.toBeInTheDocument();
+    expect(screen.queryByText("JOIN THE AIXESS BROKER NETWORK.")).not.toBeInTheDocument();
+    expect(screen.queryByRole("link", { name: /EXPLORE INSIGHTS/ })).not.toBeInTheDocument();
+  });
+
+  it("describes Broker Network & Team Management as the third broker tool", () => {
+    window.history.replaceState({}, "", "/#broker-tools");
+    const { container } = render(<App />);
+
+    const cards = container.querySelectorAll(".it-feature");
+    expect(cards).toHaveLength(6);
+    expect(cards[2]).toHaveTextContent("03. BROKER NETWORK & TEAM MANAGEMENT");
+    expect(screen.queryByText(/SMART SALES CALCULATIONS/)).not.toBeInTheDocument();
   });
 
   it("keeps the calculators and client PDF generator off the public Broker Tools page", async () => {
