@@ -4,13 +4,14 @@ Each family has three versions of one scene, so the photos change with the time-
 They are generated mood photography for the brand pages, never a project or a listing; family
 "opportunities" is the original Reverance render (day, unchanged) and two relit copies of it.
 
-usage: python3 scripts/import-theme-photos.py SOURCE_DIR [UPSCALED_DIR] [--only FAMILY]
+usage: python3 scripts/import-theme-photos.py SOURCE_DIRS [UPSCALED_DIRS] [--only FAMILY]
 
-SOURCE_DIR holds the supplied files (<number>-<scene>-<theme>.png/.webp, see FAMILIES). With
---only, just that family is rebuilt and the other families' sizes are kept; the Broker Tools
-hero "coastal-classic" (design 1A, 14 October 2026) has its own source folder,
-/mnt/project-files/klem-oct13/coastal-classic.
-UPSCALED_DIR may hold <source stem>-x4.png: a 4x EDSR super-resolution enlargement (OpenCV
+SOURCE_DIRS holds the supplied files (<number>-<scene>-<theme>.png/.webp, see FAMILIES); give
+several folders joined with ":" (the Broker Tools hero "coastal-classic", design 1A of
+14 October 2026, has its own folder: /mnt/project-files/klem-oct13/theme-photos:
+/mnt/project-files/klem-oct13/coastal-classic). Every source is found before anything is
+written. With --only, just that family is rebuilt and the other families' sizes are kept.
+UPSCALED_DIRS (also ":"-joined) may hold <source stem>-x4.png: a 4x EDSR super-resolution enlargement (OpenCV
 dnn_superres, EDSR_x4.pb) of a hero photo: phones and Retina laptops draw the full-width heroes
 and the Advantage / Broker Access split-hero photos 1.5-3x larger than the supplied files. A light unsharp mask restores the edge contrast the enlargement
 softens; it adds no detail that was not in the original. Photos without an enlargement are
@@ -48,16 +49,29 @@ UPSCALED_WIDTHS = (480, 800, 1200, 1600, 2400, 3200, 4000)
 # while WebP has worked in every browser the site supports.
 
 
-def source_for(directory, stem):
-    for suffix in (".png", ".webp"):
-        path = directory / f"{stem}{suffix}"
-        if path.exists():
-            return path
-    raise FileNotFoundError(stem)
+def find(directories, names):
+    for directory in directories:
+        for name in names:
+            path = directory / name
+            if path.exists():
+                return path
+    return None
 
 
-def main(source_dir, upscaled_dir=None, only=None):
+def source_for(directories, stem):
+    path = find(directories, (f"{stem}.png", f"{stem}.webp"))
+    if not path:
+        raise FileNotFoundError(stem)
+    return path
+
+
+def main(source_dirs, upscaled_dirs=(), only=None):
     OUT.mkdir(parents=True, exist_ok=True)
+    # Fail before deleting or writing anything if a source is missing.
+    for family, prefix in FAMILIES.items():
+        if not only or family == only:
+            for theme in THEMES:
+                source_for(source_dirs, prefix[theme] if isinstance(prefix, dict) else f"{prefix}-{theme}")
     sizes = json.loads(SIZES.read_text()) if only else {}
     sizes = {family: sizes[family] for family in FAMILIES if family in sizes}
     for family, prefix in FAMILIES.items():
@@ -66,12 +80,12 @@ def main(source_dir, upscaled_dir=None, only=None):
         sizes[family] = {}
         for theme in THEMES:
             stem = prefix[theme] if isinstance(prefix, dict) else f"{prefix}-{theme}"
-            upscaled = upscaled_dir / f"{stem}-x4.png" if upscaled_dir else None
-            if upscaled and upscaled.exists():
+            upscaled = find(upscaled_dirs, (f"{stem}-x4.png",))
+            if upscaled:
                 image = Image.open(upscaled).convert("RGB").filter(ImageFilter.UnsharpMask(radius=6, percent=50, threshold=2))
                 widths = [w for w in UPSCALED_WIDTHS if w <= image.width]
             else:
-                image = Image.open(source_for(source_dir, stem)).convert("RGB")
+                image = Image.open(source_for(source_dirs, stem)).convert("RGB")
                 widths = sorted({w for w in NATIVE_WIDTHS if w < image.width} | {image.width})
             for old in OUT.glob(f"{family}-{theme}-*.*"):
                 old.unlink()
@@ -98,4 +112,5 @@ if __name__ == "__main__":
         index = args.index("--only")
         only = args[index + 1]
         del args[index:index + 2]
-    main(Path(args[0]), Path(args[1]) if len(args) > 1 else None, only)
+    dirs = lambda value: [Path(part) for part in value.split(":") if part]
+    main(dirs(args[0]), dirs(args[1]) if len(args) > 1 else [], only)
