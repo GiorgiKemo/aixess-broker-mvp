@@ -458,26 +458,28 @@ html:root[data-time-theme='night'] .lasha-page-hero-coastal::before {
 }
 
 /* Dark pages at night (Kemo, 13 October 2026: "why in night mode we have white pages???"):
-   the paper ground turns graphite and the ink text turns off-white, on every public page, the
-   menu, dialogs and cookie notice. Sections that were already ink keep a deeper graphite with
-   light text, so they still stand apart from the page. The accent is v4's light cobalt tint,
+   the paper ground turns black and the ink text turns off-white, on every public page, the
+   menu, dialogs and cookie notice (Kemo, 13 October 2026: true black, not v4's graphite).
+   Sections that were already ink sit on a near-black with light text, and cards are a very dark
+   grey, so they still stand apart from the page. The accent is v4's light cobalt tint,
    as on v4's dark sections. */
 html:root[data-time-theme='night'] {
   --l-ink: #ecebe6;
-  --l-paper: #15181c;
-  --l-card: #1d2126;
-  --l-line: #353b42;
+  --l-paper: #000000;
+  --l-card: #141414;
+  --l-line: #2e2e2e;
   --l-blue: #c9d3dc;
   --l-blue-deep: #e6ecf1;
-  --l-field: #232930;
-  --l-mist: #1b1f24;
-  --l-wash: #1d2228;
-  --l-wash-page: #171b20;
+  --l-field: #0c0c0c;
+  --l-mist: #0c0c0c;
+  --l-wash: #0c0c0c;
+  --l-wash-page: #000000;
+  --l-sky: #000000;
 }
 html:root[data-time-theme='night'] :is(.lasha-home, .lasha-page, .lasha-menu) {
   --l-ink: #ecebe6;
-  --l-paper: #15181c;
-  --l-line: #353b42;
+  --l-paper: #000000;
+  --l-line: #2e2e2e;
   color-scheme: dark;
 }
 html:root[data-time-theme='night'] :is(
@@ -490,12 +492,12 @@ html:root[data-time-theme='night'] :is(
   .lasha-page .calculator-results,
   .mobile-nav.lasha-menu
 ) {
-  --l-ink: #0b0d0f;
+  --l-ink: #0c0c0c;
   --l-paper: #ecebe6;
 }
 html:root[data-time-theme='night'] .it-ink .it-card:not(.it-card-light) {
   --l-ink: #ecebe6;
-  --l-paper: #1d2126;
+  --l-paper: #141414;
 }
 /* Text on the pale night accent is ink, and the explorer copy follows the off-white ink. */
 html:root[data-time-theme='night'] :is(
@@ -507,7 +509,7 @@ html:root[data-time-theme='night'] :is(
   .mobile-nav.lasha-menu .mobile-register,
   :is(.lasha-home, .lasha-page) .mobile-dock-open
 ) {
-  color: #15181c;
+  color: #000000;
 }
 html:root[data-time-theme='night'] :is(.lasha-home, .lasha-page) :is(.explorer-description, .residence-filter-intro) {
   color: color-mix(in srgb, var(--l-ink) 80%, transparent);
