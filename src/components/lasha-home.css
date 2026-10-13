@@ -883,14 +883,14 @@
   /* No glow behind the letters either (Kemo, 9 October 2026: "looks kinda ugly"): the title and
      subtitle are plain black on the sky; the subtitle is a touch heavier to stay readable. */
   .lasha-hero-copy p { font-weight: 500; }
-  /* The copy block sits high in the photo below the header, so the title and subtitle stay on
-     the open sky above the skyline (no wash or glow allowed; contrast check, 13 October 2026). */
+  /* The copy block is centred in the photo between the header and the bottom edge (Kemo,
+     13 October 2026: "why is the texts so up?"). */
   .lasha-hero-copy {
-    top: 6.5rem;
+    top: 5.5rem;
     right: 1.25rem;
-    bottom: 1.5rem;
+    bottom: 2rem;
     left: 1.25rem;
-    align-content: start;
+    align-content: center;
   }
   /* The poster block fills the column, but it stands about 0.92× its width, so on short or
      landscape screens its width is capped by the hero's own height minus the copy (about 20rem),
