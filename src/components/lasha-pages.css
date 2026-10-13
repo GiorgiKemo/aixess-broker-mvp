@@ -46,7 +46,7 @@
   z-index: -1;
   inset: 0 0 auto;
   height: 9rem;
-  background: linear-gradient(180deg, color-mix(in srgb, var(--l-ink, #171a1d) 42%, transparent), rgba(23, 26, 29, 0));
+  background: linear-gradient(180deg, rgba(23, 26, 29, 0.42), rgba(23, 26, 29, 0));
   content: "";
   pointer-events: none;
 }
@@ -486,7 +486,7 @@ html body,
 body .site-shell { background: var(--l-paper, #f4f4f1); }
 body .privacy-footer { color: var(--l-ink, #171a1d); }
 body .privacy-footer-toggle,
-body .privacy-footer-panel { border-color: color-mix(in srgb, var(--l-ink, #171a1d) 30%, transparent); background: var(--l-paper, #f4f4f1); box-shadow: 0 0.5rem 1.5rem color-mix(in srgb, var(--l-ink, #171a1d) 14%, transparent); }
+body .privacy-footer-panel { border-color: color-mix(in srgb, var(--l-ink, #171a1d) 30%, transparent); background: var(--l-paper, #f4f4f1); box-shadow: 0 0.5rem 1.5rem rgba(23, 26, 29, 0.14); }
 body .privacy-footer-toggle span { color: var(--l-blue); }
 body .privacy-footer-toggle:hover,
 body .privacy-footer-toggle[aria-expanded="true"] { border-color: var(--l-blue); }
@@ -505,7 +505,7 @@ body .cookie-actions button:hover { border-color: var(--l-blue-deep); background
 body .access-form .privacy-acknowledgement input { accent-color: var(--l-blue); }
 
 /* Sign-up, login and materials dialogs, on every page. */
-body .modal-backdrop { background: color-mix(in srgb, var(--l-ink, #171a1d) 72%, transparent); }
+body .modal-backdrop { background: rgba(23, 26, 29, 0.72); }
 
 body .modal-panel {
   border: 0;
@@ -707,7 +707,7 @@ body .modal-panel :is(button, input, a):focus-visible { outline-color: var(--l-b
   padding: 0.4rem 0;
   border-top: 2px solid var(--l-blue);
   background: var(--l-paper);
-  box-shadow: 0 18px 40px color-mix(in srgb, var(--l-ink, #171a1d) 18%, transparent);
+  box-shadow: 0 18px 40px rgba(23, 26, 29, 0.18);
   list-style: none;
 }
 

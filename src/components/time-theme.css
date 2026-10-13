@@ -472,3 +472,20 @@ html:root[data-time-theme='night'] .it-ink .it-card:not(.it-card-light) {
   --l-ink: #ecebe6;
   --l-paper: #1d2126;
 }
+/* Text on the pale night accent is ink, and the explorer copy follows the off-white ink. */
+html:root[data-time-theme='night'] :is(
+  body .modal-panel .button-primary,
+  body .cookie-actions button,
+  .lasha-page .calculator-tabs button[aria-selected="true"],
+  :is(.lasha-home, .lasha-page) .residence-choice-field button.is-active,
+  :is(.lasha-home, .lasha-page) .mobile-register,
+  .mobile-nav.lasha-menu .mobile-register,
+  :is(.lasha-home, .lasha-page) .mobile-dock-open
+) {
+  color: #15181c;
+}
+html:root[data-time-theme='night'] :is(.lasha-home, .lasha-page) :is(.explorer-description, .residence-filter-intro) {
+  color: color-mix(in srgb, var(--l-ink) 80%, transparent);
+}
+/* The phone's residence sheets stay light at night, so their accent stays ink. */
+html:root[data-time-theme='night'] :is(.mobile-residence-sheet, .mobile-residence-drawer) { --orange: #171a1d; }

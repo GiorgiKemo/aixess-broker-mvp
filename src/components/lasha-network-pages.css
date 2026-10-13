@@ -96,7 +96,7 @@
   position: absolute;
   inset: 0 0 auto;
   height: 9rem;
-  background: linear-gradient(180deg, color-mix(in srgb, var(--l-ink, #171a1d) 45%, transparent), rgba(23, 26, 29, 0));
+  background: linear-gradient(180deg, rgba(23, 26, 29, 0.45), rgba(23, 26, 29, 0));
   content: "";
 }
 
