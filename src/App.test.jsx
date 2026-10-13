@@ -106,7 +106,7 @@ describe("AIXESS navigation pages", () => {
     resetTimeThemeForTests();
     window.history.replaceState({}, "", "/#broker-tools");
     render(<App />);
-    expect(document.querySelector(".lasha-page-hero-media").dataset.themePhoto).toBe("calm-waterfront-afternoon");
+    expect(document.querySelector(".lasha-page-hero-media").dataset.themePhoto).toBe("coastal-classic-afternoon");
     const workspace = document.querySelector(".it-workspace-photo");
     expect(workspace.dataset.themePhoto).toBe("workspace-building-afternoon");
     expect(workspace).toHaveAttribute("loading", "lazy");

@@ -567,19 +567,40 @@ body .modal-panel :is(button, input, a):focus-visible { outline-color: var(--l-b
   }
 }
 
-/* Broker Tools on phones (Giorgi, 13 October 2026: photos must fit behind and beside the text on
-   every screen). The copy is too tall to sit over the photo without covering the building, so
-   the photo becomes a band under the header and the copy follows on a calm panel in the
-   photo's own light. */
+/* Broker Tools: design 1A Coastal Classic (Giorgi and the client, 14 October 2026). One
+   continuous photo, the copy straight on its quiet sky and sea, the terrace building on the
+   right; no panel, card or box. The same crop in every theme, so switching moves nothing. */
+.lasha-page-hero-coastal { min-height: clamp(36rem, 86svh, 52rem); }
+/* Wide enough for the two-line title of 1A at v4's full title size, still clear of the terrace. */
+.lasha-page-hero-coastal .lasha-page-hero-copy { max-width: min(100%, max(60rem, 66vw)); }
+/* From 900px the title stops just short of v4's 8vw, so ONE PLATFORM's two lines end before the
+   terrace at every width, as in 1A (at most about 5% smaller, only between 1440 and 1680px). */
+@media (min-width: 900px) {
+  .lasha-page .lasha-page-hero-coastal .lasha-page-hero-title { font-size: min(var(--v4-page-title), 7.6vw); }
+  /* Longer translations wrap into even lines rather than leaving one word alone. */
+  .lasha-page-hero-coastal .lasha-page-hero-title > span { text-wrap: balance; }
+}
+/* Small type straight on the photo: the eyebrow takes a deeper cobalt and the access note full
+   ink, so both stay above 4.5:1 over the sky and sea. */
+.lasha-page-hero-coastal .lasha-eyebrow { color: #10307f; }
+.lasha-page-hero-coastal .it-hero-note { color: #000; }
+/* As in 1A, BROKER LOGIN is a paper button, so it reads over the palm and terrace too. */
+.lasha-page-hero-coastal .it-hero-actions .button-ghost { border-color: #171a1d; background: #f7f7f4; color: #171a1d; }
+.lasha-page-hero-coastal .it-hero-actions .button-ghost:hover { background: #171a1d; color: #f7f7f4; }
+/* On portrait screens a cover crop shows under half the photo's width, so the crop moves left
+   to keep the sea and skyline under the copy and the terrace at the right edge. */
+@media (max-aspect-ratio: 1/1) {
+  .lasha-page-hero-coastal .lasha-page-hero-media { object-position: var(--hero-position-phone); }
+}
+
 @media (max-width: 767px) {
-  .lasha-page-hero-stacked { min-height: 0; background: var(--l-wash-page); }
-  .lasha-page-hero-stacked > .site-header { position: absolute; inset: 0 0 auto; }
-  .lasha-page-hero-stacked .lasha-page-hero-media { position: relative; z-index: 0; height: clamp(16rem, 72vw, 26rem); }
-  .lasha-page-hero-stacked::before { content: none; }
-  .lasha-page-hero-stacked .lasha-page-hero-copy { align-content: start; padding-top: 2rem; padding-bottom: 3rem; }
+  /* Phones: the photo fills the hero and the copy sits between the header and the lower edge,
+     over the sky, skyline and sea; the hero grows with the longest translation. */
+  .lasha-page-hero-coastal { min-height: max(100svh, 40rem); }
+  .lasha-page-hero-coastal .lasha-page-hero-copy { align-content: center; padding-top: 2rem; padding-bottom: 2.5rem; }
   /* The two title lines run on as one sentence, so ONE PLATFORM stays together on a narrow screen. */
-  .lasha-page-hero-stacked .lasha-page-hero-title > span { display: inline; }
-  .lasha-page-hero-stacked .lasha-page-hero-title > span + span::before { content: " "; }
+  .lasha-page-hero-coastal .lasha-page-hero-title > span { display: inline; }
+  .lasha-page-hero-coastal .lasha-page-hero-title > span + span::before { content: " "; }
 }
 
 /* Phone and tablet menu in Lasha's language (Kemo, 7 October 2026: the old black/orange

@@ -73,7 +73,11 @@ export function HomeHero({ children }) {
 // desktop / phone focal points; `aspect` sizes the phone crop (see pageHeroSizes).
 const PAGE_HERO_IMAGES = {
   "coastal-city": { family: "coastal-city", aspect: 16 / 9, position: "62% 45%", phonePosition: "70% 50%" },
-  "calm-waterfront": { family: "calm-waterfront", aspect: 16 / 9, position: "70% 50%", phonePosition: "88% 50%" },
+  // Broker Tools: design 1A Coastal Classic (14 October 2026), copy over the sky and sea on the
+  // left, the terrace building on the right.
+  // Its hero is at least the screen's height on portrait screens (so the photo is drawn about
+  // 1.8 × the height wide) and about 86% of it on 4:3 screens.
+  "coastal-classic": { family: "coastal-classic", aspect: 16 / 9, position: "100% 50%", phonePosition: "58% 50%", sizes: "(max-aspect-ratio: 1/1) 180vh, (max-aspect-ratio: 3/2) 154vh, 100vw" },
   // Selected Opportunities: the first AiXESS homepage render (Kemo, 13 October 2026).
   opportunities: { family: "opportunities", aspect: 1, position: "70% 30%", phonePosition: "60% 30%" },
   skyline: { src: "reverance-skyline-1440", srcSet: "reverance-skyline-720 720w, reverance-skyline-1440 1440w, reverance-skyline-2160 2160w, reverance-skyline-2700 2700w", position: "72% 30%" },
@@ -92,15 +96,15 @@ const pageHeroSizes = (aspect) => `(max-aspect-ratio: 1/1) ${Math.ceil(70 * aspe
 
 // Inner pages open with the homepage's language: the site header floating over a
 // Reverance render, a blue eyebrow and an oversized headline.
-export function LashaPageHero({ header, eyebrow, title, titleAs: Title = "h1", copy, image = "skyline", stackOnPhone = false, children }) {
+export function LashaPageHero({ header, eyebrow, title, titleAs: Title = "h1", copy, image = "skyline", variant, children }) {
   const lines = Array.isArray(title) ? title : [title];
   const media = PAGE_HERO_IMAGES[image] ?? PAGE_HERO_IMAGES.skyline;
   const style = { "--hero-position": media.position, "--hero-position-phone": media.phonePosition ?? media.position };
   return (
-    <section className={`lasha-page-hero${stackOnPhone ? " lasha-page-hero-stacked" : ""}`}>
+    <section className={`lasha-page-hero${variant ? ` lasha-page-hero-${variant}` : ""}`}>
       {header}
       {media.family ? (
-        <ThemedImage className="lasha-page-hero-media" family={media.family} sizes={pageHeroSizes(media.aspect)} style={style} fetchPriority="high" decoding="async" />
+        <ThemedImage className="lasha-page-hero-media" family={media.family} sizes={media.sizes ?? pageHeroSizes(media.aspect)} style={style} fetchPriority="high" decoding="async" />
       ) : (
         <img className="lasha-page-hero-media" {...pageHeroSources(media)} sizes="100vw" style={style} alt="" decoding="async" />
       )}

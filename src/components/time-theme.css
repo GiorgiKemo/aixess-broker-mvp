@@ -426,9 +426,34 @@ html:root[data-time-theme='night'] .lasha-page-hero::before {
   }
 }
 @media (max-width: 767px) {
-  html:root[data-time-theme='night'] .lasha-page-hero-stacked { background: #0a1226; }
   html:root[data-time-theme='night'] .lasha-page-hero::before {
     background: linear-gradient(180deg, rgba(7, 13, 30, 0.1) 0%, rgba(7, 13, 30, 0.58) 30%, rgba(7, 13, 30, 0.74) 50%, rgba(7, 13, 30, 0.8) 100%);
+  }
+}
+
+/* Coastal Classic (Broker Tools, design 1A): the copy's corner gets a restrained shade of the
+   photo's own light (barely visible by day, where only the small note over the sea needs it),
+   measured over every word of the copy (5th-percentile contrast at least 4.5:1), and fading out
+   well before the terrace. */
+html:root[data-time-theme='afternoon'] .lasha-page-hero-coastal .lasha-eyebrow { color: #1f3322; }
+html:root[data-time-theme='night'] .lasha-page-hero-coastal .it-hero-actions .button-ghost { background: transparent; }
+html:root[data-time-theme='night'] .lasha-page-hero-coastal .it-hero-actions .button-ghost:hover { border-color: #f7f7f4; background: #f7f7f4; color: #171a1d; }
+.lasha-page-hero-coastal::before { content: ""; background: radial-gradient(ellipse 62% 78% at 18% 62%, rgba(236, 244, 250, 0.3) 0%, rgba(236, 244, 250, 0.2) 48%, rgba(236, 244, 250, 0) 100%); }
+@media (max-aspect-ratio: 1/1) {
+  .lasha-page-hero-coastal::before { background: radial-gradient(ellipse 130% 70% at 30% 60%, rgba(236, 244, 250, 0.3) 0%, rgba(236, 244, 250, 0.2) 52%, rgba(236, 244, 250, 0) 100%); }
+}
+html:root[data-time-theme='afternoon'] .lasha-page-hero-coastal::before {
+  background: radial-gradient(ellipse 62% 78% at 18% 56%, rgba(236, 228, 220, 0.62) 0%, rgba(236, 228, 220, 0.46) 48%, rgba(236, 228, 220, 0) 100%);
+}
+html:root[data-time-theme='night'] .lasha-page-hero-coastal::before {
+  background: radial-gradient(ellipse 62% 78% at 18% 56%, rgba(5, 18, 44, 0.6) 0%, rgba(5, 18, 44, 0.44) 48%, rgba(5, 18, 44, 0) 100%);
+}
+@media (max-aspect-ratio: 1/1) {
+  html:root[data-time-theme='afternoon'] .lasha-page-hero-coastal::before {
+    background: radial-gradient(ellipse 130% 70% at 30% 60%, rgba(236, 228, 220, 0.62) 0%, rgba(236, 228, 220, 0.46) 52%, rgba(236, 228, 220, 0) 100%);
+  }
+  html:root[data-time-theme='night'] .lasha-page-hero-coastal::before {
+    background: radial-gradient(ellipse 130% 70% at 30% 60%, rgba(5, 18, 44, 0.6) 0%, rgba(5, 18, 44, 0.44) 52%, rgba(5, 18, 44, 0) 100%);
   }
 }
 

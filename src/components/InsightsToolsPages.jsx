@@ -163,7 +163,7 @@ export function BrokerToolsPageContent({ header, onOpenModal }) {
   const { tools: c } = useCopy();
   return (
     <>
-      <LashaPageHero header={header} eyebrow={c.eyebrow} title={c.title} image="calm-waterfront" copy={c.copy} stackOnPhone>
+      <LashaPageHero header={header} eyebrow={c.eyebrow} title={c.title} image="coastal-classic" copy={c.copy} variant="coastal">
         <div className="page-cta-row it-hero-actions">
           <button className="button button-primary" type="button" onClick={() => onOpenModal("register")}>{c.partner}<LashaArrow length={24} /></button>
           <button className="button button-ghost" type="button" onClick={() => onOpenModal("login")}>{c.login}</button>

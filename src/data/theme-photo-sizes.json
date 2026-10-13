@@ -192,10 +192,10 @@
       ]
     }
   },
-  "calm-waterfront": {
+  "coastal-classic": {
     "day": {
       "width": 6688,
-      "height": 3760,
+      "height": 3764,
       "widths": [
         480,
         800,
@@ -208,7 +208,7 @@
     },
     "afternoon": {
       "width": 6688,
-      "height": 3760,
+      "height": 3764,
       "widths": [
         480,
         800,
@@ -220,8 +220,8 @@
       ]
     },
     "night": {
-      "width": 6692,
-      "height": 3760,
+      "width": 6688,
+      "height": 3764,
       "widths": [
         480,
         800,
