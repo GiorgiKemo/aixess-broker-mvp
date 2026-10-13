@@ -562,7 +562,7 @@ body .modal-panel :is(button, input, a):focus-visible { outline-color: var(--l-b
    marker on the current page, a paper language row and square blue/outline actions. The
    panel lives at the end of <body> with its own logo and Close bar, so no section can cover it. */
 
-@media (max-width: 1220px) {
+@media (max-width: 1399px) {
   .mobile-nav.lasha-menu {
     z-index: 90;
     top: 0;
@@ -642,7 +642,7 @@ body .modal-panel :is(button, input, a):focus-visible { outline-color: var(--l-b
     margin-bottom: 0.4rem;
   }
   .mobile-nav.lasha-menu .lasha-menu-bar button { min-height: 2.8rem; border-bottom: 0; }
-  .mobile-nav.lasha-menu .lasha-menu-bar .menu-toggle { display: inline-flex; justify-content: center; border: 1px solid rgba(239, 239, 236, 0.75); }
+  .mobile-nav.lasha-menu .lasha-menu-bar .menu-toggle { display: inline-flex; justify-content: center; padding-inline: 0.9rem; border: 1px solid rgba(239, 239, 236, 0.75); }
   body:has(.lasha-menu.is-open) { overflow: hidden; }
 }
 
@@ -710,7 +710,7 @@ body .modal-panel :is(button, input, a):focus-visible { outline-color: var(--l-b
 .desktop-nav .nav-group-menu button.is-active { color: var(--l-blue); }
 .desktop-nav .nav-group-menu button:focus-visible { outline: 2px solid var(--l-blue); outline-offset: -2px; }
 
-@media (max-width: 1220px) {
+@media (max-width: 1399px) {
   .mobile-nav.lasha-menu > button.lasha-menu-sub {
     min-height: 3.3rem;
     padding: 0 0 0 1.4rem;

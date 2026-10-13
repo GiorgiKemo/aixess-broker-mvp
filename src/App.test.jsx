@@ -1,4 +1,4 @@
-import { fireEvent, render, screen, within } from "@testing-library/react";
+import { act, fireEvent, render, screen, within } from "@testing-library/react";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { App } from "./App";
 import { NETWORK_COPY } from "./network-copy";
@@ -40,6 +40,48 @@ describe("AIXESS navigation pages", () => {
       expect(logo.querySelectorAll("path")).toHaveLength(6);
     });
     expect(document.querySelector("img[src*='aixess-logo']")).toBeNull();
+  });
+
+  it("styles the open MENU panel at every width where the header collapses to MENU", async () => {
+    // Klem, 13 October: in a part-width desktop window MENU opened an unstyled black panel with
+    // dark labels, because the header collapsed below 1400px but the panel styles began at 1220px.
+    const { readFile } = await import("node:fs/promises");
+    const header = await readFile("src/styles.css", "utf8");
+    const menu = await readFile("src/components/lasha-pages.css", "utf8");
+    const collapse = header.match(/@media \(max-width: (\d+)px\) \{[^@]*?\.desktop-nav,\s*\.header-actions \{ display: none; \}/);
+    expect(collapse).not.toBeNull();
+    // The panel's own styles (ink ground, paper labels) and the Reverance sub-entry, not the
+    // narrower phone refinements.
+    const panelBreakpoints = [...menu.matchAll(/@media \(max-width: (\d+)px\) \{\s*\.mobile-nav\.lasha-menu(?: > button\.lasha-menu-sub)? \{\s*(?:z-index|min-height)/g)].map((m) => m[1]);
+    expect(panelBreakpoints).toHaveLength(2);
+    panelBreakpoints.forEach((width) => expect(width).toBe(collapse[1]));
+  });
+
+  it("closes the MENU panel with Escape or when the window widens past the collapsed header", () => {
+    const listeners = new Set();
+    const query = { matches: false, addEventListener: (_, fn) => listeners.add(fn), removeEventListener: (_, fn) => listeners.delete(fn) };
+    const original = window.matchMedia;
+    window.matchMedia = (media) => (media === "(min-width: 1400px)" ? query : original(media));
+    try {
+      window.history.replaceState({}, "", "/#insights");
+      render(<App />);
+      const panel = document.getElementById("mobile-navigation");
+      const toggle = document.querySelector(".site-header .menu-toggle");
+      fireEvent.click(toggle);
+      expect(panel).toHaveClass("is-open");
+      expect(within(panel).getAllByRole("button").map((button) => button.textContent)).toEqual(expect.arrayContaining(["AIXESS ADVANTAGE", "BROKER ACCESS", "SELECTED OPPORTUNITIES", "Georgia Batumi - Reverance", "INSIGHTS", "BROKER TOOLS"]));
+      fireEvent.keyDown(document, { key: "Escape" });
+      expect(panel).not.toHaveClass("is-open");
+
+      fireEvent.click(toggle);
+      expect(panel).toHaveClass("is-open");
+      query.matches = true;
+      act(() => listeners.forEach((fn) => fn()));
+      expect(panel).not.toHaveClass("is-open");
+      expect(listeners.size).toBe(0);
+    } finally {
+      window.matchMedia = original;
+    }
   });
 
   it("puts the newer first-page brief on the homepage while retaining the existing structure", () => {

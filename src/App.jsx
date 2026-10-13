@@ -497,6 +497,34 @@ function AppContent() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [currentPage, setCurrentPage] = useState(routeFromLocation);
 
+  // The MENU panel exists only while the header is collapsed (below 1400px, the same breakpoint as
+  // the CSS). Widening the window past it, or pressing Escape, closes the panel so no stale open
+  // state or scroll lock is left behind. While it is open the page behind is inert, so keyboard
+  // focus stays in the panel, which sits outside #root.
+  useEffect(() => {
+    if (!menuOpen) return undefined;
+    const root = document.getElementById("root");
+    const wide = window.matchMedia?.("(min-width: 1400px)");
+    const closeIfWide = () => { if (wide?.matches) setMenuOpen(false); };
+    const closeOnEscape = (event) => {
+      if (event.key !== "Escape") return;
+      setMenuOpen(false);
+    };
+    closeIfWide();
+    if (root) root.inert = true;
+    document.querySelector(".lasha-menu .lasha-menu-bar .menu-toggle")?.focus({ preventScroll: true });
+    wide?.addEventListener?.("change", closeIfWide);
+    document.addEventListener("keydown", closeOnEscape);
+    return () => {
+      if (root) root.inert = false;
+      wide?.removeEventListener?.("change", closeIfWide);
+      document.removeEventListener("keydown", closeOnEscape);
+      const toggle = document.querySelector(".site-header .menu-toggle");
+      const active = document.activeElement;
+      if (toggle?.offsetParent && (!active || active === document.body || active.closest(".lasha-menu"))) toggle.focus({ preventScroll: true });
+    };
+  }, [menuOpen]);
+
   const openModal = (type) => {
     setMenuOpen(false);
     if (type === "register" || type === "login") {
