@@ -1,18 +1,16 @@
-import { lazy, Suspense, useEffect, useState } from "react";
+import { Fragment, lazy, Suspense, useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { CaretDown, Globe } from "@phosphor-icons/react";
 import { LanguageProvider, LANGUAGE_OPTIONS, useLanguage, localizeFieldValidation, clearFieldValidation } from "./i18n.jsx";
-import { FittedHeading } from "./components/FittedHeading.jsx";
 import { NetworkSections } from "./components/NetworkSections.jsx";
-import { NETWORK_COPY } from "./network-copy.js";
 import { ProjectShowcase } from "./components/ProjectShowcase.jsx";
 import { AdvantagePageContent, BrokerAccessPageContent } from "./components/LashaNetworkPages.jsx";
 import { HomeAbout, HomeAccess, HomeHero, HomeMetrics, HomeStartingPoints, LashaPageHero } from "./components/LashaHomeSections.jsx";
 import { TimeThemeMenu } from "./components/TimeThemeMenu.jsx";
+import { BrokerToolsPageContent, InsightsPageContent } from "./components/InsightsToolsPages.jsx";
 import "./components/lasha-home.css";
 import "./components/lasha-pages.css";
 import "./components/time-theme.css";
-const Calculators = lazy(() => import("./components/Calculators.jsx"));
 import { PrivacyControls, PrivacyPage } from "./components/Privacy.jsx";
 import { PRIVACY_COPY } from "./privacy-copy.js";
 import { track, trackOutboundLink, flushAnalytics } from "./analytics.js";
@@ -27,10 +25,14 @@ const ResidenceExplorer = lazy(() => import("./components/ResidenceExplorer").th
 })));
 
 
+// Selected Opportunities lists each live project under it (Klem, 12 October 2026: "there will
+// come many more projects"). Add a project here only once it has a real page.
+const OPPORTUNITY_PROJECTS = [{ key: "residences", labelKey: "reveranceProjectNav" }];
+
 const navItems = [
   { key: "why-aixess", labelKey: "aixessAdvantage" },
   { key: "broker-access", labelKey: "brokerAccess" },
-  { key: "residences", labelKey: "selectedOpportunities" },
+  { key: "residences", labelKey: "selectedOpportunities", children: OPPORTUNITY_PROJECTS },
   { key: "insights", labelKey: "insights" },
   { key: "broker-tools", labelKey: "brokerTools" },
 ];
@@ -69,7 +71,9 @@ function SiteHeader({ currentPage, menuOpen, onToggleMenu, onNavigate, onOpenMod
       </button>
 
       <nav className="desktop-nav" aria-label={t("primaryNavigation")}>
-        {navItems.map(({ key, labelKey }) => (
+        {navItems.map(({ key, labelKey, children }) => (children ? (
+          <NavGroup key={key} item={{ key, labelKey, children }} currentPage={currentPage} onNavigate={navigate} />
+        ) : (
           <button
             className={currentPage === key ? "is-active" : ""}
             type="button"
@@ -79,7 +83,7 @@ function SiteHeader({ currentPage, menuOpen, onToggleMenu, onNavigate, onOpenMod
           >
             {t(labelKey)}
           </button>
-        ))}
+        )))}
       </nav>
 
       <div className="header-actions">
@@ -114,16 +118,28 @@ function SiteHeader({ currentPage, menuOpen, onToggleMenu, onNavigate, onOpenMod
             {t("close")}
           </button>
         </div>
-        {navItems.map(({ key, labelKey }) => (
-          <button
-            className={currentPage === key ? "is-active" : ""}
-            type="button"
-            aria-current={currentPage === key ? "page" : undefined}
-            key={key}
-            onClick={() => navigate(key)}
-          >
-            {t(labelKey)}
-          </button>
+        {navItems.map(({ key, labelKey, children }) => (
+          <Fragment key={key}>
+            <button
+              className={currentPage === key ? "is-active" : ""}
+              type="button"
+              aria-current={currentPage === key && !children ? "page" : undefined}
+              onClick={() => navigate(key)}
+            >
+              {t(labelKey)}
+            </button>
+            {children?.map((child) => (
+              <button
+                className={`lasha-menu-sub ${currentPage === child.key ? "is-active" : ""}`}
+                type="button"
+                aria-current={currentPage === child.key ? "page" : undefined}
+                key={child.labelKey}
+                onClick={() => navigate(child.key)}
+              >
+                {t(child.labelKey)}
+              </button>
+            ))}
+          </Fragment>
         ))}
         <LanguageSwitcher languageOpen={languageOpen} setLanguageOpen={setLanguageOpen} />
         <a className="mobile-register" href={workwiseBrokerUrl("register", locale)}>{t("register")}</a>
@@ -131,6 +147,75 @@ function SiteHeader({ currentPage, menuOpen, onToggleMenu, onNavigate, onOpenMod
       </div>,
       document.body)}
     </header>
+  );
+}
+
+// A top-level entry with its projects underneath: the label still opens the category page,
+// and the caret (or hovering) shows the project list. Escape and an outside click close it.
+function NavGroup({ item, currentPage, onNavigate }) {
+  const { t } = useLanguage();
+  const [pinned, setPinned] = useState(false);
+  const [hovered, setHovered] = useState(false);
+  const open = pinned || hovered;
+  const close = () => { setPinned(false); setHovered(false); };
+  const groupRef = useRef(null);
+  const listId = `nav-group-${item.key}`;
+  const active = currentPage === item.key || item.children.some((child) => child.key === currentPage);
+
+  useEffect(() => {
+    if (!open) return undefined;
+    const onKeyDown = (event) => {
+      if (event.key !== "Escape") return;
+      close();
+      groupRef.current?.querySelector(".nav-group-toggle")?.focus();
+    };
+    const onPointerDown = (event) => {
+      if (!groupRef.current?.contains(event.target)) close();
+    };
+    window.addEventListener("keydown", onKeyDown);
+    document.addEventListener("pointerdown", onPointerDown);
+    return () => {
+      window.removeEventListener("keydown", onKeyDown);
+      document.removeEventListener("pointerdown", onPointerDown);
+    };
+  }, [open]);
+
+  const go = (page) => {
+    close();
+    onNavigate(page);
+  };
+
+  return (
+    <div
+      className={`nav-group ${open ? "is-open" : ""}`}
+      ref={groupRef}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      onBlur={(event) => { if (event.relatedTarget && !event.currentTarget.contains(event.relatedTarget)) setPinned(false); }}
+    >
+      <button className={active ? "is-active" : ""} type="button" aria-current={currentPage === item.key ? "page" : undefined} onClick={() => go(item.key)}>
+        {t(item.labelKey)}
+      </button>
+      <button
+        className="nav-group-toggle"
+        type="button"
+        aria-expanded={open}
+        aria-controls={listId}
+        aria-label={t("showProjects")}
+        onClick={() => setPinned((value) => (hovered ? true : !value))}
+      >
+        <CaretDown aria-hidden="true" weight="bold" />
+      </button>
+      <ul className="nav-group-menu" id={listId} hidden={!open}>
+        {item.children.map((child) => (
+          <li key={child.labelKey}>
+            <button type="button" className={currentPage === child.key ? "is-active" : ""} aria-current={currentPage === child.key ? "page" : undefined} onClick={() => go(child.key)}>
+              {t(child.labelKey)}
+            </button>
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 }
 
@@ -336,85 +421,28 @@ function BrokerAccessPage(props) {
   );
 }
 
-const insightDownloads = [
-  ["01", "resourceBrochureTitle", "resourceBrochureCopy", "resourceClientsTag"],
-  ["02", "resourceMedicalTitle", "resourceMedicalCopy", "resourceGuideTag"],
-  ["03", "resourceLeisureTitle", "resourceLeisureCopy", "resourceGuideTag"],
-];
-
 function InsightsPage({ currentPage, menuOpen, onToggleMenu, onNavigate, onOpenModal }) {
-  const { t, locale } = useLanguage();
   return (
     <div className="route-page lasha-page insights-page">
-      <LashaPageHero
+      <InsightsPageContent
         header={<PageHeader {...{ currentPage, menuOpen, onToggleMenu, onNavigate, onOpenModal }} />}
-        eyebrow={t("insightsEyebrow")}
-        title={[t("makeMoveClear"), t("nextMoveClear")]}
-        image="facade"
-        copy={t("resourcesCopy")}
-      >
-        <div className="page-cta-row">
-          <button className="button button-primary" type="button" onClick={() => onOpenModal("materials")}>{t("requestDossier")}</button>
-          <a className="text-link" href="mailto:info@aixco.global">{t("emailAixco")} <span aria-hidden="true">↗</span></a>
-        </div>
-      </LashaPageHero>
-      <main className="page-main">
-        <section className="page-section resource-section" aria-labelledby="resource-library">
-          <div className="section-heading-row">
-            <p className="section-eyebrow">{t("library")}</p>
-            <FittedHeading id="resource-library"><span>{t("everythingOnePlace")}</span><span>{t("place")}</span></FittedHeading>
-          </div>
-          <div className="resource-grid">
-            {insightDownloads.map(([number, titleKey, copyKey, tagKey]) => (
-              <article className="resource-card" key={titleKey}>
-                <div className="resource-card-top"><span>{number}</span><span>{t(tagKey)}</span></div>
-                <h3>{t(titleKey)}</h3>
-                <p>{t(copyKey)}</p>
-                <button className="resource-link" type="button" onClick={() => onOpenModal("materials")}>{t("requestPdf")} <span aria-hidden="true">↗</span></button>
-              </article>
-            ))}
-          </div>
-        </section>
-
-        <section className="page-section faq-section" aria-labelledby="resource-faq">
-          <div className="section-heading-row">
-            <p className="section-eyebrow">{t("quickAnswers")}</p>
-            <FittedHeading id="resource-faq"><span>{t("detailsClientsAsk")}</span><span>{t("clientsAskFirst")}</span></FittedHeading>
-          </div>
-          <div className="faq-list">
-            {[
-              [t("minimumInvestmentQuestion"), `${NETWORK_COPY[locale].start}. ${NETWORK_COPY[locale].terms}`],
-              [t("foreignersOwnQuestion"), t("foreignersOwnAnswer")],
-              [t("reveranceOfferQuestion"), t("reveranceOfferAnswer", { count: availableResidenceCount })],
-            ].map(([question, answer]) => (
-              <details key={question}>
-                <summary>{question}<span aria-hidden="true">+</span></summary>
-                <p>{answer}</p>
-              </details>
-            ))}
-          </div>
-        </section>
-      </main>
+        onOpenModal={onOpenModal}
+        availableResidences={availableResidenceCount}
+      />
     </div>
   );
 }
 
+// The public overview only: the calculators and client PDF offers are for signed-in, approved
+// brokers (Klem, 12 October 2026), and brokers sign in on Workwise, so this site no longer
+// ships them. Calculators.jsx and ClientPdf.jsx stay in the repo for the broker portal.
 function BrokerToolsPage({ currentPage, menuOpen, onToggleMenu, onNavigate, onOpenModal }) {
-  const { t } = useLanguage();
   return (
     <div className="route-page lasha-page broker-tools-page">
-      <LashaPageHero
+      <BrokerToolsPageContent
         header={<PageHeader {...{ currentPage, menuOpen, onToggleMenu, onNavigate, onOpenModal }} />}
-        eyebrow="AIXESS"
-        title={t("brokerTools")}
-        titleAs="p"
-        image="aerial"
+        onOpenModal={onOpenModal}
       />
-      <main className="page-main">
-        <Suspense fallback={<p role="status">{t("preparingInteractive")}</p>}>
-          <Calculators />
-        </Suspense>
-      </main>
     </div>
   );
 }

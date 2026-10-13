@@ -462,6 +462,8 @@
 }
 
 .lasha-starting h2 > span:first-child { max-width: calc(1000 * var(--u)); }
+.lasha-starting .lasha-starting-line { display: block; }
+.lasha-starting .lasha-nowrap { white-space: nowrap; }
 
 .lasha-starting-grid {
   position: relative;
@@ -523,15 +525,19 @@
   line-height: 1.65;
 }
 
-/* Broker access: frame 4609–4948. */
+/* Broker access: frame 4609–4948. The title, the count and the buttons each keep the same
+   clear inset from the rule to their right, as in Lasha's sample (Klem, 12 October 2026);
+   the buttons end on the 70px right gutter. */
 .lasha-access {
+  --access-gap: calc(36 * var(--u));
   position: relative;
   display: grid;
-  grid-template-columns: calc(398 * var(--u)) auto minmax(0, 1fr);
+  grid-template-columns: calc(71 * var(--u) + 327 * var(--u) + var(--access-gap)) auto minmax(0, 1fr);
   height: calc(339 * var(--u));
+  padding-right: calc(70 * var(--u));
 }
 
-.lasha-access-copy { min-width: 0; padding: calc(27.8 * var(--u)) 0 0 calc(71 * var(--u)); }
+.lasha-access-copy { min-width: 0; padding: calc(27.8 * var(--u)) var(--access-gap) 0 calc(71 * var(--u)); }
 
 .lasha-access .lasha-eyebrow::after { content: none; }
 
@@ -565,13 +571,13 @@
   display: flex;
   align-items: flex-start;
   gap: calc(15 * var(--u));
-  padding: calc(24 * var(--u)) 0 0 calc(39.9 * var(--u));
+  padding: calc(24 * var(--u)) var(--access-gap) 0;
 }
 
 .lasha-access-count strong {
   color: var(--l-blue);
   font-family: var(--l-narrow);
-  font-size: calc(220 * var(--u));
+  font-size: calc(200 * var(--u));
   font-weight: 400;
   line-height: 1;
 }
@@ -588,16 +594,23 @@
 .lasha-access-actions {
   display: grid;
   align-content: start;
+  justify-items: end;
   row-gap: calc(53.5 * var(--u));
-  padding: calc(64 * var(--u)) 0 0 calc(101 * var(--u));
+  padding: calc(64 * var(--u)) 0 0 var(--access-gap);
 }
 
 .lasha-access-actions .lasha-button {
   justify-content: space-between;
-  width: calc(417 * var(--u));
+  width: min(100%, calc(417 * var(--u)));
+  gap: 1rem;
+  white-space: nowrap;
   height: calc(69 * var(--u));
   min-height: 22px;
   padding: 0 calc(21 * var(--u)) 0 calc(31 * var(--u));
+}
+
+@media (max-width: 1199px) {
+  .lasha-access-actions .lasha-button { white-space: normal; }
 }
 
 .lasha-access-actions .lasha-arrow { width: calc(47 * var(--u)); }
@@ -945,7 +958,7 @@
   .lasha-starting-grid p { max-width: 24rem; margin-top: 0.45rem; }
 
   /* Broker access: headline, count, then full-width actions. */
-  .lasha-access { grid-template-columns: minmax(0, 1fr); height: auto; padding-bottom: 3.2rem; }
+  .lasha-access { grid-template-columns: minmax(0, 1fr); height: auto; padding: 0 0 3.2rem; }
   .lasha-access-copy { padding: 3.2rem 1.25rem 0; }
   .lasha-access h2 { margin-top: 0.7rem; }
   .lasha-access-count::before,
@@ -954,7 +967,7 @@
   .lasha-access-count strong { font-size: 8.5rem; line-height: 0.82; }
   .lasha-access-count span,
   .lasha-home:is(:lang(sl), :lang(ru), :lang(pl)) .lasha-access-count span { max-width: 10rem; margin: 0 0 0.2rem; font-size: var(--v4-claim); line-height: 0.95; }
-  .lasha-access-actions { row-gap: 0.75rem; padding: 2rem 1.25rem 0; }
+  .lasha-access-actions { justify-items: stretch; row-gap: 0.75rem; padding: 2rem 1.25rem 0; }
   .lasha-access-actions .lasha-button { width: 100%; height: 3.5rem; padding: 0 1.1rem 0 1.25rem; }
   .lasha-access-actions .lasha-arrow { width: 2.4rem; }
 }

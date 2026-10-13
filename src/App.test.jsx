@@ -20,7 +20,7 @@ describe("AIXESS navigation pages", () => {
     window.history.replaceState({}, "", "/");
     render(<App />);
 
-    expect(Array.from(document.querySelectorAll(".desktop-nav button")).map((button) => button.textContent)).toEqual([
+    expect(Array.from(document.querySelectorAll(".desktop-nav button:not(.nav-group-toggle)")).filter((button) => !button.closest(".nav-group-menu")).map((button) => button.textContent)).toEqual([
       "AIXESS ADVANTAGE",
       "BROKER ACCESS",
       "SELECTED OPPORTUNITIES",
@@ -46,7 +46,7 @@ describe("AIXESS navigation pages", () => {
     expect(screen.getAllByRole("link", { name: "REQUEST ACCESS" })[0]).toHaveAttribute("href", "https://workw.com/realestate/aixco/broker-signup?lang=en");
     expect(screen.getAllByRole("link", { name: "PARTNER SIGN IN" })[0]).toHaveAttribute("href", "https://workw.com/realestate/aixco/broker-login?lang=en");
     fireEvent.click(screen.getAllByRole("button", { name: "INSIGHTS" })[0]);
-    expect(screen.getAllByRole("button", { name: /REQUEST PDF/i })).toHaveLength(3);
+    expect(screen.getAllByRole("button", { name: /^REQUEST/ })).toHaveLength(2);
   });
 
   it.each(Object.keys(NETWORK_COPY))("renders the complete first-page brief in %s", (locale) => {
@@ -146,38 +146,67 @@ describe("AIXESS navigation pages", () => {
     fireEvent.click(screen.getAllByRole("button", { name: "INSIGHTS" })[0]);
 
     expect(window.location.hash).toBe("#insights");
-    expect(screen.getByRole("heading", { name: /make the/i })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { level: 1, name: "THE KNOWLEDGEBEHIND EVERYOPPORTUNITY." })).toBeInTheDocument();
     expect(screen.getAllByRole("button", { name: "INSIGHTS" }).filter((button) => button.getAttribute("aria-current") === "page")).toHaveLength(2);
   });
 
-  it("exposes broker tools directly in the desktop and mobile navigation", async () => {
+  it("exposes broker tools directly in the desktop and mobile navigation", () => {
     window.history.replaceState({}, "", "/");
     render(<App />);
 
     expect(screen.getAllByRole("button", { name: "BROKER TOOLS" })).toHaveLength(2);
     fireEvent.click(screen.getAllByRole("button", { name: "BROKER TOOLS" })[0]);
     expect(window.location.hash).toBe("#broker-tools");
-    expect(await screen.findByRole("tablist")).toBeInTheDocument();
+    expect(screen.getByRole("heading", { level: 1, name: "EVERYTHING YOU NEEDTO SELL. ONE PLATFORM." })).toBeInTheDocument();
   });
 
   it("keeps resource CTAs connected to the working materials request dialog", () => {
     window.history.replaceState({}, "", "/#insights");
     render(<App />);
 
-    const firstResource = screen.getAllByRole("article")[0];
-    fireEvent.click(within(firstResource).getByRole("button", { name: /request pdf/i }));
+    const brochures = screen.getByRole("heading", { name: "Project Brochures" }).closest("article");
+    fireEvent.click(within(brochures).getByRole("button", { name: /^request/i }));
 
     expect(screen.getByRole("dialog", { name: /request project materials/i })).toBeInTheDocument();
     expect(screen.getByRole("heading", { name: /request project materials/i })).toBeInTheDocument();
   });
 
-  it("shows the four document calculators and client PDF generation", async () => {
+  it("answers the eight Insights questions in a native accordion", () => {
+    window.history.replaceState({}, "", "/#insights");
+    const { container } = render(<App />);
+
+    const items = container.querySelectorAll(".it-faq details");
+    expect(items).toHaveLength(8);
+    expect(Array.from(items).every((item) => !item.open)).toBe(true);
+    expect(within(items[0]).getByText("Can foreigners own property in Georgia?").tagName).toBe("SUMMARY");
+  });
+
+  it("keeps the calculators and client PDF generator off the public Broker Tools page", async () => {
     window.history.replaceState({}, "", "/#broker-tools");
     render(<App />);
 
-    expect(await screen.findByText("CREATE CLIENT PDF")).toBeInTheDocument();
-    expect(screen.getByRole("button", { name: "CREATE CLIENT PDF" })).toBeDisabled();
-    expect(screen.getByRole("tablist")).toBeInTheDocument();
+    await new Promise((resolve) => setTimeout(resolve, 50));
+    expect(screen.queryByText("CREATE CLIENT PDF")).not.toBeInTheDocument();
+    expect(screen.queryByRole("tablist")).not.toBeInTheDocument();
+    expect(screen.getAllByRole("button", { name: /BECOME A PARTNER/ }).length).toBeGreaterThan(0);
+    expect(screen.getByRole("button", { name: /REQUEST BROKER ACCESS/ })).toBeInTheDocument();
+  });
+
+  it("opens Georgia Batumi - Reverance from the Selected Opportunities menu and closes it with Escape", () => {
+    window.history.replaceState({}, "", "/");
+    const { container } = render(<App />);
+
+    const toggle = screen.getByRole("button", { name: "Show projects" });
+    expect(toggle).toHaveAttribute("aria-expanded", "false");
+    fireEvent.click(toggle);
+    expect(toggle).toHaveAttribute("aria-expanded", "true");
+    fireEvent.keyDown(toggle, { key: "Escape" });
+    expect(toggle).toHaveAttribute("aria-expanded", "false");
+
+    fireEvent.click(toggle);
+    fireEvent.click(within(container.querySelector(".nav-group-menu")).getByRole("button", { name: "Georgia Batumi - Reverance" }));
+    expect(window.location.hash).toBe("#residences");
+    expect(screen.getByRole("heading", { name: /two buildings/i })).toBeInTheDocument();
   });
 
   it("renders the admin route through its lazy boundary without throwing", async () => {

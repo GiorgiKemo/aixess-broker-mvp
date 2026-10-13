@@ -73,23 +73,27 @@
 .lasha-home .project-thumbs button:focus-visible { outline: 2px solid var(--l-ink); outline-offset: -2px; }
 .lasha-home .project-thumbs img { display: block; width: 100%; height: 100%; object-fit: cover; }
 
-.lasha-home .project-feature-side { display: grid; min-width: 0; }
+.lasha-home .project-feature-side { display: grid; grid-template-rows: auto 1fr; min-width: 0; }
 
+/* 2 × 2 figures: both columns share the same inset from their left rule and both rows the
+   same top and bottom padding, so €5K/€45K sit as far below the top rule as 60%+/12% sit
+   below the middle one, with no slack left under the second row (Klem, 12 October 2026). */
 .lasha-home .project-facts {
+  --fact-inset: calc(34 * var(--u));
+  --fact-pad: calc(24 * var(--u));
   display: grid;
-  grid-template-columns: calc(246 * var(--u)) minmax(0, 1fr);
-  grid-template-rows: minmax(calc(154 * var(--u)), auto) minmax(calc(165 * var(--u)), auto);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-auto-rows: auto;
   border-top: 1px solid var(--l-line);
 }
 
 .lasha-home .project-facts > div {
   min-width: 0;
-  padding: calc(5.8 * var(--u)) calc(16 * var(--u)) calc(6 * var(--u)) calc(34.4 * var(--u));
+  padding: var(--fact-pad) calc(16 * var(--u)) var(--fact-pad) var(--fact-inset);
 }
 
-.lasha-home .project-facts > div:nth-child(even) { padding-left: calc(85.4 * var(--u)); border-left: 1px solid var(--l-line); }
+.lasha-home .project-facts > div:nth-child(even) { border-left: 1px solid var(--l-line); }
 .lasha-home .project-facts > div:nth-child(-n + 2) { border-bottom: 1px solid var(--l-line); }
-.lasha-home .project-facts > div:nth-child(n + 3) { padding-top: calc(15.8 * var(--u)); }
 
 .lasha-home .project-facts dd {
   color: var(--l-blue);
@@ -217,10 +221,9 @@
   .lasha-home .project-thumbs button { flex-basis: 4.6rem; height: 3.1rem; }
   .lasha-home .project-thumbs button.is-active { box-shadow: inset 0 0 0 2px var(--l-blue); }
   .lasha-home .project-thumbs button.is-active img { padding: 3px; }
-  .lasha-home .project-facts { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: none; }
-  .lasha-home .project-facts > div,
-  .lasha-home .project-facts > div:nth-child(n + 3) { padding: 1rem 0.75rem 1.1rem 0; }
-  .lasha-home .project-facts > div:nth-child(even) { padding-left: 1.1rem; }
+  .lasha-home .project-facts { --fact-inset: 1.1rem; --fact-pad: 1.1rem; }
+  .lasha-home .project-facts > div { padding-right: 0.75rem; }
+  .lasha-home .project-facts > div:nth-child(odd) { padding-left: 0; }
   .lasha-home .project-facts dt { max-width: none; margin-top: 0.35rem; }
   .lasha-home .project-card { min-height: 0; margin-top: 0.4rem; padding: 1.8rem 1.25rem 1.6rem; }
   .lasha-home .project-card p { max-width: none; margin-top: 0.8rem; }

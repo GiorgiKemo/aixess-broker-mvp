@@ -89,6 +89,7 @@ const PAGE_HERO_IMAGES = {
   front: { src: "reverance-front-1400", srcSet: "reverance-front-700 700w, reverance-front-1400 1400w", position: "70% 18%" },
   facade: { src: "reverance-facade-1200", srcSet: "reverance-facade-600 600w, reverance-facade-1200 1200w", position: "60% 40%" },
   aerial: { src: "reverance-aerial-1200", srcSet: "reverance-aerial-600 600w, reverance-aerial-1200 1200w", position: "70% 30%" },
+  tower: { src: "reverance-tower-1990", srcSet: "reverance-tower-995 995w, reverance-tower-1990 1990w, reverance-tower-2985 2985w", position: "68% 40%" },
 };
 const projectImage = (name) => `/assets/projects/${name}.webp`;
 
@@ -170,6 +171,15 @@ export function HomeAbout() {
   );
 }
 
+// "ONE PLATFORM" (and its translations) stays on one line (Klem, 12 October 2026): the second
+// sentence starts its own line and its first two words never split.
+function keepPhraseTogether(text) {
+  const match = text.match(/^(.*?[.!?])\s+(\S+\s+\S+)(.*)$/);
+  if (!match) return text;
+  const [, before, phrase, after] = match;
+  return <>{before} <span className="lasha-starting-line"><span className="lasha-nowrap">{phrase}</span>{after}</span></>;
+}
+
 export function HomeStartingPoints() {
   const { locale } = useLanguage();
   const network = NETWORK_COPY[locale] || NETWORK_COPY.en;
@@ -179,7 +189,7 @@ export function HomeStartingPoints() {
   return (
     <section className="lasha-starting" aria-labelledby="lasha-starting-title">
       <p className="lasha-eyebrow">{network.introTagline.replace(/\.$/, "")}</p>
-      <h2 id="lasha-starting-title"><span>{lead}</span> <span className="lasha-accent">{accent}</span></h2>
+      <h2 id="lasha-starting-title"><span>{keepPhraseTogether(lead)}</span> <span className="lasha-accent">{accent}</span></h2>
       <div className="lasha-starting-grid">
         {/* Lasha's frame repeats the first card's line under all three titles. */}
         {network.startingPoints.map(([title], index) => (

@@ -102,7 +102,9 @@ export function AdvantagePageContent({ header }) {
           <p className="lnp-services-eyebrow">{servicesEyebrow}</p>
           <FittedHeading id="lnp-services-title">{splitBalanced(noStop(servicesTitle)).map((line) => <span key={line}>{line}</span>)}</FittedHeading>
         </div>
-        <p className="lnp-services-claim">{page.connectSupports.map((line) => <span key={line}>{line}</span>)}</p>
+        <div className="lnp-services-claim">
+          <FittedHeading as="p">{page.connectSupports.map((line) => <span key={line}>{line}</span>)}</FittedHeading>
+        </div>
       </section>
     </div>
   );

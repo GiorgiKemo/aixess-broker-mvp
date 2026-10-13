@@ -111,15 +111,19 @@
 
 .lnp-starting article { position: relative; min-width: 0; padding-right: 1.5rem; }
 
+/* Lasha's rules start 39px below the band's top edge and stop 16px above its bottom edge,
+   so they never run into the render below (Klem, 12 October 2026). */
 .lnp-starting article + article::before {
   position: absolute;
-  top: calc(39 * var(--u));
+  top: calc(19 * var(--u));
   left: calc(-122 * var(--u));
   width: 1px;
   height: calc(159 * var(--u));
   background: #bfc4c9;
   content: "";
 }
+
+.lnp-starting article:nth-child(3)::before { left: calc(-132 * var(--u)); }
 
 .lnp-rule { display: flex; align-items: center; gap: calc(14 * var(--u)); color: var(--l-blue); }
 .lnp-rule .lasha-index { font-size: var(--v4-index); }
@@ -177,28 +181,35 @@
 
 .lnp-advantage-panel .lnp-button { margin-top: calc(56 * var(--u)); }
 
-/* 360°: frame 1579–1865. */
+/* 360°: frame 1579–1865. Equal space above and below the row, the same inset either side of
+   each rule, and the figure, WE DON'T STOP and YOU CONNECT sitting on one baseline
+   (Klem, 12 October 2026). */
 .lnp-services {
+  --services-inset: calc(48 * var(--u));
   display: grid;
-  grid-template-columns: calc(299 * var(--u)) calc(431 * var(--u)) minmax(0, 1fr);
-  align-items: start;
-  padding: calc(26 * var(--u)) var(--lnp-gutter) calc(32 * var(--u));
+  grid-template-columns: calc(257 * var(--u) + var(--services-inset)) calc(340 * var(--u) + 2 * var(--services-inset)) minmax(0, 1fr);
+  align-items: end;
+  padding: calc(56 * var(--u)) var(--lnp-gutter);
 }
 
 .lnp-services-figure {
   color: var(--l-blue);
   font-family: var(--l-head);
-  font-size: calc(212 * var(--u));
+  font-size: calc(190 * var(--u));
   line-height: 0.78;
   letter-spacing: -0.02em;
 }
 
 .lnp-services-copy,
 .lnp-services-claim {
+  display: grid;
   align-self: stretch;
-  padding: calc(18 * var(--u)) 0 calc(8 * var(--u)) calc(80 * var(--u));
+  align-content: end;
+  padding: 0 var(--services-inset);
   border-left: 1px solid var(--l-line);
 }
+
+.lnp-services-claim { padding-right: 0; }
 
 .lnp-services-eyebrow {
   color: var(--l-blue);
@@ -209,16 +220,16 @@
 }
 
 .lnp-services h2,
-.lnp-services-claim {
+.lnp-services-claim > p {
   font-family: var(--l-head);
   font-size: var(--v4-h2);
   line-height: 0.88;
   text-transform: uppercase;
 }
 
-.lnp-services h2 { max-width: calc(351 * var(--u)); width: 100%; margin-top: calc(14 * var(--u)); }
-.lnp-services-claim { padding-top: calc(52 * var(--u)); }
-.lnp-services-claim > span { display: block; }
+.lnp-services h2 { width: 100%; margin-top: calc(16 * var(--u)); }
+.lnp-services-claim > p { font-size: min(var(--v4-h2), calc(89 * var(--u))); }
+.lnp-services-claim > p > span { display: block; width: max-content; white-space: nowrap; }
 
 /* Broker Access hero: panel 657, render 385, list. */
 .lnp-hero-broker { grid-template-columns: calc(657 * var(--u)) calc(385 * var(--u)) minmax(0, 1fr); }
@@ -375,8 +386,11 @@
 
   .lnp-services { padding: 2.6rem var(--lnp-gutter) 2.8rem; row-gap: 1.6rem; }
   .lnp-services-figure { font-size: 9.5rem; }
+  .lnp-services-claim > p { font-size: var(--v4-h2); }
+  .lnp-services-claim > p > span { width: auto; white-space: normal; }
   .lnp-services-copy,
   .lnp-services-claim { padding: 1.4rem 0 0; border-top: 1px solid var(--l-line); border-left: 0; }
+  .lnp-services-figure { line-height: 0.82; }
   .lnp-services h2 { max-width: none; margin-top: 0.7rem; }
 
   .lnp-people { padding: 1rem var(--lnp-gutter) 1.6rem; }
