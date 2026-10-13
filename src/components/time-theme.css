@@ -425,9 +425,6 @@ html:root[data-time-theme='night'] .lasha-page-hero::before {
     background: linear-gradient(90deg, rgba(7, 13, 30, 0.76) 0%, rgba(7, 13, 30, 0.62) 55%, rgba(7, 13, 30, 0) 88%);
   }
 }
-@media (max-width: 899px) {
-  html:root[data-time-theme='night'] .lasha-hero-copy p { background: rgba(7, 13, 30, 0.72); }
-}
 @media (max-width: 767px) {
   html:root[data-time-theme='night'] .lasha-page-hero-stacked { background: #0a1226; }
   html:root[data-time-theme='night'] .lasha-page-hero::before {
