@@ -874,19 +874,20 @@
     aspect-ratio: auto;
     height: clamp(36rem, 100svh, 52rem);
   }
-  .lasha-hero-media { object-position: 8% 50%; }
+  .lasha-hero-media { object-position: 66% 50%; }
   /* No white wash on phones (Kemo, 9 October 2026): the photo shows at full strength. */
   .lasha-hero-frame::after { content: none; }
   /* No glow behind the letters either (Kemo, 9 October 2026: "looks kinda ugly"): the title and
      subtitle are plain black on the sky; the subtitle is a touch heavier to stay readable. */
   .lasha-hero-copy p { font-weight: 500; }
-  /* The copy block sits centred in the photo below the header (Kemo, October 7). */
+  /* The copy block sits high in the photo below the header, so the title and subtitle stay on
+     the open sky above the skyline (no wash or glow allowed; contrast check, 13 October 2026). */
   .lasha-hero-copy {
-    top: 5.5rem;
+    top: 6.5rem;
     right: 1.25rem;
     bottom: 1.5rem;
     left: 1.25rem;
-    align-content: center;
+    align-content: start;
   }
   /* The poster block fills the column, but it stands about 0.92× its width, so on short or
      landscape screens its width is capped by the hero's own height minus the copy (about 20rem),
@@ -895,6 +896,19 @@
     width: calc(0.7 * min(100%, 26rem, calc((clamp(36rem, 100svh, 52rem) - 20rem) / 0.92)));
   }
   .lasha-hero-copy p { margin-top: 1.5rem; max-width: 23rem; }
+  /* The skyline rises behind the subtitle in every photo version, so the small text gets its own
+     crisp label in the theme's pale tint (dark at night) instead of a wash over the photo
+     (contrast check, 13 October 2026). */
+  .lasha-hero-copy p {
+    justify-self: start;
+    /* Narrow enough to leave the Burj Khalifa clear on the right. */
+    max-width: min(23rem, 70vw);
+    margin-left: -0.7rem;
+    /* Lasha's desktop line break would leave a one-word line in the narrow label. */
+    white-space: normal;
+    padding: 0.5rem 0.7rem;
+    background: color-mix(in srgb, var(--l-wash) 86%, transparent);
+  }
   /* Kemo, October 7: the blue text link was unreadable over the trees, so phones get a solid button. */
   .lasha-hero-cta { justify-content: space-between; gap: 0.9rem; min-height: 3.4rem; margin-top: 1.7rem; padding: 0 1.1rem 0 1.25rem; background: var(--l-blue); color: var(--l-paper); }
   .lasha-hero-cta:hover { background: var(--l-blue-deep); text-decoration: none; }

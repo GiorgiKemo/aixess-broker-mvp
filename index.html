@@ -8,19 +8,12 @@
     <meta name="robots" content="noindex, nofollow, noarchive" />
     <link rel="icon" type="image/svg+xml" href="/brand/aixess-mark.svg" />
     <link rel="apple-touch-icon" href="/brand/aixess-mark-180.png" />
-    <!-- Homepage hero photo (same srcset/sizes as HomeHero) so it arrives together with the title. -->
-    <link
-      rel="preload"
-      as="image"
-      href="/assets/generic/dubai-skyline-1200.webp"
-      imagesrcset="/assets/generic/dubai-skyline-480.webp 480w, /assets/generic/dubai-skyline-800.webp 800w, /assets/generic/dubai-skyline-1200.webp 1200w, /assets/generic/dubai-skyline-1672.webp 1672w"
-      imagesizes="(max-width: 899px) and (orientation: portrait) 145vh, 100vw"
-      fetchpriority="high"
-      type="image/webp"
-    />
     <title>AiXESS — Turn Your Network Into Opportunity</title>
-    <!-- Time-of-day theme before first paint (AIXCO.Global v4 rules; keep in sync with src/timeTheme.js). -->
-    <script>(function(){var m="auto";try{m=localStorage.getItem("aixess-time-theme")||"auto"}catch(e){}if(m!=="day"&&m!=="afternoon"&&m!=="night")m="auto";var h=new Date().getHours();var t=m==="auto"?(h>=6&&h<14?"day":h>=14&&h<19?"afternoon":"night"):m;var d=document.documentElement;d.dataset.timeTheme=t;d.dataset.timeThemeMode=m;})();</script>
+    <!-- Time-of-day theme before first paint (AIXCO.Global v4 rules; keep in sync with src/timeTheme.js).
+         On the homepage it also preloads the hero photo in that theme (same srcset/sizes as
+         HomeHero), so the title and the right photo arrive together. The widths are written by
+         scripts/import-theme-photos.py. -->
+    <script>(function(){var m="auto";try{m=localStorage.getItem("aixess-time-theme")||"auto"}catch(e){}if(m!=="day"&&m!=="afternoon"&&m!=="night")m="auto";var h=new Date().getHours();var t=m==="auto"?(h>=6&&h<14?"day":h>=14&&h<19?"afternoon":"night"):m;var d=document.documentElement;d.dataset.timeTheme=t;d.dataset.timeThemeMode=m;var r=location.hash.replace(/^#\/?/,"");if(r&&r!=="home"&&r!=="project"&&r!=="projects")return;var W=/*hero-widths*/{"day":[480,800,1200,1600,2400,3200,4000],"afternoon":[480,800,1200,1600,2400,3200,4000],"night":[480,800,1200,1600,2400,3200,4000]}/*end*/[t];if(!W)return;var u=function(w){return"/assets/themed/dubai-skyline-"+t+"-"+w+".avif"};var l=document.createElement("link");l.rel="preload";l.as="image";l.type="image/avif";l.setAttribute("fetchpriority","high");l.href=u(W.filter(function(w){return w>=1200})[0]||W[W.length-1]);l.setAttribute("imagesrcset",W.map(function(w){return u(w)+" "+w+"w"}).join(", "));l.setAttribute("imagesizes","(max-width: 899px) and (orientation: portrait) 145vh, 100vw");document.head.appendChild(l);})();</script>
   </head>
   <body>
     <div id="root"></div>

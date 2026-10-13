@@ -392,3 +392,43 @@ html:root[data-time-theme='afternoon'] .lasha-page .network-advantage .network-c
   .time-theme-menu__button svg,
   .time-theme-menu__panel { transition: none; animation: none; }
 }
+
+/* The night photos are dark (Benji and Giorgi, 13 October 2026: day, afternoon and night
+   versions of every brand photo), so at night the copy laid over a hero photo turns off-white
+   and the soft wash behind it turns to the photo's own deep blue instead of a pale fog. */
+html:root[data-time-theme='night'] :is(.lasha-hero h1, .lasha-hero-copy p, .lasha-page .lasha-page-hero-title, .lasha-page-hero-text, .lasha-page-hero .it-hero-note) {
+  color: #f7f7f4;
+}
+html:root[data-time-theme='night'] .lasha-page-hero .lasha-eyebrow { color: var(--l-blue-light); }
+html:root[data-time-theme='afternoon'] .lasha-page-hero .lasha-eyebrow { color: #2f4733; }
+html:root[data-time-theme='night'] .lasha-page-hero .it-hero-actions .button-ghost { border-color: #f7f7f4; color: #f7f7f4; }
+html:root[data-time-theme='night'] :is(.lasha-hero-cta, .lasha-page-hero .it-hero-actions .button-primary) {
+  border-color: #f7f7f4;
+  background: #f7f7f4;
+  color: #171a1d;
+}
+html:root[data-time-theme='night'] :is(.lasha-hero-cta, .lasha-page-hero .it-hero-actions .button-primary):hover {
+  border-color: #dce7f0;
+  background: #dce7f0;
+}
+html:root[data-time-theme='night'] :is(.lasha-hero-cta, .lasha-page-hero .it-hero-actions .button):focus-visible { outline-color: #f7f7f4; }
+html:root[data-time-theme='night'] .lasha-hero-frame::after {
+  background: linear-gradient(90deg, rgba(7, 13, 30, 0.72) 0%, rgba(7, 13, 30, 0.5) 36%, rgba(7, 13, 30, 0) 58%);
+}
+html:root[data-time-theme='night'] .lasha-page-hero::before {
+  background: linear-gradient(90deg, rgba(7, 13, 30, 0.72) 0%, rgba(7, 13, 30, 0.48) 40%, rgba(7, 13, 30, 0) 68%);
+}
+@media (min-width: 768px) and (max-width: 1100px) {
+  html:root[data-time-theme='night'] .lasha-page-hero::before {
+    background: linear-gradient(90deg, rgba(7, 13, 30, 0.76) 0%, rgba(7, 13, 30, 0.62) 55%, rgba(7, 13, 30, 0) 88%);
+  }
+}
+@media (max-width: 899px) {
+  html:root[data-time-theme='night'] .lasha-hero-copy p { background: rgba(7, 13, 30, 0.72); }
+}
+@media (max-width: 767px) {
+  html:root[data-time-theme='night'] .lasha-page-hero-stacked { background: #0a1226; }
+  html:root[data-time-theme='night'] .lasha-page-hero::before {
+    background: linear-gradient(180deg, rgba(7, 13, 30, 0.1) 0%, rgba(7, 13, 30, 0.58) 30%, rgba(7, 13, 30, 0.74) 50%, rgba(7, 13, 30, 0.8) 100%);
+  }
+}

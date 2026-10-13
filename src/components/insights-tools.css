@@ -215,7 +215,7 @@
   gap: clamp(1.5rem, 4vw, 4rem);
 }
 
-.it-workspace-intro img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; }
+.it-workspace-intro img { width: 100%; height: auto; aspect-ratio: 3 / 2; object-fit: cover; object-position: 50% 58%; }
 
 .it-features {
   display: grid;
@@ -304,6 +304,8 @@
   .it-faq { grid-template-columns: minmax(0, 1fr); }
   .it-faq-column:first-child > details:last-child { border-bottom: 0; }
   .it-workspace-intro { grid-template-columns: minmax(0, 1fr); }
+  /* Stacked under the copy, the photo supports the message instead of filling a tablet screen. */
+  .it-workspace-intro img { max-width: 40rem; aspect-ratio: 16 / 9; }
   .it-step-list { grid-template-columns: minmax(0, 1fr); }
   .lasha-page-hero .it-hero-actions .button { flex: 0 0 auto; width: 100%; justify-content: space-between; }
 }

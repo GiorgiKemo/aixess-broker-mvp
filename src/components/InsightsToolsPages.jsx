@@ -4,7 +4,7 @@ import { AIXCO_FAQ } from "../aixco-faq-copy.js";
 import { INSIGHTS_TOOLS_COPY } from "../insights-tools-copy.js";
 import { LashaArrow, LashaPageHero } from "./LashaHomeSections.jsx";
 import "./insights-tools.css";
-import { genericPhoto } from "../data/genericPhotos.js";
+import { ThemedImage } from "./ThemedImage.jsx";
 
 const asset = (path) => `/assets/${path}`;
 
@@ -35,14 +35,14 @@ export function InsightsPageContent({ header, onOpenModal }) {
   const faqs = AIXCO_FAQ[locale] || AIXCO_FAQ.en;
   const articleMedia = [
     { src: asset("projects/reverance-aerial-600.webp"), srcSet: `${asset("projects/reverance-aerial-600.webp")} 600w, ${asset("projects/reverance-aerial-1200.webp")} 1200w` },
-    genericPhoto("dubai-skyline", 800),
-    { ...genericPhoto("switzerland-lake", 800), position: "70% 50%" },
+    { family: "dubai-skyline", position: "72% 50%" },
+    { family: "switzerland-lakeside", position: "70% 50%" },
   ];
   const resourceMedia = [
     { src: asset("projects/reverance-front-700.webp") },
     { icon: BookOpenText },
     { icon: ChartLineUp },
-    { ...genericPhoto("coastal-terrace", 800), position: "62% 50%" },
+    { family: "coastal-lifestyle", position: "62% 60%" },
   ];
   // Brochures and the lifestyle guide go through the existing materials request;
   // buyer guides and market reports are not published yet.
@@ -122,7 +122,11 @@ function CardMedia({ media, label }) {
   }
   return (
     <div className="it-card-media">
-      <img src={media.src} srcSet={media.srcSet} sizes="(max-width: 899px) 100vw, 30vw" width={media.width} height={media.height} style={media.position ? { objectPosition: media.position } : undefined} alt="" loading="lazy" decoding="async" />
+      {media.family ? (
+        <ThemedImage family={media.family} defaultWidth={800} sizes="(max-width: 899px) 100vw, 30vw" style={{ objectPosition: media.position }} loading="lazy" decoding="async" />
+      ) : (
+        <img src={media.src} srcSet={media.srcSet} sizes="(max-width: 899px) 100vw, 30vw" alt="" loading="lazy" decoding="async" />
+      )}
     </div>
   );
 }
@@ -159,7 +163,7 @@ export function BrokerToolsPageContent({ header, onOpenModal }) {
   const { tools: c } = useCopy();
   return (
     <>
-      <LashaPageHero header={header} eyebrow={c.eyebrow} title={c.title} image="marina-towers" copy={c.copy}>
+      <LashaPageHero header={header} eyebrow={c.eyebrow} title={c.title} image="calm-waterfront" copy={c.copy} stackOnPhone>
         <div className="page-cta-row it-hero-actions">
           <button className="button button-primary" type="button" onClick={() => onOpenModal("register")}>{c.partner}<LashaArrow length={24} /></button>
           <button className="button button-ghost" type="button" onClick={() => onOpenModal("login")}>{c.login}</button>
@@ -170,7 +174,8 @@ export function BrokerToolsPageContent({ header, onOpenModal }) {
         <section className="it-section it-paper" aria-labelledby="it-workspace-title">
           <div className="it-workspace-intro">
             <SectionHeading id="it-workspace-title" eyebrow={c.workspaceEyebrow} title={c.workspaceTitle} copy={c.workspaceCopy} />
-            <img src={asset("projects/reverance-hero-1200.webp")} srcSet={`${asset("projects/reverance-hero-600.webp")} 600w, ${asset("projects/reverance-hero-1200.webp")} 1200w`} sizes="(max-width: 899px) 100vw, 40vw" alt="" loading="lazy" decoding="async" />
+            {/* Giorgi, 13 October 2026: a simple modern building in place of the old Reverance render. */}
+            <ThemedImage className="it-workspace-photo" family="workspace-building" defaultWidth={800} sizes="(max-width: 899px) 100vw, 40vw" loading="lazy" decoding="async" />
           </div>
           <ol className="it-features">
             {c.features.map(([title, body], index) => {

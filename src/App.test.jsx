@@ -1,6 +1,7 @@
-import { act, fireEvent, render, screen, within } from "@testing-library/react";
+import { act, fireEvent, render, screen, waitFor, within } from "@testing-library/react";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { App } from "./App";
+import { resetTimeThemeForTests, setTimeThemeMode } from "./timeTheme";
 import { NETWORK_COPY } from "./network-copy";
 import { HOME_HERO_LINES } from "./project-showcase-copy";
 import { LASHA_HOME_COPY } from "./lasha-home-copy";
@@ -84,16 +85,32 @@ describe("AIXESS navigation pages", () => {
     }
   });
 
-  it("shows Klem's brand photos on the Dubai, Switzerland and Lifestyle cards instead of colour blocks", () => {
+  it("shows each brand photo in the version for the current theme, and swaps them all when the theme changes", async () => {
+    window.localStorage.setItem("aixess-time-theme", "night");
+    resetTimeThemeForTests();
     window.history.replaceState({}, "", "/#insights");
     render(<App />);
-    const sources = Array.from(document.querySelectorAll(".it-card-media img")).map((img) => img.getAttribute("src"));
-    expect(sources).toEqual(expect.arrayContaining([
-      expect.stringContaining("/assets/generic/dubai-skyline-"),
-      expect.stringContaining("/assets/generic/switzerland-lake-"),
-      expect.stringContaining("/assets/generic/coastal-terrace-"),
-    ]));
-    expect(document.querySelector(".lasha-page-hero-media").getAttribute("src")).toContain("/assets/generic/coastal-city-");
+    const cardPhotos = () => Array.from(document.querySelectorAll(".it-card-media img[data-theme-photo]")).map((img) => img.dataset.themePhoto);
+    expect(cardPhotos()).toEqual(["dubai-skyline-night", "switzerland-lakeside-night", "coastal-lifestyle-night"]);
+    const hero = document.querySelector(".lasha-page-hero-media");
+    expect(hero.getAttribute("src")).toMatch(/^\/assets\/themed\/coastal-city-night-\d+\.webp$/);
+
+    act(() => setTimeThemeMode("day"));
+    await waitFor(() => expect(cardPhotos()).toEqual(["dubai-skyline-day", "switzerland-lakeside-day", "coastal-lifestyle-day"]));
+    expect(document.querySelector(".lasha-page-hero-media").dataset.themePhoto).toBe("coastal-city-day");
+    expect(document.documentElement.dataset.timeTheme).toBe("day");
+  });
+
+  it("gives Broker Tools the calm waterfront hero and the modern workspace building, not the old marina or Reverance render", () => {
+    window.localStorage.setItem("aixess-time-theme", "afternoon");
+    resetTimeThemeForTests();
+    window.history.replaceState({}, "", "/#broker-tools");
+    render(<App />);
+    expect(document.querySelector(".lasha-page-hero-media").dataset.themePhoto).toBe("calm-waterfront-afternoon");
+    const workspace = document.querySelector(".it-workspace-photo");
+    expect(workspace.dataset.themePhoto).toBe("workspace-building-afternoon");
+    expect(workspace).toHaveAttribute("loading", "lazy");
+    expect(document.body.innerHTML).not.toMatch(/marina-towers|reverance-hero-/);
   });
 
   it("puts the newer first-page brief on the homepage while retaining the existing structure", () => {

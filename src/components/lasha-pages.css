@@ -552,9 +552,34 @@ body .modal-panel :is(button, input, a):focus-visible { outline-color: var(--l-b
   .lasha-page-hero { min-height: clamp(26rem, 68svh, 34rem); }
   .lasha-page-hero-media { object-position: var(--hero-position-phone, 78% 30%); }
   .lasha-page-hero::before {
-    background: linear-gradient(180deg, color-mix(in srgb, var(--l-wash-page) 10%, transparent) 0%, color-mix(in srgb, var(--l-wash-page) 78%, transparent) 45%, color-mix(in srgb, var(--l-wash-page) 86%, transparent) 100%);
+    background: linear-gradient(180deg, color-mix(in srgb, var(--l-wash-page) 10%, transparent) 0%, color-mix(in srgb, var(--l-wash-page) 74%, transparent) 30%, color-mix(in srgb, var(--l-wash-page) 86%, transparent) 50%, color-mix(in srgb, var(--l-wash-page) 88%, transparent) 100%);
   }
   .lasha-page-hero-copy { align-content: end; }
+}
+
+/* Over a photo the small eyebrow takes the theme's deeper accent, and below 1100px, where the
+   copy spans most of the width, the wash reaches further right (pixel contrast check,
+   13 October 2026). */
+.lasha-page-hero .lasha-eyebrow { color: var(--l-blue-deep); }
+@media (min-width: 768px) and (max-width: 1100px) {
+  .lasha-page-hero::before {
+    background: linear-gradient(90deg, color-mix(in srgb, var(--l-wash-page) 88%, transparent) 0%, color-mix(in srgb, var(--l-wash-page) 76%, transparent) 55%, color-mix(in srgb, var(--l-wash-page) 0%, transparent) 88%);
+  }
+}
+
+/* Broker Tools on phones (Giorgi, 13 October 2026: photos must fit behind and beside the text on
+   every screen). The copy is too tall to sit over the photo without covering the building, so
+   the photo becomes a band under the header and the copy follows on a calm panel in the
+   photo's own light. */
+@media (max-width: 767px) {
+  .lasha-page-hero-stacked { min-height: 0; background: var(--l-wash-page); }
+  .lasha-page-hero-stacked > .site-header { position: absolute; inset: 0 0 auto; }
+  .lasha-page-hero-stacked .lasha-page-hero-media { position: relative; z-index: 0; height: clamp(16rem, 72vw, 26rem); }
+  .lasha-page-hero-stacked::before { content: none; }
+  .lasha-page-hero-stacked .lasha-page-hero-copy { align-content: start; padding-top: 2rem; padding-bottom: 3rem; }
+  /* The two title lines run on as one sentence, so ONE PLATFORM stays together on a narrow screen. */
+  .lasha-page-hero-stacked .lasha-page-hero-title > span { display: inline; }
+  .lasha-page-hero-stacked .lasha-page-hero-title > span + span::before { content: " "; }
 }
 
 /* Phone and tablet menu in Lasha's language (Kemo, 7 October 2026: the old black/orange

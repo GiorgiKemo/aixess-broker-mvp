@@ -456,7 +456,7 @@ function ResidencesPage({ currentPage, menuOpen, onToggleMenu, onNavigate, onOpe
         header={<PageHeader {...{ currentPage, menuOpen, onToggleMenu, onNavigate, onOpenModal }} />}
         eyebrow={t("projectReveranceBatumi")}
         title={[t("oneBuilding"), t("yourNextMove")]}
-        image="front"
+        image="opportunities"
         copy={t("residenceRouteCopy")}
       />
       <main className="page-main">
