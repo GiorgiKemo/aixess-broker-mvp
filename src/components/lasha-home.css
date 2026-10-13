@@ -99,9 +99,12 @@
 
 .lasha-plus { font-family: var(--l-head); font-weight: 700; font-size: 0.62em; vertical-align: 0.2em; margin-left: 0.02em; }
 
+/* Stretched in grid columns: Safari sizes a shrink-to-fit flex eyebrow too narrow for its
+   letter-spaced text and wraps it (BROKER TOOLS on two lines); the hairline keeps its own width. */
 .lasha-eyebrow {
   display: flex;
   align-items: center;
+  justify-self: stretch;
   color: var(--l-blue);
   font-size: var(--v4-eyebrow);
   font-weight: 600;

@@ -13,7 +13,7 @@ and the Advantage / Broker Access split-hero photos 1.5-3x larger than the suppl
 softens; it adds no detail that was not in the original. Photos without an enlargement are
 used at their native size.
 
-Writes public/assets/themed/<family>-<theme>-<width>.avif and .webp, src/data/theme-photo-sizes.json and
+Writes public/assets/themed/<family>-<theme>-<width>.webp, src/data/theme-photo-sizes.json and
 the homepage hero widths in index.html's theme boot script.
 """
 
@@ -40,9 +40,8 @@ FAMILIES = {
 }
 NATIVE_WIDTHS = (480, 800, 1200, 1600, 2400)
 UPSCALED_WIDTHS = (480, 800, 1200, 1600, 2400, 3200, 4000)
-# Every browser that can use the 3200/4000px files also reads AVIF, so WebP (the fallback for
-# older browsers) stops at 2400px to keep the deployment small.
-WEBP_MAX = 2400
+# WebP only: Safari on Kemo's MacBook showed a broken hero with the AVIF files (13 October 2026),
+# while WebP has worked in every browser the site supports.
 
 
 def source_for(directory, stem):
@@ -72,18 +71,15 @@ def main(source_dir, upscaled_dir=None):
             for width in widths:
                 height = round(image.height * width / image.width)
                 resized = image.resize((width, height), Image.LANCZOS)
-                if width <= WEBP_MAX or width == widths[0]:
-                    resized.save(OUT / f"{family}-{theme}-{width}.webp", "WEBP", quality=88, method=6)
-                resized.save(OUT / f"{family}-{theme}-{width}.avif", "AVIF", quality=70, speed=6)
-            webp = [w for w in widths if w <= WEBP_MAX] or widths[:1]
-            sizes[family][theme] = {"width": image.width, "height": image.height, "widths": widths, "webpWidths": webp}
+                resized.save(OUT / f"{family}-{theme}-{width}.webp", "WEBP", quality=86, method=6)
+            sizes[family][theme] = {"width": image.width, "height": image.height, "widths": widths}
             print(family, theme, image.size, widths)
     SIZES.write_text(json.dumps(sizes, indent=2) + "\n")
     # index.html preloads the homepage hero in the current theme before React starts.
     index = ROOT / "index.html"
     html = index.read_text()
     start, end = html.index("/*hero-widths*/") + len("/*hero-widths*/"), html.index("/*end*/")
-    widths = {theme: sizes["dubai-skyline"][theme]["widths"] for theme in THEMES}  # AVIF preload
+    widths = {theme: sizes["dubai-skyline"][theme]["widths"] for theme in THEMES}  # WebP preload
     index.write_text(html[:start] + json.dumps(widths, separators=(",", ":")) + html[end:])
 
 

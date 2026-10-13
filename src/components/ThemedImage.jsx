@@ -32,11 +32,9 @@ export function ThemedImage({ family, defaultWidth = 1200, sizes, ref: externalR
       return undefined;
     }
     let cancelled = false;
-    // Decode the same file the browser picked for the current photo (AVIF or WebP).
-    const avif = current.currentSrc.endsWith(".avif");
     const probe = new Image();
     if (sizes) probe.sizes = sizes;
-    probe.srcset = avif ? next.avifSrcSet : next.srcSet;
+    probe.srcset = next.srcSet;
     probe.src = next.src;
     const swap = () => {
       if (!cancelled) setShown(next);
@@ -49,22 +47,18 @@ export function ThemedImage({ family, defaultWidth = 1200, sizes, ref: externalR
     };
   }, [theme, family, defaultWidth, sizes, shown.theme, shown.family]);
 
-  // AVIF first (smaller), WebP for browsers without it. The <picture> stays inline, so the
-  // img keeps its own classes and positioning.
+  // WebP only: Safari showed a broken hero with the AVIF versions (13 October 2026).
   return (
-    <picture>
-      <source type="image/avif" srcSet={shown.avifSrcSet} sizes={sizes} />
-      <img
-        ref={setRef}
-        src={shown.src}
-        srcSet={shown.srcSet}
-        sizes={sizes}
-        width={shown.width}
-        height={shown.height}
-        data-theme-photo={`${family}-${shown.theme}`}
-        alt=""
-        {...props}
-      />
-    </picture>
+    <img
+      ref={setRef}
+      src={shown.src}
+      srcSet={shown.srcSet}
+      sizes={sizes}
+      width={shown.width}
+      height={shown.height}
+      data-theme-photo={`${family}-${shown.theme}`}
+      alt=""
+      {...props}
+    />
   );
 }
