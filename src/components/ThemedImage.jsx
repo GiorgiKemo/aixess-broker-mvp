@@ -41,7 +41,9 @@ export function ThemedImage({ family, defaultWidth = 1200, sizes, ref: externalR
     const swap = () => {
       if (!cancelled) setShown(next);
     };
-    (typeof probe.decode === "function" ? probe.decode() : Promise.reject()).then(swap, swap);
+    // If the new version fails to load, keep the photo already showing rather than a broken one.
+    if (typeof probe.decode === "function") probe.decode().then(swap, () => {});
+    else swap();
     return () => {
       cancelled = true;
     };

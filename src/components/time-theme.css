@@ -402,14 +402,16 @@ html:root[data-time-theme='night'] :is(.lasha-hero h1, .lasha-hero-copy p, .lash
 html:root[data-time-theme='night'] .lasha-page-hero .lasha-eyebrow { color: var(--l-blue-light); }
 html:root[data-time-theme='afternoon'] .lasha-page-hero .lasha-eyebrow { color: #2f4733; }
 html:root[data-time-theme='night'] .lasha-page-hero .it-hero-actions .button-ghost { border-color: #f7f7f4; color: #f7f7f4; }
+/* Over the dark night photos the hero is an ink ground, so its solid accent button uses the
+   theme's accent for ink grounds (--l-blue-light), as v4 does on its dark sections. */
 html:root[data-time-theme='night'] :is(.lasha-hero-cta, .lasha-page-hero .it-hero-actions .button-primary) {
-  border-color: #f7f7f4;
-  background: #f7f7f4;
+  border-color: var(--l-blue-light);
+  background: var(--l-blue-light);
   color: #171a1d;
 }
 html:root[data-time-theme='night'] :is(.lasha-hero-cta, .lasha-page-hero .it-hero-actions .button-primary):hover {
-  border-color: #dce7f0;
-  background: #dce7f0;
+  border-color: color-mix(in srgb, var(--l-blue-light) 70%, #ffffff);
+  background: color-mix(in srgb, var(--l-blue-light) 70%, #ffffff);
 }
 html:root[data-time-theme='night'] :is(.lasha-hero-cta, .lasha-page-hero .it-hero-actions .button):focus-visible { outline-color: #f7f7f4; }
 html:root[data-time-theme='night'] .lasha-hero-frame::after {
