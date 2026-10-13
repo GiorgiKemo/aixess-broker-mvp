@@ -431,3 +431,44 @@ html:root[data-time-theme='night'] .lasha-page-hero::before {
     background: linear-gradient(180deg, rgba(7, 13, 30, 0.1) 0%, rgba(7, 13, 30, 0.58) 30%, rgba(7, 13, 30, 0.74) 50%, rgba(7, 13, 30, 0.8) 100%);
   }
 }
+
+/* Dark pages at night (Kemo, 13 October 2026: "why in night mode we have white pages???"):
+   the paper ground turns graphite and the ink text turns off-white, on every public page, the
+   menu, dialogs and cookie notice. Sections that were already ink keep a deeper graphite with
+   light text, so they still stand apart from the page. The accent is v4's light cobalt tint,
+   as on v4's dark sections. */
+html:root[data-time-theme='night'] {
+  --l-ink: #ecebe6;
+  --l-paper: #15181c;
+  --l-card: #1d2126;
+  --l-line: #353b42;
+  --l-blue: #c9d3dc;
+  --l-blue-deep: #e6ecf1;
+  --l-field: #232930;
+  --l-mist: #1b1f24;
+  --l-wash: #1d2228;
+  --l-wash-page: #171b20;
+}
+html:root[data-time-theme='night'] :is(.lasha-home, .lasha-page, .lasha-menu) {
+  --l-ink: #ecebe6;
+  --l-paper: #15181c;
+  --l-line: #353b42;
+  color-scheme: dark;
+}
+html:root[data-time-theme='night'] :is(
+  .lasha-metrics,
+  .lasha-home .project-card,
+  .it-ink,
+  .it-preview-sketch-4,
+  .lasha-page .network-backing,
+  .lasha-page .network-client,
+  .lasha-page .calculator-results,
+  .mobile-nav.lasha-menu
+) {
+  --l-ink: #0b0d0f;
+  --l-paper: #ecebe6;
+}
+html:root[data-time-theme='night'] .it-ink .it-card:not(.it-card-light) {
+  --l-ink: #ecebe6;
+  --l-paper: #1d2126;
+}

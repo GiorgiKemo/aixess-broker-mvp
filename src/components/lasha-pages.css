@@ -46,7 +46,7 @@
   z-index: -1;
   inset: 0 0 auto;
   height: 9rem;
-  background: linear-gradient(180deg, rgba(23, 26, 29, 0.42), rgba(23, 26, 29, 0));
+  background: linear-gradient(180deg, color-mix(in srgb, var(--l-ink, #171a1d) 42%, transparent), rgba(23, 26, 29, 0));
   content: "";
   pointer-events: none;
 }
@@ -101,9 +101,9 @@
 :is(.lasha-home, .lasha-page) .site-header .desktop-nav button::after { background: #fff; }
 :is(.lasha-home, .lasha-page, .lasha-menu) .language-switcher-trigger svg:first-child { color: #fff; }
 :is(.lasha-home, .lasha-page, .lasha-menu) .language-switcher-trigger:is(:hover, :focus-visible) { border-color: #fff; }
-:is(.lasha-home, .lasha-page, .lasha-menu) .language-switcher-menu { border: 0; background: #f4f4f1; }
-:is(.lasha-home, .lasha-page, .lasha-menu) .language-switcher-menu button { color: #171a1d; }
-:is(.lasha-home, .lasha-page, .lasha-menu) .language-switcher-menu button:is(:hover, :focus-visible, .is-active) { background: color-mix(in srgb, var(--l-blue) 12%, transparent); color: #171a1d; }
+:is(.lasha-home, .lasha-page, .lasha-menu) .language-switcher-menu { border: 0; background: var(--l-paper, #f4f4f1); }
+:is(.lasha-home, .lasha-page, .lasha-menu) .language-switcher-menu button { color: var(--l-ink, #171a1d); }
+:is(.lasha-home, .lasha-page, .lasha-menu) .language-switcher-menu button:is(:hover, :focus-visible, .is-active) { background: color-mix(in srgb, var(--l-blue) 12%, transparent); color: var(--l-ink, #171a1d); }
 :is(.lasha-home, .lasha-page, .lasha-menu) .language-switcher-menu button.is-active small { color: var(--l-blue); }
 
 /* Shared type and controls. */
@@ -146,7 +146,7 @@
 .lasha-page .button-primary:hover { border-color: var(--l-blue-deep); background: var(--l-blue-deep); }
 .lasha-page .button-ghost:hover { background: var(--l-ink); color: var(--l-paper); }
 .lasha-page .site-header .button-ghost { border-color: rgba(255, 255, 255, 0.82); color: #fff; }
-.lasha-page .site-header .button-ghost:hover { background: #fff; color: var(--l-ink); }
+.lasha-page .site-header .button-ghost:hover { background: #fff; color: #171a1d; }
 .lasha-page .site-header .button { min-height: 3rem; padding-block: 0.85rem; }
 
 .lasha-page .text-link,
@@ -167,7 +167,7 @@
 /* Content sections from NetworkSections. */
 .lasha-page .network-section {
   padding: clamp(4rem, 8.5vw, 7.8rem) var(--page-gutter);
-  border-top: 1px solid rgba(23, 26, 29, 0.12);
+  border-top: 1px solid color-mix(in srgb, var(--l-ink, #171a1d) 12%, transparent);
   background: var(--l-paper);
   color: var(--l-ink);
 }
@@ -227,7 +227,7 @@
 
 .lasha-page .network-card {
   padding: clamp(1.6rem, 2.6vw, 2.3rem) 0;
-  border-top: 1px solid rgba(23, 26, 29, 0.2);
+  border-top: 1px solid color-mix(in srgb, var(--l-ink, #171a1d) 20%, transparent);
 }
 
 .lasha-page .network-number {
@@ -300,11 +300,11 @@
   text-transform: uppercase;
 }
 
-.lasha-page .network-steps li { border-top: 1px solid rgba(23, 26, 29, 0.2); }
+.lasha-page .network-steps li { border-top: 1px solid color-mix(in srgb, var(--l-ink, #171a1d) 20%, transparent); }
 .lasha-page .network-steps h3 { margin: 0; }
 .lasha-page .network-badge { border-color: var(--l-blue); color: var(--l-blue); font-weight: 500; letter-spacing: 0.06em; }
 
-.lasha-page .network-reports :is(a, button) { border-color: rgba(23, 26, 29, 0.2); }
+.lasha-page .network-reports :is(a, button) { border-color: color-mix(in srgb, var(--l-ink, #171a1d) 20%, transparent); }
 .lasha-page .network-reports span { color: var(--l-blue); }
 
 .lasha-page .network-service-path {
@@ -335,7 +335,7 @@
 .lasha-page :is(.network-backing, .network-client) .network-emphasis { color: var(--l-blue-light); }
 .lasha-page :is(.network-backing, .network-client) .network-badge { border-color: var(--l-blue-light); color: var(--l-blue-light); }
 .lasha-page :is(.network-backing, .network-client) .button-ghost { border-color: #fff; color: var(--l-paper); }
-.lasha-page :is(.network-backing, .network-client) .button-ghost:hover { background: #fff; color: var(--l-ink); }
+.lasha-page :is(.network-backing, .network-client) .button-ghost:hover { background: #fff; color: #171a1d; }
 
 /* The closing call to action echoes the homepage's broker access row. */
 .lasha-page .network-closing .network-heading h2 { max-width: 16ch; font-family: var(--l-narrow); font-size: var(--v4-closing); line-height: 0.88; }
@@ -344,7 +344,7 @@
 .lasha-page .page-section {
   padding: clamp(4rem, 8.5vw, 7.8rem) var(--page-gutter);
   border-bottom: 0;
-  border-top: 1px solid rgba(23, 26, 29, 0.12);
+  border-top: 1px solid color-mix(in srgb, var(--l-ink, #171a1d) 12%, transparent);
 }
 
 .lasha-page .section-heading-row { align-items: flex-start; flex-direction: column; gap: 0.6rem; }
@@ -367,13 +367,13 @@
   min-height: 0;
   padding: 1.8rem clamp(1.2rem, 2.4vw, 2.2rem) 2rem;
   border: 0;
-  border-left: 1px solid rgba(23, 26, 29, 0.18);
+  border-left: 1px solid color-mix(in srgb, var(--l-ink, #171a1d) 18%, transparent);
   background: transparent;
 }
 
 .lasha-page .resource-card:first-child { padding-left: 0; border-left: 0; }
 
-.lasha-page .resource-card-top { color: rgba(23, 26, 29, 0.6); }
+.lasha-page .resource-card-top { color: color-mix(in srgb, var(--l-ink, #171a1d) 60%, transparent); }
 .lasha-page .resource-card-top span:first-child { color: var(--l-blue); font-family: var(--l-num); font-size: var(--v4-index); font-weight: 500; letter-spacing: 0; }
 
 .lasha-page .resource-card h3 {
@@ -386,13 +386,13 @@
   text-transform: uppercase;
 }
 
-.lasha-page .resource-card p { color: rgba(23, 26, 29, 0.78); }
+.lasha-page .resource-card p { color: color-mix(in srgb, var(--l-ink, #171a1d) 78%, transparent); }
 
 .lasha-page .faq-section { background: var(--l-paper); }
-.lasha-page .faq-list details { border-color: rgba(23, 26, 29, 0.2); }
+.lasha-page .faq-list details { border-color: color-mix(in srgb, var(--l-ink, #171a1d) 20%, transparent); }
 .lasha-page .faq-list summary { color: var(--l-ink); font-size: var(--v4-faq); font-weight: 500; line-height: 1.35; }
 .lasha-page .faq-list summary span { color: var(--l-blue); }
-.lasha-page .faq-list p { color: rgba(23, 26, 29, 0.78); font-size: 1.02rem; line-height: 1.7; }
+.lasha-page .faq-list p { color: color-mix(in srgb, var(--l-ink, #171a1d) 78%, transparent); font-size: 1.02rem; line-height: 1.7; }
 
 /* Broker tools. */
 .lasha-page .calculator-page { padding: clamp(4rem, 8.5vw, 7.8rem) var(--page-gutter); }
@@ -433,7 +433,7 @@
   text-transform: uppercase;
 }
 
-.lasha-page :is(.calculator-form, .client-pdf) { border: 1px solid rgba(23, 26, 29, 0.2); background: #fff; }
+.lasha-page :is(.calculator-form, .client-pdf) { border: 1px solid color-mix(in srgb, var(--l-ink, #171a1d) 20%, transparent); background: var(--l-card, #fff); }
 .lasha-page .client-pdf { background: var(--l-mist); }
 .lasha-page .calculator-results { border: 0; background: var(--l-ink); color: var(--l-paper); }
 .lasha-page .calculator-results dl > div { border-top-color: rgba(244, 244, 241, 0.25); }
@@ -442,8 +442,8 @@
 .lasha-page .calculator-fields label { font-size: 0.9rem; font-weight: 500; }
 
 .lasha-page :is(.calculator-fields input, .client-pdf select, .client-pdf textarea) {
-  border: 1px solid rgba(23, 26, 29, 0.35);
-  background: #fff;
+  border: 1px solid color-mix(in srgb, var(--l-ink, #171a1d) 35%, transparent);
+  background: var(--l-card, #fff);
   color: var(--l-ink);
   color-scheme: light;
 }
@@ -477,48 +477,48 @@
 
 /* The first policy section sits right under the hero. */
 .privacy-page.lasha-page section:first-child { margin-top: 0; }
-.privacy-page.lasha-page section { border-top: 1px solid rgba(23, 26, 29, 0.15); }
-.privacy-page.lasha-page p { color: rgba(23, 26, 29, 0.82); }
+.privacy-page.lasha-page section { border-top: 1px solid color-mix(in srgb, var(--l-ink, #171a1d) 15%, transparent); }
+.privacy-page.lasha-page p { color: color-mix(in srgb, var(--l-ink, #171a1d) 82%, transparent); }
 
 /* Page ground and the compact site-info disclosure on every page. */
 html:root,
 html body,
-body .site-shell { background: #f4f4f1; }
-body .privacy-footer { color: #171a1d; }
+body .site-shell { background: var(--l-paper, #f4f4f1); }
+body .privacy-footer { color: var(--l-ink, #171a1d); }
 body .privacy-footer-toggle,
-body .privacy-footer-panel { border-color: rgba(23, 26, 29, 0.3); background: #f4f4f1; box-shadow: 0 0.5rem 1.5rem rgba(23, 26, 29, 0.14); }
+body .privacy-footer-panel { border-color: color-mix(in srgb, var(--l-ink, #171a1d) 30%, transparent); background: var(--l-paper, #f4f4f1); box-shadow: 0 0.5rem 1.5rem color-mix(in srgb, var(--l-ink, #171a1d) 14%, transparent); }
 body .privacy-footer-toggle span { color: var(--l-blue); }
 body .privacy-footer-toggle:hover,
 body .privacy-footer-toggle[aria-expanded="true"] { border-color: var(--l-blue); }
-body .privacy-footer-brand { border-bottom-color: rgba(23, 26, 29, 0.18); }
-body .privacy-footer-brand span { color: rgba(23, 26, 29, 0.6); }
+body .privacy-footer-brand { border-bottom-color: color-mix(in srgb, var(--l-ink, #171a1d) 18%, transparent); }
+body .privacy-footer-brand span { color: color-mix(in srgb, var(--l-ink, #171a1d) 60%, transparent); }
 
-body .privacy-footer-panel nav :is(a, button) { border-bottom-color: rgba(23, 26, 29, 0.12); }
-body .privacy-footer-panel nav a:last-child { color: rgba(23, 26, 29, 0.6); }
+body .privacy-footer-panel nav :is(a, button) { border-bottom-color: color-mix(in srgb, var(--l-ink, #171a1d) 12%, transparent); }
+body .privacy-footer-panel nav a:last-child { color: color-mix(in srgb, var(--l-ink, #171a1d) 60%, transparent); }
 body .privacy-footer-panel nav :is(a, button):hover,
 body .privacy-footer-panel nav span { color: var(--l-blue); }
 
-body .cookie-notice { border-color: rgba(23, 26, 29, 0.25); background: #f4f4f1; color: #171a1d; }
+body .cookie-notice { border-color: color-mix(in srgb, var(--l-ink, #171a1d) 25%, transparent); background: var(--l-paper, #f4f4f1); color: var(--l-ink, #171a1d); }
 body .cookie-notice h2 { font-family: "AiXESS Head", "Arial Narrow", sans-serif; font-size: var(--v4-h3); font-weight: 400; letter-spacing: 0; line-height: 1; text-transform: uppercase; }
 body .cookie-actions button { border-color: var(--l-blue); background: var(--l-blue); font-size: var(--v4-btn); font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; }
 body .cookie-actions button:hover { border-color: var(--l-blue-deep); background: var(--l-blue-deep); }
 body .access-form .privacy-acknowledgement input { accent-color: var(--l-blue); }
 
 /* Sign-up, login and materials dialogs, on every page. */
-body .modal-backdrop { background: rgba(23, 26, 29, 0.72); }
+body .modal-backdrop { background: color-mix(in srgb, var(--l-ink, #171a1d) 72%, transparent); }
 
 body .modal-panel {
   border: 0;
-  background: #f4f4f1;
-  color: #171a1d;
+  background: var(--l-paper, #f4f4f1);
+  color: var(--l-ink, #171a1d);
   font-family: "Inter", "Gilroy", system-ui, sans-serif;
 }
 
-body .modal-close { color: #171a1d; }
+body .modal-close { color: var(--l-ink, #171a1d); }
 body .modal-eyebrow { color: var(--l-blue); font-size: var(--v4-eyebrow); font-weight: 600; letter-spacing: 0.2em; }
 
 body .modal-panel h2 {
-  color: #171a1d;
+  color: var(--l-ink, #171a1d);
   font-family: "AiXESS Head", "Arial Narrow", sans-serif;
   font-size: var(--v4-panel-title);
   font-weight: 400;
@@ -527,25 +527,25 @@ body .modal-panel h2 {
   text-transform: uppercase;
 }
 
-body .modal-copy { color: rgba(23, 26, 29, 0.78); font-size: var(--v4-text); line-height: 1.65; }
+body .modal-copy { color: color-mix(in srgb, var(--l-ink, #171a1d) 78%, transparent); font-size: var(--v4-text); line-height: 1.65; }
 body .modal-panel .button { font-size: var(--v4-btn); font-weight: 600; letter-spacing: 0.16em; }
-body .access-form label span { color: rgba(23, 26, 29, 0.68); }
+body .access-form label span { color: color-mix(in srgb, var(--l-ink, #171a1d) 68%, transparent); }
 
 body .access-form input {
-  border-color: rgba(23, 26, 29, 0.35);
-  background: #fff;
-  color: #171a1d;
+  border-color: color-mix(in srgb, var(--l-ink, #171a1d) 35%, transparent);
+  background: var(--l-card, #fff);
+  color: var(--l-ink, #171a1d);
 }
 
-body .access-form input::placeholder { color: rgba(23, 26, 29, 0.42); }
+body .access-form input::placeholder { color: color-mix(in srgb, var(--l-ink, #171a1d) 42%, transparent); }
 body .modal-panel .button-primary { border-color: var(--l-blue); background: var(--l-blue); color: #f4f4f1; }
 body .modal-panel .button-primary:hover { border-color: var(--l-blue-deep); background: var(--l-blue-deep); }
-body .modal-panel .button-ghost { border-color: #171a1d; color: #171a1d; }
+body .modal-panel .button-ghost { border-color: var(--l-ink, #171a1d); color: var(--l-ink, #171a1d); }
 body .modal-switch { color: var(--l-blue); }
 body .modal-panel :is(button, input, a):focus-visible { outline-color: var(--l-blue); }
 
 @media (max-width: 1000px) {
-  .lasha-page .resource-card { padding-left: 0; border-left: 0; border-top: 1px solid rgba(23, 26, 29, 0.18); }
+  .lasha-page .resource-card { padding-left: 0; border-left: 0; border-top: 1px solid color-mix(in srgb, var(--l-ink, #171a1d) 18%, transparent); }
 }
 
 @media (max-width: 767px) {
@@ -707,7 +707,7 @@ body .modal-panel :is(button, input, a):focus-visible { outline-color: var(--l-b
   padding: 0.4rem 0;
   border-top: 2px solid var(--l-blue);
   background: var(--l-paper);
-  box-shadow: 0 18px 40px rgba(23, 26, 29, 0.18);
+  box-shadow: 0 18px 40px color-mix(in srgb, var(--l-ink, #171a1d) 18%, transparent);
   list-style: none;
 }
 

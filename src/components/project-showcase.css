@@ -41,7 +41,7 @@
   min-width: 18px;
   min-height: 18px;
   border: 1px solid rgba(244, 244, 241, 0.25);
-  background: rgba(23, 26, 29, 0.82);
+  background: color-mix(in srgb, var(--l-ink, #171a1d) 82%, transparent);
   color: #fff;
 }
 
