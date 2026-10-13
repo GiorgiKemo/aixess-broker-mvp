@@ -141,14 +141,15 @@ input:focus-visible {
   display: inline-flex;
   min-height: 2.75rem;
   align-items: center;
-  width: 10rem;
+  width: 7.75rem;
   margin-left: 0.875rem;
   padding: 0;
+  color: #fff;
   background: transparent;
   cursor: pointer;
 }
 
-.brand img {
+.brand svg {
   display: block;
   width: 100%;
   height: auto;
@@ -745,7 +746,7 @@ input:focus-visible {
     gap: 1.4rem;
   }
 
-  .brand { width: 9.5rem; }
+  .brand { width: 7.4rem; }
   .desktop-nav { gap: 1.7rem; }
   .desktop-nav button { font-size: 0.76rem; }
   .register-button,
@@ -777,7 +778,7 @@ input:focus-visible {
 
   .desktop-nav,
   .header-actions { display: none; }
-  .brand { width: 9.3rem; }
+  .brand { width: 7.25rem; }
 
   .menu-toggle {
     display: inline-flex;
@@ -900,7 +901,7 @@ input:focus-visible {
     margin-inline: 1rem;
   }
 
-  .brand { width: 8.3rem; }
+  .brand { width: 6.6rem; }
   .menu-toggle { min-width: 4.5rem; min-height: 2.75rem; font-size: 0.68rem; }
   .mobile-nav { top: 4.75rem; padding-inline: 1rem; }
 

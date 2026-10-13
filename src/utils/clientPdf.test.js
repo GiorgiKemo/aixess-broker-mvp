@@ -9,7 +9,7 @@ import { generateClientPdf, PDF_FONT_FILES } from "./clientPdf.js";
 
 const loadAssets = async () => ({
   fonts: await Promise.all(PDF_FONT_FILES.map(file => readFile(`public/fonts/client-pdf/${file}`))),
-  logo: await readFile("public/assets/aixess-logo-white-cropped.png"),
+  logo: await readFile("public/brand/aixess-logo-white.png"),
   plan: Buffer.from("iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+jRZkAAAAASUVORK5CYII=", "base64"),
   points: [{ x: 20, y: 20 }, { x: 40, y: 20 }, { x: 40, y: 40 }, { x: 20, y: 40 }],
 });

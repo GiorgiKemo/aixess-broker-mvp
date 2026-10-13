@@ -30,6 +30,18 @@ describe("AIXESS navigation pages", () => {
     ]);
   });
 
+  it("draws Lasha's vector wordmark as the home link on every header", () => {
+    window.history.replaceState({}, "", "/#insights");
+    render(<App />);
+    const logos = document.querySelectorAll(".brand svg[role='img'][aria-label='AiXESS']");
+    expect(logos.length).toBeGreaterThanOrEqual(1);
+    logos.forEach((logo) => {
+      expect(logo.getAttribute("viewBox")).toBe("0 0 1136.2 359");
+      expect(logo.querySelectorAll("path")).toHaveLength(6);
+    });
+    expect(document.querySelector("img[src*='aixess-logo']")).toBeNull();
+  });
+
   it("puts the newer first-page brief on the homepage while retaining the existing structure", () => {
     window.history.replaceState({}, "", "/");
     const { container } = render(<App />);

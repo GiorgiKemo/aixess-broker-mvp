@@ -15,6 +15,7 @@ import { PrivacyControls, PrivacyPage } from "./components/Privacy.jsx";
 import { PRIVACY_COPY } from "./privacy-copy.js";
 import { track, trackOutboundLink, flushAnalytics } from "./analytics.js";
 import { getWorkbookAvailableCount } from "./data/reveranceInventory.js";
+import { AixessLogo } from "./components/AixessLogo.jsx";
 
 const availableResidenceCount = getWorkbookAvailableCount();
 
@@ -67,7 +68,7 @@ function SiteHeader({ currentPage, menuOpen, onToggleMenu, onNavigate, onOpenMod
   return (
     <header className={`site-header ${pageHeader ? "page-site-header" : ""}`}>
       <button className="brand" type="button" aria-label={t("homeAria")} onClick={() => navigate("home")}>
-        <img src="/assets/aixess-logo-white-cropped.webp" alt="AiXESS" width="2783" height="546" />
+        <AixessLogo />
       </button>
 
       <nav className="desktop-nav" aria-label={t("primaryNavigation")}>
@@ -112,7 +113,7 @@ function SiteHeader({ currentPage, menuOpen, onToggleMenu, onNavigate, onOpenMod
       <div className={`mobile-nav lasha-menu ${menuOpen ? "is-open" : ""}`} id="mobile-navigation">
         <div className="lasha-menu-bar">
           <button className="brand" type="button" aria-label={t("homeAria")} tabIndex={menuOpen ? 0 : -1} onClick={() => navigate("home")}>
-            <img src="/assets/aixess-logo-white-cropped.webp" alt="AiXESS" width="2783" height="546" />
+            <AixessLogo />
           </button>
           <button className="menu-toggle" type="button" aria-controls="mobile-navigation" aria-expanded={menuOpen} tabIndex={menuOpen ? 0 : -1} onClick={() => onToggleMenu(false)}>
             {t("close")}

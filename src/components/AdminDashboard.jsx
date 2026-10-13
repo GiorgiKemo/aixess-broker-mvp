@@ -3,6 +3,7 @@ import "./admin.css";
 import AdminLogin from "./AdminLogin.jsx";
 import { useAdminTranslation } from "../useAdminTranslation.js";
 import { PRIVACY_COPY } from "../privacy-copy.js";
+import { AixessLogo } from "./AixessLogo.jsx";
 
 const labels = { page_view: "Page views", navigation: "Navigation clicks", portal_login_click: "Workwise login clicks", portal_register_click: "Workwise registration clicks", materials_open: "Materials form opens", lead_submitted: "Consented lead submissions", floor_open: "Floor opens", residence_open: "Residence selections", plan_open: "Plan enlargements", filter_change: "Filter changes", filter_reset: "Filter resets", language_change: "Language changes", contact_click: "Contact clicks", resource_click: "Resource clicks" };
 async function api(path, options) {
@@ -77,7 +78,7 @@ export default function AdminDashboard() {
   };
   if (!identity && (error?.status === 401 || error?.status === 403)) return <AdminLogin onSignedIn={() => { setError(null); setLoading(true); setRefreshKey((value) => value + 1); }} />;
   return <div className="admin-app">
-    <header className="admin-header"><a href="#home" className="admin-logo"><img src="/assets/aixess-logo-white-cropped.webp" alt="AiXESS" width="2783" height="546" /></a><span>{tr("INTELLIGENCE / ADMIN")}</span><a href="#home">{tr("Back to website ↗")}</a>{identity && <button type="button" onClick={signOut}>{tr("Log out")}</button>}</header>
+    <header className="admin-header"><a href="#home" className="admin-logo"><AixessLogo /></a><span>{tr("INTELLIGENCE / ADMIN")}</span><a href="#home">{tr("Back to website ↗")}</a>{identity && <button type="button" onClick={signOut}>{tr("Log out")}</button>}</header>
     <div className="admin-content">
       <div className="admin-title-row"><div><p className="admin-eyebrow">{tr("PROJECT REVERANCE")}</p><h1>{tr("From interest")}<br /><span>{tr("to opportunity.")}</span></h1><p className="admin-muted">{tr("Website activity, residence demand and your enquiry pipeline.")}</p></div>{identity && <div className="admin-period"><label htmlFor="admin-period">{tr("Reporting window")}</label><select id="admin-period" value={days} onChange={(event) => setDays(Number(event.target.value))}>{[7, 30, 90].map((value) => <option key={value} value={value}>{tr("Last {{days}} days", { days: value })}</option>)}</select><button onClick={() => setRefreshKey((value) => value + 1)} disabled={loading}>{loading ? tr("Refreshing…") : tr("Refresh data ↻")}</button></div>}</div>
       {error && <div className="admin-message" role="alert"><strong>{tr("Could not refresh data")}</strong><p>{errorText(error.message)}</p><button onClick={() => setRefreshKey((value) => value + 1)}>{tr("Try again")}</button></div>}

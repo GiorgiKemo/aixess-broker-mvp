@@ -1,7 +1,7 @@
 .admin-app { background:#111514;color:#f0efea;min-height:100dvh;font-size:15px;line-height:1.5; }
 .admin-app * { box-sizing:border-box; }
 .admin-header { display:flex;align-items:center;gap:28px;padding:24px clamp(20px,4vw,64px);border-bottom:1px solid #363c38; }
-.admin-logo img { width:120px;height:auto;max-width:100%;display:block; }
+.admin-logo svg { width:96px;height:auto;max-width:100%;display:block;color:#fff; }
 .admin-header>span { font-size:11px;letter-spacing:.16em;color:#a7b2ab; }
 .admin-header>a:last-child { margin-left:auto;color:#ebece8;font-size:13px; }
 .admin-header>a[href="#home"]:not(.admin-logo) { margin-left:auto;color:#ebece8;font-size:13px; }
@@ -63,4 +63,4 @@
 .admin-message strong { font-size:22px; }
 .admin-message .admin-primary { display:inline-flex;margin:12px 0; }
 @media(max-width:1000px) { .admin-metrics { grid-template-columns:repeat(2,minmax(0,1fr)); }.admin-metrics article:nth-child(2) { border-right:0; }.admin-metrics article:nth-child(-n+2) { border-bottom:1px solid #414b43; }.admin-three { grid-template-columns:1fr 1fr; }.admin-overview-grid { grid-template-columns:1fr; } }
-@media(max-width:600px) { .admin-header { flex-wrap:wrap;padding:20px;gap:14px; }.admin-header>span { display:none; }.admin-logo img { width:100px; }.admin-content { padding:28px 16px; }.admin-title-row { display:block; }.admin-period { margin-top:24px;grid-template-columns:1fr 1fr;min-width:0; }.admin-period label { grid-column:1/-1; }.admin-metrics article { padding:16px; }.admin-panel { padding:20px 16px; }.admin-three { grid-template-columns:1fr; }.admin-freshness>span:last-child { margin-left:0;width:100%; }.admin-trend-bars { height:170px; }.admin-pagination button { padding:10px; }.admin-pagination { gap:6px; } }
+@media(max-width:600px) { .admin-header { flex-wrap:wrap;padding:20px;gap:14px; }.admin-header>span { display:none; }.admin-logo svg { width:82px; }.admin-content { padding:28px 16px; }.admin-title-row { display:block; }.admin-period { margin-top:24px;grid-template-columns:1fr 1fr;min-width:0; }.admin-period label { grid-column:1/-1; }.admin-metrics article { padding:16px; }.admin-panel { padding:20px 16px; }.admin-three { grid-template-columns:1fr; }.admin-freshness>span:last-child { margin-left:0;width:100%; }.admin-trend-bars { height:170px; }.admin-pagination button { padding:10px; }.admin-pagination { gap:6px; } }

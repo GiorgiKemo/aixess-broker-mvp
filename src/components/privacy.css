@@ -51,7 +51,7 @@
 .privacy-footer:not(.has-explorer) .privacy-footer-panel { right: 1rem; }
 .privacy-footer-panel[hidden] { display: none; }
 .privacy-footer-brand { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; padding: 0 0 1rem; border-bottom: 1px solid rgba(239, 239, 236, 0.22); }
-.privacy-footer-brand strong { font-size: 1.25rem; letter-spacing: -0.04em; }
+.privacy-footer-logo { display: block; width: auto; height: 1.5rem; }
 .privacy-footer-brand span { color: #a9aaa9; font-size: 0.75rem; }
 .privacy-footer-panel nav { display: grid; margin-top: 0.3rem; }
 .privacy-footer-panel nav a,

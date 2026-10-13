@@ -31,7 +31,7 @@ async function asset(url, json = false) {
 export async function loadClientPdfAssets(unit) {
   const [snapshot, logo, ...fonts] = await Promise.all([
     unit.block === "B" ? Promise.resolve(bPlans) : asset("/data/reverance-a.json", true),
-    asset("/assets/aixess-logo-white-cropped.png"),
+    asset("/brand/aixess-logo-white.png"),
     ...PDF_FONT_FILES.map(file => asset(`/fonts/client-pdf/${file}`)),
   ]);
   const floor = snapshot.floors.find(item => item.number === unit.floor);

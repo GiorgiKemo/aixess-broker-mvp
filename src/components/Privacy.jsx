@@ -4,6 +4,7 @@ import { consentChoice, setConsent } from "../analytics.js";
 import { PRIVACY_COPY } from "../privacy-copy.js";
 import { LashaPageHero } from "./LashaHomeSections.jsx";
 import "./privacy.css";
+import { AixessLogo } from "./AixessLogo.jsx";
 
 export function PrivacyControls({ page }) {
   const { locale } = useLanguage(); const copy = PRIVACY_COPY[locale];
@@ -36,7 +37,7 @@ export function PrivacyControls({ page }) {
   return <>
     <footer className={`privacy-footer ${page === "home" || page === "residences" ? "has-explorer" : ""}`} ref={footerRef}>
       <div className="privacy-footer-panel" id="privacy-footer-panel" hidden={!detailsOpen}>
-        <div className="privacy-footer-brand"><strong>AiXESS</strong><span>© {new Date().getFullYear()}</span></div>
+        <div className="privacy-footer-brand"><AixessLogo className="privacy-footer-logo" /><span>© {new Date().getFullYear()}</span></div>
         <nav aria-label={copy.siteInfo}>
           <a href="#privacy" onClick={() => setDetailsOpen(false)}>{copy.policy}<span aria-hidden="true">↗</span></a>
           <button type="button" onClick={() => { setDetailsOpen(false); setOpen(true); }}>{copy.settings}<span aria-hidden="true">↗</span></button>

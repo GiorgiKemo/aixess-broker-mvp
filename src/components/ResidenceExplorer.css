@@ -2246,10 +2246,11 @@
     pointer-events: none;
   }
 
-  .mobile-explorer-topbar img {
-    width: clamp(6.9rem, 28vw, 8.6rem);
+  .mobile-explorer-topbar svg {
+    display: block;
+    width: clamp(5.4rem, 22vw, 6.7rem);
     height: auto;
-    object-fit: contain;
+    color: #fff;
   }
 
   .mobile-floor-chip {
@@ -3041,7 +3042,7 @@
 @media (max-width: 1100px) and (orientation: portrait) {
   .model-reset-view { min-height: 2.75rem; font-size: 0.65rem; }
   .mobile-explorer-topbar { gap: 0.75rem; }
-  .mobile-explorer-topbar img { max-width: 32%; }
+  .mobile-explorer-topbar svg { max-width: 32%; }
   .mobile-floor-chip { min-width: 0; max-width: 65%; }
   .mobile-floor-chip select { width: auto; min-width: 0; max-width: 8rem; }
   .mobile-floor-chip > span { font-size: 0.7rem; }

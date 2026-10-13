@@ -25,6 +25,7 @@ import { GOLDEN_PREMIUM_COPY } from "../golden-premium-copy.js";
 import { FittedHeading } from "./FittedHeading.jsx";
 import { EXPLORER_SETTLE_PROGRESS } from "./reveranceSplatMath";
 import "./ResidenceExplorer.css";
+import { AixessLogo } from "./AixessLogo.jsx";
 
 const loadReverance3D = () => import("./Reverance3D");
 const Reverance3D = lazy(() => loadReverance3D().then((module) => ({
@@ -603,7 +604,7 @@ function MobileResidenceSheet({
   return (
     <>
       <div className="mobile-explorer-topbar">
-        <img src="/assets/aixess-logo-white-cropped.webp" alt="AiXESS" width="2783" height="546" />
+        <AixessLogo />
         <label className="mobile-floor-chip">
           <span>{t("floor")}</span>
           <select value={filters.floor} onChange={(event) => onChange("floor", event.target.value)} aria-label={t("selectFloor")}>
