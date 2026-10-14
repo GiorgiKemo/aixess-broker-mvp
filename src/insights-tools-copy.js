@@ -52,7 +52,6 @@ export const INSIGHTS_TOOLS_COPY = {
         ["PERFORMANCE & COMMISSIONS", "Follow your sales activity, individual turnover and commission status with greater transparency."],
         ["PROJECT SALES MATERIALS", "Access brochures, floor plans, visual presentations and project documentation to support client conversations."],
       ],
-      previewLabel: "Illustration",
       stepsEyebrow: "YOUR ACCESS TO AIXESS",
       stepsTitle: "THREE STEPS TO GET STARTED.",
       steps: [
@@ -105,13 +104,12 @@ export const INSIGHTS_TOOLS_COPY = {
       workspaceCopy: "Ein vernetzter Arbeitsplatz, der den internationalen Immobilienverkauf vereinfacht. Projektinformationen abrufen, persönliche Kundenangebote erstellen, Verkaufsaktivitäten verfolgen und jedes Follow-up im Blick behalten.",
       features: [
         ["LIVE-VERFÜGBARKEIT", "Projekte, Wohnungsdetails, Grundrisse, Preise und aktuelle Verfügbarkeit an einem Ort."],
-        ["PERSÖNLICHER ANGEBOTSGENERATOR", "Professionelle PDF-Angebote im Markendesign mit Preisen, Zahlungsplänen und Projektdetails."],
-        ["MAKLERNETZWERK & TEAMMANAGEMENT", "Bauen Sie Ihr Maklernetzwerk mit Zuversicht auf und erweitern Sie es. Führen Sie Ihr Team, verfolgen Sie Verkaufsaktivitäten und behalten Sie die Leistung Ihres Netzwerks im Blick. Alles auf einer vernetzten Plattform für reibungslose Zusammenarbeit und Wachstum."],
-        ["KUNDEN- & VERKAUFSMANAGEMENT", "Kundenanfragen organisieren, Angebote und Reservierungen verfolgen und jede Chance durch den Verkaufsprozess begleiten."],
+        ["PERSÖNLICHER ANGEBOTS\u00adGENERATOR", "Professionelle PDF-Angebote im Markendesign mit Preisen, Zahlungsplänen und Projektdetails."],
+        ["MAKLER\u00adNETZWERK & TEAM\u00adMANAGEMENT", "Bauen Sie Ihr Maklernetzwerk mit Zuversicht auf und erweitern Sie es. Führen Sie Ihr Team, verfolgen Sie Verkaufsaktivitäten und behalten Sie die Leistung Ihres Netzwerks im Blick. Alles auf einer vernetzten Plattform für reibungslose Zusammenarbeit und Wachstum."],
+        ["KUNDEN- & VERKAUFS\u00adMANAGEMENT", "Kundenanfragen organisieren, Angebote und Reservierungen verfolgen und jede Chance durch den Verkaufsprozess begleiten."],
         ["LEISTUNG & PROVISIONEN", "Verkaufsaktivität, persönlichen Umsatz und Provisionsstatus transparent verfolgen."],
-        ["PROJEKTVERKAUFSUNTERLAGEN", "Broschüren, Grundrisse, Präsentationen und Projektunterlagen für das Kundengespräch."],
+        ["PROJEKT\u00adVERKAUFS\u00adUNTERLAGEN", "Broschüren, Grundrisse, Präsentationen und Projektunterlagen für das Kundengespräch."],
       ],
-      previewLabel: "Illustration",
       stepsEyebrow: "IHR ZUGANG ZU AIXESS",
       stepsTitle: "DREI SCHRITTE ZUM START.",
       steps: [
@@ -170,7 +168,6 @@ export const INSIGHTS_TOOLS_COPY = {
         ["WYNIKI I PROWIZJE", "Śledź aktywność sprzedażową, swój obrót i status prowizji w przejrzysty sposób."],
         ["MATERIAŁY SPRZEDAŻOWE", "Broszury, rzuty, prezentacje i dokumentacja projektów wspierające rozmowy z klientami."],
       ],
-      previewLabel: "Ilustracja",
       stepsEyebrow: "TWÓJ DOSTĘP DO AIXESS",
       stepsTitle: "TRZY KROKI NA START.",
       steps: [
@@ -229,7 +226,6 @@ export const INSIGHTS_TOOLS_COPY = {
         ["USPEŠNOST IN PROVIZIJE", "Pregledno spremljajte prodajno aktivnost, svoj promet in status provizij."],
         ["PRODAJNA GRADIVA", "Brošure, tlorisi, predstavitve in projektna dokumentacija za pogovore s strankami."],
       ],
-      previewLabel: "Ilustracija",
       stepsEyebrow: "VAŠ DOSTOP DO AIXESS",
       stepsTitle: "TRIJE KORAKI DO ZAČETKA.",
       steps: [
@@ -288,7 +284,6 @@ export const INSIGHTS_TOOLS_COPY = {
         ["РЕЗУЛЬТАТЫ И КОМИССИИ", "Прозрачно отслеживайте активность продаж, личный оборот и статус комиссий."],
         ["МАТЕРИАЛЫ ДЛЯ ПРОДАЖ", "Брошюры, планировки, презентации и документация проектов для разговора с клиентом."],
       ],
-      previewLabel: "Иллюстрация",
       stepsEyebrow: "ВАШ ДОСТУП К AIXESS",
       stepsTitle: "ТРИ ШАГА ДЛЯ НАЧАЛА.",
       steps: [

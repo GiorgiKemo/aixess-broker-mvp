@@ -307,6 +307,9 @@ describe("AIXESS navigation pages", () => {
     const cards = container.querySelectorAll(".it-feature");
     expect(cards).toHaveLength(6);
     expect(cards[2]).toHaveTextContent("03. BROKER NETWORK & TEAM MANAGEMENT");
+    // Text-only trial (14 October 2026): no pictures, sketches, icons or ILLUSTRATION labels.
+    cards.forEach((card) => expect(card.querySelector("img, svg, picture")).toBeNull());
+    expect(screen.queryByText(/^Illustration$/i)).not.toBeInTheDocument();
     expect(screen.queryByText(/SMART SALES CALCULATIONS/)).not.toBeInTheDocument();
   });
 

@@ -1,4 +1,4 @@
-import { BookOpenText, Buildings, ChartBar, ChartLineUp, FilePdf, FolderOpen, TreeStructure, UsersThree } from "@phosphor-icons/react";
+import { BookOpenText, ChartLineUp } from "@phosphor-icons/react";
 import { useLanguage } from "../i18n.jsx";
 import { AIXCO_FAQ } from "../aixco-faq-copy.js";
 import { INSIGHTS_TOOLS_COPY } from "../insights-tools-copy.js";
@@ -132,31 +132,6 @@ function CardMedia({ media, label }) {
   );
 }
 
-const FEATURE_ICONS = [Buildings, FilePdf, TreeStructure, UsersThree, ChartBar, FolderOpen];
-
-// Previews are approved project imagery or neutral sketches with no figures, names or
-// records: the real tools live behind the broker login, not on this public page.
-function FeaturePreview({ index, label }) {
-  if (index === 0) return <img className="it-preview-photo" src={asset("projects/reverance-front-700.webp")} alt="" loading="lazy" decoding="async" />;
-  if (index === 1) return <img className="it-preview-plan" src={asset("reverance-pdf/A1305-plan.webp")} alt="" loading="lazy" decoding="async" />;
-  if (index === 5) {
-    return (
-      <div className="it-preview-files">
-        <img src={asset("reverance-pdf/A1305-render.webp")} alt="" loading="lazy" decoding="async" />
-        <img src={asset("reverance-pdf/A1407-plan.webp")} alt="" loading="lazy" decoding="async" />
-      </div>
-    );
-  }
-  return (
-    <div className={`it-preview-sketch it-preview-sketch-${index}`} aria-hidden="true">
-      <span className="it-preview-label">{label}</span>
-      {index === 2 && <svg className="it-preview-network" viewBox="0 0 200 110" aria-hidden="true"><path d="M100 26 L46 62 M100 26 L100 62 M100 26 L154 62 M46 62 L22 94 M46 62 L70 94 M154 62 L130 94 M154 62 L178 94" /><circle cx="100" cy="26" r="11" /><circle cx="46" cy="62" r="8" /><circle cx="100" cy="62" r="8" /><circle cx="154" cy="62" r="8" />{[22, 70, 130, 178].map((x) => <circle key={x} cx={x} cy="94" r="6" />)}</svg>}
-      {index === 3 && <><i /><i /><i /><i /></>}
-      {index === 4 && <div className="it-preview-bars">{[38, 52, 46, 64, 72, 88].map((height) => <i key={height} style={{ height: `${height}%` }} />)}</div>}
-    </div>
-  );
-}
-
 // Broker Tools, from the right half of Klem's picture. The working calculators and the
 // client PDF offer are broker-only (Klem's voice note, 12 October 2026), so this page only
 // describes them and sends brokers to sign in or apply.
@@ -179,17 +154,13 @@ export function BrokerToolsPageContent({ header, onOpenModal }) {
             <ThemedImage className="it-workspace-photo" family="workspace-building" defaultWidth={800} sizes="(max-width: 899px) 100vw, 40vw" loading="lazy" decoding="async" />
           </div>
           <ol className="it-features">
-            {c.features.map(([title, body], index) => {
-              const Icon = FEATURE_ICONS[index];
-              return (
-                <li className="it-feature" key={title}>
-                  <Icon className="it-feature-icon" aria-hidden="true" weight="light" />
-                  <h3><span className="it-feature-index">{String(index + 1).padStart(2, "0")}.</span> {title}</h3>
-                  <p>{body}</p>
-                  <div className="it-feature-preview"><FeaturePreview index={index} label={c.previewLabel} /></div>
-                </li>
-              );
-            })}
+            {/* Text only (Kemo, 14 October 2026): number, heading and description, no artwork. */}
+            {c.features.map(([title, body], index) => (
+              <li className="it-feature" key={title}>
+                <h3><span className="it-feature-index">{String(index + 1).padStart(2, "0")}.</span> {title}</h3>
+                <p>{body}</p>
+              </li>
+            ))}
           </ol>
         </section>
 

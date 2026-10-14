@@ -502,7 +502,6 @@ html:root[data-time-theme='night'] :is(
   .lasha-metrics,
   .lasha-home .project-card,
   .it-ink,
-  .it-preview-sketch-4,
   .lasha-page .network-backing,
   .lasha-page .network-client,
   .lasha-page .calculator-results,
@@ -555,7 +554,6 @@ html:root:not([data-time-theme='night']) :is(
   .lasha-metrics,
   .lasha-home .project-card,
   .it-ink,
-  .it-preview-sketch-4,
   .mobile-nav.lasha-menu
 ) {
   --l-blue: var(--l-soft-accent);
@@ -571,7 +569,6 @@ html:root:not([data-time-theme='night']) .lasha-home .project-card .lasha-button
 html:root:not([data-time-theme='night']) .it-ink :is(.it-lead, .it-step-list p) { color: rgb(23 26 29 / 0.78); }
 html:root:not([data-time-theme='night']) .it-ink .it-note { color: rgb(23 26 29 / 0.7); }
 html:root:not([data-time-theme='night']) .it-step-list li { border-top-color: var(--l-soft-line); }
-html:root:not([data-time-theme='night']) .it-preview-sketch-4 .it-preview-label { color: rgb(23 26 29 / 0.6); }
 
 @media (max-width: 1399px) {
   html:root:not([data-time-theme='night']) .mobile-nav.lasha-menu > button { border-bottom-color: var(--l-soft-line); color: #171a1d; }

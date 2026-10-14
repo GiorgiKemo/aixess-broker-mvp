@@ -226,57 +226,37 @@
   list-style: none;
 }
 
+/* Text-only feature cards (Kemo, 14 October 2026): one surface, number and heading together,
+   then the description at the same gap in every card. Cards in a row share their outer edges
+   through grid stretch; the row is as tall as its longest copy and shorter copy stays at the
+   top. Whole words wrap, never hyphenated or split. */
 .it-feature {
   display: grid;
-  grid-template-rows: auto auto 1fr auto;
-  gap: 0.7rem;
+  align-content: start;
+  gap: 0.85rem;
   min-width: 0;
-  padding: 1.4rem;
+  padding: clamp(1.4rem, 2.2vw, 2rem);
   border: 1px solid color-mix(in srgb, var(--l-ink, #171a1d) 14%, transparent);
   background: var(--l-card, #fff);
 }
-
-.it-feature-icon { width: 2rem; height: 2rem; color: var(--l-blue); }
 
 .it-feature h3 {
   margin: 0;
   font-family: var(--l-head);
   font-size: var(--v4-h3);
   font-weight: 400;
-  line-height: 1;
+  line-height: 1.02;
   text-transform: uppercase;
+  text-wrap: balance;
 }
+
+/* Beats the shared .page-main h3 rule (overflow-wrap: anywhere; hyphens: auto), which let Safari
+   split MANAGEMENT into MANAGE- / MENT. Only the soft hyphens placed at German compound joins
+   may break a word, and only when the whole word cannot fit a phone line. */
+.page-main .it-feature h3 { hyphens: manual; overflow-wrap: normal; word-break: normal; }
 
 .it-feature-index { color: var(--l-blue); }
-.it-feature p { margin: 0; color: color-mix(in srgb, var(--l-ink, #171a1d) 78%, transparent); font-size: var(--v4-text); line-height: 1.55; }
-
-.it-feature-preview {
-  height: 9.5rem;
-  margin-top: 0.6rem;
-  overflow: hidden;
-  border: 1px solid color-mix(in srgb, var(--l-ink, #171a1d) 10%, transparent);
-  background: var(--l-mist);
-}
-
-.it-preview-photo { display: block; width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; }
-.it-preview-plan { display: block; width: 100%; height: 100%; padding: 0.6rem; background: var(--l-card, #fff); object-fit: contain; }
-.it-preview-files { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; height: 100%; background: color-mix(in srgb, var(--l-ink, #171a1d) 10%, transparent); }
-.it-preview-files img { width: 100%; height: 100%; background: var(--l-card, #fff); object-fit: cover; }
-.it-preview-files img + img { padding: 0.4rem; object-fit: contain; }
-
-/* Neutral sketches: shapes only, no figures, names or records. */
-.it-preview-sketch { position: relative; display: grid; align-content: center; gap: 0.6rem; height: 100%; padding: 1.4rem 1.2rem 1rem; }
-.it-preview-label { position: absolute; top: 0.5rem; right: 0.6rem; color: color-mix(in srgb, var(--l-ink, #171a1d) 50%, transparent); font-size: 0.62rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; }
-.it-preview-sketch i { display: block; height: 0.55rem; border-radius: 1px; background: color-mix(in srgb, var(--l-ink, #171a1d) 14%, transparent); }
-.it-preview-network { justify-self: center; width: min(100%, 15rem); height: auto; }
-.it-preview-network path { fill: none; stroke: color-mix(in srgb, var(--l-ink, #171a1d) 22%, transparent); stroke-width: 1.5; }
-.it-preview-network circle { fill: color-mix(in srgb, var(--l-blue) 30%, var(--l-paper)); stroke: var(--l-blue); stroke-width: 1.5; }
-.it-preview-network circle:first-of-type { fill: var(--l-blue); }
-.it-preview-sketch-3 i { height: 1.3rem; background: linear-gradient(90deg, color-mix(in srgb, var(--l-ink, #171a1d) 14%, transparent) 0 55%, transparent 55% 70%, color-mix(in srgb, var(--l-blue) 35%, transparent) 70% 88%, transparent 88%); }
-.it-preview-sketch-4 { background: var(--l-ink); }
-.it-preview-sketch-4 .it-preview-label { color: rgba(244, 244, 241, 0.6); }
-.it-preview-bars { display: flex; align-items: flex-end; gap: 0.45rem; height: 5.6rem; }
-.it-preview-bars i { flex: 1; height: auto; background: var(--l-blue-light); }
+.it-feature p { max-width: 38rem; margin: 0; color: color-mix(in srgb, var(--l-ink, #171a1d) 78%, transparent); font-size: var(--v4-text); line-height: 1.6; }
 
 .it-step-list {
   display: grid;
@@ -296,7 +276,17 @@
 
 @media (max-width: 1100px) {
   .it-cards-4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+/* Feature-card columns follow the real copy: three columns keep descriptions at about 37+
+   characters a line and headings within two lines from 1200px; below 720px two columns would
+   leave under 35 characters and German compounds no room, so the cards stack. */
+@media (max-width: 1199px) {
   .it-features { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 719px) {
+  .it-features { grid-template-columns: minmax(0, 1fr); }
 }
 
 @media (max-width: 899px) {
@@ -311,8 +301,7 @@
 }
 
 @media (max-width: 599px) {
-  .it-cards-4,
-  .it-features { grid-template-columns: minmax(0, 1fr); }
+  .it-cards-4 { grid-template-columns: minmax(0, 1fr); }
 }
 
 @media (prefers-reduced-motion: reduce) {
