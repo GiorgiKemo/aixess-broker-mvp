@@ -543,3 +543,48 @@ html:root[data-time-theme='afternoon'] .lasha-page-hero-towers .lasha-eyebrow { 
   html:root[data-time-theme='afternoon'] .lasha-page-hero-towers .lasha-eyebrow { color: #2f4733; }
   .lasha-page-hero-towers .lasha-eyebrow { color: var(--l-blue); }
 }
+
+/* Light grounds by day and afternoon (Kemo, 14 October 2026: "for day we need light colors!!!!!
+   And for other times other colors!"). The blocks that were ink (home metric strip, Batumi
+   project card, the Insights and Broker Tools ink sections, the Broker Tools statistics preview
+   and the phone/tablet menu) take a pale tint of each theme instead: cobalt by day, a mid sage in
+   the afternoon, with ink text and the theme's deeper accent. Night keeps its near-black. Photos
+   and the Residence Explorer are unchanged. */
+html:root { --l-soft: #e3ebf6; --l-soft-accent: #2557d6; --l-soft-line: rgb(23 26 29 / 0.16); }
+html:root[data-time-theme='afternoon'] { --l-soft: #c9d8c7; --l-soft-accent: #3c5a41; --l-soft-line: rgb(23 26 29 / 0.2); }
+
+html:root:not([data-time-theme='night']) :is(
+  .lasha-metrics,
+  .lasha-home .project-card,
+  .it-ink,
+  .it-preview-sketch-4,
+  .mobile-nav.lasha-menu
+) {
+  --l-blue: var(--l-soft-accent);
+  --l-blue-light: var(--l-soft-accent);
+  background: var(--l-soft);
+  color: #171a1d;
+}
+html:root:not([data-time-theme='night']) :is(.lasha-home, .lasha-page) .lasha-metrics > div { border-color: var(--l-soft-line); }
+html:root:not([data-time-theme='night']) .lasha-home .lasha-metrics-value::after { background: rgb(23 26 29 / 0.35); }
+html:root:not([data-time-theme='night']) .lasha-home .project-card .project-card-meta { border-top-color: rgb(23 26 29 / 0.35); }
+html:root:not([data-time-theme='night']) .lasha-home .project-card .lasha-button-dark { border-color: #171a1d; color: #171a1d; }
+html:root:not([data-time-theme='night']) .lasha-home .project-card .lasha-button-dark:hover { background: #171a1d; color: #f4f4f1; }
+html:root:not([data-time-theme='night']) .it-ink :is(.it-lead, .it-step-list p) { color: rgb(23 26 29 / 0.78); }
+html:root:not([data-time-theme='night']) .it-ink .it-note { color: rgb(23 26 29 / 0.7); }
+html:root:not([data-time-theme='night']) .it-step-list li { border-top-color: var(--l-soft-line); }
+html:root:not([data-time-theme='night']) .it-preview-sketch-4 .it-preview-label { color: rgb(23 26 29 / 0.6); }
+
+@media (max-width: 1399px) {
+  html:root:not([data-time-theme='night']) .mobile-nav.lasha-menu > button { border-bottom-color: var(--l-soft-line); color: #171a1d; }
+  html:root:not([data-time-theme='night']) .mobile-nav.lasha-menu > button.lasha-menu-sub { color: rgb(23 26 29 / 0.78); }
+  html:root:not([data-time-theme='night']) .mobile-nav.lasha-menu > button:is(.is-active, .lasha-menu-sub.is-active) { color: var(--l-soft-accent); }
+  html:root:not([data-time-theme='night']) .mobile-nav.lasha-menu .lasha-menu-bar :is(.brand, .menu-toggle) { color: #171a1d; }
+  html:root:not([data-time-theme='night']) .mobile-nav.lasha-menu .lasha-menu-bar .menu-toggle { border-color: rgb(23 26 29 / 0.6); }
+  html:root:not([data-time-theme='night']) .mobile-nav.lasha-menu .language-switcher-trigger { border-color: rgb(23 26 29 / 0.35); color: #171a1d; }
+  html:root:not([data-time-theme='night']) .mobile-nav.lasha-menu .language-switcher-trigger svg:first-child { color: #171a1d; }
+  html:root:not([data-time-theme='night']) .mobile-nav.lasha-menu .language-switcher-trigger:is(:hover, :focus-visible) { border-color: #171a1d; }
+  html:root:not([data-time-theme='night']) .mobile-nav.lasha-menu .language-switcher-menu { background: #f7f7f4; }
+  html:root:not([data-time-theme='night']) .mobile-nav.lasha-menu .mobile-login { border-color: #171a1d; color: #171a1d; }
+  html:root:not([data-time-theme='night']) .mobile-nav.lasha-menu .mobile-login:hover { background: #171a1d; color: #f4f4f1; }
+}
