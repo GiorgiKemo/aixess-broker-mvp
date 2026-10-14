@@ -363,11 +363,14 @@ html:root[data-time-theme='afternoon'] .lasha-page .network-advantage .network-c
   html:not([lang='en']) :is(.lasha-home, .lasha-page) .site-header .header-actions { gap: 0.4rem; }
   html:not([lang='en']) :is(.lasha-home, .lasha-page) .site-header :is(.register-button, .login-button) { padding-inline: 0.8rem; }
   html:not([lang='en']) .site-header .time-theme-menu__button { width: 2.25rem; }
+  /* CONTACT joined the bar on 14 October 2026, so the long labels track a little tighter here. */
+  html:not([lang='en']) :is(.lasha-home, .lasha-page) .site-header .desktop-nav button { letter-spacing: 0.05em; }
 }
 
 /* Polish labels are the longest and already crowded the bar here before the icon arrived. */
-@media (min-width: 1400px) and (max-width: 1499px) {
-  html[lang='pl'] :is(.lasha-home, .lasha-page) .site-header .desktop-nav button { letter-spacing: 0.04em; }
+@media (min-width: 1400px) and (max-width: 1679px) {
+  html[lang='pl'] :is(.lasha-home, .lasha-page) .site-header .desktop-nav { gap: 0.45rem; }
+  html[lang='pl'] :is(.lasha-home, .lasha-page) .site-header .desktop-nav button { letter-spacing: 0.01em; }
 }
 
 /* Phones and tablets: the header shows the icon beside the menu button. */
@@ -457,6 +460,21 @@ html:root[data-time-theme='night'] .lasha-page-hero-coastal::before {
   }
 }
 
+/* 4:3 to 3:2 screens: the copy spans more of the photo, so the shade reaches a little further. */
+@media (min-aspect-ratio: 1/1) and (max-aspect-ratio: 3/2) {
+  html:root[data-time-theme='afternoon'] .lasha-page-hero-coastal::before {
+    background: radial-gradient(ellipse 88% 80% at 22% 58%, rgba(236, 228, 220, 0.62) 0%, rgba(236, 228, 220, 0.46) 50%, rgba(236, 228, 220, 0) 100%);
+  }
+  html:root[data-time-theme='night'] .lasha-page-hero-coastal::before {
+    background: radial-gradient(ellipse 88% 80% at 22% 58%, rgba(5, 18, 44, 0.6) 0%, rgba(5, 18, 44, 0.44) 50%, rgba(5, 18, 44, 0) 100%);
+  }
+}
+/* Over the towers hero's night sky the small eyebrow is off-white like the rest of the copy. */
+html:root[data-time-theme='night'] .lasha-page-hero-towers .lasha-eyebrow { color: #f7f7f4; }
+@media (max-width: 899px), (max-aspect-ratio: 1/1) {
+  html:root[data-time-theme='night'] .lasha-page-hero-towers .lasha-eyebrow { color: var(--l-blue-light); }
+}
+
 /* Dark pages at night (Kemo, 13 October 2026: "why in night mode we have white pages???"):
    the paper ground turns black and the ink text turns off-white, on every public page, the
    menu, dialogs and cookie notice (Kemo, 13 October 2026: true black, not v4's graphite).
@@ -516,3 +534,12 @@ html:root[data-time-theme='night'] :is(.lasha-home, .lasha-page) :is(.explorer-d
 }
 /* The phone's residence sheets stay light at night, so their accent stays ink. */
 html:root[data-time-theme='night'] :is(.mobile-residence-sheet, .mobile-residence-drawer) { --orange: #171a1d; }
+
+/* The Reverance towers hero's sky band matches the top of each graded render. */
+html:root[data-time-theme='afternoon'] .lasha-page-hero-towers { --towers-sky: linear-gradient(90deg, #92a0a7 0%, #7a8c97 45%, #4e6e87 100%); }
+html:root[data-time-theme='night'] .lasha-page-hero-towers { --towers-sky: linear-gradient(90deg, #27396a 0%, #1f305f 45%, #14244f 100%); }
+html:root[data-time-theme='afternoon'] .lasha-page-hero-towers .lasha-eyebrow { color: #10190f; }
+@media (max-width: 899px), (max-aspect-ratio: 1/1) {
+  html:root[data-time-theme='afternoon'] .lasha-page-hero-towers .lasha-eyebrow { color: #2f4733; }
+  .lasha-page-hero-towers .lasha-eyebrow { color: var(--l-blue); }
+}

@@ -319,3 +319,5 @@
   .it-faq summary span,
   .it-text-link .lasha-arrow { transition: none; }
 }
+
+.it-faq-section { border-top: 1px solid color-mix(in srgb, var(--l-ink, #171a1d) 14%, transparent); }

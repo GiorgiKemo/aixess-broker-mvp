@@ -2,9 +2,10 @@ import SIZES from "./theme-photo-sizes.json";
 
 // Brand photography in day / afternoon / night versions of one scene (Benji and Giorgi,
 // 13 October 2026), so every marketing photo follows the time-of-day theme. These are
-// generated illustrations, never a project or a listing, except "opportunities": the original
-// Reverance render (day, unchanged) and two relit copies of it. Originals and manifest:
-// /mnt/project-files/klem-oct13/theme-photos; sizes from scripts/import-theme-photos.py.
+// generated illustrations, never a project or a listing, except "reverance-towers": the official
+// Reverance render (day, unchanged) and two colour grades of it. Originals and manifests:
+// /mnt/project-files/klem-oct13/theme-photos and /mnt/project-files/klem-oct14; sizes from
+// scripts/import-theme-photos.py.
 export const THEME_PHOTOS = SIZES;
 
 export const themePhotoUrl = (family, theme, width) => `/assets/themed/${family}-${theme}-${width}.webp`;

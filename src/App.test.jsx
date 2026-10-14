@@ -28,6 +28,7 @@ describe("AIXESS navigation pages", () => {
       "SELECTED OPPORTUNITIES",
       "INSIGHTS",
       "BROKER TOOLS",
+      "CONTACT",
     ]);
   });
 
@@ -93,24 +94,48 @@ describe("AIXESS navigation pages", () => {
     const cardPhotos = () => Array.from(document.querySelectorAll(".it-card-media img[data-theme-photo]")).map((img) => img.dataset.themePhoto);
     expect(cardPhotos()).toEqual(["dubai-skyline-night", "switzerland-lakeside-night", "coastal-lifestyle-night"]);
     const hero = document.querySelector(".lasha-page-hero-media");
-    expect(hero.getAttribute("src")).toMatch(/^\/assets\/themed\/coastal-city-night-\d+\.webp$/);
+    expect(hero.getAttribute("src")).toMatch(/^\/assets\/themed\/batumi-coast-night-\d+\.webp$/);
+    expect(hero.getAttribute("alt")).toMatch(/^Illustration of Batumi’s Black Sea coast/);
+    expect(hero.getAttribute("alt")).not.toMatch(/Reverance/);
 
     act(() => setTimeThemeMode("day"));
     await waitFor(() => expect(cardPhotos()).toEqual(["dubai-skyline-day", "switzerland-lakeside-day", "coastal-lifestyle-day"]));
-    expect(document.querySelector(".lasha-page-hero-media").dataset.themePhoto).toBe("coastal-city-day");
+    expect(document.querySelector(".lasha-page-hero-media").dataset.themePhoto).toBe("batumi-coast-day");
     expect(document.documentElement.dataset.timeTheme).toBe("day");
   });
 
-  it("gives Broker Tools the calm waterfront hero and the modern workspace building, not the old marina or Reverance render", () => {
+  it("gives Broker Tools the refined coastal hero and the modern workspace building, not the old marina or Reverance render", () => {
     window.localStorage.setItem("aixess-time-theme", "afternoon");
     resetTimeThemeForTests();
     window.history.replaceState({}, "", "/#broker-tools");
     render(<App />);
-    expect(document.querySelector(".lasha-page-hero-media").dataset.themePhoto).toBe("coastal-classic-afternoon");
+    expect(document.querySelector(".lasha-page-hero-media").dataset.themePhoto).toBe("broker-tools-refined-afternoon");
     const workspace = document.querySelector(".it-workspace-photo");
     expect(workspace.dataset.themePhoto).toBe("workspace-building-afternoon");
     expect(workspace).toHaveAttribute("loading", "lazy");
     expect(document.body.innerHTML).not.toMatch(/marina-towers|reverance-hero-/);
+  });
+
+  it("opens Project Reverance on the official two-tower render, without the public Golden Premium grid", () => {
+    window.localStorage.setItem("aixess-time-theme", "night");
+    resetTimeThemeForTests();
+    window.history.replaceState({}, "", "/#residences");
+    render(<App />);
+    const hero = document.querySelector(".lasha-page-hero-media");
+    expect(hero.dataset.themePhoto).toBe("reverance-towers-night");
+    expect(hero.getAttribute("alt")).toMatch(/Official render of the two Project Reverance towers/);
+    expect(screen.queryByText("GOLDEN PREMIUM APARTMENTS")).not.toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: "PROJECT FACTS" })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: "More Upfront. More Value." })).toBeInTheDocument();
+    expect(screen.getByRole("contentinfo")).toHaveAttribute("id", "contact");
+  });
+
+  it("lists Contact in the header and the menu and takes either to the contact footer", () => {
+    window.history.replaceState({}, "", "/#insights");
+    render(<App />);
+    const contactButtons = screen.getAllByRole("button", { name: "CONTACT" });
+    expect(contactButtons.length).toBe(2);
+    expect(document.getElementById("contact")).toBeInTheDocument();
   });
 
   it("puts the newer first-page brief on the homepage while retaining the existing structure", () => {
@@ -241,7 +266,7 @@ describe("AIXESS navigation pages", () => {
     expect(screen.getAllByRole("button", { name: "BROKER TOOLS" })).toHaveLength(2);
     fireEvent.click(screen.getAllByRole("button", { name: "BROKER TOOLS" })[0]);
     expect(window.location.hash).toBe("#broker-tools");
-    expect(screen.getByRole("heading", { level: 1, name: "EVERYTHING YOU NEEDTO SELL. ONE PLATFORM." })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { level: 1, name: "EVERYTHING YOU NEEDTO SELL. ONE\u00a0PLATFORM." })).toBeInTheDocument();
   });
 
   it("keeps resource CTAs connected to the working materials request dialog", () => {

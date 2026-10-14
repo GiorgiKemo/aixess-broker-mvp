@@ -1,58 +1,60 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { useLanguage } from "../i18n.jsx";
 import { consentChoice, setConsent } from "../analytics.js";
 import { PRIVACY_COPY } from "../privacy-copy.js";
 import { LashaPageHero } from "./LashaHomeSections.jsx";
+import { CONTACT, CONTACT_COPY } from "../contact-copy.js";
 import "./privacy.css";
+import "./site-footer.css";
 import { AixessLogo } from "./AixessLogo.jsx";
 
 export function PrivacyControls({ page }) {
   const { locale } = useLanguage(); const copy = PRIVACY_COPY[locale];
   const [open, setOpen] = useState(() => page !== "admin" && !consentChoice());
-  const [detailsOpen, setDetailsOpen] = useState(false);
-  const footerRef = useRef(null);
-  const toggleRef = useRef(null);
   useEffect(() => { if (page !== "admin" && !consentChoice()) setOpen(true); }, [page]);
   useEffect(() => { const sync = () => setOpen(!consentChoice()); window.addEventListener("storage", sync); return () => window.removeEventListener("storage", sync); }, []);
-  useEffect(() => { setDetailsOpen(false); }, [page]);
-  useEffect(() => {
-    if (!detailsOpen) return undefined;
-    const dismiss = (event) => {
-      if (event.key === "Escape") {
-        setDetailsOpen(false);
-        toggleRef.current?.focus();
-      }
-    };
-    const dismissOutside = (event) => {
-      if (!footerRef.current?.contains(event.target)) setDetailsOpen(false);
-    };
-    document.addEventListener("keydown", dismiss);
-    document.addEventListener("pointerdown", dismissOutside);
-    return () => {
-      document.removeEventListener("keydown", dismiss);
-      document.removeEventListener("pointerdown", dismissOutside);
-    };
-  }, [detailsOpen]);
   const choose = (value) => { setConsent(value); setOpen(false); };
   return <>
-    <footer className={`privacy-footer ${page === "residences" ? "has-explorer" : ""}`} ref={footerRef}>
-      <div className="privacy-footer-panel" id="privacy-footer-panel" hidden={!detailsOpen}>
-        <div className="privacy-footer-brand"><AixessLogo className="privacy-footer-logo" /><span>© {new Date().getFullYear()}</span></div>
-        <nav aria-label={copy.siteInfo}>
-          <a href="#privacy" onClick={() => setDetailsOpen(false)}>{copy.policy}<span aria-hidden="true">↗</span></a>
-          <button type="button" onClick={() => { setDetailsOpen(false); setOpen(true); }}>{copy.settings}<span aria-hidden="true">↗</span></button>
-          <a href="#admin" onClick={() => setDetailsOpen(false)}>{copy.admin}<span aria-hidden="true">↗</span></a>
-        </nav>
-      </div>
-      <button className="privacy-footer-toggle" type="button" ref={toggleRef} aria-expanded={detailsOpen} aria-controls="privacy-footer-panel" onClick={() => setDetailsOpen((value) => !value)}>
-        {copy.siteInfo}<span aria-hidden="true">{detailsOpen ? "×" : "+"}</span>
-      </button>
-    </footer>
+    {page !== "admin" && <SiteFooter onCookieSettings={() => setOpen(true)} />}
     {open && <section className="cookie-notice" aria-labelledby="cookie-title">
       <h2 id="cookie-title">{copy.title}</h2><p>{copy.copy} <a href="#privacy">{copy.policy}</a></p>
       <div className="cookie-actions"><button type="button" onClick={() => choose("rejected")}>{copy.reject}</button><button type="button" onClick={() => choose("accepted")}>{copy.accept}</button></div>
     </section>}
   </>;
+}
+
+// Every public page ends on this neutral footer (Klem, 14 October 2026: the page "can't end with
+// blue"; "We need to add also Contact"): AIXCO's verified contact details, then the legal links,
+// cookie settings and admin access that the floating Site info disclosure used to hold.
+function SiteFooter({ onCookieSettings }) {
+  const { locale } = useLanguage();
+  const copy = PRIVACY_COPY[locale];
+  const contact = CONTACT_COPY[locale] || CONTACT_COPY.en;
+  const mailto = `mailto:${CONTACT.email}`;
+  return (
+    <footer className="site-footer" id="contact" aria-labelledby="site-contact-title" tabIndex={-1}>
+      <div className="site-footer-contact">
+        <div className="site-footer-intro">
+          <p className="lasha-eyebrow">{contact.eyebrow}</p>
+          <h2 id="site-contact-title">{contact.title.map((line) => <span key={line}>{line}</span>)}</h2>
+          <p>{contact.copy}</p>
+        </div>
+        <dl className="site-footer-details">
+          <div><dt>{contact.email}</dt><dd><a href={mailto}>{CONTACT.email}</a></dd></div>
+          <div><dt>{contact.office}</dt><dd><address>{CONTACT.company}<br />{CONTACT.street}<br />{CONTACT.city}, {contact.country}</address></dd></div>
+          <div className="site-footer-write"><a className="button button-primary" href={mailto}>{contact.write}<span aria-hidden="true">→</span></a></div>
+        </dl>
+      </div>
+      <div className="site-footer-legal">
+        <div className="site-footer-brand"><AixessLogo className="site-footer-logo" /><span>© {new Date().getFullYear()}</span></div>
+        <nav aria-label={copy.siteInfo}>
+          <a href="#privacy">{copy.policy}</a>
+          <button type="button" onClick={onCookieSettings}>{copy.settings}</button>
+          <a href="#admin">{copy.admin}</a>
+        </nav>
+      </div>
+    </footer>
+  );
 }
 
 export function PrivacyPage({ header }) {

@@ -50,7 +50,7 @@ export function InsightsPageContent({ header, onOpenModal }) {
 
   return (
     <>
-      <LashaPageHero header={header} eyebrow={c.eyebrow} title={c.title} image="coastal-city" copy={c.copy} />
+      <LashaPageHero header={header} eyebrow={c.eyebrow} title={c.title} image="batumi-coast" imageAlt={c.heroAlt} copy={c.copy} variant="coastal" />
       <main className="page-main it-main">
         <section className="it-section it-ink" id="market-insights" aria-labelledby="it-market-title">
           <SectionHeading id="it-market-title" eyebrow={c.marketEyebrow} title={c.marketTitle} copy={c.marketCopy}>
@@ -92,7 +92,8 @@ export function InsightsPageContent({ header, onOpenModal }) {
           </div>
         </section>
 
-        <section className="it-section it-mist" aria-labelledby="it-faq-title">
+        {/* Paper, not the blue mist band: the page now ends on the neutral contact footer (Klem, 14 October 2026). */}
+        <section className="it-section it-paper it-faq-section" aria-labelledby="it-faq-title">
           <SectionHeading id="it-faq-title" eyebrow={c.faqEyebrow} title={c.faqTitle} />
           {/* Two independent columns in source order, so opening an answer never stretches the other column. */}
           <div className="it-faq">
@@ -163,7 +164,7 @@ export function BrokerToolsPageContent({ header, onOpenModal }) {
   const { tools: c } = useCopy();
   return (
     <>
-      <LashaPageHero header={header} eyebrow={c.eyebrow} title={c.title} image="coastal-classic" copy={c.copy} variant="coastal">
+      <LashaPageHero header={header} eyebrow={c.eyebrow} title={c.title.map((line, index) => (index === c.title.length - 1 ? line.replace(/ (?=\S+$)/, "\u00a0") : line))} image="broker-tools-refined" copy={c.copy} variant="coastal">
         <div className="page-cta-row it-hero-actions">
           <button className="button button-primary" type="button" onClick={() => onOpenModal("register")}>{c.partner}<LashaArrow length={24} /></button>
           <button className="button button-ghost" type="button" onClick={() => onOpenModal("login")}>{c.login}</button>

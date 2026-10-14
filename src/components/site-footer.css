@@ -1,0 +1,116 @@
+/* The neutral page ending on every public page (Klem, 14 October 2026): contact, then legal
+   links. Paper and ink in day and afternoon, true black at night through the theme tokens; no
+   blue band, so no page ends on blue. */
+.site-footer {
+  --footer-gutter: clamp(1.25rem, 4.9vw, 4.4rem);
+  position: relative;
+  z-index: 1;
+  padding: clamp(3.5rem, 7vw, 6.5rem) var(--footer-gutter) 0;
+  border-top: 1px solid var(--l-line, #d4d6d2);
+  background: var(--l-paper, #f4f4f1);
+  color: var(--l-ink, #171a1d);
+  scroll-margin-top: 0;
+}
+.site-footer:focus { outline: none; }
+
+.site-footer-contact {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+  gap: clamp(2rem, 6vw, 6rem);
+  align-items: end;
+}
+.site-footer .lasha-eyebrow::after { flex-basis: clamp(3.5rem, 8.7vw, 7.8rem); margin-left: 1.1rem; }
+.site-footer h2 {
+  margin: 1.1rem 0 0;
+  font-family: "AiXESS Head", "Arial Narrow", sans-serif;
+  font-size: var(--v4-h2);
+  font-weight: 700;
+  line-height: 0.88;
+  text-transform: uppercase;
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
+.site-footer h2 span { display: block; }
+.site-footer-intro > p:last-child {
+  max-width: 34rem;
+  margin: 1.4rem 0 0;
+  color: color-mix(in srgb, var(--l-ink, #171a1d) 80%, transparent);
+  font-size: var(--v4-lead);
+  line-height: 1.55;
+}
+
+.site-footer-details { display: grid; gap: 0; margin: 0; }
+.site-footer-details > div {
+  display: grid;
+  grid-template-columns: minmax(6.5rem, auto) minmax(0, 1fr);
+  gap: 1rem;
+  padding: 1.05rem 0;
+  border-top: 1px solid color-mix(in srgb, var(--l-ink, #171a1d) 16%, transparent);
+}
+.site-footer-details dt {
+  color: var(--l-blue);
+  font-size: var(--v4-label);
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  line-height: 1.6;
+  text-transform: uppercase;
+}
+.site-footer-details dd { margin: 0; font-size: var(--v4-lead); line-height: 1.45; overflow-wrap: anywhere; }
+.site-footer-details address { font-style: normal; }
+.site-footer-details a { color: inherit; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 0.2em; }
+.site-footer-details a:hover { color: var(--l-blue); }
+.site-footer-details > .site-footer-write { display: block; padding-top: 1.4rem; }
+.site-footer-write .button {
+  gap: 1rem;
+  min-height: 3.6rem;
+  padding: 1rem 1.6rem;
+  border-color: var(--l-blue);
+  background: var(--l-blue);
+  color: var(--l-paper, #fff);
+  font-family: var(--l-body);
+  font-size: var(--v4-btn);
+  letter-spacing: 0.16em;
+  text-decoration: none;
+}
+.site-footer-write .button:hover { border-color: var(--l-blue-deep); background: var(--l-blue-deep); color: var(--l-paper, #fff); }
+
+.site-footer-legal {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem 2rem;
+  margin-top: clamp(3rem, 6vw, 5rem);
+  padding: 1.1rem 0 max(1.4rem, env(safe-area-inset-bottom));
+  border-top: 1px solid color-mix(in srgb, var(--l-ink, #171a1d) 16%, transparent);
+}
+.site-footer-brand { display: flex; align-items: center; gap: 1rem; }
+.site-footer-logo { display: block; width: auto; height: 1.6rem; }
+.site-footer-brand span { color: color-mix(in srgb, var(--l-ink, #171a1d) 64%, transparent); font-size: var(--v4-note); }
+.site-footer-legal nav { display: flex; flex-wrap: wrap; gap: 0 1.6rem; }
+.site-footer-legal nav :is(a, button) {
+  display: inline-flex;
+  min-height: 2.75rem;
+  align-items: center;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  cursor: pointer;
+  font: inherit;
+  font-size: var(--v4-note);
+  font-weight: 500;
+  text-decoration: none;
+}
+.site-footer-legal nav :is(a, button):hover { color: var(--l-blue); text-decoration: underline; }
+.site-footer-legal nav :is(a, button):focus-visible { outline: 2px solid var(--l-blue); outline-offset: 2px; }
+
+@media (max-width: 899px) {
+  .site-footer-contact { grid-template-columns: minmax(0, 1fr); align-items: start; }
+  .site-footer-write .button { width: 100%; justify-content: space-between; }
+}
+@media (max-width: 479px) {
+  .site-footer-details > div { grid-template-columns: minmax(0, 1fr); gap: 0.25rem; }
+  .site-footer-legal { flex-direction: column; align-items: flex-start; }
+}
+

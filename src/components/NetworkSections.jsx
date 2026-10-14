@@ -2,8 +2,7 @@ import { useLanguage } from "../i18n.jsx";
 import { NETWORK_COPY } from "../network-copy.js";
 import { CLIENT_PDF_COPY } from "../client-pdf-copy.js";
 import { getWorkbookAvailableCount } from "../data/reveranceInventory.js";
-import { GOLDEN_PREMIUM_APARTMENTS, GOLDEN_PREMIUM_SUMMARY } from "../data/goldenPremiumApartments.js";
-import { GOLDEN_PREMIUM_COPY } from "../golden-premium-copy.js";
+import { REVERANCE_PROJECT_COPY } from "../reverance-project-copy.js";
 import "./network.css";
 
 export const CALCULATOR_IDS = ["payment", "yield", "finance", "growth"];
@@ -16,36 +15,50 @@ function Cards({ rows }) {
   return <div className="network-grid">{rows.map(([title, copy], i) => <article className="network-card" key={title}><span className="network-number" aria-hidden="true">{String(i + 1).padStart(2, "0")}</span><h3>{title}</h3><p>{copy}</p></article>)}</div>;
 }
 
-function GoldenPremiumPanel({ locale, onSelectApartment }) {
-  const copy = GOLDEN_PREMIUM_COPY[locale];
-  const money = (value) => new Intl.NumberFormat(locale, { style: "currency", currency: "EUR", maximumFractionDigits: 0 }).format(value);
+// AIXCO.Global's "Current project" facts (Klem, 14 October 2026), in place of the public Golden
+// Premium price grid, which now lives in the broker system only.
+function ProjectFacts({ copy }) {
   return (
-    <section className="golden-premium-panel" aria-labelledby="golden-premium-title">
-      <div className="golden-premium-heading">
-        <p className="golden-premium-badge">{copy.badge}</p>
-        <h3 id="golden-premium-title">{copy.title}</h3>
-        <p>{copy.intro}</p>
+    <div className="project-facts" aria-labelledby="project-facts-title">
+      <div className="project-facts-heading">
+        <h3 id="project-facts-title">{copy.factsTitle}</h3>
+        <p>{copy.factsLead}</p>
       </div>
-      <div className="golden-premium-summary" aria-label={copy.title}>
-        <div><strong>{GOLDEN_PREMIUM_SUMMARY.total}</strong><span>{copy.units}</span></div>
-        <div><strong>{GOLDEN_PREMIUM_SUMMARY.available}</strong><span>{copy.available}</span></div>
-        <div><strong>{GOLDEN_PREMIUM_SUMMARY.reserved}</strong><span>{copy.reserved}</span></div>
-      </div>
-      <div className="golden-premium-grid">
-        {GOLDEN_PREMIUM_APARTMENTS.map((unit) => (
-          <button className={`golden-premium-unit is-${unit.status}`} type="button" key={unit.code} onClick={() => onSelectApartment(unit.code)} aria-label={`${copy.viewDetails} ${unit.code}`}>
-            <div><strong>{unit.code}</strong><span>{unit.area.toLocaleString(locale, { maximumFractionDigits: 1 })} m²</span><span className="golden-premium-arrow" aria-hidden="true">↗</span></div>
-            <span className="golden-premium-status">{unit.status === "available" ? copy.available : copy.reserved}</span>
-            <small>{copy.referencePrice}: {money(unit.price)}</small>
-          </button>
+      <dl className="project-facts-list">
+        {copy.facts.map(([label, value, note]) => (
+          <div key={label}><dt>{label}</dt><dd><strong>{value}</strong><span>{note}</span></dd></div>
         ))}
-      </div>
-      <p className="golden-premium-note">{copy.note}</p>
+      </dl>
+      <p className="project-facts-note">{copy.factsNote}</p>
+    </div>
+  );
+}
+
+// Klem's REF-06 purchase benefit, word for word: the tiers are as supplied, nothing is calculated.
+export function PurchaseBenefit() {
+  const { locale } = useLanguage();
+  const copy = REVERANCE_PROJECT_COPY[locale] || REVERANCE_PROJECT_COPY.en;
+  const percent = (value) => new Intl.NumberFormat(locale, { style: "percent" }).format(value / 100);
+  return (
+    <section className="purchase-benefit" aria-labelledby="purchase-benefit-title">
+      <p className="purchase-benefit-eyebrow">{copy.benefitEyebrow}</p>
+      <h2 id="purchase-benefit-title">{copy.benefitTitle}</h2>
+      <p className="purchase-benefit-copy">{copy.benefitCopy}</p>
+      <ul className="purchase-benefit-tiers">
+        {[[20, 1], [30, 2], [40, 3]].map(([down, discount]) => (
+          <li key={down}>
+            <p><strong>{percent(down)}</strong><span>{copy.downPayment}</span></p>
+            <span className="purchase-benefit-arrow" aria-hidden="true">→</span>
+            <p><strong>{percent(discount)}</strong><span>{copy.discount}</span></p>
+          </li>
+        ))}
+      </ul>
+      <p className="purchase-benefit-closing">{copy.benefitClosing}</p>
     </section>
   );
 }
 
-export function NetworkSections({ sections, onSelectApartment }) {
+export function NetworkSections({ sections }) {
   const { locale } = useLanguage();
   const c = NETWORK_COPY[locale];
   const stats = {
@@ -67,7 +80,7 @@ export function NetworkSections({ sections, onSelectApartment }) {
       case "commercial": content = <><Heading copy={c.commercial} /><p className="network-emphasis">{c.commercial[3]}</p></>; break;
       case "eligibility": content = <><Heading copy={c.eligibility} /><Cards rows={c.people} /><p className="network-emphasis">{c.network}</p>{actions()}</>; break;
       case "why": content = <><Heading copy={c.why} /><Cards rows={c.reasons} /></>; break;
-      case "opportunity": content = <><Heading copy={c.opportunity.slice(0, 2)} /><p className="network-emphasis">{c.opportunity[2]}</p><p className="network-lead">{c.opportunity[3]}</p><dl className="network-stats">{[number(2), number(getWorkbookAvailableCount()), number(15), money(45000, "EUR")].map((value, i) => <div key={c.facts[i]}><dd>{value}</dd><dt>{c.facts[i]}</dt></div>)}</dl><GoldenPremiumPanel locale={locale} onSelectApartment={onSelectApartment} /><p className="network-emphasis">{c.start}</p><a className="button button-primary" href={workwiseBrokerUrl("login")}>{c.inside}<span aria-hidden="true">→</span></a><p className="network-note">{c.terms}</p></>; break;
+      case "opportunity": content = <><Heading copy={c.opportunity.slice(0, 2)} /><p className="network-emphasis">{c.opportunity[2]}</p><p className="network-lead">{c.opportunity[3]}</p><dl className="network-stats">{[number(2), number(getWorkbookAvailableCount()), number(15), money(45000, "EUR")].map((value, i) => <div key={c.facts[i]}><dd>{value}</dd><dt>{c.facts[i]}</dt></div>)}</dl><ProjectFacts copy={REVERANCE_PROJECT_COPY[locale] || REVERANCE_PROJECT_COPY.en} /><p className="network-emphasis">{c.start}</p><a className="button button-primary" href={workwiseBrokerUrl("login")}>{c.inside}<span aria-hidden="true">→</span></a><p className="network-note">{c.terms}</p></>; break;
       case "advantage": content = <><Heading copy={c.advantage} /><Cards rows={c.advantages} /></>; break;
       case "process": content = <><Heading copy={c.process} /><ol className="network-steps">{c.steps.map(([title, copy], i) => <li key={title}><span className="network-number" aria-hidden="true">{String(i + 1).padStart(2, "0")}</span><h3>{title}</h3><p>{copy}</p></li>)}</ol></>; break;
       case "tools": content = <><Heading copy={c.tools} /><div className="network-grid">{c.calculators.map(([title, copy], i) => <article className="network-card" key={title}><span className="network-number" aria-hidden="true">{String(i + 1).padStart(2, "0")}</span><h3>{title}</h3><p>{copy}</p><a className="text-link" href={`#broker-tools?tool=${CALCULATOR_IDS[i]}`}>{c.openCalculator}<span aria-hidden="true">↗</span></a></article>)}</div><a className="button button-primary" href="#broker-tools">{c.openCalculators}<span aria-hidden="true">→</span></a><p className="network-note"><a href="#broker-tools"><strong>{c.clientPdf}</strong></a> — {CLIENT_PDF_COPY[locale].ready}</p></>; break;

@@ -257,17 +257,6 @@
 
 .lasha-page .network-why .network-heading h2 { max-width: none; }
 
-/* Golden Premium keeps its gold signal but takes the condensed headline type. */
-.lasha-page .golden-premium-heading h3,
-.lasha-page .golden-premium-summary strong {
-  font-family: var(--l-tall);
-  font-weight: 400;
-  letter-spacing: 0.005em;
-  text-transform: uppercase;
-}
-.lasha-page .golden-premium-heading h3 { font-size: var(--v4-sub); letter-spacing: -0.012em; line-height: 0.88; }
-.lasha-page .golden-premium-summary strong { font-family: var(--l-num); font-weight: 500; }
-
 /* Figures read like the homepage metric strip: blue condensed numerals over a short rule. */
 .lasha-page .network-stats { gap: clamp(1.5rem, 3vw, 3rem); margin-block: clamp(2rem, 4vw, 3.2rem); }
 .lasha-page .network-stats > div { display: flex; flex-direction: column; padding-left: 0; border-left: 0; }
@@ -480,23 +469,10 @@
 .privacy-page.lasha-page section { border-top: 1px solid color-mix(in srgb, var(--l-ink, #171a1d) 15%, transparent); }
 .privacy-page.lasha-page p { color: color-mix(in srgb, var(--l-ink, #171a1d) 82%, transparent); }
 
-/* Page ground and the compact site-info disclosure on every page. */
+/* Page ground on every page. */
 html:root,
 html body,
 body .site-shell { background: var(--l-paper, #f4f4f1); }
-body .privacy-footer { color: var(--l-ink, #171a1d); }
-body .privacy-footer-toggle,
-body .privacy-footer-panel { border-color: color-mix(in srgb, var(--l-ink, #171a1d) 30%, transparent); background: var(--l-paper, #f4f4f1); box-shadow: 0 0.5rem 1.5rem rgba(23, 26, 29, 0.14); }
-body .privacy-footer-toggle span { color: var(--l-blue); }
-body .privacy-footer-toggle:hover,
-body .privacy-footer-toggle[aria-expanded="true"] { border-color: var(--l-blue); }
-body .privacy-footer-brand { border-bottom-color: color-mix(in srgb, var(--l-ink, #171a1d) 18%, transparent); }
-body .privacy-footer-brand span { color: color-mix(in srgb, var(--l-ink, #171a1d) 60%, transparent); }
-
-body .privacy-footer-panel nav :is(a, button) { border-bottom-color: color-mix(in srgb, var(--l-ink, #171a1d) 12%, transparent); }
-body .privacy-footer-panel nav a:last-child { color: color-mix(in srgb, var(--l-ink, #171a1d) 60%, transparent); }
-body .privacy-footer-panel nav :is(a, button):hover,
-body .privacy-footer-panel nav span { color: var(--l-blue); }
 
 body .cookie-notice { border-color: color-mix(in srgb, var(--l-ink, #171a1d) 25%, transparent); background: var(--l-paper, #f4f4f1); color: var(--l-ink, #171a1d); }
 body .cookie-notice h2 { font-family: "AiXESS Head", "Arial Narrow", sans-serif; font-size: var(--v4-h3); font-weight: 400; letter-spacing: 0; line-height: 1; text-transform: uppercase; }
@@ -601,6 +577,58 @@ body .modal-panel :is(button, input, a):focus-visible { outline-color: var(--l-b
   /* The two title lines run on as one sentence, so ONE PLATFORM stays together on a narrow screen. */
   .lasha-page-hero-coastal .lasha-page-hero-title > span { display: inline; }
   .lasha-page-hero-coastal .lasha-page-hero-title > span + span::before { content: " "; }
+}
+
+/* Selected Opportunities: the official render of both Reverance towers (Klem, 14 October 2026:
+   the crown close-up "doesn't show nothing"). The photo starts under the header and fades into
+   its own sky colour, so the crowns are never hidden behind the navigation and nothing is
+   painted into the render; the copy sits on the open sky at the left, the towers stand whole on
+   the right. */
+.lasha-page-hero-towers {
+  --towers-top: 5.4rem;
+  --towers-sky: linear-gradient(90deg, #88add7 0%, #6f97c8 45%, #477ab3 100%);
+  min-height: clamp(36rem, calc(100vw * 1767 / 2985 + var(--towers-top)), max(100svh, 40rem));
+  background: var(--towers-sky);
+}
+.lasha-page-hero-towers::before { content: none; }
+.lasha-page-hero-towers .lasha-page-hero-media {
+  top: var(--towers-top);
+  height: calc(100% - var(--towers-top));
+  -webkit-mask-image: linear-gradient(180deg, transparent 0, #000 3.5rem);
+  mask-image: linear-gradient(180deg, transparent 0, #000 3.5rem);
+}
+/* The small eyebrow over the blue sky takes a deep navy (4.5:1 over the sky's lightest part). */
+.lasha-page-hero-towers .lasha-eyebrow { color: #0a1a40; }
+/* The copy keeps to the upper half, on the open sky, above the coast and the trees. */
+.lasha-page-hero-towers .lasha-page-hero-copy { align-content: start; max-width: min(100%, max(30rem, 46vw)); padding-top: clamp(3rem, 7vh, 6rem); }
+/* Two title lines on the sky, clear of the towers (just under v4's 8vw between 1280 and 1440px). */
+@media (min-width: 900px) {
+  .lasha-page .lasha-page-hero-towers .lasha-page-hero-title { font-size: min(var(--v4-page-title), 7vw); }
+  .lasha-page-hero-towers .lasha-page-hero-title > span { text-wrap: balance; }
+}
+@media (max-width: 899px), (max-aspect-ratio: 1/1) {
+  /* Phones and portrait tablets: the towers would sit under the copy, so the header, the whole
+     two-tower view and then the copy stack, with the copy on the page ground. */
+  .lasha-page-hero-towers { min-height: 0; }
+  .lasha-page-hero-towers .lasha-page-hero-media {
+    position: relative;
+    top: auto;
+    z-index: 0;
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 0.85;
+    max-height: 72svh;
+    margin-top: -1.5rem;
+    object-position: var(--hero-position-phone);
+  }
+  .lasha-page-hero-towers .lasha-page-hero-copy { max-width: none; padding-top: 2.2rem; padding-bottom: 3rem; background: var(--l-paper, #f4f4f1); }
+  .lasha-page .lasha-page-hero-towers .lasha-page-hero-title,
+  .lasha-page .lasha-page-hero-towers .lasha-page-hero-text { color: var(--l-ink, #171a1d); }
+  .lasha-page-hero-towers .lasha-eyebrow { color: var(--l-blue); }
+}
+@media (min-width: 600px) and (max-width: 899px), (min-width: 600px) and (max-aspect-ratio: 1/1) {
+  .lasha-page-hero-towers .lasha-page-hero-media { aspect-ratio: 1.3; }
 }
 
 /* Phone and tablet menu in Lasha's language (Kemo, 7 October 2026: the old black/orange
@@ -769,4 +797,99 @@ body .modal-panel :is(button, input, a):focus-visible { outline-color: var(--l-b
 
   .mobile-nav.lasha-menu > button.lasha-menu-sub.is-active { padding-left: 2.5rem; color: #8fb0ff; }
   .mobile-nav.lasha-menu > button.lasha-menu-sub.is-active::before { left: 1.4rem; height: 1.2rem; }
+}
+
+/* Project Reverance facts from AIXCO.Global's "Current project" section (14 October 2026), where
+   the public Golden Premium grid used to be. */
+.lasha-page .project-facts { margin-block: clamp(2.5rem, 5vw, 4rem) clamp(2.5rem, 5vw, 3.5rem); }
+.lasha-page .project-facts-heading h3 {
+  margin: 0.9rem 0 0;
+  font-family: var(--l-head);
+  font-size: var(--v4-sub);
+  font-weight: 700;
+  line-height: 0.88;
+  text-transform: uppercase;
+}
+.lasha-page .project-facts-heading p { max-width: 48ch; margin: 1rem 0 0; font-size: var(--v4-lead); line-height: 1.55; }
+.lasha-page .project-facts-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 16rem), 1fr));
+  gap: 0 clamp(1.5rem, 3vw, 3rem);
+  margin: clamp(1.6rem, 3vw, 2.4rem) 0 0;
+}
+.lasha-page .project-facts-list > div {
+  display: grid;
+  align-content: start;
+  gap: 0.55rem;
+  min-width: 0;
+  padding: 1.25rem 0 1.4rem;
+  border-top: 1px solid color-mix(in srgb, var(--l-ink, #171a1d) 20%, transparent);
+}
+.lasha-page .project-facts-list dt {
+  color: var(--l-blue);
+  font-size: var(--v4-label);
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+.lasha-page .project-facts-list dd { display: grid; gap: 0.45rem; margin: 0; }
+.lasha-page .project-facts-list strong {
+  font-family: var(--l-head);
+  font-size: var(--v4-h3);
+  font-weight: 700;
+  line-height: 1;
+  text-transform: uppercase;
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
+.lasha-page .project-facts-list span { color: color-mix(in srgb, var(--l-ink, #171a1d) 74%, transparent); font-size: var(--v4-small); line-height: 1.45; }
+.lasha-page .project-facts-note { max-width: 62ch; margin: 0.6rem 0 0; color: color-mix(in srgb, var(--l-ink, #171a1d) 78%, transparent); font-size: var(--v4-small); line-height: 1.55; }
+
+/* Klem's purchase benefit (REF-06): three aligned tiers on the theme's colour band, stacking on
+   narrow screens. It sits mid-page, so no page ends on it. */
+.lasha-page .purchase-benefit {
+  padding: clamp(3.5rem, 7vw, 6rem) var(--page-gutter);
+  background: var(--l-field);
+  color: var(--l-on-field);
+  text-align: center;
+}
+.lasha-page .purchase-benefit > * { max-width: 72rem; margin-inline: auto; }
+.lasha-page .purchase-benefit-eyebrow { margin-block: 0; font-size: var(--v4-eyebrow); font-weight: 600; letter-spacing: 0.2em; line-height: 1.3; text-transform: uppercase; }
+.lasha-page .purchase-benefit h2 {
+  margin-block: 1rem 0;
+  font-family: var(--l-head);
+  font-size: var(--v4-h2);
+  font-weight: 700;
+  line-height: 0.88;
+  text-transform: uppercase;
+  text-wrap: balance;
+}
+.lasha-page .purchase-benefit-copy { max-width: 40rem; margin-block: 1.3rem 0; font-size: var(--v4-lead); line-height: 1.55; text-wrap: pretty; }
+.lasha-page .purchase-benefit-tiers {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(0.75rem, 1.6vw, 1.25rem);
+  margin-block: clamp(2rem, 4vw, 3rem) 0;
+  padding: 0;
+  list-style: none;
+}
+.lasha-page .purchase-benefit-tiers li {
+  display: grid;
+  grid-template-rows: auto auto auto;
+  justify-items: center;
+  gap: 0.9rem;
+  min-width: 0;
+  padding: clamp(1.4rem, 2.6vw, 2.2rem) 1rem;
+  border: 1px solid color-mix(in srgb, var(--l-on-field) 38%, transparent);
+}
+.lasha-page .purchase-benefit-tiers p { display: grid; gap: 0.5rem; margin: 0; }
+.lasha-page .purchase-benefit-tiers strong { font-family: var(--l-head); font-size: var(--v4-benefit); font-weight: 700; line-height: 0.85; }
+.lasha-page .purchase-benefit-tiers p span { font-size: var(--v4-label); font-weight: 600; letter-spacing: 0.18em; line-height: 1.35; text-transform: uppercase; overflow-wrap: break-word; }
+.lasha-page .purchase-benefit-arrow { font-size: 1.5rem; line-height: 1; transform: rotate(90deg); }
+.lasha-page .purchase-benefit-closing { margin-block: clamp(1.8rem, 3.4vw, 2.6rem) 0; font-family: var(--l-head); font-size: var(--v4-h3); font-weight: 700; line-height: 1; text-transform: uppercase; }
+@media (max-width: 699px) {
+  .lasha-page .purchase-benefit-tiers { grid-template-columns: minmax(0, 1fr); }
+  .lasha-page .purchase-benefit-tiers li { grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); grid-template-rows: auto; align-items: center; }
+  .lasha-page .purchase-benefit-arrow { transform: none; }
 }

@@ -7,6 +7,7 @@ export const INSIGHTS_TOOLS_COPY = {
   en: {
     insights: {
       eyebrow: "INSIGHTS",
+      heroAlt: "Illustration of Batumi’s Black Sea coast: the seaside boulevard, beach and city skyline below the mountains",
       title: ["THE KNOWLEDGE", "BEHIND EVERY", "OPPORTUNITY."],
       copy: "Market intelligence, project insights and expert knowledge for international real estate professionals.",
       marketEyebrow: "MARKET INTELLIGENCE",
@@ -65,6 +66,7 @@ export const INSIGHTS_TOOLS_COPY = {
   de: {
     insights: {
       eyebrow: "MARKTEINBLICKE",
+      heroAlt: "Illustration der Schwarzmeerküste von Batumi: Strandpromenade, Strand und Skyline vor den Bergen",
       title: ["DAS WISSEN", "HINTER JEDER", "CHANCE."],
       copy: "Marktwissen, Projekteinblicke und Expertise für internationale Immobilienprofis.",
       marketEyebrow: "MARKTWISSEN",
@@ -123,6 +125,7 @@ export const INSIGHTS_TOOLS_COPY = {
   pl: {
     insights: {
       eyebrow: "WIEDZA",
+      heroAlt: "Ilustracja wybrzeża Morza Czarnego w Batumi: nadmorski bulwar, plaża i panorama miasta u stóp gór",
       title: ["WIEDZA", "ZA KAŻDĄ", "OKAZJĄ."],
       copy: "Analizy rynkowe, informacje o projektach i wiedza ekspercka dla międzynarodowych profesjonalistów nieruchomości.",
       marketEyebrow: "ANALIZY RYNKOWE",
@@ -181,6 +184,7 @@ export const INSIGHTS_TOOLS_COPY = {
   sl: {
     insights: {
       eyebrow: "VPOGLEDI",
+      heroAlt: "Ilustracija črnomorske obale Batumija: obalna promenada, plaža in mestne stolpnice pod gorami",
       title: ["ZNANJE", "ZA VSAKO", "PRILOŽNOSTJO."],
       copy: "Tržni vpogledi, informacije o projektih in strokovno znanje za mednarodne nepremičninske strokovnjake.",
       marketEyebrow: "TRŽNI VPOGLEDI",
@@ -239,6 +243,7 @@ export const INSIGHTS_TOOLS_COPY = {
   ru: {
     insights: {
       eyebrow: "АНАЛИТИКА",
+      heroAlt: "Иллюстрация черноморского побережья Батуми: приморский бульвар, пляж и городские высотки у подножия гор",
       title: ["ЗНАНИЯ", "ЗА КАЖДОЙ", "ВОЗМОЖНОСТЬЮ."],
       copy: "Рыночная аналитика, информация о проектах и экспертные знания для международных специалистов по недвижимости.",
       marketEyebrow: "РЫНОЧНАЯ АНАЛИТИКА",

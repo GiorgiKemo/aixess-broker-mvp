@@ -2,14 +2,13 @@
 
 Each family has three versions of one scene, so the photos change with the time-of-day theme.
 They are generated mood photography for the brand pages, never a project or a listing; family
-"opportunities" is the original Reverance render (day, unchanged) and two relit copies of it.
+"reverance-towers" is the official Reverance render (day, unchanged) and two colour grades of it.
 
 usage: python3 scripts/import-theme-photos.py SOURCE_DIRS [UPSCALED_DIRS] [--only FAMILY]
 
 SOURCE_DIRS holds the supplied files (<number>-<scene>-<theme>.png/.webp, see FAMILIES); give
-several folders joined with ":" (the Broker Tools hero "coastal-classic", design 1A of
-14 October 2026, has its own folder: /mnt/project-files/klem-oct13/theme-photos:
-/mnt/project-files/klem-oct13/coastal-classic). Every source is found before anything is
+several folders joined with ":" (/mnt/project-files/klem-oct13/theme-photos:
+/mnt/project-files/klem-oct14/originals:/mnt/project-files/klem-oct14/reverance-towers). Every source is found before anything is
 written. With --only, just that family is rebuilt and the other families' sizes are kept.
 UPSCALED_DIRS (also ":"-joined) may hold <source stem>-x4.png: a 4x EDSR super-resolution enlargement (OpenCV
 dnn_superres, EDSR_x4.pb) of a hero photo: phones and Retina laptops draw the full-width heroes
@@ -35,13 +34,16 @@ FAMILIES = {
     "dubai-skyline": "01-dubai-skyline",
     "switzerland-lakeside": "02-switzerland-lakeside",
     "coastal-lifestyle": "03-coastal-lifestyle",
-    "coastal-city": "04-coastal-city",
     "glass-architecture": "05-glass-architecture",
-    # The 1A masters are numbered by theme rather than by family.
-    "coastal-classic": {"day": "01-coastal-classic-day", "afternoon": "02-coastal-classic-afternoon", "night": "03-coastal-classic-night"},
+    # Klem's 14 October set (/mnt/project-files/klem-oct14/originals), numbered by theme: the
+    # refined Broker Tools hero and the Batumi coast Insights hero.
+    "broker-tools-refined": {theme: f"0{i}-broker-tools-refined-{theme}" for i, theme in enumerate(THEMES, 1)},
+    "batumi-coast": {theme: f"0{i}-insights-batumi-coast-{theme}" for i, theme in enumerate(THEMES, 4)},
     "coastal-residence": "07-coastal-residence",
     "workspace-building": "08-workspace-modern-building",
-    "opportunities": "09-selected-opportunities-original",
+    # Selected Opportunities: the official two-tower Reverance render, with whole-image colour
+    # grades for afternoon and night (/mnt/project-files/klem-oct14/reverance-towers).
+    "reverance-towers": {theme: f"1{i}-reverance-towers-{theme}" for i, theme in enumerate(THEMES)},
 }
 NATIVE_WIDTHS = (480, 800, 1200, 1600, 2400)
 UPSCALED_WIDTHS = (480, 800, 1200, 1600, 2400, 3200, 4000)
@@ -95,7 +97,7 @@ def main(source_dirs, upscaled_dirs=(), only=None):
                 resized.save(OUT / f"{family}-{theme}-{width}.webp", "WEBP", quality=86, method=6)
             sizes[family][theme] = {"width": image.width, "height": image.height, "widths": widths}
             print(family, theme, image.size, widths)
-    sizes = {family: sizes[family] for family in FAMILIES}
+    sizes = {family: sizes[family] for family in FAMILIES if family in sizes}
     SIZES.write_text(json.dumps(sizes, indent=2) + "\n")
     # index.html preloads the homepage hero in the current theme before React starts.
     index = ROOT / "index.html"

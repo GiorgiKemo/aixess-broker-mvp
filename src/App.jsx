@@ -2,7 +2,8 @@ import { Fragment, lazy, Suspense, useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { CaretDown, Globe } from "@phosphor-icons/react";
 import { LanguageProvider, LANGUAGE_OPTIONS, useLanguage, localizeFieldValidation, clearFieldValidation } from "./i18n.jsx";
-import { NetworkSections } from "./components/NetworkSections.jsx";
+import { NetworkSections, PurchaseBenefit } from "./components/NetworkSections.jsx";
+import { REVERANCE_PROJECT_COPY } from "./reverance-project-copy.js";
 import { ProjectShowcase } from "./components/ProjectShowcase.jsx";
 import { AdvantagePageContent, BrokerAccessPageContent } from "./components/LashaNetworkPages.jsx";
 import { HomeAbout, HomeAccess, HomeHero, HomeMetrics, HomeStartingPoints, LashaPageHero } from "./components/LashaHomeSections.jsx";
@@ -36,10 +37,21 @@ const navItems = [
   { key: "residences", labelKey: "selectedOpportunities", children: OPPORTUNITY_PROJECTS },
   { key: "insights", labelKey: "insights" },
   { key: "broker-tools", labelKey: "brokerTools" },
+  // Contact is the footer every page ends with (Klem, 14 October 2026), not a page of its own.
+  { key: "contact", labelKey: "contact" },
 ];
 
 const routeAliases = { resources: "insights", calculators: "broker-tools" };
-const validRoutes = new Set(["home", ...navItems.map(({ key }) => key), "admin", "privacy"]);
+const validRoutes = new Set(["home", ...navItems.map(({ key }) => key).filter((key) => key !== "contact"), "admin", "privacy"]);
+
+// Scrolls to the contact footer and moves focus there, so keyboard and screen-reader users land on it too.
+function showContact(behavior = "smooth") {
+  const footer = document.getElementById("contact");
+  if (!footer) return false;
+  footer.scrollIntoView({ behavior, block: "start" });
+  footer.focus({ preventScroll: true });
+  return true;
+}
 
 const WORKWISE_BROKER_PATHS = {
   login: "/realestate/aixco/broker-login",
@@ -448,21 +460,23 @@ function BrokerToolsPage({ currentPage, menuOpen, onToggleMenu, onNavigate, onOp
 }
 
 function ResidencesPage({ currentPage, menuOpen, onToggleMenu, onNavigate, onOpenModal }) {
-  const { t } = useLanguage();
-  const [requestedApartment, setRequestedApartment] = useState(null);
+  const { t, locale } = useLanguage();
   return (
     <div className="route-page lasha-page residences-page">
       <LashaPageHero
         header={<PageHeader {...{ currentPage, menuOpen, onToggleMenu, onNavigate, onOpenModal }} />}
         eyebrow={t("projectReveranceBatumi")}
         title={[t("oneBuilding"), t("yourNextMove")]}
-        image="opportunities"
+        image="reverance-towers"
+        variant="towers"
+        imageAlt={(REVERANCE_PROJECT_COPY[locale] || REVERANCE_PROJECT_COPY.en).heroAlt}
         copy={t("residenceRouteCopy")}
       />
       <main className="page-main">
-        <NetworkSections sections={["opportunity"]} onSelectApartment={(code) => setRequestedApartment({ code })} />
+        <NetworkSections sections={["opportunity"]} />
+        <PurchaseBenefit />
         <Suspense fallback={<div className="residence-explorer-loader" role="status">{t("preparingInteractive")}</div>}>
-          <ResidenceExplorer liveInventoryTitle requestedApartment={requestedApartment} onBrokerAccess={() => onOpenModal("register")} />
+          <ResidenceExplorer liveInventoryTitle onBrokerAccess={() => onOpenModal("register")} />
         </Suspense>
       </main>
     </div>
@@ -538,6 +552,12 @@ function AppContent() {
 
   const navigatePage = (page) => {
     setMenuOpen(false);
+    if (page === "contact") {
+      track("navigation", { destination: "contact" });
+      // After the menu has closed and the page behind it is no longer inert.
+      window.setTimeout(() => showContact(), 50);
+      return;
+    }
     const nextPage = validRoutes.has(page) ? page : "home";
     track("navigation", { destination: nextPage });
     if (nextPage === currentPage) {
@@ -549,8 +569,21 @@ function AppContent() {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
+  // A #contact link opens the homepage at its contact footer, once the lazy explorer above it has
+  // taken its height.
+  useEffect(() => {
+    if (window.location.hash.toLowerCase() !== "#contact") return undefined;
+    const timers = [0, 400, 1200].map((delay) => window.setTimeout(() => showContact("auto"), delay));
+    return () => timers.forEach(window.clearTimeout);
+  }, []);
+
   useEffect(() => {
     const syncRoute = () => {
+      if (window.location.hash.toLowerCase() === "#contact") {
+        setMenuOpen(false);
+        showContact();
+        return;
+      }
       setCurrentPage(routeFromLocation());
       setMenuOpen(false);
       window.scrollTo({ top: 0, behavior: "auto" });

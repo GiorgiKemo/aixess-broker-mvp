@@ -110,47 +110,6 @@
       ]
     }
   },
-  "coastal-city": {
-    "day": {
-      "width": 6688,
-      "height": 3764,
-      "widths": [
-        480,
-        800,
-        1200,
-        1600,
-        2400,
-        3200,
-        4000
-      ]
-    },
-    "afternoon": {
-      "width": 6688,
-      "height": 3764,
-      "widths": [
-        480,
-        800,
-        1200,
-        1600,
-        2400,
-        3200,
-        4000
-      ]
-    },
-    "night": {
-      "width": 6688,
-      "height": 3764,
-      "widths": [
-        480,
-        800,
-        1200,
-        1600,
-        2400,
-        3200,
-        4000
-      ]
-    }
-  },
   "glass-architecture": {
     "day": {
       "width": 4096,
@@ -192,7 +151,7 @@
       ]
     }
   },
-  "coastal-classic": {
+  "broker-tools-refined": {
     "day": {
       "width": 6688,
       "height": 3764,
@@ -230,6 +189,41 @@
         2400,
         3200,
         4000
+      ]
+    }
+  },
+  "batumi-coast": {
+    "day": {
+      "width": 1672,
+      "height": 941,
+      "widths": [
+        480,
+        800,
+        1200,
+        1600,
+        1672
+      ]
+    },
+    "afternoon": {
+      "width": 1672,
+      "height": 941,
+      "widths": [
+        480,
+        800,
+        1200,
+        1600,
+        1672
+      ]
+    },
+    "night": {
+      "width": 1672,
+      "height": 941,
+      "widths": [
+        480,
+        800,
+        1200,
+        1600,
+        1672
       ]
     }
   },
@@ -306,42 +300,41 @@
       ]
     }
   },
-  "opportunities": {
+  "reverance-towers": {
     "day": {
-      "width": 2048,
-      "height": 2042,
+      "width": 2985,
+      "height": 1767,
       "widths": [
         480,
         800,
         1200,
         1600,
-        2048
+        2400,
+        2985
       ]
     },
     "afternoon": {
-      "width": 5016,
-      "height": 5016,
+      "width": 2985,
+      "height": 1767,
       "widths": [
         480,
         800,
         1200,
         1600,
         2400,
-        3200,
-        4000
+        2985
       ]
     },
     "night": {
-      "width": 5016,
-      "height": 5016,
+      "width": 2985,
+      "height": 1767,
       "widths": [
         480,
         800,
         1200,
         1600,
         2400,
-        3200,
-        4000
+        2985
       ]
     }
   }

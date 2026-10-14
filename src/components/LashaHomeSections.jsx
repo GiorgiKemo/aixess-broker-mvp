@@ -72,14 +72,19 @@ export function HomeHero({ children }) {
 // afternoon and night versions that follow the theme (13 October 2026). Positions are
 // desktop / phone focal points; `aspect` sizes the phone crop (see pageHeroSizes).
 const PAGE_HERO_IMAGES = {
-  "coastal-city": { family: "coastal-city", aspect: 16 / 9, position: "62% 45%", phonePosition: "70% 50%" },
-  // Broker Tools: design 1A Coastal Classic (14 October 2026), copy over the sky and sea on the
-  // left, the terrace building on the right.
+  // Insights: the Batumi Black Sea coast (Klem, 14 October 2026), open sea and sky behind the copy
+  // on the left, the city and shore on the right.
+  "batumi-coast": { family: "batumi-coast", aspect: 16 / 9, position: "100% 50%", phonePosition: "40% 50%", sizes: "(max-aspect-ratio: 1/1) 180vh, (max-aspect-ratio: 3/2) 154vh, 100vw" },
+  // Broker Tools: the calmer refinement of design 1A (14 October 2026), sky and sea under the
+  // copy, the stone terrace at the right edge.
   // Its hero is at least the screen's height on portrait screens (so the photo is drawn about
   // 1.8 × the height wide) and about 86% of it on 4:3 screens.
-  "coastal-classic": { family: "coastal-classic", aspect: 16 / 9, position: "100% 50%", phonePosition: "58% 50%", sizes: "(max-aspect-ratio: 1/1) 180vh, (max-aspect-ratio: 3/2) 154vh, 100vw" },
-  // Selected Opportunities: the first AiXESS homepage render (Kemo, 13 October 2026).
-  opportunities: { family: "opportunities", aspect: 1, position: "70% 30%", phonePosition: "60% 30%" },
+  "broker-tools-refined": { family: "broker-tools-refined", aspect: 16 / 9, position: "100% 50%", phonePosition: "62% 50%", sizes: "(max-aspect-ratio: 1/1) 180vh, (max-aspect-ratio: 3/2) 154vh, 100vw" },
+  // Selected Opportunities: the official render of both Reverance towers above the Batumi coast
+  // (Klem, 14 October 2026: the crown close-up "doesn't show nothing").
+  // From 900px the photo spans the width; phones and portrait tablets show the right half of it
+  // (both towers) at full width, so the file is about twice the screen width.
+  "reverance-towers": { family: "reverance-towers", aspect: 2985 / 1767, position: "100% 0%", phonePosition: "84% 0%", sizes: "(max-width: 899px) 200vw, (max-aspect-ratio: 1/1) 200vw, 100vw" },
   skyline: { src: "reverance-skyline-1440", srcSet: "reverance-skyline-720 720w, reverance-skyline-1440 1440w, reverance-skyline-2160 2160w, reverance-skyline-2700 2700w", position: "72% 30%" },
   sunset: { src: "reverance-sunset-1600", srcSet: "reverance-sunset-800 800w, reverance-sunset-1600 1600w, reverance-sunset-2400 2400w", position: "72% 58%" },
   entrance: { src: "reverance-entrance-1200", srcSet: "reverance-entrance-600 600w, reverance-entrance-1200 1200w", position: "62% 58%" },
@@ -96,7 +101,7 @@ const pageHeroSizes = (aspect) => `(max-aspect-ratio: 1/1) ${Math.ceil(70 * aspe
 
 // Inner pages open with the homepage's language: the site header floating over a
 // Reverance render, a blue eyebrow and an oversized headline.
-export function LashaPageHero({ header, eyebrow, title, titleAs: Title = "h1", copy, image = "skyline", variant, children }) {
+export function LashaPageHero({ header, eyebrow, title, titleAs: Title = "h1", copy, image = "skyline", imageAlt = "", variant, children }) {
   const lines = Array.isArray(title) ? title : [title];
   const media = PAGE_HERO_IMAGES[image] ?? PAGE_HERO_IMAGES.skyline;
   const style = { "--hero-position": media.position, "--hero-position-phone": media.phonePosition ?? media.position };
@@ -104,9 +109,9 @@ export function LashaPageHero({ header, eyebrow, title, titleAs: Title = "h1", c
     <section className={`lasha-page-hero${variant ? ` lasha-page-hero-${variant}` : ""}`}>
       {header}
       {media.family ? (
-        <ThemedImage className="lasha-page-hero-media" family={media.family} sizes={media.sizes ?? pageHeroSizes(media.aspect)} style={style} fetchPriority="high" decoding="async" />
+        <ThemedImage className="lasha-page-hero-media" family={media.family} sizes={media.sizes ?? pageHeroSizes(media.aspect)} style={style} alt={imageAlt} fetchPriority="high" decoding="async" />
       ) : (
-        <img className="lasha-page-hero-media" {...pageHeroSources(media)} sizes="100vw" style={style} alt="" decoding="async" />
+        <img className="lasha-page-hero-media" {...pageHeroSources(media)} sizes="100vw" style={style} alt={imageAlt} decoding="async" />
       )}
       <div className="lasha-page-hero-copy">
         {eyebrow && <p className="lasha-eyebrow">{eyebrow}</p>}
