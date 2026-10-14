@@ -583,3 +583,108 @@ html:root:not([data-time-theme='night']) .it-step-list li { border-top-color: va
   html:root:not([data-time-theme='night']) .mobile-nav.lasha-menu .mobile-login { border-color: #171a1d; color: #171a1d; }
   html:root:not([data-time-theme='night']) .mobile-nav.lasha-menu .mobile-login:hover { background: #171a1d; color: #f4f4f1; }
 }
+
+/* The Residence Explorer follows too (Kemo, 14 October 2026: "3d explorer fix it too"): by day
+   and afternoon the controls over the model, the phone dock and floor chip, the floor modal and
+   the plan lightbox are light, with ink text. The model itself and its orange floor highlight are
+   unchanged. Day keeps the explorer's orange accent; the afternoon uses deep sage, with white text
+   on it. Night keeps the dark explorer. */
+html:root:not([data-time-theme='night']) :is(.residence-explorer, .floor-modal-backdrop) {
+  --x-glass: color-mix(in srgb, #f7f7f4 86%, transparent);
+  --x-text: #171a1d;
+  --x-muted: rgb(23 26 29 / 0.64);
+  --x-line: rgb(23 26 29 / 0.18);
+}
+html:root[data-time-theme='afternoon'] :is(.residence-explorer, .floor-modal-backdrop) {
+  --orange: #3c5a41;
+  --x-glass: color-mix(in srgb, #eef3ec 88%, transparent);
+}
+
+/* Controls over the model. */
+html:root:not([data-time-theme='night']) :is(.model-loading, .model-floor-rail, .model-reset-view, .model-block-switcher, .building-model-instruction, .building-model-badge, .model-floor-tooltip) {
+  border-color: var(--x-line);
+  background: var(--x-glass);
+  color: var(--x-text);
+}
+html:root:not([data-time-theme='night']) .building-model-badge { border-left-color: var(--orange); color: var(--x-muted); }
+html:root:not([data-time-theme='night']) .model-floor-tooltip { border-left-color: var(--orange); box-shadow: 0 0.8rem 2rem rgb(23 26 29 / 0.16); }
+html:root:not([data-time-theme='night']) :is(.model-loading, .model-floor-tooltip small) { color: var(--x-muted); }
+html:root:not([data-time-theme='night']) .model-loading span { border-color: var(--x-line); border-top-color: var(--orange); }
+html:root:not([data-time-theme='night']) .model-reset-view:is(:hover, :focus-visible) { color: var(--x-text); }
+html:root:not([data-time-theme='night']) .model-floor-rail button { border-bottom-color: var(--x-line); color: var(--x-muted); }
+html:root:not([data-time-theme='night']) .model-floor-rail button:is(:hover, :focus-visible, .is-active, .is-filter-match) { background: color-mix(in srgb, var(--orange) 18%, transparent); color: var(--x-text); }
+html:root:not([data-time-theme='night']) .model-block-switcher button { border-right-color: var(--x-line); color: var(--x-muted); }
+html:root[data-time-theme='afternoon'] :is(.model-block-switcher button:is(:hover, :focus-visible, .is-active), .model-instruction-index, .inventory-filters button.is-active, .unit-preview-tabs button.is-active) { color: #fff; }
+
+/* Phone dock and floor chip. */
+@media (max-width: 1100px) and (orientation: portrait) {
+  html:root:not([data-time-theme='night']) :is(.mobile-residence-dock, .mobile-floor-chip) {
+    border-color: var(--x-line);
+    background: var(--x-glass);
+    color: var(--x-text);
+    box-shadow: 0 0.8rem 2rem rgb(23 26 29 / 0.16);
+  }
+  html:root:not([data-time-theme='night']) :is(.mobile-dock-summary small, .mobile-dock-scope span, .mobile-floor-chip span) { color: var(--x-muted); }
+  html:root:not([data-time-theme='night']) :is(.mobile-dock-summary strong, .mobile-dock-scope b) { color: var(--x-text); }
+  html:root:not([data-time-theme='night']) .mobile-dock-summary em { color: #1b7d55; }
+  html:root:not([data-time-theme='night']) .mobile-dock-scope { border-color: var(--x-line); }
+  html:root:not([data-time-theme='night']) .mobile-floor-chip option { background: #f7f7f4; color: #171a1d; }
+  html:root:not([data-time-theme='night']) :is(.lasha-home, .lasha-page) .mobile-floor-chip :is(select, svg) { color: var(--l-blue); }
+  html:root:not([data-time-theme='night']) :is(.lasha-home, .lasha-page) .mobile-floor-chip { border-color: color-mix(in srgb, var(--l-blue) 60%, transparent); }
+}
+
+/* Floor modal: a light dimmed backdrop, the theme's soft tint in the header and paper panels. */
+html:root:not([data-time-theme='night']) .floor-modal-backdrop { background: color-mix(in srgb, var(--l-soft) 72%, transparent); }
+html:root:not([data-time-theme='night']) .floor-modal {
+  border-color: var(--x-line);
+  background: #f7f7f4;
+  box-shadow: 0 3rem 8rem rgb(23 26 29 / 0.28);
+  color: var(--x-text);
+}
+html:root:not([data-time-theme='night']) .floor-modal-header { border-bottom-color: var(--x-line); background: var(--l-soft); }
+html:root:not([data-time-theme='night']) :is(.floor-modal-header h2, .inventory-heading strong, .inventory-intro h3, .unit-detail h3, .unit-detail-heading > strong) { color: var(--x-text); }
+html:root:not([data-time-theme='night']) :is(.floor-navigation, .floor-modal-close) { border-color: rgb(23 26 29 / 0.32); }
+html:root:not([data-time-theme='night']) :is(.floor-navigation > button, .floor-navigation-trigger, .floor-modal-close, .floor-navigation-trigger svg) { color: var(--x-text); }
+html:root:not([data-time-theme='night']) :is(.floor-navigation button + .floor-navigation-select, .floor-navigation-select + button) { border-left-color: var(--x-line); }
+html:root:not([data-time-theme='night']) .floor-navigation-menu { border-color: var(--x-line); background: #f7f7f4; box-shadow: 0 1.5rem 3rem rgb(23 26 29 / 0.18); }
+html:root:not([data-time-theme='night']) .floor-navigation-option { border-bottom-color: var(--x-line); background: #f7f7f4; color: var(--x-text); }
+html:root:not([data-time-theme='night']) .floor-navigation-option:is(:hover, :focus-visible, [aria-selected="true"]) { background: color-mix(in srgb, var(--orange) 14%, #f7f7f4); color: var(--x-text); }
+html:root:not([data-time-theme='night']) .inventory-pane { background: #f7f7f4; }
+html:root:not([data-time-theme='night']) :is(.inventory-heading, .unit-list) { border-color: var(--x-line); }
+html:root:not([data-time-theme='night']) :is(.inventory-filters button, .unit-preview-tabs button) { border-color: rgb(23 26 29 / 0.24); color: var(--x-muted); }
+html:root:not([data-time-theme='night']) :is(.inventory-filters button, .unit-preview-tabs button).is-active { border-color: var(--orange); color: #fff; }
+html:root:not([data-time-theme='night']) .inventory-filters button.is-sold.is-active { border-color: #2f6f9f; }
+html:root:not([data-time-theme='night']) :is(.inventory-intro p, .inventory-empty, .unit-status, .golden-premium-unit-meta) { color: var(--x-muted); }
+html:root:not([data-time-theme='night']) .unit-row { border-bottom-color: var(--x-line); color: var(--x-muted); }
+html:root:not([data-time-theme='night']) .unit-row > span:first-child { color: var(--x-text); }
+html:root:not([data-time-theme='night']) .unit-row:is(:hover, .is-active) { color: var(--x-text); }
+html:root:not([data-time-theme='night']) .unit-row.is-unavailable,
+html:root:not([data-time-theme='night']) .unit-row.is-unavailable > span:first-child { color: #77736f; }
+html:root:not([data-time-theme='night']) .unit-row.is-unavailable:is(:hover, .is-active) { color: #5f5b57; }
+html:root:not([data-time-theme='night']) .unit-status.is-available { color: #1b7d55; }
+html:root:not([data-time-theme='night']) .unit-status.is-reserved { color: #8a6526; }
+html:root:not([data-time-theme='night']) :is(.unit-status.is-sold, .unit-status.is-unavailable) { color: #2f6f9f; }
+html:root:not([data-time-theme='night']) :is(.golden-premium-unit-label, .golden-premium-unit-meta strong) { color: #8a6a12; }
+html:root:not([data-time-theme='night']) .golden-premium-unit-meta { border-color: rgb(138 106 18 / 0.35); }
+html:root:not([data-time-theme='night']) :is(.unit-facts, .unit-facts div + div, .unit-preview-wrap, .unit-preview-tabs, .unit-preview-tabs button + button, .unit-area-list span) { border-color: var(--x-line); }
+html:root:not([data-time-theme='night']) .unit-facts dt { color: var(--x-muted); }
+html:root:not([data-time-theme='night']) .unit-facts dd { color: var(--x-text); }
+html:root:not([data-time-theme='night']) .unit-area-list span { color: var(--x-muted); }
+html:root:not([data-time-theme='night']) .unit-area-list b { color: var(--x-text); }
+html:root:not([data-time-theme='night']) .floor-modal .unit-enquiry:disabled:is(*, :hover) { border-color: #dcdad5; background: #dcdad5; color: rgb(23 26 29 / 0.62); }
+html:root:not([data-time-theme='night']) .unit-preview-open-hint { background: color-mix(in srgb, #f7f7f4 92%, transparent); color: var(--x-text); }
+
+/* Plan lightbox. */
+html:root:not([data-time-theme='night']) .floor-plan-lightbox-backdrop { background: color-mix(in srgb, var(--l-soft) 80%, transparent); }
+html:root:not([data-time-theme='night']) .floor-plan-lightbox { border-color: var(--x-line); background: #f7f7f4; box-shadow: 0 2rem 7rem rgb(23 26 29 / 0.28); }
+html:root:not([data-time-theme='night']) .floor-plan-lightbox-close { border-color: rgb(23 26 29 / 0.32); background: #f7f7f4; color: var(--x-text); }
+html:root:not([data-time-theme='night']) .floor-plan-lightbox-caption { color: var(--x-text); }
+html:root:not([data-time-theme='night']) .floor-plan-lightbox-caption span { color: var(--x-muted); }
+html:root:not([data-time-theme='night']) .unit-row.is-sold { background: rgb(24 70 103 / 0.9); }
+html:root:not([data-time-theme='night']) .unit-row.is-sold:is(:hover, .is-active) { background: rgb(24 70 103 / 0.98); }
+html:root:not([data-time-theme='night']) :is(.explorer-loading, .explorer-error) { background: var(--l-soft); color: var(--x-text); }
+html:root:not([data-time-theme='night']) .explorer-error p { color: var(--x-muted); }
+html:root:not([data-time-theme='night']) .explorer-loading span { border-color: var(--x-line); border-top-color: var(--orange); }
+html:root:not([data-time-theme='night']) .unit-row.is-sold,
+html:root:not([data-time-theme='night']) .unit-row.is-sold:is(:hover, .is-active) { color: #f5fbff; }
+html:root:not([data-time-theme='night']) .unit-row.is-sold > span:first-child { color: #fff; }
