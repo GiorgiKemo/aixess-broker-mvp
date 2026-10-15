@@ -34,7 +34,7 @@ it("ends the page with AIXCO's contact details and the legal links", () => {
   fireEvent.click(screen.getByRole("button", { name: "Reject analytics" }));
   const footer = screen.getByRole("contentinfo");
   expect(footer).toHaveAttribute("id", "contact");
-  expect(screen.getByRole("heading", { name: /TALK TO/ })).toBeInTheDocument();
+  expect(screen.getByRole("heading", { name: "Contact our team" })).toBeInTheDocument();
   expect(screen.getAllByRole("link", { name: /info@aixco\.global|WRITE TO US/ }).map((link) => link.getAttribute("href"))).toEqual(["mailto:info@aixco.global", "mailto:info@aixco.global"]);
   expect(footer.textContent).toContain("Grüngasse 16");
   expect(footer.textContent).toContain("1050 Wien, Austria");

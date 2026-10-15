@@ -36,7 +36,7 @@ function SiteFooter({ onCookieSettings }) {
       <div className="site-footer-contact">
         <div className="site-footer-intro">
           <p className="lasha-eyebrow">{contact.eyebrow}</p>
-          <h2 id="site-contact-title">{contact.title.map((line) => <span key={line}>{line}</span>)}</h2>
+          <h2 id="site-contact-title">{contact.title}</h2>
           <p>{contact.copy}</p>
         </div>
         <dl className="site-footer-details">
