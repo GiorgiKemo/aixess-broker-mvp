@@ -279,7 +279,7 @@ describe("AIXESS navigation pages", () => {
       const brochures = screen.getByRole("heading", { name: "Project Brochures" }).closest("article");
       fireEvent.click(within(brochures).getByRole("button", { name: /^request/i }));
       expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
-      expect(assign).toHaveBeenCalledWith(`mailto:info@aixco.global?subject=${encodeURIComponent("AiXESS · Project Reverance: Request project materials")}`);
+      expect(assign).toHaveBeenCalledWith(`mailto:info@aixess.global?subject=${encodeURIComponent("AiXESS · Project Reverance: Request project materials")}`);
     } finally {
       Object.defineProperty(window, "location", { configurable: true, value: original });
     }

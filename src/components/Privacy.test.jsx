@@ -35,9 +35,9 @@ it("ends the page with AIXCO's contact details and the legal links", () => {
   const footer = screen.getByRole("contentinfo");
   expect(footer).toHaveAttribute("id", "contact");
   expect(screen.getByRole("heading", { name: "Contact our team" })).toBeInTheDocument();
-  expect(screen.getAllByRole("link", { name: /info@aixco\.global|WRITE TO US/ }).map((link) => link.getAttribute("href"))).toEqual(["mailto:info@aixco.global", "mailto:info@aixco.global"]);
-  expect(footer.textContent).toContain("Grüngasse 16");
-  expect(footer.textContent).toContain("1050 Wien, Austria");
+  expect(screen.getAllByRole("link", { name: /info@aixess\.global|WRITE TO US/ }).map((link) => link.getAttribute("href"))).toEqual(["mailto:info@aixess.global", "mailto:info@aixess.global"]);
+  expect(footer.textContent).toContain("AIXCO International FZ-LLC");
+  expect(footer.textContent).toContain("Ras Al Khaimah, United Arab Emirates");
   expect(footer.textContent).not.toMatch(/\+\d|tel:/);
   const legal = screen.getByRole("navigation", { name: "Site info" });
   expect(legal).toContainElement(screen.getByRole("link", { name: "Privacy & cookies" }));

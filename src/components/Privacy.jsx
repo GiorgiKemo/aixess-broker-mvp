@@ -41,7 +41,7 @@ function SiteFooter({ onCookieSettings }) {
         </div>
         <dl className="site-footer-details">
           <div><dt>{contact.email}</dt><dd><a href={mailto}>{CONTACT.email}</a></dd></div>
-          <div><dt>{contact.office}</dt><dd><address>{CONTACT.company}<br />{CONTACT.street}<br />{CONTACT.city}, {contact.country}</address></dd></div>
+          <div><dt>{contact.office}</dt><dd><address>{CONTACT.company}{CONTACT.lines.map((line, index) => <span key={line}><br />{index === CONTACT.lines.length - 1 ? `${line}, ${contact.country}` : line}</span>)}</address></dd></div>
           <div className="site-footer-write"><a className="button button-primary" href={mailto}>{contact.write}<span aria-hidden="true">→</span></a></div>
         </dl>
       </div>
