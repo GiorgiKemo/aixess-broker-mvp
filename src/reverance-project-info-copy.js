@@ -35,7 +35,7 @@ export const REVERANCE_INFO_COPY = {
         ]
       ],
       "source": "Sources: Galt & Taggart Research; Colliers Georgia.",
-      "note": "Batumi residential market, full year 2025. The 7.4% is a market average; the approx. 12% net yield in the project facts is the project estimate for Reverance."
+      "note": "Batumi residential market, full year 2025."
     },
     "residence": {
       "eyebrow": "WHY REVERANCE",
@@ -148,11 +148,11 @@ export const REVERANCE_INFO_COPY = {
         [
           "60%",
           "AT COMPLETION",
-          "Minimal 60% of bank financing may be available subject to eligibility and lender approval."
+          "Bank financing may cover this stage, subject to eligibility and lender approval."
         ]
       ],
       "note": "Pricing, payment terms and financing are subject to apartment availability, eligibility and final contractual terms.",
-      "bridge": "The 10% initial payment is the minimum first stage. Buyers who choose a larger down payment at the start receive the purchase benefit below. The final schedule is set in the purchase contract."
+      "bridge": "The initial payment is the minimum first stage. Buyers who choose a larger down payment at the start receive the purchase benefit below. The final schedule is set in the purchase contract."
     },
     "ownership": {
       "eyebrow": "OWNERSHIP IN GEORGIA",
@@ -287,7 +287,7 @@ export const REVERANCE_INFO_COPY = {
         ]
       ],
       "source": "Quellen: Galt & Taggart Research; Colliers Georgia.",
-      "note": "Wohnimmobilienmarkt Batumi, Gesamtjahr 2025. Die 7,4 % sind ein Marktdurchschnitt; die ca. 12 % Nettorendite in den Projektdaten sind die Projektschätzung für Reverance."
+      "note": "Wohnimmobilienmarkt Batumi, Gesamtjahr 2025."
     },
     "residence": {
       "eyebrow": "WARUM REVERANCE",
@@ -400,11 +400,11 @@ export const REVERANCE_INFO_COPY = {
         [
           "60 %",
           "BEI FERTIGSTELLUNG",
-          "Mindestens 60 % Bankfinanzierung können vorbehaltlich Eignung und Genehmigung des Kreditgebers verfügbar sein."
+          "Eine Bankfinanzierung kann diese Stufe abdecken, vorbehaltlich Eignung und Genehmigung des Kreditgebers."
         ]
       ],
       "note": "Preise, Zahlungsbedingungen und Finanzierung hängen von Verfügbarkeit, Eignung und den endgültigen Vertragsbedingungen ab.",
-      "bridge": "Die Anzahlung von 10 % ist die erste Mindeststufe. Wer zu Beginn eine höhere Anzahlung wählt, erhält den unten beschriebenen Kaufvorteil. Der endgültige Zahlungsplan wird im Kaufvertrag festgelegt."
+      "bridge": "Die Anzahlung ist die erste Mindeststufe. Wer zu Beginn eine höhere Anzahlung wählt, erhält den unten beschriebenen Kaufvorteil. Der endgültige Zahlungsplan wird im Kaufvertrag festgelegt."
     },
     "ownership": {
       "eyebrow": "EIGENTUM IN GEORGIEN",
@@ -539,7 +539,7 @@ export const REVERANCE_INFO_COPY = {
         ]
       ],
       "source": "Źródła: Galt & Taggart Research; Colliers Georgia.",
-      "note": "Rynek mieszkaniowy Batumi, cały rok 2025. 7,4% to średnia rynkowa; ok. 12% rentowności netto w danych projektu to szacunek projektu Reverance."
+      "note": "Rynek mieszkaniowy Batumi, cały rok 2025."
     },
     "residence": {
       "eyebrow": "DLACZEGO REVERANCE",
@@ -652,11 +652,11 @@ export const REVERANCE_INFO_COPY = {
         [
           "60%",
           "PO UKOŃCZENIU",
-          "Minimalne 60% finansowania bankowego może być dostępne z zastrzeżeniem kwalifikowalności i zgody banku."
+          "Finansowanie bankowe może pokryć ten etap, z zastrzeżeniem kwalifikowalności i zgody banku."
         ]
       ],
       "note": "Ceny, warunki płatności i finansowanie zależą od dostępności, kwalifikowalności i ostatecznych warunków umowy.",
-      "bridge": "Wpłata początkowa 10% to minimalny pierwszy etap. Kupujący, którzy na starcie wybiorą wyższą wpłatę, otrzymują opisany niżej benefit zakupowy. Ostateczny harmonogram określa umowa kupna."
+      "bridge": "Wpłata początkowa to minimalny pierwszy etap. Kupujący, którzy na starcie wybiorą wyższą wpłatę, otrzymują opisany niżej benefit zakupowy. Ostateczny harmonogram określa umowa kupna."
     },
     "ownership": {
       "eyebrow": "WŁASNOŚĆ W GRUZJI",
@@ -791,7 +791,7 @@ export const REVERANCE_INFO_COPY = {
         ]
       ],
       "source": "Viri: Galt & Taggart Research; Colliers Georgia.",
-      "note": "Stanovanjski trg Batumija, celotno leto 2025. 7,4 % je tržno povprečje; pribl. 12 % neto donosa v podatkih o projektu je ocena projekta Reverance."
+      "note": "Stanovanjski trg Batumija, celotno leto 2025."
     },
     "residence": {
       "eyebrow": "ZAKAJ REVERANCE",
@@ -904,11 +904,11 @@ export const REVERANCE_INFO_COPY = {
         [
           "60 %",
           "OB ZAKLJUČKU",
-          "Najmanj 60 % bančnega financiranja je lahko na voljo glede na upravičenost in odobritev posojilodajalca."
+          "Bančno financiranje lahko pokrije to stopnjo, glede na upravičenost in odobritev posojilodajalca."
         ]
       ],
       "note": "Cene, plačilni pogoji in financiranje so odvisni od razpoložljivosti, upravičenosti in končnih pogodbenih pogojev.",
-      "bridge": "Začetno plačilo 10 % je najnižja prva stopnja. Kupci, ki na začetku izberejo višje predplačilo, prejmejo spodaj opisano nakupno ugodnost. Končni razpored določa kupoprodajna pogodba."
+      "bridge": "Začetno plačilo je najnižja prva stopnja. Kupci, ki na začetku izberejo višje predplačilo, prejmejo spodaj opisano nakupno ugodnost. Končni razpored določa kupoprodajna pogodba."
     },
     "ownership": {
       "eyebrow": "LASTNIŠTVO V GRUZIJI",
@@ -1043,7 +1043,7 @@ export const REVERANCE_INFO_COPY = {
         ]
       ],
       "source": "Источники: Galt & Taggart Research; Colliers Georgia.",
-      "note": "Рынок жилья Батуми, весь 2025 год. 7,4% — средний показатель рынка; около 12% чистой доходности в данных проекта — оценка проекта Reverance."
+      "note": "Рынок жилья Батуми, весь 2025 год."
     },
     "residence": {
       "eyebrow": "ПОЧЕМУ REVERANCE",
@@ -1156,11 +1156,11 @@ export const REVERANCE_INFO_COPY = {
         [
           "60%",
           "ПРИ ЗАВЕРШЕНИИ",
-          "Минимум 60% банковского финансирования может быть доступно при соответствии требованиям и одобрении кредитора."
+          "Этот этап может покрыть банковское финансирование при соответствии требованиям и одобрении кредитора."
         ]
       ],
       "note": "Цены, условия оплаты и финансирование зависят от наличия квартир, соответствия требованиям и итоговых условий договора.",
-      "bridge": "Первый взнос 10% — минимальный первый этап. Покупатели, выбравшие более крупный первоначальный взнос, получают описанное ниже преимущество при покупке. Окончательный график платежей фиксируется в договоре купли-продажи."
+      "bridge": "Первый взнос — минимальный первый этап. Покупатели, выбравшие более крупный первоначальный взнос, получают описанное ниже преимущество при покупке. Окончательный график платежей фиксируется в договоре купли-продажи."
     },
     "ownership": {
       "eyebrow": "СОБСТВЕННОСТЬ В ГРУЗИИ",

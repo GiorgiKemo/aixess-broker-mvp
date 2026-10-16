@@ -1,6 +1,8 @@
 // The FAQ essentials from www.aixco.global (Klem, 13 October 2026: "for FaQ use the same as we have on
 // Aixco.global website"). Copied from GiorgiKemo/aixco-global-website src/data/site.ts `faqGroups` and its
 // published translations, in the source order. Update it from that source, never by paraphrase.
+// One exception (Kemo, 16 October 2026: no figure repeated on a page): the equity answer says the rest
+// is bank-financed instead of repeating the 60% stated in the answer above it.
 export const AIXCO_FAQ = {
   en: [
     ["How do I get started?", "To get started, please register on our website. Once your account is created, you will receive all further information via email."],
@@ -14,7 +16,7 @@ export const AIXCO_FAQ = {
     ["What value increase can I calculate for my apartment?", "Independent market research from Colliers Georgia indicates that residential property prices in Batumi have historically increased by approximately 8-15% annually, depending on location and property type."],
     ["What kind of reporting do I get?", "You will receive quarterly reports covering your property's performance and the general market."],
     ["Is a credit check required for bank financing?", "For 60% financing a traditional credit check is not required. Higher financing amounts may require standard bank credit approval and income verification."],
-    ["How much equity do I need to have to purchase an apartment?", "Typically, buyers contribute 40% equity, with financing available for up to 60% of the property value. Depending on your financial profile and financing structure, the required equity contribution may be lower."],
+    ["How much equity do I need to have to purchase an apartment?", "Typically, buyers contribute 40% equity, with bank financing covering the rest. Depending on your financial profile and financing structure, the required equity contribution may be lower."],
   ],
   de: [
     ["Wie starte ich?", "Um zu starten, registrieren Sie sich bitte auf unserer Website. Sobald Ihr Konto erstellt ist, erhalten Sie alle weiteren Informationen per E-Mail."],
@@ -28,7 +30,7 @@ export const AIXCO_FAQ = {
     ["Mit welcher Wertsteigerung kann ich für mein Apartment rechnen?", "Unabhängige Marktforschung von Colliers Georgia zeigt, dass Wohnimmobilienpreise in Batumi historisch je nach Lage und Objekttyp um etwa 8-15 % pro Jahr gestiegen sind."],
     ["Welche Art von Berichterstattung erhalte ich?", "Sie erhalten vierteljährliche Berichte zur Wertentwicklung Ihrer Immobilie und zum allgemeinen Markt."],
     ["Ist für die Bankfinanzierung eine Bonitätsprüfung erforderlich?", "Für eine Finanzierung von 60 % ist keine traditionelle Bonitätsprüfung erforderlich. Höhere Finanzierungsbeträge können eine übliche Bankkreditfreigabe und Einkommensprüfung erfordern."],
-    ["Wie viel Eigenkapital benötige ich für den Kauf eines Apartments?", "In der Regel bringen Käufer 40 % Eigenkapital ein, wobei eine Finanzierung von bis zu 60 % des Immobilienwerts verfügbar ist. Abhängig von Ihrem Finanzprofil und der Finanzierungsstruktur kann der erforderliche Eigenkapitalanteil niedriger sein."],
+    ["Wie viel Eigenkapital benötige ich für den Kauf eines Apartments?", "In der Regel bringen Käufer 40 % Eigenkapital ein; der Rest kann über eine Bank finanziert werden. Abhängig von Ihrem Finanzprofil und der Finanzierungsstruktur kann der erforderliche Eigenkapitalanteil niedriger sein."],
   ],
   pl: [
     ["Jak zacząć?", "Zarejestruj się na stronie. Po utworzeniu konta otrzymasz dalsze informacje e-mailem."],
@@ -42,7 +44,7 @@ export const AIXCO_FAQ = {
     ["Jakiego wzrostu wartości apartamentu mogę oczekiwać?", "Badania Colliers Georgia wskazują, że ceny mieszkań w Batumi historycznie rosły około 8-15% rocznie, zależnie od lokalizacji i typu nieruchomości."],
     ["Jakie raporty otrzymam?", "Otrzymasz kwartalne raporty dotyczące wyników nieruchomości i rynku."],
     ["Czy finansowanie bankowe wymaga sprawdzenia zdolności kredytowej?", "Przy finansowaniu 60% tradycyjna kontrola kredytowa nie jest wymagana. Wyższe finansowanie może wymagać zgody banku i potwierdzenia dochodów."],
-    ["Ile kapitału własnego potrzebuję?", "Zwykle nabywcy wnoszą 40% kapitału własnego, a finansowanie obejmuje do 60% wartości. W zależności od profilu i struktury wymagany wkład może być niższy."],
+    ["Ile kapitału własnego potrzebuję?", "Zwykle nabywcy wnoszą 40% kapitału własnego, a resztę pokrywa finansowanie bankowe. W zależności od profilu i struktury wymagany wkład może być niższy."],
   ],
   sl: [
     ["Kako začnem?", "Za začetek se prosimo registrirajte na naši spletni strani. Ko bo vaš račun ustvarjen, boste vse nadaljnje informacije prejeli po e-pošti."],
@@ -56,7 +58,7 @@ export const AIXCO_FAQ = {
     ["Kakšno povečanje vrednosti lahko pričakujem za svoje stanovanje?", "Neodvisne tržne raziskave podjetja Colliers Georgia kažejo, da so se cene stanovanjskih nepremičnin v Batumiju v preteklosti letno povečevale za približno 8-15 %, odvisno od lokacije in vrste nepremičnine."],
     ["Kakšno poročanje prejmem?", "Prejemali boste četrtletna poročila o uspešnosti vaše nepremičnine in splošnem stanju na trgu."],
     ["Ali je za bančno financiranje potrebno preverjanje kreditne sposobnosti?", "Za 60-odstotno financiranje običajno preverjanje kreditne sposobnosti ni potrebno. Za višje zneske financiranja je lahko potrebna standardna bančna odobritev kredita in preverjanje dohodka."],
-    ["Koliko lastnega kapitala potrebujem za nakup stanovanja?", "Kupci običajno prispevajo 40 % lastnega kapitala, pri čemer je na voljo financiranje od minimalno 60 % vrednosti nepremičnine. Glede na vaš finančni profil in strukturo financiranja je lahko potreben delež lastnega kapitala nižji."],
+    ["Koliko lastnega kapitala potrebujem za nakup stanovanja?", "Kupci običajno prispevajo 40 % lastnega kapitala, preostanek pa pokrije bančno financiranje. Glede na vaš finančni profil in strukturo financiranja je lahko potreben delež lastnega kapitala nižji."],
   ],
   ru: [
     ["Как начать?", "Чтобы начать, зарегистрируйтесь на нашем сайте. После создания аккаунта вы получите всю дальнейшую информацию по электронной почте."],
@@ -70,6 +72,6 @@ export const AIXCO_FAQ = {
     ["На какой рост стоимости квартиры я могу рассчитывать?", "Независимое исследование рынка Colliers Georgia показывает, что цены на жилую недвижимость в Батуми исторически росли примерно на 8-15% в год в зависимости от местоположения и типа объекта."],
     ["Какую отчетность я получу?", "Вы будете получать квартальные отчеты о результатах вашей недвижимости и общем рынке."],
     ["Требуется ли кредитная проверка для банковского финансирования?", "Для финансирования на 60% традиционная кредитная проверка не требуется. Более высокие суммы финансирования могут потребовать стандартного одобрения банка и подтверждения дохода."],
-    ["Сколько собственного капитала мне нужно для покупки квартиры?", "Обычно покупатели вносят 40% собственного капитала, при этом финансирование доступно до 60% стоимости недвижимости. В зависимости от вашего финансового профиля и структуры финансирования требуемый собственный взнос может быть ниже."],
+    ["Сколько собственного капитала мне нужно для покупки квартиры?", "Обычно покупатели вносят 40% собственного капитала, а остальное покрывает банковское финансирование. В зависимости от вашего финансового профиля и структуры финансирования требуемый собственный взнос может быть ниже."],
   ],
 };

@@ -230,7 +230,7 @@ describe("AIXESS navigation pages", () => {
     expect(within(opportunity).queryByRole("heading", { name: "GOLDEN PREMIUM APARTMENTS" })).not.toBeInTheDocument();
     const payment = document.getElementById("payment");
     for (const stage of ["INITIAL PAYMENT", "DURING CONSTRUCTION", "AT COMPLETION"]) expect(within(payment).getByRole("heading", { name: stage })).toBeInTheDocument();
-    expect(within(payment).getByText(/Minimal 60% of bank financing/)).toBeInTheDocument();
+    expect(within(payment).getByText(/Bank financing may cover this stage/)).toBeInTheDocument();
     expect(within(payment).getByRole("heading", { name: "More Upfront. More Value." })).toBeInTheDocument();
     const ownership = document.getElementById("ownership");
     for (const item of ["1% RENTAL INCOME TAX", "0% CAPITAL GAINS TAX AFTER 2 YEARS"]) expect(within(ownership).getByRole("heading", { name: item })).toBeInTheDocument();
@@ -298,10 +298,10 @@ describe("AIXESS navigation pages", () => {
     expect(screen.getByText("Well-connected individuals who can introduce the right people.")).toBeInTheDocument();
     expect(screen.getByRole("heading", { name: "HAVE THE NETWORK?" })).toBeInTheDocument();
     expect(screen.getByText("THE COMMERCIAL ADVANTAGE")).toBeInTheDocument();
-    expect(screen.getByText("Your client secures the property with just 10% down payment, unlocking your full commission within 72 hours.")).toBeInTheDocument();
+    expect(screen.getByText("Your client secures the property with this down payment, unlocking your full commission within 72 hours.")).toBeInTheDocument();
     expect(screen.getByText("How it works")).toBeInTheDocument();
     expect(screen.getByText("Request AiXESS access")).toBeInTheDocument();
-    expect(screen.getByText("Client pays the required 10%")).toBeInTheDocument();
+    expect(screen.getByText("Client pays the required down payment")).toBeInTheDocument();
   });
 
   it("renders the selected page from its shareable hash route", () => {

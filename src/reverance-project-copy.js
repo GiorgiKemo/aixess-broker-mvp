@@ -11,7 +11,6 @@ export const REVERANCE_PROJECT_COPY = {
     facts: [
       ["RESERVATION", "From €5,000", "Reserves a residence; it is not the purchase price."],
       ["OWNERSHIP", "100% foreign ownership", "Foreign buyers can own the apartment outright."],
-      ["FINANCING", "Bank financing min. 60%", "Minimum bank-financing share."],
       ["RENTAL YIELD", "Approx. 12% net", "An approximate net rental yield, not a guaranteed return."],
       ["COMPLETION", "July 2028", "Targeted completion date."],
     ],
@@ -30,7 +29,6 @@ export const REVERANCE_PROJECT_COPY = {
     facts: [
       ["RESERVIERUNG", "Ab 5.000 €", "Reserviert eine Wohnung; das ist nicht der Kaufpreis."],
       ["EIGENTUM", "100 % ausländisches Eigentum", "Ausländische Käufer können die Wohnung vollständig besitzen."],
-      ["FINANZIERUNG", "Bankfinanzierung mind. 60 %", "Mindestanteil der Bankfinanzierung."],
       ["MIETRENDITE", "Ca. 12 % netto", "Eine ungefähre Nettomietrendite, keine garantierte Rendite."],
       ["FERTIGSTELLUNG", "Juli 2028", "Geplanter Fertigstellungstermin."],
     ],
@@ -49,7 +47,6 @@ export const REVERANCE_PROJECT_COPY = {
     facts: [
       ["REZERWACJA", "Od 5000 €", "Rezerwuje apartament; to nie jest cena zakupu."],
       ["WŁASNOŚĆ", "100% własności zagranicznej", "Zagraniczni nabywcy mogą być pełnymi właścicielami."],
-      ["FINANSOWANIE", "Kredyt bankowy min. 60%", "Minimalny udział finansowania bankowego."],
       ["RENTOWNOŚĆ NAJMU", "Ok. 12% netto", "Przybliżona rentowność netto, a nie gwarantowany zwrot."],
       ["ZAKOŃCZENIE", "Lipiec 2028", "Planowany termin zakończenia budowy."],
     ],
@@ -68,7 +65,6 @@ export const REVERANCE_PROJECT_COPY = {
     facts: [
       ["REZERVACIJA", "Od 5.000 €", "Rezervira stanovanje; to ni kupnina."],
       ["LASTNIŠTVO", "100-odstotno tuje lastništvo", "Tuji kupci so lahko polni lastniki stanovanja."],
-      ["FINANCIRANJE", "Bančno financiranje najmanj 60 %", "Najmanjši delež bančnega financiranja."],
       ["DONOS NAJEMNINE", "Pribl. 12 % neto", "Približen neto donos najemnine, ne zajamčen donos."],
       ["DOKONČANJE", "Julij 2028", "Načrtovani datum dokončanja."],
     ],
@@ -87,7 +83,6 @@ export const REVERANCE_PROJECT_COPY = {
     facts: [
       ["БРОНИРОВАНИЕ", "От 5000 €", "Бронирует апартаменты; это не цена покупки."],
       ["СОБСТВЕННОСТЬ", "100% иностранная собственность", "Иностранные покупатели могут владеть апартаментами полностью."],
-      ["ФИНАНСИРОВАНИЕ", "Банковское финансирование от 60%", "Минимальная доля банковского финансирования."],
       ["ДОХОДНОСТЬ АРЕНДЫ", "Около 12% чистыми", "Приблизительная чистая доходность аренды, а не гарантированный доход."],
       ["ЗАВЕРШЕНИЕ", "Июль 2028", "Плановый срок завершения."],
     ],

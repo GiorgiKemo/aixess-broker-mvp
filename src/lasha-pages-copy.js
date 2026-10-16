@@ -7,7 +7,7 @@ export const LASHA_PAGES_COPY = {
     brokerIntro: "If you have the network and ambition, AiXESS gives you the opportunities, tools and support.",
     downPayment: "DOWN PAYMENT",
     commissionUnlocked: ["COMMISSION", "UNLOCKED"],
-    commercialBody: "Your client secures the property with just 10% down payment, unlocking your full commission within 72 hours.",
+    commercialBody: "Your client secures the property with this down payment, unlocking your full commission within 72 hours.",
   },
   de: {
     advantageSubtitle: "Internationale Immobilienangebote für Ihre Kunden und Ihr Netzwerk",
@@ -15,7 +15,7 @@ export const LASHA_PAGES_COPY = {
     brokerIntro: "Wenn Sie das Netzwerk und den Ehrgeiz haben, bietet AiXESS Ihnen die Angebote, die Werkzeuge und die Unterstützung.",
     downPayment: "ANZAHLUNG",
     commissionUnlocked: ["PROVISION", "FREIGESCHALTET"],
-    commercialBody: "Ihr Kunde sichert sich die Immobilie mit nur 10% Anzahlung und schaltet damit Ihre vollständige Provision innerhalb von 72 Stunden frei.",
+    commercialBody: "Ihr Kunde sichert sich die Immobilie mit dieser Anzahlung und schaltet damit Ihre vollständige Provision innerhalb von 72 Stunden frei.",
   },
   pl: {
     advantageSubtitle: "Międzynarodowe okazje na rynku nieruchomości dla Twoich klientów i kontaktów",
@@ -23,7 +23,7 @@ export const LASHA_PAGES_COPY = {
     brokerIntro: "Jeśli masz kontakty i ambicję, AiXESS zapewni Ci okazje, narzędzia i wsparcie.",
     downPayment: "WPŁATY",
     commissionUnlocked: ["PROWIZJI", "ODBLOKOWANEJ"],
-    commercialBody: "Twój klient zabezpiecza nieruchomość wpłatą zaledwie 10%, odblokowując Twoją pełną prowizję w ciągu 72 godzin.",
+    commercialBody: "Twój klient zabezpiecza nieruchomość tą wpłatą, odblokowując Twoją pełną prowizję w ciągu 72 godzin.",
   },
   sl: {
     advantageSubtitle: "Mednarodne nepremičninske priložnosti za vaše stranke in vašo mrežo",
@@ -31,7 +31,7 @@ export const LASHA_PAGES_COPY = {
     brokerIntro: "Če imate mrežo stikov in ambicijo, vam AiXESS zagotovi priložnosti, orodja in podporo.",
     downPayment: "PREDPLAČILA",
     commissionUnlocked: ["PROVIZIJE", "ODKLENJENE"],
-    commercialBody: "Vaša stranka si nepremičnino zagotovi z le 10% predplačilom, s čimer se vaša celotna provizija odklene v 72 urah.",
+    commercialBody: "Vaša stranka si nepremičnino zagotovi s tem predplačilom, s čimer se vaša celotna provizija odklene v 72 urah.",
   },
   ru: {
     advantageSubtitle: "Международные возможности в сфере недвижимости для ваших клиентов и контактов",
@@ -39,6 +39,6 @@ export const LASHA_PAGES_COPY = {
     brokerIntro: "Если у вас есть связи и амбиции, AiXESS даст вам возможности, инструменты и поддержку.",
     downPayment: "ПЕРВОНАЧАЛЬНОГО ВЗНОСА",
     commissionUnlocked: ["КОМИССИИ", "РАЗБЛОКИРОВАНО"],
-    commercialBody: "Ваш клиент закрепляет объект всего 10% первоначального взноса, и ваша полная комиссия разблокируется в течение 72 часов.",
+    commercialBody: "Ваш клиент закрепляет объект этим первоначальным взносом, и ваша полная комиссия разблокируется в течение 72 часов.",
   },
 };
