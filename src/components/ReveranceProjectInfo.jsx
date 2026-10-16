@@ -49,6 +49,19 @@ export function scrollToProjectSection(id, behavior) {
 export function ProjectSubnav() {
   const copy = useProjectInfoCopy();
   const [active, setActive] = useState(null);
+  const listRef = useRef(null);
+
+  // On phones the bar scrolls sideways: keep the current section's link in view (the bar only,
+  // never the page).
+  useEffect(() => {
+    const list = listRef.current;
+    const link = active && list?.querySelector(`a[href="#residences/${active}"]`);
+    if (!link || list.scrollWidth <= list.clientWidth) return;
+    const left = link.offsetLeft - list.offsetLeft;
+    if (left < list.scrollLeft || left + link.offsetWidth > list.scrollLeft + list.clientWidth) {
+      list.scrollTo?.({ left: Math.max(0, left - 16), behavior: reducedMotion() ? "auto" : "smooth" });
+    }
+  }, [active]);
 
   useEffect(() => {
     if (typeof IntersectionObserver === "undefined") return undefined;
@@ -71,7 +84,7 @@ export function ProjectSubnav() {
 
   return (
     <nav className="rp-subnav" aria-label={copy.navLabel}>
-      <ul>
+      <ul ref={listRef}>
         {PROJECT_SECTIONS.map((id) => (
           <li key={id}>
             <a href={`#residences/${id}`} onClick={go(id)} aria-current={active === id ? "true" : undefined}>{copy.nav[id]}</a>
