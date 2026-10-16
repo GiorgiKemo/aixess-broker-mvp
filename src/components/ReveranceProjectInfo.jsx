@@ -8,7 +8,7 @@ import "./reverance-project.css";
 // Project Reverance information beneath the approved hero (Klem, 16 October 2026: "compare" the
 // AIXCO.Global v4 project page). Copy and its qualifications are in reverance-project-info-copy.js.
 
-export const PROJECT_SECTIONS = ["opportunity", "why-batumi", "residence", "payment", "ownership", "why-aixco", "gallery", "faq", "approach"];
+export const PROJECT_SECTIONS = ["opportunity", "why-batumi", "residence", "payment", "ownership", "gallery"];
 
 const reducedMotion = () => typeof window !== "undefined" && window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
 
@@ -106,56 +106,6 @@ export function AixcoOpportunity() {
       </div>
       {open && <Lightbox items={items} index={0} onClose={() => { setOpen(false); window.setTimeout(() => trigger.current?.focus({ preventScroll: true }), 0); }} onStep={() => {}} labels={gallery} />}
     </section>
-  );
-}
-
-export function ProjectSubnav() {
-  const copy = useProjectInfoCopy();
-  const [active, setActive] = useState(null);
-  const listRef = useRef(null);
-
-  // On phones the bar scrolls sideways: keep the current section's link in view (the bar only,
-  // never the page).
-  useEffect(() => {
-    const list = listRef.current;
-    const link = active && list?.querySelector(`a[href="#residences/${active}"]`);
-    if (!link || list.scrollWidth <= list.clientWidth) return;
-    const left = link.offsetLeft - list.offsetLeft;
-    if (left < list.scrollLeft || left + link.offsetWidth > list.scrollLeft + list.clientWidth) {
-      list.scrollTo?.({ left: Math.max(0, left - 16), behavior: reducedMotion() ? "auto" : "smooth" });
-    }
-  }, [active]);
-
-  useEffect(() => {
-    if (typeof IntersectionObserver === "undefined") return undefined;
-    const seen = new Map();
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => seen.set(entry.target.id, entry.isIntersecting));
-      setActive(PROJECT_SECTIONS.find((id) => seen.get(id)) || null);
-    }, { rootMargin: "-20% 0px -70% 0px" });
-    PROJECT_SECTIONS.forEach((id) => { const el = document.getElementById(id); if (el) observer.observe(el); });
-    return () => observer.disconnect();
-  }, []);
-
-  const go = (id) => (event) => {
-    if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
-    event.preventDefault();
-    // replaceState fires no hashchange, so the app router keeps this page instead of resetting.
-    window.history.replaceState(window.history.state, "", `${window.location.pathname}#residences/${id}`);
-    scrollToProjectSection(id);
-  };
-
-  return (
-    <nav className="rp-subnav" aria-label={copy.navLabel}>
-      <ul ref={listRef}>
-        {PROJECT_SECTIONS.map((id) => (
-          <li key={id}>
-            <a href={`#residences/${id}`} onClick={go(id)} aria-current={active === id ? "true" : undefined}>{copy.nav[id]}</a>
-          </li>
-        ))}
-        <li className="rp-subnav-action"><a href={briefHref(copy.briefCta)}>{copy.briefCta}</a></li>
-      </ul>
-    </nav>
   );
 }
 
@@ -265,41 +215,6 @@ export function Ownership() {
   );
 }
 
-export function WhyAixco() {
-  const { aixco } = useProjectInfoCopy();
-  return (
-    <section className="rp-section rp-mist" id="why-aixco" aria-labelledby="why-aixco-title">
-      <Heading id="why-aixco-title" eyebrow={aixco.eyebrow} title={aixco.title} lead={aixco.lead} />
-      <dl className="rp-stats rp-stats-5">
-        {aixco.stats.map(([value, label]) => <div key={label}><dt>{label}</dt><dd>{value}</dd></div>)}
-      </dl>
-      <p className="rp-note">{aixco.statsNote}</p>
-      <p className="rp-body">{aixco.body}</p>
-      <p className="rp-path">{aixco.path.map((step, index) => <span key={step}>{index > 0 && <span className="rp-path-arrow" aria-hidden="true">→</span>}{step}</span>)}</p>
-
-      <div className="rp-block">
-        <p className="section-eyebrow">{aixco.researchEyebrow}</p>
-        <h3 className="rp-block-title">{aixco.researchTitle}</h3>
-        <p className="rp-lead">{aixco.researchLead}</p>
-        <ul className="rp-cards">
-          {aixco.research.map(([title, body]) => <li key={title}><h4>{title}</h4><p>{body}</p></li>)}
-        </ul>
-      </div>
-
-      <div className="rp-block rp-anchor" id="approach">
-        <p className="section-eyebrow">{aixco.journeyEyebrow}</p>
-        <h3 className="rp-block-title">{aixco.journeyTitle}</h3>
-        <p className="rp-lead">{aixco.journeyLead}</p>
-        <ol className="rp-cards rp-journey">
-          {aixco.journey.map(([title, body], index) => (
-            <li key={title}><span className="rp-index" aria-hidden="true">{String(index + 1).padStart(2, "0")}</span><h4>{title}</h4><p>{body}</p></li>
-          ))}
-        </ol>
-      </div>
-    </section>
-  );
-}
-
 function Lightbox({ items, index, onClose, onStep, labels }) {
   const dialogRef = useRef(null);
   useEffect(() => {
@@ -360,36 +275,6 @@ export function ProjectGallery() {
         ))}
       </ul>
       {open !== null && <Lightbox items={items} index={open} onClose={close} onStep={step} labels={gallery} />}
-    </section>
-  );
-}
-
-export function ProjectFaq() {
-  const { faq } = useProjectInfoCopy();
-  return (
-    <section className="rp-section rp-mist" id="faq" aria-labelledby="faq-title">
-      <Heading id="faq-title" eyebrow={faq.eyebrow} title={faq.title} />
-      <div className="rp-faq">
-        {faq.items.map(([question, answer]) => (
-          <details key={question}>
-            <summary>{question}<span aria-hidden="true">+</span></summary>
-            <p>{answer}</p>
-          </details>
-        ))}
-      </div>
-    </section>
-  );
-}
-
-export function StartWithAixco() {
-  const { start, briefCta, availabilityCta } = useProjectInfoCopy();
-  return (
-    <section className="rp-section rp-start" aria-labelledby="rp-start-title">
-      <Heading id="rp-start-title" eyebrow={start.eyebrow} title={start.title} lead={start.lead} />
-      <div className="rp-actions">
-        <a className="button button-primary" href={briefHref(briefCta)}>{briefCta}<span aria-hidden="true">→</span></a>
-        <a className="button button-ghost" href="#residence-explorer" onClick={goToExplorer}>{availabilityCta}</a>
-      </div>
     </section>
   );
 }

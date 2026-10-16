@@ -9,18 +9,6 @@
 // DE/PL/SL/RU come from AIXCO.Global v4's translation catalogues where the line exists there.
 export const REVERANCE_INFO_COPY = {
   "en": {
-    "navLabel": "Project contents",
-    "nav": {
-      "opportunity": "Opportunity",
-      "why-batumi": "Why Batumi",
-      "residence": "Residence",
-      "payment": "Payment structure",
-      "ownership": "Ownership",
-      "why-aixco": "Why AIXCO",
-      "gallery": "Project gallery",
-      "faq": "FAQ",
-      "approach": "The AIXCO way"
-    },
     "batumi": {
       "eyebrow": "WHY BATUMI",
       "title": "Batumi combines Black Sea tourism, international demand, new infrastructure and comparatively accessible residential pricing.",
@@ -47,7 +35,7 @@ export const REVERANCE_INFO_COPY = {
         ]
       ],
       "source": "Sources: Galt & Taggart Research; Colliers Georgia.",
-      "note": "Batumi residential market, full year 2025. The 7.4% is a market average; the approx. 12% net yield in the project facts is AIXCO's estimate for Reverance."
+      "note": "Batumi residential market, full year 2025. The 7.4% is a market average; the approx. 12% net yield in the project facts is the project estimate for Reverance."
     },
     "residence": {
       "eyebrow": "WHY REVERANCE",
@@ -59,7 +47,7 @@ export const REVERANCE_INFO_COPY = {
         ],
         [
           "SELECTED HIGHER FLOORS",
-          "AIXCO's current inventory is concentrated on the 13th and 14th floors."
+          "Current inventory is concentrated on the 13th and 14th floors."
         ],
         [
           "PREMIUM RESIDENTIAL CONCEPT",
@@ -215,70 +203,6 @@ export const REVERANCE_INFO_COPY = {
       ],
       "note": "General information, not legal or tax advice."
     },
-    "aixco": {
-      "eyebrow": "WHY AIXCO",
-      "title": "WE DON'T JUST BUY PROPERTY. WE SELECT IT.",
-      "lead": "AIXCO combines international real estate experience with disciplined asset selection and local execution.",
-      "stats": [
-        [
-          "2009",
-          "In business since"
-        ],
-        [
-          "2,000+",
-          "Real estate transactions"
-        ],
-        [
-          "$4.2B+",
-          "Property value transacted"
-        ],
-        [
-          "$400M+",
-          "Current gross development value"
-        ],
-        [
-          "90+",
-          "Professionals"
-        ]
-      ],
-      "statsNote": "AIXCO company figures. AiXESS is AIXCO's broker access platform.",
-      "body": "Our role is not to show you every property on the market. It is to identify selected assets based on location, pricing, development quality, ownership structure and long-term market fundamentals.",
-      "path": [
-        "SWISS HERITAGE",
-        "DUBAI EXPERIENCE",
-        "BATUMI OPPORTUNITY"
-      ],
-      "researchEyebrow": "INDEPENDENT MARKET RESEARCH",
-      "researchTitle": "DECISIONS SUPPORTED BY DATA.",
-      "researchLead": "AIXCO uses independent third-party market research alongside its own due diligence when evaluating markets and projects.",
-      "research": [
-        [
-          "COLLIERS",
-          "Global real estate advisory and research firm providing professional property-market intelligence across international markets."
-        ],
-        [
-          "GALT & TAGGART",
-          "Leading Georgian investment bank and research house providing in-depth analysis of Georgia's economy, capital markets and real estate sector."
-        ]
-      ],
-      "journeyEyebrow": "The AIXCO way",
-      "journeyTitle": "ACQUIRE. PARTNER. CREATE VALUE.",
-      "journeyLead": "From property ownership and strategic partnership to professional asset management, AIXCO is with you at every stage of the journey.",
-      "journey": [
-        [
-          "Buy an Apartment with AIXCO",
-          "Customers sign up, review selected apartments, book a private tour, and move through reservation and purchase with the AIXCO team."
-        ],
-        [
-          "Broker Real Estate with AIXCO",
-          "Brokers and partners can introduce qualified buyers, coordinate tours, and manage deal flow through a structured real estate sales process."
-        ],
-        [
-          "Administer Your Property",
-          "Property owners can work with AIXCO on documentation, buyer handover, reporting, rental coordination, and ongoing administration after purchase."
-        ]
-      ]
-    },
     "gallery": {
       "eyebrow": "Project gallery",
       "title": "SEE REVERANCE.",
@@ -335,28 +259,6 @@ export const REVERANCE_INFO_COPY = {
         ]
       ],
       "lead": "Reverance is a premium residential development on Batumi's New Boulevard, combining contemporary residences, resident amenities and access to one of the city's most active development districts."
-    },
-    "faq": {
-      "eyebrow": "FAQ",
-      "title": "WHAT BUYERS USUALLY ASK.",
-      "items": [
-        [
-          "Can foreigners own property in Georgia?",
-          "Foreign buyers can generally own residential real estate directly, subject to applicable Georgian law and property classification."
-        ],
-        [
-          "How much do I need to start?",
-          "Selected Reverance apartments are currently marketed from approximately €45,000, with structured payment options."
-        ],
-        [
-          "When is Reverance expected to be completed?",
-          "Target completion is July 2028."
-        ],
-        [
-          "Can AIXCO help after completion?",
-          "Yes. The current AIXCO service model includes documentation, handover, rental coordination and ongoing property administration."
-        ]
-      ]
     },
     "briefCta": "Request a brief",
     "availabilityCta": "Check availability",
@@ -419,26 +321,9 @@ export const REVERANCE_INFO_COPY = {
       "imageLabel": "59 Adlia Street",
       "imageCaption": "New Boulevard 5 minutes away.",
       "expand": "Expand image"
-    },
-    "start": {
-      "eyebrow": "Start with AIXCO",
-      "title": "YOUR REVERANCE PROPERTY STARTS HERE.",
-      "lead": "Tell us what you're looking for. We'll show you the available apartments that best match your budget and objective."
     }
   },
   "de": {
-    "navLabel": "Projektinhalt",
-    "nav": {
-      "opportunity": "Chance",
-      "why-batumi": "Warum Batumi",
-      "residence": "Residenz",
-      "payment": "ZAHLUNGSSTRUKTUR",
-      "ownership": "Eigentum",
-      "why-aixco": "WARUM AIXCO",
-      "gallery": "Projektgalerie",
-      "faq": "FAQ",
-      "approach": "Der AIXCO-Weg"
-    },
     "batumi": {
       "eyebrow": "WARUM BATUMI",
       "title": "Batumi vereint Schwarzmeertourismus, internationale Nachfrage, neue Infrastruktur und vergleichsweise zugängliche Wohnpreise.",
@@ -465,7 +350,7 @@ export const REVERANCE_INFO_COPY = {
         ]
       ],
       "source": "Quellen: Galt & Taggart Research; Colliers Georgia.",
-      "note": "Wohnimmobilienmarkt Batumi, Gesamtjahr 2025. Die 7,4 % sind ein Marktdurchschnitt; die ca. 12 % Nettorendite in den Projektdaten sind AIXCOs Schätzung für Reverance."
+      "note": "Wohnimmobilienmarkt Batumi, Gesamtjahr 2025. Die 7,4 % sind ein Marktdurchschnitt; die ca. 12 % Nettorendite in den Projektdaten sind die Projektschätzung für Reverance."
     },
     "residence": {
       "eyebrow": "WARUM REVERANCE",
@@ -477,7 +362,7 @@ export const REVERANCE_INFO_COPY = {
         ],
         [
           "AUSGEWÄHLTE HÖHERE ETAGEN",
-          "Das aktuelle AIXCO-Inventar konzentriert sich auf den 13. und 14. Stock."
+          "Das aktuelle Inventar konzentriert sich auf den 13. und 14. Stock."
         ],
         [
           "PREMIUM-WOHNKONZEPT",
@@ -633,70 +518,6 @@ export const REVERANCE_INFO_COPY = {
       ],
       "note": "Allgemeine Informationen, keine Rechts- oder Steuerberatung."
     },
-    "aixco": {
-      "eyebrow": "WARUM AIXCO",
-      "title": "WIR KAUFEN NICHT EINFACH IMMOBILIEN. WIR WÄHLEN SIE AUS.",
-      "lead": "AIXCO verbindet internationale Immobilienerfahrung mit disziplinierter Objektauswahl und lokaler Umsetzung.",
-      "stats": [
-        [
-          "2009",
-          "Im Geschäft seit"
-        ],
-        [
-          "2.000+",
-          "Immobilien­transaktionen"
-        ],
-        [
-          "4,2 Mrd. $+",
-          "Transaktionsvolumen"
-        ],
-        [
-          "400 Mio. $+",
-          "Aktueller Brutto­entwicklungs­wert"
-        ],
-        [
-          "90+",
-          "Fachkräfte"
-        ]
-      ],
-      "statsNote": "Unternehmenszahlen von AIXCO. AiXESS ist die Broker-Plattform von AIXCO.",
-      "body": "Unsere Aufgabe ist nicht, Ihnen jede Immobilie auf dem Markt zu zeigen, sondern ausgewählte Objekte nach Lage, Preis, Entwicklungsqualität, Eigentumsstruktur und langfristigen Marktgrundlagen zu identifizieren.",
-      "path": [
-        "Schweizer Erbe",
-        "DUBAI-ERFAHRUNG",
-        "CHANCE BATUMI"
-      ],
-      "researchEyebrow": "UNABHÄNGIGE MARKTFORSCHUNG",
-      "researchTitle": "ENTSCHEIDUNGEN AUF BASIS VON DATEN.",
-      "researchLead": "AIXCO nutzt unabhängige Marktforschung Dritter zusammen mit eigener Due Diligence bei der Bewertung von Märkten und Projekten.",
-      "research": [
-        [
-          "COLLIERS",
-          "Globales Immobilienberatungs- und Forschungsunternehmen mit professioneller Marktintelligenz auf internationalen Märkten."
-        ],
-        [
-          "GALT & TAGGART",
-          "Führende georgische Investmentbank und Research-Haus mit tiefgehender Analyse der Wirtschaft, Kapitalmärkte und des Immobiliensektors Georgiens."
-        ]
-      ],
-      "journeyEyebrow": "Der AIXCO-Weg",
-      "journeyTitle": "ERWERBEN. PARTNER WERDEN. WERT SCHAFFEN.",
-      "journeyLead": "Von Immobilieneigentum und strategischer Partnerschaft bis zur professionellen Vermögensverwaltung begleitet AIXCO Sie auf jedem Schritt.",
-      "journey": [
-        [
-          "Eine Wohnung mit AIXCO kaufen",
-          "Kunden registrieren sich, prüfen ausgewählte Wohnungen, buchen eine private Besichtigung und durchlaufen Reservierung und Kauf mit dem AIXCO-Team."
-        ],
-        [
-          "Immobilien mit AIXCO vermitteln",
-          "Makler und Partner können qualifizierte Käufer vorstellen, Besichtigungen koordinieren und Abschlüsse über einen strukturierten Verkaufsprozess steuern."
-        ],
-        [
-          "Ihre Immobilie verwalten",
-          "Eigentümer können mit AIXCO bei Dokumentation, Übergabe, Reporting, Vermietungskoordination und laufender Verwaltung nach dem Kauf zusammenarbeiten."
-        ]
-      ]
-    },
     "gallery": {
       "eyebrow": "Projektgalerie",
       "title": "REVERANCE ENTDECKEN.",
@@ -753,28 +574,6 @@ export const REVERANCE_INFO_COPY = {
         ]
       ],
       "lead": "Reverance ist ein Premium-Wohnprojekt am New Boulevard in Batumi – mit zeitgenössischen Residenzen, Annehmlichkeiten für Bewohner und Zugang zu einem der aktivsten Entwicklungsgebiete der Stadt."
-    },
-    "faq": {
-      "eyebrow": "FAQ",
-      "title": "WAS KÄUFER HÄUFIG FRAGEN.",
-      "items": [
-        [
-          "Können Ausländer Immobilien in Georgien besitzen?",
-          "Ausländische Käufer können Wohnimmobilien in der Regel direkt besitzen, vorbehaltlich des geltenden georgischen Rechts und der Objektklassifizierung."
-        ],
-        [
-          "Wie viel brauche ich zum Start?",
-          "Ausgewählte Reverance-Wohnungen werden derzeit ab etwa 45.000 € vermarktet, mit strukturierten Zahlungsoptionen."
-        ],
-        [
-          "Wann wird Reverance voraussichtlich fertiggestellt?",
-          "Die geplante Fertigstellung ist Juli 2028."
-        ],
-        [
-          "Kann AIXCO nach der Fertigstellung helfen?",
-          "Ja. Das aktuelle AIXCO-Service-Modell umfasst Dokumentation, Übergabe, Mietkoordination und laufende Immobilienverwaltung."
-        ]
-      ]
     },
     "briefCta": "Briefing anfordern",
     "availabilityCta": "Verfügbarkeit prüfen",
@@ -837,26 +636,9 @@ export const REVERANCE_INFO_COPY = {
       "imageLabel": "59 Adlia Street",
       "imageCaption": "Der New Boulevard ist 5 Minuten entfernt.",
       "expand": "Bild vergrößern"
-    },
-    "start": {
-      "eyebrow": "Starten Sie mit AIXCO",
-      "title": "IHRE REVERANCE-IMMOBILIE BEGINNT HIER.",
-      "lead": "Sagen Sie uns, wonach Sie suchen. Wir zeigen Ihnen die verfügbaren Wohnungen, die am besten zu Budget und Ziel passen."
     }
   },
   "pl": {
-    "navLabel": "Zawartość projektu",
-    "nav": {
-      "opportunity": "Możliwość",
-      "why-batumi": "DLACZEGO BATUMI",
-      "residence": "Rezydencja",
-      "payment": "STRUKTURA PŁATNOŚCI",
-      "ownership": "Własność",
-      "why-aixco": "DLACZEGO AIXCO",
-      "gallery": "Galeria projektu",
-      "faq": "FAQ",
-      "approach": "Podejście AIXCO"
-    },
     "batumi": {
       "eyebrow": "DLACZEGO BATUMI",
       "title": "Batumi łączy turystykę nad Morzem Czarnym, międzynarodowy popyt, nową infrastrukturę i stosunkowo przystępne ceny mieszkań.",
@@ -883,7 +665,7 @@ export const REVERANCE_INFO_COPY = {
         ]
       ],
       "source": "Źródła: Galt & Taggart Research; Colliers Georgia.",
-      "note": "Rynek mieszkaniowy Batumi, cały rok 2025. 7,4% to średnia rynkowa; ok. 12% rentowności netto w danych projektu to szacunek AIXCO dla Reverance."
+      "note": "Rynek mieszkaniowy Batumi, cały rok 2025. 7,4% to średnia rynkowa; ok. 12% rentowności netto w danych projektu to szacunek projektu Reverance."
     },
     "residence": {
       "eyebrow": "DLACZEGO REVERANCE",
@@ -895,7 +677,7 @@ export const REVERANCE_INFO_COPY = {
         ],
         [
           "WYBRANE WYŻSZE PIĘTRA",
-          "Aktualna oferta AIXCO koncentruje się na 13. i 14. piętrze."
+          "Aktualna oferta koncentruje się na 13. i 14. piętrze."
         ],
         [
           "KONCEPCJA MIESZKANIOWA PREMIUM",
@@ -1051,70 +833,6 @@ export const REVERANCE_INFO_COPY = {
       ],
       "note": "Informacje ogólne, nie porada prawna ani podatkowa."
     },
-    "aixco": {
-      "eyebrow": "DLACZEGO AIXCO",
-      "title": "NIE KUPUJEMY PO PROSTU NIERUCHOMOŚCI. MY JE WYBIERAMY.",
-      "lead": "AIXCO łączy międzynarodowe doświadczenie w nieruchomościach z dyscyplinowanym doborem aktywów i lokalną realizacją.",
-      "stats": [
-        [
-          "2009",
-          "Na rynku od"
-        ],
-        [
-          "2 000+",
-          "Transakcje nieruchomościowe"
-        ],
-        [
-          "4,2 mld $+",
-          "Wartość transakcji"
-        ],
-        [
-          "400 mln $+",
-          "Bieżąca wartość brutto projektów"
-        ],
-        [
-          "90+",
-          "Specjaliści"
-        ]
-      ],
-      "statsNote": "Dane firmy AIXCO. AiXESS to platforma dostępu dla brokerów AIXCO.",
-      "body": "Naszą rolą nie jest pokazywanie każdej nieruchomości na rynku, lecz identyfikacja wybranych aktywów według lokalizacji, ceny, jakości projektu, struktury własności i długoterminowych fundamentów rynku.",
-      "path": [
-        "Szwajcarskie dziedzictwo",
-        "DOŚWIADCZENIE Z DUBAJU",
-        "SZANSA W BATUMI"
-      ],
-      "researchEyebrow": "NIEZALEŻNE BADANIA RYNKU",
-      "researchTitle": "DECYZJE OPARTE NA DANYCH.",
-      "researchLead": "AIXCO korzysta z niezależnych badań rynku osób trzecich oraz własnej due diligence przy ocenie rynków i projektów.",
-      "research": [
-        [
-          "COLLIERS",
-          "Globalna firma doradcza i badawcza w nieruchomościach dostarczająca profesjonalną wiedzę o rynkach międzynarodowych."
-        ],
-        [
-          "GALT & TAGGART",
-          "Wiodący gruziński bank inwestycyjny i dom analityczny oferujący dogłębną analizę gospodarki, rynków kapitałowych i sektora nieruchomości Gruzji."
-        ]
-      ],
-      "journeyEyebrow": "Podejście AIXCO",
-      "journeyTitle": "NABYWAJ. PARTNERUJ. TWÓRZ WARTOŚĆ.",
-      "journeyLead": "Od własności nieruchomości i partnerstwa strategicznego po profesjonalne zarządzanie aktywami — AIXCO towarzyszy Ci na każdym etapie.",
-      "journey": [
-        [
-          "Kup apartament z AIXCO",
-          "Klienci rejestrują się, przeglądają wybrane apartamenty, umawiają prywatne zwiedzanie i przechodzą przez rezerwację oraz zakup z zespołem AIXCO."
-        ],
-        [
-          "Pośrednicz w nieruchomościach z AIXCO",
-          "Brokerzy i partnerzy mogą polecać kwalifikowanych kupujących, koordynować zwiedzania i prowadzić transakcje w uporządkowanym procesie sprzedaży."
-        ],
-        [
-          "Zarządzaj swoją nieruchomością",
-          "Właściciele mogą współpracować z AIXCO przy dokumentacji, przekazaniu, raportowaniu, koordynacji najmu i bieżącej administracji po zakupie."
-        ]
-      ]
-    },
     "gallery": {
       "eyebrow": "Galeria projektu",
       "title": "ZOBACZ REVERANCE.",
@@ -1171,28 +889,6 @@ export const REVERANCE_INFO_COPY = {
         ]
       ],
       "lead": "Reverance to inwestycja mieszkaniowa premium przy New Boulevard w Batumi, łącząca nowoczesne rezydencje, udogodnienia dla mieszkańców i dostęp do jednego z najbardziej aktywnych dystryktów rozwojowych miasta."
-    },
-    "faq": {
-      "eyebrow": "FAQ",
-      "title": "O CO ZAZWYCZAJ PYTAJĄ KUPUJĄCY.",
-      "items": [
-        [
-          "Czy cudzoziemcy mogą posiadać nieruchomości w Gruzji?",
-          "Zagraniczni nabywcy mogą co do zasady bezpośrednio posiadać nieruchomości mieszkaniowe, z zastrzeżeniem gruzińskiego prawa i klasyfikacji nieruchomości."
-        ],
-        [
-          "Ile potrzebuję na start?",
-          "Wybrane apartamenty Reverance są obecnie oferowane od około 45 000 €, ze strukturyzowanymi opcjami płatności."
-        ],
-        [
-          "Kiedy planowane jest ukończenie Reverance?",
-          "Planowane ukończenie to lipiec 2028."
-        ],
-        [
-          "Czy AIXCO może pomóc po ukończeniu?",
-          "Tak. Obecny model usług AIXCO obejmuje dokumentację, przekazanie, koordynację najmu i bieżącą administrację nieruchomości."
-        ]
-      ]
     },
     "briefCta": "Poproś o brief",
     "availabilityCta": "Sprawdź dostępność",
@@ -1255,26 +951,9 @@ export const REVERANCE_INFO_COPY = {
       "imageLabel": "59 Adlia Street",
       "imageCaption": "New Boulevard jest 5 minut stąd.",
       "expand": "Powiększ zdjęcie"
-    },
-    "start": {
-      "eyebrow": "Zacznij z AIXCO",
-      "title": "TWOJA NIERUCHOMOŚĆ REVERANCE ZACZYNA SIĘ TUTAJ.",
-      "lead": "Powiedz nam, czego szukasz. Pokażemy dostępne apartamenty, które najlepiej pasują do budżetu i celu."
     }
   },
   "sl": {
-    "navLabel": "Vsebina projekta",
-    "nav": {
-      "opportunity": "Priložnost",
-      "why-batumi": "ZAKAJ BATUMI",
-      "residence": "Rezidenca",
-      "payment": "STRUKTURA PLAČIL",
-      "ownership": "Lastništvo",
-      "why-aixco": "ZAKAJ AIXCO",
-      "gallery": "Galerija projekta",
-      "faq": "FAQ",
-      "approach": "Način AIXCO"
-    },
     "batumi": {
       "eyebrow": "ZAKAJ BATUMI",
       "title": "Batumi združuje turizem ob Črnem morju, mednarodno povpraševanje, novo infrastrukturo in razmeroma dostopne stanovanjske cene.",
@@ -1301,7 +980,7 @@ export const REVERANCE_INFO_COPY = {
         ]
       ],
       "source": "Viri: Galt & Taggart Research; Colliers Georgia.",
-      "note": "Stanovanjski trg Batumija, celotno leto 2025. 7,4 % je tržno povprečje; pribl. 12 % neto donosa v podatkih o projektu je ocena AIXCO za Reverance."
+      "note": "Stanovanjski trg Batumija, celotno leto 2025. 7,4 % je tržno povprečje; pribl. 12 % neto donosa v podatkih o projektu je ocena projekta Reverance."
     },
     "residence": {
       "eyebrow": "ZAKAJ REVERANCE",
@@ -1313,7 +992,7 @@ export const REVERANCE_INFO_COPY = {
         ],
         [
           "IZBRANA VIŠJA NADSTROPJA",
-          "Trenutna ponudba AIXCO je osredotočena na 13. in 14. nadstropje."
+          "Trenutna ponudba je osredotočena na 13. in 14. nadstropje."
         ],
         [
           "PREMIJSKI STANOVANJSKI KONCEPT",
@@ -1469,70 +1148,6 @@ export const REVERANCE_INFO_COPY = {
       ],
       "note": "Splošne informacije, ne pravni ali davčni nasvet."
     },
-    "aixco": {
-      "eyebrow": "ZAKAJ AIXCO",
-      "title": "NE KUPUJEMO PREPROSTO NEPREMIČNIN. IZBEREMO JIH.",
-      "lead": "AIXCO združuje mednarodne izkušnje z nepremičninami z disciplinirano izbiro sredstev in lokalno izvedbo.",
-      "stats": [
-        [
-          "2009",
-          "V poslovanju od"
-        ],
-        [
-          "2.000+",
-          "Nepremičninske transakcije"
-        ],
-        [
-          "4,2 mlrd $+",
-          "Vrednost transakcij"
-        ],
-        [
-          "400 mil. $+",
-          "Trenutna bruto razvojna vrednost"
-        ],
-        [
-          "90+",
-          "Strokovnjaki"
-        ]
-      ],
-      "statsNote": "Podatki podjetja AIXCO. AiXESS je AIXCO-va platforma za posrednike.",
-      "body": "Naša vloga ni pokazati vam vsake nepremičnine na trgu, temveč identificirati izbrana sredstva glede na lokacijo, ceno, kakovost razvoja, strukturo lastništva in dolgoročne tržne temelje.",
-      "path": [
-        "Švicarska dediščina",
-        "IZKUŠNJE IZ DUBAJA",
-        "PRILOŽNOST V BATUMIJU"
-      ],
-      "researchEyebrow": "NEODVISNE RAZISKAVE TRGA",
-      "researchTitle": "ODLOČITVE PODPRTE S PODATKI.",
-      "researchLead": "AIXCO pri vrednotenju trgov in projektov uporablja neodvisne raziskave tretjih oseb skupaj z lastno skrbnim pregledom.",
-      "research": [
-        [
-          "COLLIERS",
-          "Globalno svetovalno in raziskovalno podjetje za nepremičnine, ki zagotavlja strokovno tržno inteligenco na mednarodnih trgih."
-        ],
-        [
-          "GALT & TAGGART",
-          "Vodilna gruzijska investicijska banka in raziskovalna hiša z poglobljeno analizo gospodarstva, kapitalskih trgov in nepremičninskega sektorja Gruzije."
-        ]
-      ],
-      "journeyEyebrow": "Način AIXCO",
-      "journeyTitle": "PRIDOBITE. PARTNERSTVO. USTVARJAJTE VREDNOST.",
-      "journeyLead": "Od lastništva nepremičnine in strateškega partnerstva do profesionalnega upravljanja sredstev je AIXCO z vami na vsaki stopnji poti.",
-      "journey": [
-        [
-          "Kupite stanovanje z AIXCO",
-          "Stranke se registrirajo, pregledajo izbrana stanovanja, rezervirajo zasebni ogled ter z ekipo AIXCO opravijo rezervacijo in nakup."
-        ],
-        [
-          "Posredujte nepremičnine z AIXCO",
-          "Posredniki in partnerji lahko predstavijo kvalificirane kupce, usklajujejo oglede in vodijo posle po strukturiranem prodajnem procesu."
-        ],
-        [
-          "Upravljajte svojo nepremičnino",
-          "Lastniki lahko z AIXCO sodelujejo pri dokumentaciji, predaji, poročanju, usklajevanju najema in stalnem upravljanju po nakupu."
-        ]
-      ]
-    },
     "gallery": {
       "eyebrow": "Galerija projekta",
       "title": "OGLEJTE SI REVERANCE.",
@@ -1589,28 +1204,6 @@ export const REVERANCE_INFO_COPY = {
         ]
       ],
       "lead": "Reverance je premijski stanovanjski projekt na New Boulevardu v Batumiju, ki združuje sodobne rezidence, ugodnosti za prebivalce in dostop do enega najbolj aktivnih razvojnih okrožij mesta."
-    },
-    "faq": {
-      "eyebrow": "FAQ",
-      "title": "KAJ KUPCI OBIČAJNO VPRAŠAJO.",
-      "items": [
-        [
-          "Ali lahko tujci lastnijo nepremičnine v Gruziji?",
-          "Tuji kupci lahko na splošno neposredno lastnijo stanovanjske nepremičnine, v skladu z veljavnim gruzijskim pravom in klasifikacijo nepremičnine."
-        ],
-        [
-          "Koliko potrebujem za začetek?",
-          "Izbrani apartmaji Reverance so trenutno na trgu od približno 45.000 €, s strukturiranimi možnostmi plačila."
-        ],
-        [
-          "Kdaj je predviden zaključek Reverance?",
-          "Predviden zaključek je julij 2028."
-        ],
-        [
-          "Ali lahko AIXCO pomaga po zaključku?",
-          "Da. Trenutni model storitev AIXCO vključuje dokumentacijo, predajo, koordinacijo najema in stalno upravljanje nepremičnine."
-        ]
-      ]
     },
     "briefCta": "Zahtevajte brief",
     "availabilityCta": "Preverite razpoložljivost",
@@ -1673,26 +1266,9 @@ export const REVERANCE_INFO_COPY = {
       "imageLabel": "59 Adlia Street",
       "imageCaption": "New Boulevard je oddaljen 5 minut.",
       "expand": "Povečaj sliko"
-    },
-    "start": {
-      "eyebrow": "Začnite z AIXCO",
-      "title": "VAŠA NEPREMIČNINA REVERANCE SE ZAČNE TUKAJ.",
-      "lead": "Povejte nam, kaj iščete. Pokazali vam bomo razpoložljive apartmaje, ki najbolje ustrezajo proračunu in cilju."
     }
   },
   "ru": {
-    "navLabel": "Разделы проекта",
-    "nav": {
-      "opportunity": "Возможность",
-      "why-batumi": "Почему Батуми",
-      "residence": "Резиденция",
-      "payment": "СТРУКТУРА ОПЛАТЫ",
-      "ownership": "Собственность",
-      "why-aixco": "ПОЧЕМУ AIXCO",
-      "gallery": "Галерея проекта",
-      "faq": "FAQ",
-      "approach": "Подход AIXCO"
-    },
     "batumi": {
       "eyebrow": "ПОЧЕМУ БАТУМИ",
       "title": "Батуми сочетает черноморский туризм, международный спрос, новую инфраструктуру и относительно доступные цены на жильё.",
@@ -1719,7 +1295,7 @@ export const REVERANCE_INFO_COPY = {
         ]
       ],
       "source": "Источники: Galt & Taggart Research; Colliers Georgia.",
-      "note": "Рынок жилья Батуми, весь 2025 год. 7,4% — средний показатель рынка; около 12% чистой доходности в данных проекта — оценка AIXCO для Reverance."
+      "note": "Рынок жилья Батуми, весь 2025 год. 7,4% — средний показатель рынка; около 12% чистой доходности в данных проекта — оценка проекта Reverance."
     },
     "residence": {
       "eyebrow": "ПОЧЕМУ REVERANCE",
@@ -1731,7 +1307,7 @@ export const REVERANCE_INFO_COPY = {
         ],
         [
           "ОТОБРАННЫЕ ВЕРХНИЕ ЭТАЖИ",
-          "Текущий инвентарь AIXCO сосредоточен на 13-м и 14-м этажах."
+          "Текущий инвентарь сосредоточен на 13-м и 14-м этажах."
         ],
         [
           "ПРЕМИАЛЬНАЯ ЖИЛАЯ КОНЦЕПЦИЯ",
@@ -1887,70 +1463,6 @@ export const REVERANCE_INFO_COPY = {
       ],
       "note": "Общая информация, а не юридическая или налоговая консультация."
     },
-    "aixco": {
-      "eyebrow": "ПОЧЕМУ AIXCO",
-      "title": "МЫ НЕ ПРОСТО ПОКУПАЕМ НЕДВИЖИМОСТЬ. МЫ ЕЁ ОТБИРАЕМ.",
-      "lead": "AIXCO сочетает международный опыт в недвижимости с дисциплинированным отбором активов и локальным исполнением.",
-      "stats": [
-        [
-          "2009",
-          "На рынке с"
-        ],
-        [
-          "2 000+",
-          "Сделки с недвижимостью"
-        ],
-        [
-          "4,2 млрд $+",
-          "Объём сделок"
-        ],
-        [
-          "400 млн $+",
-          "Текущая валовая стоимость развития"
-        ],
-        [
-          "90+",
-          "Специалисты"
-        ]
-      ],
-      "statsNote": "Данные компании AIXCO. AiXESS — брокерская платформа AIXCO.",
-      "body": "Наша задача — не показать вам каждый объект на рынке, а отобрать активы по локации, цене, качеству проекта, структуре владения и долгосрочным рыночным факторам.",
-      "path": [
-        "Швейцарское наследие",
-        "ОПЫТ В ДУБАЕ",
-        "ВОЗМОЖНОСТЬ В БАТУМИ"
-      ],
-      "researchEyebrow": "НЕЗАВИСИМЫЕ ИССЛЕДОВАНИЯ РЫНКА",
-      "researchTitle": "РЕШЕНИЯ НА ОСНОВЕ ДАННЫХ.",
-      "researchLead": "AIXCO использует независимые исследования рынка третьих сторон вместе с собственной due diligence при оценке рынков и проектов.",
-      "research": [
-        [
-          "COLLIERS",
-          "Глобальная консалтинговая и исследовательская компания в недвижимости с профессиональной аналитикой международных рынков."
-        ],
-        [
-          "GALT & TAGGART",
-          "Ведущий грузинский инвестиционный банк и исследовательский центр с глубоким анализом экономики, капитальных рынков и сектора недвижимости Грузии."
-        ]
-      ],
-      "journeyEyebrow": "Подход AIXCO",
-      "journeyTitle": "ПРИОБРЕТАЙТЕ. ПАРТНЁРСТВУЙТЕ. СОЗДАВАЙТЕ ЦЕННОСТЬ.",
-      "journeyLead": "От владения недвижимостью и стратегического партнёрства до профессионального управления активами — AIXCO сопровождает вас на каждом этапе.",
-      "journey": [
-        [
-          "Купить квартиру с AIXCO",
-          "Клиенты регистрируются, изучают отобранные квартиры, бронируют частный просмотр и проходят резервирование и покупку вместе с командой AIXCO."
-        ],
-        [
-          "Продавать недвижимость с AIXCO",
-          "Брокеры и партнёры могут представлять квалифицированных покупателей, координировать просмотры и вести сделки в рамках структурированного процесса продаж."
-        ],
-        [
-          "Управлять своей недвижимостью",
-          "Владельцы могут работать с AIXCO над документами, передачей объекта, отчётностью, координацией аренды и текущим администрированием после покупки."
-        ]
-      ]
-    },
     "gallery": {
       "eyebrow": "Галерея проекта",
       "title": "УВИДЕТЬ REVERANCE.",
@@ -2007,28 +1519,6 @@ export const REVERANCE_INFO_COPY = {
         ]
       ],
       "lead": "Reverance — премиальный жилой проект на Новом бульваре Батуми: современные резиденции, инфраструктура для жильцов и доступ к одному из самых активных районов развития города."
-    },
-    "faq": {
-      "eyebrow": "FAQ",
-      "title": "ЧТО ОБЫЧНО СПРАШИВАЮТ ПОКУПАТЕЛИ.",
-      "items": [
-        [
-          "Могут ли иностранцы владеть недвижимостью в Грузии?",
-          "Иностранные покупатели, как правило, могут напрямую владеть жилой недвижимостью в соответствии с законодательством Грузии и классификацией объекта."
-        ],
-        [
-          "Сколько нужно для старта?",
-          "Отобранные апартаменты Reverance сейчас предлагаются от примерно 45 000 € со структурированными вариантами оплаты."
-        ],
-        [
-          "Когда ожидается завершение Reverance?",
-          "Плановое завершение — июль 2028 года."
-        ],
-        [
-          "Может ли AIXCO помочь после завершения?",
-          "Да. Текущая модель услуг AIXCO включает документацию, передачу, координацию аренды и текущее администрирование объекта."
-        ]
-      ]
     },
     "briefCta": "Запросить бриф",
     "availabilityCta": "Проверить наличие",
@@ -2091,11 +1581,6 @@ export const REVERANCE_INFO_COPY = {
       "imageLabel": "59 Adlia Street",
       "imageCaption": "Новый бульвар в 5 минутах.",
       "expand": "Увеличить изображение"
-    },
-    "start": {
-      "eyebrow": "Начните с AIXCO",
-      "title": "ВАША НЕДВИЖИМОСТЬ REVERANCE НАЧИНАЕТСЯ ЗДЕСЬ.",
-      "lead": "Расскажите, что вы ищете. Мы покажем доступные апартаменты, которые лучше всего соответствуют бюджету и задаче."
     }
   }
 };

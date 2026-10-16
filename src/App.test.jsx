@@ -219,14 +219,13 @@ describe("AIXESS navigation pages", () => {
     expect(screen.queryByRole("heading", { name: /two buildings/i })).not.toBeInTheDocument();
   });
 
-  it("shows everything from AIXCO's Reverance page: profile, opportunity (no Golden Premium list), payment, ownership, gallery and FAQ", () => {
+  it("shows the Reverance project information without AIXCO's own sections or the Golden Premium list", () => {
     window.history.replaceState({}, "", "/#residences");
     render(<App />);
     expect(screen.getByRole("heading", { name: "OWN PROPERTY ON BATUMI'S NEW BOULEVARD" })).toBeInTheDocument();
     for (const point of ["FROM €45,000", "60%+ FINANCING"]) expect(screen.getByText(point)).toBeInTheDocument();
-    const nav = screen.getByRole("navigation", { name: "Project contents" });
-    expect(within(nav).getByRole("link", { name: "Payment structure" })).toHaveAttribute("href", "#residences/payment");
-    expect(within(nav).getByRole("link", { name: "Request a brief" }).getAttribute("href")).toMatch(/^mailto:info@aixess\.global/);
+    expect(screen.getByRole("link", { name: "Request a brief" }).getAttribute("href")).toMatch(/^mailto:info@aixess\.global/);
+    expect(screen.queryByRole("navigation", { name: "Project contents" })).not.toBeInTheDocument();
     const opportunity = document.getElementById("opportunity");
     expect(within(opportunity).getByRole("heading", { name: "A SELECTED ENTRY INTO BATUMI REAL ESTATE" })).toBeInTheDocument();
     expect(within(opportunity).getByText("Available apartments")).toBeInTheDocument();
@@ -250,20 +249,15 @@ describe("AIXESS navigation pages", () => {
     expect(within(dialog).getByText("2 of 9")).toBeInTheDocument();
     fireEvent.click(within(dialog).getByRole("button", { name: "Close" }));
     expect(gallery.querySelector("dialog")).toBeNull();
-    const faq = document.getElementById("faq");
-    expect(faq.querySelectorAll("details")).toHaveLength(4);
-    expect(within(faq).getByText("Target completion is July 2028.")).toBeInTheDocument();
-    expect(screen.getByRole("heading", { name: "YOUR REVERANCE PROPERTY STARTS HERE." })).toBeInTheDocument();
+    // AIXCO's own sections stay off AiXESS (Kemo and Klem, 16 October 2026).
+    for (const id of ["faq", "why-aixco", "approach"]) expect(document.getElementById(id)).toBeNull();
+    for (const name of ["WHAT BUYERS USUALLY ASK.", "ACQUIRE. PARTNER. CREATE VALUE.", "YOUR REVERANCE PROPERTY STARTS HERE."]) expect(screen.queryByRole("heading", { name })).not.toBeInTheDocument();
   });
 
-  it("keeps the project page when a contents link is used", () => {
-    window.history.replaceState({}, "", "/#residences");
+  it("keeps the project page on a section link", () => {
+    window.history.replaceState({}, "", "/#residences/payment");
     render(<App />);
-    const target = document.getElementById("faq");
-    target.scrollIntoView = vi.fn();
-    fireEvent.click(within(screen.getByRole("navigation", { name: "Project contents" })).getByRole("link", { name: "FAQ" }));
-    expect(window.location.hash).toBe("#residences/faq");
-    expect(target.scrollIntoView).toHaveBeenCalled();
+    expect(document.getElementById("payment")).not.toBeNull();
     expect(screen.getByRole("heading", { name: /two buildings/i })).toBeInTheDocument();
   });
 

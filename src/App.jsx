@@ -5,7 +5,7 @@ import { LanguageProvider, LANGUAGE_OPTIONS, useLanguage, localizeFieldValidatio
 import { NetworkSections, PurchaseBenefit } from "./components/NetworkSections.jsx";
 import { REVERANCE_PROJECT_COPY } from "./reverance-project-copy.js";
 import { ProjectShowcase } from "./components/ProjectShowcase.jsx";
-import { AixcoOpportunity, Ownership, PaymentStructure, ProjectFaq, ProjectGallery, ProjectProfile, ProjectSubnav, StartWithAixco, WhyAixco, WhyBatumi, WhyReverance, useProjectSectionFromHash } from "./components/ReveranceProjectInfo.jsx";
+import { AixcoOpportunity, Ownership, PaymentStructure, ProjectGallery, ProjectProfile, WhyBatumi, WhyReverance, useProjectSectionFromHash } from "./components/ReveranceProjectInfo.jsx";
 import { AdvantagePageContent, BrokerAccessPageContent } from "./components/LashaNetworkPages.jsx";
 import { HomeAbout, HomeAccess, HomeHero, HomeMetrics, HomeStartingPoints, LashaPageHero } from "./components/LashaHomeSections.jsx";
 import { TimeThemeMenu } from "./components/TimeThemeMenu.jsx";
@@ -507,11 +507,10 @@ function ResidencesPage({ currentPage, menuOpen, onToggleMenu, onNavigate, onOpe
         copy={t("residenceRouteCopy")}
       />
       <main className="page-main">
-        {/* Project information from AIXCO.Global's Reverance page (Klem, 16 October 2026). The
-            contents bar sticks only within this block, so it never covers the explorer. */}
+        {/* Project information from AIXCO.Global's Reverance page (Klem, 16 October 2026). AIXCO's own
+            sections, the contents bar and the FAQ are left out (Kemo and Klem, 16 October 2026). */}
         <ProjectProfile />
         <div className="rp-contents">
-          <ProjectSubnav />
           <div className="rp-anchor" id="opportunity">
             <NetworkSections sections={["opportunity"]} />
             <AixcoOpportunity />
@@ -520,10 +519,7 @@ function ResidencesPage({ currentPage, menuOpen, onToggleMenu, onNavigate, onOpe
           <WhyReverance />
           <PaymentStructure><PurchaseBenefit /></PaymentStructure>
           <Ownership />
-          <WhyAixco />
           <ProjectGallery />
-          <ProjectFaq />
-          <StartWithAixco />
         </div>
         <Suspense fallback={<div className="residence-explorer-loader" role="status">{t("preparingInteractive")}</div>}>
           <ResidenceExplorer liveInventoryTitle onBrokerAccess={() => onOpenModal("register")} />
