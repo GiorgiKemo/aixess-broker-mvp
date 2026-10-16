@@ -26,7 +26,17 @@ export function LashaValue({ value, className }) {
   );
 }
 
-export function HomeHero({ children }) {
+// A same-tab click on a route link goes through the app router (pushState, no hashchange jump);
+// modified clicks keep the browser's own new-tab behaviour.
+export function routeLinkClick(onNavigate, page) {
+  return (event) => {
+    if (!onNavigate || event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+    event.preventDefault();
+    onNavigate(page);
+  };
+}
+
+export function HomeHero({ children, onNavigate }) {
   const { locale } = useLanguage();
   const copy = LASHA_HOME_COPY[locale] || LASHA_HOME_COPY.en;
   const lines = HOME_HERO_LINES[locale] ?? HOME_HERO_LINES.en;
@@ -60,7 +70,8 @@ export function HomeHero({ children }) {
         <div className="lasha-hero-copy">
           <FittedHeading as="h1" fillLines maxLineRatio={260 / 423}>{lines.map((line) => <span key={line}>{line}</span>)}</FittedHeading>
           <p>{copy.heroSubtitle}</p>
-          <a className="lasha-hero-cta" href="#projects">{copy.heroCta}<LashaArrow length={24} /></a>
+          {/* Opens the Project Reverance page itself (Klem, 16 October 2026), not a homepage section. */}
+          <a className="lasha-hero-cta" href="#residences" onClick={routeLinkClick(onNavigate, "residences")}>{copy.heroCta}<LashaArrow length={24} /></a>
         </div>
       </div>
     </section>

@@ -5,6 +5,7 @@ import { LanguageProvider, LANGUAGE_OPTIONS, useLanguage, localizeFieldValidatio
 import { NetworkSections, PurchaseBenefit } from "./components/NetworkSections.jsx";
 import { REVERANCE_PROJECT_COPY } from "./reverance-project-copy.js";
 import { ProjectShowcase } from "./components/ProjectShowcase.jsx";
+import { Ownership, PaymentStructure, ProjectFaq, ProjectGallery, ProjectSubnav, WhyAixco, WhyBatumi, WhyReverance, useProjectSectionFromHash } from "./components/ReveranceProjectInfo.jsx";
 import { AdvantagePageContent, BrokerAccessPageContent } from "./components/LashaNetworkPages.jsx";
 import { HomeAbout, HomeAccess, HomeHero, HomeMetrics, HomeStartingPoints, LashaPageHero } from "./components/LashaHomeSections.jsx";
 import { TimeThemeMenu } from "./components/TimeThemeMenu.jsx";
@@ -65,7 +66,8 @@ function workwiseBrokerUrl(type, locale = "en") {
 
 function routeFromLocation() {
   if (typeof window === "undefined") return "home";
-  const requestedRoute = window.location.hash.replace(/^#/, "").split("?")[0].trim().toLowerCase();
+  // "#residences/payment" is a section of a page: the route is the part before the slash.
+  const requestedRoute = window.location.hash.replace(/^#/, "").split(/[?/]/)[0].trim().toLowerCase();
   const route = routeAliases[requestedRoute] || requestedRoute;
   return validRoutes.has(route) ? route : "home";
 }
@@ -492,6 +494,7 @@ function BrokerToolsPage({ currentPage, menuOpen, onToggleMenu, onNavigate, onOp
 
 function ResidencesPage({ currentPage, menuOpen, onToggleMenu, onNavigate, onOpenModal }) {
   const { t, locale } = useLanguage();
+  useProjectSectionFromHash();
   return (
     <div className="route-page lasha-page residences-page">
       <LashaPageHero
@@ -504,8 +507,19 @@ function ResidencesPage({ currentPage, menuOpen, onToggleMenu, onNavigate, onOpe
         copy={t("residenceRouteCopy")}
       />
       <main className="page-main">
-        <NetworkSections sections={["opportunity"]} />
-        <PurchaseBenefit />
+        {/* Project information from AIXCO.Global's Reverance page (Klem, 16 October 2026). The
+            contents bar sticks only within this block, so it never covers the explorer. */}
+        <div className="rp-contents">
+          <ProjectSubnav />
+          <div className="rp-anchor" id="opportunity"><NetworkSections sections={["opportunity"]} /></div>
+          <WhyBatumi />
+          <WhyReverance />
+          <PaymentStructure><PurchaseBenefit /></PaymentStructure>
+          <Ownership />
+          <WhyAixco />
+          <ProjectGallery />
+          <ProjectFaq />
+        </div>
         <Suspense fallback={<div className="residence-explorer-loader" role="status">{t("preparingInteractive")}</div>}>
           <ResidenceExplorer liveInventoryTitle onBrokerAccess={() => onOpenModal("register")} />
         </Suspense>
@@ -518,7 +532,7 @@ function HomePage({ currentPage, menuOpen, onToggleMenu, onNavigate, onOpenModal
   const { t } = useLanguage();
   return (
     <div className="lasha-home">
-      <HomeHero>
+      <HomeHero onNavigate={onNavigate}>
         <SiteHeader {...{ currentPage, menuOpen, onToggleMenu, onNavigate, onOpenModal }} />
       </HomeHero>
 

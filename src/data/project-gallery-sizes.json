@@ -1,0 +1,132 @@
+{
+ "exterior": {
+  "width": 3882,
+  "height": 3871,
+  "widths": [
+   480,
+   960,
+   1600,
+   2400
+  ]
+ },
+ "aerial": {
+  "width": 4000,
+  "height": 4000,
+  "widths": [
+   480,
+   960,
+   1600,
+   2400
+  ]
+ },
+ "entrance": {
+  "width": 4000,
+  "height": 4000,
+  "widths": [
+   480,
+   960,
+   1600,
+   2400
+  ]
+ },
+ "rooftop": {
+  "width": 4000,
+  "height": 4000,
+  "widths": [
+   480,
+   960,
+   1600,
+   2400
+  ]
+ },
+ "pool-terrace": {
+  "width": 4000,
+  "height": 4000,
+  "widths": [
+   480,
+   960,
+   1600,
+   2400
+  ]
+ },
+ "reception": {
+  "width": 4096,
+  "height": 2733,
+  "widths": [
+   480,
+   960,
+   1600,
+   2400
+  ]
+ },
+ "lobby": {
+  "width": 3935,
+  "height": 2733,
+  "widths": [
+   480,
+   960,
+   1600,
+   2400
+  ]
+ },
+ "gym": {
+  "width": 3840,
+  "height": 2160,
+  "widths": [
+   480,
+   960,
+   1600,
+   2400
+  ]
+ },
+ "indoor-pool": {
+  "width": 4096,
+  "height": 2731,
+  "widths": [
+   480,
+   960,
+   1600,
+   2400
+  ]
+ },
+ "garden-pool": {
+  "width": 3840,
+  "height": 2160,
+  "widths": [
+   480,
+   960,
+   1600,
+   2400
+  ]
+ },
+ "sauna": {
+  "width": 3840,
+  "height": 2160,
+  "widths": [
+   480,
+   960,
+   1600,
+   2400
+  ]
+ },
+ "batumi-sea-city": {
+  "width": 3840,
+  "height": 2160,
+  "widths": [
+   480,
+   960,
+   1600,
+   2400
+  ]
+ },
+ "batumi-coastline": {
+  "width": 3840,
+  "height": 2160,
+  "widths": [
+   480,
+   960,
+   1600,
+   2400
+  ]
+ }
+}

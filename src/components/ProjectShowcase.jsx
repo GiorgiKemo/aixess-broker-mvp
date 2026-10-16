@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { LashaArrow, LashaValue } from "./LashaHomeSections.jsx";
+import { LashaArrow, LashaValue, routeLinkClick } from "./LashaHomeSections.jsx";
 import { useLanguage } from "../i18n.jsx";
 import { LASHA_HOME_COPY } from "../lasha-home-copy.js";
 import { PROJECT_SHOWCASE_COPY } from "../project-showcase-copy.js";
@@ -13,10 +13,6 @@ export function ProjectShowcase({ onNavigate, upcoming = UPCOMING_PROJECTS }) {
   const [active, setActive] = useState(0);
   const project = FEATURED_PROJECT;
   const image = project.gallery[active];
-
-  const exploreProject = () => {
-    document.getElementById("residences")?.scrollIntoView({ behavior: "smooth", block: "start" });
-  };
 
   return (
     <section className="project-showcase" id="projects" aria-labelledby="project-showcase-title">
@@ -69,9 +65,10 @@ export function ProjectShowcase({ onNavigate, upcoming = UPCOMING_PROJECTS }) {
             <p>{copy.projectBody}</p>
             <p className="project-card-meta">{copy.projectMeta}</p>
             <div className="project-card-actions">
-              <button className="lasha-button lasha-button-primary" type="button" onClick={exploreProject}>
+              {/* The project page, like Explore investments and the menu (16 October 2026). */}
+              <a className="lasha-button lasha-button-primary" href="#residences" onClick={routeLinkClick(onNavigate, "residences")}>
                 {copy.exploreProject}<LashaArrow length={26} />
-              </button>
+              </a>
               <button className="lasha-button lasha-button-dark" type="button" onClick={() => onNavigate("broker-tools")}>
                 {t("calculator")}<LashaArrow length={26} />
               </button>

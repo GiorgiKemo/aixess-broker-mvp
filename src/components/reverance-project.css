@@ -1,0 +1,303 @@
+/* Project Reverance information sections (Klem, 16 October 2026), in the inner pages' language
+   (lasha-pages.css): paper and mist grounds, condensed uppercase headings, blue accents from the
+   theme tokens. Night needs nothing extra: every colour is a token. */
+.lasha-page .rp-contents { position: relative; }
+
+/* Contents bar: sticks to the top while the information sections scroll; it ends with them, so it
+   never covers the Residence Explorer below. */
+.lasha-page .rp-subnav {
+  position: sticky;
+  top: 0;
+  z-index: 6;
+  border-block: 1px solid color-mix(in srgb, var(--l-ink, #171a1d) 14%, transparent);
+  background: var(--l-paper, #f4f4f1);
+}
+.lasha-page .rp-subnav ul {
+  display: flex;
+  gap: clamp(1.2rem, 2.4vw, 2.4rem);
+  margin: 0;
+  padding: 0 var(--page-gutter);
+  overflow-x: auto;
+  list-style: none;
+  scrollbar-width: none;
+  overscroll-behavior-x: contain;
+}
+.lasha-page .rp-subnav ul::-webkit-scrollbar { display: none; }
+.lasha-page .rp-subnav li { flex: none; }
+.lasha-page .rp-subnav a {
+  display: flex;
+  align-items: center;
+  min-height: 3.25rem;
+  border-bottom: 2px solid transparent;
+  color: var(--l-ink, #171a1d);
+  font-size: var(--v4-nav);
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-decoration: none;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.lasha-page .rp-subnav a:hover,
+.lasha-page .rp-subnav a[aria-current] { border-bottom-color: var(--l-blue); color: var(--l-blue); }
+.lasha-page .rp-subnav a:focus-visible { outline: 2px solid var(--l-blue); outline-offset: -2px; }
+
+/* Targets land below the contents bar. */
+.lasha-page :is(.rp-anchor, .rp-section) { scroll-margin-top: 3.4rem; }
+.lasha-page .rp-section h2[tabindex]:focus { outline: none; }
+
+.lasha-page .rp-section {
+  padding: clamp(4rem, 8.5vw, 7.8rem) var(--page-gutter);
+  border-top: 1px solid color-mix(in srgb, var(--l-ink, #171a1d) 12%, transparent);
+  background: var(--l-paper);
+  color: var(--l-ink);
+}
+.lasha-page .rp-section.rp-mist { background: var(--l-mist); }
+.lasha-page .rp-section > * { max-width: 81.2rem; }
+
+.lasha-page .rp-heading { margin-bottom: clamp(2rem, 4vw, 3.5rem); }
+.lasha-page .rp-heading h2 {
+  max-width: 20ch;
+  margin: 0.4rem 0 0;
+  font-family: var(--l-head);
+  font-size: var(--v4-h2);
+  font-weight: 700;
+  letter-spacing: -0.012em;
+  line-height: 0.88;
+  text-transform: uppercase;
+  text-wrap: balance;
+}
+.lasha-page .rp-lead { max-width: 44rem; margin: clamp(1.2rem, 2vw, 1.6rem) 0 0; font-size: var(--v4-lead); letter-spacing: -0.01em; line-height: 1.55; }
+.lasha-page .rp-body { max-width: 52rem; margin: clamp(2rem, 4vw, 3rem) 0 0; font-size: var(--v4-lead); line-height: 1.55; }
+.lasha-page .rp-note { max-width: 62ch; margin: 1.2rem 0 0; color: color-mix(in srgb, var(--l-ink, #171a1d) 74%, transparent); font-size: var(--v4-small); line-height: 1.55; }
+.lasha-page .rp-index { display: block; color: var(--l-blue); font-family: var(--l-head); font-size: var(--v4-index); font-weight: 700; line-height: 1; }
+
+/* Shared heading behaviour: whole words only (see styles.css). */
+.lasha-page .rp-section :is(h2, h3, h4, dt, dd, strong) { min-width: 0; overflow-wrap: break-word; word-break: normal; hyphens: manual; }
+
+/* Figures: Why Batumi and Why AIXCO. */
+.lasha-page .rp-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 12.5rem), 1fr));
+  gap: 0 clamp(1.25rem, 2.6vw, 2.5rem);
+  margin: 0;
+}
+.lasha-page .rp-stats > div {
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: flex-end;
+  gap: 0.7rem;
+  min-width: 0;
+  padding: 1.3rem 0 1.5rem;
+  border-top: 1px solid color-mix(in srgb, var(--l-ink, #171a1d) 22%, transparent);
+}
+/* Capped so five columns hold the longest localised figure (400 Mio. $+) on wide screens; a figure
+   that still cannot fit wraps between its words. */
+.lasha-page .rp-stats dd { margin: 0; color: var(--l-blue); font-family: var(--l-head); font-size: min(var(--v4-number), 3.9rem); font-weight: 700; line-height: 0.9; }
+.lasha-page .rp-stats dt { font-size: var(--v4-label); font-weight: 600; letter-spacing: 0.18em; line-height: 1.4; text-transform: uppercase; }
+
+/* Benefits, ownership. */
+.lasha-page .rp-benefits {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
+  gap: 0 clamp(1.5rem, 3vw, 3rem);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.lasha-page .rp-benefits li { min-width: 0; padding: 1.4rem 0 1.6rem; border-top: 1px solid color-mix(in srgb, var(--l-ink, #171a1d) 22%, transparent); }
+.lasha-page .rp-benefits h3 { margin: 0.9rem 0 0.6rem; font-family: var(--l-head); font-size: var(--v4-h3); font-weight: 700; line-height: 1; text-transform: uppercase; }
+.lasha-page .rp-benefits p { margin: 0; font-size: var(--v4-text); line-height: 1.6; }
+
+.lasha-page .rp-subtitle,
+.lasha-page .rp-block-title {
+  max-width: 22ch;
+  margin: clamp(3rem, 6vw, 4.5rem) 0 1.4rem;
+  font-family: var(--l-head);
+  font-size: var(--v4-sub);
+  font-weight: 700;
+  line-height: 0.9;
+  text-transform: uppercase;
+}
+.lasha-page .rp-block { margin-top: clamp(3.5rem, 7vw, 5.5rem); }
+.lasha-page .rp-block .rp-block-title { margin-top: 0.4rem; margin-bottom: 0; }
+
+/* Amenities: four photographs with their line. */
+.lasha-page .rp-amenities {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(1rem, 2vw, 1.6rem);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.lasha-page .rp-amenities li { min-width: 0; }
+.lasha-page .rp-amenities img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; background: var(--l-mist); }
+.lasha-page .rp-amenities h4 { margin: 1rem 0 0.4rem; font-family: var(--l-head); font-size: var(--v4-h3); font-weight: 700; line-height: 1; text-transform: uppercase; }
+.lasha-page .rp-amenities p { margin: 0; font-size: var(--v4-text); line-height: 1.6; }
+
+/* Payment stages. */
+.lasha-page .rp-stages {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(1rem, 2vw, 1.6rem);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.lasha-page .rp-stages li {
+  display: grid;
+  align-content: start;
+  gap: 0.7rem;
+  min-width: 0;
+  padding: clamp(1.4rem, 2.6vw, 2.2rem);
+  border: 1px solid color-mix(in srgb, var(--l-ink, #171a1d) 22%, transparent);
+  background: var(--l-card, #fff);
+}
+.lasha-page .rp-stages strong { color: var(--l-blue); font-family: var(--l-head); font-size: var(--v4-benefit); font-weight: 700; line-height: 0.85; }
+.lasha-page .rp-stages h3 { margin: 0; font-size: var(--v4-label); font-family: var(--l-body); font-weight: 600; letter-spacing: 0.18em; line-height: 1.4; text-transform: uppercase; }
+.lasha-page .rp-stages p { margin: 0; font-size: var(--v4-text); line-height: 1.6; }
+.lasha-page .rp-bridge {
+  max-width: 52rem;
+  margin: clamp(2rem, 4vw, 3rem) 0 0;
+  padding-left: 1rem;
+  border-left: 2px solid var(--l-blue);
+  font-size: var(--v4-lead);
+  line-height: 1.55;
+}
+/* Klem's purchase benefit sits inside the payment section, edge to edge. */
+.lasha-page #payment > .purchase-benefit {
+  max-width: none;
+  margin: clamp(2.5rem, 5vw, 4rem) calc(-1 * var(--page-gutter)) calc(-1 * clamp(4rem, 8.5vw, 7.8rem));
+}
+
+/* AIXCO path, research and journey. */
+.lasha-page .rp-path { display: flex; flex-wrap: wrap; gap: 0.6rem 1rem; margin: clamp(1.6rem, 3vw, 2.4rem) 0 0; color: var(--l-blue); font-family: var(--l-head); font-size: var(--v4-kicker); font-weight: 700; line-height: 1; text-transform: uppercase; }
+.lasha-page .rp-path > span { display: inline-flex; gap: 1rem; }
+.lasha-page .rp-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
+  gap: clamp(1rem, 2vw, 1.6rem);
+  margin: clamp(1.6rem, 3vw, 2.4rem) 0 0;
+  padding: 0;
+  list-style: none;
+}
+.lasha-page .rp-cards li { min-width: 0; padding: clamp(1.4rem, 2.6vw, 2rem); border: 1px solid color-mix(in srgb, var(--l-ink, #171a1d) 22%, transparent); background: var(--l-card, #fff); }
+.lasha-page .rp-cards h4 { margin: 0 0 0.7rem; font-family: var(--l-head); font-size: var(--v4-h3); font-weight: 700; line-height: 1; text-transform: uppercase; }
+.lasha-page .rp-journey h4 { margin-top: 0.9rem; }
+.lasha-page .rp-cards p { margin: 0; font-size: var(--v4-text); line-height: 1.6; }
+
+/* Gallery. */
+.lasha-page .rp-gallery {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(0.75rem, 1.6vw, 1.25rem);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.lasha-page .rp-gallery li { min-width: 0; }
+.lasha-page .rp-gallery button {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: var(--l-mist);
+  cursor: zoom-in;
+  overflow: hidden;
+}
+.lasha-page .rp-gallery img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; transition: transform 300ms ease; }
+.lasha-page .rp-gallery button:hover img { transform: scale(1.03); }
+.lasha-page .rp-gallery button:focus-visible { outline: 3px solid var(--l-blue); outline-offset: 3px; }
+.lasha-page .rp-gallery-label {
+  position: absolute;
+  inset: auto 0 0;
+  padding: 2.4rem 1rem 0.9rem;
+  background: linear-gradient(to top, rgb(0 0 0 / 0.62), transparent);
+  color: #fff;
+  font-size: var(--v4-label);
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  line-height: 1.3;
+  text-align: left;
+  text-transform: uppercase;
+}
+
+.rp-lightbox {
+  width: 100vw;
+  max-width: none;
+  height: 100dvh;
+  max-height: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: rgb(0 0 0 / 0.94);
+  color: #fff;
+}
+.rp-lightbox::backdrop { background: rgb(0 0 0 / 0.6); }
+.rp-lightbox figure { display: grid; grid-template-rows: minmax(0, 1fr) auto; height: 100%; margin: 0; padding: 4.2rem clamp(1rem, 5vw, 5rem) 1rem; }
+.rp-lightbox img { width: 100%; height: 100%; min-height: 0; object-fit: contain; }
+.rp-lightbox figcaption { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.4rem 1rem; padding-top: 0.9rem; font-size: 0.9rem; line-height: 1.4; }
+.rp-lightbox figcaption strong { font-family: var(--l-head); font-size: 1.4rem; font-weight: 700; text-transform: uppercase; }
+.rp-lightbox-count { margin-left: auto; color: rgb(255 255 255 / 0.75); }
+.rp-lightbox button {
+  position: absolute;
+  display: grid;
+  place-items: center;
+  width: 3rem;
+  height: 3rem;
+  border: 1px solid rgb(255 255 255 / 0.5);
+  background: rgb(0 0 0 / 0.4);
+  color: #fff;
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+}
+.rp-lightbox button:hover { background: #fff; color: #000; }
+.rp-lightbox button:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
+.rp-lightbox-close { top: 0.75rem; right: 0.75rem; }
+.rp-lightbox-step { top: 50%; transform: translateY(-50%); }
+.rp-lightbox-prev { left: 0.75rem; }
+.rp-lightbox-next { right: 0.75rem; }
+
+/* FAQ, as on Insights. */
+.lasha-page .rp-faq { max-width: 56rem; border-bottom: 1px solid color-mix(in srgb, var(--l-ink, #171a1d) 20%, transparent); }
+.lasha-page .rp-faq details { border-top: 1px solid color-mix(in srgb, var(--l-ink, #171a1d) 20%, transparent); }
+.lasha-page .rp-faq summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  min-height: 3.6rem;
+  padding: 0.8rem 0;
+  font-size: var(--v4-faq);
+  font-weight: 500;
+  line-height: 1.35;
+  list-style: none;
+  cursor: pointer;
+}
+.lasha-page .rp-faq summary::-webkit-details-marker { display: none; }
+.lasha-page .rp-faq summary span { flex: none; color: var(--l-blue); font-size: 1.4rem; transition: transform 160ms ease; }
+.lasha-page .rp-faq details[open] summary span { transform: rotate(45deg); }
+.lasha-page .rp-faq summary:focus-visible { outline: 2px solid var(--l-blue); outline-offset: 2px; }
+.lasha-page .rp-faq details p { max-width: 44rem; margin: 0 0 1.2rem; color: color-mix(in srgb, var(--l-ink, #171a1d) 80%, transparent); font-size: var(--v4-text); line-height: 1.65; }
+
+@media (max-width: 1099px) {
+  .lasha-page .rp-amenities { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .lasha-page .rp-gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 799px) {
+  .lasha-page .rp-stages { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 599px) {
+  .lasha-page .rp-amenities,
+  .lasha-page .rp-gallery { grid-template-columns: minmax(0, 1fr); }
+  .rp-lightbox figure { padding-inline: 0.5rem; }
+  .rp-lightbox-step { top: auto; bottom: 0.75rem; transform: none; }
+  .rp-lightbox figure { padding-bottom: 4.5rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .lasha-page .rp-gallery img,
+  .lasha-page .rp-faq summary span { transition: none; }
+  .lasha-page .rp-gallery button:hover img { transform: none; }
+}

@@ -179,11 +179,6 @@ describe("AIXESS navigation pages", () => {
 
   it("shows Reverance as the featured homepage project with working project actions", () => {
     window.history.replaceState({}, "", "/");
-    const scrollIntoView = vi.fn();
-    const explorer = document.createElement("section");
-    explorer.id = "residences";
-    explorer.scrollIntoView = scrollIntoView;
-    document.body.appendChild(explorer);
     const { container } = render(<App />);
     const showcase = container.querySelector("#projects");
     expect(within(showcase).getByRole("heading", { name: "CURRENT PROJECT IN BATUMI" })).toBeInTheDocument();
@@ -194,11 +189,79 @@ describe("AIXESS navigation pages", () => {
     const thumbs = within(showcase).getAllByRole("button", { name: /Show Reverance image/ });
     fireEvent.click(thumbs[1]);
     expect(thumbs[1]).toHaveAttribute("aria-pressed", "true");
-    fireEvent.click(within(showcase).getByRole("button", { name: /EXPLORE PROJECT/ }));
-    expect(scrollIntoView).toHaveBeenCalled();
-    fireEvent.click(within(showcase).getByRole("button", { name: /CALCULATOR/ }));
+    const explore = within(showcase).getByRole("link", { name: /EXPLORE PROJECT/ });
+    expect(explore).toHaveAttribute("href", "#residences");
+    fireEvent.click(explore);
+    expect(window.location.hash).toBe("#residences");
+    expect(screen.getByRole("heading", { name: /two buildings/i })).toBeInTheDocument();
+  });
+
+  it("keeps the showcase CALCULATOR action on Broker Tools", () => {
+    window.history.replaceState({}, "", "/");
+    const { container } = render(<App />);
+    fireEvent.click(within(container.querySelector("#projects")).getByRole("button", { name: /CALCULATOR/ }));
     expect(screen.getAllByRole("button", { name: "BROKER TOOLS" }).filter((button) => button.getAttribute("aria-current") === "page").length).toBeGreaterThan(0);
-    explorer.remove();
+  });
+
+  it("opens the Project Reverance page from the homepage Explore investments button, and Back returns home", () => {
+    window.history.replaceState({}, "", "/");
+    render(<App />);
+    const cta = screen.getByRole("link", { name: /Explore investments/i });
+    expect(cta).toHaveAttribute("href", "#residences");
+    fireEvent.click(cta);
+    expect(window.location.hash).toBe("#residences");
+    expect(screen.getByRole("heading", { name: /two buildings/i })).toBeInTheDocument();
+    // The homepage explorer no longer shares the route's name.
+    expect(document.getElementById("residences")).toBeNull();
+    act(() => {
+      window.history.replaceState({}, "", "/");
+      window.dispatchEvent(new PopStateEvent("popstate"));
+    });
+    expect(screen.queryByRole("heading", { name: /two buildings/i })).not.toBeInTheDocument();
+  });
+
+  it("shows the Reverance project information: payment stages apart from the purchase benefit, qualified ownership, gallery and FAQ", () => {
+    window.history.replaceState({}, "", "/#residences");
+    render(<App />);
+    const nav = screen.getByRole("navigation", { name: "Project contents" });
+    expect(within(nav).getByRole("link", { name: "Payment structure" })).toHaveAttribute("href", "#residences/payment");
+    const payment = document.getElementById("payment");
+    expect(within(payment).getByRole("heading", { name: "OWN YOUR APARTMENT. PAY IN STAGES." })).toBeInTheDocument();
+    for (const stage of ["INITIAL PAYMENT", "DURING CONSTRUCTION", "AT COMPLETION"]) expect(within(payment).getByRole("heading", { name: stage })).toBeInTheDocument();
+    expect(within(payment).getByText(/not guaranteed/)).toBeInTheDocument();
+    expect(within(payment).getByRole("heading", { name: "More Upfront. More Value." })).toBeInTheDocument();
+    expect(within(document.getElementById("why-batumi")).getByText(/full year 2025/)).toBeInTheDocument();
+    // Unverified tax rates are not published.
+    expect(document.body.textContent).not.toMatch(/1% rental income tax|0% capital gains/i);
+    expect(screen.queryByText(/APARTMENT INTERIOR/)).not.toBeInTheDocument();
+    expect(screen.queryByText("Available apartments")).not.toBeInTheDocument();
+    const facts = screen.getByRole("heading", { name: "PROJECT FACTS" }).closest(".project-facts");
+    expect(within(facts).getByText("59 Adlia Street")).toBeInTheDocument();
+    expect(within(facts).getByText("25,000 m²")).toBeInTheDocument();
+    const gallery = document.getElementById("gallery");
+    const tiles = within(gallery).getAllByRole("button", { name: /^Open image/ });
+    expect(tiles).toHaveLength(9);
+    fireEvent.click(tiles[0]);
+    const dialog = gallery.querySelector("dialog");
+    expect(dialog).toBeInTheDocument();
+    fireEvent.click(within(dialog).getByRole("button", { name: "Next image" }));
+    expect(within(dialog).getByText("2 of 9")).toBeInTheDocument();
+    fireEvent.click(within(dialog).getByRole("button", { name: "Close" }));
+    expect(gallery.querySelector("dialog")).toBeNull();
+    const faq = document.getElementById("faq");
+    expect(faq.querySelectorAll("details")).toHaveLength(4);
+    expect(within(faq).getByText(/July 2028/)).toBeInTheDocument();
+  });
+
+  it("keeps the project page when a contents link is used", () => {
+    window.history.replaceState({}, "", "/#residences");
+    render(<App />);
+    const target = document.getElementById("faq");
+    target.scrollIntoView = vi.fn();
+    fireEvent.click(within(screen.getByRole("navigation", { name: "Project contents" })).getByRole("link", { name: "FAQ" }));
+    expect(window.location.hash).toBe("#residences/faq");
+    expect(target.scrollIntoView).toHaveBeenCalled();
+    expect(screen.getByRole("heading", { name: /two buildings/i })).toBeInTheDocument();
   });
 
   it("routes broker login and registration to the matching Workwise flows", () => {

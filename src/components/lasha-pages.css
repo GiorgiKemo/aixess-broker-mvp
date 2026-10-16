@@ -841,7 +841,7 @@ body .modal-panel :is(button, input, a):focus-visible { outline-color: var(--l-b
   line-height: 1;
   text-transform: uppercase;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: manual;
 }
 .lasha-page .project-facts-list span { color: color-mix(in srgb, var(--l-ink, #171a1d) 74%, transparent); font-size: var(--v4-small); line-height: 1.45; }
 .lasha-page .project-facts-note { max-width: 62ch; margin: 0.6rem 0 0; color: color-mix(in srgb, var(--l-ink, #171a1d) 78%, transparent); font-size: var(--v4-small); line-height: 1.55; }

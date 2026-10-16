@@ -9,7 +9,7 @@ async function verifyExplorerLocales(page) {
     await page.waitForFunction(locale=>document.documentElement.lang===locale,locale);
     for(const [width,height] of [[1440,900],[390,844]]) {
       await page.setViewportSize({width,height});
-      await page.locator('#residences').evaluate(el=>window.scrollTo(0,innerWidth<700?el.offsetTop:el.offsetTop+el.offsetHeight-innerHeight));
+      await page.locator('#residence-explorer').evaluate(el=>window.scrollTo(0,innerWidth<700?el.offsetTop:el.offsetTop+el.offsetHeight-innerHeight));
       await page.waitForFunction(()=>document.querySelector('.building-map')?.dataset.loadState==='ready');
       for(const block of ['A','B']) {
         await page.locator('.model-block-switcher').getByRole('button',{name:block,exact:true}).click();

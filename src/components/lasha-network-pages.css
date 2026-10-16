@@ -343,8 +343,11 @@
 .lnp-steps p { margin-top: calc(8 * var(--u)); max-width: 10rem; font-size: var(--v4-small); line-height: 1.2; letter-spacing: 0.02em; }
 /* The frame's narrow columns can't hold long German and Russian words (GESCHÄFTSNETZWERKE,
    Projektinformationen, обязательные) from 900px up: hyphenate rather than spill. */
-.lnp-steps :is(h3, p),
-.lnp-people h2 { hyphens: auto; overflow-wrap: break-word; }
+.lnp-steps p { hyphens: auto; overflow-wrap: break-word; }
+/* Headings wrap between whole words only (Klem, 16 October 2026: Safari's hyphens: auto split
+   REAL ESTATE PROFESSION- / ALS although PROFESSIONALS fits its own line). */
+.lnp-steps h3,
+.lnp-people h2 { min-width: 0; hyphens: manual; overflow-wrap: break-word; word-break: normal; }
 
 @media (max-width: 1399px) {
   .lnp { --lnp-header: 5.35rem; }

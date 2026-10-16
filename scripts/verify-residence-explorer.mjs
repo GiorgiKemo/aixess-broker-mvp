@@ -25,7 +25,7 @@ async function waitForExplorer(page) {
 
 async function scrollToExplorer(page) {
   await page.evaluate(() => {
-    document.querySelector("#residences")?.scrollIntoView({ block: "start" });
+    document.querySelector("#residence-explorer")?.scrollIntoView({ block: "start" });
   });
   await page.waitForTimeout(400);
 }

@@ -1301,7 +1301,9 @@ export function ResidenceExplorer({ onBrokerAccess, liveInventoryTitle = false, 
   return (
     <section
       className="residence-explorer"
-      id="residences"
+      // Not "residences": that is the project page's route, and a same-named element made the
+      // browser treat #residences as an in-page jump.
+      id="residence-explorer"
       ref={sectionRef}
       data-settled={settled}
       data-interactive={interactive}
