@@ -40,28 +40,6 @@ export const REVERANCE_INFO_COPY = {
     "residence": {
       "eyebrow": "WHY REVERANCE",
       "title": "BUILT FOR LIVING. POSITIONED FOR OWNERSHIP.",
-      "benefits": [
-        [
-          "NEW BOULEVARD",
-          "Located at 59 Adlia Street, within Batumi's expanding New Boulevard district."
-        ],
-        [
-          "SELECTED HIGHER FLOORS",
-          "Current inventory is concentrated on the 13th and 14th floors."
-        ],
-        [
-          "PREMIUM RESIDENTIAL CONCEPT",
-          "Contemporary architecture combined with residential and community infrastructure."
-        ],
-        [
-          "JULY 2028",
-          "Targeted project completion."
-        ],
-        [
-          "RESIDENT AMENITIES",
-          "POOL · WELLNESS · LANDSCAPED AREAS · RESIDENT FACILITIES"
-        ]
-      ],
       "amenitiesTitle": "Resident amenities",
       "amenities": [
         [
@@ -191,14 +169,6 @@ export const REVERANCE_INFO_COPY = {
         [
           "0% CAPITAL GAINS TAX AFTER 2 YEARS",
           "Subject to applicable Georgian tax rules, holding period, property classification and individual circumstances."
-        ],
-        [
-          "100% FOREIGN OWNERSHIP",
-          "International buyers can own qualifying residential property directly, subject to Georgian law."
-        ],
-        [
-          "MINIMUM 60% FINANCING",
-          "Local bank financing may be available subject to lender criteria and individual approval."
         ]
       ],
       "note": "General information, not legal or tax advice."
@@ -257,42 +227,14 @@ export const REVERANCE_INFO_COPY = {
           "rooftop",
           "Reverance rooftop terrace project render"
         ]
-      ],
-      "lead": "Reverance is a premium residential development on Batumi's New Boulevard, combining contemporary residences, resident amenities and access to one of the city's most active development districts."
-    },
-    "briefCta": "Request a brief",
-    "availabilityCta": "Check availability",
-    "profile": {
-      "eyebrow": "Batumi property profile · Project Reverance",
-      "title": "OWN PROPERTY ON BATUMI'S NEW BOULEVARD",
-      "lead": "Selected residences in one of Batumi's most dynamic coastal districts.",
-      "proof": [
-        "FROM €45,000",
-        "10% INITIAL PAYMENT",
-        "60%+ FINANCING",
-        "100% FOREIGN OWNERSHIP"
-      ],
-      "address": "59 Adlia Street · Batumi · Georgia",
-      "completion": "Completion targeted for July 2028",
-      "note": "Pricing, payment terms and financing are subject to apartment availability, eligibility and final contractual terms."
+      ]
     },
     "opportunity": {
       "eyebrow": "THE OPPORTUNITY",
-      "title": "A SELECTED ENTRY INTO BATUMI REAL ESTATE",
-      "lead": "Reverance is a premium residential development on Batumi's New Boulevard, combining contemporary residences, resident amenities and access to one of the city's most active development districts.",
-      "availability": "Available regular and Golden Premium apartments across both buildings.",
       "stats": [
-        [
-          "24",
-          "Available apartments"
-        ],
         [
           "13–14",
           "Selected floors"
-        ],
-        [
-          "Jul 2028",
-          "Target completion"
         ],
         [
           "25,000 m²",
@@ -305,10 +247,6 @@ export const REVERANCE_INFO_COPY = {
           "Available regular and Golden Premium apartments across both buildings."
         ],
         [
-          "Scale",
-          "25,000 m² of comfort and community infrastructure across a 45,000 m² planned site."
-        ],
-        [
           "Location",
           "59 Adlia Street, with New Boulevard 5 minutes away, shopping and airport access 7 minutes away, and Batumi Medical Center 8 minutes away."
         ],
@@ -319,7 +257,6 @@ export const REVERANCE_INFO_COPY = {
       ],
       "imageAlt": "Sunset over the residence facade",
       "imageLabel": "59 Adlia Street",
-      "imageCaption": "New Boulevard 5 minutes away.",
       "expand": "Expand image"
     }
   },
@@ -355,28 +292,6 @@ export const REVERANCE_INFO_COPY = {
     "residence": {
       "eyebrow": "WARUM REVERANCE",
       "title": "GEBAUT ZUM WOHNEN. AUSGERICHTET AUF EIGENTUM.",
-      "benefits": [
-        [
-          "NEW BOULEVARD",
-          "An der 59 Adlia Street, im wachsenden New-Boulevard-Viertel von Batumi."
-        ],
-        [
-          "AUSGEWÄHLTE HÖHERE ETAGEN",
-          "Das aktuelle Inventar konzentriert sich auf den 13. und 14. Stock."
-        ],
-        [
-          "PREMIUM-WOHNKONZEPT",
-          "Zeitgenössische Architektur kombiniert mit Wohn- und Gemeinschaftsinfrastruktur."
-        ],
-        [
-          "JULI 2028",
-          "Geplante Fertigstellung des Projekts."
-        ],
-        [
-          "ANNEHMLICHKEITEN FÜR BEWOHNER",
-          "POOL · WELLNESS · AUSSENANLAGEN · BEWOHNEREINRICHTUNGEN"
-        ]
-      ],
       "amenitiesTitle": "ANNEHMLICHKEITEN FÜR BEWOHNER",
       "amenities": [
         [
@@ -506,14 +421,6 @@ export const REVERANCE_INFO_COPY = {
         [
           "0 % KAPITALERTRAGSTEUER NACH 2 JAHREN",
           "Vorbehaltlich der geltenden georgischen Steuervorschriften, Haltedauer, Objektklassifizierung und individueller Umstände."
-        ],
-        [
-          "100 % AUSLÄNDISCHES EIGENTUM",
-          "Internationale Käufer können qualifizierte Wohnimmobilien direkt besitzen, vorbehaltlich georgischen Rechts."
-        ],
-        [
-          "MINDESTENS 60 % FINANZIERUNG",
-          "Lokale Bankfinanzierung kann vorbehaltlich der Kriterien des Kreditgebers und individueller Genehmigung verfügbar sein."
         ]
       ],
       "note": "Allgemeine Informationen, keine Rechts- oder Steuerberatung."
@@ -572,42 +479,14 @@ export const REVERANCE_INFO_COPY = {
           "rooftop",
           "Visualisierung der Dachterrasse von Reverance"
         ]
-      ],
-      "lead": "Reverance ist ein Premium-Wohnprojekt am New Boulevard in Batumi – mit zeitgenössischen Residenzen, Annehmlichkeiten für Bewohner und Zugang zu einem der aktivsten Entwicklungsgebiete der Stadt."
-    },
-    "briefCta": "Briefing anfordern",
-    "availabilityCta": "Verfügbarkeit prüfen",
-    "profile": {
-      "eyebrow": "Immobilienprofil Batumi · Project Reverance",
-      "title": "EIGENTUM AM NEW BOULEVARD IN BATUMI",
-      "lead": "Ausgewählte Residenzen in einem der dynamischsten Küstenviertel Batumis.",
-      "proof": [
-        "AB 45.000 €",
-        "10 % ANZAHLUNG",
-        "60 %+ FINANZIERUNG",
-        "100 % AUSLÄNDISCHES EIGENTUM"
-      ],
-      "address": "59 Adlia Street · Batumi · Georgien",
-      "completion": "Fertigstellung geplant für Juli 2028",
-      "note": "Preise, Zahlungsbedingungen und Finanzierung hängen von Verfügbarkeit, Eignung und den endgültigen Vertragsbedingungen ab."
+      ]
     },
     "opportunity": {
       "eyebrow": "DIE CHANCE",
-      "title": "EIN AUSGEWÄHLTER EINSTIEG IN BATUMIS IMMOBILIENMARKT",
-      "lead": "Reverance ist ein Premium-Wohnprojekt am New Boulevard in Batumi – mit zeitgenössischen Residenzen, Annehmlichkeiten für Bewohner und Zugang zu einem der aktivsten Entwicklungsgebiete der Stadt.",
-      "availability": "Verfügbare reguläre und Golden Premium Apartments in beiden Gebäuden.",
       "stats": [
-        [
-          "24",
-          "Verfügbare Wohnungen"
-        ],
         [
           "13–14",
           "Ausgewählte Etagen"
-        ],
-        [
-          "Juli 2028",
-          "Geplante Fertigstellung"
         ],
         [
           "25.000 m²",
@@ -620,10 +499,6 @@ export const REVERANCE_INFO_COPY = {
           "Verfügbare reguläre und Golden Premium Apartments in beiden Gebäuden."
         ],
         [
-          "Umfang",
-          "25.000 m² Komfort- und Gemeinschaftsinfrastruktur auf einem geplanten 45.000 m² großen Areal."
-        ],
-        [
           "Lage",
           "59 Adlia Street: New Boulevard in 5 Minuten, Einkaufsmöglichkeiten und Flughafen in 7 Minuten, Batumi Medical Center in 8 Minuten."
         ],
@@ -634,7 +509,6 @@ export const REVERANCE_INFO_COPY = {
       ],
       "imageAlt": "Sonnenuntergang über der Fassade der Residenz",
       "imageLabel": "59 Adlia Street",
-      "imageCaption": "Der New Boulevard ist 5 Minuten entfernt.",
       "expand": "Bild vergrößern"
     }
   },
@@ -670,28 +544,6 @@ export const REVERANCE_INFO_COPY = {
     "residence": {
       "eyebrow": "DLACZEGO REVERANCE",
       "title": "ZAPROJEKTOWANE DO ŻYCIA. SKIEROWANE NA WŁASNOŚĆ.",
-      "benefits": [
-        [
-          "NEW BOULEVARD",
-          "Przy 59 Adlia Street, w rozwijającym się dystrykcie New Boulevard w Batumi."
-        ],
-        [
-          "WYBRANE WYŻSZE PIĘTRA",
-          "Aktualna oferta koncentruje się na 13. i 14. piętrze."
-        ],
-        [
-          "KONCEPCJA MIESZKANIOWA PREMIUM",
-          "Współczesna architektura połączona z infrastrukturą mieszkaniową i społeczną."
-        ],
-        [
-          "LIPIEC 2028",
-          "Planowane ukończenie projektu."
-        ],
-        [
-          "UDOGODNIENIA DLA MIESZKAŃCÓW",
-          "BASEN · WELLNESS · TERENY ZIELONE · UDOGODNIENIA DLA MIESZKAŃCÓW"
-        ]
-      ],
       "amenitiesTitle": "UDOGODNIENIA DLA MIESZKAŃCÓW",
       "amenities": [
         [
@@ -821,14 +673,6 @@ export const REVERANCE_INFO_COPY = {
         [
           "0% PODATEK OD ZYSKÓW KAPITAŁOWYCH PO 2 LATACH",
           "Z zastrzeżeniem gruzińskich przepisów podatkowych, okresu posiadania, klasyfikacji nieruchomości i okoliczności indywidualnych."
-        ],
-        [
-          "100% WŁASNOŚĆ DLA CUDZOZIEMCÓW",
-          "Międzynarodowi nabywcy mogą bezpośrednio posiadać kwalifikowaną nieruchomość mieszkaniową, z zastrzeżeniem prawa gruzińskiego."
-        ],
-        [
-          "MINIMUM 60% FINANSOWANIA",
-          "Lokalne finansowanie bankowe może być dostępne z zastrzeżeniem kryteriów banku i indywidualnej zgody."
         ]
       ],
       "note": "Informacje ogólne, nie porada prawna ani podatkowa."
@@ -887,42 +731,14 @@ export const REVERANCE_INFO_COPY = {
           "rooftop",
           "Wizualizacja tarasu na dachu Reverance"
         ]
-      ],
-      "lead": "Reverance to inwestycja mieszkaniowa premium przy New Boulevard w Batumi, łącząca nowoczesne rezydencje, udogodnienia dla mieszkańców i dostęp do jednego z najbardziej aktywnych dystryktów rozwojowych miasta."
-    },
-    "briefCta": "Poproś o brief",
-    "availabilityCta": "Sprawdź dostępność",
-    "profile": {
-      "eyebrow": "Profil nieruchomości Batumi · Project Reverance",
-      "title": "ZOSTAŃ WŁAŚCICIELEM PRZY NEW BOULEVARD W BATUMI",
-      "lead": "Wybrane rezydencje w jednym z najbardziej dynamicznych nadmorskich dystryktów Batumi.",
-      "proof": [
-        "OD 45 000 €",
-        "10% WPŁATA POCZĄTKOWA",
-        "60%+ FINANSOWANIE",
-        "100% WŁASNOŚĆ DLA CUDZOZIEMCÓW"
-      ],
-      "address": "59 Adlia Street · Batumi · Gruzja",
-      "completion": "Planowane ukończenie: lipiec 2028",
-      "note": "Ceny, warunki płatności i finansowanie zależą od dostępności, kwalifikowalności i ostatecznych warunków umowy."
+      ]
     },
     "opportunity": {
       "eyebrow": "SZANSA",
-      "title": "WYBRANY WSTĘP NA RYNEK NIERUCHOMOŚCI W BATUMI",
-      "lead": "Reverance to inwestycja mieszkaniowa premium przy New Boulevard w Batumi, łącząca nowoczesne rezydencje, udogodnienia dla mieszkańców i dostęp do jednego z najbardziej aktywnych dystryktów rozwojowych miasta.",
-      "availability": "Dostępne apartamenty standardowe i Golden Premium w obu budynkach.",
       "stats": [
-        [
-          "24",
-          "Dostępne apartamenty"
-        ],
         [
           "13–14",
           "Wybrane piętra"
-        ],
-        [
-          "lipiec 2028",
-          "Planowane ukończenie"
         ],
         [
           "25 000 m²",
@@ -935,10 +751,6 @@ export const REVERANCE_INFO_COPY = {
           "Dostępne apartamenty standardowe i Golden Premium w obu budynkach."
         ],
         [
-          "Skala",
-          "25 000 m² infrastruktury komfortu i społeczności na planowanym terenie o powierzchni 45 000 m²."
-        ],
-        [
           "Lokalizacja",
           "59 Adlia Street: 5 minut do New Boulevard, 7 minut do sklepów i lotniska oraz 8 minut do Batumi Medical Center."
         ],
@@ -949,7 +761,6 @@ export const REVERANCE_INFO_COPY = {
       ],
       "imageAlt": "Zachód słońca nad fasadą rezydencji",
       "imageLabel": "59 Adlia Street",
-      "imageCaption": "New Boulevard jest 5 minut stąd.",
       "expand": "Powiększ zdjęcie"
     }
   },
@@ -985,28 +796,6 @@ export const REVERANCE_INFO_COPY = {
     "residence": {
       "eyebrow": "ZAKAJ REVERANCE",
       "title": "ZGRAJENO ZA BIVANJE. POZICIONIRANO ZA LASTNIŠTVO.",
-      "benefits": [
-        [
-          "NEW BOULEVARD",
-          "Na 59 Adlia Street, v rastočem okrožju New Boulevard v Batumiju."
-        ],
-        [
-          "IZBRANA VIŠJA NADSTROPJA",
-          "Trenutna ponudba je osredotočena na 13. in 14. nadstropje."
-        ],
-        [
-          "PREMIJSKI STANOVANJSKI KONCEPT",
-          "Sodobna arhitektura v kombinaciji s stanovanjsko in skupnostno infrastrukturo."
-        ],
-        [
-          "JULIJ 2028",
-          "Predviden zaključek projekta."
-        ],
-        [
-          "UGODNOSTI ZA PREBIVALCE",
-          "BAZEN · WELLNESS · UREJENE POVRŠINE · OBJEKTI ZA PREBIVALCE"
-        ]
-      ],
       "amenitiesTitle": "UGODNOSTI ZA PREBIVALCE",
       "amenities": [
         [
@@ -1136,14 +925,6 @@ export const REVERANCE_INFO_COPY = {
         [
           "0% DAVEK NA KAPITALSKE DOBIČKE PO 2 LETIH",
           "V skladu z veljavnimi gruzijskimi davčnimi pravili, obdobjem lastništva, klasifikacijo nepremičnine in individualnimi okoliščinami."
-        ],
-        [
-          "100% TUJE LASTNIŠTVO",
-          "Mednarodni kupci lahko neposredno lastnijo kvalificirano stanovanjsko nepremičnino, v skladu z gruzijskim pravom."
-        ],
-        [
-          "NAJMANJ 60 % FINANCIRANJA",
-          "Lokalno bančno financiranje je lahko na voljo glede na merila posojilodajalca in individualno odobritev."
         ]
       ],
       "note": "Splošne informacije, ne pravni ali davčni nasvet."
@@ -1202,42 +983,14 @@ export const REVERANCE_INFO_COPY = {
           "rooftop",
           "Vizualizacija strešne terase Reverance"
         ]
-      ],
-      "lead": "Reverance je premijski stanovanjski projekt na New Boulevardu v Batumiju, ki združuje sodobne rezidence, ugodnosti za prebivalce in dostop do enega najbolj aktivnih razvojnih okrožij mesta."
-    },
-    "briefCta": "Zahtevajte brief",
-    "availabilityCta": "Preverite razpoložljivost",
-    "profile": {
-      "eyebrow": "Profil nepremičnine Batumi · Project Reverance",
-      "title": "LASTNIŠTVO NA NEW BOULEVARDU V BATUMIJU",
-      "lead": "Izbrane rezidence v enem najbolj dinamičnih obalnih okrožij Batumija.",
-      "proof": [
-        "OD 45.000 €",
-        "10% ZAČETNO PLAČILO",
-        "60 %+ FINANCIRANJE",
-        "100% TUJE LASTNIŠTVO"
-      ],
-      "address": "59 Adlia Street · Batumi · Gruzija",
-      "completion": "Zaključek je predviden za julij 2028",
-      "note": "Cene, plačilni pogoji in financiranje so odvisni od razpoložljivosti, upravičenosti in končnih pogodbenih pogojev."
+      ]
     },
     "opportunity": {
       "eyebrow": "PRILOŽNOST",
-      "title": "IZBRAN VSTOP NA NEPREMIČNINSKI TRG BATUMIJA",
-      "lead": "Reverance je premijski stanovanjski projekt na New Boulevardu v Batumiju, ki združuje sodobne rezidence, ugodnosti za prebivalce in dostop do enega najbolj aktivnih razvojnih okrožij mesta.",
-      "availability": "Razpoložljivi standardni apartmaji in apartmaji Golden Premium v obeh stavbah.",
       "stats": [
-        [
-          "24",
-          "Razpoložljivi apartmaji"
-        ],
         [
           "13–14",
           "Izbrana nadstropja"
-        ],
-        [
-          "julij 2028",
-          "Predviden zaključek"
         ],
         [
           "25.000 m²",
@@ -1250,10 +1003,6 @@ export const REVERANCE_INFO_COPY = {
           "Razpoložljivi standardni apartmaji in apartmaji Golden Premium v obeh stavbah."
         ],
         [
-          "Obseg",
-          "25.000 m² površin za udobje in skupnostno infrastrukturo na načrtovanem območju velikosti 45.000 m²."
-        ],
-        [
           "Lokacija",
           "59 Adlia Street: 5 minut do New Boulevarda, 7 minut do trgovin in letališča ter 8 minut do Batumi Medical Center."
         ],
@@ -1264,7 +1013,6 @@ export const REVERANCE_INFO_COPY = {
       ],
       "imageAlt": "Sončni zahod nad fasado rezidence",
       "imageLabel": "59 Adlia Street",
-      "imageCaption": "New Boulevard je oddaljen 5 minut.",
       "expand": "Povečaj sliko"
     }
   },
@@ -1300,28 +1048,6 @@ export const REVERANCE_INFO_COPY = {
     "residence": {
       "eyebrow": "ПОЧЕМУ REVERANCE",
       "title": "СОЗДАНО ДЛЯ ЖИЗНИ. ОРИЕНТИРОВАНО НА СОБСТВЕННОСТЬ.",
-      "benefits": [
-        [
-          "НОВЫЙ БУЛЬВАР",
-          "Адрес: 59 Adlia Street, в расширяющемся районе Нового бульвара Батуми."
-        ],
-        [
-          "ОТОБРАННЫЕ ВЕРХНИЕ ЭТАЖИ",
-          "Текущий инвентарь сосредоточен на 13-м и 14-м этажах."
-        ],
-        [
-          "ПРЕМИАЛЬНАЯ ЖИЛАЯ КОНЦЕПЦИЯ",
-          "Современная архитектура в сочетании с жилой и общественной инфраструктурой."
-        ],
-        [
-          "ИЮЛЬ 2028",
-          "Плановое завершение проекта."
-        ],
-        [
-          "УДОБСТВА ДЛЯ ЖИЛЬЦОВ",
-          "БАССЕЙН · ВЕЛНЕС · БЛАГОУСТРОЙСТВО · ОБЪЕКТЫ ДЛЯ ЖИЛЬЦОВ"
-        ]
-      ],
       "amenitiesTitle": "УДОБСТВА ДЛЯ ЖИЛЬЦОВ",
       "amenities": [
         [
@@ -1451,14 +1177,6 @@ export const REVERANCE_INFO_COPY = {
         [
           "0% НАЛОГ НА ПРИРОСТ КАПИТАЛА ЧЕРЕЗ 2 ГОДА",
           "Применяется в соответствии с грузинскими налоговыми правилами, сроком владения, классификацией объекта и индивидуальными обстоятельствами."
-        ],
-        [
-          "100% ИНОСТРАННАЯ СОБСТВЕННОСТЬ",
-          "Иностранные покупатели могут напрямую владеть подходящей жилой недвижимостью в соответствии с законодательством Грузии."
-        ],
-        [
-          "МИНИМУМ 60% ФИНАНСИРОВАНИЯ",
-          "Местное банковское финансирование может быть доступно при соответствии критериям кредитора и индивидуальном одобрении."
         ]
       ],
       "note": "Общая информация, а не юридическая или налоговая консультация."
@@ -1517,42 +1235,14 @@ export const REVERANCE_INFO_COPY = {
           "rooftop",
           "Визуализация террасы на крыше Reverance"
         ]
-      ],
-      "lead": "Reverance — премиальный жилой проект на Новом бульваре Батуми: современные резиденции, инфраструктура для жильцов и доступ к одному из самых активных районов развития города."
-    },
-    "briefCta": "Запросить бриф",
-    "availabilityCta": "Проверить наличие",
-    "profile": {
-      "eyebrow": "Профиль недвижимости Батуми · Project Reverance",
-      "title": "СОБСТВЕННОСТЬ НА НОВОМ БУЛЬВАРЕ БАТУМИ",
-      "lead": "Отобранные резиденции в одном из самых динамичных прибрежных районов Батуми.",
-      "proof": [
-        "ОТ 45 000 €",
-        "10% ПЕРВЫЙ ВЗНОС",
-        "60%+ ФИНАНСИРОВАНИЕ",
-        "100% ИНОСТРАННАЯ СОБСТВЕННОСТЬ"
-      ],
-      "address": "59 Adlia Street · Батуми · Грузия",
-      "completion": "Завершение запланировано на июль 2028 года",
-      "note": "Цены, условия оплаты и финансирование зависят от наличия квартир, соответствия требованиям и итоговых условий договора."
+      ]
     },
     "opportunity": {
       "eyebrow": "ВОЗМОЖНОСТЬ",
-      "title": "ОТОБРАННЫЙ ВХОД НА РЫНОК НЕДВИЖИМОСТИ БАТУМИ",
-      "lead": "Reverance — премиальный жилой проект на Новом бульваре Батуми: современные резиденции, инфраструктура для жильцов и доступ к одному из самых активных районов развития города.",
-      "availability": "Доступные стандартные квартиры и квартиры Golden Premium в обоих зданиях.",
       "stats": [
-        [
-          "24",
-          "Доступные апартаменты"
-        ],
         [
           "13–14",
           "Отобранные этажи"
-        ],
-        [
-          "Июль 2028",
-          "Плановое завершение"
         ],
         [
           "25 000 м²",
@@ -1565,10 +1255,6 @@ export const REVERANCE_INFO_COPY = {
           "Доступные стандартные квартиры и квартиры Golden Premium в обоих зданиях."
         ],
         [
-          "Масштаб",
-          "25 000 м² инфраструктуры комфорта и сообщества на планируемом участке 45 000 м²."
-        ],
-        [
           "Расположение",
           "59 Adlia Street: 5 минут до Нового бульвара, 7 минут до магазинов и аэропорта, 8 минут до Batumi Medical Center."
         ],
@@ -1579,7 +1265,6 @@ export const REVERANCE_INFO_COPY = {
       ],
       "imageAlt": "Закат над фасадом резиденции",
       "imageLabel": "59 Adlia Street",
-      "imageCaption": "Новый бульвар в 5 минутах.",
       "expand": "Увеличить изображение"
     }
   }

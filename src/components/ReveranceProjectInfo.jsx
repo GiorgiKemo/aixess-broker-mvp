@@ -2,7 +2,6 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { useLanguage } from "../i18n.jsx";
 import { REVERANCE_INFO_COPY } from "../reverance-project-info-copy.js";
 import GALLERY_SIZES from "../data/project-gallery-sizes.json";
-import { CONTACT } from "../contact-copy.js";
 import "./reverance-project.css";
 
 // Project Reverance information beneath the approved hero (Klem, 16 October 2026: "compare" the
@@ -47,50 +46,18 @@ export function scrollToProjectSection(id, behavior) {
   return true;
 }
 
-// AIXCO's form posts to its own endpoint; AiXESS has no form destination, so "Request a brief" is
-// an email to the AiXESS address (see CONTACT).
-export function briefHref(label) {
-  return `mailto:${CONTACT.email}?subject=${encodeURIComponent(`AiXESS · Project Reverance: ${label}`)}`;
-}
-
-const goToExplorer = (event) => {
-  if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
-  event.preventDefault();
-  document.getElementById("residence-explorer")?.scrollIntoView({ behavior: reducedMotion() ? "auto" : "smooth", block: "start" });
-};
-
-// AIXCO's hero copy and proof points, under the approved AiXESS hero.
-export function ProjectProfile() {
-  const { profile, briefCta, availabilityCta } = useProjectInfoCopy();
-  return (
-    <section className="rp-profile" aria-labelledby="rp-profile-title">
-      <p className="section-eyebrow">{profile.eyebrow}</p>
-      <h2 id="rp-profile-title">{profile.title}</h2>
-      <p className="rp-lead">{profile.lead}</p>
-      <ul className="rp-proof">{profile.proof.map((point) => <li key={point}>{point}</li>)}</ul>
-      <p className="rp-profile-meta"><span>{profile.address}</span><span>{profile.completion}</span></p>
-      <div className="rp-actions">
-        <a className="button button-primary" href="#residence-explorer" onClick={goToExplorer}>{availabilityCta}<span aria-hidden="true">→</span></a>
-        <a className="button button-ghost" href={briefHref(briefCta)}>{briefCta}</a>
-      </div>
-      <p className="rp-note">{profile.note}</p>
-    </section>
-  );
-}
-
-// AIXCO's opportunity block, with its availability snapshot and highlights. The Golden Premium list is left out (Kemo, 16 October 2026).
+// Project specifics from AIXCO's opportunity block. Its heading, 24-available count and anything
+// already shown above are left out so no text repeats; so is the Golden Premium list (Kemo, 16 October 2026).
 export function AixcoOpportunity() {
   const { opportunity, gallery } = useProjectInfoCopy();
   const [open, setOpen] = useState(false);
   const trigger = useRef(null);
   const items = [[opportunity.imageLabel, "sunset", opportunity.imageAlt]];
   return (
-    <section className="rp-section rp-opportunity" aria-labelledby="rp-opportunity-title">
+    <section className="rp-section rp-opportunity" aria-label={opportunity.eyebrow}>
       <div className="rp-split">
         <div>
-          <Heading id="rp-opportunity-title" eyebrow={opportunity.eyebrow} title={opportunity.title} lead={opportunity.lead} />
-          <p className="rp-body rp-body-tight">{opportunity.availability}</p>
-          <dl className="rp-stats rp-stats-4">
+          <dl className="rp-stats rp-stats-2">
             {opportunity.stats.map(([value, label]) => <div key={label}><dt>{label}</dt><dd>{value}</dd></div>)}
           </dl>
           <ul className="rp-highlights">
@@ -101,7 +68,7 @@ export function AixcoOpportunity() {
           <button type="button" ref={trigger} onClick={() => setOpen(true)} aria-label={`${opportunity.expand}: ${opportunity.imageAlt}`}>
             <ProjectImage slug="sunset" alt="" sizes="(max-width: 899px) calc(100vw - 2.5rem), 42vw" />
           </button>
-          <figcaption><span>{opportunity.imageLabel}</span><strong>{opportunity.imageCaption}</strong></figcaption>
+          <figcaption><span>{opportunity.imageLabel}</span></figcaption>
         </figure>
       </div>
       {open && <Lightbox items={items} index={0} onClose={() => { setOpen(false); window.setTimeout(() => trigger.current?.focus({ preventScroll: true }), 0); }} onStep={() => {}} labels={gallery} />}
@@ -142,11 +109,6 @@ export function WhyReverance() {
   return (
     <section className="rp-section" id="residence" aria-labelledby="residence-title">
       <Heading id="residence-title" eyebrow={residence.eyebrow} title={residence.title} />
-      <ul className="rp-benefits">
-        {residence.benefits.map(([title, body], index) => (
-          <li key={title}><span className="rp-index" aria-hidden="true">{String(index + 1).padStart(2, "0")}</span><h3>{title}</h3><p>{body}</p></li>
-        ))}
-      </ul>
       <h3 className="rp-subtitle">{residence.amenitiesTitle}</h3>
       <ul className="rp-amenities">
         {residence.amenities.map(([title, body, images]) => (
@@ -205,7 +167,7 @@ export function Ownership() {
   return (
     <section className="rp-section" id="ownership" aria-labelledby="ownership-title">
       <Heading id="ownership-title" eyebrow={ownership.eyebrow} title={ownership.title} />
-      <ul className="rp-benefits rp-benefits-4">
+      <ul className="rp-benefits rp-benefits-3">
         {ownership.items.map(([title, body], index) => (
           <li key={title}><span className="rp-index" aria-hidden="true">{String(index + 1).padStart(2, "0")}</span><h3>{title}</h3><p>{body}</p></li>
         ))}
@@ -263,7 +225,7 @@ export function ProjectGallery() {
   const step = useCallback((delta) => setOpen((current) => (current === null ? null : (current + delta + items.length) % items.length)), [items.length]);
   return (
     <section className="rp-section" id="gallery" aria-labelledby="gallery-title">
-      <Heading id="gallery-title" eyebrow={gallery.eyebrow} title={gallery.title} lead={gallery.lead} />
+      <Heading id="gallery-title" eyebrow={gallery.eyebrow} title={gallery.title} />
       <ul className="rp-gallery">
         {items.map(([label, slug, alt], index) => (
           <li key={slug}>

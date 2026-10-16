@@ -12,12 +12,13 @@ describe("Project Reverance overview", () => {
     expect(screen.queryByText(/REFERENCE LIST PRICE/i)).not.toBeInTheDocument();
 
     const facts = screen.getByRole("heading", { name: "PROJECT FACTS" }).closest(".project-facts");
-    for (const text of ["From €45,000", "From €5,000", "100% foreign ownership", "Bank financing min. 60%", "Approx. 12% net", "Two buildings", "July 2028"]) {
+    for (const text of ["From €5,000", "100% foreign ownership", "Bank financing min. 60%", "Approx. 12% net", "July 2028"]) {
       expect(within(facts).getByText(text)).toBeInTheDocument();
     }
     expect(within(facts).getByText(/not the purchase price/)).toBeInTheDocument();
     expect(within(facts).getByText(/not a guaranteed return/)).toBeInTheDocument();
-    expect(within(facts).getByText(/Regular and Golden Premium residences/)).toBeInTheDocument();
+    // Entry price and building count are shown once, in the stats above (Kemo, 16 October 2026: no repeated text).
+    expect(within(facts).queryByText("From €45,000")).not.toBeInTheDocument();
   });
 });
 

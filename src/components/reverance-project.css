@@ -364,6 +364,8 @@
 .lasha-page .rp-opportunity-media figcaption span { font-size: var(--v4-label); font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; opacity: 0.8; }
 .lasha-page .rp-opportunity-media figcaption strong { font-size: 1.2rem; font-weight: 500; }
 
+/* It continues the CURRENT OPPORTUNITY section above, so no divider or second top gap. */
+.lasha-page .rp-section.rp-opportunity { padding-top: 0; border-top: 0; }
 .lasha-page .rp-start { text-align: left; }
 
 @media (max-width: 899px) {

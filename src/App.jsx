@@ -5,7 +5,7 @@ import { LanguageProvider, LANGUAGE_OPTIONS, useLanguage, localizeFieldValidatio
 import { NetworkSections, PurchaseBenefit } from "./components/NetworkSections.jsx";
 import { REVERANCE_PROJECT_COPY } from "./reverance-project-copy.js";
 import { ProjectShowcase } from "./components/ProjectShowcase.jsx";
-import { AixcoOpportunity, Ownership, PaymentStructure, ProjectGallery, ProjectProfile, WhyBatumi, WhyReverance, useProjectSectionFromHash } from "./components/ReveranceProjectInfo.jsx";
+import { AixcoOpportunity, Ownership, PaymentStructure, ProjectGallery, WhyBatumi, WhyReverance, useProjectSectionFromHash } from "./components/ReveranceProjectInfo.jsx";
 import { AdvantagePageContent, BrokerAccessPageContent } from "./components/LashaNetworkPages.jsx";
 import { HomeAbout, HomeAccess, HomeHero, HomeMetrics, HomeStartingPoints, LashaPageHero } from "./components/LashaHomeSections.jsx";
 import { TimeThemeMenu } from "./components/TimeThemeMenu.jsx";
@@ -509,7 +509,6 @@ function ResidencesPage({ currentPage, menuOpen, onToggleMenu, onNavigate, onOpe
       <main className="page-main">
         {/* Project information from AIXCO.Global's Reverance page (Klem, 16 October 2026). AIXCO's own
             sections, the contents bar and the FAQ are left out (Kemo and Klem, 16 October 2026). */}
-        <ProjectProfile />
         <div className="rp-contents">
           <div className="rp-anchor" id="opportunity">
             <NetworkSections sections={["opportunity"]} />
