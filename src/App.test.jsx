@@ -219,7 +219,7 @@ describe("AIXESS navigation pages", () => {
     expect(screen.queryByRole("heading", { name: /two buildings/i })).not.toBeInTheDocument();
   });
 
-  it("shows everything from AIXCO's Reverance page: profile, opportunity, Golden Premium, payment, ownership, gallery and FAQ", () => {
+  it("shows everything from AIXCO's Reverance page: profile, opportunity (no Golden Premium list), payment, ownership, gallery and FAQ", () => {
     window.history.replaceState({}, "", "/#residences");
     render(<App />);
     expect(screen.getByRole("heading", { name: "OWN PROPERTY ON BATUMI'S NEW BOULEVARD" })).toBeInTheDocument();
@@ -231,7 +231,7 @@ describe("AIXESS navigation pages", () => {
     expect(within(opportunity).getByRole("heading", { name: "A SELECTED ENTRY INTO BATUMI REAL ESTATE" })).toBeInTheDocument();
     expect(within(opportunity).getByText("Available apartments")).toBeInTheDocument();
     expect(within(opportunity).getByText(/90% potential occupancy/)).toBeInTheDocument();
-    expect(within(opportunity).getByRole("heading", { name: "GOLDEN PREMIUM APARTMENTS" })).toBeInTheDocument();
+    expect(within(opportunity).queryByRole("heading", { name: "GOLDEN PREMIUM APARTMENTS" })).not.toBeInTheDocument();
     const payment = document.getElementById("payment");
     for (const stage of ["INITIAL PAYMENT", "DURING CONSTRUCTION", "AT COMPLETION"]) expect(within(payment).getByRole("heading", { name: stage })).toBeInTheDocument();
     expect(within(payment).getByText(/Minimal 60% of bank financing/)).toBeInTheDocument();

@@ -2,8 +2,6 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { useLanguage } from "../i18n.jsx";
 import { REVERANCE_INFO_COPY } from "../reverance-project-info-copy.js";
 import GALLERY_SIZES from "../data/project-gallery-sizes.json";
-import { GOLDEN_PREMIUM_APARTMENTS, GOLDEN_PREMIUM_SUMMARY } from "../data/goldenPremiumApartments.js";
-import { GOLDEN_PREMIUM_COPY } from "../golden-premium-copy.js";
 import { CONTACT } from "../contact-copy.js";
 import "./reverance-project.css";
 
@@ -80,38 +78,8 @@ export function ProjectProfile() {
   );
 }
 
-function GoldenPremiumPanel({ onSelectApartment }) {
-  const { locale } = useLanguage();
-  const copy = GOLDEN_PREMIUM_COPY[locale] || GOLDEN_PREMIUM_COPY.en;
-  const money = (value) => new Intl.NumberFormat(locale, { style: "currency", currency: "EUR", maximumFractionDigits: 0 }).format(value);
-  return (
-    <section className="golden-premium-panel" aria-labelledby="golden-premium-title">
-      <div className="golden-premium-heading">
-        <p className="golden-premium-badge">{copy.badge}</p>
-        <h3 id="golden-premium-title">{copy.title}</h3>
-        <p>{copy.intro}</p>
-      </div>
-      <div className="golden-premium-summary" aria-label={copy.title}>
-        <div><strong>{GOLDEN_PREMIUM_SUMMARY.total}</strong><span>{copy.units}</span></div>
-        <div><strong>{GOLDEN_PREMIUM_SUMMARY.available}</strong><span>{copy.available}</span></div>
-        <div><strong>{GOLDEN_PREMIUM_SUMMARY.reserved}</strong><span>{copy.reserved}</span></div>
-      </div>
-      <div className="golden-premium-grid">
-        {GOLDEN_PREMIUM_APARTMENTS.map((unit) => (
-          <button className={`golden-premium-unit is-${unit.status}`} type="button" key={unit.code} onClick={() => onSelectApartment?.(unit.code)} aria-label={`${copy.viewDetails} ${unit.code}`}>
-            <div><strong>{unit.code}</strong><span>{unit.area.toLocaleString(locale, { maximumFractionDigits: 1 })} m²</span><span className="golden-premium-arrow" aria-hidden="true">↗</span></div>
-            <span className="golden-premium-status">{unit.status === "available" ? copy.available : copy.reserved}</span>
-            <small>{copy.referencePrice}: {money(unit.price)}</small>
-          </button>
-        ))}
-      </div>
-      <p className="golden-premium-note">{copy.note}</p>
-    </section>
-  );
-}
-
-// AIXCO's opportunity block, with its availability snapshot, highlights and Golden Premium list.
-export function AixcoOpportunity({ onSelectApartment }) {
+// AIXCO's opportunity block, with its availability snapshot and highlights. The Golden Premium list is left out (Kemo, 16 October 2026).
+export function AixcoOpportunity() {
   const { opportunity, gallery } = useProjectInfoCopy();
   const [open, setOpen] = useState(false);
   const trigger = useRef(null);
@@ -136,7 +104,6 @@ export function AixcoOpportunity({ onSelectApartment }) {
           <figcaption><span>{opportunity.imageLabel}</span><strong>{opportunity.imageCaption}</strong></figcaption>
         </figure>
       </div>
-      <GoldenPremiumPanel onSelectApartment={onSelectApartment} />
       {open && <Lightbox items={items} index={0} onClose={() => { setOpen(false); window.setTimeout(() => trigger.current?.focus({ preventScroll: true }), 0); }} onStep={() => {}} labels={gallery} />}
     </section>
   );

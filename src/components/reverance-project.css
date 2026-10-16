@@ -364,31 +364,6 @@
 .lasha-page .rp-opportunity-media figcaption span { font-size: var(--v4-label); font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; opacity: 0.8; }
 .lasha-page .rp-opportunity-media figcaption strong { font-size: 1.2rem; font-weight: 500; }
 
-/* AIXCO's Golden Premium list (restored 16 October 2026; it keeps its gold signal in every theme). */
-.golden-premium-panel { max-width: 81.2rem; margin: clamp(2.5rem, 5vw, 4rem) 0 0; padding: clamp(1.25rem, 3vw, 2.5rem); border: 1px solid rgba(174, 132, 51, 0.65); background: linear-gradient(135deg, rgba(255, 250, 236, 0.92), rgba(229, 216, 184, 0.58)); color: #211b12; }
-.golden-premium-heading { display: grid; gap: .7rem; }
-.golden-premium-badge, .golden-premium-status { color: #8a6114; font-size: .68rem; font-weight: 800; letter-spacing: .16em; }
-.golden-premium-heading h3 { max-width: 20ch; margin: 0; font-family: var(--l-head); font-size: var(--v4-sub); font-weight: 700; line-height: 0.88; text-transform: uppercase; }
-.golden-premium-heading p:last-child { max-width: 60ch; margin: 0; line-height: 1.6; }
-.golden-premium-summary { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; margin: 1.7rem 0; border-block: 1px solid rgba(77, 55, 18, .25); }
-.golden-premium-summary > div { display: grid; gap: .35rem; padding: 1rem 0; }
-.golden-premium-summary > div + div { border-left: 1px solid rgba(77, 55, 18, .25); padding-left: 1rem; }
-.golden-premium-summary strong { font-family: var(--l-head); font-size: clamp(1.7rem, 3vw, 2.8rem); font-weight: 700; line-height: 1; }
-.golden-premium-summary span { font-size: .62rem; font-weight: 800; letter-spacing: .1em; }
-.golden-premium-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 11rem), 1fr)); gap: .55rem; }
-.golden-premium-unit { display: grid; gap: .42rem; min-width: 0; padding: .85rem; border: 1px solid rgba(77, 55, 18, .2); background: rgba(255, 255, 255, .48); color: inherit; font: inherit; text-align: left; cursor: pointer; }
-.golden-premium-unit > div { display: flex; align-items: baseline; justify-content: space-between; gap: .5rem; }
-.golden-premium-unit > div strong { font-size: .95rem; }
-.golden-premium-unit > div span, .golden-premium-unit small { color: rgba(33, 27, 18, .72); font-size: .72rem; }
-.golden-premium-unit > div span:nth-child(2) { margin-left: auto; }
-.golden-premium-unit > div .golden-premium-arrow { color: #8a6114; font-size: 1rem; line-height: 1; }
-.golden-premium-unit:hover { border-color: #9b6d15; background: #fffaf0; }
-.golden-premium-unit:focus-visible { outline: 3px solid #9b6d15; outline-offset: 2px; }
-.golden-premium-unit.is-reserved { background: rgba(174, 132, 51, .17); }
-.golden-premium-unit.is-reserved:hover { background: rgba(174, 132, 51, .28); }
-.golden-premium-unit small { line-height: 1.35; }
-.golden-premium-note { margin: 1.25rem 0 0; color: rgba(33, 27, 18, .74); font-size: .82rem; line-height: 1.55; }
-
 .lasha-page .rp-start { text-align: left; }
 
 @media (max-width: 899px) {
@@ -396,7 +371,5 @@
   .lasha-page .rp-opportunity-media img { aspect-ratio: 4 / 3; }
 }
 @media (max-width: 599px) {
-  .golden-premium-summary { grid-template-columns: 1fr; }
-  .golden-premium-summary > div + div { border-top: 1px solid rgba(77, 55, 18, .25); border-left: 0; padding-top: 1rem; padding-left: 0; }
   .lasha-page .rp-actions .button { flex: 1 1 100%; justify-content: center; }
 }

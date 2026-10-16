@@ -494,7 +494,6 @@ function BrokerToolsPage({ currentPage, menuOpen, onToggleMenu, onNavigate, onOp
 
 function ResidencesPage({ currentPage, menuOpen, onToggleMenu, onNavigate, onOpenModal }) {
   const { t, locale } = useLanguage();
-  const [requestedApartment, setRequestedApartment] = useState(null);
   useProjectSectionFromHash();
   return (
     <div className="route-page lasha-page residences-page">
@@ -515,7 +514,7 @@ function ResidencesPage({ currentPage, menuOpen, onToggleMenu, onNavigate, onOpe
           <ProjectSubnav />
           <div className="rp-anchor" id="opportunity">
             <NetworkSections sections={["opportunity"]} />
-            <AixcoOpportunity onSelectApartment={(code) => setRequestedApartment({ code })} />
+            <AixcoOpportunity />
           </div>
           <WhyBatumi />
           <WhyReverance />
@@ -527,7 +526,7 @@ function ResidencesPage({ currentPage, menuOpen, onToggleMenu, onNavigate, onOpe
           <StartWithAixco />
         </div>
         <Suspense fallback={<div className="residence-explorer-loader" role="status">{t("preparingInteractive")}</div>}>
-          <ResidenceExplorer liveInventoryTitle requestedApartment={requestedApartment} onBrokerAccess={() => onOpenModal("register")} />
+          <ResidenceExplorer liveInventoryTitle onBrokerAccess={() => onOpenModal("register")} />
         </Suspense>
       </main>
     </div>
