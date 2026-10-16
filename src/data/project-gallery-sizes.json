@@ -128,5 +128,54 @@
    1600,
    2400
   ]
+ },
+ "indoor-pool-wide": {
+  "width": 4096,
+  "height": 2731,
+  "widths": [
+   480,
+   960,
+   1600,
+   2400
+  ]
+ },
+ "private-lounge": {
+  "width": 4096,
+  "height": 4096,
+  "widths": [
+   480,
+   960,
+   1600,
+   2400
+  ]
+ },
+ "night-arrival": {
+  "width": 4000,
+  "height": 4000,
+  "widths": [
+   480,
+   960,
+   1600,
+   2400
+  ]
+ },
+ "business-lounge": {
+  "width": 1920,
+  "height": 1080,
+  "widths": [
+   480,
+   960,
+   1600
+  ]
+ },
+ "sunset": {
+  "width": 3974,
+  "height": 3913,
+  "widths": [
+   480,
+   960,
+   1600,
+   2400
+  ]
  }
 }

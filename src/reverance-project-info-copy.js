@@ -1,14 +1,11 @@
-// Project Reverance information sections (Klem, 16 October 2026). English lines are AIXCO.Global
-// v4's /reverance-batumi copy (ReverancePageV2.tsx) where they could be used as written. Changed:
-// - Why Batumi names its period: Galt & Taggart's review gives these as full-year 2025 figures
-//   (checked 16 October 2026); the reference shows no period. 7.4% (market average) stays apart
-//   from the approx. 12% project yield.
-// - Stage 3 says financing "may be available ... not guaranteed" (reference: "Minimal 60% of bank
-//   financing may be available"); `bridge` reconciles 10/30/60 with Klem's 20/30/40% benefit.
-// - Ownership leaves out the reference's tax rates (1% rental income, 0% capital gains after two
-//   years): not verified against official Georgian sources.
-// - Left out: SELECTED HIGHER FLOORS (13–14), the 24-available statistic, the Golden Premium unit
-//   grid and the APARTMENT INTERIOR tile (its image is a corridor lounge, not an apartment).
+// Project Reverance information sections. English is AIXCO.Global v4's /reverance-batumi copy
+// (ReverancePageV2.tsx) word for word (Kemo, 16 October 2026: "dont leave out anything whats on
+// aixco global is correct and add it to aixess"), including its tax lines, the 24 available /
+// floors 13–14 snapshot, the rental case and the gallery labels. AIXESS additions: the Why
+// Batumi period note (Galt & Taggart's full-year 2025 review; 7.4% is the market average, the
+// approx. 12% is AIXCO's project estimate), the payment `bridge` to Klem's 20/30/40% benefit, the
+// ownership disclaimer and the AIXCO attribution under the company figures. v4's wellness set
+// repeats the business lounge for "Private lounge"; the private-lounge render is used instead.
 // DE/PL/SL/RU come from AIXCO.Global v4's translation catalogues where the line exists there.
 export const REVERANCE_INFO_COPY = {
   "en": {
@@ -21,22 +18,12 @@ export const REVERANCE_INFO_COPY = {
       "ownership": "Ownership",
       "why-aixco": "Why AIXCO",
       "gallery": "Project gallery",
-      "faq": "FAQ"
+      "faq": "FAQ",
+      "approach": "The AIXCO way"
     },
-    "location": [
-      "LOCATION",
-      "59 Adlia Street",
-      "On Batumi's New Boulevard."
-    ],
-    "scale": [
-      "SCALE",
-      "25,000 m²",
-      "Comfort and community infrastructure across a 45,000 m² planned site."
-    ],
     "batumi": {
       "eyebrow": "WHY BATUMI",
-      "title": "A COASTAL MARKET WITH INTERNATIONAL DEMAND",
-      "lead": "Batumi combines Black Sea tourism, international demand, new infrastructure and comparatively accessible residential pricing.",
+      "title": "Batumi combines Black Sea tourism, international demand, new infrastructure and comparatively accessible residential pricing.",
       "stats": [
         [
           "17,478",
@@ -44,7 +31,7 @@ export const REVERANCE_INFO_COPY = {
         ],
         [
           "$1.3B",
-          "Residential market"
+          "Residential market size"
         ],
         [
           "+9.4%",
@@ -56,10 +43,11 @@ export const REVERANCE_INFO_COPY = {
         ],
         [
           "52%",
-          "Foreign buyers"
+          "Foreign buyers in surveyed projects"
         ]
       ],
-      "note": "Batumi residential market, full year 2025. Sources cited by AIXCO: Galt & Taggart Research; Colliers Georgia. Past market data, not a forecast. The 7.4% is a market average; the approx. 12% net yield in the project facts is AIXCO's estimate for Reverance."
+      "source": "Sources: Galt & Taggart Research; Colliers Georgia.",
+      "note": "Batumi residential market, full year 2025. The 7.4% is a market average; the approx. 12% net yield in the project facts is AIXCO's estimate for Reverance."
     },
     "residence": {
       "eyebrow": "WHY REVERANCE",
@@ -68,6 +56,10 @@ export const REVERANCE_INFO_COPY = {
         [
           "NEW BOULEVARD",
           "Located at 59 Adlia Street, within Batumi's expanding New Boulevard district."
+        ],
+        [
+          "SELECTED HIGHER FLOORS",
+          "AIXCO's current inventory is concentrated on the 13th and 14th floors."
         ],
         [
           "PREMIUM RESIDENTIAL CONCEPT",
@@ -85,31 +77,92 @@ export const REVERANCE_INFO_COPY = {
       "amenitiesTitle": "Resident amenities",
       "amenities": [
         [
-          "POOL",
+          "Pool",
           "Indoor and courtyard water spaces.",
-          "garden-pool",
-          "Courtyard pool between the two buildings, project render"
+          [
+            [
+              "indoor-pool",
+              "Indoor pool",
+              "Reverance indoor pool project render"
+            ],
+            [
+              "indoor-pool-wide",
+              "Pool lounge",
+              "Reverance indoor pool project render"
+            ],
+            [
+              "garden-pool",
+              "Courtyard pool",
+              "Reverance courtyard pool project render"
+            ]
+          ]
         ],
         [
-          "WELLNESS",
+          "Wellness",
           "Gym, sauna and restorative resident spaces.",
-          "sauna",
-          "Resident sauna, project render"
+          [
+            [
+              "gym",
+              "Resident gym",
+              "Reverance gym and wellness project render"
+            ],
+            [
+              "sauna",
+              "Resident sauna",
+              "Reverance sauna project render"
+            ],
+            [
+              "private-lounge",
+              "Private lounge",
+              "Reverance private lounge project render"
+            ]
+          ]
         ],
         [
-          "LANDSCAPED AREAS",
+          "Landscaped areas",
           "Arrival sequences, terraces and planted outdoor spaces.",
-          "entrance",
-          "Planted entrance and balconies, project render"
+          [
+            [
+              "entrance",
+              "Landscaped arrival",
+              "Reverance landscaped entrance project render"
+            ],
+            [
+              "pool-terrace",
+              "Pool terrace",
+              "Reverance pool terrace project render"
+            ],
+            [
+              "night-arrival",
+              "Night arrival",
+              "Reverance planted arrival project render"
+            ]
+          ]
         ],
         [
-          "RESIDENT FACILITIES",
+          "Resident facilities",
           "Reception, lounges and resident-facing facilities.",
-          "reception",
-          "Reception, project render"
+          [
+            [
+              "reception",
+              "Reception",
+              "Reverance reception project render"
+            ],
+            [
+              "lobby",
+              "Lobby lounge",
+              "Reverance resident lounge project render"
+            ],
+            [
+              "business-lounge",
+              "Business lounge",
+              "Reverance business lounge project render"
+            ]
+          ]
         ]
       ],
-      "renderNote": "Images are project renders."
+      "renderNote": "Images are project renders.",
+      "viewAmenity": "View amenity image"
     },
     "payment": {
       "eyebrow": "PAYMENT STRUCTURE",
@@ -124,12 +177,12 @@ export const REVERANCE_INFO_COPY = {
         [
           "30%",
           "DURING CONSTRUCTION",
-          "Structured payments during construction."
+          "Structured payments during the construction period."
         ],
         [
           "60%",
           "AT COMPLETION",
-          "Bank financing may be available for this stage, subject to eligibility and lender approval. It is not guaranteed."
+          "Minimal 60% of bank financing may be available subject to eligibility and lender approval."
         ]
       ],
       "note": "Pricing, payment terms and financing are subject to apartment availability, eligibility and final contractual terms.",
@@ -144,16 +197,20 @@ export const REVERANCE_INFO_COPY = {
           "Property ownership does not generally require the buyer to relocate to Georgia."
         ],
         [
+          "1% RENTAL INCOME TAX",
+          "Potentially available under the applicable Georgian tax regime, subject to eligibility and individual circumstances."
+        ],
+        [
+          "0% CAPITAL GAINS TAX AFTER 2 YEARS",
+          "Subject to applicable Georgian tax rules, holding period, property classification and individual circumstances."
+        ],
+        [
           "100% FOREIGN OWNERSHIP",
           "International buyers can own qualifying residential property directly, subject to Georgian law."
         ],
         [
-          "FINANCING",
+          "MINIMUM 60% FINANCING",
           "Local bank financing may be available subject to lender criteria and individual approval."
-        ],
-        [
-          "TAXES",
-          "Tax treatment depends on the owner's circumstances and on current Georgian law. Ask an independent tax adviser before you buy."
         ]
       ],
       "note": "General information, not legal or tax advice."
@@ -225,7 +282,6 @@ export const REVERANCE_INFO_COPY = {
     "gallery": {
       "eyebrow": "Project gallery",
       "title": "SEE REVERANCE.",
-      "note": "Project renders. The two Batumi photographs show the city and are not views from Reverance.",
       "open": "Open image",
       "close": "Close",
       "previous": "Previous image",
@@ -235,49 +291,50 @@ export const REVERANCE_INFO_COPY = {
         [
           "EXTERIOR",
           "exterior",
-          "Project Reverance exterior, project render"
-        ],
-        [
-          "AERIAL",
-          "aerial",
-          "Both Reverance buildings from above, project render"
+          "Reverance exterior project render"
         ],
         [
           "LOBBY",
           "lobby",
-          "Lobby lounge, project render"
+          "Reverance lobby project render"
         ],
         [
           "POOL",
-          "indoor-pool",
-          "Indoor pool, project render"
+          "indoor-pool-wide",
+          "Reverance indoor pool project render"
         ],
         [
           "WELLNESS",
           "gym",
-          "Resident gym, project render"
+          "Reverance resident wellness project render"
         ],
         [
           "LANDSCAPED AREAS",
-          "pool-terrace",
-          "Planted terrace with pool deck, project render"
+          "garden-pool",
+          "Reverance landscaped courtyard project render"
         ],
         [
-          "ROOFTOP TERRACE",
-          "rooftop",
-          "Rooftop terrace at sunset, project render"
+          "APARTMENT INTERIOR",
+          "private-lounge",
+          "Reverance apartment interior project render"
         ],
         [
           "SEA / CITY VIEWS",
           "batumi-sea-city",
-          "Batumi sea and city at sunset, photograph"
+          "Batumi sea and city view"
         ],
         [
-          "BATUMI COASTLINE",
+          "NEW BOULEVARD LOCATION",
           "batumi-coastline",
-          "Batumi coastline from above at dusk, photograph"
+          "Batumi New Boulevard location from above"
+        ],
+        [
+          "ROOFTOP TERRACE",
+          "rooftop",
+          "Reverance rooftop terrace project render"
         ]
-      ]
+      ],
+      "lead": "Reverance is a premium residential development on Batumi's New Boulevard, combining contemporary residences, resident amenities and access to one of the city's most active development districts."
     },
     "faq": {
       "eyebrow": "FAQ",
@@ -285,7 +342,7 @@ export const REVERANCE_INFO_COPY = {
       "items": [
         [
           "Can foreigners own property in Georgia?",
-          "Foreign buyers can generally own residential property in Georgia, subject to applicable law and property classification."
+          "Foreign buyers can generally own residential real estate directly, subject to applicable Georgian law and property classification."
         ],
         [
           "How much do I need to start?",
@@ -293,13 +350,80 @@ export const REVERANCE_INFO_COPY = {
         ],
         [
           "When is Reverance expected to be completed?",
-          "Completion is currently targeted for July 2028."
+          "Target completion is July 2028."
         ],
         [
           "Can AIXCO help after completion?",
           "Yes. The current AIXCO service model includes documentation, handover, rental coordination and ongoing property administration."
         ]
       ]
+    },
+    "briefCta": "Request a brief",
+    "availabilityCta": "Check availability",
+    "profile": {
+      "eyebrow": "Batumi property profile · Project Reverance",
+      "title": "OWN PROPERTY ON BATUMI'S NEW BOULEVARD",
+      "lead": "Selected residences in one of Batumi's most dynamic coastal districts.",
+      "proof": [
+        "FROM €45,000",
+        "10% INITIAL PAYMENT",
+        "60%+ FINANCING",
+        "100% FOREIGN OWNERSHIP"
+      ],
+      "address": "59 Adlia Street · Batumi · Georgia",
+      "completion": "Completion targeted for July 2028",
+      "note": "Pricing, payment terms and financing are subject to apartment availability, eligibility and final contractual terms."
+    },
+    "opportunity": {
+      "eyebrow": "THE OPPORTUNITY",
+      "title": "A SELECTED ENTRY INTO BATUMI REAL ESTATE",
+      "lead": "Reverance is a premium residential development on Batumi's New Boulevard, combining contemporary residences, resident amenities and access to one of the city's most active development districts.",
+      "availability": "Available regular and Golden Premium apartments across both buildings.",
+      "stats": [
+        [
+          "24",
+          "Available apartments"
+        ],
+        [
+          "13–14",
+          "Selected floors"
+        ],
+        [
+          "Jul 2028",
+          "Target completion"
+        ],
+        [
+          "25,000 m²",
+          "Comfort & community infrastructure"
+        ]
+      ],
+      "highlights": [
+        [
+          "Current availability",
+          "Available regular and Golden Premium apartments across both buildings."
+        ],
+        [
+          "Scale",
+          "25,000 m² of comfort and community infrastructure across a 45,000 m² planned site."
+        ],
+        [
+          "Location",
+          "59 Adlia Street, with New Boulevard 5 minutes away, shopping and airport access 7 minutes away, and Batumi Medical Center 8 minutes away."
+        ],
+        [
+          "Rental case",
+          "$600/month average long-term rent, $80/night average short-stay rent, and 90% potential occupancy shown in the project deck."
+        ]
+      ],
+      "imageAlt": "Sunset over the residence facade",
+      "imageLabel": "59 Adlia Street",
+      "imageCaption": "New Boulevard 5 minutes away.",
+      "expand": "Expand image"
+    },
+    "start": {
+      "eyebrow": "Start with AIXCO",
+      "title": "YOUR REVERANCE PROPERTY STARTS HERE.",
+      "lead": "Tell us what you're looking for. We'll show you the available apartments that best match your budget and objective."
     }
   },
   "de": {
@@ -312,22 +436,12 @@ export const REVERANCE_INFO_COPY = {
       "ownership": "Eigentum",
       "why-aixco": "WARUM AIXCO",
       "gallery": "Projektgalerie",
-      "faq": "FAQ"
+      "faq": "FAQ",
+      "approach": "Der AIXCO-Weg"
     },
-    "location": [
-      "LAGE",
-      "59 Adlia Street",
-      "Am New Boulevard von Batumi."
-    ],
-    "scale": [
-      "UMFANG",
-      "25.000 m²",
-      "Komfort- und Gemeinschaftsinfrastruktur auf einem geplanten Gelände von 45.000 m²."
-    ],
     "batumi": {
       "eyebrow": "WARUM BATUMI",
-      "title": "EIN KÜSTENMARKT MIT INTERNATIONALER NACHFRAGE",
-      "lead": "Batumi vereint Schwarzmeertourismus, internationale Nachfrage, neue Infrastruktur und vergleichsweise zugängliche Wohnpreise.",
+      "title": "Batumi vereint Schwarzmeertourismus, internationale Nachfrage, neue Infrastruktur und vergleichsweise zugängliche Wohnpreise.",
       "stats": [
         [
           "17.478",
@@ -335,7 +449,7 @@ export const REVERANCE_INFO_COPY = {
         ],
         [
           "1,3 Mrd. $",
-          "Wohnimmobilienmarkt"
+          "Größe des Wohnungsmarkts"
         ],
         [
           "+9,4 %",
@@ -347,10 +461,11 @@ export const REVERANCE_INFO_COPY = {
         ],
         [
           "52 %",
-          "Ausländische Käufer"
+          "Ausländische Käufer in untersuchten Projekten"
         ]
       ],
-      "note": "Wohnimmobilienmarkt Batumi, Gesamtjahr 2025. Von AIXCO genannte Quellen: Galt & Taggart Research; Colliers Georgia. Vergangene Marktdaten, keine Prognose. Die 7,4 % sind ein Marktdurchschnitt; die ca. 12 % Nettorendite in den Projektdaten sind AIXCOs Schätzung für Reverance."
+      "source": "Quellen: Galt & Taggart Research; Colliers Georgia.",
+      "note": "Wohnimmobilienmarkt Batumi, Gesamtjahr 2025. Die 7,4 % sind ein Marktdurchschnitt; die ca. 12 % Nettorendite in den Projektdaten sind AIXCOs Schätzung für Reverance."
     },
     "residence": {
       "eyebrow": "WARUM REVERANCE",
@@ -359,6 +474,10 @@ export const REVERANCE_INFO_COPY = {
         [
           "NEW BOULEVARD",
           "An der 59 Adlia Street, im wachsenden New-Boulevard-Viertel von Batumi."
+        ],
+        [
+          "AUSGEWÄHLTE HÖHERE ETAGEN",
+          "Das aktuelle AIXCO-Inventar konzentriert sich auf den 13. und 14. Stock."
         ],
         [
           "PREMIUM-WOHNKONZEPT",
@@ -378,29 +497,90 @@ export const REVERANCE_INFO_COPY = {
         [
           "POOL",
           "Innen- und Innenhofbereiche mit Wasserflächen.",
-          "garden-pool",
-          "Pool im Innenhof zwischen den beiden Gebäuden, Projektvisualisierung"
+          [
+            [
+              "indoor-pool",
+              "Innenpool",
+              "Visualisierung des Innenpools von Reverance"
+            ],
+            [
+              "indoor-pool-wide",
+              "Pool-Lounge",
+              "Visualisierung des Innenpools von Reverance"
+            ],
+            [
+              "garden-pool",
+              "Innenhofpool",
+              "Visualisierung des Innenhofpools von Reverance"
+            ]
+          ]
         ],
         [
           "WELLNESS",
           "Fitnessstudio, Sauna und Räume zur Erholung.",
-          "sauna",
-          "Sauna für Bewohner, Projektvisualisierung"
+          [
+            [
+              "gym",
+              "Fitnessstudio für Bewohner",
+              "Visualisierung des Fitness- und Wellnessbereichs von Reverance"
+            ],
+            [
+              "sauna",
+              "Sauna für Bewohner",
+              "Visualisierung der Sauna von Reverance"
+            ],
+            [
+              "private-lounge",
+              "Private Lounge",
+              "Visualisierung der privaten Lounge von Reverance"
+            ]
+          ]
         ],
         [
           "BEGRÜNTE BEREICHE",
           "Ankunftsbereiche, Terrassen und bepflanzte Außenflächen.",
-          "entrance",
-          "Begrünter Eingang und Balkone, Projektvisualisierung"
+          [
+            [
+              "entrance",
+              "Bepflanzter Eingangsbereich",
+              "Visualisierung des begrünten Eingangsbereichs von Reverance"
+            ],
+            [
+              "pool-terrace",
+              "Poolterrasse",
+              "Visualisierung der Poolterrasse von Reverance"
+            ],
+            [
+              "night-arrival",
+              "Nächtlicher Eingangsbereich",
+              "Visualisierung des begrünten Ankunftsbereichs von Reverance"
+            ]
+          ]
         ],
         [
-          "BEWOHNEREINRICHTUNGEN",
+          "Bewohnereinrichtungen",
           "Rezeption, Lounges und Einrichtungen für Bewohner.",
-          "reception",
-          "Rezeption, Projektvisualisierung"
+          [
+            [
+              "reception",
+              "Rezeption",
+              "Visualisierung der Rezeption von Reverance"
+            ],
+            [
+              "lobby",
+              "Lobby-Lounge",
+              "Visualisierung der Bewohner-Lounge von Reverance"
+            ],
+            [
+              "business-lounge",
+              "Business-Lounge",
+              "Visualisierung der Business-Lounge von Reverance"
+            ]
+          ]
         ]
       ],
-      "renderNote": "Die Bilder sind Projektvisualisierungen."
+      "renderNote": "Die Bilder sind Projektvisualisierungen.",
+      "viewAmenity": "Annehmlichkeitsbild ansehen"
     },
     "payment": {
       "eyebrow": "ZAHLUNGSSTRUKTUR",
@@ -420,7 +600,7 @@ export const REVERANCE_INFO_COPY = {
         [
           "60 %",
           "BEI FERTIGSTELLUNG",
-          "Für diese Stufe kann eine Bankfinanzierung möglich sein, abhängig von Ihrer Eignung und der Zustimmung der Bank. Sie ist nicht garantiert."
+          "Mindestens 60 % Bankfinanzierung können vorbehaltlich Eignung und Genehmigung des Kreditgebers verfügbar sein."
         ]
       ],
       "note": "Preise, Zahlungsbedingungen und Finanzierung hängen von Verfügbarkeit, Eignung und den endgültigen Vertragsbedingungen ab.",
@@ -435,16 +615,20 @@ export const REVERANCE_INFO_COPY = {
           "Eigentum erfordert in der Regel keinen Umzug nach Georgien."
         ],
         [
+          "1 % STEUER AUF MIETEINKÜNFTE",
+          "Möglicherweise im geltenden georgischen Steuerregime verfügbar, abhängig von Eignung und individuellen Umständen."
+        ],
+        [
+          "0 % KAPITALERTRAGSTEUER NACH 2 JAHREN",
+          "Vorbehaltlich der geltenden georgischen Steuervorschriften, Haltedauer, Objektklassifizierung und individueller Umstände."
+        ],
+        [
           "100 % AUSLÄNDISCHES EIGENTUM",
           "Internationale Käufer können qualifizierte Wohnimmobilien direkt besitzen, vorbehaltlich georgischen Rechts."
         ],
         [
-          "Finanzierung",
+          "MINDESTENS 60 % FINANZIERUNG",
           "Lokale Bankfinanzierung kann vorbehaltlich der Kriterien des Kreditgebers und individueller Genehmigung verfügbar sein."
-        ],
-        [
-          "STEUERN",
-          "Die steuerliche Behandlung hängt von Ihrer Situation und dem geltenden georgischen Recht ab. Fragen Sie vor dem Kauf eine unabhängige Steuerberatung."
         ]
       ],
       "note": "Allgemeine Informationen, keine Rechts- oder Steuerberatung."
@@ -460,7 +644,7 @@ export const REVERANCE_INFO_COPY = {
         ],
         [
           "2.000+",
-          "Immobilien\u00adtransaktionen"
+          "Immobilien­transaktionen"
         ],
         [
           "4,2 Mrd. $+",
@@ -468,7 +652,7 @@ export const REVERANCE_INFO_COPY = {
         ],
         [
           "400 Mio. $+",
-          "Aktueller Brutto\u00adentwicklungs\u00adwert"
+          "Aktueller Brutto­entwicklungs­wert"
         ],
         [
           "90+",
@@ -516,7 +700,6 @@ export const REVERANCE_INFO_COPY = {
     "gallery": {
       "eyebrow": "Projektgalerie",
       "title": "REVERANCE ENTDECKEN.",
-      "note": "Projektvisualisierungen. Die beiden Fotos zeigen Batumi und sind keine Aussicht von Reverance.",
       "open": "Bild öffnen",
       "close": "Schließen",
       "previous": "Vorheriges Bild",
@@ -526,49 +709,50 @@ export const REVERANCE_INFO_COPY = {
         [
           "AUSSENANSICHT",
           "exterior",
-          "Außenansicht von Project Reverance, Projektvisualisierung"
-        ],
-        [
-          "LUFTANSICHT",
-          "aerial",
-          "Beide Reverance-Gebäude von oben, Projektvisualisierung"
+          "Visualisierung der Außenansicht von Reverance"
         ],
         [
           "LOBBY",
           "lobby",
-          "Lobby-Lounge, Projektvisualisierung"
+          "Visualisierung der Lobby von Reverance"
         ],
         [
           "POOL",
-          "indoor-pool",
-          "Hallenbad, Projektvisualisierung"
+          "indoor-pool-wide",
+          "Visualisierung des Innenpools von Reverance"
         ],
         [
           "WELLNESS",
           "gym",
-          "Fitnessraum für Bewohner, Projektvisualisierung"
+          "Visualisierung des Wellnessbereichs von Reverance"
         ],
         [
           "BEGRÜNTE BEREICHE",
-          "pool-terrace",
-          "Begrünte Terrasse mit Pooldeck, Projektvisualisierung"
+          "garden-pool",
+          "Visualisierung des begrünten Innenhofs von Reverance"
         ],
         [
-          "DACH-TERRASSE",
-          "rooftop",
-          "Dachterrasse bei Sonnenuntergang, Projektvisualisierung"
+          "WOHNUNGSINTERIEUR",
+          "private-lounge",
+          "Visualisierung des Wohnungsinterieurs von Reverance"
         ],
         [
           "MEER- / STADTBLICKE",
           "batumi-sea-city",
-          "Meer und Stadt Batumi bei Sonnenuntergang, Fotografie"
+          "Blick auf Meer und Stadt in Batumi"
         ],
         [
-          "KÜSTE VON BATUMI",
+          "LAGE AM NEW BOULEVARD",
           "batumi-coastline",
-          "Küste von Batumi von oben in der Abenddämmerung, Fotografie"
+          "Lage des New Boulevard in Batumi aus der Vogelperspektive"
+        ],
+        [
+          "DACH-TERRASSE",
+          "rooftop",
+          "Visualisierung der Dachterrasse von Reverance"
         ]
-      ]
+      ],
+      "lead": "Reverance ist ein Premium-Wohnprojekt am New Boulevard in Batumi – mit zeitgenössischen Residenzen, Annehmlichkeiten für Bewohner und Zugang zu einem der aktivsten Entwicklungsgebiete der Stadt."
     },
     "faq": {
       "eyebrow": "FAQ",
@@ -576,7 +760,7 @@ export const REVERANCE_INFO_COPY = {
       "items": [
         [
           "Können Ausländer Immobilien in Georgien besitzen?",
-          "Ausländische Käufer können in Georgien in der Regel Wohnimmobilien besitzen, vorbehaltlich des geltenden Rechts und der Einstufung der Immobilie."
+          "Ausländische Käufer können Wohnimmobilien in der Regel direkt besitzen, vorbehaltlich des geltenden georgischen Rechts und der Objektklassifizierung."
         ],
         [
           "Wie viel brauche ich zum Start?",
@@ -584,13 +768,80 @@ export const REVERANCE_INFO_COPY = {
         ],
         [
           "Wann wird Reverance voraussichtlich fertiggestellt?",
-          "Die Fertigstellung ist derzeit für Juli 2028 geplant."
+          "Die geplante Fertigstellung ist Juli 2028."
         ],
         [
           "Kann AIXCO nach der Fertigstellung helfen?",
           "Ja. Das aktuelle AIXCO-Service-Modell umfasst Dokumentation, Übergabe, Mietkoordination und laufende Immobilienverwaltung."
         ]
       ]
+    },
+    "briefCta": "Briefing anfordern",
+    "availabilityCta": "Verfügbarkeit prüfen",
+    "profile": {
+      "eyebrow": "Immobilienprofil Batumi · Project Reverance",
+      "title": "EIGENTUM AM NEW BOULEVARD IN BATUMI",
+      "lead": "Ausgewählte Residenzen in einem der dynamischsten Küstenviertel Batumis.",
+      "proof": [
+        "AB 45.000 €",
+        "10 % ANZAHLUNG",
+        "60 %+ FINANZIERUNG",
+        "100 % AUSLÄNDISCHES EIGENTUM"
+      ],
+      "address": "59 Adlia Street · Batumi · Georgien",
+      "completion": "Fertigstellung geplant für Juli 2028",
+      "note": "Preise, Zahlungsbedingungen und Finanzierung hängen von Verfügbarkeit, Eignung und den endgültigen Vertragsbedingungen ab."
+    },
+    "opportunity": {
+      "eyebrow": "DIE CHANCE",
+      "title": "EIN AUSGEWÄHLTER EINSTIEG IN BATUMIS IMMOBILIENMARKT",
+      "lead": "Reverance ist ein Premium-Wohnprojekt am New Boulevard in Batumi – mit zeitgenössischen Residenzen, Annehmlichkeiten für Bewohner und Zugang zu einem der aktivsten Entwicklungsgebiete der Stadt.",
+      "availability": "Verfügbare reguläre und Golden Premium Apartments in beiden Gebäuden.",
+      "stats": [
+        [
+          "24",
+          "Verfügbare Wohnungen"
+        ],
+        [
+          "13–14",
+          "Ausgewählte Etagen"
+        ],
+        [
+          "Juli 2028",
+          "Geplante Fertigstellung"
+        ],
+        [
+          "25.000 m²",
+          "Komfort- und Gemeinschaftsinfrastruktur"
+        ]
+      ],
+      "highlights": [
+        [
+          "Aktuelle Verfügbarkeit",
+          "Verfügbare reguläre und Golden Premium Apartments in beiden Gebäuden."
+        ],
+        [
+          "Umfang",
+          "25.000 m² Komfort- und Gemeinschaftsinfrastruktur auf einem geplanten 45.000 m² großen Areal."
+        ],
+        [
+          "Lage",
+          "59 Adlia Street: New Boulevard in 5 Minuten, Einkaufsmöglichkeiten und Flughafen in 7 Minuten, Batumi Medical Center in 8 Minuten."
+        ],
+        [
+          "Mietszenario",
+          "Laut Projektpräsentation: durchschnittlich 600 $/Monat Langzeitmiete, 80 $/Nacht Kurzzeitmiete und 90 % mögliche Auslastung."
+        ]
+      ],
+      "imageAlt": "Sonnenuntergang über der Fassade der Residenz",
+      "imageLabel": "59 Adlia Street",
+      "imageCaption": "Der New Boulevard ist 5 Minuten entfernt.",
+      "expand": "Bild vergrößern"
+    },
+    "start": {
+      "eyebrow": "Starten Sie mit AIXCO",
+      "title": "IHRE REVERANCE-IMMOBILIE BEGINNT HIER.",
+      "lead": "Sagen Sie uns, wonach Sie suchen. Wir zeigen Ihnen die verfügbaren Wohnungen, die am besten zu Budget und Ziel passen."
     }
   },
   "pl": {
@@ -603,22 +854,12 @@ export const REVERANCE_INFO_COPY = {
       "ownership": "Własność",
       "why-aixco": "DLACZEGO AIXCO",
       "gallery": "Galeria projektu",
-      "faq": "FAQ"
+      "faq": "FAQ",
+      "approach": "Podejście AIXCO"
     },
-    "location": [
-      "LOKALIZACJA",
-      "59 Adlia Street",
-      "Przy New Boulevard w Batumi."
-    ],
-    "scale": [
-      "SKALA",
-      "25 000 m²",
-      "Infrastruktura komfortu i wspólnoty na planowanym terenie o powierzchni 45 000 m²."
-    ],
     "batumi": {
       "eyebrow": "DLACZEGO BATUMI",
-      "title": "NADMORSKI RYNEK Z MIĘDZYNARODOWYM POPYTEM",
-      "lead": "Batumi łączy turystykę nad Morzem Czarnym, międzynarodowy popyt, nową infrastrukturę i stosunkowo przystępne ceny mieszkań.",
+      "title": "Batumi łączy turystykę nad Morzem Czarnym, międzynarodowy popyt, nową infrastrukturę i stosunkowo przystępne ceny mieszkań.",
       "stats": [
         [
           "17 478",
@@ -626,7 +867,7 @@ export const REVERANCE_INFO_COPY = {
         ],
         [
           "1,3 mld $",
-          "Rynek mieszkaniowy"
+          "Wielkość rynku mieszkaniowego"
         ],
         [
           "+9,4%",
@@ -638,10 +879,11 @@ export const REVERANCE_INFO_COPY = {
         ],
         [
           "52%",
-          "Kupujący z zagranicy"
+          "Zagraniczni nabywcy w badanych projektach"
         ]
       ],
-      "note": "Rynek mieszkaniowy Batumi, cały rok 2025. Źródła podawane przez AIXCO: Galt & Taggart Research; Colliers Georgia. Dane historyczne, nie prognoza. 7,4% to średnia rynkowa; ok. 12% rentowności netto w danych projektu to szacunek AIXCO dla Reverance."
+      "source": "Źródła: Galt & Taggart Research; Colliers Georgia.",
+      "note": "Rynek mieszkaniowy Batumi, cały rok 2025. 7,4% to średnia rynkowa; ok. 12% rentowności netto w danych projektu to szacunek AIXCO dla Reverance."
     },
     "residence": {
       "eyebrow": "DLACZEGO REVERANCE",
@@ -650,6 +892,10 @@ export const REVERANCE_INFO_COPY = {
         [
           "NEW BOULEVARD",
           "Przy 59 Adlia Street, w rozwijającym się dystrykcie New Boulevard w Batumi."
+        ],
+        [
+          "WYBRANE WYŻSZE PIĘTRA",
+          "Aktualna oferta AIXCO koncentruje się na 13. i 14. piętrze."
         ],
         [
           "KONCEPCJA MIESZKANIOWA PREMIUM",
@@ -669,29 +915,90 @@ export const REVERANCE_INFO_COPY = {
         [
           "BASEN",
           "Wewnętrzne i dziedzińcowe strefy wodne.",
-          "garden-pool",
-          "Basen na dziedzińcu między dwoma budynkami, wizualizacja projektu"
+          [
+            [
+              "indoor-pool",
+              "Kryty basen",
+              "Wizualizacja wewnętrznego basenu Reverance"
+            ],
+            [
+              "indoor-pool-wide",
+              "Strefa wypoczynkowa przy basenie",
+              "Wizualizacja wewnętrznego basenu Reverance"
+            ],
+            [
+              "garden-pool",
+              "Basen na dziedzińcu",
+              "Wizualizacja basenu na dziedzińcu Reverance"
+            ]
+          ]
         ],
         [
           "WELLNESS",
           "Siłownia, sauna i przestrzenie wypoczynkowe dla mieszkańców.",
-          "sauna",
-          "Sauna dla mieszkańców, wizualizacja projektu"
+          [
+            [
+              "gym",
+              "Siłownia dla mieszkańców",
+              "Wizualizacja siłowni i strefy wellness Reverance"
+            ],
+            [
+              "sauna",
+              "Sauna dla mieszkańców",
+              "Wizualizacja sauny Reverance"
+            ],
+            [
+              "private-lounge",
+              "Prywatny salon",
+              "Wizualizacja prywatnego salonu Reverance"
+            ]
+          ]
         ],
         [
           "TERENY ZIELONE",
           "Strefy wejściowe, tarasy i obsadzone zielenią przestrzenie zewnętrzne.",
-          "entrance",
-          "Zielone wejście i balkony, wizualizacja projektu"
+          [
+            [
+              "entrance",
+              "Zielona strefa wejściowa",
+              "Wizualizacja zielonej strefy wejściowej Reverance"
+            ],
+            [
+              "pool-terrace",
+              "Taras basenowy",
+              "Wizualizacja tarasu basenowego Reverance"
+            ],
+            [
+              "night-arrival",
+              "Nocna strefa wejściowa",
+              "Wizualizacja zielonej strefy wjazdowej Reverance"
+            ]
+          ]
         ],
         [
-          "UDOGODNIENIA DLA MIESZKAŃCÓW",
+          "Udogodnienia dla mieszkańców",
           "Recepcja, salony i udogodnienia dla mieszkańców.",
-          "reception",
-          "Recepcja, wizualizacja projektu"
+          [
+            [
+              "reception",
+              "Recepcja",
+              "Wizualizacja recepcji Reverance"
+            ],
+            [
+              "lobby",
+              "Salon w lobby",
+              "Wizualizacja salonu mieszkańców Reverance"
+            ],
+            [
+              "business-lounge",
+              "Salon biznesowy",
+              "Wizualizacja salonu biznesowego Reverance"
+            ]
+          ]
         ]
       ],
-      "renderNote": "Zdjęcia są wizualizacjami projektu."
+      "renderNote": "Zdjęcia są wizualizacjami projektu.",
+      "viewAmenity": "Zobacz zdjęcie udogodnienia"
     },
     "payment": {
       "eyebrow": "STRUKTURA PŁATNOŚCI",
@@ -706,12 +1013,12 @@ export const REVERANCE_INFO_COPY = {
         [
           "30%",
           "W TRAKCIE BUDOWY",
-          "Ustrukturyzowane płatności w trakcie budowy."
+          "Ustrukturyzowane płatności w okresie budowy."
         ],
         [
           "60%",
           "PO UKOŃCZENIU",
-          "Na ten etap może być dostępne finansowanie bankowe, zależnie od kwalifikowalności i decyzji banku. Nie jest ono gwarantowane."
+          "Minimalne 60% finansowania bankowego może być dostępne z zastrzeżeniem kwalifikowalności i zgody banku."
         ]
       ],
       "note": "Ceny, warunki płatności i finansowanie zależą od dostępności, kwalifikowalności i ostatecznych warunków umowy.",
@@ -726,16 +1033,20 @@ export const REVERANCE_INFO_COPY = {
           "Własność nieruchomości co do zasady nie wymaga przeprowadzki do Gruzji."
         ],
         [
+          "1% PODATEK OD DOCHODU Z NAJMU",
+          "Potencjalnie dostępne w ramach gruzińskiego reżimu podatkowego, z zastrzeżeniem kwalifikowalności i indywidualnych okoliczności."
+        ],
+        [
+          "0% PODATEK OD ZYSKÓW KAPITAŁOWYCH PO 2 LATACH",
+          "Z zastrzeżeniem gruzińskich przepisów podatkowych, okresu posiadania, klasyfikacji nieruchomości i okoliczności indywidualnych."
+        ],
+        [
           "100% WŁASNOŚĆ DLA CUDZOZIEMCÓW",
           "Międzynarodowi nabywcy mogą bezpośrednio posiadać kwalifikowaną nieruchomość mieszkaniową, z zastrzeżeniem prawa gruzińskiego."
         ],
         [
-          "Finansowanie",
+          "MINIMUM 60% FINANSOWANIA",
           "Lokalne finansowanie bankowe może być dostępne z zastrzeżeniem kryteriów banku i indywidualnej zgody."
-        ],
-        [
-          "PODATKI",
-          "Sposób opodatkowania zależy od sytuacji właściciela i obowiązującego prawa gruzińskiego. Przed zakupem skonsultuj się z niezależnym doradcą podatkowym."
         ]
       ],
       "note": "Informacje ogólne, nie porada prawna ani podatkowa."
@@ -807,7 +1118,6 @@ export const REVERANCE_INFO_COPY = {
     "gallery": {
       "eyebrow": "Galeria projektu",
       "title": "ZOBACZ REVERANCE.",
-      "note": "Wizualizacje projektu. Dwa zdjęcia przedstawiają Batumi i nie są widokami z Reverance.",
       "open": "Otwórz zdjęcie",
       "close": "Zamknij",
       "previous": "Poprzednie zdjęcie",
@@ -817,49 +1127,50 @@ export const REVERANCE_INFO_COPY = {
         [
           "ELEWACJA",
           "exterior",
-          "Elewacja Project Reverance, wizualizacja projektu"
-        ],
-        [
-          "Z LOTU PTAKA",
-          "aerial",
-          "Oba budynki Reverance z góry, wizualizacja projektu"
+          "Wizualizacja elewacji Reverance"
         ],
         [
           "LOBBY",
           "lobby",
-          "Strefa lobby, wizualizacja projektu"
+          "Wizualizacja lobby Reverance"
         ],
         [
           "BASEN",
-          "indoor-pool",
-          "Basen kryty, wizualizacja projektu"
+          "indoor-pool-wide",
+          "Wizualizacja wewnętrznego basenu Reverance"
         ],
         [
           "WELLNESS",
           "gym",
-          "Siłownia dla mieszkańców, wizualizacja projektu"
+          "Wizualizacja strefy wellness Reverance"
         ],
         [
           "TERENY ZIELONE",
-          "pool-terrace",
-          "Zielony taras z tarasem basenowym, wizualizacja projektu"
+          "garden-pool",
+          "Wizualizacja zielonego dziedzińca Reverance"
         ],
         [
-          "TARAS NA DACHU",
-          "rooftop",
-          "Taras na dachu o zachodzie słońca, wizualizacja projektu"
+          "WNĘTRZE APARTAMENTU",
+          "private-lounge",
+          "Wizualizacja wnętrza apartamentu Reverance"
         ],
         [
           "WIDOKI NA MORZE / MIASTO",
           "batumi-sea-city",
-          "Morze i miasto Batumi o zachodzie słońca, fotografia"
+          "Widok na morze i miasto w Batumi"
         ],
         [
-          "WYBRZEŻE BATUMI",
+          "LOKALIZACJA NEW BOULEVARD",
           "batumi-coastline",
-          "Wybrzeże Batumi z góry o zmierzchu, fotografia"
+          "Lokalizacja New Boulevard w Batumi z lotu ptaka"
+        ],
+        [
+          "TARAS NA DACHU",
+          "rooftop",
+          "Wizualizacja tarasu na dachu Reverance"
         ]
-      ]
+      ],
+      "lead": "Reverance to inwestycja mieszkaniowa premium przy New Boulevard w Batumi, łącząca nowoczesne rezydencje, udogodnienia dla mieszkańców i dostęp do jednego z najbardziej aktywnych dystryktów rozwojowych miasta."
     },
     "faq": {
       "eyebrow": "FAQ",
@@ -867,7 +1178,7 @@ export const REVERANCE_INFO_COPY = {
       "items": [
         [
           "Czy cudzoziemcy mogą posiadać nieruchomości w Gruzji?",
-          "Kupujący z zagranicy mogą co do zasady posiadać nieruchomości mieszkaniowe w Gruzji, z zastrzeżeniem obowiązującego prawa i klasyfikacji nieruchomości."
+          "Zagraniczni nabywcy mogą co do zasady bezpośrednio posiadać nieruchomości mieszkaniowe, z zastrzeżeniem gruzińskiego prawa i klasyfikacji nieruchomości."
         ],
         [
           "Ile potrzebuję na start?",
@@ -875,13 +1186,80 @@ export const REVERANCE_INFO_COPY = {
         ],
         [
           "Kiedy planowane jest ukończenie Reverance?",
-          "Ukończenie jest obecnie planowane na lipiec 2028."
+          "Planowane ukończenie to lipiec 2028."
         ],
         [
           "Czy AIXCO może pomóc po ukończeniu?",
           "Tak. Obecny model usług AIXCO obejmuje dokumentację, przekazanie, koordynację najmu i bieżącą administrację nieruchomości."
         ]
       ]
+    },
+    "briefCta": "Poproś o brief",
+    "availabilityCta": "Sprawdź dostępność",
+    "profile": {
+      "eyebrow": "Profil nieruchomości Batumi · Project Reverance",
+      "title": "ZOSTAŃ WŁAŚCICIELEM PRZY NEW BOULEVARD W BATUMI",
+      "lead": "Wybrane rezydencje w jednym z najbardziej dynamicznych nadmorskich dystryktów Batumi.",
+      "proof": [
+        "OD 45 000 €",
+        "10% WPŁATA POCZĄTKOWA",
+        "60%+ FINANSOWANIE",
+        "100% WŁASNOŚĆ DLA CUDZOZIEMCÓW"
+      ],
+      "address": "59 Adlia Street · Batumi · Gruzja",
+      "completion": "Planowane ukończenie: lipiec 2028",
+      "note": "Ceny, warunki płatności i finansowanie zależą od dostępności, kwalifikowalności i ostatecznych warunków umowy."
+    },
+    "opportunity": {
+      "eyebrow": "SZANSA",
+      "title": "WYBRANY WSTĘP NA RYNEK NIERUCHOMOŚCI W BATUMI",
+      "lead": "Reverance to inwestycja mieszkaniowa premium przy New Boulevard w Batumi, łącząca nowoczesne rezydencje, udogodnienia dla mieszkańców i dostęp do jednego z najbardziej aktywnych dystryktów rozwojowych miasta.",
+      "availability": "Dostępne apartamenty standardowe i Golden Premium w obu budynkach.",
+      "stats": [
+        [
+          "24",
+          "Dostępne apartamenty"
+        ],
+        [
+          "13–14",
+          "Wybrane piętra"
+        ],
+        [
+          "lipiec 2028",
+          "Planowane ukończenie"
+        ],
+        [
+          "25 000 m²",
+          "Infrastruktura komfortu i społeczności"
+        ]
+      ],
+      "highlights": [
+        [
+          "Aktualna dostępność",
+          "Dostępne apartamenty standardowe i Golden Premium w obu budynkach."
+        ],
+        [
+          "Skala",
+          "25 000 m² infrastruktury komfortu i społeczności na planowanym terenie o powierzchni 45 000 m²."
+        ],
+        [
+          "Lokalizacja",
+          "59 Adlia Street: 5 minut do New Boulevard, 7 minut do sklepów i lotniska oraz 8 minut do Batumi Medical Center."
+        ],
+        [
+          "Scenariusz najmu",
+          "Według prezentacji projektu: średnio 600 $/miesiąc przy najmie długoterminowym, 80 $/noc przy najmie krótkoterminowym i 90% potencjalnego obłożenia."
+        ]
+      ],
+      "imageAlt": "Zachód słońca nad fasadą rezydencji",
+      "imageLabel": "59 Adlia Street",
+      "imageCaption": "New Boulevard jest 5 minut stąd.",
+      "expand": "Powiększ zdjęcie"
+    },
+    "start": {
+      "eyebrow": "Zacznij z AIXCO",
+      "title": "TWOJA NIERUCHOMOŚĆ REVERANCE ZACZYNA SIĘ TUTAJ.",
+      "lead": "Powiedz nam, czego szukasz. Pokażemy dostępne apartamenty, które najlepiej pasują do budżetu i celu."
     }
   },
   "sl": {
@@ -894,22 +1272,12 @@ export const REVERANCE_INFO_COPY = {
       "ownership": "Lastništvo",
       "why-aixco": "ZAKAJ AIXCO",
       "gallery": "Galerija projekta",
-      "faq": "FAQ"
+      "faq": "FAQ",
+      "approach": "Način AIXCO"
     },
-    "location": [
-      "LOKACIJA",
-      "59 Adlia Street",
-      "Ob New Boulevardu v Batumiju."
-    ],
-    "scale": [
-      "OBSEG",
-      "25.000 m²",
-      "Infrastruktura za udobje in skupnost na načrtovanem zemljišču velikosti 45.000 m²."
-    ],
     "batumi": {
       "eyebrow": "ZAKAJ BATUMI",
-      "title": "OBALNI TRG Z MEDNARODNIM POVPRAŠEVANJEM",
-      "lead": "Batumi združuje turizem ob Črnem morju, mednarodno povpraševanje, novo infrastrukturo in razmeroma dostopne stanovanjske cene.",
+      "title": "Batumi združuje turizem ob Črnem morju, mednarodno povpraševanje, novo infrastrukturo in razmeroma dostopne stanovanjske cene.",
       "stats": [
         [
           "17.478",
@@ -917,7 +1285,7 @@ export const REVERANCE_INFO_COPY = {
         ],
         [
           "1,3 mlrd $",
-          "Stanovanjski trg"
+          "Velikost stanovanjskega trga"
         ],
         [
           "+9,4 %",
@@ -929,10 +1297,11 @@ export const REVERANCE_INFO_COPY = {
         ],
         [
           "52 %",
-          "Tuji kupci"
+          "Tuji kupci v pregledanih projektih"
         ]
       ],
-      "note": "Stanovanjski trg Batumija, celotno leto 2025. Viri, ki jih navaja AIXCO: Galt & Taggart Research; Colliers Georgia. Pretekli tržni podatki, ne napoved. 7,4 % je tržno povprečje; pribl. 12 % neto donosa v podatkih o projektu je ocena AIXCO za Reverance."
+      "source": "Viri: Galt & Taggart Research; Colliers Georgia.",
+      "note": "Stanovanjski trg Batumija, celotno leto 2025. 7,4 % je tržno povprečje; pribl. 12 % neto donosa v podatkih o projektu je ocena AIXCO za Reverance."
     },
     "residence": {
       "eyebrow": "ZAKAJ REVERANCE",
@@ -941,6 +1310,10 @@ export const REVERANCE_INFO_COPY = {
         [
           "NEW BOULEVARD",
           "Na 59 Adlia Street, v rastočem okrožju New Boulevard v Batumiju."
+        ],
+        [
+          "IZBRANA VIŠJA NADSTROPJA",
+          "Trenutna ponudba AIXCO je osredotočena na 13. in 14. nadstropje."
         ],
         [
           "PREMIJSKI STANOVANJSKI KONCEPT",
@@ -960,29 +1333,90 @@ export const REVERANCE_INFO_COPY = {
         [
           "BAZEN",
           "Notranji in dvoriščni vodni prostori.",
-          "garden-pool",
-          "Bazen na dvorišču med stavbama, vizualizacija projekta"
+          [
+            [
+              "indoor-pool",
+              "Notranji bazen",
+              "Vizualizacija notranjega bazena Reverance"
+            ],
+            [
+              "indoor-pool-wide",
+              "Lounge ob bazenu",
+              "Vizualizacija notranjega bazena Reverance"
+            ],
+            [
+              "garden-pool",
+              "Dvoriščni bazen",
+              "Vizualizacija dvoriščnega bazena Reverance"
+            ]
+          ]
         ],
         [
           "WELLNESS",
           "Telovadnica, savna in prostori za sprostitev stanovalcev.",
-          "sauna",
-          "Savna za stanovalce, vizualizacija projekta"
+          [
+            [
+              "gym",
+              "Telovadnica za stanovalce",
+              "Vizualizacija telovadnice in wellnessa Reverance"
+            ],
+            [
+              "sauna",
+              "Savna za stanovalce",
+              "Vizualizacija savne Reverance"
+            ],
+            [
+              "private-lounge",
+              "Zasebni salon",
+              "Vizualizacija zasebnega salona Reverance"
+            ]
+          ]
         ],
         [
           "OZELENJENE POVRŠINE",
           "Prihodne poti, terase in zasajeni zunanji prostori.",
-          "entrance",
-          "Ozelenjen vhod in balkoni, vizualizacija projekta"
+          [
+            [
+              "entrance",
+              "Urejen prihod",
+              "Vizualizacija urejenega vhoda Reverance"
+            ],
+            [
+              "pool-terrace",
+              "Terasa ob bazenu",
+              "Vizualizacija terase ob bazenu Reverance"
+            ],
+            [
+              "night-arrival",
+              "Nočni prihod",
+              "Vizualizacija zasajenega prihoda Reverance"
+            ]
+          ]
         ],
         [
-          "OBJEKTI ZA PREBIVALCE",
+          "Objekti za prebivalce",
           "Recepcija, saloni in prostori za stanovalce.",
-          "reception",
-          "Recepcija, vizualizacija projekta"
+          [
+            [
+              "reception",
+              "Recepcija",
+              "Vizualizacija recepcije Reverance"
+            ],
+            [
+              "lobby",
+              "Lounge v avli",
+              "Vizualizacija salona za stanovalce Reverance"
+            ],
+            [
+              "business-lounge",
+              "Poslovni lounge",
+              "Vizualizacija poslovnega loungea Reverance"
+            ]
+          ]
         ]
       ],
-      "renderNote": "Slike so vizualizacije projekta."
+      "renderNote": "Slike so vizualizacije projekta.",
+      "viewAmenity": "Oglejte si sliko ugodnosti"
     },
     "payment": {
       "eyebrow": "STRUKTURA PLAČIL",
@@ -997,12 +1431,12 @@ export const REVERANCE_INFO_COPY = {
         [
           "30 %",
           "MED GRADNJO",
-          "Strukturirana plačila med gradnjo."
+          "Strukturirana plačila v obdobju gradnje."
         ],
         [
           "60 %",
           "OB ZAKLJUČKU",
-          "Za to stopnjo je lahko na voljo bančno financiranje, odvisno od upravičenosti in odobritve posojilodajalca. Ni zagotovljeno."
+          "Najmanj 60 % bančnega financiranja je lahko na voljo glede na upravičenost in odobritev posojilodajalca."
         ]
       ],
       "note": "Cene, plačilni pogoji in financiranje so odvisni od razpoložljivosti, upravičenosti in končnih pogodbenih pogojev.",
@@ -1017,16 +1451,20 @@ export const REVERANCE_INFO_COPY = {
           "Lastništvo nepremičnine praviloma ne zahteva preselitve v Gruzijo."
         ],
         [
+          "1% DAVEK NA DOHODEK IZ NAJEMA",
+          "Potencialno na voljo v okviru veljavnega gruzijskega davčnega režima, odvisno od upravičenosti in individualnih okoliščin."
+        ],
+        [
+          "0% DAVEK NA KAPITALSKE DOBIČKE PO 2 LETIH",
+          "V skladu z veljavnimi gruzijskimi davčnimi pravili, obdobjem lastništva, klasifikacijo nepremičnine in individualnimi okoliščinami."
+        ],
+        [
           "100% TUJE LASTNIŠTVO",
           "Mednarodni kupci lahko neposredno lastnijo kvalificirano stanovanjsko nepremičnino, v skladu z gruzijskim pravom."
         ],
         [
-          "Financiranje",
+          "NAJMANJ 60 % FINANCIRANJA",
           "Lokalno bančno financiranje je lahko na voljo glede na merila posojilodajalca in individualno odobritev."
-        ],
-        [
-          "DAVKI",
-          "Davčna obravnava je odvisna od okoliščin lastnika in veljavnega gruzijskega prava. Pred nakupom se posvetujte z neodvisnim davčnim svetovalcem."
         ]
       ],
       "note": "Splošne informacije, ne pravni ali davčni nasvet."
@@ -1098,7 +1536,6 @@ export const REVERANCE_INFO_COPY = {
     "gallery": {
       "eyebrow": "Galerija projekta",
       "title": "OGLEJTE SI REVERANCE.",
-      "note": "Vizualizacije projekta. Fotografiji prikazujeta Batumi in nista pogleda iz Reverance.",
       "open": "Odpri sliko",
       "close": "Zapri",
       "previous": "Prejšnja slika",
@@ -1108,49 +1545,50 @@ export const REVERANCE_INFO_COPY = {
         [
           "ZUNANJOST",
           "exterior",
-          "Zunanjost Project Reverance, vizualizacija projekta"
-        ],
-        [
-          "POGLED IZ ZRAKA",
-          "aerial",
-          "Obe stavbi Reverance od zgoraj, vizualizacija projekta"
+          "Vizualizacija zunanjosti Reverance"
         ],
         [
           "LOBBY",
           "lobby",
-          "Salon v preddverju, vizualizacija projekta"
+          "Vizualizacija lobija Reverance"
         ],
         [
           "BAZEN",
-          "indoor-pool",
-          "Notranji bazen, vizualizacija projekta"
+          "indoor-pool-wide",
+          "Vizualizacija notranjega bazena Reverance"
         ],
         [
           "WELLNESS",
           "gym",
-          "Telovadnica za stanovalce, vizualizacija projekta"
+          "Vizualizacija wellnessa Reverance"
         ],
         [
           "OZELENJENE POVRŠINE",
-          "pool-terrace",
-          "Ozelenjena terasa ob bazenu, vizualizacija projekta"
+          "garden-pool",
+          "Vizualizacija ozelenjenega dvorišča Reverance"
         ],
         [
-          "STREŠNA TERASA",
-          "rooftop",
-          "Strešna terasa ob sončnem zahodu, vizualizacija projekta"
+          "NOTRANJOST STANOVANJA",
+          "private-lounge",
+          "Vizualizacija notranjosti stanovanja Reverance"
         ],
         [
           "POGLEDI NA MORJE / MESTO",
           "batumi-sea-city",
-          "Morje in mesto Batumi ob sončnem zahodu, fotografija"
+          "Pogled na morje in mesto v Batumiju"
         ],
         [
-          "OBALA BATUMIJA",
+          "LOKACIJA NEW BOULEVARD",
           "batumi-coastline",
-          "Obala Batumija od zgoraj v mraku, fotografija"
+          "Lokacija New Boulevard v Batumiju iz zraka"
+        ],
+        [
+          "STREŠNA TERASA",
+          "rooftop",
+          "Vizualizacija strešne terase Reverance"
         ]
-      ]
+      ],
+      "lead": "Reverance je premijski stanovanjski projekt na New Boulevardu v Batumiju, ki združuje sodobne rezidence, ugodnosti za prebivalce in dostop do enega najbolj aktivnih razvojnih okrožij mesta."
     },
     "faq": {
       "eyebrow": "FAQ",
@@ -1158,7 +1596,7 @@ export const REVERANCE_INFO_COPY = {
       "items": [
         [
           "Ali lahko tujci lastnijo nepremičnine v Gruziji?",
-          "Tuji kupci lahko v Gruziji praviloma lastnijo stanovanjske nepremičnine, v skladu z veljavno zakonodajo in razvrstitvijo nepremičnine."
+          "Tuji kupci lahko na splošno neposredno lastnijo stanovanjske nepremičnine, v skladu z veljavnim gruzijskim pravom in klasifikacijo nepremičnine."
         ],
         [
           "Koliko potrebujem za začetek?",
@@ -1166,13 +1604,80 @@ export const REVERANCE_INFO_COPY = {
         ],
         [
           "Kdaj je predviden zaključek Reverance?",
-          "Zaključek je trenutno predviden za julij 2028."
+          "Predviden zaključek je julij 2028."
         ],
         [
           "Ali lahko AIXCO pomaga po zaključku?",
           "Da. Trenutni model storitev AIXCO vključuje dokumentacijo, predajo, koordinacijo najema in stalno upravljanje nepremičnine."
         ]
       ]
+    },
+    "briefCta": "Zahtevajte brief",
+    "availabilityCta": "Preverite razpoložljivost",
+    "profile": {
+      "eyebrow": "Profil nepremičnine Batumi · Project Reverance",
+      "title": "LASTNIŠTVO NA NEW BOULEVARDU V BATUMIJU",
+      "lead": "Izbrane rezidence v enem najbolj dinamičnih obalnih okrožij Batumija.",
+      "proof": [
+        "OD 45.000 €",
+        "10% ZAČETNO PLAČILO",
+        "60 %+ FINANCIRANJE",
+        "100% TUJE LASTNIŠTVO"
+      ],
+      "address": "59 Adlia Street · Batumi · Gruzija",
+      "completion": "Zaključek je predviden za julij 2028",
+      "note": "Cene, plačilni pogoji in financiranje so odvisni od razpoložljivosti, upravičenosti in končnih pogodbenih pogojev."
+    },
+    "opportunity": {
+      "eyebrow": "PRILOŽNOST",
+      "title": "IZBRAN VSTOP NA NEPREMIČNINSKI TRG BATUMIJA",
+      "lead": "Reverance je premijski stanovanjski projekt na New Boulevardu v Batumiju, ki združuje sodobne rezidence, ugodnosti za prebivalce in dostop do enega najbolj aktivnih razvojnih okrožij mesta.",
+      "availability": "Razpoložljivi standardni apartmaji in apartmaji Golden Premium v obeh stavbah.",
+      "stats": [
+        [
+          "24",
+          "Razpoložljivi apartmaji"
+        ],
+        [
+          "13–14",
+          "Izbrana nadstropja"
+        ],
+        [
+          "julij 2028",
+          "Predviden zaključek"
+        ],
+        [
+          "25.000 m²",
+          "Infrastruktura za udobje in skupnost"
+        ]
+      ],
+      "highlights": [
+        [
+          "Trenutna razpoložljivost",
+          "Razpoložljivi standardni apartmaji in apartmaji Golden Premium v obeh stavbah."
+        ],
+        [
+          "Obseg",
+          "25.000 m² površin za udobje in skupnostno infrastrukturo na načrtovanem območju velikosti 45.000 m²."
+        ],
+        [
+          "Lokacija",
+          "59 Adlia Street: 5 minut do New Boulevarda, 7 minut do trgovin in letališča ter 8 minut do Batumi Medical Center."
+        ],
+        [
+          "Primer najema",
+          "Po predstavitvi projekta: povprečno 600 $/mesec pri dolgoročnem najemu, 80 $/noč pri kratkoročnem najemu in 90 % možne zasedenosti."
+        ]
+      ],
+      "imageAlt": "Sončni zahod nad fasado rezidence",
+      "imageLabel": "59 Adlia Street",
+      "imageCaption": "New Boulevard je oddaljen 5 minut.",
+      "expand": "Povečaj sliko"
+    },
+    "start": {
+      "eyebrow": "Začnite z AIXCO",
+      "title": "VAŠA NEPREMIČNINA REVERANCE SE ZAČNE TUKAJ.",
+      "lead": "Povejte nam, kaj iščete. Pokazali vam bomo razpoložljive apartmaje, ki najbolje ustrezajo proračunu in cilju."
     }
   },
   "ru": {
@@ -1185,22 +1690,12 @@ export const REVERANCE_INFO_COPY = {
       "ownership": "Собственность",
       "why-aixco": "ПОЧЕМУ AIXCO",
       "gallery": "Галерея проекта",
-      "faq": "FAQ"
+      "faq": "FAQ",
+      "approach": "Подход AIXCO"
     },
-    "location": [
-      "РАСПОЛОЖЕНИЕ",
-      "59 Adlia Street",
-      "На Новом бульваре Батуми."
-    ],
-    "scale": [
-      "МАСШТАБ",
-      "25 000 м²",
-      "Инфраструктура для комфорта и общения на планируемом участке площадью 45 000 м²."
-    ],
     "batumi": {
       "eyebrow": "ПОЧЕМУ БАТУМИ",
-      "title": "ПРИБРЕЖНЫЙ РЫНОК С МЕЖДУНАРОДНЫМ СПРОСОМ",
-      "lead": "Батуми сочетает черноморский туризм, международный спрос, новую инфраструктуру и относительно доступные цены на жильё.",
+      "title": "Батуми сочетает черноморский туризм, международный спрос, новую инфраструктуру и относительно доступные цены на жильё.",
       "stats": [
         [
           "17 478",
@@ -1208,7 +1703,7 @@ export const REVERANCE_INFO_COPY = {
         ],
         [
           "1,3 млрд $",
-          "Рынок жилья"
+          "Объём жилого рынка"
         ],
         [
           "+9,4%",
@@ -1220,10 +1715,11 @@ export const REVERANCE_INFO_COPY = {
         ],
         [
           "52%",
-          "Иностранные покупатели"
+          "Иностранные покупатели в обследованных проектах"
         ]
       ],
-      "note": "Рынок жилья Батуми, весь 2025 год. Источники, на которые ссылается AIXCO: Galt & Taggart Research; Colliers Georgia. Прошлые рыночные данные, не прогноз. 7,4% — средний показатель рынка; около 12% чистой доходности в данных проекта — оценка AIXCO для Reverance."
+      "source": "Источники: Galt & Taggart Research; Colliers Georgia.",
+      "note": "Рынок жилья Батуми, весь 2025 год. 7,4% — средний показатель рынка; около 12% чистой доходности в данных проекта — оценка AIXCO для Reverance."
     },
     "residence": {
       "eyebrow": "ПОЧЕМУ REVERANCE",
@@ -1232,6 +1728,10 @@ export const REVERANCE_INFO_COPY = {
         [
           "НОВЫЙ БУЛЬВАР",
           "Адрес: 59 Adlia Street, в расширяющемся районе Нового бульвара Батуми."
+        ],
+        [
+          "ОТОБРАННЫЕ ВЕРХНИЕ ЭТАЖИ",
+          "Текущий инвентарь AIXCO сосредоточен на 13-м и 14-м этажах."
         ],
         [
           "ПРЕМИАЛЬНАЯ ЖИЛАЯ КОНЦЕПЦИЯ",
@@ -1251,29 +1751,90 @@ export const REVERANCE_INFO_COPY = {
         [
           "БАССЕЙН",
           "Крытые и дворовые зоны с бассейнами.",
-          "garden-pool",
-          "Бассейн во дворе между двумя зданиями, визуализация проекта"
+          [
+            [
+              "indoor-pool",
+              "Крытый бассейн",
+              "Визуализация крытого бассейна Reverance"
+            ],
+            [
+              "indoor-pool-wide",
+              "Лаунж у бассейна",
+              "Визуализация крытого бассейна Reverance"
+            ],
+            [
+              "garden-pool",
+              "Бассейн во внутреннем дворе",
+              "Визуализация бассейна во дворе Reverance"
+            ]
+          ]
         ],
         [
           "ВЕЛНЕС",
           "Тренажёрный зал, сауна и пространства для отдыха жителей.",
-          "sauna",
-          "Сауна для жителей, визуализация проекта"
+          [
+            [
+              "gym",
+              "Тренажёрный зал для жителей",
+              "Визуализация тренажёрного зала и велнес-зоны Reverance"
+            ],
+            [
+              "sauna",
+              "Сауна для жителей",
+              "Визуализация сауны Reverance"
+            ],
+            [
+              "private-lounge",
+              "Приватный лаунж",
+              "Визуализация приватного лаунжа Reverance"
+            ]
+          ]
         ],
         [
           "ОЗЕЛЕНЁННЫЕ ЗОНЫ",
           "Входные зоны, террасы и озеленённые пространства на открытом воздухе.",
-          "entrance",
-          "Озеленённый вход и балконы, визуализация проекта"
+          [
+            [
+              "entrance",
+              "Озеленённая входная зона",
+              "Визуализация озеленённой входной зоны Reverance"
+            ],
+            [
+              "pool-terrace",
+              "Терраса у бассейна",
+              "Визуализация террасы у бассейна Reverance"
+            ],
+            [
+              "night-arrival",
+              "Вечерняя входная зона",
+              "Визуализация озеленённой входной зоны Reverance"
+            ]
+          ]
         ],
         [
-          "ОБЪЕКТЫ ДЛЯ ЖИЛЬЦОВ",
+          "Объекты для жильцов",
           "Ресепшен, лаунж-зоны и пространства для жителей.",
-          "reception",
-          "Ресепшен, визуализация проекта"
+          [
+            [
+              "reception",
+              "Ресепшен",
+              "Визуализация ресепшена Reverance"
+            ],
+            [
+              "lobby",
+              "Лаунж в лобби",
+              "Визуализация лаунжа для жителей Reverance"
+            ],
+            [
+              "business-lounge",
+              "Бизнес-лаунж",
+              "Визуализация бизнес-лаунжа Reverance"
+            ]
+          ]
         ]
       ],
-      "renderNote": "Изображения — визуализации проекта."
+      "renderNote": "Изображения — визуализации проекта.",
+      "viewAmenity": "Посмотреть изображение удобства"
     },
     "payment": {
       "eyebrow": "СТРУКТУРА ОПЛАТЫ",
@@ -1288,12 +1849,12 @@ export const REVERANCE_INFO_COPY = {
         [
           "30%",
           "ВО ВРЕМЯ СТРОИТЕЛЬСТВА",
-          "Поэтапные платежи во время строительства."
+          "Структурированные платежи в период строительства."
         ],
         [
           "60%",
           "ПРИ ЗАВЕРШЕНИИ",
-          "На этом этапе может быть доступно банковское финансирование при соответствии требованиям и одобрении банка. Оно не гарантировано."
+          "Минимум 60% банковского финансирования может быть доступно при соответствии требованиям и одобрении кредитора."
         ]
       ],
       "note": "Цены, условия оплаты и финансирование зависят от наличия квартир, соответствия требованиям и итоговых условий договора.",
@@ -1308,16 +1869,20 @@ export const REVERANCE_INFO_COPY = {
           "Владение недвижимостью, как правило, не требует переезда в Грузию."
         ],
         [
+          "1% НАЛОГ НА ДОХОД ОТ АРЕНДЫ",
+          "Может быть доступно в рамках применимого грузинского налогового режима при соответствии требованиям и с учётом индивидуальных обстоятельств."
+        ],
+        [
+          "0% НАЛОГ НА ПРИРОСТ КАПИТАЛА ЧЕРЕЗ 2 ГОДА",
+          "Применяется в соответствии с грузинскими налоговыми правилами, сроком владения, классификацией объекта и индивидуальными обстоятельствами."
+        ],
+        [
           "100% ИНОСТРАННАЯ СОБСТВЕННОСТЬ",
           "Иностранные покупатели могут напрямую владеть подходящей жилой недвижимостью в соответствии с законодательством Грузии."
         ],
         [
-          "Финансирование",
+          "МИНИМУМ 60% ФИНАНСИРОВАНИЯ",
           "Местное банковское финансирование может быть доступно при соответствии критериям кредитора и индивидуальном одобрении."
-        ],
-        [
-          "НАЛОГИ",
-          "Налогообложение зависит от обстоятельств владельца и действующего законодательства Грузии. Перед покупкой проконсультируйтесь с независимым налоговым консультантом."
         ]
       ],
       "note": "Общая информация, а не юридическая или налоговая консультация."
@@ -1389,7 +1954,6 @@ export const REVERANCE_INFO_COPY = {
     "gallery": {
       "eyebrow": "Галерея проекта",
       "title": "УВИДЕТЬ REVERANCE.",
-      "note": "Визуализации проекта. Две фотографии показывают Батуми и не являются видами из Reverance.",
       "open": "Открыть изображение",
       "close": "Закрыть",
       "previous": "Предыдущее изображение",
@@ -1399,49 +1963,50 @@ export const REVERANCE_INFO_COPY = {
         [
           "ЭКСТЕРЬЕР",
           "exterior",
-          "Экстерьер Project Reverance, визуализация проекта"
-        ],
-        [
-          "ВИД СВЕРХУ",
-          "aerial",
-          "Оба здания Reverance сверху, визуализация проекта"
+          "Визуализация экстерьера Reverance"
         ],
         [
           "ЛОББИ",
           "lobby",
-          "Лаунж в лобби, визуализация проекта"
+          "Визуализация лобби Reverance"
         ],
         [
           "БАССЕЙН",
-          "indoor-pool",
-          "Крытый бассейн, визуализация проекта"
+          "indoor-pool-wide",
+          "Визуализация крытого бассейна Reverance"
         ],
         [
           "ВЕЛНЕС",
           "gym",
-          "Тренажёрный зал для жителей, визуализация проекта"
+          "Визуализация велнес-зоны Reverance"
         ],
         [
           "ОЗЕЛЕНЁННЫЕ ЗОНЫ",
-          "pool-terrace",
-          "Озеленённая терраса у бассейна, визуализация проекта"
+          "garden-pool",
+          "Визуализация озеленённого двора Reverance"
         ],
         [
-          "ТЕРРАСА НА КРЫШЕ",
-          "rooftop",
-          "Терраса на крыше на закате, визуализация проекта"
+          "ИНТЕРЬЕР АПАРТАМЕНТА",
+          "private-lounge",
+          "Визуализация интерьера апартамента Reverance"
         ],
         [
           "ВИДЫ НА МОРЕ / ГОРОД",
           "batumi-sea-city",
-          "Море и город Батуми на закате, фотография"
+          "Вид на море и город в Батуми"
         ],
         [
-          "ПОБЕРЕЖЬЕ БАТУМИ",
+          "ЛОКАЦИЯ НОВОГО БУЛЬВАРА",
           "batumi-coastline",
-          "Побережье Батуми сверху в сумерках, фотография"
+          "Локация Нового бульвара в Батуми с высоты"
+        ],
+        [
+          "ТЕРРАСА НА КРЫШЕ",
+          "rooftop",
+          "Визуализация террасы на крыше Reverance"
         ]
-      ]
+      ],
+      "lead": "Reverance — премиальный жилой проект на Новом бульваре Батуми: современные резиденции, инфраструктура для жильцов и доступ к одному из самых активных районов развития города."
     },
     "faq": {
       "eyebrow": "FAQ",
@@ -1449,7 +2014,7 @@ export const REVERANCE_INFO_COPY = {
       "items": [
         [
           "Могут ли иностранцы владеть недвижимостью в Грузии?",
-          "Иностранные покупатели, как правило, могут владеть жилой недвижимостью в Грузии с учётом действующего законодательства и категории объекта."
+          "Иностранные покупатели, как правило, могут напрямую владеть жилой недвижимостью в соответствии с законодательством Грузии и классификацией объекта."
         ],
         [
           "Сколько нужно для старта?",
@@ -1457,13 +2022,80 @@ export const REVERANCE_INFO_COPY = {
         ],
         [
           "Когда ожидается завершение Reverance?",
-          "Завершение сейчас запланировано на июль 2028 года."
+          "Плановое завершение — июль 2028 года."
         ],
         [
           "Может ли AIXCO помочь после завершения?",
           "Да. Текущая модель услуг AIXCO включает документацию, передачу, координацию аренды и текущее администрирование объекта."
         ]
       ]
+    },
+    "briefCta": "Запросить бриф",
+    "availabilityCta": "Проверить наличие",
+    "profile": {
+      "eyebrow": "Профиль недвижимости Батуми · Project Reverance",
+      "title": "СОБСТВЕННОСТЬ НА НОВОМ БУЛЬВАРЕ БАТУМИ",
+      "lead": "Отобранные резиденции в одном из самых динамичных прибрежных районов Батуми.",
+      "proof": [
+        "ОТ 45 000 €",
+        "10% ПЕРВЫЙ ВЗНОС",
+        "60%+ ФИНАНСИРОВАНИЕ",
+        "100% ИНОСТРАННАЯ СОБСТВЕННОСТЬ"
+      ],
+      "address": "59 Adlia Street · Батуми · Грузия",
+      "completion": "Завершение запланировано на июль 2028 года",
+      "note": "Цены, условия оплаты и финансирование зависят от наличия квартир, соответствия требованиям и итоговых условий договора."
+    },
+    "opportunity": {
+      "eyebrow": "ВОЗМОЖНОСТЬ",
+      "title": "ОТОБРАННЫЙ ВХОД НА РЫНОК НЕДВИЖИМОСТИ БАТУМИ",
+      "lead": "Reverance — премиальный жилой проект на Новом бульваре Батуми: современные резиденции, инфраструктура для жильцов и доступ к одному из самых активных районов развития города.",
+      "availability": "Доступные стандартные квартиры и квартиры Golden Premium в обоих зданиях.",
+      "stats": [
+        [
+          "24",
+          "Доступные апартаменты"
+        ],
+        [
+          "13–14",
+          "Отобранные этажи"
+        ],
+        [
+          "Июль 2028",
+          "Плановое завершение"
+        ],
+        [
+          "25 000 м²",
+          "Инфраструктура комфорта и сообщества"
+        ]
+      ],
+      "highlights": [
+        [
+          "Текущая доступность",
+          "Доступные стандартные квартиры и квартиры Golden Premium в обоих зданиях."
+        ],
+        [
+          "Масштаб",
+          "25 000 м² инфраструктуры комфорта и сообщества на планируемом участке 45 000 м²."
+        ],
+        [
+          "Расположение",
+          "59 Adlia Street: 5 минут до Нового бульвара, 7 минут до магазинов и аэропорта, 8 минут до Batumi Medical Center."
+        ],
+        [
+          "Арендный сценарий",
+          "По данным презентации проекта: в среднем 600 $/месяц при долгосрочной аренде, 80 $/ночь при краткосрочной и 90% возможной заполняемости."
+        ]
+      ],
+      "imageAlt": "Закат над фасадом резиденции",
+      "imageLabel": "59 Adlia Street",
+      "imageCaption": "Новый бульвар в 5 минутах.",
+      "expand": "Увеличить изображение"
+    },
+    "start": {
+      "eyebrow": "Начните с AIXCO",
+      "title": "ВАША НЕДВИЖИМОСТЬ REVERANCE НАЧИНАЕТСЯ ЗДЕСЬ.",
+      "lead": "Расскажите, что вы ищете. Мы покажем доступные апартаменты, которые лучше всего соответствуют бюджету и задаче."
     }
   }
 };

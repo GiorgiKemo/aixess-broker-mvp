@@ -116,7 +116,7 @@ describe("AIXESS navigation pages", () => {
     expect(document.body.innerHTML).not.toMatch(/marina-towers|reverance-hero-/);
   });
 
-  it("opens Project Reverance on the official two-tower render, without the public Golden Premium grid", () => {
+  it("opens Project Reverance on the official two-tower render", () => {
     window.localStorage.setItem("aixess-time-theme", "night");
     resetTimeThemeForTests();
     window.history.replaceState({}, "", "/#residences");
@@ -124,7 +124,6 @@ describe("AIXESS navigation pages", () => {
     const hero = document.querySelector(".lasha-page-hero-media");
     expect(hero.dataset.themePhoto).toBe("reverance-towers-night");
     expect(hero.getAttribute("alt")).toMatch(/Official render of the two Project Reverance towers/);
-    expect(screen.queryByText("GOLDEN PREMIUM APARTMENTS")).not.toBeInTheDocument();
     expect(screen.getByRole("heading", { name: "PROJECT FACTS" })).toBeInTheDocument();
     expect(screen.getByRole("heading", { name: "More Upfront. More Value." })).toBeInTheDocument();
     expect(screen.getByRole("contentinfo")).toHaveAttribute("id", "contact");
@@ -220,37 +219,41 @@ describe("AIXESS navigation pages", () => {
     expect(screen.queryByRole("heading", { name: /two buildings/i })).not.toBeInTheDocument();
   });
 
-  it("shows the Reverance project information: payment stages apart from the purchase benefit, qualified ownership, gallery and FAQ", () => {
+  it("shows everything from AIXCO's Reverance page: profile, opportunity, Golden Premium, payment, ownership, gallery and FAQ", () => {
     window.history.replaceState({}, "", "/#residences");
     render(<App />);
+    expect(screen.getByRole("heading", { name: "OWN PROPERTY ON BATUMI'S NEW BOULEVARD" })).toBeInTheDocument();
+    for (const point of ["FROM €45,000", "60%+ FINANCING"]) expect(screen.getByText(point)).toBeInTheDocument();
     const nav = screen.getByRole("navigation", { name: "Project contents" });
     expect(within(nav).getByRole("link", { name: "Payment structure" })).toHaveAttribute("href", "#residences/payment");
+    expect(within(nav).getByRole("link", { name: "Request a brief" }).getAttribute("href")).toMatch(/^mailto:info@aixess\.global/);
+    const opportunity = document.getElementById("opportunity");
+    expect(within(opportunity).getByRole("heading", { name: "A SELECTED ENTRY INTO BATUMI REAL ESTATE" })).toBeInTheDocument();
+    expect(within(opportunity).getByText("Available apartments")).toBeInTheDocument();
+    expect(within(opportunity).getByText(/90% potential occupancy/)).toBeInTheDocument();
+    expect(within(opportunity).getByRole("heading", { name: "GOLDEN PREMIUM APARTMENTS" })).toBeInTheDocument();
     const payment = document.getElementById("payment");
-    expect(within(payment).getByRole("heading", { name: "OWN YOUR APARTMENT. PAY IN STAGES." })).toBeInTheDocument();
     for (const stage of ["INITIAL PAYMENT", "DURING CONSTRUCTION", "AT COMPLETION"]) expect(within(payment).getByRole("heading", { name: stage })).toBeInTheDocument();
-    expect(within(payment).getByText(/not guaranteed/)).toBeInTheDocument();
+    expect(within(payment).getByText(/Minimal 60% of bank financing/)).toBeInTheDocument();
     expect(within(payment).getByRole("heading", { name: "More Upfront. More Value." })).toBeInTheDocument();
-    expect(within(document.getElementById("why-batumi")).getByText(/full year 2025/)).toBeInTheDocument();
-    // Unverified tax rates are not published.
-    expect(document.body.textContent).not.toMatch(/1% rental income tax|0% capital gains/i);
-    expect(screen.queryByText(/APARTMENT INTERIOR/)).not.toBeInTheDocument();
-    expect(screen.queryByText("Available apartments")).not.toBeInTheDocument();
-    const facts = screen.getByRole("heading", { name: "PROJECT FACTS" }).closest(".project-facts");
-    expect(within(facts).getByText("59 Adlia Street")).toBeInTheDocument();
-    expect(within(facts).getByText("25,000 m²")).toBeInTheDocument();
+    const ownership = document.getElementById("ownership");
+    for (const item of ["1% RENTAL INCOME TAX", "0% CAPITAL GAINS TAX AFTER 2 YEARS", "MINIMUM 60% FINANCING"]) expect(within(ownership).getByRole("heading", { name: item })).toBeInTheDocument();
+    expect(within(document.getElementById("residence")).getByRole("heading", { name: "SELECTED HIGHER FLOORS" })).toBeInTheDocument();
+    expect(within(document.getElementById("residence")).getAllByRole("button", { name: /^View amenity image/ })).toHaveLength(12);
     const gallery = document.getElementById("gallery");
     const tiles = within(gallery).getAllByRole("button", { name: /^Open image/ });
     expect(tiles).toHaveLength(9);
+    expect(within(gallery).getByText("APARTMENT INTERIOR")).toBeInTheDocument();
     fireEvent.click(tiles[0]);
     const dialog = gallery.querySelector("dialog");
-    expect(dialog).toBeInTheDocument();
     fireEvent.click(within(dialog).getByRole("button", { name: "Next image" }));
     expect(within(dialog).getByText("2 of 9")).toBeInTheDocument();
     fireEvent.click(within(dialog).getByRole("button", { name: "Close" }));
     expect(gallery.querySelector("dialog")).toBeNull();
     const faq = document.getElementById("faq");
     expect(faq.querySelectorAll("details")).toHaveLength(4);
-    expect(within(faq).getByText(/July 2028/)).toBeInTheDocument();
+    expect(within(faq).getByText("Target completion is July 2028.")).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: "YOUR REVERANCE PROPERTY STARTS HERE." })).toBeInTheDocument();
   });
 
   it("keeps the project page when a contents link is used", () => {

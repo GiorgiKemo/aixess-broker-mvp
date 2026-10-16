@@ -2,12 +2,15 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { useLanguage } from "../i18n.jsx";
 import { REVERANCE_INFO_COPY } from "../reverance-project-info-copy.js";
 import GALLERY_SIZES from "../data/project-gallery-sizes.json";
+import { GOLDEN_PREMIUM_APARTMENTS, GOLDEN_PREMIUM_SUMMARY } from "../data/goldenPremiumApartments.js";
+import { GOLDEN_PREMIUM_COPY } from "../golden-premium-copy.js";
+import { CONTACT } from "../contact-copy.js";
 import "./reverance-project.css";
 
 // Project Reverance information beneath the approved hero (Klem, 16 October 2026: "compare" the
 // AIXCO.Global v4 project page). Copy and its qualifications are in reverance-project-info-copy.js.
 
-export const PROJECT_SECTIONS = ["opportunity", "why-batumi", "residence", "payment", "ownership", "why-aixco", "gallery", "faq"];
+export const PROJECT_SECTIONS = ["opportunity", "why-batumi", "residence", "payment", "ownership", "why-aixco", "gallery", "faq", "approach"];
 
 const reducedMotion = () => typeof window !== "undefined" && window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
 
@@ -44,6 +47,99 @@ export function scrollToProjectSection(id, behavior) {
     heading.focus({ preventScroll: true });
   }
   return true;
+}
+
+// AIXCO's form posts to its own endpoint; AiXESS has no form destination, so "Request a brief" is
+// an email to the AiXESS address (see CONTACT).
+export function briefHref(label) {
+  return `mailto:${CONTACT.email}?subject=${encodeURIComponent(`AiXESS · Project Reverance: ${label}`)}`;
+}
+
+const goToExplorer = (event) => {
+  if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+  event.preventDefault();
+  document.getElementById("residence-explorer")?.scrollIntoView({ behavior: reducedMotion() ? "auto" : "smooth", block: "start" });
+};
+
+// AIXCO's hero copy and proof points, under the approved AiXESS hero.
+export function ProjectProfile() {
+  const { profile, briefCta, availabilityCta } = useProjectInfoCopy();
+  return (
+    <section className="rp-profile" aria-labelledby="rp-profile-title">
+      <p className="section-eyebrow">{profile.eyebrow}</p>
+      <h2 id="rp-profile-title">{profile.title}</h2>
+      <p className="rp-lead">{profile.lead}</p>
+      <ul className="rp-proof">{profile.proof.map((point) => <li key={point}>{point}</li>)}</ul>
+      <p className="rp-profile-meta"><span>{profile.address}</span><span>{profile.completion}</span></p>
+      <div className="rp-actions">
+        <a className="button button-primary" href="#residence-explorer" onClick={goToExplorer}>{availabilityCta}<span aria-hidden="true">→</span></a>
+        <a className="button button-ghost" href={briefHref(briefCta)}>{briefCta}</a>
+      </div>
+      <p className="rp-note">{profile.note}</p>
+    </section>
+  );
+}
+
+function GoldenPremiumPanel({ onSelectApartment }) {
+  const { locale } = useLanguage();
+  const copy = GOLDEN_PREMIUM_COPY[locale] || GOLDEN_PREMIUM_COPY.en;
+  const money = (value) => new Intl.NumberFormat(locale, { style: "currency", currency: "EUR", maximumFractionDigits: 0 }).format(value);
+  return (
+    <section className="golden-premium-panel" aria-labelledby="golden-premium-title">
+      <div className="golden-premium-heading">
+        <p className="golden-premium-badge">{copy.badge}</p>
+        <h3 id="golden-premium-title">{copy.title}</h3>
+        <p>{copy.intro}</p>
+      </div>
+      <div className="golden-premium-summary" aria-label={copy.title}>
+        <div><strong>{GOLDEN_PREMIUM_SUMMARY.total}</strong><span>{copy.units}</span></div>
+        <div><strong>{GOLDEN_PREMIUM_SUMMARY.available}</strong><span>{copy.available}</span></div>
+        <div><strong>{GOLDEN_PREMIUM_SUMMARY.reserved}</strong><span>{copy.reserved}</span></div>
+      </div>
+      <div className="golden-premium-grid">
+        {GOLDEN_PREMIUM_APARTMENTS.map((unit) => (
+          <button className={`golden-premium-unit is-${unit.status}`} type="button" key={unit.code} onClick={() => onSelectApartment?.(unit.code)} aria-label={`${copy.viewDetails} ${unit.code}`}>
+            <div><strong>{unit.code}</strong><span>{unit.area.toLocaleString(locale, { maximumFractionDigits: 1 })} m²</span><span className="golden-premium-arrow" aria-hidden="true">↗</span></div>
+            <span className="golden-premium-status">{unit.status === "available" ? copy.available : copy.reserved}</span>
+            <small>{copy.referencePrice}: {money(unit.price)}</small>
+          </button>
+        ))}
+      </div>
+      <p className="golden-premium-note">{copy.note}</p>
+    </section>
+  );
+}
+
+// AIXCO's opportunity block, with its availability snapshot, highlights and Golden Premium list.
+export function AixcoOpportunity({ onSelectApartment }) {
+  const { opportunity, gallery } = useProjectInfoCopy();
+  const [open, setOpen] = useState(false);
+  const trigger = useRef(null);
+  const items = [[opportunity.imageLabel, "sunset", opportunity.imageAlt]];
+  return (
+    <section className="rp-section rp-opportunity" aria-labelledby="rp-opportunity-title">
+      <div className="rp-split">
+        <div>
+          <Heading id="rp-opportunity-title" eyebrow={opportunity.eyebrow} title={opportunity.title} lead={opportunity.lead} />
+          <p className="rp-body rp-body-tight">{opportunity.availability}</p>
+          <dl className="rp-stats rp-stats-4">
+            {opportunity.stats.map(([value, label]) => <div key={label}><dt>{label}</dt><dd>{value}</dd></div>)}
+          </dl>
+          <ul className="rp-highlights">
+            {opportunity.highlights.map(([label, value]) => <li key={label}><strong>{label}:</strong> {value}</li>)}
+          </ul>
+        </div>
+        <figure className="rp-opportunity-media">
+          <button type="button" ref={trigger} onClick={() => setOpen(true)} aria-label={`${opportunity.expand}: ${opportunity.imageAlt}`}>
+            <ProjectImage slug="sunset" alt="" sizes="(max-width: 899px) calc(100vw - 2.5rem), 42vw" />
+          </button>
+          <figcaption><span>{opportunity.imageLabel}</span><strong>{opportunity.imageCaption}</strong></figcaption>
+        </figure>
+      </div>
+      <GoldenPremiumPanel onSelectApartment={onSelectApartment} />
+      {open && <Lightbox items={items} index={0} onClose={() => { setOpen(false); window.setTimeout(() => trigger.current?.focus({ preventScroll: true }), 0); }} onStep={() => {}} labels={gallery} />}
+    </section>
+  );
 }
 
 export function ProjectSubnav() {
@@ -90,6 +186,7 @@ export function ProjectSubnav() {
             <a href={`#residences/${id}`} onClick={go(id)} aria-current={active === id ? "true" : undefined}>{copy.nav[id]}</a>
           </li>
         ))}
+        <li className="rp-subnav-action"><a href={briefHref(copy.briefCta)}>{copy.briefCta}</a></li>
       </ul>
     </nav>
   );
@@ -109,17 +206,22 @@ export function WhyBatumi() {
   const { batumi } = useProjectInfoCopy();
   return (
     <section className="rp-section rp-mist" id="why-batumi" aria-labelledby="why-batumi-title">
-      <Heading id="why-batumi-title" eyebrow={batumi.eyebrow} title={batumi.title} lead={batumi.lead} />
+      <header className="rp-heading">
+        <p className="section-eyebrow">{batumi.eyebrow}</p>
+        <h2 id="why-batumi-title" className="rp-statement">{batumi.title}</h2>
+      </header>
       <dl className="rp-stats rp-stats-5">
         {batumi.stats.map(([value, label]) => <div key={label}><dt>{label}</dt><dd>{value}</dd></div>)}
       </dl>
-      <p className="rp-note">{batumi.note}</p>
+      <p className="rp-note">{batumi.source} {batumi.note}</p>
     </section>
   );
 }
 
 export function WhyReverance() {
-  const { residence } = useProjectInfoCopy();
+  const { residence, gallery } = useProjectInfoCopy();
+  const [open, setOpen] = useState(null);
+  const triggers = useRef({});
   return (
     <section className="rp-section" id="residence" aria-labelledby="residence-title">
       <Heading id="residence-title" eyebrow={residence.eyebrow} title={residence.title} />
@@ -130,14 +232,28 @@ export function WhyReverance() {
       </ul>
       <h3 className="rp-subtitle">{residence.amenitiesTitle}</h3>
       <ul className="rp-amenities">
-        {residence.amenities.map(([title, body, slug, alt]) => (
+        {residence.amenities.map(([title, body, images]) => (
           <li key={title}>
-            <ProjectImage slug={slug} alt={alt} sizes="(max-width: 699px) calc(100vw - 2.5rem), (max-width: 1099px) 46vw, 23vw" />
             <h4>{title}</h4>
             <p>{body}</p>
+            <ul className="rp-amenity-images">
+              {images.map(([slug, caption, alt], index) => (
+                <li key={slug}>
+                  <button type="button" ref={(node) => { triggers.current[`${title}-${index}`] = node; }} onClick={() => setOpen({ title, index })} aria-label={`${residence.viewAmenity}: ${caption}`}>
+                    <ProjectImage slug={slug} alt="" sizes={index === 0 ? "(max-width: 699px) calc(100vw - 2.5rem), (max-width: 1099px) 46vw, 23vw" : "(max-width: 699px) 50vw, (max-width: 1099px) 23vw, 12vw"} />
+                  </button>
+                  <span>{caption}</span>
+                </li>
+              ))}
+            </ul>
           </li>
         ))}
       </ul>
+      {open && (() => {
+        const [, , images] = residence.amenities.find(([title]) => title === open.title);
+        const items = images.map(([slug, caption, alt]) => [caption, slug, alt]);
+        return <Lightbox items={items} index={open.index} onStep={(delta) => setOpen((current) => ({ ...current, index: (current.index + delta + items.length) % items.length }))} onClose={() => { const key = `${open.title}-${open.index}`; setOpen(null); window.setTimeout(() => triggers.current[key]?.focus({ preventScroll: true }), 0); }} labels={gallery} />;
+      })()}
       <p className="rp-note">{residence.renderNote}</p>
     </section>
   );
@@ -203,7 +319,7 @@ export function WhyAixco() {
         </ul>
       </div>
 
-      <div className="rp-block">
+      <div className="rp-block rp-anchor" id="approach">
         <p className="section-eyebrow">{aixco.journeyEyebrow}</p>
         <h3 className="rp-block-title">{aixco.journeyTitle}</h3>
         <p className="rp-lead">{aixco.journeyLead}</p>
@@ -242,11 +358,11 @@ function Lightbox({ items, index, onClose, onStep, labels }) {
     >
       <figure>
         <img src={image.full} srcSet={image.srcSet} sizes="100vw" width={image.width} height={image.height} alt={alt} decoding="async" />
-        <figcaption><strong>{label}</strong><span>{alt}</span><span className="rp-lightbox-count">{index + 1} {labels.of} {items.length}</span></figcaption>
+        <figcaption><strong>{label}</strong><span>{alt}</span>{items.length > 1 && <span className="rp-lightbox-count">{index + 1} {labels.of} {items.length}</span>}</figcaption>
       </figure>
       <button className="rp-lightbox-close" type="button" onClick={onClose} aria-label={labels.close} autoFocus>×</button>
-      <button className="rp-lightbox-step rp-lightbox-prev" type="button" onClick={() => onStep(-1)} aria-label={labels.previous}>←</button>
-      <button className="rp-lightbox-step rp-lightbox-next" type="button" onClick={() => onStep(1)} aria-label={labels.next}>→</button>
+      {items.length > 1 && <button className="rp-lightbox-step rp-lightbox-prev" type="button" onClick={() => onStep(-1)} aria-label={labels.previous}>←</button>}
+      {items.length > 1 && <button className="rp-lightbox-step rp-lightbox-next" type="button" onClick={() => onStep(1)} aria-label={labels.next}>→</button>}
     </dialog>
   );
 }
@@ -265,7 +381,7 @@ export function ProjectGallery() {
   const step = useCallback((delta) => setOpen((current) => (current === null ? null : (current + delta + items.length) % items.length)), [items.length]);
   return (
     <section className="rp-section" id="gallery" aria-labelledby="gallery-title">
-      <Heading id="gallery-title" eyebrow={gallery.eyebrow} title={gallery.title} />
+      <Heading id="gallery-title" eyebrow={gallery.eyebrow} title={gallery.title} lead={gallery.lead} />
       <ul className="rp-gallery">
         {items.map(([label, slug, alt], index) => (
           <li key={slug}>
@@ -276,7 +392,6 @@ export function ProjectGallery() {
           </li>
         ))}
       </ul>
-      <p className="rp-note">{gallery.note}</p>
       {open !== null && <Lightbox items={items} index={open} onClose={close} onStep={step} labels={gallery} />}
     </section>
   );
@@ -294,6 +409,19 @@ export function ProjectFaq() {
             <p>{answer}</p>
           </details>
         ))}
+      </div>
+    </section>
+  );
+}
+
+export function StartWithAixco() {
+  const { start, briefCta, availabilityCta } = useProjectInfoCopy();
+  return (
+    <section className="rp-section rp-start" aria-labelledby="rp-start-title">
+      <Heading id="rp-start-title" eyebrow={start.eyebrow} title={start.title} lead={start.lead} />
+      <div className="rp-actions">
+        <a className="button button-primary" href={briefHref(briefCta)}>{briefCta}<span aria-hidden="true">→</span></a>
+        <a className="button button-ghost" href="#residence-explorer" onClick={goToExplorer}>{availabilityCta}</a>
       </div>
     </section>
   );

@@ -5,7 +5,7 @@ import { LanguageProvider, LANGUAGE_OPTIONS, useLanguage, localizeFieldValidatio
 import { NetworkSections, PurchaseBenefit } from "./components/NetworkSections.jsx";
 import { REVERANCE_PROJECT_COPY } from "./reverance-project-copy.js";
 import { ProjectShowcase } from "./components/ProjectShowcase.jsx";
-import { Ownership, PaymentStructure, ProjectFaq, ProjectGallery, ProjectSubnav, WhyAixco, WhyBatumi, WhyReverance, useProjectSectionFromHash } from "./components/ReveranceProjectInfo.jsx";
+import { AixcoOpportunity, Ownership, PaymentStructure, ProjectFaq, ProjectGallery, ProjectProfile, ProjectSubnav, StartWithAixco, WhyAixco, WhyBatumi, WhyReverance, useProjectSectionFromHash } from "./components/ReveranceProjectInfo.jsx";
 import { AdvantagePageContent, BrokerAccessPageContent } from "./components/LashaNetworkPages.jsx";
 import { HomeAbout, HomeAccess, HomeHero, HomeMetrics, HomeStartingPoints, LashaPageHero } from "./components/LashaHomeSections.jsx";
 import { TimeThemeMenu } from "./components/TimeThemeMenu.jsx";
@@ -494,6 +494,7 @@ function BrokerToolsPage({ currentPage, menuOpen, onToggleMenu, onNavigate, onOp
 
 function ResidencesPage({ currentPage, menuOpen, onToggleMenu, onNavigate, onOpenModal }) {
   const { t, locale } = useLanguage();
+  const [requestedApartment, setRequestedApartment] = useState(null);
   useProjectSectionFromHash();
   return (
     <div className="route-page lasha-page residences-page">
@@ -509,9 +510,13 @@ function ResidencesPage({ currentPage, menuOpen, onToggleMenu, onNavigate, onOpe
       <main className="page-main">
         {/* Project information from AIXCO.Global's Reverance page (Klem, 16 October 2026). The
             contents bar sticks only within this block, so it never covers the explorer. */}
+        <ProjectProfile />
         <div className="rp-contents">
           <ProjectSubnav />
-          <div className="rp-anchor" id="opportunity"><NetworkSections sections={["opportunity"]} /></div>
+          <div className="rp-anchor" id="opportunity">
+            <NetworkSections sections={["opportunity"]} />
+            <AixcoOpportunity onSelectApartment={(code) => setRequestedApartment({ code })} />
+          </div>
           <WhyBatumi />
           <WhyReverance />
           <PaymentStructure><PurchaseBenefit /></PaymentStructure>
@@ -519,9 +524,10 @@ function ResidencesPage({ currentPage, menuOpen, onToggleMenu, onNavigate, onOpe
           <WhyAixco />
           <ProjectGallery />
           <ProjectFaq />
+          <StartWithAixco />
         </div>
         <Suspense fallback={<div className="residence-explorer-loader" role="status">{t("preparingInteractive")}</div>}>
-          <ResidenceExplorer liveInventoryTitle onBrokerAccess={() => onOpenModal("register")} />
+          <ResidenceExplorer liveInventoryTitle requestedApartment={requestedApartment} onBrokerAccess={() => onOpenModal("register")} />
         </Suspense>
       </main>
     </div>

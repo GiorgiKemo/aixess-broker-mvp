@@ -3,7 +3,6 @@ import { NETWORK_COPY } from "../network-copy.js";
 import { CLIENT_PDF_COPY } from "../client-pdf-copy.js";
 import { getWorkbookAvailableCount } from "../data/reveranceInventory.js";
 import { REVERANCE_PROJECT_COPY } from "../reverance-project-copy.js";
-import { REVERANCE_INFO_COPY } from "../reverance-project-info-copy.js";
 import "./network.css";
 
 export const CALCULATOR_IDS = ["payment", "yield", "finance", "growth"];
@@ -18,14 +17,6 @@ function Cards({ rows }) {
 
 // AIXCO.Global's "Current project" facts (Klem, 14 October 2026), in place of the public Golden
 // Premium price grid, which now lives in the broker system only.
-// Location and scale from AIXCO.Global's project data join the facts (16 October 2026): location
-// first, scale before the residences row.
-function withLocationAndScale(copy, info) {
-  const facts = [...copy.facts];
-  facts.splice(Math.max(0, facts.length - 2), 0, info.scale);
-  return { ...copy, facts: [info.location, ...facts] };
-}
-
 function ProjectFacts({ copy }) {
   return (
     <div className="project-facts" aria-labelledby="project-facts-title">
@@ -89,7 +80,7 @@ export function NetworkSections({ sections }) {
       case "commercial": content = <><Heading copy={c.commercial} /><p className="network-emphasis">{c.commercial[3]}</p></>; break;
       case "eligibility": content = <><Heading copy={c.eligibility} /><Cards rows={c.people} /><p className="network-emphasis">{c.network}</p>{actions()}</>; break;
       case "why": content = <><Heading copy={c.why} /><Cards rows={c.reasons} /></>; break;
-      case "opportunity": content = <><Heading copy={c.opportunity.slice(0, 2)} /><p className="network-emphasis">{c.opportunity[2]}</p><p className="network-lead">{c.opportunity[3]}</p><dl className="network-stats">{[number(2), number(getWorkbookAvailableCount()), number(15), money(45000, "EUR")].map((value, i) => <div key={c.facts[i]}><dd>{value}</dd><dt>{c.facts[i]}</dt></div>)}</dl><ProjectFacts copy={withLocationAndScale(REVERANCE_PROJECT_COPY[locale] || REVERANCE_PROJECT_COPY.en, REVERANCE_INFO_COPY[locale] || REVERANCE_INFO_COPY.en)} /><p className="network-emphasis">{c.start}</p><a className="button button-primary" href={workwiseBrokerUrl("login")}>{c.inside}<span aria-hidden="true">→</span></a><p className="network-note">{c.terms}</p></>; break;
+      case "opportunity": content = <><Heading copy={c.opportunity.slice(0, 2)} /><p className="network-emphasis">{c.opportunity[2]}</p><p className="network-lead">{c.opportunity[3]}</p><dl className="network-stats">{[number(2), number(getWorkbookAvailableCount()), number(15), money(45000, "EUR")].map((value, i) => <div key={c.facts[i]}><dd>{value}</dd><dt>{c.facts[i]}</dt></div>)}</dl><ProjectFacts copy={REVERANCE_PROJECT_COPY[locale] || REVERANCE_PROJECT_COPY.en} /><p className="network-emphasis">{c.start}</p><a className="button button-primary" href={workwiseBrokerUrl("login")}>{c.inside}<span aria-hidden="true">→</span></a><p className="network-note">{c.terms}</p></>; break;
       case "advantage": content = <><Heading copy={c.advantage} /><Cards rows={c.advantages} /></>; break;
       case "process": content = <><Heading copy={c.process} /><ol className="network-steps">{c.steps.map(([title, copy], i) => <li key={title}><span className="network-number" aria-hidden="true">{String(i + 1).padStart(2, "0")}</span><h3>{title}</h3><p>{copy}</p></li>)}</ol></>; break;
       case "tools": content = <><Heading copy={c.tools} /><div className="network-grid">{c.calculators.map(([title, copy], i) => <article className="network-card" key={title}><span className="network-number" aria-hidden="true">{String(i + 1).padStart(2, "0")}</span><h3>{title}</h3><p>{copy}</p><a className="text-link" href={`#broker-tools?tool=${CALCULATOR_IDS[i]}`}>{c.openCalculator}<span aria-hidden="true">↗</span></a></article>)}</div><a className="button button-primary" href="#broker-tools">{c.openCalculators}<span aria-hidden="true">→</span></a><p className="network-note"><a href="#broker-tools"><strong>{c.clientPdf}</strong></a> — {CLIENT_PDF_COPY[locale].ready}</p></>; break;
