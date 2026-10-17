@@ -521,15 +521,11 @@ html:root[data-time-theme='night'] .it-ink .it-card:not(.it-card-light) {
   --l-ink: #ecebe6;
   --l-paper: #141414;
 }
-/* Text on the pale night accent is ink, and the explorer copy follows the off-white ink. */
+/* Text on the pale night accent is ink, and the explorer copy follows the off-white ink. Solid
+   primary buttons are cobalt with white text at night (see the night button rules above). */
 html:root[data-time-theme='night'] :is(
-  body .modal-panel .button-primary,
-  body .cookie-actions button,
   .lasha-page .calculator-tabs button[aria-selected="true"],
-  :is(.lasha-home, .lasha-page) .residence-choice-field button.is-active,
-  :is(.lasha-home, .lasha-page) .mobile-register,
-  .mobile-nav.lasha-menu .mobile-register,
-  :is(.lasha-home, .lasha-page) .mobile-dock-open
+  :is(.lasha-home, .lasha-page) .residence-choice-field button.is-active
 ) {
   color: #000000;
 }
