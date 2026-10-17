@@ -1,21 +1,43 @@
-/* "Current project in Batumi" section, following Lasha's Figma frame:
-   large render with a thumbnail strip, four metric tiles and a dark project card. */
-.lasha-home .project-showcase { padding: calc(47.6 * var(--u)) calc(70 * var(--u)) calc(22 * var(--u)); }
+/* "Current project in Batumi" section, following Lasha's Figma frame (HOME page, 1440 wide;
+   Kemo, 17 October 2026: "has to look exactly like me in figma"). From 900px every size and
+   position is the frame's, in frame pixels (--u): the title, figures and project name are
+   Morganite (the hero's "AiXESS Hero" face, --l-poster) at Figma's 156 / 90 / 80px with 1%
+   tracking, body text Inter Medium 13 / 16px at 1.08 leading. The render with its thumbnail strip
+   and the right column (figures 319px over the 514 × 374 project card) both run from frame y 2245
+   to y 2938. Display lines use the hero's trick so their box starts at the capitals: line-height
+   0.75 puts the baseline 0.625em down and 0.074em of padding brings the cap top (0.699em) to 0. */
+.lasha-home .project-showcase { padding: calc(48 * var(--u)) calc(70 * var(--u)) calc(22 * var(--u)); }
+
+.lasha-home .project-showcase-head .lasha-eyebrow {
+  font-size: max(calc(16 * var(--u)), 0.75rem);
+  font-weight: 500;
+  letter-spacing: 0;
+  line-height: 1.08;
+  text-transform: none;
+}
+
+.lasha-home .project-showcase {
+  --title-size: calc(156 * var(--u));
+}
 
 .lasha-home .project-showcase h2 {
-  margin-top: calc(6.6 * var(--u));
-  font-size: var(--v4-h2);
-  line-height: 0.88;
-  letter-spacing: -0.012em;
+  margin-top: calc(20 * var(--u));
+  padding-top: 0.074em;
+  font-family: var(--l-poster);
+  font-size: var(--title-size);
+  font-weight: 800;
+  line-height: 0.75;
+  letter-spacing: 0.01em;
   white-space: nowrap;
 }
 
 .lasha-home .project-feature {
   display: grid;
-  grid-template-columns: calc(746 * var(--u)) calc(515 * var(--u));
+  grid-template-columns: calc(746 * var(--u)) calc(514 * var(--u));
   column-gap: calc(39 * var(--u));
   align-items: start;
-  margin-top: calc(29.1 * var(--u));
+  /* 35px from the title's capitals to the render, less the line box's 0.125em below them. */
+  margin-top: calc(35 * var(--u) - 0.125 * var(--title-size, calc(156 * var(--u))));
 }
 
 .lasha-home .project-feature-gallery { display: grid; row-gap: calc(17 * var(--u)); min-width: 0; }
@@ -73,99 +95,119 @@
 .lasha-home .project-thumbs button:focus-visible { outline: 2px solid var(--l-ink); outline-offset: -2px; }
 .lasha-home .project-thumbs img { display: block; width: 100%; height: 100%; object-fit: cover; }
 
-.lasha-home .project-feature-side { display: grid; grid-template-rows: auto 1fr; min-width: 0; }
+.lasha-home .project-feature-side { display: grid; grid-template-rows: auto auto; min-width: 0; }
 
-/* 2 × 2 figures: both columns share the same inset from their left rule and both rows the
-   same top and bottom padding, so €5K/€45K sit as far below the top rule as 60%+/12% sit
-   below the middle one, with no slack left under the second row (Klem, 12 October 2026). */
+/* 2 × 2 figures as drawn: rules at frame y 2245, 2400 and 2564 (the card), the column rule at
+   x 1101 (246px in, not centred), figures 32px and 83px in from their left rules, their capitals
+   17px under the top rule and 21px under the middle one, labels 20px below the capitals. */
 .lasha-home .project-facts {
-  --fact-inset: calc(34 * var(--u));
-  --fact-pad: calc(24 * var(--u));
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  grid-auto-rows: auto;
+  grid-template-columns: calc(246 * var(--u)) minmax(0, 1fr);
+  grid-template-rows: calc(155 * var(--u)) calc(164 * var(--u));
   border-top: 1px solid var(--l-line);
 }
 
 .lasha-home .project-facts > div {
   min-width: 0;
-  padding: var(--fact-pad) calc(16 * var(--u)) var(--fact-pad) var(--fact-inset);
+  padding: calc(17 * var(--u)) calc(12 * var(--u)) 0 calc(32 * var(--u));
 }
 
-.lasha-home .project-facts > div:nth-child(even) { border-left: 1px solid var(--l-line); }
+.lasha-home .project-facts > div:nth-child(even) { padding-left: calc(83 * var(--u)); border-left: 1px solid var(--l-line); }
 .lasha-home .project-facts > div:nth-child(-n + 2) { border-bottom: 1px solid var(--l-line); }
+.lasha-home .project-facts > div:nth-child(n + 3) { padding-top: calc(21 * var(--u)); }
 
 .lasha-home .project-facts dd {
+  padding-top: 0.074em;
   color: var(--l-blue);
-  font-family: var(--l-num-tall);
-  font-size: var(--v4-benefit);
-  font-weight: 700;
-  line-height: 0.85;
+  font-family: var(--l-poster);
+  font-size: calc(90 * var(--u));
+  font-weight: 800;
+  line-height: 0.75;
+  letter-spacing: 0.01em;
   white-space: nowrap;
 }
 
-.lasha-home .project-facts dd .lasha-plus { font-size: 0.6em; vertical-align: 0.27em; }
+/* Figma sets 60%+ in one size. */
+.lasha-home .project-facts dd .lasha-plus { margin-left: 0; font-family: inherit; font-weight: inherit; font-size: inherit; vertical-align: baseline; }
 
 .lasha-home .project-facts dt {
-  margin-top: calc(1.3 * var(--u));
-  max-width: max(calc(135 * var(--u)), 9.5rem);
+  /* 20px under the capitals, less the 0.125em below them in the figure's line box. */
+  margin: calc(20 * var(--u) - 0.125 * 90 * var(--u)) 0 0 calc(2 * var(--u));
+  max-width: max(calc(135 * var(--u)), 6.5rem);
   overflow-wrap: anywhere;
-  /* Follows the theme: a fixed #505050 was 2.6:1 on the true-black night page. */
+  /* Figma's #505050, following the theme: a fixed grey was 2.6:1 on the true-black night page. */
   color: color-mix(in srgb, var(--l-ink, #171a1d) 74%, transparent);
-  font-size: var(--v4-small);
-  line-height: 1.45;
+  font-size: max(calc(13 * var(--u)), 0.75rem);
+  font-weight: 500;
+  line-height: 1.08;
 }
 
+/* The card: 514 × 374, name 35px under its top edge (frame y 2599), body at y 2676 (447 wide),
+   the rule at y 2763 (444 wide), the location line at y 2780 and the 217 × 69 buttons at y 2832,
+   37px above the bottom edge. */
 .lasha-home .project-card {
   display: grid;
   justify-items: start;
-  min-height: calc(374 * var(--u));
-  padding: calc(32.4 * var(--u)) calc(34 * var(--u)) calc(37 * var(--u)) calc(34 * var(--u));
+  align-content: start;
+  height: calc(374 * var(--u));
+  padding: calc(35 * var(--u)) calc(32 * var(--u)) 0;
   background: var(--l-ink);
   color: var(--l-paper);
 }
 
 .lasha-home .project-card h3 {
-  font-size: var(--v4-h3-xl);
-  line-height: 0.95;
-  letter-spacing: 0;
+  padding-top: 0.074em;
+  font-family: var(--l-poster);
+  font-size: calc(80 * var(--u));
+  font-weight: 800;
+  line-height: 0.75;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
 }
 
 .lasha-home .project-card p {
-  margin-top: calc(16.6 * var(--u));
-  max-width: calc(412 * var(--u));
-  font-size: var(--v4-text);
-  line-height: 1.65;
+  max-width: calc(447 * var(--u));
+  margin-top: calc(21 * var(--u) - 0.125 * 80 * var(--u));
+  font-size: max(calc(16 * var(--u)), 0.8125rem);
+  font-weight: 500;
+  line-height: 1.08;
 }
 
 .lasha-home .project-card .project-card-meta {
   justify-self: stretch;
-  margin-top: calc(19.2 * var(--u));
-  padding-top: calc(16 * var(--u));
+  margin-right: calc(4 * var(--u));
+  /* The body keeps Figma's four-line height, so the rule stays at frame y 2763. */
+  margin-top: 0;
+  padding-top: calc(17 * var(--u));
   border-top: 1px solid #858787;
-  font-size: var(--v4-label);
-  font-weight: 600;
-  letter-spacing: 0.18em;
-  line-height: 1.4;
+  letter-spacing: 0;
 }
+
+.lasha-home .project-card > p:not(.project-card-meta) { min-height: calc(87 * var(--u)); }
 
 .lasha-home .project-card-actions {
   display: flex;
-  gap: calc(14.5 * var(--u));
-  margin-top: calc(36 * var(--u));
+  gap: calc(14 * var(--u));
+  margin-top: calc(35 * var(--u));
 }
 
 .lasha-home .project-card-actions .lasha-button {
   width: calc(217 * var(--u));
   height: calc(69 * var(--u));
   min-height: 22px;
-  padding: 0 calc(10 * var(--u)) 0 calc(14 * var(--u));
+  padding: 0 calc(10 * var(--u)) 0 calc(13 * var(--u));
+  font-size: max(calc(14 * var(--u)), 0.66rem);
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+  gap: calc(10 * var(--u));
 }
 
-.lasha-home .project-card-actions .lasha-button-dark { width: calc(216 * var(--u)); }
-.lasha-home .project-card-actions .lasha-arrow { width: calc(26 * var(--u)); }
-/* Russian КАЛЬКУЛЯТОР / СМОТРЕТЬ ПРОЕКТ are wider than the frame's buttons at 900-1100px. */
-html[lang="ru"] .lasha-home .project-card-actions .lasha-button { letter-spacing: 0.06em; }
+.lasha-home .project-card-actions .lasha-arrow { flex-shrink: 1; width: calc(25 * var(--u)); min-width: 0.7rem; }
+/* Longer translations (PROJEKT ENTDECKEN, RAZIŠČITE PROJEKT, СМОТРЕТЬ ПРОЕКТ) close up to fit the
+   frame's 217px buttons; the Cyrillic title face is wider than Morganite. */
+html:is([lang="de"], [lang="sl"], [lang="ru"]) .lasha-home .project-card-actions .lasha-button { font-size: max(calc(14 * var(--u)), 0.6rem); letter-spacing: 0.01em; }
+html[lang="ru"] .lasha-home .project-showcase { --title-size: calc(138 * var(--u)); }
 
 .project-upcoming {
   display: grid;
@@ -211,11 +253,15 @@ html[lang="ru"] .lasha-home .project-card-actions .lasha-button { letter-spacing
   .project-thumbs button { transition: none; }
 }
 
-/* Phones and small tablets: the Batumi section restacks into one readable column. */
+/* Phones and small tablets: the Batumi section restacks into one readable column, in the same
+   faces as the frame. */
 @media (max-width: 899px) {
   .lasha-home .project-showcase { padding: 3.4rem 1.25rem 2.6rem; }
-  .lasha-home .project-showcase h2 { margin-top: 0.6rem; white-space: normal; }
-  .lasha-home .project-feature { grid-template-columns: minmax(0, 1fr); row-gap: 1.6rem; margin-top: 1.5rem; }
+  .lasha-home .project-showcase-head .lasha-eyebrow { font-size: 0.9rem; }
+  .lasha-home .project-showcase,
+  html[lang="ru"] .lasha-home .project-showcase { --title-size: min(4.6rem, 19vw); }
+  .lasha-home .project-showcase h2 { margin-top: 0.8rem; white-space: normal; }
+  .lasha-home .project-feature { grid-template-columns: minmax(0, 1fr); row-gap: 1.6rem; margin-top: 1.2rem; }
   .lasha-home .project-feature-gallery { row-gap: 0.5rem; }
   .lasha-home .project-feature-media { height: auto; aspect-ratio: 4 / 3; }
   .lasha-home .project-feature-expand { right: 0.75rem; bottom: 0.75rem; width: 2.5rem; height: 2.5rem; }
@@ -224,15 +270,20 @@ html[lang="ru"] .lasha-home .project-card-actions .lasha-button { letter-spacing
   .lasha-home .project-thumbs button { flex-basis: 4.6rem; height: 3.1rem; }
   .lasha-home .project-thumbs button.is-active { box-shadow: inset 0 0 0 2px var(--l-blue); }
   .lasha-home .project-thumbs button.is-active img { padding: 3px; }
-  .lasha-home .project-facts { --fact-inset: 1.1rem; --fact-pad: 1.1rem; }
-  .lasha-home .project-facts > div { padding-right: 0.75rem; }
-  .lasha-home .project-facts > div:nth-child(odd) { padding-left: 0; }
-  .lasha-home .project-facts dt { max-width: none; margin-top: 0.35rem; }
-  .lasha-home .project-card { min-height: 0; margin-top: 0.4rem; padding: 1.8rem 1.25rem 1.6rem; }
-  .lasha-home .project-card p { max-width: none; margin-top: 0.8rem; }
+  .lasha-home .project-facts { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: none; }
+  .lasha-home .project-facts > div,
+  .lasha-home .project-facts > div:nth-child(n + 3) { padding: 1.1rem 0.75rem 1.1rem 0; }
+  .lasha-home .project-facts > div:nth-child(even) { padding-left: 1.1rem; }
+  .lasha-home .project-facts dd { font-size: min(4rem, 17vw); }
+  .lasha-home .project-facts dt { max-width: none; margin: 0.45rem 0 0; font-size: 0.875rem; line-height: 1.3; }
+  .lasha-home .project-card { height: auto; margin-top: 0.4rem; padding: 1.8rem 1.25rem 1.6rem; }
+  .lasha-home .project-card h3 { font-size: min(3.4rem, 15vw); white-space: normal; }
+  .lasha-home .project-card p { max-width: none; margin-top: 0.9rem; font-size: 1rem; line-height: 1.4; }
+  .lasha-home .project-card > p:not(.project-card-meta) { min-height: 0; }
   .lasha-home .project-card .project-card-meta { margin-top: 1.1rem; padding-top: 0.9rem; }
   .lasha-home .project-card-actions { flex-wrap: wrap; gap: 0.6rem; margin-top: 1.4rem; justify-self: stretch; }
   .lasha-home .project-card-actions .lasha-button,
-  .lasha-home .project-card-actions .lasha-button-dark { flex: 1 1 9rem; width: auto; height: 3.3rem; padding: 0 0.9rem 0 1rem; }
-  .lasha-home .project-card-actions .lasha-arrow { width: 1.6rem; }
+  html:is([lang="de"], [lang="sl"], [lang="ru"]) .lasha-home .project-card-actions .lasha-button { flex: 1 1 9rem; width: auto; height: 3.3rem; padding: 0 0.9rem 0 1rem; font-size: var(--v4-btn); letter-spacing: 0.08em; white-space: normal; }
+  .lasha-home .project-card-actions .lasha-button { gap: 0.8rem; }
+  .lasha-home .project-card-actions .lasha-arrow { width: 1.6rem; flex-shrink: 0; }
 }
