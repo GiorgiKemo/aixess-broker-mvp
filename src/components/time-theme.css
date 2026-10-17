@@ -129,20 +129,27 @@ html:root[data-time-theme='afternoon'] :is(.lasha-home .project-card, .lasha-pag
   background: #3c5a41;
 }
 
-/* ...and at night they turn off-white with graphite text, as v4's buttons do on its dark sections
-   and over its hero photos. */
+/* ...and at night they are a solid cobalt with white text, lightening on hover (Kemo, 17 October
+   2026: the off-white buttons read as "always white in dark mode" and their hover was invisible). */
+html:root[data-time-theme='night'] {
+  --l-night-button: #2557d6;
+  --l-night-button-hover: #4a76e8;
+}
+
 html:root[data-time-theme='night'] :is(.lasha-hero, .lasha-page-hero) .site-header .button-primary,
-html:root[data-time-theme='night'] :is(.lasha-home .project-card, .lasha-page .network-backing, .lasha-page .network-client, .it-ink, .mobile-nav.lasha-menu, .floor-modal, .mobile-residence-dock) :is(.lasha-button-primary, .button-primary, .mobile-register, .mobile-dock-open) {
-  border-color: #f7f7f4;
-  background: #f7f7f4;
-  color: #171a1d;
+html:root[data-time-theme='night'] :is(.lasha-home .project-card, .lasha-page .network-backing, .lasha-page .network-client, .it-ink, .mobile-nav.lasha-menu, .floor-modal, .mobile-residence-dock) :is(.lasha-button-primary, .button-primary, .mobile-register, .mobile-dock-open),
+html:root[data-time-theme='night'] body :is(.lasha-button-primary, .button-primary, .register-button, .mobile-register, .mobile-dock-open, .cookie-actions button) {
+  border-color: var(--l-night-button);
+  background: var(--l-night-button);
+  color: #fff;
 }
 
 html:root[data-time-theme='night'] :is(.lasha-hero, .lasha-page-hero) .site-header .button-primary:hover,
-html:root[data-time-theme='night'] :is(.lasha-home .project-card, .lasha-page .network-backing, .lasha-page .network-client, .it-ink, .mobile-nav.lasha-menu, .floor-modal, .mobile-residence-dock) :is(.lasha-button-primary, .button-primary, .mobile-register, .mobile-dock-open):hover {
-  border-color: #dce7f0;
-  background: #dce7f0;
-  color: #171a1d;
+html:root[data-time-theme='night'] :is(.lasha-home .project-card, .lasha-page .network-backing, .lasha-page .network-client, .it-ink, .mobile-nav.lasha-menu, .floor-modal, .mobile-residence-dock) :is(.lasha-button-primary, .button-primary, .mobile-register, .mobile-dock-open):hover,
+html:root[data-time-theme='night'] body :is(.lasha-button-primary, .button-primary, .register-button, .mobile-register, .mobile-dock-open, .cookie-actions button):hover {
+  border-color: var(--l-night-button-hover);
+  background: var(--l-night-button-hover);
+  color: #fff;
 }
 
 /* Colour bands follow the theme's text colour (v4: graphite on sage in the afternoon,
@@ -403,16 +410,16 @@ html:root[data-time-theme='night'] :is(.lasha-hero h1, .lasha-hero-copy p, .lash
 html:root[data-time-theme='night'] .lasha-page-hero .lasha-eyebrow { color: var(--l-blue-light); }
 html:root[data-time-theme='afternoon'] .lasha-page-hero .lasha-eyebrow { color: #2f4733; }
 html:root[data-time-theme='night'] .lasha-page-hero .it-hero-actions .button-ghost { border-color: #f7f7f4; color: #f7f7f4; }
-/* Over the dark night photos the hero is an ink ground, so its solid accent button uses the
-   theme's accent for ink grounds (--l-blue-light), as v4 does on its dark sections. */
+/* Over the dark night photos the solid accent button is the same night cobalt as the other
+   primary buttons (Kemo, 17 October 2026), not a pale tint. */
 html:root[data-time-theme='night'] :is(.lasha-hero-cta, .lasha-page-hero .it-hero-actions .button-primary) {
-  border-color: var(--l-blue-light);
-  background: var(--l-blue-light);
-  color: #171a1d;
+  border-color: var(--l-night-button);
+  background: var(--l-night-button);
+  color: #fff;
 }
 html:root[data-time-theme='night'] :is(.lasha-hero-cta, .lasha-page-hero .it-hero-actions .button-primary):hover {
-  border-color: color-mix(in srgb, var(--l-blue-light) 70%, #ffffff);
-  background: color-mix(in srgb, var(--l-blue-light) 70%, #ffffff);
+  border-color: var(--l-night-button-hover);
+  background: var(--l-night-button-hover);
 }
 html:root[data-time-theme='night'] :is(.lasha-hero-cta, .lasha-page-hero .it-hero-actions .button):focus-visible { outline-color: #f7f7f4; }
 html:root[data-time-theme='night'] .lasha-hero-frame::after {

@@ -170,6 +170,19 @@
   background: var(--l-sky);
 }
 
+/* From 900px the frame keeps Figma's 1440 × 992 proportions but never stands taller than the
+   screen (Kemo, 17 October 2026: "why main page doesnt have everything fit on one viewport?"): on a
+   window wider than 1440:992 the frame is the screen's height and the copy is scaled by height
+   instead of width, so the title, subtitle and Explore investments all show on the first screen. */
+@media (min-width: 900px) {
+  .lasha-hero-frame {
+    --u: min(100cqi / 1440, 100svh / 992);
+    /* An explicit width, or the aspect ratio would narrow the frame to match the capped height. */
+    width: 100%;
+    max-height: 100svh;
+  }
+}
+
 .lasha-hero-media {
   position: absolute;
   inset: 0;
