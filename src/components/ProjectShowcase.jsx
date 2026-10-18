@@ -46,7 +46,10 @@ export function ProjectShowcase({ onNavigate, upcoming = UPCOMING_PROJECTS }) {
                 className={index === active ? "is-active" : ""}
                 aria-pressed={index === active}
                 aria-label={copy.galleryImage.replace("{{n}}", String(index + 1))}
-                onClick={() => setActive(index)}
+                onClick={(event) => {
+                  setActive(index);
+                  event.currentTarget.scrollIntoView?.({ block: "nearest", inline: "nearest" });
+                }}
               >
                 <img src={item.thumb} alt="" loading="lazy" decoding="async" />
               </button>

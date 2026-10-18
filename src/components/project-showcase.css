@@ -71,8 +71,12 @@
 
 .lasha-home .project-thumbs::-webkit-scrollbar { display: none; }
 
+/* The thumbnails share the render's width, so the last one (and its selected outline) is never cut
+   off at the strip's edge (Kemo, 18 October 2026). */
 .lasha-home .project-thumbs button {
-  flex: 0 0 calc(100 * var(--u));
+  flex: 1 1 0;
+  min-width: 0;
+  max-width: calc(100 * var(--u));
   height: calc(67 * var(--u));
   padding: 0;
   border: 0;
@@ -255,7 +259,8 @@ html:is([lang="de"], [lang="sl"], [lang="ru"]) .lasha-home .project-card-actions
   .lasha-home .project-feature-expand { right: 0.75rem; bottom: 0.75rem; width: 2.5rem; height: 2.5rem; }
   .lasha-home .project-feature-expand svg { width: 0.9rem; }
   .lasha-home .project-thumbs { gap: 0.4rem; }
-  .lasha-home .project-thumbs button { flex-basis: 4.6rem; height: 3.1rem; }
+  /* Seven thumbnails don't fit a phone: the strip scrolls, and a tapped one scrolls fully into view. */
+  .lasha-home .project-thumbs button { flex: 0 0 4.6rem; max-width: none; height: 3.1rem; }
   .lasha-home .project-thumbs button.is-active { box-shadow: inset 0 0 0 2px var(--l-blue); }
   .lasha-home .project-thumbs button.is-active img { padding: 3px; }
   .lasha-home .project-facts { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: none; }
