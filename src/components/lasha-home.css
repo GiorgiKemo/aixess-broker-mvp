@@ -575,21 +575,40 @@ html[lang="ru"] .lasha-hero h1 > span { word-spacing: 0.14em; }
   padding-right: calc(70 * var(--u));
 }
 
-.lasha-access-copy { min-width: 0; padding: calc(27.8 * var(--u)) var(--access-gap) 0 calc(71 * var(--u)); }
+/* Title, count and label sit exactly as in Lasha's frame (Kemo, 18 October 2026: "in figma texts are
+   placed so that its aligned with buttons"): all three end on one baseline, level with the bottom of
+   DOWNLOAD PROJECT MATERIALS (frame y 270 in the band), and the title and the count rise to y 83, just
+   under the top of REGISTER AS A BROKER. That needs Figma's own face, Morganite ExtraBold (the hero's
+   AiXESS Hero, with its Cyrillic fallback): AiXESS Head is too wide to reach that height in the
+   column. Every line box is its capitals, as in the hero: a 0.5em line puts the baseline at the box
+   bottom and 0.199em of padding reaches the 0.699em cap height. Frame sizes: title capitals 88px with
+   12px between the lines, 163 capitals 187px, label capitals 37px with 9px between the lines. */
+.lasha-access-copy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 0;
+  height: calc(270 * var(--u));
+  padding: calc(27.8 * var(--u)) var(--access-gap) 0 calc(71 * var(--u));
+}
 
 .lasha-access .lasha-eyebrow::after { content: none; }
 
 .lasha-access h2 {
   display: grid;
   justify-items: start;
-  margin-top: calc(9.7 * var(--u));
-  font-family: var(--l-narrow);
-  /* v4's closing call-to-action size; FittedHeading keeps it inside the frame column. */
-  font-size: var(--v4-closing);
-  letter-spacing: -0.012em;
-  line-height: 0.88;
+  /* Bottom of the column: a narrower FittedHeading size for a long translation keeps the baseline. */
+  margin-top: auto;
+  font-family: var(--l-poster);
+  font-size: calc(126 * var(--u));
+  font-weight: 800;
+  letter-spacing: 0;
+  line-height: 0.5;
   white-space: nowrap;
 }
+
+.lasha-access h2 > span { display: block; padding-top: 0.199em; line-height: 0.5; }
+.lasha-access h2 > span + span { margin-top: calc(12 / 126 * 1em); }
 
 .lasha-access-count,
 .lasha-access-actions { position: relative; }
@@ -605,33 +624,45 @@ html[lang="ru"] .lasha-hero h1 > span { word-spacing: 0.14em; }
   content: "";
 }
 
-/* The label's last line sits on the number's baseline, as in Lasha's frame (Kemo, 18 October
-   2026). Both boxes end together (flex-end); AiXESS Head's baseline is 0.2em above the bottom of a
-   line-height 1 box (0.11em at the phone's 0.82) and 0.175em above a line-height 0.95 one, so the
-   label lifts by the difference. */
 .lasha-home .lasha-access-count {
-  --count-size: calc(200 * var(--u));
   display: flex;
-  align-self: start;
   align-items: flex-end;
-  gap: calc(15 * var(--u));
-  padding: calc(24 * var(--u)) var(--access-gap) 0;
+  gap: calc(23 * var(--u));
+  height: calc(270 * var(--u));
+  padding: 0 var(--access-gap);
 }
 
 .lasha-access-count strong {
+  padding-top: 0.199em;
   color: var(--l-blue);
-  font-family: var(--l-narrow);
-  font-size: var(--count-size);
-  font-weight: 400;
-  line-height: 1;
+  font-family: var(--l-poster);
+  font-size: calc(187 / 0.699 * var(--u));
+  font-weight: 800;
+  line-height: 0.5;
 }
 
+/* Russian takes the wider Cyrillic cut: НАЧИНАЕТСЯ ЗДЕСЬ breaks into two lines so the three-line title
+   still spans the frame's 188px of capitals (82px capitals' size), and the label closes up to match
+   the Latin label's width. */
+html[lang="ru"] .lasha-access h2 { font-size: calc(82 * var(--u)); }
+html[lang="ru"] .lasha-access h2 > span:last-child { width: min-content; white-space: normal; }
+/* A wrapped line needs a real line pitch (capitals plus the 12px gap, 0.794em); the padding and margins
+   keep the box on the capitals and the baseline, as above. */
+html[lang="ru"] .lasha-access h2 > span { padding-top: 0.052em; margin-bottom: -0.147em; line-height: 0.794; }
+html[lang="ru"] .lasha-access h2 > span + span { margin-top: 0; }
+html[lang="ru"] .lasha-access h2 { line-height: 0.794; }
+html[lang="ru"] .lasha-access-count span { font-size: calc(30 / 0.699 * var(--u)); }
+
+/* Two lines 46px apart (0.868em); the last line box ends 0.184em under its baseline, so the label
+   drops by that much to put its baseline on the count's. */
 .lasha-access-count span {
-  max-width: calc(190 * var(--u));
-  margin-bottom: calc(var(--count-drop, 0.2) * var(--count-size) - 0.175em);
-  font-family: var(--l-narrow);
-  font-size: min(var(--v4-claim), calc(46 * var(--u)));
-  line-height: 0.95;
+  /* One word a line, as drawn, so the box is no wider than its text. */
+  width: min-content;
+  margin-bottom: -0.184em;
+  font-family: var(--l-poster);
+  font-size: calc(37 / 0.699 * var(--u));
+  font-weight: 800;
+  line-height: 0.868;
   text-transform: uppercase;
 }
 
@@ -639,8 +670,9 @@ html[lang="ru"] .lasha-hero h1 > span { word-spacing: 0.14em; }
   display: grid;
   align-content: start;
   justify-items: end;
-  row-gap: calc(53.5 * var(--u));
-  padding: calc(64 * var(--u)) 0 0 var(--access-gap);
+  /* REGISTER at frame y 72 to 142, DOWNLOAD at 200 to 270, where the texts end. */
+  row-gap: calc(58 * var(--u));
+  padding: calc(72 * var(--u)) 0 0 var(--access-gap);
 }
 
 .lasha-access-actions .lasha-button {
@@ -649,7 +681,7 @@ html[lang="ru"] .lasha-hero h1 > span { word-spacing: 0.14em; }
   gap: 1rem;
   /* German "PROJEKTUNTERLAGEN HERUNTERLADEN" is wider than the frame's button: wrap, never spill. */
   white-space: normal;
-  min-height: max(calc(69 * var(--u)), 22px);
+  min-height: max(calc(70 * var(--u)), 22px);
   padding: 0 calc(21 * var(--u)) 0 calc(31 * var(--u));
 }
 
@@ -890,9 +922,6 @@ html[lang="ru"] .lasha-hero h1 > span { word-spacing: 0.14em; }
   :is(.lasha-home, .lasha-page) .mobile-floor-chip svg { color: #6f9bff; }
 }
 
-/* Slovenian "RAZPOLOŽLJIVE" is the longest single word beside the 163 count. */
-.lasha-home:lang(sl) .lasha-access-count span { font-size: min(var(--v4-claim), calc(38 * var(--u))); }
-.lasha-home:is(:lang(ru), :lang(pl)) .lasha-access-count span { max-width: calc(220 * var(--u)); font-size: min(var(--v4-claim), calc(40 * var(--u))); }
 
 /* Residence dialog and explorer states: headlines in the shared headline face on every public page. */
 :is(.lasha-home, .lasha-page) :is(.floor-modal-header h2, .unit-detail h3, .inventory-intro h3, .explorer-error h3) {
@@ -1020,13 +1049,15 @@ html[lang="ru"] .lasha-hero h1 > span { word-spacing: 0.14em; }
   /* Broker access: headline, count, then full-width actions. */
   .lasha-access { grid-template-columns: minmax(0, 1fr); height: auto; padding: 0 0 3.2rem; }
   .lasha-access-copy { padding: 3.2rem 1.25rem 0; }
-  .lasha-access h2 { margin-top: 0.7rem; }
+  .lasha-access-copy { height: auto; }
+  .lasha-access h2 { margin-top: 0.9rem; font-size: min(5.6rem, 24vw); }
   .lasha-access-count::before,
   .lasha-access-actions::before { content: none; }
-  .lasha-home .lasha-access-count { --count-size: min(8.5rem, 36vw); --count-drop: 0.11; gap: 0.8rem; padding: 1.4rem 1.25rem 0; }
-  .lasha-access-count strong { line-height: 0.82; }
-  .lasha-access-count span,
-  .lasha-home:is(:lang(sl), :lang(ru), :lang(pl)) .lasha-access-count span { max-width: 10rem; font-size: min(var(--v4-claim), 7vw); line-height: 0.95; }
+  .lasha-home .lasha-access-count { gap: 0.8rem; height: auto; padding: 1.6rem 1.25rem 0; }
+  .lasha-access-count strong { font-size: min(10rem, 42vw); }
+  .lasha-access-count span { font-size: min(2.6rem, 9vw); }
+  html[lang="ru"] .lasha-access h2 { font-size: min(4.4rem, 19vw); }
+  html[lang="ru"] .lasha-access-count span { font-size: min(2.2rem, 7.5vw); }
   .lasha-access-actions { justify-items: stretch; row-gap: 0.75rem; padding: 2rem 1.25rem 0; }
   .lasha-access-actions .lasha-button { width: 100%; height: 3.5rem; padding: 0 1.1rem 0 1.25rem; }
   .lasha-access-actions .lasha-arrow { width: 2.4rem; }
