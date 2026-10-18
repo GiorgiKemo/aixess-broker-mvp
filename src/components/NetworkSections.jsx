@@ -70,7 +70,7 @@ export function NetworkSections({ sections }) {
   }[locale];
   const number = (value) => new Intl.NumberFormat(locale).format(value);
   const percent = (value) => new Intl.NumberFormat(locale, { style: "percent", maximumFractionDigits: 1 }).format(value);
-  const money = (value, currency) => new Intl.NumberFormat(locale, { style: "currency", currency, maximumFractionDigits: 1, notation: "compact" }).format(value);
+  const money = (value, currency) => new Intl.NumberFormat(locale, { style: "currency", currency, minimumFractionDigits: 0, maximumFractionDigits: 1, notation: "compact" }).format(value);
   const workwiseBrokerUrl = (type) => `https://workw.com/realestate/aixco/${type === "register" ? "broker-signup" : "broker-login"}?lang=${encodeURIComponent(locale)}`;
   const actions = (full = false) => <div className="network-actions"><a className="button button-primary" href={workwiseBrokerUrl("register")}>{full ? c.requestFull : c.request}</a><a className="button button-ghost" href={workwiseBrokerUrl("login")}>{full ? c.already : c.signIn}</a></div>;
   return sections.map((section) => {
