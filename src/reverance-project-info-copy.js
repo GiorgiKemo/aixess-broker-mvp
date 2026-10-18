@@ -342,7 +342,7 @@ export const REVERANCE_INFO_COPY = {
           [
             [
               "entrance",
-              "Bepflanzter Eingangsbereich",
+              "Bepflanzter Eingangs\u00adbereich",
               "Visualisierung des begrünten Eingangsbereichs von Reverance"
             ],
             [
@@ -352,7 +352,7 @@ export const REVERANCE_INFO_COPY = {
             ],
             [
               "night-arrival",
-              "Nächtlicher Eingangsbereich",
+              "Nächtlicher Eingangs\u00adbereich",
               "Visualisierung des begrünten Ankunftsbereichs von Reverance"
             ]
           ]
@@ -557,7 +557,7 @@ export const REVERANCE_INFO_COPY = {
             ],
             [
               "indoor-pool-wide",
-              "Strefa wypoczynkowa przy basenie",
+              "Strefa wypoczyn\u00adkowa przy basenie",
               "Wizualizacja wewnętrznego basenu Reverance"
             ],
             [

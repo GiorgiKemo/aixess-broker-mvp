@@ -111,10 +111,9 @@ export function WhyReverance() {
       <Heading id="residence-title" eyebrow={residence.eyebrow} title={residence.title} />
       <h3 className="rp-subtitle">{residence.amenitiesTitle}</h3>
       <ul className="rp-amenities">
-        {residence.amenities.map(([title, body, images]) => (
+        {residence.amenities.map(([title, , images]) => (
           <li key={title}>
             <h4>{title}</h4>
-            <p>{body}</p>
             <ul className="rp-amenity-images">
               {images.map(([slug, caption, alt], index) => (
                 <li key={slug}>
