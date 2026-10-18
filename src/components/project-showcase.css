@@ -149,8 +149,9 @@
   display: grid;
   justify-items: start;
   align-content: start;
-  height: calc(374 * var(--u));
-  padding: calc(35 * var(--u)) calc(32 * var(--u)) 0;
+  /* Grows only where a long translation needs more lines near 900px. */
+  min-height: calc(374 * var(--u));
+  padding: calc(35 * var(--u)) calc(32 * var(--u)) calc(37 * var(--u));
   background: var(--l-ink);
   color: var(--l-paper);
 }
@@ -188,7 +189,7 @@
 .lasha-home .project-card-actions {
   display: flex;
   gap: calc(14 * var(--u));
-  margin-top: calc(35 * var(--u));
+  margin-top: calc(34 * var(--u));
 }
 
 .lasha-home .project-card-actions .lasha-button {
@@ -276,7 +277,7 @@ html[lang="ru"] .lasha-home .project-showcase { --title-size: calc(138 * var(--u
   .lasha-home .project-facts > div:nth-child(even) { padding-left: 1.1rem; }
   .lasha-home .project-facts dd { font-size: min(4rem, 17vw); }
   .lasha-home .project-facts dt { max-width: none; margin: 0.45rem 0 0; font-size: 0.875rem; line-height: 1.3; }
-  .lasha-home .project-card { height: auto; margin-top: 0.4rem; padding: 1.8rem 1.25rem 1.6rem; }
+  .lasha-home .project-card { min-height: 0; margin-top: 0.4rem; padding: 1.8rem 1.25rem 1.6rem; }
   .lasha-home .project-card h3 { font-size: min(3.4rem, 15vw); white-space: normal; }
   .lasha-home .project-card p { max-width: none; margin-top: 0.9rem; font-size: 1rem; line-height: 1.4; }
   .lasha-home .project-card > p:not(.project-card-meta) { min-height: 0; }
