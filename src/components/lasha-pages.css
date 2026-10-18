@@ -173,6 +173,9 @@
 }
 
 .lasha-page .network-section > * { max-width: 81.2rem; }
+/* One left edge: network.css centres these children, which pushed the heading, figures and facts
+   right of the copy and button on screens wider than the column (Kemo, 18 October 2026). */
+.lasha-page .network-section > * { margin-inline: 0; }
 
 .lasha-page .network-heading { margin-bottom: clamp(2rem, 4vw, 3.5rem); }
 

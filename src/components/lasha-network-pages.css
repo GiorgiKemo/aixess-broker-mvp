@@ -278,7 +278,7 @@
   grid-template-columns: minmax(0, 1fr) auto;
   column-gap: calc(70 * var(--u));
   align-items: center;
-  padding: calc(82 * var(--u)) var(--lnp-gutter) calc(86 * var(--u)) calc(67 * var(--u));
+  padding: calc(82 * var(--u)) var(--lnp-gutter);
 }
 
 .lnp-network h2 { font-size: var(--v4-h2); line-height: 0.88; }
@@ -289,7 +289,7 @@
   display: grid;
   grid-template-columns: calc(328 * var(--u)) calc(409 * var(--u)) minmax(0, 1fr);
   column-gap: calc(31 * var(--u));
-  padding-left: calc(70 * var(--u));
+  padding-left: var(--lnp-gutter);
 }
 
 .lnp-commercial-eyebrow {
@@ -329,7 +329,7 @@
 .lnp-process {
   display: grid;
   grid-template-columns: calc(441 * var(--u)) minmax(0, 1fr);
-  padding: calc(62 * var(--u)) 0 calc(60 * var(--u)) calc(69 * var(--u));
+  padding: calc(62 * var(--u)) 0 calc(60 * var(--u)) var(--lnp-gutter);
 }
 
 .lnp-process-eyebrow { color: var(--l-blue); font-size: var(--v4-lead); font-weight: 500; }
@@ -436,3 +436,13 @@
   .lnp-steps p { max-width: 20rem; font-size: 1rem; line-height: 1.4; }
 }
 
+
+/* The shared footer starts on the frame pages' own left edge (Advantage, Broker Access and the
+   homepage), not the other pages' gutter (Kemo, 18 October 2026: text must line up everywhere). */
+body:has(.lnp) .site-footer { --footer-gutter: calc(71 * min(100vw, 1920px) / 1440); }
+@media (min-width: 900px) {
+  body:has(.lasha-home) .site-footer { --footer-gutter: calc(70 * min(100vw, 1920px) / 1440); }
+}
+@media (max-width: 899px) {
+  body:has(.lnp) .site-footer { --footer-gutter: 1.25rem; }
+}
