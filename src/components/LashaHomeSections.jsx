@@ -5,6 +5,7 @@ import { NETWORK_COPY } from "../network-copy.js";
 import { LASHA_HOME_COPY } from "../lasha-home-copy.js";
 import { HOME_HERO_LINES } from "../project-showcase-copy.js";
 import { ThemedImage } from "./ThemedImage.jsx";
+import { ScrollDownCue } from "./ScrollDownCue.jsx";
 
 // Lasha's hairline arrows (traced from the Figma frame); sized by the parent's CSS.
 export function LashaArrow({ className = "lasha-arrow", length = 24 }) {
@@ -86,6 +87,7 @@ export function HomeHero({ children, onNavigate }) {
           {/* Opens the Project Reverance page itself (Klem, 16 October 2026), not a homepage section. */}
           <a className="lasha-hero-cta" href="#residences" onClick={routeLinkClick(onNavigate, "residences")}>{copy.heroCta}<LashaArrow length={24} /></a>
         </div>
+        <ScrollDownCue className="lasha-hero-scroll-cue" />
       </div>
     </section>
   );
@@ -174,7 +176,9 @@ function useHeroCopyFitsScreen(ref, locale) {
     const fit = () => {
       title.style.removeProperty("--hero-title-fit");
       if (!query.matches) return;
-      const limit = window.innerHeight - Math.min(24, window.innerHeight * 0.03);
+      // The scroll-down cue sits under the copy at the foot of the screen, so the copy stops above it.
+      const cue = hero.querySelector(":scope > .lasha-page-hero-cue");
+      const limit = window.innerHeight - (cue ? cue.offsetHeight + 8 : Math.min(24, window.innerHeight * 0.03));
       for (let pass = 0; pass < 4; pass += 1) {
         const last = Math.max(...Array.from(copy.children, (child) => child.getBoundingClientRect().bottom));
         const overflow = last - hero.getBoundingClientRect().top - limit;
@@ -226,6 +230,7 @@ export function LashaPageHero({ header, eyebrow, title, titleAs: Title = "h1", c
         {copy && <p className="lasha-page-hero-text">{copy}</p>}
         {children}
       </div>
+      <div className="lasha-page-hero-cue"><ScrollDownCue /></div>
     </section>
   );
 }

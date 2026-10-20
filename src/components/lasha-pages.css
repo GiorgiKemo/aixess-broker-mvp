@@ -16,7 +16,9 @@
 .lasha-page-hero {
   position: relative;
   display: flex;
-  min-height: clamp(34rem, 78vh, 48rem);
+  /* The hero fills the whole first screen, with no strip of the next section under the photo (Kemo,
+     20 October 2026); it still grows with long copy. A scroll-down cue sits at its foot. */
+  min-height: max(100svh, 34rem);
   flex-direction: column;
   overflow: hidden;
   background: var(--l-sky);
@@ -100,6 +102,14 @@
 }
 
 .lasha-page-hero .page-cta-row { margin-top: clamp(1.5rem, 2.6vw, 2.4rem); }
+
+/* The scroll-down cue: its own row under the copy, so the copy is centred above it and never runs under it. */
+.lasha-page-hero-cue {
+  display: flex;
+  flex: 0 0 auto;
+  justify-content: center;
+  padding: 0 var(--page-gutter) max(1.5rem, env(safe-area-inset-bottom, 0px));
+}
 
 /* From 900px the hero's copy fits the first screen of a short, wide window too (Kemo, 19 October
    2026: the Insights subtitle ran off the bottom of his screen). The title also follows the window's
@@ -547,7 +557,7 @@ body .modal-panel :is(button, input, a):focus-visible { outline-color: var(--l-b
 }
 
 @media (max-width: 767px) {
-  .lasha-page-hero { min-height: clamp(26rem, 68svh, 34rem); }
+  .lasha-page-hero { min-height: max(100svh, 26rem); }
   .lasha-page-hero-media { object-position: var(--hero-position-phone, 78% 30%); }
   .lasha-page-hero::before {
     background: linear-gradient(180deg, color-mix(in srgb, var(--l-wash-page) 10%, transparent) 0%, color-mix(in srgb, var(--l-wash-page) 74%, transparent) 30%, color-mix(in srgb, var(--l-wash-page) 86%, transparent) 50%, color-mix(in srgb, var(--l-wash-page) 88%, transparent) 100%);
@@ -568,7 +578,7 @@ body .modal-panel :is(button, input, a):focus-visible { outline-color: var(--l-b
 /* Broker Tools: design 1A Coastal Classic (Giorgi and the client, 14 October 2026). One
    continuous photo, the copy straight on its quiet sky and sea, the terrace building on the
    right; no panel, card or box. The same crop in every theme, so switching moves nothing. */
-.lasha-page-hero-coastal { min-height: clamp(36rem, 86svh, 52rem); }
+.lasha-page-hero-coastal { min-height: max(100svh, 36rem); }
 /* Wide enough for the two-line title of 1A at v4's full title size, still clear of the terrace. */
 .lasha-page-hero-coastal .lasha-page-hero-copy { max-width: min(100%, max(60rem, 66vw)); }
 /* From 900px the title stops just short of v4's 8vw, so ONE PLATFORM's two lines end before the
@@ -609,7 +619,7 @@ body .modal-panel :is(button, input, a):focus-visible { outline-color: var(--l-b
 .lasha-page-hero-towers {
   --towers-top: 5.4rem;
   --towers-sky: linear-gradient(90deg, #88add7 0%, #6f97c8 45%, #477ab3 100%);
-  min-height: clamp(36rem, calc(100vw * 1767 / 2985 + var(--towers-top)), max(100svh, 40rem));
+  min-height: max(100svh, 36rem);
   background: var(--towers-sky);
 }
 .lasha-page-hero-towers::before { content: none; }
@@ -651,6 +661,12 @@ body .modal-panel :is(button, input, a):focus-visible { outline-color: var(--l-b
 }
 @media (min-width: 600px) and (max-width: 899px), (min-width: 600px) and (max-aspect-ratio: 1/1) {
   .lasha-page-hero-towers .lasha-page-hero-media { aspect-ratio: 1.3; }
+}
+/* Portrait: the render grows to fill the screen above the copy, and the cue sits on the copy's ground. */
+@media (max-width: 899px) and (orientation: portrait), (max-aspect-ratio: 1/1) {
+  .lasha-page-hero-towers { min-height: 100svh; }
+  .lasha-page-hero-towers .lasha-page-hero-media { flex: 1 1 0; min-height: min(80vw, 46svh); max-height: none; aspect-ratio: auto; }
+  .lasha-page-hero-towers .lasha-page-hero-cue { background: var(--l-paper, #f4f4f1); }
 }
 
 /* Phone and tablet menu in Lasha's language (Kemo, 7 October 2026: the old black/orange

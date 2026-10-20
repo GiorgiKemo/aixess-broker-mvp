@@ -23,16 +23,17 @@ function stopGlide() {
 
 const easeInOutCubic = (p) => (p < 0.5 ? 4 * p * p * p : 1 - Math.pow(-2 * p + 2, 3) / 2);
 
-// v4's animateScrollTo(0): any wheel, touch, pointer or key input hands the scroll back to the visitor.
-export function scrollToPageTop() {
+// v4's animateScrollTo: any wheel, touch, pointer or key input hands the scroll back to the visitor.
+export function glideScrollTo(targetTop) {
   stopGlide();
   const startTop = window.scrollY;
-  if (startTop < 2) return;
+  const distance = targetTop - startTop;
+  if (Math.abs(distance) < 2) return;
   if (window.matchMedia?.("(prefers-reduced-motion: reduce)").matches) {
-    window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+    window.scrollTo({ top: targetTop, left: 0, behavior: "instant" });
     return;
   }
-  const duration = Math.min(1100, Math.max(700, startTop * 0.38));
+  const duration = Math.min(1100, Math.max(700, Math.abs(distance) * 0.38));
   const startTime = window.performance.now();
   const options = { capture: true, passive: true, once: true };
   window.addEventListener("wheel", stopGlide, options);
@@ -48,11 +49,15 @@ export function scrollToPageTop() {
   const step = (time) => {
     if (activeFrame === null) return;
     const progress = Math.min((time - startTime) / duration, 1);
-    window.scrollTo({ top: startTop * (1 - easeInOutCubic(progress)), left: 0, behavior: "instant" });
+    window.scrollTo({ top: startTop + distance * easeInOutCubic(progress), left: 0, behavior: "instant" });
     if (progress < 1) activeFrame = window.requestAnimationFrame(step);
     else stopGlide();
   };
   activeFrame = window.requestAnimationFrame(step);
+}
+
+export function scrollToPageTop() {
+  glideScrollTo(0);
 }
 
 function overlaps(a, b) {
