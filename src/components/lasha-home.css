@@ -295,7 +295,8 @@ html[lang="ru"] .lasha-hero h1 > span { word-spacing: 0.14em; }
 @media (min-width: 900px) {
   .lasha-hero-copy {
     top: var(--hero-header, 6.3rem);
-    bottom: 0;
+    /* Above the scroll-down cue at the photo's foot. */
+    bottom: 7.25rem;
     align-content: center;
   }
 }
@@ -995,7 +996,7 @@ html[lang="pl"] .lasha-access-count span { margin-bottom: -0.24em; line-height: 
     top: 5.5rem;
     right: 1.25rem;
     /* Clear of the scroll-down cue at the foot of the photo. */
-    bottom: 5.25rem;
+    bottom: 6.5rem;
     left: 1.25rem;
     align-content: center;
   }
@@ -1003,7 +1004,7 @@ html[lang="pl"] .lasha-access-count span { margin-bottom: -0.24em; line-height: 
      landscape screens its width is capped by the hero's own height minus the copy (about 20rem),
      and at 26rem on tablets so the subtitle stays on the sky; then 30% smaller (Kemo, 9 October 2026). */
   .lasha-home .lasha-hero h1[data-fitted-heading] {
-    width: calc(0.7 * min(100%, 26rem, calc((max(100svh, 36rem) - 23.25rem) / 0.92)));
+    width: calc(0.7 * min(100%, 26rem, calc((max(100svh, 36rem) - 24.5rem) / 0.92)));
   }
   .lasha-hero-copy p { margin-top: 1.5rem; max-width: 23rem; }
   /* Kemo, October 7: the blue text link was unreadable over the trees, so phones get a solid button. */
@@ -1112,5 +1113,5 @@ html[lang="pl"] .lasha-access-count span { margin-bottom: -0.24em; line-height: 
   }
   .lasha-hero-copy p { grid-area: 1 / 2; align-self: end; margin-top: 0; }
   .lasha-hero-cta { grid-area: 2 / 2; align-self: start; justify-self: start; margin-top: 1.1rem; }
-  .lasha-hero .lasha-hero-scroll-cue { right: 1.25rem; bottom: 1rem; left: auto; margin-inline: 0; }
+  .lasha-hero .lasha-hero-scroll-cue { right: calc(1.25rem - 12px); bottom: 1rem; left: auto; }
 }

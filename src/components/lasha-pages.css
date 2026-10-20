@@ -103,12 +103,13 @@
 
 .lasha-page-hero .page-cta-row { margin-top: clamp(1.5rem, 2.6vw, 2.4rem); }
 
-/* The scroll-down cue: its own row under the copy, so the copy is centred above it and never runs under it. */
+/* The scroll-down cue: its own row under the copy, so the copy is centred above it and never runs
+   under it, on the copy's left edge (the button's 12px side padding hangs into the gutter). */
 .lasha-page-hero-cue {
   display: flex;
   flex: 0 0 auto;
-  justify-content: center;
-  padding: 0 var(--page-gutter) max(1.5rem, env(safe-area-inset-bottom, 0px));
+  justify-content: flex-start;
+  padding: 0 var(--page-gutter) max(1.5rem, env(safe-area-inset-bottom, 0px)) calc(var(--page-gutter) - 12px);
 }
 
 /* From 900px the hero's copy fits the first screen of a short, wide window too (Kemo, 19 October

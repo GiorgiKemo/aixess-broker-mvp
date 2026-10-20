@@ -76,78 +76,116 @@ html:root[data-time-theme='night'] .scroll-top-button:focus-visible {
   .scroll-top-button:hover { translate: none; }
 }
 
-/* Scroll-down cue at the foot of every page hero (Kemo, 20 October 2026): the button above turned
-   over, the same square, theme blue, white chevron and ink hover, at 48px (56px from 768px). The
-   chevron drifts down a few pixels now and then, so it reads as "scroll"; reduced motion keeps it still. */
+/* Scroll-down cue at the foot of every page hero (Kemo, 20 October 2026: "something without
+   background and that animates"): a hairline whose light runs down it over and over, above a
+   chevron that nods in step, drawn straight on the photo in white (ink on paper grounds). Reduced
+   motion keeps both still. */
 .scroll-down-cue {
+  --cue-track: 44px;
   display: inline-flex;
-  width: 48px;
-  height: 48px;
+  width: 44px;
   flex: 0 0 auto;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  padding: 0;
-  border: 1px solid var(--l-blue, #2557d6);
-  border-radius: 0;
-  background: var(--l-blue, #2557d6);
-  color: #fff;
+  gap: 6px;
+  padding: 4px 0;
+  border: 0;
+  background: none;
+  color: var(--cue-color, #fff);
   cursor: pointer;
-  transition:
-    background-color 180ms cubic-bezier(0.22, 1, 0.36, 1),
-    border-color 180ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.scroll-down-cue svg { width: 20px; height: 20px; animation: scroll-down-cue-drift 2.4s cubic-bezier(0.45, 0, 0.55, 1) infinite; }
-
-@keyframes scroll-down-cue-drift {
-  0%, 55%, 100% { translate: 0 0; }
-  75% { translate: 0 3px; }
+.scroll-down-cue__track {
+  position: relative;
+  width: 2px;
+  height: var(--cue-track);
+  overflow: hidden;
+  background: color-mix(in srgb, currentColor 32%, transparent);
 }
 
-.scroll-down-cue:hover {
-  border-color: #171a1d;
-  background: #171a1d;
+.scroll-down-cue__bead {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 2px;
+  height: 18px;
+  background: currentColor;
+  animation: scroll-down-cue-run 2s cubic-bezier(0.65, 0, 0.35, 1) infinite;
 }
+
+@keyframes scroll-down-cue-run {
+  0% { transform: translateY(-18px); }
+  70%, 100% { transform: translateY(var(--cue-track)); }
+}
+
+.scroll-down-cue__chevron {
+  width: 20px;
+  height: 20px;
+  stroke-width: 2;
+  animation: scroll-down-cue-nod 2s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+}
+
+@keyframes scroll-down-cue-nod {
+  0%, 50% { transform: translateY(0); opacity: 0.7; }
+  68% { transform: translateY(4px); opacity: 1; }
+  100% { transform: translateY(0); opacity: 0.7; }
+}
+
+.scroll-down-cue:hover .scroll-down-cue__chevron { opacity: 1; }
 
 .scroll-down-cue:focus-visible {
-  outline: none;
-  box-shadow: 0 0 0 2px var(--l-paper, #f4f4f1), 0 0 0 4px color-mix(in srgb, var(--l-blue, #2557d6) 35%, transparent);
+  outline: 2px solid currentColor;
+  outline-offset: 4px;
 }
 
 @media (min-width: 768px) {
-  .scroll-down-cue { width: 56px; height: 56px; }
-  .scroll-down-cue svg { width: 24px; height: 24px; }
+  .scroll-down-cue { --cue-track: 56px; }
 }
 
-html:root[data-time-theme='night'] .scroll-down-cue {
-  border-color: var(--l-night-button);
-  background: var(--l-night-button);
-}
-
-html:root[data-time-theme='night'] .scroll-down-cue:hover {
-  border-color: var(--l-night-button-hover);
-  background: var(--l-night-button-hover);
-}
-
-html:root[data-time-theme='night'] .scroll-down-cue:focus-visible {
-  box-shadow: 0 0 0 2px #000, 0 0 0 4px color-mix(in srgb, var(--l-blue) 55%, transparent);
-}
-
-/* The homepage hero's copy is positioned in its photo, so the cue is too: bottom centre. */
+/* The homepage hero's copy is positioned in its photo, so the cue is too: at the photo's foot on
+   the copy's left edge. */
 .lasha-hero-scroll-cue {
   position: absolute;
   z-index: 3;
-  right: 0;
   bottom: max(1.5rem, env(safe-area-inset-bottom, 0px));
-  left: 0;
-  margin-inline: auto;
+  left: calc(70 * var(--u) - 12px);
 }
 
 @media (max-width: 899px) {
-  .lasha-hero-scroll-cue { bottom: max(1.25rem, env(safe-area-inset-bottom, 0px)); }
+  .lasha-hero-scroll-cue { bottom: max(1.25rem, env(safe-area-inset-bottom, 0px)); left: calc(1.25rem - 12px); }
+}
+
+/* Phones: the bottom-left corner of the Dubai photo is busy towers, so the cue takes the calmer
+   bottom-right (pixel contrast check, 20 October 2026); portrait tablets draw the photo taller and
+   keep the left edge. */
+@media (max-width: 599px) and (orientation: portrait) {
+  .lasha-hero-scroll-cue { right: calc(1.25rem - 12px); left: auto; }
+}
+
+/* White on the photos by night; by day and afternoon black, like the hero titles, where the photo's
+   foot is pale sea, sky or haze. The Reverance towers take the page ink where their copy stacks
+   on paper. Advantage and Broker Access use
+   their panel's text colour. Each was measured against the rendered photo in all three themes. */
+html:root:is([data-time-theme='day'], [data-time-theme='afternoon']) .lasha-page-hero .scroll-down-cue { --cue-color: #000; }
+@media (max-width: 899px), (max-aspect-ratio: 1/1) {
+  html:root:is([data-time-theme]) .lasha-page-hero-towers .scroll-down-cue { --cue-color: var(--l-ink, #171a1d); }
+}
+@media (min-width: 900px) {
+  html:root:is([data-time-theme='day'], [data-time-theme='afternoon']) .lasha-hero-scroll-cue { --cue-color: #000; }
+}
+/* Landscape phones: the cue sits bottom right on the skyline, black only by day. */
+@media (max-width: 1199px) and (orientation: landscape) and (max-height: 540px) {
+  html:root[data-time-theme='afternoon'] .lasha-hero-scroll-cue { --cue-color: #fff; }
+  html:root[data-time-theme='day'] .lasha-hero-scroll-cue { --cue-color: #fff; }
+}
+/* The Reverance towers' copy sits high on the sky, and the foot of the render is pale haze on the
+   left but the dark tower base and garden on the right, so on wide screens the cue sits there in white. */
+@media (min-width: 900px) and (min-aspect-ratio: 1/1) {
+  .lasha-page-hero-towers .lasha-page-hero-cue { justify-content: flex-end; padding-right: calc(var(--page-gutter) - 12px); }
+  html:root:is([data-time-theme]) .lasha-page-hero-towers .scroll-down-cue { --cue-color: #fff; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .scroll-down-cue { transition: none; }
-  .scroll-down-cue svg { animation: none; }
+  .scroll-down-cue__bead { animation: none; transform: translateY(calc(var(--cue-track) - 18px)); }
+  .scroll-down-cue__chevron { animation: none; opacity: 1; }
 }

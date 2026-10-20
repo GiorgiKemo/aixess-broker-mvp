@@ -105,17 +105,18 @@ function SplitHero({ header, eyebrow, title, body, action, media, aside, classNa
   return (
     <section ref={ref} className={`lnp-hero ${className}`}>
       {header}
-      <div className="lnp-hero-panel">
+      {/* The panel ends where the render starts on phones, and with the hero on wider screens. */}
+      <div className="lnp-hero-panel" data-scroll-cue-end>
         <p className="lasha-eyebrow lnp-eyebrow">{eyebrow}</p>
         <FittedHeading as="h1" className="lnp-hero-title">{title.map((line) => <span key={line}>{line}</span>)}</FittedHeading>
         <p className="lnp-hero-body">{body}</p>
         {action}
+        <ScrollDownCue className="lnp-hero-scroll-cue" />
       </div>
-      <div className="lnp-hero-media" data-scroll-cue-end>
+      <div className="lnp-hero-media">
         {media.family
           ? <ThemedImage family={media.family} defaultWidth={media.defaultWidth} sizes={media.sizes} style={{ "--lnp-position": media.position }} decoding="async" fetchPriority="high" />
           : <img src={image(`${media.src}-${media.width * 2}`)} srcSet={srcSet(media.src, media.width)} sizes={media.sizes} width={media.width} height={media.height} alt="" decoding="async" fetchPriority="high" />}
-        <ScrollDownCue className="lnp-hero-scroll-cue" />
       </div>
       {aside}
     </section>
