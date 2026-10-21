@@ -572,7 +572,7 @@ body .modal-panel :is(button, input, a):focus-visible { outline-color: var(--l-b
     background: linear-gradient(180deg, color-mix(in srgb, var(--l-wash-page) 10%, transparent) 0%, color-mix(in srgb, var(--l-wash-page) 74%, transparent) 30%, color-mix(in srgb, var(--l-wash-page) 86%, transparent) 50%, color-mix(in srgb, var(--l-wash-page) 88%, transparent) 100%);
   }
   /* The copy stands on the hero's foot, so it stops above the centred scroll-down cue. */
-  .lasha-page-hero-copy { margin-top: auto; margin-bottom: 0; padding-bottom: 6.75rem; }
+  .lasha-page-hero-copy { margin-top: auto; margin-bottom: 0; padding-bottom: 7.5rem; }
 }
 
 /* Over a photo the small eyebrow takes the theme's deeper accent, and below 1100px, where the
@@ -616,7 +616,7 @@ body .modal-panel :is(button, input, a):focus-visible { outline-color: var(--l-b
      over the sky, skyline and sea; the hero grows with the longest translation. */
   .lasha-page-hero-coastal { min-height: max(100lvh, 40rem); }
   /* The bottom padding keeps the note clear of the centred scroll-down cue on short phones. */
-  .lasha-page-hero-coastal .lasha-page-hero-copy { margin-block: auto; padding-top: 2rem; padding-bottom: 6.75rem; }
+  .lasha-page-hero-coastal .lasha-page-hero-copy { margin-block: auto; padding-top: 2rem; padding-bottom: 7.5rem; }
   /* The two title lines run on as one sentence, so ONE PLATFORM stays together on a narrow screen. */
   .lasha-page-hero-coastal .lasha-page-hero-title > span { display: inline; }
   .lasha-page-hero-coastal .lasha-page-hero-title > span + span::before { content: " "; }
