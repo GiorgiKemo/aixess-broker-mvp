@@ -45,7 +45,7 @@
   position: relative;
   display: grid;
   grid-template-columns: calc(656 * var(--u)) minmax(0, 1fr);
-  /* The whole first screen (Kemo, 20 October 2026); the panel's copy is centred under the header. */
+  /* The whole first screen (Kemo, 20 October 2026); the panel's copy keeps its place under the header. */
   min-height: max(calc(var(--lnp-header) + 600 * var(--u)), 100svh);
 }
 
@@ -71,7 +71,7 @@
 .lnp-hero-panel {
   position: relative;
   display: grid;
-  align-content: safe center;
+  align-content: start;
   justify-items: start;
   /* The bottom padding keeps the copy clear of the scroll-down cue at the panel's foot. */
   padding: calc(var(--lnp-header) + 44 * var(--u)) calc(70 * var(--u)) max(calc(52 * var(--u)), 8.5rem) var(--lnp-gutter);
@@ -100,8 +100,9 @@
 .lnp-hero-panel .lnp-button { margin-top: calc(42 * var(--u)); }
 
 .lnp-hero-media { position: relative; min-width: 0; overflow: hidden; background: var(--l-sky); }
-/* The scroll-down cue at the panel's foot, on the copy's left edge, in the panel's text colour. */
-.lnp-hero-scroll-cue { --cue-color: var(--l-on-field); position: absolute; bottom: max(1.5rem, env(safe-area-inset-bottom, 0px)); left: calc(var(--lnp-gutter) - 12px); }
+/* The scroll-down cue centred at the panel's foot (Kemo, 21 October 2026: "it has to be in middle"),
+   in the panel's text colour. */
+.lnp-hero-scroll-cue { --cue-color: var(--l-on-field); position: absolute; right: 0; bottom: max(1.5rem, env(safe-area-inset-bottom, 0px)); left: 0; margin-inline: auto; }
 
 .lnp-hero-media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: var(--lnp-position, 50% 100%); }
 

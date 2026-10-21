@@ -142,24 +142,19 @@ html:root[data-time-theme='night'] .scroll-top-button:focus-visible {
   .scroll-down-cue { --cue-track: 56px; }
 }
 
-/* The homepage hero's copy is positioned in its photo, so the cue is too: at the photo's foot on
-   the copy's left edge. */
+/* The homepage hero's copy is positioned in its photo, so the cue is too: centred at the photo's
+   foot (Kemo, 21 October 2026: "it has to be in middle"). */
 .lasha-hero-scroll-cue {
   position: absolute;
   z-index: 3;
+  right: 0;
   bottom: max(1.5rem, env(safe-area-inset-bottom, 0px));
-  left: calc(70 * var(--u) - 12px);
+  left: 0;
+  margin-inline: auto;
 }
 
 @media (max-width: 899px) {
-  .lasha-hero-scroll-cue { bottom: max(1.25rem, env(safe-area-inset-bottom, 0px)); left: calc(1.25rem - 12px); }
-}
-
-/* Phones: the bottom-left corner of the Dubai photo is busy towers, so the cue takes the calmer
-   bottom-right (pixel contrast check, 20 October 2026); portrait tablets draw the photo taller and
-   keep the left edge. */
-@media (max-width: 599px) and (orientation: portrait) {
-  .lasha-hero-scroll-cue { right: calc(1.25rem - 12px); left: auto; }
+  .lasha-hero-scroll-cue { bottom: max(1.25rem, env(safe-area-inset-bottom, 0px)); }
 }
 
 /* White on the photos by night; by day and afternoon black, like the hero titles, where the photo's
@@ -170,18 +165,17 @@ html:root:is([data-time-theme='day'], [data-time-theme='afternoon']) .lasha-page
 @media (max-width: 899px), (max-aspect-ratio: 1/1) {
   html:root:is([data-time-theme]) .lasha-page-hero-towers .scroll-down-cue { --cue-color: var(--l-ink, #171a1d); }
 }
+/* The homepage's centred cue lies on the city: black by day, white in the afternoon's darker grade. */
 @media (min-width: 900px) {
-  html:root:is([data-time-theme='day'], [data-time-theme='afternoon']) .lasha-hero-scroll-cue { --cue-color: #000; }
+  html:root[data-time-theme='day'] .lasha-hero-scroll-cue { --cue-color: #000; }
 }
-/* Landscape phones: the cue sits bottom right on the skyline, black only by day. */
+/* Landscape phones: the cue sits on the skyline, in white. */
 @media (max-width: 1199px) and (orientation: landscape) and (max-height: 540px) {
   html:root[data-time-theme='afternoon'] .lasha-hero-scroll-cue { --cue-color: #fff; }
   html:root[data-time-theme='day'] .lasha-hero-scroll-cue { --cue-color: #fff; }
 }
-/* The Reverance towers' copy sits high on the sky, and the foot of the render is pale haze on the
-   left but the dark tower base and garden on the right, so on wide screens the cue sits there in white. */
+/* The Reverance towers on wide screens: the cue sits on the render's dark tower base and garden, in white. */
 @media (min-width: 900px) and (min-aspect-ratio: 1/1) {
-  .lasha-page-hero-towers .lasha-page-hero-cue { justify-content: flex-end; padding-right: calc(var(--page-gutter) - 12px); }
   html:root:is([data-time-theme]) .lasha-page-hero-towers .scroll-down-cue { --cue-color: #fff; }
 }
 

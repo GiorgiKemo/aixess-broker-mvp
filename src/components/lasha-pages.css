@@ -103,14 +103,21 @@
 
 .lasha-page-hero .page-cta-row { margin-top: clamp(1.5rem, 2.6vw, 2.4rem); }
 
-/* The scroll-down cue: its own row under the copy, so the copy is centred above it and never runs
-   under it, on the copy's left edge (the button's 12px side padding hangs into the gutter). */
+/* The scroll-down cue, centred at the hero's foot (Kemo, 21 October 2026: "it has to be in middle").
+   It lies over the photo rather than taking a row, so the copy stays centred in the whole hero, where
+   it was before the cue (Kemo: the texts must not move up); useHeroCopyFitsScreen keeps the copy above it. */
 .lasha-page-hero-cue {
+  position: absolute;
+  z-index: 2;
+  right: 0;
+  bottom: 0;
+  left: 0;
   display: flex;
-  flex: 0 0 auto;
-  justify-content: flex-start;
-  padding: 0 var(--page-gutter) max(1.5rem, env(safe-area-inset-bottom, 0px)) calc(var(--page-gutter) - 12px);
+  justify-content: center;
+  padding-bottom: max(1.5rem, env(safe-area-inset-bottom, 0px));
+  pointer-events: none;
 }
+.lasha-page-hero-cue > .scroll-down-cue { pointer-events: auto; }
 
 /* From 900px the hero's copy fits the first screen of a short, wide window too (Kemo, 19 October
    2026: the Insights subtitle ran off the bottom of his screen). The title also follows the window's
@@ -563,7 +570,8 @@ body .modal-panel :is(button, input, a):focus-visible { outline-color: var(--l-b
   .lasha-page-hero::before {
     background: linear-gradient(180deg, color-mix(in srgb, var(--l-wash-page) 10%, transparent) 0%, color-mix(in srgb, var(--l-wash-page) 74%, transparent) 30%, color-mix(in srgb, var(--l-wash-page) 86%, transparent) 50%, color-mix(in srgb, var(--l-wash-page) 88%, transparent) 100%);
   }
-  .lasha-page-hero-copy { margin-top: auto; margin-bottom: 0; }
+  /* The copy stands on the hero's foot, so it stops above the centred scroll-down cue. */
+  .lasha-page-hero-copy { margin-top: auto; margin-bottom: 0; padding-bottom: 6.75rem; }
 }
 
 /* Over a photo the small eyebrow takes the theme's deeper accent, and below 1100px, where the
@@ -667,7 +675,7 @@ body .modal-panel :is(button, input, a):focus-visible { outline-color: var(--l-b
 @media (max-width: 899px) and (orientation: portrait), (max-aspect-ratio: 1/1) {
   .lasha-page-hero-towers { min-height: 100svh; }
   .lasha-page-hero-towers .lasha-page-hero-media { flex: 1 1 0; min-height: min(80vw, 46svh); max-height: none; aspect-ratio: auto; }
-  .lasha-page-hero-towers .lasha-page-hero-cue { background: var(--l-paper, #f4f4f1); }
+  .lasha-page-hero-towers { padding-bottom: 4.5rem; background: var(--l-paper, #f4f4f1); }
 }
 
 /* Phone and tablet menu in Lasha's language (Kemo, 7 October 2026: the old black/orange
