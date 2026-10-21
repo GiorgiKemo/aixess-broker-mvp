@@ -55,6 +55,12 @@
   box-sizing: border-box;
 }
 
+/* Full-screen heroes are as tall as the screen with the browser bars hidden (lvh), so no strip of
+   the next section shows when an iPhone's Safari bars collapse or float over the page (Kemo,
+   21 October 2026). Their copy and scroll-down cue keep to the part visible with the bars shown
+   (svh), so --hero-bar is the height the bars can cover at the foot. */
+:root { --hero-bar: calc(100lvh - 100svh); }
+
 html {
   min-width: 0;
   scroll-behavior: smooth;

@@ -100,7 +100,7 @@ html:root[data-time-theme='night'] .scroll-top-button:focus-visible {
   width: 2px;
   height: var(--cue-track);
   overflow: hidden;
-  background: color-mix(in srgb, currentColor 32%, transparent);
+  background: color-mix(in srgb, currentColor 55%, transparent);
 }
 
 .scroll-down-cue__bead {
@@ -119,8 +119,8 @@ html:root[data-time-theme='night'] .scroll-top-button:focus-visible {
 }
 
 .scroll-down-cue__chevron {
-  width: 20px;
-  height: 20px;
+  width: 24px;
+  height: 24px;
   stroke-width: 2;
   animation: scroll-down-cue-nod 2s cubic-bezier(0.65, 0, 0.35, 1) infinite;
 }
@@ -148,13 +148,13 @@ html:root[data-time-theme='night'] .scroll-top-button:focus-visible {
   position: absolute;
   z-index: 3;
   right: 0;
-  bottom: max(1.5rem, env(safe-area-inset-bottom, 0px));
+  bottom: calc(max(1.5rem, env(safe-area-inset-bottom, 0px)) + var(--hero-bar, 0px));
   left: 0;
   margin-inline: auto;
 }
 
 @media (max-width: 899px) {
-  .lasha-hero-scroll-cue { bottom: max(1.25rem, env(safe-area-inset-bottom, 0px)); }
+  .lasha-hero-scroll-cue { bottom: calc(max(1.25rem, env(safe-area-inset-bottom, 0px)) + var(--hero-bar, 0px)); }
 }
 
 /* White on the photos by night; by day and afternoon black, like the hero titles, where the photo's
@@ -165,10 +165,7 @@ html:root:is([data-time-theme='day'], [data-time-theme='afternoon']) .lasha-page
 @media (max-width: 899px), (max-aspect-ratio: 1/1) {
   html:root:is([data-time-theme]) .lasha-page-hero-towers .scroll-down-cue { --cue-color: var(--l-ink, #171a1d); }
 }
-/* The homepage's centred cue lies on the city: black by day, white in the afternoon's darker grade. */
-@media (min-width: 900px) {
-  html:root[data-time-theme='day'] .lasha-hero-scroll-cue { --cue-color: #000; }
-}
+/* The homepage's centred cue lies on the city's palms and roads, where white reads best in every theme. */
 /* Landscape phones: the cue sits on the skyline, in white. */
 @media (max-width: 1199px) and (orientation: landscape) and (max-height: 540px) {
   html:root[data-time-theme='afternoon'] .lasha-hero-scroll-cue { --cue-color: #fff; }

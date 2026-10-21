@@ -46,7 +46,7 @@
   display: grid;
   grid-template-columns: calc(656 * var(--u)) minmax(0, 1fr);
   /* The whole first screen (Kemo, 20 October 2026); the panel's copy keeps its place under the header. */
-  min-height: max(calc(var(--lnp-header) + 600 * var(--u)), 100svh);
+  min-height: max(calc(var(--lnp-header) + 600 * var(--u)), 100lvh);
 }
 
 .lnp-hero > .site-header {
@@ -394,7 +394,7 @@
   .lnp-hero-body { margin-top: 1.2rem; font-size: 1rem; }
   .lnp-hero-panel .lnp-button { margin-top: 1.8rem; }
   /* The render fills the rest of the first screen under the panel (at least a 4:3 view). */
-  .lnp-hero-media { height: max(75vw, calc(100svh - var(--lnp-panel-h, 0px))); }
+  .lnp-hero-media { height: max(75vw, calc(100lvh - var(--lnp-panel-h, 0px))); }
   .lnp-hero-media::after { content: none; }
   .lnp-button { width: 100%; min-width: 0; padding-inline: 1.4rem; white-space: normal; }
 

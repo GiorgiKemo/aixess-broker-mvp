@@ -186,7 +186,7 @@
 }
 /* The hero fills the whole first screen at every size, with no strip of the next section under the
    photo (Kemo, 20 October 2026); a scroll-down cue at its foot says there is more below. */
-.lasha-hero-frame { aspect-ratio: auto; height: max(100svh, 20rem); max-height: none; }
+.lasha-hero-frame { aspect-ratio: auto; height: max(100lvh, 20rem); max-height: none; }
 
 .lasha-hero-media {
   position: absolute;
@@ -295,7 +295,7 @@ html[lang="ru"] .lasha-hero h1 > span { word-spacing: 0.14em; }
 @media (min-width: 900px) {
   .lasha-hero-copy {
     top: var(--hero-header, 6.3rem);
-    bottom: 0;
+    bottom: var(--hero-bar, 0px);
     align-content: center;
   }
 }
@@ -970,7 +970,7 @@ html[lang="pl"] .lasha-access-count span { margin-bottom: -0.24em; line-height: 
   /* Hero: full-height photo, copy on the sky with a soft wash so black type stays legible. */
   .lasha-hero-frame {
     aspect-ratio: auto;
-    height: max(100svh, 36rem);
+    height: max(100lvh, 36rem);
   }
   .lasha-hero-media { object-position: 66% 50%; }
   /* Portrait: the photo is drawn 1.4× taller from its top edge, so the skyline sits below the
@@ -994,7 +994,7 @@ html[lang="pl"] .lasha-access-count span { margin-bottom: -0.24em; line-height: 
   .lasha-hero-copy {
     top: 5.5rem;
     right: 1.25rem;
-    bottom: 2rem;
+    bottom: calc(2rem + var(--hero-bar, 0px));
     left: 1.25rem;
     align-content: center;
   }
@@ -1094,10 +1094,10 @@ html[lang="pl"] .lasha-access-count span { margin-bottom: -0.24em; line-height: 
    scaled desktop frame, pushed the subtitle and Explore investments below a 375–430px-tall screen. Here the hero is the screen's height and
    the subtitle and button sit beside the title, aligned to its foot, so the whole hero fits. */
 @media (max-width: 1199px) and (orientation: landscape) and (max-height: 540px) {
-  .lasha-hero-frame { aspect-ratio: auto; width: 100%; height: max(100svh, 20rem); }
+  .lasha-hero-frame { aspect-ratio: auto; width: 100%; height: max(100lvh, 20rem); }
   .lasha-hero-copy {
     top: 5.25rem;
-    bottom: 1rem;
+    bottom: calc(1rem + var(--hero-bar, 0px));
     grid-template-columns: auto minmax(0, 22rem);
     grid-template-rows: auto auto;
     column-gap: 2rem;
