@@ -1097,7 +1097,8 @@ html[lang="pl"] .lasha-access-count span { margin-bottom: -0.24em; line-height: 
   .lasha-hero-frame { aspect-ratio: auto; width: 100%; height: max(100lvh, 20rem); }
   .lasha-hero-copy {
     top: 5.25rem;
-    bottom: calc(1rem + var(--hero-bar, 0px));
+    /* Above the centred scroll-down cue at the photo's foot. */
+    bottom: calc(5.75rem + var(--hero-bar, 0px));
     grid-template-columns: auto minmax(0, 22rem);
     grid-template-rows: auto auto;
     column-gap: 2rem;
@@ -1105,7 +1106,7 @@ html[lang="pl"] .lasha-access-count span { margin-bottom: -0.24em; line-height: 
   }
   .lasha-home .lasha-hero h1[data-fitted-heading] {
     grid-row: 1 / span 2;
-    width: min(38vw, calc((100svh - 8.5rem) / 0.92));
+    width: min(38vw, calc((100svh - 13.25rem) / 0.92));
   }
   .lasha-hero-copy p { grid-area: 1 / 2; align-self: end; margin-top: 0; }
   .lasha-hero-cta { grid-area: 2 / 2; align-self: start; justify-self: start; margin-top: 1.1rem; }

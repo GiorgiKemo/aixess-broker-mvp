@@ -166,11 +166,6 @@ html:root:is([data-time-theme='day'], [data-time-theme='afternoon']) .lasha-page
   html:root:is([data-time-theme]) .lasha-page-hero-towers .scroll-down-cue { --cue-color: var(--l-ink, #171a1d); }
 }
 /* The homepage's centred cue lies on the city's palms and roads, where white reads best in every theme. */
-/* Landscape phones: the hero copy fills the short screen (or runs past it), so there is no free
-   middle for the cue and the page plainly continues; it is hidden there (21 October 2026 sweep). */
-@media (max-width: 1199px) and (orientation: landscape) and (max-height: 540px) {
-  .scroll-down-cue { display: none; }
-}
 /* Landscape phones: the cue sits on the skyline, in white. */
 @media (max-width: 1199px) and (orientation: landscape) and (max-height: 540px) {
   html:root[data-time-theme='afternoon'] .lasha-hero-scroll-cue { --cue-color: #fff; }
