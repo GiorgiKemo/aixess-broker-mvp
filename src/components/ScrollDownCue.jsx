@@ -24,8 +24,9 @@ export function ScrollDownCue({ className = "" }) {
       }}
     >
       <span className="scroll-down-cue__track" aria-hidden="true"><span className="scroll-down-cue__bead" /></span>
-      <svg className="scroll-down-cue__chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="square" strokeLinejoin="miter" aria-hidden="true" focusable="false">
-        <path d="M5 8l5 5 5-5" />
+      <svg className="scroll-down-cue__chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="none" strokeLinecap="square" strokeLinejoin="miter" aria-hidden="true" focusable="false">
+        <path className="scroll-down-cue__edge" d="M5 8l5 5 5-5" />
+        <path className="scroll-down-cue__mark" d="M5 8l5 5 5-5" />
       </svg>
     </button>
   );

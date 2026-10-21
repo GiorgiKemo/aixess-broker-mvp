@@ -18,7 +18,7 @@
   display: flex;
   /* The hero fills the whole first screen, with no strip of the next section under the photo (Kemo,
      20 October 2026); it still grows with long copy. A scroll-down cue sits at its foot. */
-  min-height: max(100lvh, 34rem);
+  min-height: max(var(--screen-full, 100lvh), 34rem);
   flex-direction: column;
   padding-bottom: var(--hero-bar, 0px);
   overflow: hidden;
@@ -566,7 +566,7 @@ body .modal-panel :is(button, input, a):focus-visible { outline-color: var(--l-b
 }
 
 @media (max-width: 767px) {
-  .lasha-page-hero { min-height: max(100lvh, 26rem); }
+  .lasha-page-hero { min-height: max(var(--screen-full, 100lvh), 26rem); }
   .lasha-page-hero-media { object-position: var(--hero-position-phone, 78% 30%); }
   .lasha-page-hero::before {
     background: linear-gradient(180deg, color-mix(in srgb, var(--l-wash-page) 10%, transparent) 0%, color-mix(in srgb, var(--l-wash-page) 74%, transparent) 30%, color-mix(in srgb, var(--l-wash-page) 86%, transparent) 50%, color-mix(in srgb, var(--l-wash-page) 88%, transparent) 100%);
@@ -588,7 +588,7 @@ body .modal-panel :is(button, input, a):focus-visible { outline-color: var(--l-b
 /* Broker Tools: design 1A Coastal Classic (Giorgi and the client, 14 October 2026). One
    continuous photo, the copy straight on its quiet sky and sea, the terrace building on the
    right; no panel, card or box. The same crop in every theme, so switching moves nothing. */
-.lasha-page-hero-coastal { min-height: max(100lvh, 36rem); }
+.lasha-page-hero-coastal { min-height: max(var(--screen-full, 100lvh), 36rem); }
 /* Wide enough for the two-line title of 1A at v4's full title size, still clear of the terrace. */
 .lasha-page-hero-coastal .lasha-page-hero-copy { max-width: min(100%, max(60rem, 66vw)); }
 /* From 900px the title stops just short of v4's 8vw, so ONE PLATFORM's two lines end before the
@@ -614,7 +614,7 @@ body .modal-panel :is(button, input, a):focus-visible { outline-color: var(--l-b
 @media (max-width: 767px) {
   /* Phones: the photo fills the hero and the copy sits between the header and the lower edge,
      over the sky, skyline and sea; the hero grows with the longest translation. */
-  .lasha-page-hero-coastal { min-height: max(100lvh, 40rem); }
+  .lasha-page-hero-coastal { min-height: max(var(--screen-full, 100lvh), 40rem); }
   /* The bottom padding keeps the note clear of the centred scroll-down cue on short phones. */
   .lasha-page-hero-coastal .lasha-page-hero-copy { margin-block: auto; padding-top: 2rem; padding-bottom: 7.5rem; }
   /* The two title lines run on as one sentence, so ONE PLATFORM stays together on a narrow screen. */
@@ -630,7 +630,7 @@ body .modal-panel :is(button, input, a):focus-visible { outline-color: var(--l-b
 .lasha-page-hero-towers {
   --towers-top: 5.4rem;
   --towers-sky: linear-gradient(90deg, #88add7 0%, #6f97c8 45%, #477ab3 100%);
-  min-height: max(100lvh, 36rem);
+  min-height: max(var(--screen-full, 100lvh), 36rem);
   background: var(--towers-sky);
 }
 .lasha-page-hero-towers::before { content: none; }
@@ -675,7 +675,7 @@ body .modal-panel :is(button, input, a):focus-visible { outline-color: var(--l-b
 }
 /* Portrait: the render grows to fill the screen above the copy, and the cue sits on the copy's ground. */
 @media (max-width: 899px) and (orientation: portrait), (max-aspect-ratio: 1/1) {
-  .lasha-page-hero-towers { min-height: 100lvh; }
+  .lasha-page-hero-towers { min-height: var(--screen-full, 100lvh); }
   .lasha-page-hero-towers .lasha-page-hero-media { flex: 1 1 0; min-height: min(80vw, 46svh); max-height: none; aspect-ratio: auto; }
   .lasha-page-hero-towers { padding-bottom: calc(4.5rem + var(--hero-bar, 0px)); background: var(--l-paper, #f4f4f1); }
 }
@@ -955,7 +955,7 @@ html:root[data-time-theme='night'] :is(.lasha-home, .lasha-page) .site-header .d
    the scroll-down cue under it still fit the first screen. */
 @media (max-width: 767px) and (max-height: 760px) {
   .lasha-page .lasha-page-hero-title { font-size: min(var(--v4-page-title), 6.4svh); }
-  .lasha-page-hero-coastal { min-height: max(100lvh, 34rem); }
+  .lasha-page-hero-coastal { min-height: max(var(--screen-full, 100lvh), 34rem); }
   .lasha-page-hero-coastal .lasha-page-hero-copy { padding-top: 1.25rem; }
   .lasha-page-hero-towers .lasha-page-hero-media { min-height: min(80vw, 26svh); }
 }

@@ -77,64 +77,72 @@ html:root[data-time-theme='night'] .scroll-top-button:focus-visible {
 }
 
 /* Scroll-down cue at the foot of every page hero (Kemo, 20 October 2026: "something without
-   background and that animates"): a hairline whose light runs down it over and over, above a
-   chevron that nods in step, drawn straight on the photo in white (ink on paper grounds). Reduced
-   motion keeps both still. */
+   background and that animates"): a line whose light runs down it over and over, above a chevron
+   that nods in step, drawn straight on the photo with no box behind it. It takes the theme's accent
+   (Kemo, 21 October 2026: "has to change color based on theme ... make sure its visible"): cobalt by
+   day, deep sage in the afternoon, light cobalt at night, each mark edged by a hairline of paper (or
+   black at night) so it stays visible on busy photos. Reduced motion keeps both still. */
 .scroll-down-cue {
   --cue-track: 44px;
+  --cue-color: #2557d6;
+  --cue-edge: rgb(255 255 255 / 0.92);
   display: inline-flex;
   width: 44px;
   flex: 0 0 auto;
   flex-direction: column;
   align-items: center;
-  gap: 6px;
+  gap: 5px;
   padding: 4px 0;
   border: 0;
   background: none;
-  color: var(--cue-color, #fff);
+  color: var(--cue-color);
   cursor: pointer;
 }
+html:root[data-time-theme='afternoon'] .scroll-down-cue { --cue-color: #3c5a41; }
+html:root[data-time-theme='night'] .scroll-down-cue { --cue-color: #8eaaf6; --cue-edge: rgb(0 0 0 / 0.8); }
 
 .scroll-down-cue__track {
   position: relative;
-  width: 2px;
+  width: 3px;
   height: var(--cue-track);
   overflow: hidden;
-  background: color-mix(in srgb, currentColor 55%, transparent);
+  background: var(--cue-color);
+  box-shadow: 0 0 0 1px var(--cue-edge);
 }
 
+/* The running light is the edge colour moving down the accent line. */
 .scroll-down-cue__bead {
   position: absolute;
   top: 0;
   left: 0;
-  width: 2px;
-  height: 18px;
-  background: currentColor;
+  width: 3px;
+  height: 16px;
+  background: var(--cue-edge);
   animation: scroll-down-cue-run 2s cubic-bezier(0.65, 0, 0.35, 1) infinite;
 }
 
 @keyframes scroll-down-cue-run {
-  0% { transform: translateY(-18px); }
+  0% { transform: translateY(-16px); }
   70%, 100% { transform: translateY(var(--cue-track)); }
 }
 
 .scroll-down-cue__chevron {
-  width: 24px;
-  height: 24px;
-  stroke-width: 2;
+  width: 28px;
+  height: 28px;
+  overflow: visible;
   animation: scroll-down-cue-nod 2s cubic-bezier(0.65, 0, 0.35, 1) infinite;
 }
+.scroll-down-cue__chevron .scroll-down-cue__edge { stroke: var(--cue-edge); stroke-width: 3.6; }
+.scroll-down-cue__chevron .scroll-down-cue__mark { stroke: var(--cue-color); stroke-width: 2.2; }
 
 @keyframes scroll-down-cue-nod {
-  0%, 50% { transform: translateY(0); opacity: 0.7; }
-  68% { transform: translateY(4px); opacity: 1; }
-  100% { transform: translateY(0); opacity: 0.7; }
+  0%, 50% { transform: translateY(0); }
+  68% { transform: translateY(4px); }
+  100% { transform: translateY(0); }
 }
 
-.scroll-down-cue:hover .scroll-down-cue__chevron { opacity: 1; }
-
 .scroll-down-cue:focus-visible {
-  outline: 2px solid currentColor;
+  outline: 2px solid var(--cue-color);
   outline-offset: 4px;
 }
 
@@ -157,26 +165,7 @@ html:root[data-time-theme='night'] .scroll-top-button:focus-visible {
   .lasha-hero-scroll-cue { bottom: calc(max(1.25rem, env(safe-area-inset-bottom, 0px)) + var(--hero-bar, 0px)); }
 }
 
-/* White on the photos by night; by day and afternoon black, like the hero titles, where the photo's
-   foot is pale sea, sky or haze. The Reverance towers take the page ink where their copy stacks
-   on paper. Advantage and Broker Access use
-   their panel's text colour. Each was measured against the rendered photo in all three themes. */
-html:root:is([data-time-theme='day'], [data-time-theme='afternoon']) .lasha-page-hero .scroll-down-cue { --cue-color: #000; }
-@media (max-width: 899px), (max-aspect-ratio: 1/1) {
-  html:root:is([data-time-theme]) .lasha-page-hero-towers .scroll-down-cue { --cue-color: var(--l-ink, #171a1d); }
-}
-/* The homepage's centred cue lies on the city's palms and roads, where white reads best in every theme. */
-/* Landscape phones: the cue sits on the skyline, in white. */
-@media (max-width: 1199px) and (orientation: landscape) and (max-height: 540px) {
-  html:root[data-time-theme='afternoon'] .lasha-hero-scroll-cue { --cue-color: #fff; }
-  html:root[data-time-theme='day'] .lasha-hero-scroll-cue { --cue-color: #fff; }
-}
-/* The Reverance towers on wide screens: the cue sits on the render's dark tower base and garden, in white. */
-@media (min-width: 900px) and (min-aspect-ratio: 1/1) {
-  html:root:is([data-time-theme]) .lasha-page-hero-towers .scroll-down-cue { --cue-color: #fff; }
-}
-
 @media (prefers-reduced-motion: reduce) {
-  .scroll-down-cue__bead { animation: none; transform: translateY(calc(var(--cue-track) - 18px)); }
-  .scroll-down-cue__chevron { animation: none; opacity: 1; }
+  .scroll-down-cue__bead { animation: none; transform: translateY(calc(var(--cue-track) - 16px)); }
+  .scroll-down-cue__chevron { animation: none; }
 }

@@ -60,6 +60,8 @@
    21 October 2026). Their copy and scroll-down cue keep to the part visible with the bars shown
    (svh), so --hero-bar is the height the bars can cover at the foot. */
 :root { --hero-bar: calc(100lvh - 100svh); }
+/* index.html replaces these with measured pixels (--screen-full, --screen-shown, --hero-bar), since
+   Chrome on iOS resolved 100lvh to less than its visible screen (Kemo, 21 October 2026). */
 
 html {
   min-width: 0;
