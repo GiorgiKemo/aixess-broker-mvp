@@ -35,7 +35,6 @@ export const INSIGHTS_TOOLS_COPY = {
       faqTitle: ["THE ANSWERS", "CLIENTS ASK FIRST."],
     },
     tools: {
-      eyebrow: "BROKER TOOLS",
       title: ["EVERYTHING YOU NEED", "TO SELL. ONE PLATFORM."],
       copy: "From your first client enquiry to the final sale, AiXESS gives you the tools, information and support to manage opportunities with confidence.",
       partner: "BECOME A PARTNER",
@@ -93,7 +92,6 @@ export const INSIGHTS_TOOLS_COPY = {
       faqTitle: ["DIE ANTWORTEN, DIE", "KUNDEN ZUERST WOLLEN."],
     },
     tools: {
-      eyebrow: "MAKLER-TOOLS",
       title: ["ALLES, WAS SIE ZUM VERKAUFEN", "BRAUCHEN. EINE PLATTFORM."],
       copy: "Von der ersten Kundenanfrage bis zum Abschluss gibt Ihnen AiXESS die Tools, Informationen und Unterstützung, um Chancen sicher zu steuern.",
       partner: "PARTNER WERDEN",
@@ -151,7 +149,6 @@ export const INSIGHTS_TOOLS_COPY = {
       faqTitle: ["ODPOWIEDZI, O KTÓRE", "KLIENCI PYTAJĄ NAJPIERW."],
     },
     tools: {
-      eyebrow: "NARZĘDZIA BROKERA",
       title: ["WSZYSTKO, CZEGO POTRZEBUJESZ", "DO SPRZEDAŻY. JEDNA PLATFORMA."],
       copy: "Od pierwszego zapytania klienta do finalnej sprzedaży AiXESS daje Ci narzędzia, informacje i wsparcie, by pewnie prowadzić każdą okazję.",
       partner: "ZOSTAŃ PARTNEREM",
@@ -209,7 +206,6 @@ export const INSIGHTS_TOOLS_COPY = {
       faqTitle: ["ODGOVORI, KI JIH", "STRANKE ŽELIJO NAJPREJ."],
     },
     tools: {
-      eyebrow: "ORODJA ZA POSREDNIKE",
       title: ["VSE, KAR POTREBUJETE", "ZA PRODAJO. ENA PLATFORMA."],
       copy: "Od prvega povpraševanja stranke do končne prodaje vam AiXESS daje orodja, informacije in podporo za samozavestno vodenje priložnosti.",
       partner: "POSTANITE PARTNER",
@@ -267,7 +263,6 @@ export const INSIGHTS_TOOLS_COPY = {
       faqTitle: ["ОТВЕТЫ НА ПЕРВЫЕ", "ВОПРОСЫ КЛИЕНТОВ."],
     },
     tools: {
-      eyebrow: "ИНСТРУМЕНТЫ БРОКЕРА",
       title: ["ВСЁ ДЛЯ ПРОДАЖ.", "ОДНА ПЛАТФОРМА."],
       copy: "От первого запроса клиента до завершения сделки AiXESS даёт вам инструменты, информацию и поддержку, чтобы уверенно вести каждую возможность.",
       partner: "СТАТЬ ПАРТНЁРОМ",

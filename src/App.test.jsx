@@ -27,7 +27,6 @@ describe("AIXESS navigation pages", () => {
       "BROKER ACCESS",
       "SELECTED OPPORTUNITIES",
       "INSIGHTS",
-      "BROKER TOOLS",
       "CONTACT",
     ]);
   });
@@ -71,7 +70,7 @@ describe("AIXESS navigation pages", () => {
       const toggle = document.querySelector(".site-header .menu-toggle");
       fireEvent.click(toggle);
       expect(panel).toHaveClass("is-open");
-      expect(within(panel).getAllByRole("button").map((button) => button.textContent)).toEqual(expect.arrayContaining(["AIXESS ADVANTAGE", "BROKER ACCESS", "SELECTED OPPORTUNITIES", "Georgia Batumi - Reverance", "INSIGHTS", "BROKER TOOLS"]));
+      expect(within(panel).getAllByRole("button").map((button) => button.textContent)).toEqual(expect.arrayContaining(["AIXESS ADVANTAGE", "BROKER ACCESS", "SELECTED OPPORTUNITIES", "Georgia Batumi - Reverance", "INSIGHTS"]));
       fireEvent.keyDown(document, { key: "Escape" });
       expect(panel).not.toHaveClass("is-open");
 
@@ -104,10 +103,10 @@ describe("AIXESS navigation pages", () => {
     expect(document.documentElement.dataset.timeTheme).toBe("day");
   });
 
-  it("gives Broker Tools the refined coastal hero and the modern workspace building, not the old marina or Reverance render", () => {
+  it("gives Broker Access the refined coastal hero and the modern workspace building, not the old marina or Reverance render", () => {
     window.localStorage.setItem("aixess-time-theme", "afternoon");
     resetTimeThemeForTests();
-    window.history.replaceState({}, "", "/#broker-tools");
+    window.history.replaceState({}, "", "/#broker-access");
     render(<App />);
     expect(document.querySelector(".lasha-page-hero-media").dataset.themePhoto).toBe("broker-tools-refined-afternoon");
     const workspace = document.querySelector(".it-workspace-photo");
@@ -151,8 +150,8 @@ describe("AIXESS navigation pages", () => {
     expect(container.querySelector("[data-content-section]")).not.toBeInTheDocument();
     fireEvent.click(screen.getAllByRole("button", { name: "BROKER ACCESS" })[0]);
     expect(container.querySelector(".lnp-broker")).toBeInTheDocument();
-    expect(screen.getAllByRole("link", { name: "REQUEST ACCESS" })[0]).toHaveAttribute("href", "https://workw.com/realestate/aixco/broker-signup?lang=en");
-    expect(screen.getAllByRole("link", { name: "PARTNER SIGN IN" })[0]).toHaveAttribute("href", "https://workw.com/realestate/aixco/broker-login?lang=en");
+    expect(screen.getAllByRole("button", { name: /BECOME A PARTNER/ }).length).toBeGreaterThan(0);
+    expect(screen.getByRole("button", { name: "BROKER LOGIN" })).toBeInTheDocument();
     fireEvent.click(screen.getAllByRole("button", { name: "INSIGHTS" })[0]);
     expect(screen.getAllByRole("button", { name: /^REQUEST/ })).toHaveLength(2);
   });
@@ -195,11 +194,10 @@ describe("AIXESS navigation pages", () => {
     expect(screen.getByRole("heading", { name: /two buildings/i })).toBeInTheDocument();
   });
 
-  it("keeps the showcase CALCULATOR action on Broker Tools", () => {
+  it("drops the showcase CALCULATOR action, since the site has no public calculator", () => {
     window.history.replaceState({}, "", "/");
     const { container } = render(<App />);
-    fireEvent.click(within(container.querySelector("#projects")).getByRole("button", { name: /CALCULATOR/ }));
-    expect(screen.getAllByRole("button", { name: "BROKER TOOLS" }).filter((button) => button.getAttribute("aria-current") === "page").length).toBeGreaterThan(0);
+    expect(within(container.querySelector("#projects")).queryByRole("button", { name: /CALCULATOR/ })).not.toBeInTheDocument();
   });
 
   it("opens the Project Reverance page from the homepage Explore investments button, and Back returns home", () => {
@@ -291,17 +289,23 @@ describe("AIXESS navigation pages", () => {
     expect(screen.getByRole("link", { name: "PARTNER SIGN IN" })).toHaveAttribute("href", "https://workw.com/realestate/aixco/broker-login?lang=en");
 
     fireEvent.click(screen.getAllByRole("button", { name: "BROKER ACCESS" })[0]);
-    expect(screen.getByRole("heading", { level: 1, name: "YOU DON’TNEED TO BEA BROKER." })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { level: 1, name: "EVERYTHING YOU NEEDTO SELL. ONE\u00a0PLATFORM." })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { level: 2, name: "YOU DON’TNEED TO BEA BROKER." })).toBeInTheDocument();
     expect(screen.getByText("If you have the network and ambition, AiXESS gives you the opportunities, tools and support.")).toBeInTheDocument();
     expect(screen.getByText("ASPIRING PROFESSIONALS")).toBeInTheDocument();
     expect(screen.getByText("Established brokers and agencies")).toBeInTheDocument();
     expect(screen.getByText("Well-connected individuals who can introduce the right people.")).toBeInTheDocument();
-    expect(screen.getByRole("heading", { name: "HAVE THE NETWORK?" })).toBeInTheDocument();
+    expect(screen.queryByRole("heading", { name: "HAVE THE NETWORK?" })).not.toBeInTheDocument();
     expect(screen.getByText("THE COMMERCIAL ADVANTAGE")).toBeInTheDocument();
     expect(screen.getByText("Your client secures the property with this down payment, unlocking your full commission within 72 hours.")).toBeInTheDocument();
     expect(screen.getByText("How it works")).toBeInTheDocument();
     expect(screen.getByText("Request AiXESS access")).toBeInTheDocument();
     expect(screen.getByText("Client pays the required down payment")).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: "LESS ADMINISTRATION.MORE OPPORTUNITY." })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: "THREE STEPS TO GET STARTED." })).toBeInTheDocument();
+    // Klem's order (22 October 2026).
+    const order = Array.from(document.querySelectorAll(".lnp-broker h1, .lnp-broker h2, .lnp-commercial-eyebrow")).map((heading) => heading.textContent);
+    expect(order).toEqual(["EVERYTHING YOU NEEDTO SELL. ONE\u00a0PLATFORM.", "YOU DON’TNEED TO BEA BROKER.", "THE COMMERCIAL ADVANTAGE", expect.any(String), expect.any(String), "FROM ACCESSTO COMMISSION", "LESS ADMINISTRATION.MORE OPPORTUNITY.", "THREE STEPS TO GET STARTED."]);
   });
 
   it("renders the selected page from its shareable hash route", () => {
@@ -321,13 +325,13 @@ describe("AIXESS navigation pages", () => {
     expect(screen.getAllByRole("button", { name: "INSIGHTS" }).filter((button) => button.getAttribute("aria-current") === "page")).toHaveLength(2);
   });
 
-  it("exposes broker tools directly in the desktop and mobile navigation", () => {
-    window.history.replaceState({}, "", "/");
+  it("merges Broker Tools into Broker Access: no menu entry, and old links land on Broker Access", () => {
+    window.history.replaceState({}, "", "/#broker-access");
     render(<App />);
 
-    expect(screen.getAllByRole("button", { name: "BROKER TOOLS" })).toHaveLength(2);
-    fireEvent.click(screen.getAllByRole("button", { name: "BROKER TOOLS" })[0]);
-    expect(window.location.hash).toBe("#broker-tools");
+    expect(screen.queryByRole("button", { name: "BROKER TOOLS" })).not.toBeInTheDocument();
+    expect(window.location.hash).toBe("#broker-access");
+    expect(screen.getAllByRole("button", { name: "BROKER ACCESS" }).filter((button) => button.getAttribute("aria-current") === "page")).toHaveLength(2);
     expect(screen.getByRole("heading", { level: 1, name: "EVERYTHING YOU NEEDTO SELL. ONE\u00a0PLATFORM." })).toBeInTheDocument();
   });
 
@@ -368,7 +372,7 @@ describe("AIXESS navigation pages", () => {
   });
 
   it("describes Broker Network & Team Management as the third broker tool", () => {
-    window.history.replaceState({}, "", "/#broker-tools");
+    window.history.replaceState({}, "", "/#broker-access");
     const { container } = render(<App />);
 
     const cards = container.querySelectorAll(".it-feature");
@@ -380,8 +384,8 @@ describe("AIXESS navigation pages", () => {
     expect(screen.queryByText(/SMART SALES CALCULATIONS/)).not.toBeInTheDocument();
   });
 
-  it("keeps the calculators and client PDF generator off the public Broker Tools page", async () => {
-    window.history.replaceState({}, "", "/#broker-tools");
+  it("keeps the calculators and client PDF generator off the public Broker Access page", async () => {
+    window.history.replaceState({}, "", "/#broker-access");
     render(<App />);
 
     await new Promise((resolve) => setTimeout(resolve, 50));

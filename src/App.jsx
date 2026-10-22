@@ -10,7 +10,7 @@ import { AdvantagePageContent, BrokerAccessPageContent } from "./components/Lash
 import { HomeAbout, HomeAccess, HomeHero, HomeMetrics, HomeStartingPoints, LashaPageHero } from "./components/LashaHomeSections.jsx";
 import { TimeThemeMenu } from "./components/TimeThemeMenu.jsx";
 import { ScrollToTopButton } from "./components/ScrollToTopButton.jsx";
-import { BrokerToolsPageContent, InsightsPageContent } from "./components/InsightsToolsPages.jsx";
+import { InsightsPageContent } from "./components/InsightsToolsPages.jsx";
 import "./components/lasha-home.css";
 import "./components/lasha-pages.css";
 import "./components/time-theme.css";
@@ -40,12 +40,12 @@ const navItems = [
   { key: "broker-access", labelKey: "brokerAccess" },
   { key: "residences", labelKey: "selectedOpportunities", children: OPPORTUNITY_PROJECTS },
   { key: "insights", labelKey: "insights" },
-  { key: "broker-tools", labelKey: "brokerTools" },
   // Contact is the footer every page ends with (Klem, 14 October 2026), not a page of its own.
   { key: "contact", labelKey: "contact" },
 ];
 
-const routeAliases = { resources: "insights", calculators: "broker-tools" };
+// Broker Tools is part of Broker Access now (Klem, 22 October 2026); old links land there.
+const routeAliases = { resources: "insights", calculators: "broker-access", "broker-tools": "broker-access" };
 const validRoutes = new Set(["home", ...navItems.map(({ key }) => key).filter((key) => key !== "contact"), "admin", "privacy"]);
 
 // Scrolls to the contact footer and moves focus there, so keyboard and screen-reader users land on it too.
@@ -71,6 +71,8 @@ function routeFromLocation() {
   // "#residences/payment" is a section of a page: the route is the part before the slash.
   const requestedRoute = window.location.hash.replace(/^#/, "").split(/[?/]/)[0].trim().toLowerCase();
   const route = routeAliases[requestedRoute] || requestedRoute;
+  // An old address shows the page it now lives on, under that page's own address.
+  if (route !== requestedRoute && validRoutes.has(route)) window.history.replaceState(window.history.state, "", `${window.location.pathname}#${route}`);
   return validRoutes.has(route) ? route : "home";
 }
 
@@ -464,7 +466,7 @@ function WhyAixessPage(props) {
 function BrokerAccessPage(props) {
   return (
     <div className="route-page lasha-page">
-      <BrokerAccessPageContent header={<PageHeader {...props} />} />
+      <BrokerAccessPageContent header={<PageHeader {...props} />} onOpenModal={props.onOpenModal} />
     </div>
   );
 }
@@ -473,20 +475,6 @@ function InsightsPage({ currentPage, menuOpen, onToggleMenu, onNavigate, onOpenM
   return (
     <div className="route-page lasha-page insights-page">
       <InsightsPageContent
-        header={<PageHeader {...{ currentPage, menuOpen, onToggleMenu, onNavigate, onOpenModal }} />}
-        onOpenModal={onOpenModal}
-      />
-    </div>
-  );
-}
-
-// The public overview only: the calculators and client PDF offers are for signed-in, approved
-// brokers (Klem, 12 October 2026), and brokers sign in on Workwise, so this site no longer
-// ships them. Calculators.jsx and ClientPdf.jsx stay in the repo for the broker portal.
-function BrokerToolsPage({ currentPage, menuOpen, onToggleMenu, onNavigate, onOpenModal }) {
-  return (
-    <div className="route-page lasha-page broker-tools-page">
-      <BrokerToolsPageContent
         header={<PageHeader {...{ currentPage, menuOpen, onToggleMenu, onNavigate, onOpenModal }} />}
         onOpenModal={onOpenModal}
       />
@@ -668,7 +656,6 @@ function AppContent() {
       {currentPage === "residences" && <ResidencesPage {...{ currentPage, menuOpen, onToggleMenu: setMenuOpen, onNavigate: navigatePage, onOpenModal: openModal }} />}
       {currentPage === "broker-access" && <BrokerAccessPage {...{ currentPage, menuOpen, onToggleMenu: setMenuOpen, onNavigate: navigatePage, onOpenModal: openModal }} />}
       {currentPage === "insights" && <InsightsPage {...{ currentPage, menuOpen, onToggleMenu: setMenuOpen, onNavigate: navigatePage, onOpenModal: openModal }} />}
-      {currentPage === "broker-tools" && <BrokerToolsPage {...{ currentPage, menuOpen, onToggleMenu: setMenuOpen, onNavigate: navigatePage, onOpenModal: openModal }} />}
       {currentPage === "privacy" && <PrivacyPage header={<PageHeader {...{ currentPage, menuOpen, onToggleMenu: setMenuOpen, onNavigate: navigatePage, onOpenModal: openModal }} />} />}
       {currentPage === "admin" && <Suspense fallback={<p role="status">{t("loadingAdmin")}</p>}><AdminDashboard /></Suspense>}
       {currentPage !== "admin" && <ScrollToTopButton page={currentPage} />}

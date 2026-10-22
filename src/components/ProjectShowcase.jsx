@@ -7,7 +7,7 @@ import { FEATURED_PROJECT, UPCOMING_PROJECTS } from "../data/projects.js";
 import "./project-showcase.css";
 
 export function ProjectShowcase({ onNavigate, upcoming = UPCOMING_PROJECTS }) {
-  const { t, locale } = useLanguage();
+  const { locale } = useLanguage();
   const copy = LASHA_HOME_COPY[locale] || LASHA_HOME_COPY.en;
   const showcase = PROJECT_SHOWCASE_COPY[locale] || PROJECT_SHOWCASE_COPY.en;
   const [active, setActive] = useState(0);
@@ -72,9 +72,6 @@ export function ProjectShowcase({ onNavigate, upcoming = UPCOMING_PROJECTS }) {
               <a className="lasha-button lasha-button-primary" href="#residences" onClick={routeLinkClick(onNavigate, "residences")}>
                 {copy.exploreProject}<LashaArrow length={26} />
               </a>
-              <button className="lasha-button lasha-button-dark" type="button" onClick={() => onNavigate("broker-tools")}>
-                {t("calculator")}<LashaArrow length={26} />
-              </button>
             </div>
           </div>
         </div>
