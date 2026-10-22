@@ -106,9 +106,8 @@ html:root[data-time-theme='afternoon'] .lasha-page .dp-hero .it-hero-actions .bu
 /* ---------- Shared pieces ---------- */
 .lasha-page .dp-mark {
   display: inline-block;
-  min-width: 1.1em;
   margin-left: 0.02em;
-  text-align: center;
+  padding-right: 0.25em;
   color: inherit;
   font-size: 0.6em;
   text-decoration: none;
