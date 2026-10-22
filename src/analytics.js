@@ -32,7 +32,8 @@ export function flushAnalytics() {
 }
 export function track(type, detail = {}) {
   if (consentChoice() !== "accepted") return;
-  const page = window.location.hash.slice(1).split("?")[0] || "home";
+  // "#tresora/spaces" is a section of the TRESORA page: the page is the part before the slash.
+  const page = window.location.hash.slice(1).split(/[?/]/)[0].toLowerCase() || "home";
   if (["admin", "privacy"].includes(page)) return;
   const session = sessionId();
   if (!session) return;

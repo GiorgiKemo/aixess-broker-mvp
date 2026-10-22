@@ -10,4 +10,5 @@ describe("consent-first analytics", () => {
   it("expired consent requires a new choice", () => { localStorage.setItem(CONSENT_KEY, JSON.stringify({ value: "accepted", expires: 1 })); expect(consentChoice()).toBeNull(); track("page_view"); flushAnalytics(); expect(fetch).not.toHaveBeenCalled(); });
   it("excludes admin activity", () => { setConsent("accepted"); window.location.hash = "admin"; track("page_view"); flushAnalytics(); expect(fetch).not.toHaveBeenCalled(); });
   it("excludes private admin setup links from analytics", () => { setConsent("accepted"); window.location.hash = "admin?setup=private-test-key"; track("page_view"); flushAnalytics(); expect(fetch).not.toHaveBeenCalled(); expect(sessionStorage.length).toBe(0); });
+  it("reports a section address as its page", () => { setConsent("accepted"); window.location.hash = "tresora/spaces"; track("page_view"); flushAnalytics(); expect(JSON.parse(fetch.mock.calls[0][1].body).events[0].page).toBe("tresora"); });
 });
