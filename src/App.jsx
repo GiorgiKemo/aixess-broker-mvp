@@ -11,6 +11,7 @@ import { HomeAbout, HomeAccess, HomeHero, HomeMetrics, HomeStartingPoints, Lasha
 import { TimeThemeMenu } from "./components/TimeThemeMenu.jsx";
 import { ScrollToTopButton } from "./components/ScrollToTopButton.jsx";
 import { InsightsPageContent } from "./components/InsightsToolsPages.jsx";
+import { DowntownOnePage, DubaiProjectCards, TresoraPage } from "./components/DubaiProjectPages.jsx";
 import "./components/lasha-home.css";
 import "./components/lasha-pages.css";
 import "./components/time-theme.css";
@@ -33,7 +34,12 @@ const ResidenceExplorer = lazy(() => import("./components/ResidenceExplorer").th
 
 // Selected Opportunities lists each live project under it (Klem, 12 October 2026: "there will
 // come many more projects"). Add a project here only once it has a real page.
-const OPPORTUNITY_PROJECTS = [{ key: "residences", labelKey: "reveranceProjectNav" }];
+// TRESORA and DOWNTOWN ONE in Dubai joined on 22 October 2026 (Kemo), each with its own page.
+const OPPORTUNITY_PROJECTS = [
+  { key: "residences", labelKey: "reveranceProjectNav" },
+  { key: "tresora", labelKey: "tresoraProjectNav" },
+  { key: "downtown-one", labelKey: "downtownOneProjectNav" },
+];
 
 const navItems = [
   { key: "why-aixess", labelKey: "aixessAdvantage" },
@@ -46,7 +52,7 @@ const navItems = [
 
 // Broker Tools is part of Broker Access now (Klem, 22 October 2026); old links land there.
 const routeAliases = { resources: "insights", calculators: "broker-access", "broker-tools": "broker-access" };
-const validRoutes = new Set(["home", ...navItems.map(({ key }) => key).filter((key) => key !== "contact"), "admin", "privacy"]);
+const validRoutes = new Set(["home", ...navItems.map(({ key }) => key).filter((key) => key !== "contact"), ...OPPORTUNITY_PROJECTS.map(({ key }) => key), "admin", "privacy"]);
 
 // Scrolls to the contact footer and moves focus there, so keyboard and screen-reader users land on it too.
 function showContact(behavior = "smooth") {
@@ -518,6 +524,16 @@ function ResidencesPage({ currentPage, menuOpen, onToggleMenu, onNavigate, onOpe
   );
 }
 
+// The two Dubai projects (Kemo, 22 October 2026): each has its own route and page.
+function DubaiProjectPage({ currentPage, menuOpen, onToggleMenu, onNavigate, onOpenModal }) {
+  const header = <PageHeader {...{ currentPage, menuOpen, onToggleMenu, onNavigate, onOpenModal }} />;
+  return (
+    <div className={`route-page lasha-page dubai-project-page ${currentPage}-page`}>
+      {currentPage === "tresora" ? <TresoraPage header={header} /> : <DowntownOnePage header={header} />}
+    </div>
+  );
+}
+
 function HomePage({ currentPage, menuOpen, onToggleMenu, onNavigate, onOpenModal }) {
   return (
     <div className="lasha-home">
@@ -528,6 +544,7 @@ function HomePage({ currentPage, menuOpen, onToggleMenu, onNavigate, onOpenModal
       <HomeMetrics />
       <HomeAbout />
       <ProjectShowcase onNavigate={onNavigate} />
+      <DubaiProjectCards onNavigate={onNavigate} />
 
       {/* The Residence Explorer lives on the Reverance project page only (Kemo, 21 October 2026). */}
       <HomeStartingPoints />
@@ -654,6 +671,7 @@ function AppContent() {
       {currentPage === "home" && <HomePage {...{ currentPage, menuOpen, onToggleMenu: setMenuOpen, onNavigate: navigatePage, onOpenModal: openModal }} />}
       {currentPage === "why-aixess" && <WhyAixessPage {...{ currentPage, menuOpen, onToggleMenu: setMenuOpen, onNavigate: navigatePage, onOpenModal: openModal }} />}
       {currentPage === "residences" && <ResidencesPage {...{ currentPage, menuOpen, onToggleMenu: setMenuOpen, onNavigate: navigatePage, onOpenModal: openModal }} />}
+      {(currentPage === "tresora" || currentPage === "downtown-one") && <DubaiProjectPage key={currentPage} {...{ currentPage, menuOpen, onToggleMenu: setMenuOpen, onNavigate: navigatePage, onOpenModal: openModal }} />}
       {currentPage === "broker-access" && <BrokerAccessPage {...{ currentPage, menuOpen, onToggleMenu: setMenuOpen, onNavigate: navigatePage, onOpenModal: openModal }} />}
       {currentPage === "insights" && <InsightsPage {...{ currentPage, menuOpen, onToggleMenu: setMenuOpen, onNavigate: navigatePage, onOpenModal: openModal }} />}
       {currentPage === "privacy" && <PrivacyPage header={<PageHeader {...{ currentPage, menuOpen, onToggleMenu: setMenuOpen, onNavigate: navigatePage, onOpenModal: openModal }} />} />}

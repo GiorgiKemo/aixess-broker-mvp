@@ -165,7 +165,7 @@ function useHeaderOnLightSky(ref, ranges, locale) {
 // 2026: the Insights subtitle ran off the bottom of a short window). CSS sizes the title by the
 // window's height; a longer translation that still runs past the bottom shrinks the title (through
 // --hero-title-fit) until the last line or button ends a little above the window's lower edge.
-function useHeroCopyFitsScreen(ref, locale) {
+export function useHeroCopyFitsScreen(ref, locale) {
   useLayoutEffect(() => {
     const hero = ref.current;
     const title = hero?.querySelector(".lasha-page-hero-title");

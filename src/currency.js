@@ -57,3 +57,10 @@ export function withPrices(copy) {
   };
   return Object.fromEntries(Object.entries(copy).map(([locale, value]) => [locale, walk(value, locale)]));
 }
+
+// A project priced only in US dollars in every language (TRESORA's brief: "All prices are displayed in
+// US Dollars (USD)"), so German and Slovenian keep dollars here instead of converting to euros.
+export function formatUsdOnly(usd, locale) {
+  const amount = new Intl.NumberFormat(locale, { maximumFractionDigits: 0 }).format(usd);
+  return locale === "en" ? `US$${amount}` : `${amount} USD`;
+}

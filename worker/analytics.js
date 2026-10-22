@@ -1,6 +1,6 @@
 const JSON_HEADERS = { "content-type": "application/json; charset=utf-8", "cache-control": "no-store", "x-content-type-options": "nosniff" };
 const EVENTS = new Set(["page_view", "navigation", "portal_login_click", "portal_register_click", "materials_open", "lead_submitted", "floor_open", "residence_open", "plan_open", "filter_change", "filter_reset", "language_change", "contact_click", "resource_click"]);
-const PAGES = new Set(["home", "why-aixess", "residences", "broker-access", "insights", "broker-tools", "resources", "calculators"]);
+const PAGES = new Set(["home", "why-aixess", "residences", "broker-access", "insights", "broker-tools", "resources", "calculators", "tresora", "downtown-one"]);
 const LOCALES = new Set(["en", "de", "pl", "sl", "ru"]);
 const ID = /^[a-f0-9-]{36}$/i;
 const STATUSES = new Set(["new", "contacted", "qualified", "closed"]);
