@@ -8,6 +8,7 @@ import { LASHA_PAGES_COPY } from "../lasha-pages-copy.js";
 import "./lasha-network-pages.css";
 import { ThemedImage } from "./ThemedImage.jsx";
 import { ScrollDownCue } from "./ScrollDownCue.jsx";
+import { BrokerGetStarted, BrokerPlatformHero, BrokerWorkspace } from "./InsightsToolsPages.jsx";
 
 // AiXESS Advantage and Broker Access, built to Lasha Bakashvili's Figma frames (AIXESS
 // ADVANTAGE 1440 × 1865 and BROKER ACCESS 1440 × 1800, shared by Kemo on 9 October 2026).
@@ -45,10 +46,10 @@ function PageButton({ variant, flow, children }) {
 }
 
 // Header controls take the colour of the ground under most of their width: the coloured hero
-// panel's text colour over the panel, white over the render, ink over Broker Access's paper list
-// column (16 October 2026 audits: in the afternoon the panel is sage, and white AIXESS, nav and
-// MENU over it read at 2.2:1; at 1920px and in Polish some labels sat mostly on the paper or the
-// render while their centre said otherwise). Which ones overlap depends on width and language.
+// panel's text colour over the panel, white over the render (16 October 2026 audits: in the
+// afternoon the panel is sage, and white AIXESS, nav and MENU over it read at 2.2:1; at 1920px
+// and in Polish some labels sat mostly on the render while their centre said otherwise). Which
+// ones overlap depends on width and language.
 const OVER_FIELD = ".brand, .desktop-nav > button, .nav-group > button, .time-theme-menu__button, .language-switcher-trigger, .login-button, .menu-toggle";
 const overlap = (r, box) => Math.max(0, Math.min(r.right, box.right) - Math.max(r.left, box.left));
 function useHeaderOverField(ref, locale) {
@@ -56,20 +57,13 @@ function useHeaderOverField(ref, locale) {
     const hero = ref.current;
     const panel = hero?.querySelector(":scope > .lnp-hero-panel");
     if (!panel) return undefined;
-    const media = hero.querySelector(":scope > .lnp-hero-media");
-    const paperAfterMedia = hero.classList.contains("lnp-hero-broker");
     const mark = () => {
       const box = panel.getBoundingClientRect();
-      const photo = media?.getBoundingClientRect();
-      const stacked = photo && photo.top >= box.bottom - 1;
       hero.querySelectorAll(`:scope > .site-header :is(${OVER_FIELD})`).forEach((item) => {
         const r = item.getBoundingClientRect();
         const y = r.top + r.height / 2;
         const onPanelRow = y >= box.top && y <= box.bottom;
-        const onField = r.width > 0 && onPanelRow && overlap(r, box) > r.width / 2;
-        const onPaper = r.width > 0 && paperAfterMedia && !stacked && photo && r.right - Math.max(r.left, photo.right) > r.width / 2;
-        item.classList.toggle("is-over-field", onField);
-        item.classList.toggle("is-over-paper", onPaper);
+        item.classList.toggle("is-over-field", r.width > 0 && onPanelRow && overlap(r, box) > r.width / 2);
       });
     };
     mark();
@@ -97,7 +91,7 @@ function usePanelHeight(ref) {
   }, [ref]);
 }
 
-function SplitHero({ header, eyebrow, title, body, action, media, aside, className }) {
+function SplitHero({ header, eyebrow, title, body, action, media, className }) {
   const ref = useRef(null);
   const { locale } = useLanguage();
   useHeaderOverField(ref, locale);
@@ -118,7 +112,6 @@ function SplitHero({ header, eyebrow, title, body, action, media, aside, classNa
           ? <ThemedImage family={media.family} defaultWidth={media.defaultWidth} sizes={media.sizes} style={{ "--lnp-position": media.position }} decoding="async" fetchPriority="high" />
           : <img src={image(`${media.src}-${media.width * 2}`)} srcSet={srcSet(media.src, media.width)} sizes={media.sizes} width={media.width} height={media.height} alt="" decoding="async" fetchPriority="high" />}
       </div>
-      {aside}
     </section>
   );
 }
@@ -176,9 +169,12 @@ export function AdvantagePageContent({ header }) {
   );
 }
 
-export function BrokerAccessPageContent({ header }) {
-  const { locale, network, home, page } = useCopy();
-  const [haveNetwork] = network.network.split(/(?<=\?)\s/);
+// One Broker Access page (Klem, 22 October 2026: Broker Tools is merged in), in her order: the
+// platform hero, who can join, 10% – 100%, from access to commission, the workspace, three steps.
+// The frame's "Have the network?" band is gone: its two buttons repeat the hero's.
+export function BrokerAccessPageContent({ header, onOpenModal }) {
+  const { t } = useLanguage();
+  const { locale, network, page } = useCopy();
   // Lasha's list drops the full stop on the first three. CONNECTORS keeps its own line, not the
   // frame's repeat of the sales line (Kemo, 16 October 2026: no repeated text on a page).
   const people = network.people.map(([title, line], index) => [title, index < 3 ? noStop(line) : line]);
@@ -187,31 +183,26 @@ export function BrokerAccessPageContent({ header }) {
   const stepTitles = useRef(new Map()).current;
   return (
     <div className="lnp lnp-broker">
-      <SplitHero
-        className="lnp-hero-broker"
-        header={header}
-        eyebrow={home.aboutEyebrow}
-        title={splitBrokerTitle(network.eligibility[1])}
-        body={page.brokerIntro}
-        media={{ family: "glass-architecture", defaultWidth: 800, position: "50% 30%", sizes: "(max-width: 899px) 100vw, 40vw" }}
-        aside={
-          <ol className="lnp-people">
-            {people.map(([title, line], index) => (
-              <li key={title}>
-                <span className="lasha-index">{String(index + 1).padStart(2, "0")}</span>
-                <div><h2>{title}</h2><p>{line}</p></div>
-              </li>
-            ))}
-          </ol>
-        }
-      />
+      <BrokerPlatformHero header={header} eyebrow={t("brokerAccessEyebrow")} onOpenModal={onOpenModal} />
 
-      <section className="lnp-network" aria-labelledby="lnp-network-title">
-        <FittedHeading id="lnp-network-title"><span>{haveNetwork}</span></FittedHeading>
-        <div className="lnp-network-actions">
-          <PageButton variant="primary" flow="register">{network.request}</PageButton>
-          <PageButton variant="outline" flow="login">{network.signIn}</PageButton>
+      {/* Lasha's Broker Access hero (panel 657, render 385, list), now the page's second section. */}
+      <section className="lnp-join" aria-labelledby="lnp-join-title">
+        <div className="lnp-join-panel">
+          <p className="lasha-eyebrow lnp-eyebrow">{network.eligibility[0]}</p>
+          <FittedHeading id="lnp-join-title" className="lnp-join-title">{splitBrokerTitle(network.eligibility[1]).map((line) => <span key={line}>{line}</span>)}</FittedHeading>
+          <p className="lnp-hero-body">{page.brokerIntro}</p>
         </div>
+        <div className="lnp-join-media">
+          <ThemedImage family="glass-architecture" defaultWidth={800} sizes="(max-width: 899px) 100vw, 27vw" style={{ "--lnp-position": "50% 30%" }} loading="lazy" decoding="async" />
+        </div>
+        <ol className="lnp-people">
+          {people.map(([title, line], index) => (
+            <li key={title}>
+              <span className="lasha-index">{String(index + 1).padStart(2, "0")}</span>
+              <div><h3>{title}</h3><p>{line}</p></div>
+            </li>
+          ))}
+        </ol>
       </section>
 
       <section className="lnp-commercial" aria-labelledby="lnp-commercial-title">
@@ -243,6 +234,9 @@ export function BrokerAccessPageContent({ header }) {
           ))}
         </ol>
       </section>
+
+      <BrokerWorkspace />
+      <BrokerGetStarted onOpenModal={onOpenModal} />
     </div>
   );
 }

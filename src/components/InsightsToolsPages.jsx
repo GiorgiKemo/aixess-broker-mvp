@@ -132,56 +132,64 @@ function CardMedia({ media, label }) {
   );
 }
 
-// Broker Tools, from the right half of Klem's picture. The working calculators and the
-// client PDF offer are broker-only (Klem's voice note, 12 October 2026), so this page only
-// describes them and sends brokers to sign in or apply.
+// Broker Tools, from the right half of Klem's picture, now part of the Broker Access page (Klem,
+// 22 October 2026: one Broker Access page instead of two). The working calculators and the client
+// PDF offer are broker-only (Klem's voice note, 12 October 2026), so the page only describes them
+// and sends brokers to sign in or apply.
 // By day the photo's sky (left of the hanging plants) and its pale stone terrace (right of them)
 // carry ink header labels; labels over the plants stay white (see useHeaderOnLightSky).
 const BROKER_TOOLS_LIGHT_SKY = { themes: "day", ranges: [[0, 0.68], [0.84, 1]] };
 
-export function BrokerToolsPageContent({ header, onOpenModal }) {
+export function BrokerPlatformHero({ header, eyebrow, onOpenModal }) {
   const { tools: c } = useCopy();
   return (
-    <>
-      <LashaPageHero header={header} eyebrow={c.eyebrow} title={c.title.map((line, index) => (index === c.title.length - 1 ? line.replace(/ (?=\S+$)/, "\u00a0") : line))} image="broker-tools-refined" copy={c.copy} variant="coastal" lightSky={BROKER_TOOLS_LIGHT_SKY}>
-        <div className="page-cta-row it-hero-actions">
-          <button className="button button-primary" type="button" onClick={() => onOpenModal("register")}>{c.partner}<LashaArrow length={24} /></button>
-          <button className="button button-ghost" type="button" onClick={() => onOpenModal("login")}>{c.login}</button>
-        </div>
-        <p className="it-hero-note">{c.access}</p>
-      </LashaPageHero>
-      <main className="page-main it-main">
-        <section className="it-section it-paper" aria-labelledby="it-workspace-title">
-          <div className="it-workspace-intro">
-            <SectionHeading id="it-workspace-title" eyebrow={c.workspaceEyebrow} title={c.workspaceTitle} copy={c.workspaceCopy} />
-            {/* Giorgi, 13 October 2026: a simple modern building in place of the old Reverance render. */}
-            <ThemedImage className="it-workspace-photo" family="workspace-building" defaultWidth={800} sizes="(max-width: 899px) 100vw, 40vw" loading="lazy" decoding="async" />
-          </div>
-          <ol className="it-features">
-            {/* Text only (Kemo, 14 October 2026): number, heading and description, no artwork. */}
-            {c.features.map(([title, body], index) => (
-              <li className="it-feature" key={title}>
-                <h3><span className="it-feature-index">{String(index + 1).padStart(2, "0")}.</span> {title}</h3>
-                <p>{body}</p>
-              </li>
-            ))}
-          </ol>
-        </section>
+    <LashaPageHero header={header} eyebrow={eyebrow} title={c.title.map((line, index) => (index === c.title.length - 1 ? line.replace(/ (?=\S+$)/, "\u00a0") : line))} image="broker-tools-refined" copy={c.copy} variant="coastal" lightSky={BROKER_TOOLS_LIGHT_SKY}>
+      <div className="page-cta-row it-hero-actions">
+        <button className="button button-primary" type="button" onClick={() => onOpenModal("register")}>{c.partner}<LashaArrow length={24} /></button>
+        <button className="button button-ghost" type="button" onClick={() => onOpenModal("login")}>{c.login}</button>
+      </div>
+      <p className="it-hero-note">{c.access}</p>
+    </LashaPageHero>
+  );
+}
 
-        <section className="it-section it-ink it-steps" aria-labelledby="it-steps-title">
-          <SectionHeading id="it-steps-title" eyebrow={c.stepsEyebrow} title={c.stepsTitle} />
-          <ol className="it-step-list">
-            {c.steps.map(([title, body], index) => (
-              <li key={title}>
-                <span className="lasha-index">{String(index + 1).padStart(2, "0")}.</span>
-                <h3>{title}</h3>
-                <p>{body}</p>
-              </li>
-            ))}
-          </ol>
-          <button className="button button-primary" type="button" onClick={() => onOpenModal("register")}>{c.requestAccess}<LashaArrow length={24} /></button>
-        </section>
-      </main>
-    </>
+export function BrokerWorkspace() {
+  const { tools: c } = useCopy();
+  return (
+    <section className="it-section it-paper" aria-labelledby="it-workspace-title">
+      <div className="it-workspace-intro">
+        <SectionHeading id="it-workspace-title" eyebrow={c.workspaceEyebrow} title={c.workspaceTitle} copy={c.workspaceCopy} />
+        {/* Giorgi, 13 October 2026: a simple modern building in place of the old Reverance render. */}
+        <ThemedImage className="it-workspace-photo" family="workspace-building" defaultWidth={800} sizes="(max-width: 899px) 100vw, 40vw" loading="lazy" decoding="async" />
+      </div>
+      <ol className="it-features">
+        {/* Text only (Kemo, 14 October 2026): number, heading and description, no artwork. */}
+        {c.features.map(([title, body], index) => (
+          <li className="it-feature" key={title}>
+            <h3><span className="it-feature-index">{String(index + 1).padStart(2, "0")}.</span> {title}</h3>
+            <p>{body}</p>
+          </li>
+        ))}
+      </ol>
+    </section>
+  );
+}
+
+export function BrokerGetStarted({ onOpenModal }) {
+  const { tools: c } = useCopy();
+  return (
+    <section className="it-section it-ink it-steps" aria-labelledby="it-steps-title">
+      <SectionHeading id="it-steps-title" eyebrow={c.stepsEyebrow} title={c.stepsTitle} />
+      <ol className="it-step-list">
+        {c.steps.map(([title, body], index) => (
+          <li key={title}>
+            <span className="lasha-index">{String(index + 1).padStart(2, "0")}.</span>
+            <h3>{title}</h3>
+            <p>{body}</p>
+          </li>
+        ))}
+      </ol>
+      <button className="button button-primary" type="button" onClick={() => onOpenModal("register")}>{c.requestAccess}<LashaArrow length={24} /></button>
+    </section>
   );
 }
