@@ -237,6 +237,22 @@ function Gallery({ items, labels, onOpen }) {
   );
 }
 
+// Brochure renderings captured at about 584px: shown at their own size and never enlarged, so no lightbox.
+function StillGallery({ items, className = "" }) {
+  return (
+    <ul className={`rp-gallery dp-gallery dp-gallery-still ${className}`}>
+      {items.map(([slug, caption, alt]) => (
+        <li key={slug}>
+          <figure>
+            <Picture slug={slug} alt={alt} sizes="(max-width: 599px) calc(100vw - 2.5rem), (max-width: 1099px) 46vw, 27rem" />
+            <figcaption className="rp-gallery-label">{caption}</figcaption>
+          </figure>
+        </li>
+      ))}
+    </ul>
+  );
+}
+
 // A technical plan: shown whole (contain, never cropped), opening at full size.
 function PlanCard({ slug, thumb, title, text, alt, labels, onOpen, set, index, children }) {
   return (
@@ -258,7 +274,7 @@ export function TresoraPage({ header }) {
   const { open, lightbox } = useLightbox(labels);
   useSectionFromHash(route);
   const { hero, discover, highlights, spaces, lifestyle, location, payment, more } = project;
-  const { prices, floors, plans } = extra;
+  const { prices, floors, plans, gallery, amenityGallery, app } = extra;
   const mapUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(location.mapQuery)}`;
   const floorSet = TRESORA_FLOORS.map((number) => lightboxItem(`tresora-floor-${number}`, floors.items[number][0], floors.items[number][1], labels));
   const priceCell = (value) => (value === null ? <span className="dp-price-none">{prices.noPrice}</span> : <><strong>{format.usd(value)}</strong><span>{format.aed(value)}</span></>);
@@ -352,7 +368,13 @@ export function TresoraPage({ header }) {
           </div>
         </section>
 
-        <section className="rp-section rp-mist" id="tresora-lifestyle" aria-labelledby="tresora-lifestyle-title">
+        <section className="rp-section rp-mist" id="tresora-gallery" aria-labelledby="tresora-gallery-title">
+          <SectionHeading id="tresora-gallery-title" eyebrow={gallery.eyebrow} title={gallery.title} />
+          <StillGallery items={gallery.items} />
+          <p className="rp-note">{gallery.note}</p>
+        </section>
+
+        <section className="rp-section" id="tresora-lifestyle" aria-labelledby="tresora-lifestyle-title">
           <SectionHeading id="tresora-lifestyle-title" eyebrow={lifestyle.eyebrow} title={lifestyle.title} lead={lifestyle.lead} />
           <div className="dp-media-split dp-media-split-reverse">
             <ul className="dp-list dp-list-2">
@@ -362,6 +384,19 @@ export function TresoraPage({ header }) {
             </ul>
             <RenderFigure slug="tresora-pool" caption={extra.pool[0]} alt={extra.pool[1]} labels={labels} onOpen={open} sizes="(max-width: 899px) calc(100vw - 2.5rem), 46vw" />
           </div>
+          <h3 className="rp-subtitle">{amenityGallery.title}</h3>
+          <StillGallery items={amenityGallery.items} className="dp-gallery-2" />
+        </section>
+
+        <section className="rp-section rp-mist" id="tresora-app" aria-labelledby="tresora-app-title">
+          <SectionHeading id="tresora-app-title" eyebrow={app.eyebrow} title={app.title} lead={app.lead} />
+          <h3 className="dp-list-title">{app.featuresTitle}</h3>
+          <ul className="dp-list dp-list-app">
+            {app.features.map((name, index) => (
+              <li key={name}><span className="rp-index" aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>{name}</li>
+            ))}
+          </ul>
+          <p className="rp-note">{app.note}</p>
         </section>
 
         <section className="rp-section" id="tresora-location" aria-labelledby="tresora-location-title">

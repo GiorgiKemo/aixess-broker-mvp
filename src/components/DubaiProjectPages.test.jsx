@@ -145,6 +145,27 @@ describe("Dubai projects: TRESORA and DOWNTOWN ONE", () => {
     expect(document.querySelector(".dubai-project-page").textContent).not.toContain("€");
   });
 
+  it("adds the brochure renderings at their own size and the WADAN app as the developer describes it", () => {
+    window.history.replaceState({}, "", "/#tresora");
+    render(<App />);
+    const gallery = document.getElementById("tresora-gallery");
+    const stills = [...document.querySelectorAll(".dp-gallery-still img")];
+    expect(stills.map((image) => image.getAttribute("src"))).toEqual(
+      ["dusk", "entrance", "lounge", "living", "kitchen", "bedroom", "deck", "gym"].map((name) => `/assets/dubai/tresora-${name}-584.webp`),
+    );
+    stills.forEach((image) => {
+      expect(image.getAttribute("loading")).toBe("lazy");
+      expect(image.getAttribute("srcset")).not.toMatch(/avif|png|jpe?g/i);
+      expect(image.alt).not.toBe("");
+      expect(image.closest("button")).toBeNull();
+    });
+    expect(gallery).toHaveTextContent("Developer renderings from WADAN's TRESORA brochure");
+    const app = document.getElementById("tresora-app");
+    expect([...app.querySelectorAll(".dp-list li")].map((item) => item.textContent)).toEqual(["01AI assistance", "02Updates", "03Requests", "04Documents", "05Announcements"]);
+    expect(app).toHaveTextContent("not an AiXESS service");
+    expect(app.querySelector("a, button")).toBeNull();
+  });
+
   it("sends every TRESORA request as an email naming the project, never a dead link", () => {
     window.history.replaceState({}, "", "/#tresora");
     render(<App />);

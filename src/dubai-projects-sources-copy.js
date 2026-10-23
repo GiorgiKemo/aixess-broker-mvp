@@ -56,6 +56,34 @@ export const DUBAI_SOURCES_COPY = {
         download: "Download the floor plans",
       },
       map: ["Developer's location map", "WADAN's illustrative map of Jumeirah Village Circle marking TRESORA and nearby schools, clinics, Circle Mall and Circle Community Park; not to scale"],
+      gallery: {
+        eyebrow: "Gallery",
+        title: "Architecture and interiors",
+        note: "Developer renderings from WADAN's TRESORA brochure, not photographs of the completed project.",
+        items: [
+          ["tresora-dusk", "The tower at dusk", "Developer rendering of the TRESORA tower at dusk between palm trees"],
+          ["tresora-entrance", "Podium and entrance", "Developer rendering of TRESORA's podium façade and ground-floor entrance"],
+          ["tresora-lounge", "Lobby lounge", "Developer rendering of a lounge with curved sofas and a planted marble feature"],
+          ["tresora-living", "Living and dining", "Developer rendering of an apartment living area with a kitchen counter and glazed partition"],
+          ["tresora-kitchen", "Kitchen", "Developer rendering of a kitchen with an island, bar stools and open shelving"],
+          ["tresora-bedroom", "Bedroom", "Developer rendering of a bedroom with full-height curtains"],
+        ],
+      },
+      amenityGallery: {
+        title: "The amenity deck and gym",
+        items: [
+          ["tresora-deck", "Amenity deck from above", "Developer rendering of the pool deck seen from above, with loungers and planting"],
+          ["tresora-gym", "Gym", "Developer rendering of the gym with cardio machines and floor-to-ceiling windows"],
+        ],
+      },
+      app: {
+        eyebrow: "Resident app",
+        title: "AI-powered WADAN app",
+        lead: "WADAN's brochure describes its resident app as a personal AI concierge: schedule services, welcome guests, request tailored assistance and receive community updates.",
+        featuresTitle: "Functions named in the brochure",
+        features: ["AI assistance", "Updates", "Requests", "Documents", "Announcements"],
+        note: "As described by the developer. The app is WADAN's, not an AiXESS service; WADAN confirms its availability and functions.",
+      },
       plans: {
         title4060: "40/60 payment plan",
         lead4060: "Four quarterly instalments during construction, then the balance on completion.",
@@ -221,6 +249,34 @@ export const DUBAI_SOURCES_COPY = {
         download: "Grundrisse herunterladen",
       },
       map: ["Lageplan des Entwicklers", "WADANs schematische Karte von Jumeirah Village Circle mit TRESORA sowie Schulen, Kliniken, Circle Mall und Circle Community Park in der Nähe; nicht maßstabsgetreu"],
+      gallery: {
+        eyebrow: "Galerie",
+        title: "Architektur und Interieurs",
+        note: "Visualisierungen aus der TRESORA-Broschüre von WADAN, keine Fotos des fertigen Projekts.",
+        items: [
+          ["tresora-dusk", "Der Turm in der Dämmerung", "Visualisierung des Entwicklers: der TRESORA-Turm in der Dämmerung zwischen Palmen"],
+          ["tresora-entrance", "Podium und Eingang", "Visualisierung des Entwicklers: Podiumfassade und Eingang im Erdgeschoss"],
+          ["tresora-lounge", "Lobby-Lounge", "Visualisierung des Entwicklers: Lounge mit geschwungenen Sofas und bepflanztem Marmorelement"],
+          ["tresora-living", "Wohnen und Essen", "Visualisierung des Entwicklers: Wohnbereich mit Küchentheke und Glastrennwand"],
+          ["tresora-kitchen", "Küche", "Visualisierung des Entwicklers: Küche mit Insel, Barhockern und offenen Regalen"],
+          ["tresora-bedroom", "Schlafzimmer", "Visualisierung des Entwicklers: Schlafzimmer mit raumhohen Vorhängen"],
+        ],
+      },
+      amenityGallery: {
+        title: "Amenity-Deck und Fitnessraum",
+        items: [
+          ["tresora-deck", "Amenity-Deck von oben", "Visualisierung des Entwicklers: Pooldeck von oben mit Liegen und Bepflanzung"],
+          ["tresora-gym", "Fitnessraum", "Visualisierung des Entwicklers: Fitnessraum mit Cardiogeräten und raumhohen Fenstern"],
+        ],
+      },
+      app: {
+        eyebrow: "Bewohner-App",
+        title: "KI-gestützte WADAN-App",
+        lead: "Die Broschüre von WADAN beschreibt die Bewohner-App als persönlichen KI-Concierge: Services planen, Gäste empfangen, individuelle Unterstützung anfordern und Neuigkeiten aus der Community erhalten.",
+        featuresTitle: "In der Broschüre genannte Funktionen",
+        features: ["KI-Assistenz", "Neuigkeiten", "Anfragen", "Dokumente", "Mitteilungen"],
+        note: "Nach Angaben des Entwicklers. Die App gehört zu WADAN und ist kein Dienst von AiXESS; Verfügbarkeit und Funktionen bestätigt WADAN.",
+      },
       plans: {
         title4060: "Zahlungsplan 40/60",
         lead4060: "Vier vierteljährliche Raten während der Bauzeit, der Rest bei Fertigstellung.",
@@ -386,6 +442,34 @@ export const DUBAI_SOURCES_COPY = {
         download: "Pobierz plany pięter",
       },
       map: ["Mapa lokalizacji dewelopera", "Poglądowa mapa WADAN Jumeirah Village Circle z TRESORA oraz pobliskimi szkołami, przychodniami, Circle Mall i Circle Community Park; nie w skali"],
+      gallery: {
+        eyebrow: "Galeria",
+        title: "Architektura i wnętrza",
+        note: "Wizualizacje z broszury TRESORA dewelopera WADAN, a nie zdjęcia ukończonego projektu.",
+        items: [
+          ["tresora-dusk", "Wieża o zmierzchu", "Wizualizacja dewelopera: wieża TRESORA o zmierzchu wśród palm"],
+          ["tresora-entrance", "Podium i wejście", "Wizualizacja dewelopera: fasada podium i wejście na parterze"],
+          ["tresora-lounge", "Lounge w lobby", "Wizualizacja dewelopera: lounge z zaokrąglonymi sofami i marmurowym elementem z roślinnością"],
+          ["tresora-living", "Salon z jadalnią", "Wizualizacja dewelopera: strefa dzienna z blatem kuchennym i przeszkloną ścianką"],
+          ["tresora-kitchen", "Kuchnia", "Wizualizacja dewelopera: kuchnia z wyspą, hokerami i otwartymi półkami"],
+          ["tresora-bedroom", "Sypialnia", "Wizualizacja dewelopera: sypialnia z zasłonami od podłogi do sufitu"],
+        ],
+      },
+      amenityGallery: {
+        title: "Taras rekreacyjny i sala fitness",
+        items: [
+          ["tresora-deck", "Taras rekreacyjny z góry", "Wizualizacja dewelopera: taras basenowy z góry, z leżakami i zielenią"],
+          ["tresora-gym", "Sala fitness", "Wizualizacja dewelopera: sala fitness z urządzeniami cardio i oknami od podłogi do sufitu"],
+        ],
+      },
+      app: {
+        eyebrow: "Aplikacja dla mieszkańców",
+        title: "Aplikacja WADAN oparta na AI",
+        lead: "Broszura WADAN opisuje aplikację dla mieszkańców jako osobistego konsjerża AI: planowanie usług, przyjmowanie gości, zamawianie indywidualnej pomocy i otrzymywanie informacji ze społeczności.",
+        featuresTitle: "Funkcje wymienione w broszurze",
+        features: ["Asystent AI", "Aktualności", "Zgłoszenia", "Dokumenty", "Ogłoszenia"],
+        note: "Według dewelopera. Aplikacja należy do WADAN, a nie do AiXESS; jej dostępność i funkcje potwierdza WADAN.",
+      },
       plans: {
         title4060: "Plan płatności 40/60",
         lead4060: "Cztery kwartalne raty w trakcie budowy, a pozostała kwota po ukończeniu.",
@@ -551,6 +635,34 @@ export const DUBAI_SOURCES_COPY = {
         download: "Prenesi tlorise",
       },
       map: ["Investitorjev zemljevid lokacije", "Ponazoritveni zemljevid Jumeirah Village Circle družbe WADAN s TRESORO ter bližnjimi šolami, klinikami, Circle Mall in Circle Community Park; ni v merilu"],
+      gallery: {
+        eyebrow: "Galerija",
+        title: "Arhitektura in notranjost",
+        note: "Vizualizacije iz brošure TRESORA investitorja WADAN, ne fotografije dokončanega projekta.",
+        items: [
+          ["tresora-dusk", "Stolp ob mraku", "Vizualizacija investitorja: stolp TRESORA ob mraku med palmami"],
+          ["tresora-entrance", "Podij in vhod", "Vizualizacija investitorja: fasada podija in vhod v pritličju"],
+          ["tresora-lounge", "Salon v avli", "Vizualizacija investitorja: salon z zaobljenimi sedežnimi garniturami in marmornim elementom z zelenjem"],
+          ["tresora-living", "Bivalni prostor z jedilnico", "Vizualizacija investitorja: bivalni prostor s kuhinjskim pultom in stekleno predelno steno"],
+          ["tresora-kitchen", "Kuhinja", "Vizualizacija investitorja: kuhinja z otokom, barskimi stoli in odprtimi policami"],
+          ["tresora-bedroom", "Spalnica", "Vizualizacija investitorja: spalnica z zavesami od tal do stropa"],
+        ],
+      },
+      amenityGallery: {
+        title: "Terasa z ugodnostmi in fitnes prostor",
+        items: [
+          ["tresora-deck", "Terasa z ugodnostmi od zgoraj", "Vizualizacija investitorja: bazenska terasa od zgoraj z ležalniki in zelenjem"],
+          ["tresora-gym", "Fitnes prostor", "Vizualizacija investitorja: fitnes prostor s kardio napravami in okni od tal do stropa"],
+        ],
+      },
+      app: {
+        eyebrow: "Aplikacija za stanovalce",
+        title: "Aplikacija WADAN z umetno inteligenco",
+        lead: "Brošura WADAN opisuje aplikacijo za stanovalce kot osebnega concierga z umetno inteligenco: naročanje storitev, sprejem gostov, prošnje za prilagojeno pomoč in novice iz skupnosti.",
+        featuresTitle: "Funkcije, navedene v brošuri",
+        features: ["Pomoč UI", "Novice", "Zahteve", "Dokumenti", "Obvestila"],
+        note: "Po navedbah investitorja. Aplikacija je last WADAN in ni storitev AiXESS; razpoložljivost in funkcije potrdi WADAN.",
+      },
       plans: {
         title4060: "Načrt plačil 40/60",
         lead4060: "Štirje četrtletni obroki med gradnjo, preostanek ob dokončanju.",
@@ -716,6 +828,34 @@ export const DUBAI_SOURCES_COPY = {
         download: "Скачать планировки",
       },
       map: ["Карта расположения от девелопера", "Схематичная карта Jumeirah Village Circle от WADAN с TRESORA и ближайшими школами, клиниками, Circle Mall и Circle Community Park; не в масштабе"],
+      gallery: {
+        eyebrow: "Галерея",
+        title: "Архитектура и интерьеры",
+        note: "Визуализации из брошюры TRESORA от WADAN, а не фотографии готового проекта.",
+        items: [
+          ["tresora-dusk", "Башня в сумерках", "Визуализация девелопера: башня TRESORA в сумерках среди пальм"],
+          ["tresora-entrance", "Подиум и вход", "Визуализация девелопера: фасад подиума и вход на первом этаже"],
+          ["tresora-lounge", "Лаунж в лобби", "Визуализация девелопера: лаунж с округлыми диванами и мраморным элементом с растениями"],
+          ["tresora-living", "Гостиная и столовая", "Визуализация девелопера: жилая зона с кухонной стойкой и стеклянной перегородкой"],
+          ["tresora-kitchen", "Кухня", "Визуализация девелопера: кухня с островом, барными стульями и открытыми полками"],
+          ["tresora-bedroom", "Спальня", "Визуализация девелопера: спальня со шторами от пола до потолка"],
+        ],
+      },
+      amenityGallery: {
+        title: "Терраса удобств и фитнес-зал",
+        items: [
+          ["tresora-deck", "Терраса удобств сверху", "Визуализация девелопера: бассейная терраса сверху с шезлонгами и зеленью"],
+          ["tresora-gym", "Фитнес-зал", "Визуализация девелопера: фитнес-зал с кардиотренажёрами и панорамными окнами"],
+        ],
+      },
+      app: {
+        eyebrow: "Приложение для жителей",
+        title: "Приложение WADAN на базе ИИ",
+        lead: "В брошюре WADAN приложение для жителей описано как персональный ИИ-консьерж: заказ услуг, приём гостей, запросы индивидуальной помощи и новости сообщества.",
+        featuresTitle: "Функции, названные в брошюре",
+        features: ["ИИ-ассистент", "Новости", "Запросы", "Документы", "Объявления"],
+        note: "По данным девелопера. Приложение принадлежит WADAN и не является сервисом AiXESS; доступность и функции подтверждает WADAN.",
+      },
       plans: {
         title4060: "План оплаты 40/60",
         lead4060: "Четыре ежеквартальных платежа в период строительства, затем остаток по завершении.",

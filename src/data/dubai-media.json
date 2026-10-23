@@ -380,6 +380,38 @@
    1661
   ]
  },
+ "tresora-bedroom": {
+  "height": 327,
+  "width": 584,
+  "widths": [
+   480,
+   584
+  ]
+ },
+ "tresora-deck": {
+  "height": 327,
+  "width": 584,
+  "widths": [
+   480,
+   584
+  ]
+ },
+ "tresora-dusk": {
+  "height": 315,
+  "width": 584,
+  "widths": [
+   480,
+   584
+  ]
+ },
+ "tresora-entrance": {
+  "height": 326,
+  "width": 584,
+  "widths": [
+   480,
+   584
+  ]
+ },
  "tresora-facade": {
   "height": 1571,
   "width": 2400,
@@ -460,6 +492,38 @@
    960,
    1920,
    3200
+  ]
+ },
+ "tresora-gym": {
+  "height": 327,
+  "width": 584,
+  "widths": [
+   480,
+   584
+  ]
+ },
+ "tresora-kitchen": {
+  "height": 327,
+  "width": 584,
+  "widths": [
+   480,
+   584
+  ]
+ },
+ "tresora-living": {
+  "height": 327,
+  "width": 584,
+  "widths": [
+   480,
+   584
+  ]
+ },
+ "tresora-lounge": {
+  "height": 328,
+  "width": 584,
+  "widths": [
+   480,
+   584
   ]
  },
  "tresora-map": {

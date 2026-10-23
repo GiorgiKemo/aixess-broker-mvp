@@ -380,6 +380,15 @@ html:root[data-time-theme='afternoon'] .lasha-page .dp-page :is(.rp-mist .dp-lis
 }
 .lasha-page .dp-gallery + .rp-note { margin-top: 1.4rem; }
 .lasha-page .rp-subtitle + .dp-gallery { margin-top: 1.2rem; }
+/* Brochure renderings (TRESORA): small sources, so tiles stay near their own 584px width and never zoom. */
+.lasha-page .dp-gallery-still { row-gap: clamp(1.4rem, 3vw, 2rem); max-width: 81.2rem; }
+.lasha-page .dp-gallery-still.dp-gallery-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 54rem; }
+@media (max-width: 599px) { .lasha-page .dp-gallery-still.dp-gallery-2 { grid-template-columns: minmax(0, 1fr); } }
+.lasha-page .dp-gallery-still figure { margin: 0; }
+.lasha-page .dp-gallery-still img { aspect-ratio: 584 / 327; background: var(--l-mist); transition: none; }
+.lasha-page .dp-gallery-still .rp-gallery-label { padding-top: 0.75rem; }
+.lasha-page .dp-media-split + .rp-subtitle { margin-top: clamp(2.4rem, 5vw, 3.6rem); }
+.lasha-page .dp-list-app { margin-bottom: 0.4rem; }
 
 /* Tables: prices, launch mix and payment schedules. */
 .lasha-page .dp-table-wrap { max-width: 81.2rem; }
