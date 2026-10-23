@@ -1,8 +1,8 @@
-/* TRESORA and DOWNTOWN ONE (Kemo, 22 October 2026), in the inner pages' language (lasha-pages.css and
-   the Reverance sections in reverance-project.css): paper and mist grounds, condensed uppercase
-   headings, blue accents from the theme tokens. Neither project has an authentic photo yet, so the
-   hero is type on the theme's pale ground (cobalt tint by day, sage in the afternoon, near-black at
-   night) and nothing on the page waits for an image. */
+/* TRESORA and DOWNTOWN ONE (Kemo, 22 and 23 October 2026), in the inner pages' language (lasha-pages.css
+   and the Reverance sections in reverance-project.css): paper and mist grounds, condensed uppercase
+   headings, blue accents from the theme tokens. The hero is type on the theme's pale ground (cobalt
+   tint by day, sage in the afternoon, near-black at night) beside the developer's rendering, so no
+   text ever sits on a photograph. Plans are shown whole on white, never cropped. */
 
 /* ---------- Hero ---------- */
 .lasha-page .dp-hero { background: var(--l-soft, #e3ebf6); }
@@ -75,8 +75,6 @@ html:root:not([data-time-theme='night']) .dp-hero > .site-header .login-button:h
 }
 .lasha-page .dp-hero-facts dt { font-size: var(--v4-label); font-weight: 600; letter-spacing: 0.16em; line-height: 1.35; text-transform: uppercase; }
 .lasha-page .dp-hero-facts dd { margin: 0; color: var(--l-blue); font-family: var(--l-head); font-size: clamp(2rem, 3vw, 2.9rem); font-weight: 700; line-height: 0.95; white-space: nowrap; }
-.lasha-page .dp-hero-price { max-width: 38rem; margin: 1.2rem 0 0; color: var(--l-ink, #171a1d); font-size: var(--v4-small); line-height: 1.55; }
-.lasha-page .dp-hero-price strong { font-size: var(--v4-label); font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; }
 
 /* The copy keeps the scroll-down cue's height free under it, so a long hero that fills the screen
    (tablets, short laptop windows) never runs beneath the cue. */
@@ -95,13 +93,86 @@ html:root:not([data-time-theme='night']) .dp-hero > .site-header .login-button:h
 }
 
 /* Night: the hero copy is off-white on near-black, the figures and subtitle the light cobalt. */
-html:root[data-time-theme='night'] .lasha-page .dp-hero :is(.dp-hero-tagline, .dp-hero-price, .lasha-page-hero-text) { color: #f4f4f1; }
-html:root[data-time-theme='night'] .lasha-page .dp-hero :is(.dp-hero-subtitle, .dp-hero-facts dd, .dp-mark, .dp-inline-link) { color: var(--l-blue-light); }
+html:root[data-time-theme='night'] .lasha-page .dp-hero :is(.dp-hero-tagline, .dp-hero-developer, .dp-hero-figure figcaption, .lasha-page-hero-text) { color: #f4f4f1; }
+html:root[data-time-theme='night'] .lasha-page .dp-hero :is(.dp-hero-subtitle, .dp-hero-facts dd, .dp-hero-developer strong, .dp-mark, .dp-inline-link) { color: var(--l-blue-light); }
 html:root[data-time-theme='night'] .lasha-page .dp-hero :is(.dp-hero-facts > div, .dp-hero-side) { border-color: rgb(244 244 241 / 0.3); }
 /* Afternoon: the deeper sage reads on the sage ground. */
-html:root[data-time-theme='afternoon'] .lasha-page .dp-hero :is(.dp-hero-subtitle, .dp-hero-facts dd, .dp-mark, .dp-inline-link) { color: #2f4733; }
+html:root[data-time-theme='afternoon'] .lasha-page .dp-hero :is(.dp-hero-subtitle, .dp-hero-facts dd, .dp-hero-developer strong, .dp-mark, .dp-inline-link) { color: #2f4733; }
 html:root[data-time-theme='afternoon'] .lasha-page .dp-hero .it-hero-actions .button-primary { border-color: #3c5a41; background: #3c5a41; color: #f4f4f1; }
 html:root[data-time-theme='afternoon'] .lasha-page .dp-hero .it-hero-actions .button-primary:hover { border-color: #2f4733; background: #2f4733; }
+
+/* The developer's rendering. Phones, tablets and portrait screens: under the header, across the
+   width, with the copy below it. From 1100px on landscape screens: a column at the right, from the
+   header to the hero's foot, with the copy in one column at the left. The caption sits under the
+   image on the hero's ground. */
+.lasha-page .dp-hero-media { --dp-hero-image: 36%; }
+.lasha-page .dp-hero-figure {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  margin: 0;
+}
+.lasha-page .dp-hero-figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  max-height: 56svh;
+  object-fit: cover;
+  object-position: var(--dp-hero-position, 50% 35%);
+  background: var(--l-mist);
+}
+.lasha-page .dp-hero-figure figcaption {
+  padding: 0.6rem var(--page-gutter) 0;
+  color: color-mix(in srgb, var(--l-ink, #171a1d) 72%, transparent);
+  font-size: var(--v4-label);
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+.lasha-page .dp-hero-developer {
+  margin: 0.9rem 0 0;
+  color: var(--l-ink, #171a1d);
+  font-size: var(--v4-label);
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  line-height: 1.5;
+  text-transform: uppercase;
+}
+.lasha-page .dp-hero-developer strong { color: var(--l-blue); font-weight: 700; }
+html:root[data-time-theme='afternoon'] .lasha-page .dp-hero-developer strong { color: #2f4733; }
+
+@media (max-width: 1099px), (max-aspect-ratio: 1/1) {
+  /* Stacked: the copy follows the image straight away, with the cue's room under it. */
+  .lasha-page .dp-hero-media .dp-hero-copy { margin-top: 0; margin-bottom: 0; padding-top: clamp(1.8rem, 4vw, 2.6rem); padding-bottom: 8.5rem; }
+}
+@media (max-width: 599px) {
+  .lasha-page .dp-hero-figure img { aspect-ratio: 5 / 4; }
+}
+
+@media (min-width: 1100px) and (min-aspect-ratio: 1/1) {
+  .lasha-page .dp-hero-media {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) var(--dp-hero-image);
+    grid-template-rows: auto minmax(0, 1fr);
+  }
+  .lasha-page .dp-hero-media > .site-header { grid-column: 1 / -1; grid-row: 1; }
+  .lasha-page .dp-hero-media > .dp-hero-figure { grid-column: 2; grid-row: 2; padding: 0 var(--page-gutter) 1.4rem 0; }
+  .lasha-page .dp-hero-media > .dp-hero-figure img { flex: 1 1 0; height: 0; min-height: 18rem; max-height: none; aspect-ratio: auto; }
+  .lasha-page .dp-hero-media > .dp-hero-copy { grid-column: 1; grid-row: 2; max-width: 56rem; }
+  .lasha-page .dp-hero-figure figcaption { padding-inline: 0; }
+  /* One column beside the image: name, then the copy, figures and buttons. */
+  .lasha-page .dp-hero-media .dp-hero-copy { grid-template-columns: minmax(0, 1fr); }
+  .lasha-page .dp-hero-media .dp-hero-side { padding-left: 0; border-left: 0; }
+  /* The title shrinks to keep the copy on the first screen, but never below 3.6rem: a long hero
+     (DOWNTOWN ONE's three paragraphs on a short window) runs on below the fold instead. */
+  .lasha-page .dp-hero-media .lasha-page-hero-title { font-size: max(3.6rem, min(var(--v4-page-title), 6.4vw, var(--hero-title-vh), var(--hero-title-fit, 100vw))); }
+  .lasha-page .dp-hero-media .lasha-page-hero-text { max-width: 44rem; font-size: var(--v4-text); line-height: 1.6; }
+  .lasha-page .dp-hero-media .dp-hero-subtitle { font-size: min(var(--v4-sub), 2.6vw, 5.2svh); }
+  /* The cue is centred under the copy, not on the image. */
+  .lasha-page .dp-hero-media > .lasha-page-hero-cue { right: var(--dp-hero-image); }
+}
 
 /* ---------- Shared pieces ---------- */
 .lasha-page .dp-mark {
@@ -223,6 +294,7 @@ html:root[data-time-theme='afternoon'] .lasha-page .dp-hero .it-hero-actions .bu
 .lasha-page .dp-list-title { margin: 0 0 0.9rem; font-size: var(--v4-label); font-weight: 600; letter-spacing: 0.18em; line-height: 1.4; text-transform: uppercase; color: var(--l-blue); }
 .lasha-page .dp-split { align-items: start; }
 .lasha-page .dp-split .rp-actions { margin-top: clamp(1.6rem, 3vw, 2.2rem); }
+.lasha-page .dp-text + .dp-list-title { margin-top: clamp(1.6rem, 3vw, 2.2rem); }
 
 /* Nearby destinations (DOWNTOWN ONE): the approximate time as supplied, then the places. */
 .lasha-page .dp-nearby { margin: 0; }
@@ -255,6 +327,223 @@ html:root[data-time-theme='afternoon'] .lasha-page .dp-hero .it-hero-actions .bu
 /* Afternoon eyebrows on the pale sage bands use the deeper sage, as on Reverance. */
 html:root[data-time-theme='afternoon'] .lasha-page .dp-page :is(.rp-mist .dp-list-title, .rp-mist .dp-nearby dt) { color: #3c5a41; }
 
+/* ---------- Source material: renders, prices, plans, schedules, downloads ---------- */
+.lasha-page .dp-columns-1 { grid-template-columns: minmax(0, 1fr); max-width: 44rem; }
+
+/* Text beside a rendering from 900px; the image under the text on smaller screens. */
+.lasha-page .dp-media-split { display: grid; grid-template-columns: minmax(0, 1fr); gap: clamp(2rem, 4vw, 4rem); align-items: start; max-width: 81.2rem; }
+@media (min-width: 900px) {
+  .lasha-page .dp-media-split { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  .lasha-page .dp-media-split-reverse > .dp-figure { order: -1; }
+}
+.lasha-page .dp-list-2 { grid-template-columns: repeat(auto-fill, minmax(min(100%, 15rem), 1fr)); }
+
+/* A captioned rendering or map that opens larger. Captions sit under the image, never on it. */
+.lasha-page .dp-figure { min-width: 0; margin: 0; }
+.lasha-page .dp-figure button,
+.lasha-page .dp-plan-image {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: var(--l-mist);
+  color: inherit;
+  cursor: zoom-in;
+}
+.lasha-page .dp-figure img { display: block; width: 100%; height: auto; }
+.lasha-page .dp-figure :is(button, .dp-plan-image):focus-visible,
+.lasha-page :is(.dp-figure button, .dp-plan-image):focus-visible { outline: 3px solid var(--l-blue); outline-offset: 3px; }
+.lasha-page .dp-figure figcaption {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem 0.9rem;
+  align-items: baseline;
+  padding-top: 0.75rem;
+  font-size: var(--v4-small);
+  line-height: 1.45;
+}
+.lasha-page .dp-figure-kind,
+.lasha-page .dp-gallery .dp-figure-kind { color: var(--l-blue); font-size: var(--v4-label); font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; }
+.lasha-page .dp-map button { padding: clamp(0.5rem, 1.2vw, 0.9rem); border: 1px solid color-mix(in srgb, var(--l-ink, #171a1d) 18%, transparent); background: #fff; }
+.lasha-page .dp-split .dp-map { margin-top: clamp(1.4rem, 3vw, 2rem); }
+.lasha-page .dp-split > .dp-map { margin-top: 0; }
+
+/* Galleries: the label under each rendering on the page's ground (no shade on the photo). */
+.lasha-page .dp-gallery button { background: transparent; }
+.lasha-page .dp-gallery img { background: var(--l-mist); }
+.lasha-page .dp-gallery .rp-gallery-label {
+  position: static;
+  display: block;
+  padding: 0.75rem 0 0;
+  background: none;
+  color: var(--l-ink, #171a1d);
+}
+.lasha-page .dp-gallery + .rp-note { margin-top: 1.4rem; }
+.lasha-page .rp-subtitle + .dp-gallery { margin-top: 1.2rem; }
+
+/* Tables: prices, launch mix and payment schedules. */
+.lasha-page .dp-table-wrap { max-width: 81.2rem; }
+.lasha-page .dp-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--v4-text);
+  font-variant-numeric: tabular-nums;
+  line-height: 1.4;
+}
+.lasha-page .dp-table :is(th, td) { padding: 0.95rem 1.2rem 0.95rem 0; border-top: 1px solid color-mix(in srgb, var(--l-ink, #171a1d) 20%, transparent); text-align: left; vertical-align: top; }
+.lasha-page .dp-table :is(th, td):last-child { padding-right: 0; }
+.lasha-page .dp-table thead th { padding-top: 0; border-top: 0; color: color-mix(in srgb, var(--l-ink, #171a1d) 78%, transparent); font-size: var(--v4-label); font-weight: 600; letter-spacing: 0.16em; line-height: 1.35; text-transform: uppercase; vertical-align: bottom; }
+.lasha-page .dp-table tbody tr:last-child :is(th, td) { border-bottom: 1px solid color-mix(in srgb, var(--l-ink, #171a1d) 20%, transparent); }
+.lasha-page :is(.dp-price-table, .dp-mix-table) tbody th { font-family: var(--l-head); font-size: var(--v4-h3); font-weight: 700; line-height: 1; text-transform: uppercase; }
+.lasha-page :is(.dp-price-table, .dp-mix-table) tbody th .dp-inline-link { display: flex; width: fit-content; margin-top: 0.7rem; font-family: var(--l-body); font-size: var(--v4-label); line-height: 1.35; text-transform: uppercase; }
+.lasha-page .dp-table td > strong { display: block; color: var(--l-blue); font-family: var(--l-head); font-size: clamp(1.45rem, 1.9vw, 1.9rem); font-weight: 700; line-height: 1; white-space: nowrap; }
+.lasha-page .dp-table td > strong + span { display: block; margin-top: 0.35rem; color: color-mix(in srgb, var(--l-ink, #171a1d) 74%, transparent); font-size: var(--v4-small); white-space: nowrap; }
+.lasha-page .dp-price-none { color: color-mix(in srgb, var(--l-ink, #171a1d) 70%, transparent); font-size: var(--v4-small); font-style: italic; }
+.lasha-page .dp-mix-table { max-width: 52rem; }
+.lasha-page .dp-mix-table tfoot :is(th, td) { border-top: 2px solid var(--l-ink, #171a1d); font-weight: 700; }
+.lasha-page .dp-mix-table tfoot th { font-size: var(--v4-label); letter-spacing: 0.16em; text-transform: uppercase; }
+.lasha-page .dp-table-after { max-width: 62ch; margin: 1.2rem 0 0; font-size: var(--v4-text); line-height: 1.55; }
+.lasha-page .dp-notes { display: grid; gap: 0.55rem; max-width: 72ch; margin: 1.2rem 0 0; padding: 0; list-style: none; }
+.lasha-page .dp-notes li { padding-left: 1rem; border-left: 2px solid var(--l-blue); color: color-mix(in srgb, var(--l-ink, #171a1d) 80%, transparent); font-size: var(--v4-small); line-height: 1.55; }
+.lasha-page div.dp-terms { margin-top: 1.2rem; }
+.lasha-page div.dp-terms p { margin: 0 0 0.6rem; color: color-mix(in srgb, var(--l-ink, #171a1d) 74%, transparent); font-size: var(--v4-small); line-height: 1.55; }
+.lasha-page div.dp-terms p:last-child { margin-bottom: 0; }
+
+/* Below 900px the five price columns become one card per category, each value with its label. */
+@media (max-width: 899px) {
+  .lasha-page .dp-price-table thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+  .lasha-page .dp-price-table :is(tbody, tr, th, td) { display: block; }
+  .lasha-page .dp-price-table tbody { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 19rem), 1fr)); gap: 1rem; }
+  .lasha-page .dp-price-table tr { padding: 1.2rem 1.2rem 0.4rem; border: 1px solid color-mix(in srgb, var(--l-ink, #171a1d) 22%, transparent); background: var(--l-card, #fff); }
+  .lasha-page .dp-price-table tbody th { padding: 0 0 1rem; border: 0; }
+  .lasha-page .dp-price-table td { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; padding: 0.8rem 0; }
+  .lasha-page .dp-price-table tbody tr:last-child :is(th, td) { border-bottom: 0; }
+  .lasha-page .dp-price-table td::before { content: attr(data-label); flex: 0 1 auto; min-width: 0; color: color-mix(in srgb, var(--l-ink, #171a1d) 78%, transparent); font-size: var(--v4-label); font-weight: 600; letter-spacing: 0.14em; line-height: 1.35; text-transform: uppercase; }
+  .lasha-page .dp-price-table tbody td > * { grid-column: 2; text-align: right; }
+  .lasha-page .dp-price-table tbody td { display: grid; grid-template-columns: minmax(0, 1fr) auto; column-gap: 1rem; align-items: start; }
+  .lasha-page .dp-price-table tbody td::before { grid-column: 1; grid-row: 1 / span 2; }
+  .lasha-page .dp-price-table td > strong { font-size: 1.45rem; }
+}
+/* The three-column launch mix stacks the same way on phones. */
+@media (max-width: 599px) {
+  .lasha-page .dp-mix-table thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+  .lasha-page .dp-mix-table :is(tbody, tfoot, tr, th, td) { display: block; }
+  .lasha-page .dp-mix-table tbody tr { padding: 1.1rem 0 0.4rem; border-top: 1px solid color-mix(in srgb, var(--l-ink, #171a1d) 20%, transparent); }
+  .lasha-page .dp-mix-table tbody :is(th, td) { border: 0; }
+  .lasha-page .dp-mix-table tbody th { padding: 0 0 0.6rem; }
+  .lasha-page .dp-mix-table td { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; padding: 0.55rem 0; }
+  .lasha-page .dp-mix-table td::before { content: attr(data-label); color: color-mix(in srgb, var(--l-ink, #171a1d) 78%, transparent); font-size: var(--v4-label); font-weight: 600; letter-spacing: 0.14em; line-height: 1.35; text-transform: uppercase; }
+  .lasha-page .dp-mix-table tbody td > * { grid-column: 2; text-align: right; }
+  .lasha-page .dp-mix-table tbody td { display: grid; grid-template-columns: minmax(0, 1fr) auto; column-gap: 1rem; align-items: start; }
+  .lasha-page .dp-mix-table tbody td::before { grid-column: 1; grid-row: 1 / span 2; }
+  .lasha-page .dp-mix-table tfoot tr { display: flex; justify-content: space-between; align-items: baseline; border-top: 2px solid var(--l-ink, #171a1d); }
+  .lasha-page .dp-mix-table tfoot :is(th, td) { padding: 0.9rem 0; border: 0; }
+  .lasha-page .dp-mix-table tfoot td::before,
+  .lasha-page .dp-mix-table tfoot td[aria-hidden] { display: none; }
+}
+
+/* Payment schedules: one card per plan. TRESORA: 40/60 beside the wider post-handover plan from
+   1100px; DOWNTOWN ONE: the two plans side by side from 800px. */
+.lasha-page .dp-plans-pay { display: grid; grid-template-columns: minmax(0, 1fr); gap: clamp(1rem, 2vw, 1.6rem); max-width: 81.2rem; margin-top: clamp(2rem, 4vw, 3rem); }
+@media (min-width: 1100px) { .lasha-page .dp-plans-pay { grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); } }
+.lasha-page .dp-pay {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+  min-width: 0;
+  padding: clamp(1.3rem, 2.6vw, 2.2rem);
+  border: 1px solid color-mix(in srgb, var(--l-ink, #171a1d) 22%, transparent);
+  background: var(--l-card, #fff);
+}
+.lasha-page .dp-pay h3 { margin: 0; font-family: var(--l-head); font-size: var(--v4-h3); font-weight: 700; line-height: 1; text-transform: uppercase; }
+.lasha-page .dp-pay-lead { max-width: 52ch; margin: 0; font-size: var(--v4-text); line-height: 1.55; }
+.lasha-page .dp-pay .dp-inline-link { margin-top: auto; padding-top: 0.4rem; font-size: var(--v4-label); }
+.lasha-page .dp-phases { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 13.5rem), 1fr)); gap: 1rem clamp(1.2rem, 2.4vw, 2rem); align-items: start; align-self: stretch; }
+.lasha-page .dp-schedule { width: 100%; }
+.lasha-page .dp-phases > .dp-schedule { align-self: start; }
+/* The down-payment table has no caption of its own; the spacer keeps its first row level with the others. */
+.lasha-page .dp-schedule .dp-caption-spacer { visibility: hidden; }
+.lasha-page .dp-schedule caption { padding-bottom: 0.55rem; color: var(--l-blue); font-size: var(--v4-label); font-weight: 600; letter-spacing: 0.16em; line-height: 1.35; text-align: left; text-transform: uppercase; }
+.lasha-page .dp-schedule :is(th, td) { padding-block: 0.6rem; font-weight: 400; }
+.lasha-page .dp-schedule td { text-align: right; white-space: nowrap; font-weight: 600; }
+.lasha-page .dp-schedule tfoot :is(th, td) { border-top: 2px solid var(--l-ink, #171a1d); font-weight: 700; }
+.lasha-page .dp-schedule-mark { color: color-mix(in srgb, var(--l-ink, #171a1d) 70%, transparent); font-size: var(--v4-small); }
+/* DOWNTOWN ONE's two plans side by side in one table, each row's label once. */
+.lasha-page .dp-compare { max-width: 46rem; margin-top: clamp(1.4rem, 3vw, 2.2rem); }
+.lasha-page .dp-compare thead :is(th, td) { text-align: right; }
+.lasha-page .dp-compare .dp-schedule-mark { display: block; margin-top: 0.2rem; font-weight: 400; white-space: normal; }
+
+/* Plans: the whole page on white, never cropped, opening at full size. */
+.lasha-page .dp-plans {
+  --dp-plan-aspect: 16 / 9;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(1.4rem, 2.6vw, 2.2rem) clamp(1rem, 2vw, 1.6rem);
+  max-width: 81.2rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.lasha-page .dp-plans-2 { --dp-plan-aspect: 1.414; grid-template-columns: repeat(2, minmax(0, 1fr)); margin-top: 1.2rem; }
+.lasha-page .dp-plans-layouts { --dp-plan-aspect: 4 / 5; grid-template-columns: repeat(5, minmax(0, 1fr)); }
+.lasha-page .dp-plan { display: flex; flex-direction: column; align-items: flex-start; min-width: 0; }
+.lasha-page .dp-plan-image { padding: clamp(0.4rem, 1vw, 0.75rem); border: 1px solid color-mix(in srgb, var(--l-ink, #171a1d) 18%, transparent); background: #fff; }
+.lasha-page .dp-plan-image img { display: block; width: 100%; height: auto; aspect-ratio: var(--dp-plan-aspect); object-fit: contain; transition: transform 300ms ease; }
+.lasha-page .dp-plan-image:hover img { transform: scale(1.02); }
+.lasha-page .dp-plan h3 { margin: 0.9rem 0 0; font-family: var(--l-head); font-size: var(--v4-h3); font-weight: 700; line-height: 1; text-transform: uppercase; }
+.lasha-page .dp-plan p { margin: 0.45rem 0 0; color: color-mix(in srgb, var(--l-ink, #171a1d) 78%, transparent); font-size: var(--v4-small); line-height: 1.5; }
+.lasha-page .dp-plan .dp-inline-link { margin-top: 0.6rem; font-size: var(--v4-label); }
+@media (max-width: 1099px) {
+  .lasha-page .dp-plans { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .lasha-page .dp-plans-layouts { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+@media (max-width: 699px) {
+  .lasha-page .dp-plans-layouts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 599px) {
+  .lasha-page :is(.dp-plans, .dp-plans-2) { grid-template-columns: minmax(0, 1fr); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .lasha-page .dp-plan-image img { transition: none; }
+  .lasha-page .dp-plan-image:hover img { transform: none; }
+}
+
+/* Layout filter (DOWNTOWN ONE). */
+.lasha-page .dp-layouts { margin-top: clamp(2.6rem, 5vw, 4rem); }
+.lasha-page .dp-layouts .rp-subtitle { margin-top: 0; }
+.lasha-page .dp-filter { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1.4rem 0 1.6rem; }
+.lasha-page .dp-filter button {
+  min-height: 2.75rem;
+  padding: 0.6rem 1.1rem;
+  border: 1px solid color-mix(in srgb, var(--l-ink, #171a1d) 45%, transparent);
+  background: transparent;
+  color: var(--l-ink, #171a1d);
+  font: inherit;
+  font-size: var(--v4-label);
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  line-height: 1.2;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+.lasha-page .dp-filter button:hover { border-color: var(--l-ink, #171a1d); }
+.lasha-page .dp-filter button[aria-pressed='true'] { border-color: var(--dp-press, #2557d6); background: var(--dp-press, #2557d6); color: #fff; }
+.lasha-page .dp-filter button:focus-visible { outline: 2px solid var(--l-blue); outline-offset: 2px; }
+html:root[data-time-theme='afternoon'] .lasha-page .dp-filter { --dp-press: #3c5a41; }
+html:root[data-time-theme='night'] .lasha-page .dp-filter { --dp-press: var(--l-night-button, #2557d6); }
+
+/* Download buttons for the developers' PDFs: the file type and size after the label. */
+.lasha-page .dp-download { flex-wrap: wrap; gap: 0.3rem 0.6rem; }
+.lasha-page .dp-download-size { font-size: 0.85em; font-weight: 500; letter-spacing: 0.06em; opacity: 0.78; white-space: nowrap; }
+
+/* The lightbox's link to the full-size file. */
+.rp-lightbox .dp-lightbox-full { color: #fff; font-weight: 600; text-decoration: underline; text-underline-offset: 0.25em; }
+.rp-lightbox .dp-lightbox-full:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
+
+/* Afternoon: the small accent labels on the pale sage bands use the deeper sage. */
+html:root[data-time-theme='afternoon'] .lasha-page .dp-page :is(.dp-figure-kind, .dp-schedule caption) { color: #3c5a41; }
+
 /* ---------- Homepage cards ---------- */
 .lasha-home .dp-listing { padding: calc(70 * var(--u)) calc(70 * var(--u)) calc(30 * var(--u)); color: var(--l-ink, #171a1d); }
 .lasha-home .dp-listing h2 {
@@ -285,6 +574,7 @@ html:root[data-time-theme='afternoon'] .lasha-page .dp-page :is(.rp-mist .dp-lis
   border: 1px solid color-mix(in srgb, var(--l-ink, #171a1d) 22%, transparent);
   background: var(--l-soft, #e3ebf6);
 }
+.lasha-home .dp-listing-image { display: block; width: 100%; height: auto; aspect-ratio: 16 / 10; margin-bottom: 0.4rem; object-fit: cover; background: var(--l-mist); }
 .lasha-home .dp-listing-category { margin: 0; color: var(--l-blue); font-size: var(--v4-label); font-weight: 600; letter-spacing: 0.2em; line-height: 1.3; text-transform: uppercase; }
 .lasha-home .dp-listing-cards h3 { margin: 0; font-family: var(--l-head); font-size: var(--v4-h3-xl); font-weight: 700; line-height: 0.95; text-transform: uppercase; overflow-wrap: break-word; hyphens: manual; }
 .lasha-home .dp-listing-line { margin: 0; font-size: var(--v4-lead); line-height: 1.45; }

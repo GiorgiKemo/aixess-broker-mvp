@@ -5,10 +5,11 @@
 // with "Project: Dubai-project name DOWNTOWN DUBAI", but its own copy names the project Downtown One in
 // Downtown Jebel Ali, so that is used throughout. Figures are the developers' stated claims as supplied:
 // never call them verified or live, and keep "expected" / "anticipated" / "approximately".
-// {{price}} is TRESORA's starting price, always in US dollars (the brief's currency disclaimer), and
-// {{pct:N}} a percentage, both formatted per language in DubaiProjectPages.jsx.
-
-export const TRESORA_PRICE_USD = 182437;
+// 23 October 2026: the developers' source packet updated the hero facts, highlights (no figure repeats
+// the hero's), categories and amenities; the new sections' words are in dubai-projects-sources-copy.js.
+// {{price}} is TRESORA's 40/60 starting price and {{studio}} DOWNTOWN ONE's studio launch price, both in
+// US dollars from dubai-projects-data.js; {{pct:N}} is a percentage. All are formatted per language in
+// DubaiProjectPages.jsx.
 
 export const DUBAI_PROJECTS_COPY = {
   en: {
@@ -51,7 +52,7 @@ export const DUBAI_PROJECTS_COPY = {
         subtitle: "A Treasure of Balance",
         tagline: "Contemporary Living. Thoughtful Design. Exceptional Comfort.",
         intro: "Discover a new expression of modern urban living in Jumeirah Village Circle, Dubai, where contemporary architecture, thoughtfully designed residences and lifestyle amenities come together.",
-        facts: [["Starting from", "{{price}}", "price"], ["Initial payment", "{{pct:20}}"], ["Expected completion", "Q1 2028"]],
+        facts: [["From, 40/60 plan", "{{price}}", "price"], ["Initial payment", "{{pct:20}}"], ["Expected completion", "Q1 2028"]],
         explore: "Explore Residences",
         availability: "Request Availability",
         priceNote: "Indicative price; see the currency note",
@@ -69,7 +70,7 @@ export const DUBAI_PROJECTS_COPY = {
       highlights: {
         eyebrow: "TRESORA",
         title: "Project highlights",
-        items: [["JVC, Dubai", "Location"], ["{{price}}", "Starting price", "price"], ["Q1 2028", "Expected completion"], ["{{pct:20}}", "Initial payment"]],
+        items: [["JVC, Dubai", "Location"], ["Homes, Offices & Retail", "Mixed-Use Address"], ["Studios to Penthouses", "Residences"]],
         currency: "*All prices are displayed in US Dollars (USD), the primary currency used by AiXESS. Prices are indicative and may vary depending on daily currency exchange rates. Final prices are subject to confirmation at the time of purchase.",
       },
       spaces: {
@@ -80,8 +81,8 @@ export const DUBAI_PROJECTS_COPY = {
           "The development also features boutique offices and retail spaces, creating a connected environment for modern living and business.",
         ],
         listTitle: "Available property categories",
-        categories: ["Studios & Smart Studios", "Smart One-Bedroom Residences", "One-Bedroom Residences", "Two-Bedroom Residences", "Boutique Offices", "Retail Spaces"],
-        note: "Property categories only: current units, floor plans and prices are provided by AiXESS on request.",
+        categories: ["Studios & Smart Studios", "Smart One-Bedroom Residences", "One-Bedroom Residences", "Two-Bedroom Residences", "Boutique Offices", "Retail Spaces", "Two- and Three-Bedroom Penthouses"],
+        note: "Categories from WADAN's fact sheet and floor plans. AiXESS confirms current units, layouts and prices on request.",
         units: "Request Available Units",
         prices: "Enquire About Prices",
       },
@@ -89,7 +90,7 @@ export const DUBAI_PROJECTS_COPY = {
         eyebrow: "Project amenities",
         title: "A Lifestyle Designed Around You",
         lead: "Experience a carefully curated selection of amenities created to support relaxation, wellness, productivity and family living.",
-        amenities: ["Swimming Pool & Jacuzzi", "Fully Equipped Fitness Gym", "Pilates Facilities", "Ice Bath Therapy", "Children's Splash Park", "BBQ & Outdoor Social Areas", "Residents' Lounge & Co-working Spaces", "AI-Powered Resident App"],
+        amenities: ["Swimming Pool & Jacuzzi", "Fully Equipped Fitness Gym", "Pilates Facilities", "Sauna", "Ice Bath Therapy", "Children's Splash Park", "BBQ & Outdoor Social Areas", "Residents' Lounge & Co-working Spaces", "AI-Powered Resident App"],
       },
       location: {
         eyebrow: "Perfectly Positioned in Dubai",
@@ -141,22 +142,19 @@ export const DUBAI_PROJECTS_COPY = {
         ],
         explore: "Explore Residences",
         availability: "Request Availability",
-        priceTitle: "Current prices",
-        priceText: "Available on request from AiXESS.",
-        priceLink: "Request current prices",
+        facts: [["From, studios", "{{studio}}", "price"], ["Residences at launch", "245"], ["Anticipated completion", "December 2029"]],
       },
       highlights: {
         eyebrow: "Downtown One",
         title: "Premium project highlights",
         items: [
           ["20 Floors", "Contemporary Residential Tower", "Plus three podium floors, ground floor and basement"],
-          ["{{pct:10}}", "Initial Down Payment", "Flexible installment options", "terms"],
-          ["December 2029", "Anticipated Completion", "Developer's stated target"],
+          ["Two Plans", "Payment Options", "With or without post-dated cheques (PDC)"],
+          ["10 Layouts", "Residence Plans", "Furnished plans from the brochure"],
           ["AI-Powered", "Smart Home Living", "Intelligent everyday convenience"],
           ["Metro & Road", "Strategic Connectivity", "Dubai Metro Red Line and Sheikh Zayed Road"],
           ["20+ Amenities", "Lifestyle Experiences", "Wellness, leisure, fitness and family facilities"],
         ],
-        terms: "*Terms of the initial down payment are pending confirmation and may vary. Contact AiXESS for the current approved payment terms.",
       },
       amenities: {
         eyebrow: "Beyond Ordinary Living",
@@ -167,9 +165,9 @@ export const DUBAI_PROJECTS_COPY = {
         ],
         groups: [
           ["Wellness & Fitness", ["Indoor Gym", "Outdoor Gym", "Immersive Fitness Studio", "Yoga Lawn", "Jacuzzi"]],
-          ["Pools & Relaxation", ["Adult Swimming Pool", "Children's Swimming Pool", "Children's Splash Pool", "Leisure Water Lounge", "Pool Deck & Relaxation Areas", "Lazy Lounge"]],
-          ["Entertainment & Recreation", ["Outdoor Cinema", "Golf Simulator", "Mini Golf", "Game Zone", "BBQ Areas", "Rooftop Lounge"]],
-          ["Family & Outdoor Living", ["Children's Play Area", "Landscaped Walkways", "Outdoor Seating & Social Areas", "Swing Seating"]],
+          ["Pools & Relaxation", ["Adult Swimming Pool", "Children's Swimming Pool", "Children's Splash Pool", "Leisure Water Lounge", "Pool Deck & Relaxation Areas", "Lazy Lounge", "Shallow Pool"]],
+          ["Entertainment & Recreation", ["Outdoor Cinema", "Golf Simulator", "Mini Golf", "Game Zone", "BBQ Areas", "Rooftop Lounge", "Cigar Lounge"]],
+          ["Family & Outdoor Living", ["Children's Play Area", "Landscaped Walkways", "Outdoor Seating & Social Areas", "Swing Seating", "Outdoor Shower"]],
         ],
       },
       location: {
@@ -194,7 +192,6 @@ export const DUBAI_PROJECTS_COPY = {
           "Explore the residences, floor plans, lifestyle amenities and property ownership options available at Downtown One.",
           "Our AiXESS team is ready to provide personalised project information, current prices, property availability and payment options.",
         ],
-        brochure: "Request Brochure",
         contact: "Contact AiXESS",
       },
     },
@@ -240,7 +237,7 @@ export const DUBAI_PROJECTS_COPY = {
         subtitle: "Ein Schatz der Balance",
         tagline: "Zeitgemäßes Wohnen. Durchdachtes Design. Außergewöhnlicher Komfort.",
         intro: "Entdecken Sie eine neue Form modernen urbanen Wohnens in Jumeirah Village Circle, Dubai, wo zeitgemäße Architektur, durchdacht gestaltete Residenzen und Lifestyle-Annehmlichkeiten zusammenkommen.",
-        facts: [["Ab", "{{price}}", "price"], ["Anfangszahlung", "{{pct:20}}"], ["Voraussichtliche Fertigstellung", "Q1 2028"]],
+        facts: [["Ab, Plan 40/60", "{{price}}", "price"], ["Anfangszahlung", "{{pct:20}}"], ["Voraussichtliche Fertigstellung", "Q1 2028"]],
         explore: "Residenzen entdecken",
         availability: "Verfügbarkeit anfragen",
         priceNote: "Richtpreis; siehe Hinweis zur Währung",
@@ -258,7 +255,7 @@ export const DUBAI_PROJECTS_COPY = {
       highlights: {
         eyebrow: "TRESORA",
         title: "Projekt-Highlights",
-        items: [["JVC, Dubai", "Lage"], ["{{price}}", "Einstiegspreis", "price"], ["Q1 2028", "Voraussichtliche Fertigstellung"], ["{{pct:20}}", "Anfangszahlung"]],
+        items: [["JVC, Dubai", "Lage"], ["Wohnen, Büros & Handel", "Mixed-Use-Adresse"], ["Vom Studio bis zum Penthouse", "Residenzen"]],
         currency: "*Alle Preise werden in US-Dollar (USD) angegeben, der Hauptwährung von AiXESS. Die Preise sind Richtwerte und können je nach tagesaktuellen Wechselkursen variieren. Endgültige Preise werden zum Zeitpunkt des Kaufs bestätigt.",
       },
       spaces: {
@@ -269,8 +266,8 @@ export const DUBAI_PROJECTS_COPY = {
           "Die Entwicklung umfasst außerdem Boutique-Büros und Einzelhandelsflächen und schafft so ein vernetztes Umfeld für modernes Wohnen und Arbeiten.",
         ],
         listTitle: "Verfügbare Immobilienkategorien",
-        categories: ["Studios & Smart Studios", "Smart-Residenzen mit einem Schlafzimmer", "Residenzen mit einem Schlafzimmer", "Residenzen mit zwei Schlafzimmern", "Boutique-Büros", "Einzelhandelsflächen"],
-        note: "Nur Immobilienkategorien: Aktuelle Einheiten, Grundrisse und Preise erhalten Sie auf Anfrage von AiXESS.",
+        categories: ["Studios & Smart Studios", "Smart-Residenzen mit einem Schlafzimmer", "Residenzen mit einem Schlafzimmer", "Residenzen mit zwei Schlafzimmern", "Boutique-Büros", "Einzelhandelsflächen", "Penthouses mit zwei und drei Schlafzimmern"],
+        note: "Kategorien laut Factsheet und Grundrissen von WADAN. Aktuelle Einheiten, Grundrisse und Preise bestätigt AiXESS auf Anfrage.",
         units: "Verfügbare Einheiten anfragen",
         prices: "Preise anfragen",
       },
@@ -278,7 +275,7 @@ export const DUBAI_PROJECTS_COPY = {
         eyebrow: "Projektausstattung",
         title: "Ein Lebensstil, der sich nach Ihnen richtet",
         lead: "Erleben Sie eine sorgfältig kuratierte Auswahl an Annehmlichkeiten für Entspannung, Wohlbefinden, Produktivität und Familienleben.",
-        amenities: ["Swimmingpool & Jacuzzi", "Voll ausgestattetes Fitnessstudio", "Pilates-Bereich", "Eisbad-Therapie", "Wasserspielpark für Kinder", "Grill- & Outdoor-Treffpunkte", "Bewohner-Lounge & Co-Working-Bereiche", "KI-gestützte Bewohner-App"],
+        amenities: ["Swimmingpool & Jacuzzi", "Voll ausgestattetes Fitnessstudio", "Pilates-Bereich", "Sauna", "Eisbad-Therapie", "Wasserspielpark für Kinder", "Grill- & Outdoor-Treffpunkte", "Bewohner-Lounge & Co-Working-Bereiche", "KI-gestützte Bewohner-App"],
       },
       location: {
         eyebrow: "Ideal gelegen in Dubai",
@@ -330,22 +327,19 @@ export const DUBAI_PROJECTS_COPY = {
         ],
         explore: "Residenzen entdecken",
         availability: "Verfügbarkeit anfragen",
-        priceTitle: "Aktuelle Preise",
-        priceText: "Auf Anfrage bei AiXESS erhältlich.",
-        priceLink: "Aktuelle Preise anfragen",
+        facts: [["Ab, Studios", "{{studio}}", "price"], ["Residenzen zum Verkaufsstart", "245"], ["Angestrebte Fertigstellung", "Dezember 2029"]],
       },
       highlights: {
         eyebrow: "Downtown One",
         title: "Premium-Highlights des Projekts",
         items: [
           ["20 Etagen", "Zeitgemäßer Wohnturm", "Dazu drei Podiumsetagen, Erdgeschoss und Untergeschoss"],
-          ["{{pct:10}}", "Anfängliche Anzahlung", "Flexible Ratenoptionen", "terms"],
-          ["Dezember 2029", "Angestrebte Fertigstellung", "Vom Entwickler genanntes Ziel"],
+          ["Zwei Pläne", "Zahlungsoptionen", "Mit oder ohne vordatierte Schecks (PDC)"],
+          ["10 Grundrisse", "Wohnungspläne", "Möblierte Pläne aus der Broschüre"],
           ["KI-gestützt", "Smart-Home-Wohnen", "Intelligenter Komfort im Alltag"],
           ["Metro & Straße", "Strategische Anbindung", "Dubai Metro Red Line und Sheikh Zayed Road"],
           ["20+ Angebote", "Lifestyle-Erlebnisse", "Wellness-, Freizeit-, Fitness- und Familienangebote"],
         ],
-        terms: "*Die Bedingungen der anfänglichen Anzahlung stehen noch nicht fest und können variieren. Die aktuell genehmigten Zahlungsbedingungen erhalten Sie bei AiXESS.",
       },
       amenities: {
         eyebrow: "Mehr als gewöhnliches Wohnen",
@@ -356,9 +350,9 @@ export const DUBAI_PROJECTS_COPY = {
         ],
         groups: [
           ["Wellness & Fitness", ["Indoor-Fitnessstudio", "Outdoor-Fitnessbereich", "Immersives Fitnessstudio", "Yoga-Rasen", "Jacuzzi"]],
-          ["Pools & Entspannung", ["Schwimmbecken für Erwachsene", "Kinderschwimmbecken", "Wasserspielbecken für Kinder", "Leisure Water Lounge", "Pooldeck & Ruhebereiche", "Lazy Lounge"]],
-          ["Unterhaltung & Freizeit", ["Freiluftkino", "Golfsimulator", "Minigolf", "Spielzone", "Grillbereiche", "Rooftop-Lounge"]],
-          ["Familie & Leben im Freien", ["Kinderspielbereich", "Angelegte Spazierwege", "Sitz- & Treffbereiche im Freien", "Schaukelsitze"]],
+          ["Pools & Entspannung", ["Schwimmbecken für Erwachsene", "Kinderschwimmbecken", "Wasserspielbecken für Kinder", "Leisure Water Lounge", "Pooldeck & Ruhebereiche", "Lazy Lounge", "Flachwasserbecken"]],
+          ["Unterhaltung & Freizeit", ["Freiluftkino", "Golfsimulator", "Minigolf", "Spielzone", "Grillbereiche", "Rooftop-Lounge", "Zigarrenlounge"]],
+          ["Familie & Leben im Freien", ["Kinderspielbereich", "Angelegte Spazierwege", "Sitz- & Treffbereiche im Freien", "Schaukelsitze", "Außendusche"]],
         ],
       },
       location: {
@@ -383,7 +377,6 @@ export const DUBAI_PROJECTS_COPY = {
           "Entdecken Sie die Residenzen, Grundrisse, Annehmlichkeiten und Eigentumsoptionen von Downtown One.",
           "Unser AiXESS-Team stellt Ihnen gerne persönliche Projektinformationen, aktuelle Preise, Verfügbarkeiten und Zahlungsoptionen zur Verfügung.",
         ],
-        brochure: "Broschüre anfragen",
         contact: "AiXESS kontaktieren",
       },
     },
@@ -429,7 +422,7 @@ export const DUBAI_PROJECTS_COPY = {
         subtitle: "Skarb równowagi",
         tagline: "Nowoczesne życie. Przemyślany design. Wyjątkowy komfort.",
         intro: "Odkryj nowy wymiar nowoczesnego życia w mieście w Jumeirah Village Circle w Dubaju, gdzie współczesna architektura, starannie zaprojektowane apartamenty i udogodnienia lifestyle'owe tworzą jedną całość.",
-        facts: [["Ceny od", "{{price}}", "price"], ["Wpłata początkowa", "{{pct:20}}"], ["Planowane ukończenie", "I kw. 2028"]],
+        facts: [["Od, plan 40/60", "{{price}}", "price"], ["Wpłata początkowa", "{{pct:20}}"], ["Planowane ukończenie", "I kw. 2028"]],
         explore: "Poznaj apartamenty",
         availability: "Zapytaj o dostępność",
         priceNote: "Cena orientacyjna; zobacz informację o walucie",
@@ -447,7 +440,7 @@ export const DUBAI_PROJECTS_COPY = {
       highlights: {
         eyebrow: "TRESORA",
         title: "Najważniejsze cechy projektu",
-        items: [["JVC, Dubaj", "Lokalizacja"], ["{{price}}", "Cena początkowa", "price"], ["I kw. 2028", "Planowane ukończenie"], ["{{pct:20}}", "Wpłata początkowa"]],
+        items: [["JVC, Dubaj", "Lokalizacja"], ["Mieszkania, biura i handel", "Adres wielofunkcyjny"], ["Od studia po penthouse", "Apartamenty"]],
         currency: "*Wszystkie ceny podane są w dolarach amerykańskich (USD), podstawowej walucie AiXESS. Ceny są orientacyjne i mogą się zmieniać w zależności od dziennych kursów walut. Ostateczne ceny podlegają potwierdzeniu w momencie zakupu.",
       },
       spaces: {
@@ -458,8 +451,8 @@ export const DUBAI_PROJECTS_COPY = {
           "Inwestycja obejmuje także butikowe biura i lokale handlowe, tworząc spójne otoczenie dla nowoczesnego życia i biznesu.",
         ],
         listTitle: "Dostępne kategorie nieruchomości",
-        categories: ["Studia i inteligentne studia", "Inteligentne apartamenty z jedną sypialnią", "Apartamenty z jedną sypialnią", "Apartamenty z dwiema sypialniami", "Butikowe biura", "Lokale handlowe"],
-        note: "Tylko kategorie nieruchomości: aktualne lokale, rzuty i ceny AiXESS przekazuje na zapytanie.",
+        categories: ["Studia i inteligentne studia", "Inteligentne apartamenty z jedną sypialnią", "Apartamenty z jedną sypialnią", "Apartamenty z dwiema sypialniami", "Butikowe biura", "Lokale handlowe", "Penthouse'y z dwiema i trzema sypialniami"],
+        note: "Kategorie według karty informacyjnej i planów WADAN. Aktualne lokale, układy i ceny AiXESS potwierdza na zapytanie.",
         units: "Zapytaj o dostępne lokale",
         prices: "Zapytaj o ceny",
       },
@@ -467,7 +460,7 @@ export const DUBAI_PROJECTS_COPY = {
         eyebrow: "Udogodnienia projektu",
         title: "Styl życia zaprojektowany wokół Ciebie",
         lead: "Poznaj starannie dobrany zestaw udogodnień stworzonych z myślą o relaksie, dobrym samopoczuciu, produktywności i życiu rodzinnym.",
-        amenities: ["Basen i jacuzzi", "W pełni wyposażona siłownia", "Strefa pilatesu", "Terapia w lodowej kąpieli", "Wodny plac zabaw dla dzieci", "Strefy grillowe i towarzyskie na zewnątrz", "Lounge dla mieszkańców i strefy coworkingowe", "Aplikacja dla mieszkańców oparta na AI"],
+        amenities: ["Basen i jacuzzi", "W pełni wyposażona siłownia", "Strefa pilatesu", "Sauna", "Terapia w lodowej kąpieli", "Wodny plac zabaw dla dzieci", "Strefy grillowe i towarzyskie na zewnątrz", "Lounge dla mieszkańców i strefy coworkingowe", "Aplikacja dla mieszkańców oparta na AI"],
       },
       location: {
         eyebrow: "Doskonała lokalizacja w Dubaju",
@@ -519,22 +512,19 @@ export const DUBAI_PROJECTS_COPY = {
         ],
         explore: "Poznaj apartamenty",
         availability: "Zapytaj o dostępność",
-        priceTitle: "Aktualne ceny",
-        priceText: "Dostępne na zapytanie w AiXESS.",
-        priceLink: "Zapytaj o aktualne ceny",
+        facts: [["Od, studia", "{{studio}}", "price"], ["Apartamenty na start sprzedaży", "245"], ["Przewidywane ukończenie", "Grudzień 2029"]],
       },
       highlights: {
         eyebrow: "Downtown One",
         title: "Najważniejsze cechy projektu premium",
         items: [
           ["20 pięter", "Nowoczesny wieżowiec mieszkalny", "Plus trzy piętra podium, parter i piwnica"],
-          ["{{pct:10}}", "Wpłata początkowa", "Elastyczne opcje ratalne", "terms"],
-          ["Grudzień 2029", "Przewidywane ukończenie", "Termin podany przez dewelopera"],
+          ["Dwa plany", "Opcje płatności", "Z czekami postdatowanymi (PDC) lub bez"],
+          ["10 układów", "Plany mieszkań", "Umeblowane plany z broszury"],
           ["Oparte na AI", "Inteligentny dom", "Inteligentna wygoda na co dzień"],
           ["Metro i droga", "Strategiczne połączenia", "Czerwona linia metra w Dubaju i Sheikh Zayed Road"],
           ["20+ udogodnień", "Doświadczenia lifestyle'owe", "Wellness, rekreacja, fitness i udogodnienia rodzinne"],
         ],
-        terms: "*Warunki wpłaty początkowej czekają na potwierdzenie i mogą się różnić. Aktualne zatwierdzone warunki płatności przekaże AiXESS.",
       },
       amenities: {
         eyebrow: "Więcej niż zwykłe życie",
@@ -545,9 +535,9 @@ export const DUBAI_PROJECTS_COPY = {
         ],
         groups: [
           ["Wellness i fitness", ["Siłownia wewnętrzna", "Siłownia na zewnątrz", "Immersyjne studio fitness", "Trawnik do jogi", "Jacuzzi"]],
-          ["Baseny i relaks", ["Basen dla dorosłych", "Basen dla dzieci", "Brodzik wodny dla dzieci", "Leisure Water Lounge", "Taras basenowy i strefy relaksu", "Lazy Lounge"]],
-          ["Rozrywka i rekreacja", ["Kino plenerowe", "Symulator golfa", "Minigolf", "Strefa gier", "Strefy grillowe", "Lounge na dachu"]],
-          ["Rodzina i życie na zewnątrz", ["Plac zabaw dla dzieci", "Zagospodarowane ścieżki spacerowe", "Miejsca do siedzenia i spotkań na zewnątrz", "Huśtawki do siedzenia"]],
+          ["Baseny i relaks", ["Basen dla dorosłych", "Basen dla dzieci", "Brodzik wodny dla dzieci", "Leisure Water Lounge", "Taras basenowy i strefy relaksu", "Lazy Lounge", "Płytki basen"]],
+          ["Rozrywka i rekreacja", ["Kino plenerowe", "Symulator golfa", "Minigolf", "Strefa gier", "Strefy grillowe", "Lounge na dachu", "Cigar lounge"]],
+          ["Rodzina i życie na zewnątrz", ["Plac zabaw dla dzieci", "Zagospodarowane ścieżki spacerowe", "Miejsca do siedzenia i spotkań na zewnątrz", "Huśtawki do siedzenia", "Prysznic zewnętrzny"]],
         ],
       },
       location: {
@@ -572,7 +562,6 @@ export const DUBAI_PROJECTS_COPY = {
           "Poznaj apartamenty, rzuty, udogodnienia i możliwości posiadania nieruchomości w Downtown One.",
           "Zespół AiXESS przekaże indywidualne informacje o projekcie, aktualne ceny, dostępność nieruchomości i opcje płatności.",
         ],
-        brochure: "Poproś o broszurę",
         contact: "Kontakt z AiXESS",
       },
     },
@@ -618,7 +607,7 @@ export const DUBAI_PROJECTS_COPY = {
         subtitle: "Zaklad ravnovesja",
         tagline: "Sodobno bivanje. Premišljen dizajn. Izjemno udobje.",
         intro: "Odkrijte nov izraz sodobnega urbanega bivanja v Jumeirah Village Circle v Dubaju, kjer se združujejo sodobna arhitektura, premišljeno oblikovane rezidence in življenjske ugodnosti.",
-        facts: [["Že od", "{{price}}", "price"], ["Začetno plačilo", "{{pct:20}}"], ["Predvideno dokončanje", "1. četrtletje 2028"]],
+        facts: [["Že od, načrt 40/60", "{{price}}", "price"], ["Začetno plačilo", "{{pct:20}}"], ["Predvideno dokončanje", "1. četrtletje 2028"]],
         explore: "Raziščite rezidence",
         availability: "Povprašajte o razpoložljivosti",
         priceNote: "Okvirna cena; glejte opombo o valuti",
@@ -636,7 +625,7 @@ export const DUBAI_PROJECTS_COPY = {
       highlights: {
         eyebrow: "TRESORA",
         title: "Poudarki projekta",
-        items: [["JVC, Dubaj", "Lokacija"], ["{{price}}", "Začetna cena", "price"], ["1. četrtletje 2028", "Predvideno dokončanje"], ["{{pct:20}}", "Začetno plačilo"]],
+        items: [["JVC, Dubaj", "Lokacija"], ["Stanovanja, pisarne in trgovine", "Večnamenski naslov"], ["Od studia do penthousa", "Rezidence"]],
         currency: "*Vse cene so navedene v ameriških dolarjih (USD), glavni valuti AiXESS. Cene so okvirne in se lahko spreminjajo glede na dnevne menjalne tečaje. Končne cene se potrdijo ob nakupu.",
       },
       spaces: {
@@ -647,8 +636,8 @@ export const DUBAI_PROJECTS_COPY = {
           "Projekt vključuje tudi butične pisarne in trgovske prostore ter ustvarja povezano okolje za sodobno bivanje in poslovanje.",
         ],
         listTitle: "Razpoložljive kategorije nepremičnin",
-        categories: ["Garsonjere in pametne garsonjere", "Pametne rezidence z eno spalnico", "Rezidence z eno spalnico", "Rezidence z dvema spalnicama", "Butične pisarne", "Trgovski prostori"],
-        note: "Samo kategorije nepremičnin: aktualne enote, tlorise in cene AiXESS posreduje na zahtevo.",
+        categories: ["Garsonjere in pametne garsonjere", "Pametne rezidence z eno spalnico", "Rezidence z eno spalnico", "Rezidence z dvema spalnicama", "Butične pisarne", "Trgovski prostori", "Penthousi z dvema in tremi spalnicami"],
+        note: "Kategorije po informativnem listu in tlorisih družbe WADAN. Aktualne enote, tlorise in cene AiXESS potrdi na zahtevo.",
         units: "Povprašajte o razpoložljivih enotah",
         prices: "Povprašajte o cenah",
       },
@@ -656,7 +645,7 @@ export const DUBAI_PROJECTS_COPY = {
         eyebrow: "Ugodnosti projekta",
         title: "Življenjski slog, prilagojen vam",
         lead: "Doživite skrbno izbrane ugodnosti, ustvarjene za sprostitev, dobro počutje, produktivnost in družinsko življenje.",
-        amenities: ["Bazen in jacuzzi", "Popolnoma opremljen fitnes", "Prostori za pilates", "Terapija z ledeno kopeljo", "Vodno igrišče za otroke", "Prostori za žar in druženje na prostem", "Salon za stanovalce in coworking prostori", "Aplikacija za stanovalce z umetno inteligenco"],
+        amenities: ["Bazen in jacuzzi", "Popolnoma opremljen fitnes", "Prostori za pilates", "Savna", "Terapija z ledeno kopeljo", "Vodno igrišče za otroke", "Prostori za žar in druženje na prostem", "Salon za stanovalce in coworking prostori", "Aplikacija za stanovalce z umetno inteligenco"],
       },
       location: {
         eyebrow: "Odlična lega v Dubaju",
@@ -708,22 +697,19 @@ export const DUBAI_PROJECTS_COPY = {
         ],
         explore: "Raziščite rezidence",
         availability: "Povprašajte o razpoložljivosti",
-        priceTitle: "Aktualne cene",
-        priceText: "Na voljo na zahtevo pri AiXESS.",
-        priceLink: "Povprašajte o aktualnih cenah",
+        facts: [["Od, studii", "{{studio}}", "price"], ["Stanovanja ob začetku prodaje", "245"], ["Pričakovano dokončanje", "December 2029"]],
       },
       highlights: {
         eyebrow: "Downtown One",
         title: "Poudarki vrhunskega projekta",
         items: [
           ["20 nadstropij", "Sodobna stanovanjska stolpnica", "Ter tri nadstropja podija, pritličje in klet"],
-          ["{{pct:10}}", "Začetni polog", "Prilagodljive možnosti obročnega plačila", "terms"],
-          ["December 2029", "Pričakovano dokončanje", "Cilj, ki ga navaja razvijalec"],
+          ["Dva načrta", "Možnosti plačila", "S postdatiranimi čeki (PDC) ali brez"],
+          ["10 tlorisov", "Načrti stanovanj", "Opremljeni načrti iz brošure"],
           ["Z umetno inteligenco", "Pametni dom", "Inteligentno vsakdanje udobje"],
           ["Metro in cesta", "Strateška povezanost", "Rdeča linija metroja v Dubaju in Sheikh Zayed Road"],
           ["20+ ugodnosti", "Življenjske izkušnje", "Ponudba za dobro počutje, prosti čas, fitnes in družine"],
         ],
-        terms: "*Pogoji začetnega pologa še niso potrjeni in se lahko razlikujejo. Aktualne odobrene plačilne pogoje posreduje AiXESS.",
       },
       amenities: {
         eyebrow: "Več kot običajno bivanje",
@@ -734,9 +720,9 @@ export const DUBAI_PROJECTS_COPY = {
         ],
         groups: [
           ["Dobro počutje in fitnes", ["Notranji fitnes", "Zunanji fitnes", "Imerzivni fitnes studio", "Trata za jogo", "Jacuzzi"]],
-          ["Bazeni in sprostitev", ["Bazen za odrasle", "Otroški bazen", "Otroški vodni bazen", "Leisure Water Lounge", "Bazenska terasa in prostori za sprostitev", "Lazy Lounge"]],
-          ["Zabava in rekreacija", ["Kino na prostem", "Golf simulator", "Mini golf", "Igralna cona", "Prostori za žar", "Salon na strehi"]],
-          ["Družina in bivanje na prostem", ["Otroško igrišče", "Urejene sprehajalne poti", "Sedišča in prostori za druženje na prostem", "Gugalna sedišča"]],
+          ["Bazeni in sprostitev", ["Bazen za odrasle", "Otroški bazen", "Otroški vodni bazen", "Leisure Water Lounge", "Bazenska terasa in prostori za sprostitev", "Lazy Lounge", "Plitvi bazen"]],
+          ["Zabava in rekreacija", ["Kino na prostem", "Golf simulator", "Mini golf", "Igralna cona", "Prostori za žar", "Salon na strehi", "Cigar lounge"]],
+          ["Družina in bivanje na prostem", ["Otroško igrišče", "Urejene sprehajalne poti", "Sedišča in prostori za druženje na prostem", "Gugalna sedišča", "Zunanja prha"]],
         ],
       },
       location: {
@@ -761,7 +747,6 @@ export const DUBAI_PROJECTS_COPY = {
           "Raziščite rezidence, tlorise, ugodnosti in možnosti lastništva nepremičnin v projektu Downtown One.",
           "Ekipa AiXESS vam z veseljem posreduje osebne informacije o projektu, aktualne cene, razpoložljivost nepremičnin in možnosti plačila.",
         ],
-        brochure: "Zahtevajte brošuro",
         contact: "Kontaktirajte AiXESS",
       },
     },
@@ -807,7 +792,7 @@ export const DUBAI_PROJECTS_COPY = {
         subtitle: "Сокровище баланса",
         tagline: "Современная жизнь. Продуманный дизайн. Исключительный комфорт.",
         intro: "Откройте новое воплощение современной городской жизни в Jumeirah Village Circle, Дубай, где сочетаются современная архитектура, продуманные резиденции и удобства для жизни.",
-        facts: [["Цены от", "{{price}}", "price"], ["Первоначальный платёж", "{{pct:20}}"], ["Ожидаемое завершение", "I квартал 2028"]],
+        facts: [["От, план 40/60", "{{price}}", "price"], ["Первоначальный платёж", "{{pct:20}}"], ["Ожидаемое завершение", "I квартал 2028"]],
         explore: "Смотреть резиденции",
         availability: "Запросить наличие",
         priceNote: "Ориентировочная цена; см. примечание о валюте",
@@ -825,7 +810,7 @@ export const DUBAI_PROJECTS_COPY = {
       highlights: {
         eyebrow: "TRESORA",
         title: "Ключевые особенности проекта",
-        items: [["JVC, Дубай", "Расположение"], ["{{price}}", "Начальная цена", "price"], ["I квартал 2028", "Ожидаемое завершение"], ["{{pct:20}}", "Первоначальный платёж"]],
+        items: [["JVC, Дубай", "Расположение"], ["Жильё, офисы и торговля", "Многофункциональный адрес"], ["От студий до пентхаусов", "Резиденции"]],
         currency: "*Все цены указаны в долларах США (USD), основной валюте AiXESS. Цены ориентировочные и могут меняться в зависимости от ежедневных валютных курсов. Окончательные цены подтверждаются в момент покупки.",
       },
       spaces: {
@@ -836,8 +821,8 @@ export const DUBAI_PROJECTS_COPY = {
           "В комплексе также есть бутик-офисы и торговые помещения, создающие единую среду для современной жизни и бизнеса.",
         ],
         listTitle: "Доступные категории недвижимости",
-        categories: ["Студии и смарт-студии", "Смарт-резиденции с одной спальней", "Резиденции с одной спальней", "Резиденции с двумя спальнями", "Бутик-офисы", "Торговые помещения"],
-        note: "Только категории недвижимости: актуальные объекты, планировки и цены AiXESS предоставляет по запросу.",
+        categories: ["Студии и смарт-студии", "Смарт-резиденции с одной спальней", "Резиденции с одной спальней", "Резиденции с двумя спальнями", "Бутик-офисы", "Торговые помещения", "Пентхаусы с двумя и тремя спальнями"],
+        note: "Категории по информационному листу и планировкам WADAN. Актуальные объекты, планировки и цены AiXESS подтверждает по запросу.",
         units: "Запросить доступные объекты",
         prices: "Узнать цены",
       },
@@ -845,7 +830,7 @@ export const DUBAI_PROJECTS_COPY = {
         eyebrow: "Удобства проекта",
         title: "Стиль жизни, созданный для вас",
         lead: "Оцените тщательно подобранные удобства для отдыха, благополучия, продуктивности и семейной жизни.",
-        amenities: ["Бассейн и джакузи", "Полностью оборудованный тренажёрный зал", "Зона для пилатеса", "Терапия ледяной ванной", "Детский аквапарк с фонтанами", "Зоны барбекю и отдыха на открытом воздухе", "Лаунж для жителей и коворкинг", "Приложение для жителей на базе ИИ"],
+        amenities: ["Бассейн и джакузи", "Полностью оборудованный тренажёрный зал", "Зона для пилатеса", "Сауна", "Терапия ледяной ванной", "Детский аквапарк с фонтанами", "Зоны барбекю и отдыха на открытом воздухе", "Лаунж для жителей и коворкинг", "Приложение для жителей на базе ИИ"],
       },
       location: {
         eyebrow: "Идеальное расположение в Дубае",
@@ -897,22 +882,19 @@ export const DUBAI_PROJECTS_COPY = {
         ],
         explore: "Смотреть резиденции",
         availability: "Запросить наличие",
-        priceTitle: "Актуальные цены",
-        priceText: "Предоставляются AiXESS по запросу.",
-        priceLink: "Запросить актуальные цены",
+        facts: [["От, студии", "{{studio}}", "price"], ["Резиденции на старте продаж", "245"], ["Планируемое завершение", "Декабрь 2029"]],
       },
       highlights: {
         eyebrow: "Downtown One",
         title: "Ключевые особенности премиального проекта",
         items: [
           ["20 этажей", "Современная жилая башня", "А также три этажа подиума, первый этаж и подвал"],
-          ["{{pct:10}}", "Первоначальный взнос", "Гибкие варианты рассрочки", "terms"],
-          ["Декабрь 2029", "Планируемое завершение", "Срок, заявленный девелопером"],
+          ["Два плана", "Варианты оплаты", "С отсроченными чеками (PDC) или без"],
+          ["10 планировок", "Планы резиденций", "Планы с мебелью из брошюры"],
           ["На базе ИИ", "Умный дом", "Интеллектуальный комфорт каждый день"],
           ["Метро и трасса", "Стратегическая доступность", "Красная линия метро Дубая и Sheikh Zayed Road"],
           ["20+ удобств", "Стиль жизни", "Велнес, досуг, фитнес и всё для семьи"],
         ],
-        terms: "*Условия первоначального взноса ожидают подтверждения и могут отличаться. Актуальные утверждённые условия оплаты предоставляет AiXESS.",
       },
       amenities: {
         eyebrow: "Больше, чем обычная жизнь",
@@ -923,9 +905,9 @@ export const DUBAI_PROJECTS_COPY = {
         ],
         groups: [
           ["Велнес и фитнес", ["Крытый тренажёрный зал", "Уличный тренажёрный зал", "Иммерсивная фитнес-студия", "Лужайка для йоги", "Джакузи"]],
-          ["Бассейны и отдых", ["Бассейн для взрослых", "Детский бассейн", "Детский бассейн с фонтанами", "Leisure Water Lounge", "Палуба у бассейна и зоны отдыха", "Lazy Lounge"]],
-          ["Развлечения и досуг", ["Кинотеатр под открытым небом", "Гольф-симулятор", "Мини-гольф", "Игровая зона", "Зоны барбекю", "Лаунж на крыше"]],
-          ["Семья и жизнь на свежем воздухе", ["Детская игровая площадка", "Ландшафтные прогулочные дорожки", "Зоны отдыха и общения на открытом воздухе", "Подвесные качели"]],
+          ["Бассейны и отдых", ["Бассейн для взрослых", "Детский бассейн", "Детский бассейн с фонтанами", "Leisure Water Lounge", "Палуба у бассейна и зоны отдыха", "Lazy Lounge", "Мелкий бассейн"]],
+          ["Развлечения и досуг", ["Кинотеатр под открытым небом", "Гольф-симулятор", "Мини-гольф", "Игровая зона", "Зоны барбекю", "Лаунж на крыше", "Сигарный лаунж"]],
+          ["Семья и жизнь на свежем воздухе", ["Детская игровая площадка", "Ландшафтные прогулочные дорожки", "Зоны отдыха и общения на открытом воздухе", "Подвесные качели", "Уличный душ"]],
         ],
       },
       location: {
@@ -950,7 +932,6 @@ export const DUBAI_PROJECTS_COPY = {
           "Изучите резиденции, планировки, удобства и варианты владения недвижимостью в Downtown One.",
           "Команда AiXESS готова предоставить персональную информацию о проекте, актуальные цены, наличие объектов и варианты оплаты.",
         ],
-        brochure: "Запросить брошюру",
         contact: "Связаться с AiXESS",
       },
     },

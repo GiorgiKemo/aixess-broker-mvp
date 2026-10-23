@@ -1,0 +1,494 @@
+{
+ "doc:samana-downtown-one-brochure.pdf": {
+  "bytes": 16842135
+ },
+ "doc:samana-downtown-one-factbook.pdf": {
+  "bytes": 1305289
+ },
+ "doc:tresora-by-wadan-floor-plans.pdf": {
+  "bytes": 24757928
+ },
+ "doc:tresora-by-wadan-payment-plan.pdf": {
+  "bytes": 17659866
+ },
+ "downtown-aerial": {
+  "height": 2345,
+  "width": 1660,
+  "widths": [
+   480,
+   960,
+   1440,
+   1660
+  ]
+ },
+ "downtown-bathroom": {
+  "height": 2038,
+  "width": 2879,
+  "widths": [
+   480,
+   960,
+   1440,
+   2000
+  ]
+ },
+ "downtown-bedroom": {
+  "height": 2345,
+  "width": 3314,
+  "widths": [
+   480,
+   960,
+   1440,
+   2000
+  ]
+ },
+ "downtown-cycling": {
+  "height": 2345,
+  "width": 3314,
+  "widths": [
+   480,
+   960,
+   1440,
+   2000
+  ]
+ },
+ "downtown-golf": {
+  "height": 2283,
+  "width": 3229,
+  "widths": [
+   480,
+   960,
+   1440,
+   2000
+  ]
+ },
+ "downtown-gym": {
+  "height": 2345,
+  "width": 3313,
+  "widths": [
+   480,
+   960,
+   1440,
+   2000
+  ]
+ },
+ "downtown-kids": {
+  "height": 2339,
+  "width": 3315,
+  "widths": [
+   480,
+   960,
+   1440,
+   2000
+  ]
+ },
+ "downtown-kitchen": {
+  "height": 2345,
+  "width": 3315,
+  "widths": [
+   480,
+   960,
+   1440,
+   2000
+  ]
+ },
+ "downtown-layout-31": {
+  "height": 2573,
+  "width": 3638,
+  "widths": [
+   960,
+   1920,
+   3200,
+   3638
+  ]
+ },
+ "downtown-layout-31-plan": {
+  "height": 1838,
+  "width": 1035,
+  "widths": [
+   400,
+   800
+  ]
+ },
+ "downtown-layout-32": {
+  "height": 2573,
+  "width": 3638,
+  "widths": [
+   960,
+   1920,
+   3200,
+   3638
+  ]
+ },
+ "downtown-layout-32-plan": {
+  "height": 1764,
+  "width": 1158,
+  "widths": [
+   400,
+   800
+  ]
+ },
+ "downtown-layout-33": {
+  "height": 2573,
+  "width": 3638,
+  "widths": [
+   960,
+   1920,
+   3200,
+   3638
+  ]
+ },
+ "downtown-layout-33-plan": {
+  "height": 1562,
+  "width": 1349,
+  "widths": [
+   400,
+   800
+  ]
+ },
+ "downtown-layout-34": {
+  "height": 2573,
+  "width": 3638,
+  "widths": [
+   960,
+   1920,
+   3200,
+   3638
+  ]
+ },
+ "downtown-layout-34-plan": {
+  "height": 1516,
+  "width": 1360,
+  "widths": [
+   400,
+   800
+  ]
+ },
+ "downtown-layout-35": {
+  "height": 2573,
+  "width": 3638,
+  "widths": [
+   960,
+   1920,
+   3200,
+   3638
+  ]
+ },
+ "downtown-layout-35-plan": {
+  "height": 1388,
+  "width": 1232,
+  "widths": [
+   400,
+   800
+  ]
+ },
+ "downtown-layout-36": {
+  "height": 2573,
+  "width": 3638,
+  "widths": [
+   960,
+   1920,
+   3200,
+   3638
+  ]
+ },
+ "downtown-layout-36-plan": {
+  "height": 1754,
+  "width": 1464,
+  "widths": [
+   400,
+   800
+  ]
+ },
+ "downtown-layout-37": {
+  "height": 2573,
+  "width": 3638,
+  "widths": [
+   960,
+   1920,
+   3200,
+   3638
+  ]
+ },
+ "downtown-layout-37-plan": {
+  "height": 1566,
+  "width": 1508,
+  "widths": [
+   400,
+   800
+  ]
+ },
+ "downtown-layout-38": {
+  "height": 2573,
+  "width": 3638,
+  "widths": [
+   960,
+   1920,
+   3200,
+   3638
+  ]
+ },
+ "downtown-layout-38-plan": {
+  "height": 1478,
+  "width": 1444,
+  "widths": [
+   400,
+   800
+  ]
+ },
+ "downtown-layout-39": {
+  "height": 2573,
+  "width": 3638,
+  "widths": [
+   960,
+   1920,
+   3200,
+   3638
+  ]
+ },
+ "downtown-layout-39-plan": {
+  "height": 1499,
+  "width": 1592,
+  "widths": [
+   400,
+   800
+  ]
+ },
+ "downtown-layout-40": {
+  "height": 2573,
+  "width": 3638,
+  "widths": [
+   960,
+   1920,
+   3200,
+   3638
+  ]
+ },
+ "downtown-layout-40-plan": {
+  "height": 1407,
+  "width": 1510,
+  "widths": [
+   400,
+   800
+  ]
+ },
+ "downtown-living": {
+  "height": 2345,
+  "width": 3315,
+  "widths": [
+   480,
+   960,
+   1440,
+   2000
+  ]
+ },
+ "downtown-living-dusk": {
+  "height": 2345,
+  "width": 3315,
+  "widths": [
+   480,
+   960,
+   1440,
+   2000
+  ]
+ },
+ "downtown-lobby": {
+  "height": 2345,
+  "width": 3314,
+  "widths": [
+   480,
+   960,
+   1440,
+   2000
+  ]
+ },
+ "downtown-map": {
+  "height": 2573,
+  "width": 3638,
+  "widths": [
+   960,
+   1920,
+   3200,
+   3638
+  ]
+ },
+ "downtown-plan-podium": {
+  "height": 2573,
+  "width": 3638,
+  "widths": [
+   960,
+   1920,
+   3200,
+   3638
+  ]
+ },
+ "downtown-plan-roof": {
+  "height": 2573,
+  "width": 3638,
+  "widths": [
+   960,
+   1920,
+   3200,
+   3638
+  ]
+ },
+ "downtown-podium": {
+  "height": 848,
+  "width": 1260,
+  "widths": [
+   480,
+   960,
+   1260
+  ]
+ },
+ "downtown-pool": {
+  "height": 2343,
+  "width": 3314,
+  "widths": [
+   480,
+   960,
+   1440,
+   2000
+  ]
+ },
+ "downtown-street": {
+  "height": 2345,
+  "width": 1660,
+  "widths": [
+   480,
+   960,
+   1440,
+   1660
+  ]
+ },
+ "downtown-studio": {
+  "height": 2256,
+  "width": 3188,
+  "widths": [
+   480,
+   960,
+   1440,
+   2000
+  ]
+ },
+ "downtown-tower": {
+  "height": 2345,
+  "width": 1661,
+  "widths": [
+   480,
+   960,
+   1440,
+   1661
+  ]
+ },
+ "tresora-facade": {
+  "height": 1571,
+  "width": 2400,
+  "widths": [
+   480,
+   960,
+   1440,
+   2000
+  ]
+ },
+ "tresora-floor-2": {
+  "height": 2400,
+  "width": 4267,
+  "widths": [
+   960,
+   1920,
+   3200
+  ]
+ },
+ "tresora-floor-3": {
+  "height": 2400,
+  "width": 4267,
+  "widths": [
+   960,
+   1920,
+   3200
+  ]
+ },
+ "tresora-floor-4": {
+  "height": 2400,
+  "width": 4267,
+  "widths": [
+   960,
+   1920,
+   3200
+  ]
+ },
+ "tresora-floor-5": {
+  "height": 2400,
+  "width": 4267,
+  "widths": [
+   960,
+   1920,
+   3200
+  ]
+ },
+ "tresora-floor-6": {
+  "height": 2400,
+  "width": 4267,
+  "widths": [
+   960,
+   1920,
+   3200
+  ]
+ },
+ "tresora-floor-7": {
+  "height": 2400,
+  "width": 4267,
+  "widths": [
+   960,
+   1920,
+   3200
+  ]
+ },
+ "tresora-floor-8": {
+  "height": 2400,
+  "width": 4267,
+  "widths": [
+   960,
+   1920,
+   3200
+  ]
+ },
+ "tresora-floor-9": {
+  "height": 2400,
+  "width": 4267,
+  "widths": [
+   960,
+   1920,
+   3200
+  ]
+ },
+ "tresora-map": {
+  "height": 1712,
+  "width": 1475,
+  "widths": [
+   960,
+   1475
+  ]
+ },
+ "tresora-pool": {
+  "height": 1227,
+  "width": 2201,
+  "widths": [
+   480,
+   960,
+   1440,
+   2000,
+   2201
+  ]
+ },
+ "tresora-tower": {
+  "height": 1705,
+  "width": 2560,
+  "widths": [
+   480,
+   960,
+   1440,
+   2000
+  ]
+ }
+}

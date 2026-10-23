@@ -176,7 +176,8 @@ export function Ownership() {
   );
 }
 
-function Lightbox({ items, index, onClose, onStep, labels }) {
+// items are [label, slug or image sources, alt, extra]; extra (optional) is shown in the caption.
+export function Lightbox({ items, index, onClose, onStep, labels }) {
   const dialogRef = useRef(null);
   useEffect(() => {
     const dialog = dialogRef.current;
@@ -189,8 +190,8 @@ function Lightbox({ items, index, onClose, onStep, labels }) {
     dialog.addEventListener("keydown", onKey);
     return () => dialog.removeEventListener("keydown", onKey);
   }, [onStep]);
-  const [label, slug, alt] = items[index];
-  const image = gallerySource(slug);
+  const [label, slug, alt, extra] = items[index];
+  const image = typeof slug === "string" ? gallerySource(slug) : slug;
   return (
     <dialog
       ref={dialogRef}
@@ -201,7 +202,7 @@ function Lightbox({ items, index, onClose, onStep, labels }) {
     >
       <figure>
         <img src={image.full} srcSet={image.srcSet} sizes="100vw" width={image.width} height={image.height} alt={alt} decoding="async" />
-        <figcaption><strong>{label}</strong><span>{alt}</span>{items.length > 1 && <span className="rp-lightbox-count">{index + 1} {labels.of} {items.length}</span>}</figcaption>
+        <figcaption><strong>{label}</strong><span>{alt}</span>{extra}{items.length > 1 && <span className="rp-lightbox-count">{index + 1} {labels.of} {items.length}</span>}</figcaption>
       </figure>
       <button className="rp-lightbox-close" type="button" onClick={onClose} aria-label={labels.close} autoFocus>×</button>
       {items.length > 1 && <button className="rp-lightbox-step rp-lightbox-prev" type="button" onClick={() => onStep(-1)} aria-label={labels.previous}>←</button>}
