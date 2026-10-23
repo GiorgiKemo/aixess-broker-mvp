@@ -271,7 +271,7 @@ export const DUBAI_SOURCES_COPY = {
       },
       app: {
         eyebrow: "Bewohner-App",
-        title: "KI-gestützte WADAN-App",
+        title: "Die KI-gestützte App von WADAN",
         lead: "Die Broschüre von WADAN beschreibt die Bewohner-App als persönlichen KI-Concierge: Services planen, Gäste empfangen, individuelle Unterstützung anfordern und Neuigkeiten aus der Community erhalten.",
         featuresTitle: "In der Broschüre genannte Funktionen",
         features: ["KI-Assistenz", "Neuigkeiten", "Anfragen", "Dokumente", "Mitteilungen"],
