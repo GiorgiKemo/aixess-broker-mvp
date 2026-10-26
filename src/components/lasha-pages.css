@@ -803,6 +803,18 @@ body .modal-panel :is(button, input, a):focus-visible { outline-color: var(--l-b
 /* At night the pale cobalt tint is too faint on black, so the row takes the night buttons' cobalt. */
 html:root[data-time-theme='night'] :is(.lasha-home, .lasha-page) .site-header .desktop-nav .nav-group-menu button:is(:hover, :focus-visible) { background: #2557d6; color: #fff; }
 .desktop-nav .nav-group-menu button:focus-visible { outline: 2px solid var(--l-blue); outline-offset: -2px; }
+/* Country headings over the projects (Kemo, 26 October 2026): small muted labels, not links. */
+:is(.lasha-home, .lasha-page) .site-header .desktop-nav .nav-group-region {
+  padding: 0.75rem 1rem 0.3rem;
+  color: color-mix(in srgb, var(--l-ink) 58%, transparent);
+  font-family: var(--l-body);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+:is(.lasha-home, .lasha-page) .site-header .desktop-nav .nav-group-region:not(:first-child) { margin-top: 0.4rem; border-top: 1px solid color-mix(in srgb, var(--l-ink) 12%, transparent); }
 
 @media (max-width: 1399px) {
   .mobile-nav.lasha-menu > button.lasha-menu-sub {
@@ -817,6 +829,18 @@ html:root[data-time-theme='night'] :is(.lasha-home, .lasha-page) .site-header .d
 
   .mobile-nav.lasha-menu > button.lasha-menu-sub.is-active { padding-left: 2.5rem; color: #8fb0ff; }
   .mobile-nav.lasha-menu > button.lasha-menu-sub.is-active::before { left: 1.4rem; height: 1.2rem; }
+
+  .mobile-nav.lasha-menu > .lasha-menu-region {
+    margin: 0;
+    padding: 1rem 0 0.2rem 1.4rem;
+    color: rgba(244, 244, 241, 0.56);
+    font-family: var(--l-body);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    line-height: 1.2;
+    text-transform: uppercase;
+  }
 }
 
 /* Project Reverance facts from AIXCO.Global's "Current project" section (14 October 2026), where

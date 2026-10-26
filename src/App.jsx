@@ -36,11 +36,15 @@ const ResidenceExplorer = lazy(() => import("./components/ResidenceExplorer").th
 // Selected Opportunities lists each live project under it (Klem, 12 October 2026: "there will
 // come many more projects"). Add a project here only once it has a real page.
 // TRESORA and DOWNTOWN ONE in Dubai joined on 22 October 2026 (Kemo), each with its own page.
+// Kemo, 26 October 2026: the projects sit under a country heading (Georgia, Dubai).
 const OPPORTUNITY_PROJECTS = [
-  { key: "residences", labelKey: "reveranceProjectNav" },
-  { key: "tresora", labelKey: "tresoraProjectNav" },
-  { key: "downtown-one", labelKey: "downtownOneProjectNav" },
+  { key: "residences", labelKey: "reveranceProjectNav", regionKey: "regionGeorgia" },
+  { key: "tresora", labelKey: "tresoraProjectNav", regionKey: "regionDubai" },
+  { key: "downtown-one", labelKey: "downtownOneProjectNav", regionKey: "regionDubai" },
 ];
+
+// A child opens a new country when its region differs from the one before it.
+const startsRegion = (children, index) => index === 0 || children[index].regionKey !== children[index - 1].regionKey;
 
 const navItems = [
   { key: "why-aixess", labelKey: "aixessAdvantage" },
@@ -155,16 +159,18 @@ function SiteHeader({ currentPage, menuOpen, onToggleMenu, onNavigate, onOpenMod
             >
               {t(labelKey)}
             </button>
-            {children?.map((child) => (
-              <button
-                className={`lasha-menu-sub ${currentPage === child.key ? "is-active" : ""}`}
-                type="button"
-                aria-current={currentPage === child.key ? "page" : undefined}
-                key={child.labelKey}
-                onClick={() => navigate(child.key)}
-              >
-                {t(child.labelKey)}
-              </button>
+            {children?.map((child, index) => (
+              <Fragment key={child.labelKey}>
+                {startsRegion(children, index) && <p className="lasha-menu-region">{t(child.regionKey)}</p>}
+                <button
+                  className={`lasha-menu-sub ${currentPage === child.key ? "is-active" : ""}`}
+                  type="button"
+                  aria-current={currentPage === child.key ? "page" : undefined}
+                  onClick={() => navigate(child.key)}
+                >
+                  {t(child.labelKey)}
+                </button>
+              </Fragment>
             ))}
           </Fragment>
         ))}
@@ -234,12 +240,15 @@ function NavGroup({ item, currentPage, onNavigate }) {
         <CaretDown aria-hidden="true" weight="bold" />
       </button>
       <ul className="nav-group-menu" id={listId} hidden={!open}>
-        {item.children.map((child) => (
-          <li key={child.labelKey}>
+        {item.children.map((child, index) => (
+          <Fragment key={child.labelKey}>
+            {startsRegion(item.children, index) && <li className="nav-group-region">{t(child.regionKey)}</li>}
+            <li>
             <button type="button" className={currentPage === child.key ? "is-active" : ""} aria-current={currentPage === child.key ? "page" : undefined} onClick={() => go(child.key)}>
               {t(child.labelKey)}
             </button>
-          </li>
+            </li>
+          </Fragment>
         ))}
       </ul>
     </div>

@@ -27,13 +27,14 @@ describe("Dubai projects: TRESORA and DOWNTOWN ONE", () => {
 
     fireEvent.click(toggle);
     const menu = within(container.querySelector(".nav-group-menu"));
-    expect(menu.getAllByRole("button").map((button) => button.textContent)).toEqual(["Georgia Batumi - Reverance", "Dubai - TRESORA Project", "Dubai - Downtown One"]);
-    fireEvent.click(menu.getByRole("button", { name: "Dubai - TRESORA Project" }));
+    expect(menu.getAllByRole("button").map((button) => button.textContent)).toEqual(["Batumi – Reverance Project", "Tresora Project", "Downtown One Project"]);
+    expect([...container.querySelectorAll(".nav-group-menu > li")].map((item) => item.textContent)).toEqual(["Georgia", "Batumi – Reverance Project", "Dubai", "Tresora Project", "Downtown One Project"]);
+    fireEvent.click(menu.getByRole("button", { name: "Tresora Project" }));
     expect(window.location.hash).toBe("#tresora");
     expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent("TRESORADUBAI");
 
     fireEvent.click(screen.getByRole("button", { name: "Show projects" }));
-    fireEvent.click(within(document.querySelector(".nav-group-menu")).getByRole("button", { name: "Dubai - Downtown One" }));
+    fireEvent.click(within(document.querySelector(".nav-group-menu")).getByRole("button", { name: "Downtown One Project" }));
     expect(window.location.hash).toBe("#downtown-one");
     expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent("DOWNTOWN ONEDUBAI");
     expect(document.querySelector(".dp-page").textContent).not.toContain("TRESORA");

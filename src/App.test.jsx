@@ -70,7 +70,7 @@ describe("AIXESS navigation pages", () => {
       const toggle = document.querySelector(".site-header .menu-toggle");
       fireEvent.click(toggle);
       expect(panel).toHaveClass("is-open");
-      expect(within(panel).getAllByRole("button").map((button) => button.textContent)).toEqual(expect.arrayContaining(["AIXESS ADVANTAGE", "BROKER ACCESS", "SELECTED OPPORTUNITIES", "Georgia Batumi - Reverance", "INSIGHTS"]));
+      expect(within(panel).getAllByRole("button").map((button) => button.textContent)).toEqual(expect.arrayContaining(["AIXESS ADVANTAGE", "BROKER ACCESS", "SELECTED OPPORTUNITIES", "Batumi – Reverance Project", "INSIGHTS"]));
       fireEvent.keyDown(document, { key: "Escape" });
       expect(panel).not.toHaveClass("is-open");
 
@@ -395,7 +395,7 @@ describe("AIXESS navigation pages", () => {
     expect(screen.getByRole("button", { name: /REQUEST BROKER ACCESS/ })).toBeInTheDocument();
   });
 
-  it("opens Georgia Batumi - Reverance from the Selected Opportunities menu and closes it with Escape", () => {
+  it("opens Batumi – Reverance Project from the Selected Opportunities menu and closes it with Escape", () => {
     window.history.replaceState({}, "", "/");
     const { container } = render(<App />);
 
@@ -407,7 +407,7 @@ describe("AIXESS navigation pages", () => {
     expect(toggle).toHaveAttribute("aria-expanded", "false");
 
     fireEvent.click(toggle);
-    fireEvent.click(within(container.querySelector(".nav-group-menu")).getByRole("button", { name: "Georgia Batumi - Reverance" }));
+    fireEvent.click(within(container.querySelector(".nav-group-menu")).getByRole("button", { name: "Batumi – Reverance Project" }));
     expect(window.location.hash).toBe("#residences");
     expect(screen.getByRole("heading", { name: /two buildings/i })).toBeInTheDocument();
   });
