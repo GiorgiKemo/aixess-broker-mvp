@@ -806,7 +806,7 @@ html:root[data-time-theme='night'] :is(.lasha-home, .lasha-page) .site-header .d
 /* Country headings over the projects (Kemo, 26 October 2026): small muted labels, not links. */
 :is(.lasha-home, .lasha-page) .site-header .desktop-nav .nav-group-region {
   padding: 0.75rem 1rem 0.3rem;
-  color: color-mix(in srgb, var(--l-ink) 58%, transparent);
+  color: color-mix(in srgb, var(--l-ink) 74%, transparent);
   font-family: var(--l-body);
   font-size: 0.7rem;
   font-weight: 600;
@@ -833,7 +833,7 @@ html:root[data-time-theme='night'] :is(.lasha-home, .lasha-page) .site-header .d
   .mobile-nav.lasha-menu > .lasha-menu-region {
     margin: 0;
     padding: 1rem 0 0.2rem 1.4rem;
-    color: rgba(244, 244, 241, 0.56);
+    color: rgba(244, 244, 241, 0.74);
     font-family: var(--l-body);
     font-size: 0.72rem;
     font-weight: 600;

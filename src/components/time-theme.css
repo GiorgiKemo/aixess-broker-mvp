@@ -582,7 +582,7 @@ html:root:not([data-time-theme='night']) .it-step-list li { border-top-color: va
 @media (max-width: 1399px) {
   html:root:not([data-time-theme='night']) .mobile-nav.lasha-menu > button { border-bottom-color: var(--l-soft-line); color: #171a1d; }
   html:root:not([data-time-theme='night']) .mobile-nav.lasha-menu > button.lasha-menu-sub { color: rgb(23 26 29 / 0.78); }
-  html:root:not([data-time-theme='night']) .mobile-nav.lasha-menu > .lasha-menu-region { color: rgb(23 26 29 / 0.56); }
+  html:root:not([data-time-theme='night']) .mobile-nav.lasha-menu > .lasha-menu-region { color: rgb(23 26 29 / 0.74); }
   html:root:not([data-time-theme='night']) .mobile-nav.lasha-menu > button:is(.is-active, .lasha-menu-sub.is-active) { color: var(--l-soft-accent); }
   html:root:not([data-time-theme='night']) .mobile-nav.lasha-menu .lasha-menu-bar :is(.brand, .menu-toggle) { color: #171a1d; }
   html:root:not([data-time-theme='night']) .mobile-nav.lasha-menu .lasha-menu-bar .menu-toggle { border-color: rgb(23 26 29 / 0.6); }
