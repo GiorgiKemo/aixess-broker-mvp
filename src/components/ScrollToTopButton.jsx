@@ -7,9 +7,10 @@ import { useLanguage } from "../i18n.jsx";
 
 const VISIBILITY_OFFSET = 520;
 
-// UI the button must never sit on (the explorer dock, the cookie notice, the footer's logo and
-// links): it steps aside while one of these overlaps it.
-const AVOID_SELECTOR = ".mobile-residence-dock, .cookie-notice, .site-footer-legal";
+// UI the button must never sit on (the explorer dock and its copy and filter panels, which runs closer to the
+// edge than the page margin, the cookie notice, the footer's logo and links): it steps aside while
+// one of these overlaps it.
+const AVOID_SELECTOR = ".mobile-residence-dock, :is(.explorer-copy-panel, .residence-filter-panel):not([aria-hidden='true']), .cookie-notice, .site-footer-legal";
 
 let activeFrame = null;
 let cancelCleanup = null;

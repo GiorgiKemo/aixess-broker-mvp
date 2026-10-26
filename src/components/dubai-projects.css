@@ -368,8 +368,6 @@ html:root[data-time-theme='afternoon'] .lasha-page .dp-page :is(.rp-mist .dp-lis
 
 /* Tables: prices, launch mix and payment schedules. */
 .lasha-page .dp-table-wrap { max-width: 81.2rem; }
-.lasha-page .dp-price-table { table-layout: fixed; }
-.lasha-page .dp-price-table thead th:first-child { width: 24%; }
 .lasha-page .dp-table {
   width: 100%;
   border-collapse: collapse;
@@ -381,11 +379,10 @@ html:root[data-time-theme='afternoon'] .lasha-page .dp-page :is(.rp-mist .dp-lis
 .lasha-page .dp-table :is(th, td):last-child { padding-right: 0; }
 .lasha-page .dp-table thead th { padding-top: 0; border-top: 0; color: color-mix(in srgb, var(--l-ink, #171a1d) 78%, transparent); font-size: var(--v4-label); font-weight: 600; letter-spacing: 0.16em; line-height: 1.35; text-transform: uppercase; vertical-align: bottom; }
 .lasha-page .dp-table tbody tr:last-child :is(th, td) { border-bottom: 1px solid color-mix(in srgb, var(--l-ink, #171a1d) 20%, transparent); }
-.lasha-page :is(.dp-price-table, .dp-mix-table) tbody th { font-family: var(--l-head); font-size: var(--v4-h3); font-weight: 700; line-height: 1; text-transform: uppercase; }
-.lasha-page :is(.dp-price-table, .dp-mix-table) tbody th .dp-inline-link { display: flex; width: fit-content; margin-top: 0.7rem; font-family: var(--l-body); font-size: var(--v4-label); line-height: 1.35; text-transform: uppercase; }
+.lasha-page .dp-mix-table tbody th { font-family: var(--l-head); font-size: var(--v4-h3); font-weight: 700; line-height: 1; text-transform: uppercase; }
+.lasha-page .dp-mix-table tbody th .dp-inline-link { display: flex; width: fit-content; margin-top: 0.7rem; font-family: var(--l-body); font-size: var(--v4-label); line-height: 1.35; text-transform: uppercase; }
 .lasha-page .dp-table td > strong { display: block; color: var(--l-blue); font-family: var(--l-head); font-size: clamp(1.45rem, 1.9vw, 1.9rem); font-weight: 700; line-height: 1; white-space: nowrap; }
 .lasha-page .dp-table td > strong + span { display: block; margin-top: 0.35rem; color: color-mix(in srgb, var(--l-ink, #171a1d) 74%, transparent); font-size: var(--v4-small); white-space: nowrap; }
-.lasha-page .dp-price-none { color: color-mix(in srgb, var(--l-ink, #171a1d) 70%, transparent); font-size: var(--v4-small); font-style: italic; }
 .lasha-page .dp-mix-table { max-width: 52rem; }
 .lasha-page .dp-mix-table tfoot :is(th, td) { border-top: 2px solid var(--l-ink, #171a1d); font-weight: 700; }
 .lasha-page .dp-mix-table tfoot th { font-size: var(--v4-label); letter-spacing: 0.16em; text-transform: uppercase; }
@@ -396,22 +393,6 @@ html:root[data-time-theme='afternoon'] .lasha-page .dp-page :is(.rp-mist .dp-lis
 .lasha-page div.dp-terms p { margin: 0 0 0.6rem; color: color-mix(in srgb, var(--l-ink, #171a1d) 74%, transparent); font-size: var(--v4-small); line-height: 1.55; }
 .lasha-page div.dp-terms p:last-child { margin-bottom: 0; }
 
-/* Keep five columns only where category names and both currencies have room. */
-@media (max-width: 1199px) {
-  .lasha-page .dp-price-table thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
-  .lasha-page .dp-price-table :is(tbody, tr, th, td) { display: block; }
-  .lasha-page .dp-price-table tbody { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 19rem), 1fr)); gap: 1rem; }
-  .lasha-page .dp-price-table tr { padding: 1.2rem 1.2rem 0.4rem; border: 1px solid color-mix(in srgb, var(--l-ink, #171a1d) 22%, transparent); background: var(--l-card, #fff); }
-  .lasha-page .dp-price-table tbody th { width: auto; padding: 0 0 1rem; border: 0; }
-  .lasha-page .dp-price-table td { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; padding: 0.8rem 0; }
-  .lasha-page .dp-price-table tbody tr:last-child :is(th, td) { border-bottom: 0; }
-  .lasha-page .dp-price-table td::before { content: attr(data-label); flex: 0 1 auto; min-width: 0; color: color-mix(in srgb, var(--l-ink, #171a1d) 78%, transparent); font-size: var(--v4-label); font-weight: 600; letter-spacing: 0.14em; line-height: 1.35; text-transform: uppercase; }
-  .lasha-page .dp-price-table tbody td > * { grid-column: 2; text-align: right; }
-  .lasha-page .dp-price-table tbody td { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 0.25rem 1rem; align-items: start; }
-  .lasha-page .dp-price-table tbody td::before { grid-column: 1; grid-row: 1 / span 2; }
-  .lasha-page .dp-price-table td > strong { font-size: 1.45rem; }
-  .lasha-page .dp-price-table td > strong + span { margin-top: 0; }
-}
 /* The three-column launch mix stacks the same way on phones. */
 @media (max-width: 599px) {
   .lasha-page .dp-mix-table thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
@@ -431,10 +412,138 @@ html:root[data-time-theme='afternoon'] .lasha-page .dp-page :is(.rp-mist .dp-lis
 }
 /* A full-width label keeps long translations clear of the figures on phones. */
 @media (max-width: 599px) {
-  .lasha-page :is(.dp-price-table, .dp-mix-table) tbody td { grid-template-columns: minmax(0, 1fr); row-gap: 0.35rem; }
-  .lasha-page :is(.dp-price-table, .dp-mix-table) tbody td::before { grid-column: 1; grid-row: auto; margin-bottom: 0.2rem; }
-  .lasha-page :is(.dp-price-table, .dp-mix-table) tbody td > * { grid-column: 1; text-align: left; }
-  .lasha-page :is(.dp-price-table, .dp-mix-table) td > strong + span { margin-top: 0; }
+  .lasha-page .dp-mix-table tbody td { grid-template-columns: minmax(0, 1fr); row-gap: 0.35rem; }
+  .lasha-page .dp-mix-table tbody td::before { grid-column: 1; grid-row: auto; margin-bottom: 0.2rem; }
+  .lasha-page .dp-mix-table tbody td > * { grid-column: 1; text-align: left; }
+  .lasha-page .dp-mix-table td > strong + span { margin-top: 0; }
+}
+
+/* TRESORA price board (Kemo, 25 October 2026: "turn it to something spectacular ... that fits our
+   brandbook"). Each category is one row: its name in AiXESS Head with the listed sizes and the
+   request link under it, then the three payment options as large AiXESS Head prices. The 100%
+   upfront option runs as one solid pillar in the theme's button colour (cobalt by day and at night,
+   deep sage in the afternoon) with white figures. Below 1200px each category is a card that ends
+   in the same pillar colour. The rows are grids, so the table keeps explicit ARIA roles. */
+.lasha-page .dp-price-board {
+  --board-line: color-mix(in srgb, var(--l-ink, #171a1d) 18%, transparent);
+  --board-rule: color-mix(in srgb, var(--l-ink, #171a1d) 80%, transparent);
+  --board-band: #2557d6;
+  --board-band-hover: #1b45b0;
+  --board-band-line: rgb(255 255 255 / 0.24);
+  --board-tint: color-mix(in srgb, var(--l-blue) 7%, transparent);
+  --board-pad: clamp(1.2rem, 1.6vw, 1.6rem);
+}
+html:root[data-time-theme='afternoon'] .lasha-page .dp-price-board { --board-band: #3c5a41; --board-band-hover: #2f4733; }
+html:root[data-time-theme='night'] .lasha-page .dp-price-board { --board-band: var(--l-night-button); --board-band-hover: var(--l-night-button-hover); --board-tint: rgb(255 255 255 / 0.04); }
+
+.lasha-page .dp-price-board .dp-price-table,
+.lasha-page .dp-price-board .dp-price-table :is(thead, tbody) { display: block; width: 100%; }
+.lasha-page .dp-price-board .dp-price-table tr { display: grid; }
+.lasha-page .dp-price-board .dp-price-table :is(th, td) { display: block; min-width: 0; padding: 0; border: 0; text-align: left; }
+
+/* Category name, listed sizes and the request link. */
+.lasha-page .dp-price-board .dp-price-table tbody th {
+  font-family: var(--l-head);
+  font-size: var(--v4-h3);
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 1.02;
+  text-transform: uppercase;
+  transition: color 180ms ease;
+}
+.lasha-page .dp-price-board .dp-price-size { display: block; color: color-mix(in srgb, var(--l-ink, #171a1d) 82%, transparent); font-size: var(--public-body); line-height: 1.45; }
+.lasha-page .dp-price-board .dp-col-1 .dp-inline-link { width: fit-content; margin-top: 0.9rem; font-size: var(--public-label); line-height: 1.4; letter-spacing: 0.14em; }
+
+/* Prices: US$ in AiXESS Head, the developer's AED under it. */
+.lasha-page .dp-price-board .dp-price-table td > strong { display: block; color: var(--l-blue); font-family: var(--l-head); font-size: clamp(1.9rem, 2.6vw, 2.75rem); font-weight: 700; letter-spacing: 0.005em; line-height: 0.95; white-space: nowrap; }
+.lasha-page .dp-price-board .dp-price-table td > strong + span { display: block; margin-top: 0.5rem; color: color-mix(in srgb, var(--l-ink, #171a1d) 76%, transparent); font-size: var(--public-note); letter-spacing: 0.01em; line-height: 1.4; white-space: nowrap; }
+.lasha-page .dp-price-board .dp-price-none { display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem 0.7rem; padding-top: 0.75rem; color: color-mix(in srgb, var(--l-ink, #171a1d) 70%, transparent); font-size: var(--public-label); font-style: normal; font-weight: 600; letter-spacing: 0.14em; line-height: 1.4; text-transform: uppercase; }
+.lasha-page .dp-price-board .dp-price-none::before { content: ""; flex: none; width: 1.6rem; height: 1px; background: currentColor; }
+
+/* The 100% upfront pillar. */
+.lasha-page .dp-price-board .dp-col-4 { background: var(--board-band); color: #fff; transition: background-color 180ms ease; }
+.lasha-page .dp-price-board .dp-price-table td.dp-col-4 > strong { color: #fff; }
+.lasha-page .dp-price-board .dp-price-table td.dp-col-4 > strong + span { color: rgb(255 255 255 / 0.84); }
+
+@media (hover: hover) {
+  .lasha-page .dp-price-board .dp-price-table tbody tr:hover > :not(.dp-col-4) { background: var(--board-tint); }
+  .lasha-page .dp-price-board .dp-price-table tbody tr:hover > .dp-col-4 { background: var(--board-band-hover); }
+  .lasha-page .dp-price-board .dp-price-table tbody tr:hover th { color: var(--l-blue); }
+}
+
+.lasha-page .dp-price-board .dp-price-table tbody tr:last-child > :is(th, td) { border-bottom: 0; }
+/* The arrow follows the last word when a long request link wraps. */
+.lasha-page .dp-price-board .dp-col-1 .dp-inline-link { display: block; }
+.lasha-page .dp-price-board .dp-col-1 .dp-inline-link .lasha-arrow { display: inline-block; margin-left: 0.6rem; vertical-align: middle; }
+.lasha-page .dp-price-board .dp-link-tail { white-space: nowrap; }
+
+/* Board from 1200px: category and sizes share the first column, then the three options. */
+@media (min-width: 1200px) {
+  .lasha-page .dp-price-board .dp-price-table tr { grid-template-columns: minmax(0, 1.3fr) repeat(3, minmax(0, 1fr)); grid-template-rows: auto 1fr; }
+  .lasha-page .dp-price-board .dp-price-table :is(.dp-col-0, .dp-col-1) { grid-column: 1; padding-right: 2rem; }
+  .lasha-page .dp-price-board .dp-price-table .dp-col-0 { grid-row: 1; }
+  .lasha-page .dp-price-board .dp-price-table .dp-col-1 { grid-row: 2; }
+  .lasha-page .dp-price-board .dp-price-table :is(.dp-col-2, .dp-col-3, .dp-col-4) { grid-row: 1 / span 2; padding: 0 var(--board-pad); }
+  .lasha-page .dp-price-board .dp-price-table .dp-col-2 { grid-column: 2; }
+  .lasha-page .dp-price-board .dp-price-table .dp-col-3 { grid-column: 3; }
+  .lasha-page .dp-price-board .dp-price-table .dp-col-4 { grid-column: 4; }
+
+  /* Head: CATEGORY over LISTED SIZES, then the option names in AiXESS Head, on one baseline. */
+  .lasha-page .dp-price-board .dp-price-table thead tr { grid-template-rows: 1fr auto; }
+  .lasha-page .dp-price-board .dp-price-table thead th { color: color-mix(in srgb, var(--l-ink, #171a1d) 78%, transparent); font-size: var(--public-label); font-weight: 600; letter-spacing: 0.16em; line-height: 1.4; text-transform: uppercase; }
+  .lasha-page .dp-price-board .dp-price-table thead .dp-col-0 { align-self: end; }
+  .lasha-page .dp-price-board .dp-price-table thead .dp-col-1 { padding-bottom: 1.3rem; color: color-mix(in srgb, var(--l-ink, #171a1d) 62%, transparent); }
+  .lasha-page .dp-price-board .dp-price-table thead :is(.dp-col-2, .dp-col-3, .dp-col-4) {
+    align-self: stretch;
+    display: flex;
+    align-items: flex-end;
+    padding-top: 2rem;
+    padding-bottom: 1.3rem;
+    color: var(--l-ink, #171a1d);
+    font-family: var(--l-head);
+    font-size: clamp(1.35rem, 1.65vw, 1.7rem);
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    line-height: 1;
+  }
+  .lasha-page .dp-price-board .dp-price-table thead .dp-col-4 { color: #fff; }
+
+  /* Rows: a heavy rule under the head, hairlines between categories, lighter lines on the pillar. */
+  .lasha-page .dp-price-board .dp-price-table tbody tr > * { border-top: 1px solid var(--board-line); }
+  .lasha-page .dp-price-board .dp-price-table tbody tr > .dp-col-1 { border-top: 0; }
+  .lasha-page .dp-price-board .dp-price-table tbody tr > .dp-col-4 { border-top-color: var(--board-band-line); }
+  .lasha-page .dp-price-board .dp-price-table tbody tr:first-child > :not(.dp-col-1) { border-top: 2px solid var(--board-rule); }
+  .lasha-page .dp-price-board .dp-price-table tbody tr:first-child > .dp-col-4 { border-top-color: rgb(255 255 255 / 0.6); }
+  .lasha-page .dp-price-board .dp-price-table tbody tr:last-child > :is(.dp-col-1, .dp-col-2, .dp-col-3) { border-bottom: 1px solid var(--board-line); }
+  .lasha-page .dp-price-board .dp-price-table tbody th { padding-top: 1.75rem; }
+  .lasha-page .dp-price-board .dp-price-table tbody .dp-col-1 { padding-top: 0.6rem; padding-bottom: 1.75rem; }
+  .lasha-page .dp-price-board .dp-price-table tbody :is(.dp-col-2, .dp-col-3, .dp-col-4) { padding-top: 1.75rem; padding-bottom: 1.75rem; }
+  .lasha-page .dp-price-board .dp-price-table tbody tr:last-child > .dp-col-4 { padding-bottom: 2.2rem; }
+}
+
+/* Cards below 1200px: name, sizes and link, the two plans side by side, the upfront pillar last. */
+@media (max-width: 1199px) {
+  .lasha-page .dp-price-board .dp-price-table thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+  .lasha-page .dp-price-board .dp-price-table tbody { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 21rem), 1fr)); gap: 1rem; }
+  .lasha-page .dp-price-board .dp-price-table tbody tr { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: auto auto 1fr auto; border: 1px solid var(--board-line); background: var(--l-card, #fff); }
+  .lasha-page .dp-price-board .dp-price-table :is(.dp-col-0, .dp-col-1, .dp-col-4) { grid-column: 1 / -1; }
+  .lasha-page .dp-price-board .dp-price-table .dp-col-0 { padding: 1.4rem var(--board-pad) 0; }
+  .lasha-page .dp-price-board .dp-price-table .dp-col-1 { padding: 0.9rem var(--board-pad) 1.3rem; }
+  .lasha-page .dp-price-board .dp-price-table :is(.dp-col-2, .dp-col-3) { display: flex; flex-direction: column; padding: 1.1rem var(--board-pad) 1.3rem; border-top: 1px solid var(--board-line); }
+  /* A label that wraps pushes nothing: both amounts sit on the same line. */
+  .lasha-page .dp-price-board .dp-price-table :is(.dp-col-2, .dp-col-3)::before { flex: 1 0 auto; }
+  .lasha-page .dp-price-board .dp-price-table .dp-col-3 { border-left: 1px solid var(--board-line); }
+  .lasha-page .dp-price-board .dp-price-table .dp-col-4 { padding: 1.2rem var(--board-pad) 1.4rem; }
+  /* Labels sit above their amounts. */
+  .lasha-page .dp-price-board .dp-price-table td::before { content: attr(data-label); display: block; margin-bottom: 0.55rem; color: color-mix(in srgb, var(--l-ink, #171a1d) 74%, transparent); font-size: var(--public-label); font-weight: 600; letter-spacing: 0.14em; line-height: 1.4; text-transform: uppercase; }
+  .lasha-page .dp-price-board .dp-price-table td.dp-col-1::before { margin-bottom: 0.3rem; }
+  .lasha-page .dp-price-board .dp-price-table td.dp-col-4::before { color: rgb(255 255 255 / 0.84); }
+  .lasha-page .dp-price-board .dp-price-table td > strong { font-size: clamp(1.7rem, 4.2vw, 2.1rem); }
+  .lasha-page .dp-price-board .dp-price-table td.dp-col-4 > strong { font-size: clamp(2rem, 5vw, 2.5rem); }
+}
+@media (max-width: 379px) {
+  .lasha-page .dp-price-board .dp-price-table :is(.dp-col-2, .dp-col-3) { grid-column: 1 / -1; }
+  .lasha-page .dp-price-board .dp-price-table .dp-col-3 { border-left: 0; }
 }
 
 /* Payment schedules: one card per plan. TRESORA: 40/60 beside the wider post-handover plan from

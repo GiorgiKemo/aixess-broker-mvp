@@ -64,10 +64,14 @@ function RequestButton({ common, project, request, label, primary = false }) {
   );
 }
 
-function RequestLink({ common, project, request, label }) {
+// `wrapTail` keeps the last word and the arrow together when a long label wraps (price board).
+function RequestLink({ common, project, request, label, wrapTail = false }) {
+  const split = label.lastIndexOf(" ");
   return (
     <a className="dp-inline-link" href={projectMailto(common, project, request)} aria-label={`${label} (${common.opensEmail})`}>
-      {label}<LashaArrow length={20} />
+      {wrapTail && split > 0
+        ? <>{label.slice(0, split + 1)}<span className="dp-link-tail">{label.slice(split + 1)}<LashaArrow length={20} /></span></>
+        : <>{label}<LashaArrow length={20} /></>}
     </a>
   );
 }
@@ -307,22 +311,23 @@ export function TresoraPage({ header }) {
 
         <section className="rp-section rp-mist" id="tresora-prices" aria-labelledby="tresora-prices-title">
           <SectionHeading id="tresora-prices-title" eyebrow={prices.eyebrow} title={prices.title} lead={prices.lead} />
-          <div className="dp-table-wrap">
-            <table className="dp-table dp-price-table">
-              <thead>
-                <tr>{prices.columns.map((name) => <th key={name} scope="col">{name}</th>)}</tr>
+          {/* The price board: explicit roles keep the table's semantics while its rows are laid out as a grid. */}
+          <div className="dp-table-wrap dp-price-board">
+            <table className="dp-table dp-price-table" role="table">
+              <thead role="rowgroup">
+                <tr role="row">{prices.columns.map((name, index) => <th key={name} scope="col" role="columnheader" className={`dp-col-${index}`}>{name}</th>)}</tr>
               </thead>
-              <tbody>
+              <tbody role="rowgroup">
                 {TRESORA_PRICES.map((row) => (
-                  <tr key={row.key}>
-                    <th scope="row">
-                      {prices.rows[row.key]}
-                      <RequestLink common={common} project={project} request={`${common.requests.prices}: ${prices.rows[row.key]}`} label={`${labels.askAbout} ${prices.rows[row.key]}`} />
-                    </th>
-                    <td data-label={prices.columns[1]}>{row.sizes.map(format.number).join("–")} {labels.sqft}</td>
-                    <td data-label={prices.columns[2]}>{priceCell(row.plan4060)}</td>
-                    <td data-label={prices.columns[3]}>{priceCell(row.phpp)}</td>
-                    <td data-label={prices.columns[4]}>{priceCell(row.upfront)}</td>
+                  <tr key={row.key} role="row">
+                    <th scope="row" role="rowheader" className="dp-col-0">{prices.rows[row.key]}</th>
+                    <td role="cell" className="dp-col-1" data-label={prices.columns[1]}>
+                      <span className="dp-price-size">{row.sizes.map(format.number).join("–")} {labels.sqft}</span>
+                      <RequestLink common={common} project={project} request={`${common.requests.prices}: ${prices.rows[row.key]}`} label={`${labels.askAbout} ${prices.rows[row.key]}`} wrapTail />
+                    </td>
+                    <td role="cell" className="dp-col-2" data-label={prices.columns[2]}>{priceCell(row.plan4060)}</td>
+                    <td role="cell" className="dp-col-3" data-label={prices.columns[3]}>{priceCell(row.phpp)}</td>
+                    <td role="cell" className="dp-col-4" data-label={prices.columns[4]}>{priceCell(row.upfront)}</td>
                   </tr>
                 ))}
               </tbody>

@@ -55,6 +55,19 @@ body:has(.cookie-notice, .lasha-menu.is-open, .floor-modal) .scroll-top-button {
   .scroll-top-button svg { width: 24px; height: 24px; }
 }
 
+/* On laptops and wider it sits in the page's side margin (the page gutter, about 4.9vw; the button
+   is 40-48px there), so it never covers the copy's left edge (Kemo, 25 October 2026: it covered the TRESORA price note). */
+@media (min-width: 1180px) {
+  .scroll-top-button {
+    --scroll-top-size: min(48px, calc(4.9vw - 18px));
+    left: max(0.5rem, env(safe-area-inset-left, 0px), calc((min(4.4rem, 4.9vw) - var(--scroll-top-size)) / 2));
+    width: var(--scroll-top-size);
+    height: var(--scroll-top-size);
+  }
+
+  .scroll-top-button svg { width: 22px; height: 22px; }
+}
+
 /* At night it is the site's cobalt button, lightening on hover (Kemo, 17 October 2026). */
 html:root[data-time-theme='night'] .scroll-top-button {
   border-color: var(--l-night-button);
