@@ -7,6 +7,7 @@ import { LASHA_PAGES_COPY } from "../lasha-pages-copy.js";
 import { ADVANTAGE_SERVICES_COPY } from "../advantage-services-copy.js";
 import "./lasha-network-pages.css";
 import { ThemedImage } from "./ThemedImage.jsx";
+import { ArrowsClockwise, ChartBar, Coins, FileText, Gear, HouseLine, Key, UsersThree } from "@phosphor-icons/react";
 import { BrokerGetStarted, BrokerPlatformHero, BrokerWorkspace } from "./InsightsToolsPages.jsx";
 
 // AiXESS Advantage and Broker Access, built to Lasha Bakashvili's Figma frames (AIXESS
@@ -168,15 +169,33 @@ export function AdvantagePageContent({ header }) {
             <p className="lnp-care-intro">{care.intro}</p>
           </div>
         </div>
-        <ol className="lnp-care-list">
-          {care.items.map(([title, line], index) => (
-            <li key={title}>
-              <span className="lasha-index">{String(index + 1).padStart(2, "0")}</span>
-              <h3>{title}</h3>
-              <p>{line}</p>
-            </li>
-          ))}
-        </ol>
+        {/* Kemo's round layout: the eight services sit on a ring around a terrace photo, clockwise
+            from the top right, with their text outside the ring. Below 1200px the ring carries only
+            the photo and badges, and the text follows as a list. */}
+        <div className="lnp-care-ring">
+          <div className="lnp-care-stage">
+            <div className="lnp-care-hub" aria-hidden="true">
+              <ThemedImage family="coastal-lifestyle" defaultWidth={800} sizes="(max-width: 1199px) 14rem, 30vw" alt="" loading="lazy" decoding="async" />
+            </div>
+            {CARE_DOTS.map(([x, y]) => <span key={`${x}${y}`} className="lnp-care-dot" style={{ "--x": x, "--y": y }} aria-hidden="true" />)}
+            <ol className="lnp-care-list">
+              {care.items.map(([title, line], index) => {
+                const Icon = CARE_ICONS[index];
+                const [x, y] = ringPoint(-67.5 + index * 45);
+                return (
+                  <li key={title} className={`${index < 4 ? "is-right" : "is-left"}${[0, 7].includes(index) ? " is-top" : ""}${[3, 4].includes(index) ? " is-bottom" : ""}`} style={{ "--x": x, "--y": y }}>
+                    <span className="lnp-care-badge" aria-hidden="true"><Icon weight="light" /></span>
+                    <div className="lnp-care-text">
+                      <span className="lasha-index">{String(index + 1).padStart(2, "0")}</span>
+                      <h3>{title}</h3>
+                      <p>{line}</p>
+                    </div>
+                  </li>
+                );
+              })}
+            </ol>
+          </div>
+        </div>
       </section>
     </div>
   );
@@ -252,6 +271,12 @@ export function BrokerAccessPageContent({ header, onOpenModal }) {
     </div>
   );
 }
+
+// The 360° ring: one icon per service, in the order of Kemo's image.
+const CARE_ICONS = [HouseLine, Coins, FileText, Key, Gear, UsersThree, ChartBar, ArrowsClockwise];
+const ringPoint = (degrees) => [Math.cos((degrees * Math.PI) / 180), Math.sin((degrees * Math.PI) / 180)].map((value) => Number(value.toFixed(4)));
+// Small dots on the ring halfway between services.
+const CARE_DOTS = Array.from({ length: 8 }, (_, index) => ringPoint(-45 + index * 45));
 
 // Lasha breaks the Advantage title before its last word: YOUR AIXESS / ADVANTAGE.
 function splitBeforeLast(text) {
