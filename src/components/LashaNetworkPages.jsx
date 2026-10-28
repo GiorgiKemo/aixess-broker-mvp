@@ -4,6 +4,7 @@ import { LashaArrow } from "./LashaHomeSections.jsx";
 import { NETWORK_COPY } from "../network-copy.js";
 import { LASHA_HOME_COPY } from "../lasha-home-copy.js";
 import { LASHA_PAGES_COPY } from "../lasha-pages-copy.js";
+import { ADVANTAGE_SERVICES_COPY } from "../advantage-services-copy.js";
 import "./lasha-network-pages.css";
 import { ThemedImage } from "./ThemedImage.jsx";
 import { BrokerGetStarted, BrokerPlatformHero, BrokerWorkspace } from "./InsightsToolsPages.jsx";
@@ -116,8 +117,8 @@ function SplitHero({ header, eyebrow, title, body, action, media, className }) {
 }
 
 export function AdvantagePageContent({ header }) {
-  const { network, home, page } = useCopy();
-  const [servicesEyebrow, servicesTitle] = network.services;
+  const { locale, network, home, page } = useCopy();
+  const care = ADVANTAGE_SERVICES_COPY[locale] || ADVANTAGE_SERVICES_COPY.en;
   return (
     <div className="lnp lnp-advantage">
       <SplitHero
@@ -154,15 +155,28 @@ export function AdvantagePageContent({ header }) {
         </div>
       </section>
 
-      <section className="lnp-services" aria-labelledby="lnp-services-title">
-        <p className="lnp-services-figure" aria-hidden="true">360°</p>
-        <div className="lnp-services-copy">
-          <p className="lnp-services-eyebrow">{servicesEyebrow}</p>
-          <h2 id="lnp-services-title">{splitBalanced(noStop(servicesTitle)).map((line) => <span key={line}>{line}</span>)}</h2>
+      {/* AiXESS 360° Services (Kemo, 28 October 2026, from his image), in the page's own type and
+          colours. It replaces Lasha's shorter 360° row, which said the same thing. */}
+      <section className="lnp-care" aria-labelledby="lnp-care-title">
+        <div className="lnp-care-head">
+          <div>
+            <p className="lnp-care-eyebrow">{care.eyebrow}</p>
+            <h2 id="lnp-care-title">{care.title.map((line) => <span key={line}>{line}</span>)}</h2>
+          </div>
+          <div className="lnp-care-copy">
+            <p className="lnp-care-subtitle">{care.subtitle}</p>
+            <p className="lnp-care-intro">{care.intro}</p>
+          </div>
         </div>
-        <div className="lnp-services-claim">
-          <p>{page.connectSupports.map((line) => <span key={line}>{line}</span>)}</p>
-        </div>
+        <ol className="lnp-care-list">
+          {care.items.map(([title, line], index) => (
+            <li key={title}>
+              <span className="lasha-index">{String(index + 1).padStart(2, "0")}</span>
+              <h3>{title}</h3>
+              <p>{line}</p>
+            </li>
+          ))}
+        </ol>
       </section>
     </div>
   );
@@ -243,19 +257,6 @@ export function BrokerAccessPageContent({ header, onOpenModal }) {
 function splitBeforeLast(text) {
   const words = text.split(/\s+/);
   return words.length > 1 ? [words.slice(0, -1).join(" "), words.at(-1)] : [text];
-}
-
-// Two lines of about equal length: WE DON'T STOP / AT THE SALE.
-function splitBalanced(text) {
-  const words = text.split(/\s+/);
-  let best = [text];
-  let bestGap = Infinity;
-  for (let i = 1; i < words.length; i += 1) {
-    const lines = [words.slice(0, i).join(" "), words.slice(i).join(" ")];
-    const gap = Math.abs(lines[0].length - lines[1].length);
-    if (gap < bestGap) { best = lines; bestGap = gap; }
-  }
-  return best;
 }
 
 // "FROM ACCESS TO COMMISSION" → ["FROM ACCESS", "TO COMMISSION"]: break after the first n words.

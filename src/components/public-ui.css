@@ -37,7 +37,7 @@
 
 /* Body copy, including the frame pages whose desktop copy was smaller than on phones. */
 .lasha-home .lasha-starting-grid p,
-.lnp :is(.lnp-hero-body, .lnp-starting p, .lnp-advantage-subtitle, .lnp-people p, .lnp-commercial-body, .lnp-steps p),
+.lnp :is(.lnp-hero-body, .lnp-starting p, .lnp-advantage-subtitle, .lnp-people p, .lnp-commercial-body, .lnp-steps p, .lnp-care-intro, .lnp-care-list p),
 .lasha-page :is(.network-card p, .network-steps p, .rp-benefits p, .rp-stages p, .rp-cards p, .rp-highlights li),
 .lasha-page :is(.it-card-body > p:not(.it-card-place, .it-card-status), .it-feature p, .it-step-list p, .it-faq details p),
 .lasha-page :is(.dp-cards p, .dp-pay-lead, .dp-table, .dp-table-after),
@@ -50,7 +50,7 @@ body .cookie-notice p {
 
 .lasha-home :is(.lasha-about-body, .dp-listing-line),
 .lasha-home .lasha-hero-copy p,
-.lnp :is(.lnp-kicker, .lnp-process-eyebrow),
+.lnp :is(.lnp-kicker, .lnp-process-eyebrow, .lnp-care-subtitle),
 .lasha-page :is(.lasha-page-hero-text, .network-lead, .rp-lead, .rp-body, .rp-bridge, .it-lead, .dp-columns p, .dp-text, .purchase-benefit-copy),
 .lasha-page .dp-hero-media .lasha-page-hero-text,
 .site-footer .site-footer-intro > p:last-child,
@@ -76,7 +76,7 @@ body .form-submit-error {
 }
 
 .lasha-home :is(.lasha-eyebrow, .lasha-about-points li, .lasha-metrics-label, .dp-listing-category, .dp-listing-meta),
-.lnp :is(.lnp-eyebrow, .lnp-commercial-eyebrow, .lnp-services-eyebrow),
+.lnp :is(.lnp-eyebrow, .lnp-commercial-eyebrow, .lnp-care-eyebrow),
 .lasha-page :is(.network-stats dt, .purchase-benefit-tiers p span, .rp-opportunity-media figcaption span),
 .lasha-page :is(.lasha-eyebrow, .section-eyebrow, .it-eyebrow, .it-card-place, .it-card-status, .project-facts-list dt, .purchase-benefit-eyebrow, .rp-stats dt, .rp-gallery-label, .rp-amenity-images span),
 .lasha-page :is(.dp-hero-facts dt, .dp-hero-developer, .dp-hero-figure figcaption, .dp-cards dt, .dp-nearby dt, .dp-figure-kind, .dp-download-size),

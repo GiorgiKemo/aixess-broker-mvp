@@ -190,55 +190,56 @@
 
 .lnp-advantage-panel .lnp-button { margin-top: calc(56 * var(--u)); }
 
-/* 360°: frame 1579–1865. Equal space above and below the row, the same inset either side of
-   each rule, and the figure, WE DON'T STOP and YOU CONNECT sitting on one baseline
-   (Klem, 12 October 2026). */
-.lnp-services {
-  --services-inset: calc(48 * var(--u));
+/* AiXESS 360° Services (Kemo, 28 October 2026): heading beside the subtitle and intro, then the
+   eight services in a ruled grid like How it works. Four columns from 1200px, two from 600px, one
+   below. Paper ground, ink type and the theme blue only. */
+.lnp-care { padding: calc(84 * var(--u)) var(--lnp-gutter) calc(80 * var(--u)); }
+
+.lnp-care-head {
   display: grid;
-  grid-template-columns: calc(257 * var(--u) + var(--services-inset)) calc(340 * var(--u) + 2 * var(--services-inset)) minmax(0, 1fr);
+  grid-template-columns: minmax(0, 1fr) minmax(0, calc(620 * var(--u)));
+  column-gap: calc(64 * var(--u));
   align-items: end;
-  padding: calc(56 * var(--u)) var(--lnp-gutter);
 }
 
-.lnp-services-figure {
-  color: var(--l-blue);
-  font-family: var(--l-head);
-  font-size: calc(190 * var(--u));
-  line-height: 0.78;
-  letter-spacing: -0.02em;
-}
-
-.lnp-services-copy,
-.lnp-services-claim {
-  display: grid;
-  align-self: stretch;
-  align-content: end;
-  padding: 0 var(--services-inset);
-  border-left: 1px solid var(--l-line);
-}
-
-.lnp-services-claim { padding-right: 0; }
-
-.lnp-services-eyebrow {
+.lnp-care-eyebrow {
   color: var(--l-blue);
   font-size: var(--v4-eyebrow);
   font-weight: 600;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
 }
 
-.lnp-services h2,
-.lnp-services-claim > p {
-  font-family: var(--l-head);
-  font-size: var(--v4-h2);
-  line-height: 0.88;
-  text-transform: uppercase;
+.lnp-care h2 { margin-top: calc(18 * var(--u)); font-size: var(--v4-h2); line-height: 0.88; }
+.lnp-care h2 > span + span { color: var(--l-blue); }
+
+.lnp-care-subtitle { font-size: var(--v4-lead); font-weight: 600; line-height: 1.3; }
+.lnp-care-intro { max-width: 36rem; margin-top: 0.9rem; font-size: var(--v4-text); line-height: 1.6; }
+
+.lnp-care-list {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin-top: calc(64 * var(--u));
 }
 
-.lnp-services h2 { width: 100%; margin-top: calc(16 * var(--u)); }
-.lnp-services-claim > p { font-size: min(var(--v4-h2), calc(89 * var(--u))); }
-.lnp-services-claim > p > span { display: block; }
+.lnp-care-list li {
+  min-width: 0;
+  padding: calc(28 * var(--u)) calc(24 * var(--u)) calc(30 * var(--u));
+  border-top: 1px solid var(--l-line);
+}
+
+.lnp-care-list li:nth-child(4n + 1) { padding-left: 0; }
+.lnp-care-list li:not(:nth-child(4n + 1)) { border-left: 1px solid var(--l-line); }
+.lnp-care-list .lasha-index { display: block; width: max-content; padding-bottom: calc(6 * var(--u)); border-bottom: 1px solid var(--l-line); color: var(--l-blue); font-size: var(--v4-index); }
+.lnp-care-list h3 { margin-top: calc(22 * var(--u)); font-size: min(var(--v4-route), calc(36 * var(--u))); line-height: 0.95; hyphens: manual; overflow-wrap: break-word; }
+.lnp-care-list p { max-width: 17rem; margin-top: 0.6rem; font-size: var(--v4-small); line-height: 1.45; letter-spacing: 0.02em; }
+
+@media (max-width: 1199px) {
+  .lnp-care-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .lnp-care-list h3 { font-size: var(--v4-route); }
+  .lnp-care-list li:nth-child(n) { padding-left: 1.5rem; border-left: 1px solid var(--l-line); }
+  .lnp-care-list li:nth-child(odd) { padding-left: 0; border-left: 0; }
+}
 
 /* Who can join: Lasha's Broker Access hero (panel 657, render 385, list), now a section below
    the page hero, so its panel starts at the section's top instead of under the header. */
@@ -373,7 +374,6 @@
   .lnp-join,
   .lnp-advantage-split,
   .lnp-starting,
-  .lnp-services,
   .lnp-commercial,
   .lnp-process,
   .lnp-steps { grid-template-columns: minmax(0, 1fr); }
@@ -403,14 +403,14 @@
   .lnp-advantage-subtitle { margin-top: 1rem; font-size: 1rem; line-height: 1.4; }
   .lnp-advantage-panel .lnp-button { margin-top: 1.8rem; }
 
-  .lnp-services { padding: 2.6rem var(--lnp-gutter) 2.8rem; row-gap: 1.6rem; }
-  .lnp-services-figure { font-size: 9.5rem; }
-  .lnp-services-claim > p { font-size: var(--v4-h2); }
-  .lnp-services-claim > p > span { width: auto; white-space: normal; }
-  .lnp-services-copy,
-  .lnp-services-claim { padding: 1.4rem 0 0; border-top: 1px solid var(--l-line); border-left: 0; }
-  .lnp-services-figure { line-height: 0.82; }
-  .lnp-services h2 { max-width: none; margin-top: 0.7rem; }
+  .lnp-care { padding: 3rem var(--lnp-gutter) 3.2rem; }
+  .lnp-care-head { grid-template-columns: minmax(0, 1fr); row-gap: 1.4rem; }
+  .lnp-care h2 { margin-top: 0.7rem; }
+  .lnp-care-intro { font-size: 1rem; line-height: 1.5; }
+  .lnp-care-list { margin-top: 1.8rem; }
+  .lnp-care-list li { padding: 1.3rem 1rem 1.4rem 0; }
+  .lnp-care-list h3 { margin-top: 0.8rem; font-size: 2rem; }
+  .lnp-care-list p { font-size: 1rem; line-height: 1.4; }
 
   .lnp-people { padding: 1rem var(--lnp-gutter) 1.6rem; }
   .lnp-people li { grid-template-columns: 2.2rem minmax(0, 1fr); column-gap: 0.4rem; padding: 1.2rem 0 1.3rem; }
@@ -451,4 +451,9 @@ body:has(.lnp) .site-footer { --footer-gutter: calc(71 * min(100vw, 1920px) / 14
 }
 @media (max-width: 899px) {
   body:has(.lnp) .site-footer { --footer-gutter: 1.25rem; }
+}
+
+@media (max-width: 599px) {
+  .lnp-care-list { grid-template-columns: minmax(0, 1fr); }
+  .lnp-care-list li:nth-child(n) { padding-left: 0; border-left: 0; }
 }
