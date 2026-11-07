@@ -8,6 +8,7 @@ import { FEATURED_PROJECT } from "../data/projects.js";
 import { formatPrice } from "../currency.js";
 import { getWorkbookAvailableCount } from "../data/reveranceInventory.js";
 import MEDIA from "../data/reverance-figma-media.json";
+import { REVERANCE_ICONS } from "../data/reverance-figma-icons.js";
 import GALLERY_SIZES from "../data/project-gallery-sizes.json";
 import { FitLines } from "./DubaiProjectPages.jsx";
 import { LashaArrow } from "./LashaHomeSections.jsx";
@@ -89,7 +90,12 @@ function withBreaks(text, phrases = []) {
 }
 
 function Icon({ name, className }) {
-  return <span className={`rv-icon rv-icon-${name}${className ? ` ${className}` : ""}`} aria-hidden="true" />;
+  const { viewBox, paths } = REVERANCE_ICONS[name];
+  return (
+    <svg className={`rv-icon rv-icon-${name}${className ? ` ${className}` : ""}`} viewBox={viewBox} aria-hidden="true" focusable="false">
+      {paths.map((d) => <path key={d.slice(0, 24)} d={d} fill="currentColor" />)}
+    </svg>
+  );
 }
 
 export function ReveranceFigmaHero({ header }) {

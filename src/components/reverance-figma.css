@@ -168,20 +168,18 @@ html:root[data-time-theme='afternoon'] .rv-page .rv-band .rv-eyebrow { color: va
   opacity: 0.72;
 }
 
-.rv-page .rv-icon {
-  position: absolute;
-  display: block;
-  background: currentColor;
-  -webkit-mask: var(--icon) center / 100% 100% no-repeat;
-  mask: var(--icon) center / 100% 100% no-repeat;
-}
-.rv-page .rv-icon-tag { --icon: url("/assets/projects/reverance-figma/icon-tag.png"); width: calc(30 * var(--u)); height: calc(30 * var(--u)); }
-.rv-page .rv-icon-house { --icon: url("/assets/projects/reverance-figma/icon-house.png"); width: calc(64 * var(--u)); height: calc(59 * var(--u)); }
-.rv-page .rv-icon-layers { --icon: url("/assets/projects/reverance-figma/icon-layers.png"); width: calc(64 * var(--u)); height: calc(59 * var(--u)); }
-.rv-page .rv-icon-building { --icon: url("/assets/projects/reverance-figma/icon-building.png"); width: calc(64 * var(--u)); height: calc(57 * var(--u)); }
-.rv-page .rv-icon-kpi-building { --icon: url("/assets/projects/reverance-figma/icon-kpi-building.png"); width: calc(69 * var(--u)); height: calc(60 * var(--u)); }
-.rv-page .rv-icon-kpi-chart { --icon: url("/assets/projects/reverance-figma/icon-kpi-chart.png"); width: calc(73 * var(--u)); height: calc(64 * var(--u)); }
-.rv-page .rv-icon-kpi-pin { --icon: url("/assets/projects/reverance-figma/icon-kpi-pin.png"); width: calc(57 * var(--u)); height: calc(81 * var(--u)); }
+/* Figma's own SVG icons (src/data/reverance-figma-icons.js) at their node sizes. */
+.rv-page .rv-icon { position: absolute; display: block; overflow: visible; }
+.rv-page .rv-icon-tag { width: calc(28 * var(--u)); height: calc(28 * var(--u)); }
+.rv-page .rv-icon-house { width: calc(62 * var(--u)); height: calc(57 * var(--u)); }
+.rv-page .rv-icon-layers { width: calc(62 * var(--u)); height: calc(57 * var(--u)); }
+.rv-page .rv-icon-building { width: calc(63 * var(--u)); height: calc(55 * var(--u)); }
+.rv-page .rv-icon-kpi-building { width: calc(67 * var(--u)); height: calc(58 * var(--u)); }
+.rv-page .rv-icon-kpi-chart { width: calc(72 * var(--u)); height: calc(63 * var(--u)); }
+.rv-page .rv-icon-kpi-pin { width: calc(55 * var(--u)); height: calc(79 * var(--u)); }
+/* Figma's fills by day: the tag #000, the count icons #191919. */
+html:root:is([data-time-theme='day'], :not([data-time-theme])) .rv-page .rv-opp-price-label .rv-icon { color: #000; }
+html:root:is([data-time-theme='day'], :not([data-time-theme])) .rv-page .rv-opp-counts .rv-icon { color: #191919; }
 
 .rv-page .rv-visually-hidden {
   position: absolute;
@@ -295,7 +293,7 @@ html:root[data-time-theme='afternoon'] .rv-page .rv-band .rv-eyebrow { color: va
 }
 .rv-page .rv-opp-price p { margin: 0; }
 .rv-page .rv-opp-price-label { position: absolute; top: 0; left: 0; }
-.rv-page .rv-opp-price-label .rv-icon { top: calc(8 * var(--u)); left: calc(2 * var(--u)); }
+.rv-page .rv-opp-price-label .rv-icon { top: calc(9 * var(--u)); left: calc(3 * var(--u)); }
 .rv-page .rv-opp-price-label span {
   position: absolute;
   top: calc(9 * var(--u));
@@ -345,9 +343,9 @@ html:root[data-time-theme='afternoon'] .rv-page .rv-band .rv-eyebrow { color: va
 .rv-page .rv-opp-counts > div:nth-child(1) { top: calc(5 * var(--u)); }
 .rv-page .rv-opp-counts > div:nth-child(2) { top: calc(93 * var(--u)); }
 .rv-page .rv-opp-counts > div:nth-child(3) { top: calc(185 * var(--u)); padding-left: calc(77 * var(--u)); }
-.rv-page .rv-opp-counts > div:nth-child(1) .rv-icon { top: calc(-6 * var(--u)); left: calc(-1 * var(--u)); }
-.rv-page .rv-opp-counts > div:nth-child(2) .rv-icon { top: calc(1 * var(--u)); left: calc(-1 * var(--u)); }
-.rv-page .rv-opp-counts > div:nth-child(3) .rv-icon { top: calc(-5 * var(--u)); left: calc(-1 * var(--u)); }
+.rv-page .rv-opp-counts > div:nth-child(1) .rv-icon { top: calc(-5 * var(--u)); left: 0; }
+.rv-page .rv-opp-counts > div:nth-child(2) .rv-icon { top: calc(2 * var(--u)); left: 0; }
+.rv-page .rv-opp-counts > div:nth-child(3) .rv-icon { top: calc(-4 * var(--u)); left: 0; }
 .rv-page .rv-opp-counts > div + div::before {
   position: absolute;
   top: calc(var(--line) * var(--u));
@@ -549,9 +547,9 @@ html:root[data-time-theme='afternoon'] .rv-page .rv-band .rv-eyebrow { color: va
   min-height: calc(126 * var(--u));
 }
 .rv-page .rv-details-row .rv-icon { color: var(--rv-on-band); }
-.rv-page .rv-details-kpi-building .rv-icon { top: calc(25 * var(--u)); left: calc(7 * var(--u)); }
-.rv-page .rv-details-kpi-chart .rv-icon { top: calc(15 * var(--u)); left: calc(1 * var(--u)); }
-.rv-page .rv-details-kpi-pin .rv-icon { top: calc(17 * var(--u)); left: calc(7 * var(--u)); }
+.rv-page .rv-details-kpi-building .rv-icon { top: calc(26 * var(--u)); left: calc(8 * var(--u)); }
+.rv-page .rv-details-kpi-chart .rv-icon { top: calc(16 * var(--u)); left: calc(2 * var(--u)); }
+.rv-page .rv-details-kpi-pin .rv-icon { top: calc(18 * var(--u)); left: calc(8 * var(--u)); }
 .rv-page .rv-details-row dt {
   grid-column: 2;
   color: var(--rv-on-band-soft);
