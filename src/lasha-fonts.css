@@ -137,6 +137,55 @@
   src: url("/fonts/v4/aixess-head-mid-cyrillic-ext.woff2") format("woff2");
   unicode-range: U+0460-052F;
 }
+/* Russian on the Figma desktop layouts (19 November 2026): Morganite has no Cyrillic, and AiXESS Head
+   at Morganite's size is 1.81x as wide, so Russian ran out of the frame's boxes. "AiXESS Figma RU" is
+   AiXESS Head Mid (AiXESS Head drawn 1.59x taller, same widths) scaled so its letters are as wide as
+   Morganite's at the same CSS size, with capitals 88% as tall; the ascent and descent put its baseline
+   where Morganite's sits in the same line box (Safari, which ignores the overrides, sets it 3% lower). */
+@font-face {
+  font-family: "AiXESS Figma RU";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("/fonts/v4/aixess-head-mid-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+2000-206F, U+20AC, U+2122, U+2190, U+2192, U+2212, U+2215;
+  size-adjust: 55.34%;
+  ascent-override: 126.5%;
+  descent-override: 42.3%;
+}
+@font-face {
+  font-family: "AiXESS Figma RU";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("/fonts/v4/aixess-head-mid-latin-ext.woff2") format("woff2");
+  unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20C0;
+  size-adjust: 55.34%;
+  ascent-override: 126.5%;
+  descent-override: 42.3%;
+}
+@font-face {
+  font-family: "AiXESS Figma RU";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("/fonts/v4/aixess-head-mid-cyrillic.woff2") format("woff2");
+  unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+  size-adjust: 55.34%;
+  ascent-override: 126.5%;
+  descent-override: 42.3%;
+}
+@font-face {
+  font-family: "AiXESS Figma RU";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("/fonts/v4/aixess-head-mid-cyrillic-ext.woff2") format("woff2");
+  unicode-range: U+0460-052F;
+  size-adjust: 55.34%;
+  ascent-override: 126.5%;
+  descent-override: 42.3%;
+}
 /* AIXESS itself, in a taller cut: never translated, so Latin only. */
 @font-face {
   font-family: "AiXESS Poster Tall";

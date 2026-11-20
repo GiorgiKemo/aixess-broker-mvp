@@ -70,6 +70,9 @@ export function TimeThemeMenu({ className = "", onOpen }) {
   const [open, setOpen] = useState(false);
   const rootRef = useRef(null);
   const closeTimer = useRef(null);
+  // True while the menu is open because the mouse is over it: a click on the icon then keeps it open
+  // instead of toggling it shut (19 November 2026: hovering opened it and the click closed it again).
+  const openedByHover = useRef(false);
   useAutoClock(mode);
 
   const show = useCallback(() => {
@@ -86,6 +89,10 @@ export function TimeThemeMenu({ className = "", onOpen }) {
     if (closeTimer.current) window.clearTimeout(closeTimer.current);
     closeTimer.current = window.setTimeout(() => setOpen(false), 180);
   }, []);
+
+  useEffect(() => {
+    if (!open) openedByHover.current = false;
+  }, [open]);
 
   useEffect(() => {
     if (!open) return undefined;
@@ -116,7 +123,9 @@ export function TimeThemeMenu({ className = "", onOpen }) {
       ref={rootRef}
       className={`time-theme-menu ${className}`.trim()}
       onPointerEnter={(event) => {
-        if (event.pointerType === "mouse") show();
+        if (event.pointerType !== "mouse") return;
+        if (!open) openedByHover.current = true;
+        show();
       }}
       onPointerLeave={(event) => {
         if (event.pointerType === "mouse") hideSoon();
@@ -129,7 +138,15 @@ export function TimeThemeMenu({ className = "", onOpen }) {
         aria-expanded={open}
         aria-controls={panelId}
         aria-label={`${t("colourTheme")}: ${currentLabel}`}
-        onClick={() => (open ? setOpen(false) : show())}
+        onClick={() => {
+          if (open && openedByHover.current) {
+            openedByHover.current = false;
+            return;
+          }
+          openedByHover.current = false;
+          if (open) setOpen(false);
+          else show();
+        }}
       >
         <CurrentIcon />
         {mode === "auto" ? <span className="time-theme-menu__badge" aria-hidden="true">A</span> : null}

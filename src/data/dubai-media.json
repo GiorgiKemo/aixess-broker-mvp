@@ -724,5 +724,57 @@
    960,
    972
   ]
+ },
+ "downtown-fig-hero": {
+  "height": 1890,
+  "width": 2880,
+  "widths": [
+   480,
+   960,
+   1440,
+   1920,
+   2880
+  ]
+ },
+ "downtown-fig-highlights": {
+  "height": 2028,
+  "width": 2880,
+  "widths": [
+   480,
+   960,
+   1440,
+   1920,
+   2880
+  ]
+ },
+ "downtown-fig-ent": {
+  "height": 664,
+  "width": 1636,
+  "widths": [
+   480,
+   960,
+   1440,
+   1636
+  ]
+ },
+ "downtown-fig-map": {
+  "height": 1146,
+  "width": 1636,
+  "widths": [
+   480,
+   960,
+   1440,
+   1636
+  ]
+ },
+ "downtown-fig-tower": {
+  "height": 888,
+  "width": 1580,
+  "widths": [
+   480,
+   960,
+   1440,
+   1580
+  ]
  }
 }

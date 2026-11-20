@@ -267,7 +267,8 @@
   .lasha-home .project-card > p:not(.project-card-meta) { min-height: 0; }
   .lasha-home .project-card .project-card-meta { margin-top: 1.1rem; padding-top: 0.9rem; }
   .lasha-home .project-card-actions { flex-wrap: wrap; gap: 0.6rem; margin-top: 1.4rem; padding-top: 0; align-self: stretch; }
-  .lasha-home .project-card-actions .lasha-button { flex: 1 1 100%; width: 100%; padding: 0.9rem 1.25rem; letter-spacing: 0.05em; }
+  /* Full-width phone button: label on the left, arrow on the right (24 October 2026). */
+  .lasha-home .project-card-actions .lasha-button { flex: 1 1 100%; width: 100%; justify-content: space-between; padding: 0.9rem 1.25rem; letter-spacing: 0.05em; }
   .lasha-home .project-card-actions .lasha-button { gap: 0.8rem; }
   .lasha-home .project-card-actions .lasha-arrow { width: 1.6rem; flex-shrink: 0; }
 }

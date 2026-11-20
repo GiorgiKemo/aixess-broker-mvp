@@ -2,14 +2,13 @@ import { PORTAL_URL } from "../portal.js";
 import { useLayoutEffect, useRef } from "react";
 import { useLanguage } from "../i18n.jsx";
 import { LashaArrow } from "./LashaHomeSections.jsx";
-import { useWordFit } from "./useWordFit.js";
+import { useLineFit, useWordFit } from "./useWordFit.js";
 import { NETWORK_COPY } from "../network-copy.js";
 import { LASHA_HOME_COPY } from "../lasha-home-copy.js";
 import { LASHA_PAGES_COPY } from "../lasha-pages-copy.js";
 import { ADVANTAGE_SERVICES_COPY } from "../advantage-services-copy.js";
 import "./lasha-network-pages.css";
 import { ThemedImage } from "./ThemedImage.jsx";
-import { ArrowsClockwise, ChartBar, Coins, FileText, Gear, HouseLine, Key, UsersThree } from "@phosphor-icons/react";
 import { BrokerGetStarted, BrokerPlatformHero, BrokerWorkspace } from "./InsightsToolsPages.jsx";
 
 // AiXESS Advantage and Broker Access, built to Lasha Bakashvili's Figma frames (AIXESS
@@ -121,7 +120,9 @@ function SplitHero({ header, eyebrow, title, body, action, media, className }) {
         </div>
       </div>
       <div className="lnp-hero-media">
-        {media.family
+        {media.figma
+          ? <ThemedImage figma={media.figma} sizes={media.sizes} decoding="async" fetchPriority="high" />
+          : media.family
           ? <ThemedImage family={media.family} defaultWidth={media.defaultWidth} sizes={media.sizes} style={{ "--lnp-position": media.position }} decoding="async" fetchPriority="high" />
           : <img src={image(`${media.src}-${media.width * 2}`)} srcSet={srcSet(media.src, media.width)} sizes={media.sizes} width={media.width} height={media.height} alt="" decoding="async" fetchPriority="high" />}
       </div>
@@ -132,6 +133,13 @@ function SplitHero({ header, eyebrow, title, body, action, media, className }) {
 export function AdvantagePageContent({ header, onOpenModal }) {
   const { locale, network, home, page } = useCopy();
   const care = ADVANTAGE_SERVICES_COPY[locale] || ADVANTAGE_SERVICES_COPY.en;
+  // The panel holds the title in the frame's two lines above its line and button.
+  const advantageTitleRef = useRef(null);
+  useLineFit(advantageTitleRef, { lines: 2 });
+  // The eight service titles share one size, small enough for the longest word to stay on screen
+  // (Russian С\u00a0ФИНАНСИРОВАНИЕМ at 320px).
+  const journeyRef = useRef(null);
+  useWordFit(journeyRef, ".lnp-journey-item h3");
   return (
     <div className="lnp lnp-advantage">
       <SplitHero
@@ -141,7 +149,7 @@ export function AdvantagePageContent({ header, onOpenModal }) {
         title={network.hero}
         body={network.intro}
         action={<PageButton variant="dark" flow="register" onClick={onOpenModal ? () => onOpenModal("register") : undefined}>{network.request}</PageButton>}
-        media={{ family: "coastal-residence", position: "82% 50%", sizes: "(max-width: 899px) 130vw, 95vw" }}
+        media={{ figma: "advantage-hero", sizes: "(max-width: 899px) 130vw, 48vw" }}
       />
 
       <section className="lnp-starting" aria-label={network.startingPointsTitle}>
@@ -156,10 +164,10 @@ export function AdvantagePageContent({ header, onOpenModal }) {
       </section>
 
       <section className="lnp-advantage-split" aria-labelledby="lnp-advantage-title">
-        <img className="lnp-advantage-media" src={image("reverance-terrace-1312")} srcSet={srcSet("reverance-terrace", 656)} sizes="(max-width: 899px) 100vw, 46vw" width="656" height="679" alt="" loading="lazy" decoding="async" />
+        <ThemedImage className="lnp-advantage-media" figma="advantage-more" sizes="(max-width: 899px) 100vw, 84vw" alt="" loading="lazy" decoding="async" />
         <div className="lnp-advantage-panel">
           <p className="lnp-kicker">{network.advantage[0]}</p>
-          <h2 id="lnp-advantage-title" className="lnp-advantage-title">{splitBeforeLast(network.advantage[1]).map((line) => <span key={line}>{line}</span>)}</h2>
+          <h2 id="lnp-advantage-title" className="lnp-advantage-title" ref={advantageTitleRef}>{splitBeforeLast(network.advantage[1]).map((line) => <span key={line}>{line}</span>)}</h2>
           <p className="lnp-advantage-subtitle">{page.advantageSubtitle}</p>
           <PageButton variant="dark" flow="login">{network.signIn}</PageButton>
         </div>
@@ -178,32 +186,24 @@ export function AdvantagePageContent({ header, onOpenModal }) {
             <p className="lnp-care-intro">{care.intro}</p>
           </div>
         </div>
-        {/* Kemo's round layout: the eight services sit on a ring around a terrace photo, clockwise
-            from the top right, with their text outside the ring. Below 1280px the ring carries only
-            the photo and badges, and the text follows as a list. */}
-        <div className="lnp-care-ring">
-          <div className="lnp-care-stage">
-            <div className="lnp-care-hub" aria-hidden="true">
-              <ThemedImage family="coastal-lifestyle" defaultWidth={800} sizes="(max-width: 1279px) 14rem, 30vw" alt="" loading="lazy" decoding="async" />
-            </div>
-            {CARE_DOTS.map(([x, y]) => <span key={`${x}${y}`} className="lnp-care-dot" style={{ "--x": x, "--y": y }} aria-hidden="true" />)}
-            <ol className="lnp-care-list">
-              {care.items.map(([title, line], index) => {
-                const Icon = CARE_ICONS[index];
-                const [x, y] = ringPoint(-67.5 + index * 45);
-                return (
-                  <li key={title} className={`${index < 4 ? "is-right" : "is-left"}${[0, 7].includes(index) ? " is-top" : ""}${[3, 4].includes(index) ? " is-bottom" : ""}`} style={{ "--x": x, "--y": y }}>
-                    <span className="lnp-care-badge" aria-hidden="true"><Icon weight="light" /></span>
-                    <div className="lnp-care-text">
-                      <span className="lasha-index">{String(index + 1).padStart(2, "0")}</span>
-                      <h3>{title}</h3>
-                      <p>{line}</p>
-                    </div>
-                  </li>
-                );
-              })}
-            </ol>
-          </div>
+        {/* Lasha's octagon (AIXESS ADVANTAGE frame, Figma sync 19 November 2026): the eight services
+            clockwise from the top left around "the complete property journey", each with its number,
+            the frame's line icon, a rule, its title and line. Below 900px they follow as a list. */}
+        <div className="lnp-journey">
+          <img className="lnp-journey-octagon" src="/assets/figma/icons/care-journey.svg" width="549" height="296" alt="" aria-hidden="true" />
+          <svg className="lnp-journey-lines" viewBox="0 0 1440 716" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+            {JOURNEY_LINES.map((points) => <polyline key={points} points={points} />)}
+          </svg>
+          <ol className="lnp-journey-list" ref={journeyRef}>
+            {care.items.map(([title, line], index) => (
+              <li key={title} className={`lnp-journey-item lnp-journey-item-${index + 1}`}>
+                <span className="lnp-journey-index" aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
+                <img className="lnp-journey-icon" src={`/assets/figma/icons/${JOURNEY_ICONS[index]}.svg`} alt="" aria-hidden="true" />
+                <h3>{title}</h3>
+                <p>{line}</p>
+              </li>
+            ))}
+          </ol>
         </div>
       </section>
     </div>
@@ -223,6 +223,10 @@ export function BrokerAccessPageContent({ header, onOpenModal }) {
   // (ПРИСОЕДИНЯЙТЕСЬ, PRÄSENTIEREN, PREDSTAVITE broke mid-word from 900px, 31 October 2026).
   const stepsRef = useRef(null);
   useWordFit(stepsRef, "h3");
+  // The blue panel holds the title in the frame's lines (НЕОБЯЗАТЕЛЬНО was wider than the panel).
+  const joinTitle = splitBrokerTitle(network.eligibility[1]);
+  const joinTitleRef = useRef(null);
+  useLineFit(joinTitleRef, { lines: joinTitle.length });
   // Lasha's list drops the full stop on the first three. CONNECTORS keeps its own line, not the
   // frame's repeat of the sales line (Kemo, 16 October 2026: no repeated text on a page).
   const people = network.people.map(([title, line], index) => [title, index < 3 ? noStop(line) : line]);
@@ -236,11 +240,11 @@ export function BrokerAccessPageContent({ header, onOpenModal }) {
       <section className="lnp-join" aria-labelledby="lnp-join-title">
         <div className="lnp-join-panel">
           <p className="lasha-eyebrow lnp-eyebrow">{network.eligibility[0]}</p>
-          <h2 id="lnp-join-title" className="lnp-join-title">{splitBrokerTitle(network.eligibility[1]).map((line) => <span key={line}>{line}</span>)}</h2>
+          <h2 id="lnp-join-title" className="lnp-join-title" ref={joinTitleRef}>{joinTitle.map((line) => <span key={line}>{line}</span>)}</h2>
           <p className="lnp-hero-body">{page.brokerIntro}</p>
         </div>
         <div className="lnp-join-media">
-          <ThemedImage family="glass-architecture" defaultWidth={800} sizes="(max-width: 899px) 100vw, 27vw" style={{ "--lnp-position": "50% 30%" }} loading="lazy" decoding="async" />
+          <ThemedImage figma="broker-join" defaultWidth={800} sizes="(max-width: 899px) 100vw, 27vw" alt="" loading="lazy" decoding="async" />
         </div>
         <ol className="lnp-people">
           {people.map(([title, line], index) => (
@@ -263,7 +267,9 @@ export function BrokerAccessPageContent({ header, onOpenModal }) {
           <p className="lnp-figure">100%</p>
           <h2>{page.commissionUnlocked.map((line) => <span key={line}>{line}</span>)}</h2>
         </div>
-        <img className="lnp-commercial-media" src={image("reverance-tower-1990")} srcSet={srcSet("reverance-tower", 995)} sizes="(max-width: 899px) 100vw, 70vw" width="995" height="589" alt="" loading="lazy" decoding="async" />
+        <div className="lnp-commercial-frame">
+          <ThemedImage className="lnp-commercial-media" figma="broker-commercial" sizes="(max-width: 899px) 100vw, 54vw" alt="" loading="lazy" decoding="async" />
+        </div>
       </section>
 
       <section className="lnp-process" aria-labelledby="lnp-process-title">
@@ -288,11 +294,10 @@ export function BrokerAccessPageContent({ header, onOpenModal }) {
   );
 }
 
-// The 360° ring: one icon per service, in the order of Kemo's image.
-const CARE_ICONS = [HouseLine, Coins, FileText, Key, Gear, UsersThree, ChartBar, ArrowsClockwise];
-const ringPoint = (degrees) => [Math.cos((degrees * Math.PI) / 180), Math.sin((degrees * Math.PI) / 180)].map((value) => Number(value.toFixed(4)));
-// Small dots on the ring halfway between services.
-const CARE_DOTS = Array.from({ length: 8 }, (_, index) => ringPoint(-45 + index * 45));
+// The frame's line icons, exported from the file (public/assets/figma/icons), in service order.
+const JOURNEY_ICONS = ["care-1-selection", "care-2-financing", "care-3-legal", "care-4-handover", "care-5-management", "care-6-rental", "care-7-accounting", "care-8-resale"];
+// The frame's eight 2.5px connectors, in frame pixels from the top of the diagram (y 2114).
+const JOURNEY_LINES = ["386,153 466,233", "1029,152 949,232", "466,460 386,540", "949,461 1029,541", "706,152 706,203", "706,489 706,540", "982,348 1033,348", "382,348 433,348"];
 
 // Lasha breaks the Advantage title before its last word: YOUR AIXESS / ADVANTAGE.
 function splitBeforeLast(text) {

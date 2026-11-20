@@ -37,8 +37,8 @@ describe("Dubai projects: TRESORA and DOWNTOWN ONE", () => {
     fireEvent.click(within(document.querySelector("#nav-group-projects")).getByRole("button", { name: "UAE / DUBAI" }));
     fireEvent.click(within(document.querySelector("#nav-market-dubai")).getByRole("button", { name: "Downtown One" }));
     expect(window.location.hash).toBe("#downtown-one");
-    expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent("DOWNTOWN ONEDUBAI");
-    expect(document.querySelector(".dp-page").textContent).not.toContain("TRESORA");
+    expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent("DOWNTOWN ONE DUBAI");
+    expect(document.querySelector(".dt-page").textContent).not.toContain("TRESORA");
   });
 
   it("shows two distinct homepage cards that open the two project pages, and Back returns home", () => {
@@ -98,14 +98,17 @@ describe("Dubai projects: TRESORA and DOWNTOWN ONE", () => {
         const page = document.querySelector(".dubai-project-page");
         if (route === "tresora") {
           // The Figma layout sets some titles over two lines (and drops their full stops), so each piece only has to come from the copy.
-          const pieces = [...allowed, copy.hero.title.join(" ")].join("\n");
+          const pieces = [...allowed, copy.hero.title.join(" ")].join("\n").replace(/US\$/g, "US $");
           const texts = [...visibleTexts(page.querySelector(".tr-hero")), ...visibleTexts(page.querySelector(".tr-page"))].filter((text) => !/^0[1-8]$/.test(text));
           expect(texts.filter((text) => !pieces.includes(text.replace(/\.$/, "")))).toEqual([]);
           expect(page.querySelectorAll("table, a[download], dialog")).toHaveLength(0);
         } else {
-          const texts = [...visibleTexts(page.querySelector(".dp-hero")), ...visibleTexts(page.querySelector(".dp-page"))];
-          expect(texts.filter((text) => !allowed.has(text))).toEqual([]);
-          expect(page.querySelectorAll("figcaption, table, a[download], dialog")).toHaveLength(0);
+          // Figma's layout joins a highlight's figure and line with a dash, lists the nearby places with middle
+          // dots and drops "approximately"; every piece still comes from the copy.
+          const pieces = strings(copy).join("\n");
+          const texts = [...visibleTexts(page.querySelector(".dt-hero")), ...visibleTexts(page.querySelector(".dt-page"))];
+          expect(texts.flatMap((text) => text.split(/ – | · /)).filter((text) => !pieces.includes(text))).toEqual([]);
+          expect(page.querySelectorAll("table, a[download], dialog")).toHaveLength(0);
         }
         expect(page.textContent).not.toContain("*");
         unmount();
@@ -128,20 +131,24 @@ describe("Dubai projects: TRESORA and DOWNTOWN ONE", () => {
     expect([...page.querySelectorAll(".tr-included-list dt")].map((item) => item.textContent)).toEqual(copy.included.items.map(([title]) => title));
     expect([...page.querySelectorAll(".tr-amenity-name")].map((item) => item.textContent)).toEqual(copy.lifestyle.amenities);
     expect(page.querySelectorAll(".tr-gallery-group")).toHaveLength(4);
-    // One price only (Kemo, 3 November 2026): "$176,000 / Starting from" in the highlights band.
-    // No other price, rent or currency note.
+    // Prices: "$176,000 / Starting from" in the highlights band (Kemo, 3 November 2026), and the frame's two
+    // figures beside the property categories (Kemo, 13 November 2026): starting price and price per m².
+    // No rent and no currency note.
     const facts = page.querySelector(".tr-facts");
     expect([...facts.querySelectorAll("dd")].at(-1).textContent).toBe("$176,000");
     expect([...facts.querySelectorAll("dt")].at(-1).textContent).toBe("Starting from");
-    expect(page.textContent.match(/\$/g)).toHaveLength(1);
-    expect(page.textContent).not.toMatch(/US\s?\$|176[.,\s\u00a0]?635|4[.,\s\u00a0]?115|AED(?=[\s\d])|EUR/);
+    expect([...page.querySelectorAll(".tr-prices dt")].map((label) => label.textContent)).toEqual(["Starting price", "Price per m²"]);
+    expect([...page.querySelectorAll(".tr-prices dd")].map((value) => value.textContent)).toEqual(["US $176,635", "US $4,115"]);
+    expect(page.textContent.match(/\$/g)).toHaveLength(3);
+    expect(page.textContent).not.toMatch(/\brent\b|yearly|AED(?=[\s\d])|EUR/i);
     expect(page.textContent).not.toContain(copy.currency.text);
     expect(page.textContent).not.toMatch(/Penthouse|Sauna|WADAN|Floor plans|Resident app\b/);
 
     const images = [...page.querySelectorAll("img")];
     expect(images.length).toBe(4 + 2 + 12);
     images.forEach((image) => {
-      expect(image.getAttribute("src")).toMatch(/^\/assets\/dubai\/tresora-fig-[a-z0-9-]+\.webp$/);
+      // TRESORA's renders, or their relit versions for the current theme (19 November 2026).
+      expect(image.getAttribute("src")).toMatch(/^\/assets\/(dubai\/tresora-fig-[a-z0-9-]+|figma\/tresora-fig-[a-z]+-(day|afternoon|night)-\d+)\.webp$/);
       expect(image.closest("button")).toBeNull();
     });
     [...page.querySelectorAll(".tr-slant img, .tr-gallery img, .tr-map img")].forEach((image) => expect(image.alt).not.toBe(""));
@@ -155,7 +162,7 @@ describe("Dubai projects: TRESORA and DOWNTOWN ONE", () => {
     const page = document.querySelector(".dubai-project-page");
     const requests = [...page.querySelectorAll("a[href^='mailto:']")].map((link) => mailtoParts(link.href));
     expect(requests.map((request) => request.subject)).toEqual([
-      "Request Availability", "Request Availability",
+      "Request Availability", "Request Availability", "Contact AiXESS", "Request Project Details",
     ].map((request) => `AiXESS · TRESORA DUBAI: ${request}`));
     requests.forEach((request) => {
       expect(request.to).toBe("info@aixess.global");
@@ -176,20 +183,31 @@ describe("Dubai projects: TRESORA and DOWNTOWN ONE", () => {
     expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent("TRESORA");
   });
 
-  it("builds DOWNTOWN ONE in the brief's order with its six highlight cards and the pictures", () => {
+  it("builds DOWNTOWN ONE as the Figma frame, with its highlights, amenities, nearby places and gallery", () => {
     window.history.replaceState({}, "", "/#downtown-one");
     render(<App />);
     const page = document.querySelector(".dubai-project-page");
     const copy = DUBAI_PROJECTS_COPY.en.downtown;
-    expect([...page.querySelectorAll(".dp-page h2")].map((title) => title.textContent)).toEqual([
-      copy.highlights.title, copy.amenities.title, copy.location.title, copy.more.title,
+    expect(page).toHaveClass("tresora-page");
+    expect([...page.querySelectorAll(".dt-page h2")].map((title) => title.textContent.replace(/\s+/g, " ").trim())).toEqual([
+      "Project Highlights", "A Lifestyle Designed Around Every Moment", "Downtown Jebel Ali A Location That Keeps You Moving", "Resident Amenities", copy.more.title,
     ]);
-    expect([...page.querySelectorAll(".dp-cards strong")].map((value) => value.textContent)).toEqual(["20 Floors", "10%", "December 2029", "AI-Powered", "Metro & Road", "20+ Amenities"]);
-    expect(copy.amenities.groups.flatMap(([, items]) => items)).toHaveLength(21);
-    expect(page.textContent).not.toMatch(/DOWNTOWN DUBAI|SAMANA|AED(?=[\s\d])|PDC|Shallow Pool|Cigar Lounge|Outdoor Shower|Here add pictures|_{3,}/);
-    expect(screen.getByText("Dubai Metro and Aster Cedars Hospital — approximately 5–10 minutes")).toBeInTheDocument();
-    expect(page.querySelectorAll(".dp-gallery img")).toHaveLength(DUBAI_IMAGES_COPY.en.downtown.gallery.length);
-    [...page.querySelectorAll("img")].forEach((image) => expect(image.getAttribute("src")).toMatch(/^\/assets\/dubai\/downtown-[a-z0-9-]+\.webp$/));
+    expect([...page.querySelectorAll(".dt-facts dt")].map((title) => title.textContent)).toEqual([
+      "Contemporary Residential Tower", "Strategic Connectivity", "Lifestyle Experiences", "Smart Home Living", "Initial Down Payment", "Anticipated Completion",
+    ]);
+    expect(page.querySelector(".dt-facts dd").textContent).toBe("20 Floors – Plus three podium floors, ground floor and basement");
+    expect([...page.querySelectorAll(".dt-amenity li")]).toHaveLength(21);
+    expect([...page.querySelectorAll(".dt-nearby dt")].map((time) => time.textContent)).toEqual(["5–10 minutes", "10–15 minutes", "15–20 minutes"]);
+    expect(page.querySelector(".dt-nearby dd").textContent).toBe("Dubai Metro · Aster Cedars Hospital");
+    expect([...page.querySelectorAll(".dt-gallery figcaption")].map((caption) => caption.textContent)).toEqual(["Pools & Relaxation", "Wellness & Fitness", "Exterior", "Interior"]);
+    expect(page.querySelectorAll(".dt-gallery img")).toHaveLength(12);
+    expect(page.textContent).not.toMatch(/DOWNTOWN DUBAI|SAMANA|TRESORA|WADAN|AED(?=[\s\d])|PDC|Here add pictures|_{3,}/);
+    [...page.querySelectorAll("img")].forEach((image) => {
+      // The developer's renders, or the hero's and entertainment deck's relit versions for the theme.
+      expect(image.getAttribute("src")).toMatch(/^\/assets\/(dubai\/downtown-[a-z0-9-]+|figma\/downtown-fig-(hero|ent)-(day|afternoon|night)-\d+)\.webp$/);
+    });
+    [...page.querySelectorAll(".dt-crop img")].forEach((image) => expect(image.alt).not.toBe(""));
+    expect(page.querySelector(".dt-hero img")).toHaveAttribute("loading", "eager");
     expect([...page.querySelectorAll("a[href^='mailto:']")].map((link) => mailtoParts(link.href).subject)).toEqual(
       ["Request Availability"].map((request) => `AiXESS · DOWNTOWN ONE DUBAI: ${request}`),
     );

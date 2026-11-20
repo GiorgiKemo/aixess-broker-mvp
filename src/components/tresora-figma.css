@@ -142,8 +142,7 @@ html:root[data-time-theme='night'] .tresora-page {
   transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
 }
 .tresora-page .tr-button > span { white-space: nowrap; }
-.tresora-page .tr-button .lasha-arrow { flex: 0 0 calc(37 * var(--u)); width: calc(37 * var(--u)); height: calc(8 * var(--u)); min-height: 7px; overflow: visible; stroke-width: 1px; vector-effect: non-scaling-stroke; }
-.tresora-page .tr-button .lasha-arrow path { vector-effect: non-scaling-stroke; }
+.tresora-page .tr-button .lasha-arrow { flex: 0 0 calc(37 * var(--u)); width: calc(37 * var(--u)); height: calc(8 * var(--u)); min-height: 7px; overflow: visible; stroke-width: 1px; }
 .tresora-page .tr-button:hover { background: var(--tr-ink); border-color: var(--tr-ink); color: var(--tr-paper); }
 .tresora-page :is(.tr-hero, .tr-ink-band) .tr-button:hover { background: var(--tr-light); border-color: var(--tr-light); color: #171a1d; }
 .tresora-page .tr-button-primary { border-color: var(--tr-button); background: var(--tr-button); color: #fff; }
@@ -329,7 +328,10 @@ html:root[data-time-theme='night'] .tresora-page {
   line-height: calc(24 * var(--u));
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  white-space: nowrap;
+  /* One line in English as in Figma (it may use the column's right padding); longer
+     translations wrap before the hairline instead of running across it. */
+  margin-right: calc(-56 * var(--u));
+  text-wrap: balance;
 }
 .tresora-page .tr-categories ul { margin: calc(13 * var(--u)) 0 0; padding: 0; list-style: none; }
 .tresora-page .tr-categories li {
@@ -342,7 +344,53 @@ html:root[data-time-theme='night'] .tresora-page {
 }
 .tresora-page .tr-categories li + li { border-top: 1px solid var(--tr-hair); }
 .tresora-page .tr-categories li:last-child { padding-bottom: calc(30 * var(--u)); }
-.tresora-page .tr-spaces-actions { align-self: flex-end; margin-bottom: calc(35 * var(--u)); gap: calc(41 * var(--u)); margin-left: calc(82 * var(--u)); }
+.tresora-page .tr-spaces-side {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-self: stretch;
+  min-width: 0;
+  margin-left: calc(82 * var(--u));
+}
+.tresora-page .tr-spaces-actions { margin-bottom: calc(35 * var(--u)); gap: calc(41 * var(--u)); }
+
+/* The two price figures over the buttons (frame: labels at y 3025 and 3031, figures at 3075, a hairline
+   between them at x 1006.6). */
+.tresora-page .tr-prices { --tr-price-k: 1; display: flex; margin: 0; }
+.tresora-page .tr-prices > div { position: relative; display: flex; flex-direction: column; min-width: 0; }
+.tresora-page .tr-prices > div:first-child { flex: 0 0 calc(441.87 * var(--u)); }
+.tresora-page .tr-prices > div + div { padding-top: calc(6.19 * var(--u)); }
+.tresora-page .tr-prices > div + div::before {
+  position: absolute;
+  top: calc(11.25 * var(--u));
+  left: calc(-55.23 * var(--u));
+  width: 1px;
+  height: calc(126.12 * var(--u));
+  background: var(--tr-hair);
+  content: "";
+}
+.tresora-page .tr-prices dt {
+  font-family: Inter, system-ui, sans-serif;
+  font-size: calc(18 * var(--u));
+  font-weight: 500;
+  line-height: calc(23 * var(--u));
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.tresora-page .tr-prices dd {
+  margin: calc(28.38 * var(--u)) 0 0;
+  color: var(--tr-accent);
+  font-family: var(--tr-face);
+  font-size: calc(133.33 / 0.93705 * var(--u) * var(--tr-price-k));
+  font-weight: 600;
+  font-synthesis: none;
+  line-height: calc(106.67 * var(--u));
+  letter-spacing: 0.027em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.tresora-page .tr-prices > div + div dd { margin-top: calc(22.19 * var(--u)); }
 .tresora-page .tr-spaces-actions .tr-button { min-height: calc(93 * var(--u)); }
 .tresora-page .tr-spaces-actions .tr-button-primary { min-width: calc(330 * var(--u)); padding-right: calc(17 * var(--u)); }
 .tresora-page .tr-spaces-actions .tr-button:not(.tr-button-primary) { min-width: calc(340 * var(--u)); padding-right: calc(12 * var(--u)); }
@@ -419,9 +467,16 @@ html:root[data-time-theme='night'] .tresora-page {
   font-size: calc(91 / 0.93705 * var(--u));
   font-weight: 700;
   font-synthesis: none;
-  line-height: calc(87 * var(--u));
+  line-height: calc(87 * var(--u) - var(--tr-num-drop));
   letter-spacing: 0.0187em;
+  /* Morganite's digits sit about 0.09em above the centre of their line box. Half of this padding
+     moves them down by that much, so each number's ink is centred on its rule and on the text beside
+     it (Kemo 14 Nov). The line box shrinks by the same amount, so the row keeps its height. Russian
+     uses the older face, whose digits sit only slightly high. */
+  --tr-num-drop: 0.18em;
+  padding-top: var(--tr-num-drop);
 }
+:root:lang(ru) .tresora-page .tr-amenity-index { --tr-num-drop: 0.05em; }
 .tresora-page .tr-amenity-name {
   padding-left: calc(22 * var(--u));
   font-family: Inter, system-ui, sans-serif;
@@ -562,11 +617,19 @@ html:root[data-time-theme='night'] .tresora-page {
   .tresora-page .tr-spaces-body { margin-top: 22px; }
   .tresora-page .tr-spaces-row { flex-direction: column; align-items: stretch; margin-top: 36px; }
   .tresora-page .tr-categories { flex: none; padding: 0; border: 0; }
-  .tresora-page .tr-categories h3 { font-size: 14px; line-height: 18px; white-space: normal; }
+  .tresora-page .tr-categories h3 { font-size: 14px; line-height: 18px; white-space: normal; margin-right: 0; }
   .tresora-page .tr-categories ul { margin-top: 8px; }
   .tresora-page .tr-categories li { padding-block: 12px; font-size: 15px; line-height: 19px; }
   .tresora-page .tr-categories li:last-child { padding-bottom: 12px; }
-  .tresora-page .tr-spaces-actions { align-self: auto; margin: 24px 0 0; }
+  .tresora-page .tr-spaces-side { margin: 32px 0 0; }
+  .tresora-page .tr-prices { flex-wrap: wrap; gap: 20px 0; }
+  .tresora-page .tr-prices > div:first-child { flex: 0 0 auto; padding-right: 24px; margin-right: 24px; border-right: 1px solid var(--tr-hair); }
+  .tresora-page .tr-prices > div + div { padding-top: 0; }
+  .tresora-page .tr-prices > div + div::before { content: none; }
+  .tresora-page .tr-prices dt { font-size: 14px; line-height: 18px; white-space: normal; }
+  .tresora-page .tr-prices dd,
+  .tresora-page .tr-prices > div + div dd { margin-top: 10px; font-size: calc(60px / 0.93705 * var(--tr-price-k)); line-height: 48px; }
+  .tresora-page .tr-spaces-actions { align-self: auto; margin: 32px 0 0; }
 
   .tresora-page .tr-included .tr-wrap { padding-top: 64px; }
   .tresora-page .tr-included .tr-title { margin-top: 14px; }
@@ -584,7 +647,7 @@ html:root[data-time-theme='night'] .tresora-page {
   .tresora-page .tr-amenities-title { margin-top: 36px; font-size: 13px; line-height: 16px; }
   .tresora-page .tr-amenities { grid-auto-flow: row; grid-template-columns: 1fr; grid-template-rows: none; row-gap: 12px; margin-top: 22px; }
   .tresora-page .tr-amenities li { min-height: 52px; }
-  .tresora-page .tr-amenity-index { flex-basis: 46px; font-size: calc(54 / 0.93705 * 1px); line-height: 52px; }
+  .tresora-page .tr-amenity-index { flex-basis: 46px; font-size: calc(54 / 0.93705 * 1px); line-height: calc(52px - var(--tr-num-drop)); }
   .tresora-page .tr-amenity-name { padding-left: 14px; font-size: 16px; line-height: 21px; }
 
   .tresora-page .tr-gallery .tr-wrap { padding-block: 48px 56px; }

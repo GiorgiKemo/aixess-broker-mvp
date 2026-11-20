@@ -1,0 +1,1718 @@
+/* Figma sync (Kemo, 19 November 2026: "make sure that design matches figma pixel to pixel … as for
+   texts and numbers keep as its on website"). Every value here is a measurement from Lasha's file
+   mdoKe84QEOkpDthDFO8pyy as exported on 19 November 2026, in frame pixels (--u: 1 at a 1440px
+   window), for the six frames HOME (147:2), AIXESS ADVANTAGE (175:607), BROKER ACCESS (216:153),
+   REVERANCE (405:327), TRESORA (485:3) and DOWNTOWN ONE (553:232). It is imported last and only
+   applies from 900px, where the pages follow the frames; phones keep their own layouts.
+   The frames are drawn in the day theme, which this file matches; the header and contact footer
+   are the site's own (the frames do not draw them). Text and figures stay the site's. */
+
+@media (min-width: 900px) {
+  /* ==== HOME ============================================================================== */
+
+  /* Hero: frame 0–992. The frame keeps 1440 × 992 and never stands taller than the window. */
+  html:root:not(#fs) .lasha-home .lasha-hero-frame {
+    height: calc(992 * var(--u));
+    min-height: 0;
+    padding: 0;
+    display: block;
+  }
+  /* The photo layer: x −89, 1593.4 × 995, cover. It follows the frame's width (cqi), so a window
+     shorter than 1440:992, where the copy scales by height, still has the photo edge to edge. It is
+     anchored where the frame ends it, 3 below the hero's foot, so the Dubai skyline along its bottom
+     always shows as in Figma; a shorter window trims empty sky at the top, under the header
+     (Kemo, 19 November 2026: on his MacBook the skyline was cut off). */
+  html:root:not(#fs) .lasha-home .lasha-hero-media {
+    inset: auto auto calc(-3 * 100cqi / 1440) calc(-89 * 100cqi / 1440);
+    width: calc(1593.4 * 100cqi / 1440);
+    height: max(calc(995 * 100cqi / 1440), 100%);
+    object-position: 50% 100%;
+  }
+  /* The frame draws no wash behind the copy. */
+  html:root:not(#fs) .lasha-home .lasha-hero-frame::after { display: none; }
+  html:root:not(#fs) .lasha-home .lasha-hero-copy {
+    /* AIXESS's capitals 70–610 wide, from y 123 (TO MARKET 70–608 from y 436). */
+    --poster-w: calc(550 * var(--u));
+    /* Centred between the header's foot and the photo's foot, never right under the navigation
+       (Kemo, 19 November 2026: "look how close things are to navbar", as on AixcoGlobal). */
+    position: absolute;
+    top: var(--hero-header, 101px);
+    bottom: 0;
+    left: calc(69 * var(--u));
+    display: grid;
+    align-content: safe center;
+    justify-items: start;
+    margin: 0;
+    padding: 0;
+  }
+  html:root:not(#fs) .lasha-home .lasha-hero h1 > span + span { margin-top: calc(15 * var(--u)); }
+  /* Subtitle: Inter Regular 18, its two lines from y 650 (glyph tops 653 and 673). */
+    html:root:not(#fs) .lasha-home .lasha-hero-copy p {
+    /* Lines break where the frame's 534px box breaks them, not at the copy's own line break. */
+    max-width: calc(534 * var(--u));
+    margin-top: calc(31 * var(--u));
+    white-space: normal;
+    font-size: calc(18 * var(--u));
+    font-weight: 400;
+    line-height: calc(19.4 * var(--u));
+    letter-spacing: 0;
+  }
+  html:root:not(#fs):is([data-time-theme='day'], :not([data-time-theme])) .lasha-home .lasha-hero-copy p {
+    color: #000;
+  }
+  /* EXPLORE INVESTMENTS: a 303 × 61 outline (1.19 ink stroke) at y 714, Inter SemiBold 16, 4% tracked,
+     the 32px arrow at x 325. */
+    html:root:not(#fs) .lasha-home .lasha-hero-cta {
+    box-sizing: border-box;
+    width: calc(303 * var(--u));
+    min-width: 0;
+    min-height: 0;
+    height: calc(61 * var(--u));
+    margin-top: calc(26 * var(--u));
+    padding: 0 calc(14 * var(--u)) 0 calc(21 * var(--u));
+    gap: 0;
+    border: max(1px, calc(1.19 * var(--u))) solid;
+    font-size: calc(16 * var(--u));
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    line-height: 1;
+  }
+  html:root:not(#fs):is([data-time-theme='day'], :not([data-time-theme])) .lasha-home .lasha-hero-cta {
+    background: transparent;
+    border-color: #171a1d;
+    color: #171a1d;
+  }
+  html:root:not(#fs) .lasha-home .lasha-hero-cta .lasha-arrow { flex: 0 0 calc(32.2 * var(--u)); width: calc(32.2 * var(--u)); height: calc(10 * var(--u)); }
+    html:root:not(#fs):is([data-time-theme='day'], :not([data-time-theme])) .lasha-home .lasha-hero-cta:hover {
+    background: #171a1d;
+    color: #f4f4f1;
+  }
+}
+
+/* Every frame's ground is #f7f7f4 (the light type on ink grounds stays #f4f4f1). Day theme only;
+   the other times of day keep their own grounds. */
+html:root:not(#fs):is([data-time-theme='day'], :not([data-time-theme])) :is(.lasha-home, .lasha-page) { --l-paper: #f7f7f4; }
+html:root:not(#fs):is([data-time-theme='day'], :not([data-time-theme])) :is(body, .site-shell, .site-footer) { background-color: #f7f7f4; }
+
+@media (min-width: 900px) {
+  /* The numbers band keeps the frame's 278 as a minimum: from 900 to about 1100px the notes' size floor
+     makes the Polish notes run a line longer than the band (live before 19 November 2026 too). */
+  html:root:not(#fs) .lasha-home .lasha-metrics { height: auto; min-height: calc(278 * var(--u)); }
+  /* About: frame 1270–2016. Photo "connection 1": 754 × 754 at y 1266, clipped to the 746 band. */
+  html:root:not(#fs) .lasha-home .lasha-about { height: calc(746 * var(--u)); min-height: 0; overflow: hidden; }
+  html:root:not(#fs) .lasha-home .lasha-about-media {
+    width: calc(754 * var(--u));
+    height: calc(754 * var(--u));
+    margin-top: calc(-4 * var(--u));
+    object-fit: cover;
+  }
+    html:root:not(#fs):is([data-time-theme='day'], :not([data-time-theme])) .lasha-home .lasha-about-panel {
+    color: #fff;
+  }
+  /* ABOUT AIXESS: Inter Bold 13, 2% tracked, white, then the 113.5 rule 17 after it. */
+    html:root:not(#fs) .lasha-home .lasha-about-panel .lasha-eyebrow {
+    flex-direction: row;
+    justify-content: flex-start;
+    margin-left: calc(-3 * var(--u));
+    font-weight: 700;
+    letter-spacing: 0.02em;
+  }
+  html:root:not(#fs):is([data-time-theme='day'], :not([data-time-theme])) .lasha-home .lasha-about-panel .lasha-eyebrow {
+    color: #fff;
+  }
+  html:root:not(#fs) .lasha-home .lasha-eyebrow-lead::after { margin: 0 0 0 calc(17 * var(--u)); background: #f4f4f1; }
+  /* The title's box is 596 wide in the frame; narrower, it would be shrunk to fit. */
+  html:root:not(#fs) .lasha-home .lasha-about-panel h2 {
+    width: calc(600 * var(--u));
+    max-width: none;
+    font-size: calc(128 / 0.93705 * var(--u));
+    line-height: calc(102.4 * var(--u));
+  }
+    html:root:not(#fs):is([data-time-theme='day'], :not([data-time-theme])) .lasha-home .lasha-about-body {
+    color: #fff;
+  }
+}
+
+@media (min-width: 900px) {
+  /* Numbers band: the figures 1 higher and 1 left. */
+  html:root:not(#fs) .lasha-home .lasha-metrics-value { translate: calc(-1 * var(--u)) calc(-1 * var(--u)); }
+
+  /* Current project in Batumi: frame 2016–2972. Eyebrow box at y 2118, title capitals from 2146,
+     photo 746 × 607 and the facts' top rule at 2279, thumbnails 100 × 68 (9 apart) at 2902,
+     the ink card 515 × 374 at 2598. */
+  html:root:not(#fs) .lasha-home .project-showcase { padding-top: calc(102 * var(--u)); }
+  html:root:not(#fs) .lasha-home .project-showcase-head .lasha-eyebrow {
+    font-weight: 700;
+    line-height: calc(17.3 * var(--u));
+    text-transform: uppercase;
+  }
+  html:root:not(#fs) .lasha-home .project-showcase h2 { margin-top: calc(-0.3 * var(--u)); }
+  html:root:not(#fs) .lasha-home .project-feature { margin-top: calc(5.76 * var(--u)); }
+  html:root:not(#fs) .lasha-home .project-feature-media { height: calc(607 * var(--u)); aspect-ratio: auto; }
+  html:root:not(#fs) .lasha-home .project-feature-media img { height: 100%; }
+  html:root:not(#fs) .lasha-home .project-thumbs {
+    height: calc(68 * var(--u));
+    /* 17 below the photo, with the gallery's own 15 gap. */
+    margin-top: calc(17 * var(--u) - 15px);
+    gap: calc(9 * var(--u));
+    grid-auto-columns: calc(100 * var(--u));
+  }
+  html:root:not(#fs) .lasha-home .project-thumbs button { width: calc(100 * var(--u)); height: calc(68 * var(--u)); flex: 0 0 calc(100 * var(--u)); }
+  html:root:not(#fs) .lasha-home .project-card { box-sizing: border-box; width: calc(514 * var(--u)); min-height: calc(374 * var(--u)); padding-right: 0; }
+  html:root:not(#fs) .lasha-home .project-showcase { padding-bottom: 0; }
+}
+
+@media (min-width: 900px) {
+  /* Facts: rows 154 and 165 (top rule 2279, middle 2433, card 2598); figures' boxes at 2298 / 2455,
+     notes at 2381 / 2540. */
+  html:root:not(#fs) .lasha-home .project-facts { grid-template-rows: calc(153.5 * var(--u)) calc(165 * var(--u)); }
+  html:root:not(#fs) .lasha-home .project-facts > div { padding-top: calc(18 * var(--u)); }
+  html:root:not(#fs) .lasha-home .project-facts > div:nth-child(n + 3) { padding-top: calc(22 * var(--u)); }
+  html:root:not(#fs) .lasha-home .project-facts dt { margin-top: calc(-14.2 * var(--u)); }
+  html:root:not(#fs) .lasha-home .project-facts > div:nth-child(n + 3) dt { margin-top: calc(-13.2 * var(--u)); }
+  /* Card: body 447 wide at 2710, the 444 rule at 2797 (x 889), buttons at 2866. */
+  html:root:not(#fs) .lasha-home .project-card > p:not(.project-card-meta) { max-width: calc(447 * var(--u)); margin-top: calc(1.3 * var(--u)); }
+  html:root:not(#fs) .lasha-home .project-card .project-card-meta { width: calc(444 * var(--u)); max-width: none; margin: calc(18 * var(--u)) 0 0 calc(2 * var(--u)); }
+  html:root:not(#fs) .lasha-home .project-card-actions { padding-top: calc(32 * var(--u)); gap: calc(14 * var(--u)); }
+  /* EXPLORE PROJECT: 217 × 69, Inter SemiBold 15, 4% tracked, text 13 in, 25px arrow. */
+  html:root:not(#fs) .lasha-home .project-card-actions .lasha-button {
+    box-sizing: border-box;
+    width: calc(217 * var(--u));
+    min-width: 0;
+    height: calc(69 * var(--u));
+    min-height: 0;
+    padding: 0 0 0 calc(13 * var(--u));
+    justify-content: flex-start;
+    gap: calc(24 * var(--u));
+    font-size: calc(15 * var(--u));
+    font-weight: 600;
+    letter-spacing: 0.04em;
+  }
+  html:root:not(#fs) .lasha-home .project-card-actions .lasha-arrow { flex: 0 0 calc(25 * var(--u)); width: calc(25 * var(--u)); }
+}
+
+@media (min-width: 900px) {
+  /* New projects in Dubai: frame 2972–4082. Eyebrow box 3074, title capitals 3102, two 642 × 837
+     #dce7f0 cards at y 3245 (x 70 and 728). Inside each card, from its top-left: the photo
+     (23.3, 25.7) 592.6 × 521.7 / (24, 26) 594 × 521, the eyebrow box at 567, the name's box at
+     584 / 591, a 2px #babfc4 rule at 677, place and status at 690 and the 217 × 57 button at 744;
+     text starts 24 / 31 in. */
+  html:root:not(#fs) .lasha-home .dp-listing { padding: 0 calc(70 * var(--u)); }
+  html:root:not(#fs) .lasha-home .dp-listing > .lasha-eyebrow {
+    margin-top: calc(102 * var(--u));
+    font-size: calc(16 * var(--u));
+    font-weight: 700;
+    line-height: calc(17.3 * var(--u));
+    letter-spacing: 0;
+    text-transform: uppercase;
+  }
+  html:root:not(#fs) .lasha-home .dp-listing > .lasha-eyebrow::after { flex-basis: calc(125 * var(--u)); margin-left: calc(21 * var(--u)); }
+  html:root:not(#fs) .lasha-home .dp-listing h2 { margin: calc(-0.6 * var(--u)) 0 0 calc(-1 * var(--u)); }
+  html:root:not(#fs) .lasha-home .dp-listing-cards {
+    grid-template-columns: calc(642 * var(--u)) calc(642 * var(--u));
+    column-gap: calc(16 * var(--u));
+    margin-top: calc(16 * var(--u));
+  }
+    html:root:not(#fs) .lasha-home .dp-listing-cards article {
+    --text-x: calc(24 * var(--u));
+    position: relative;
+    display: block;
+    width: 100%;
+    height: calc(837 * var(--u));
+    padding: 0;
+    border: 0;
+  }
+  html:root:not(#fs):is([data-time-theme='day'], :not([data-time-theme])) .lasha-home .dp-listing-cards article {
+    background: #dce7f0;
+  }
+  html:root:not(#fs) .lasha-home .dp-listing-cards > li:nth-child(2) article { --text-x: calc(31 * var(--u)); }
+  html:root:not(#fs) .lasha-home .dp-listing-media {
+    position: absolute;
+    top: calc(25.7 * var(--u));
+    left: calc(23.3 * var(--u));
+    width: calc(592.6 * var(--u));
+    height: calc(521.7 * var(--u));
+    overflow: hidden;
+  }
+  html:root:not(#fs) .lasha-home .dp-listing-cards > li:nth-child(2) .dp-listing-media { top: calc(26 * var(--u)); left: calc(24 * var(--u)); width: calc(594 * var(--u)); height: calc(521 * var(--u)); }
+  /* "5556 1" is drawn 1058.9 × 521.8 from 340.1 left of the mask (its image transform moves it
+     0.1192 of its width right inside a layer at x −373). */
+  html:root:not(#fs) .lasha-home .dp-listing-image {
+    width: calc(1058.9 * var(--u));
+    max-width: none;
+    height: calc(521.8 * var(--u));
+    margin: 0 0 0 calc(-340.1 * var(--u));
+    aspect-ratio: auto;
+    object-fit: fill;
+  }
+  /* "center 1": an 893 × 633 layer, 149 left of and 92 above the mask. */
+  html:root:not(#fs) .lasha-home .dp-listing-cards > li:nth-child(2) .dp-listing-image {
+    width: calc(893 * var(--u));
+    max-width: none;
+    height: calc(633 * var(--u));
+    margin: calc(-92 * var(--u)) 0 0 calc(-149 * var(--u));
+  }
+  html:root:not(#fs) .lasha-home .dp-listing-cards article > :is(.dp-listing-eyebrow, h3, .dp-listing-meta, .lasha-button) {
+    position: absolute;
+    left: var(--text-x);
+    margin: 0;
+  }
+  html:root:not(#fs) .lasha-home .dp-listing-eyebrow {
+    top: calc(567 * var(--u));
+    display: flex;
+    gap: calc(16 * var(--u));
+  }
+    html:root:not(#fs) .lasha-home .dp-listing-eyebrow > p {
+    margin: 0;
+    font-size: calc(16 * var(--u));
+    font-weight: 700;
+    line-height: calc(17.3 * var(--u));
+    letter-spacing: 0;
+    text-transform: uppercase;
+  }
+  html:root:not(#fs):is([data-time-theme='day'], :not([data-time-theme])) .lasha-home .dp-listing-eyebrow > p {
+    color: #2557d6;
+  }
+    html:root:not(#fs) .lasha-home .dp-listing-cards h3 {
+    top: calc(584 * var(--u));
+    font-family: var(--l-fig);
+    font-size: calc(80 / 0.93705 * var(--u));
+    font-weight: 700;
+    line-height: calc(86.4 * var(--u));
+    letter-spacing: 0.01em;
+    translate: none;
+    white-space: nowrap;
+  }
+  html:root:not(#fs):is([data-time-theme='day'], :not([data-time-theme])) .lasha-home .dp-listing-cards h3 {
+    color: #000;
+  }
+  html:root:not(#fs) .lasha-home .dp-listing-cards > li:nth-child(2) h3 { top: calc(591 * var(--u)); }
+    html:root:not(#fs) .lasha-home .dp-listing-meta {
+    top: calc(677 * var(--u));
+    width: calc(592 * var(--u));
+    padding-top: calc(13 * var(--u) - 2px);
+    border-top: 2px solid;
+    font-size: calc(16 * var(--u));
+    font-weight: 500;
+    line-height: calc(17.3 * var(--u));
+    letter-spacing: 0;
+    text-transform: none;
+  }
+  html:root:not(#fs):is([data-time-theme='day'], :not([data-time-theme])) .lasha-home .dp-listing-meta {
+    border-top-color: #babfc4;
+    color: #171a1d;
+  }
+  html:root:not(#fs) .lasha-home .dp-listing-cards > li:nth-child(1) :is(.dp-listing-meta, .lasha-button) { left: calc(25 * var(--u)); }
+  html:root:not(#fs) .lasha-home .dp-listing .lasha-button {
+    top: calc(744 * var(--u));
+    box-sizing: border-box;
+    width: calc(217 * var(--u));
+    min-width: 0;
+    height: calc(57 * var(--u));
+    min-height: 0;
+    padding: 0 0 0 calc(13 * var(--u));
+    justify-content: flex-start;
+    gap: calc(24 * var(--u));
+    font-size: calc(15 * var(--u));
+    font-weight: 600;
+    letter-spacing: 0.04em;
+  }
+  html:root:not(#fs) .lasha-home .dp-listing .lasha-button .lasha-arrow { flex: 0 0 calc(25 * var(--u)); width: calc(25 * var(--u)); }
+}
+
+@media (min-width: 900px) {
+  /* Different starting points: frame 4082–4669. The eyebrow is Inter Bold 20 now (capitals from
+     4184), the title's box at 4228 (capitals from 4220), the access band's rule at 4669. */
+  html:root:not(#fs) .lasha-home .lasha-starting { padding-top: calc(96.2 * var(--u)); padding-bottom: calc(57 * var(--u)); }
+    html:root:not(#fs) .lasha-home .lasha-starting > .lasha-eyebrow {
+    font-family: Inter, sans-serif;
+    font-size: calc(20 * var(--u));
+    font-weight: 700;
+    line-height: calc(24.2 * var(--u));
+    letter-spacing: 0;
+    text-transform: uppercase;
+    translate: none;
+  }
+  html:root:not(#fs):is([data-time-theme='day'], :not([data-time-theme])) .lasha-home .lasha-starting > .lasha-eyebrow {
+    color: #2557d6;
+  }
+  html:root:not(#fs) .lasha-home .lasha-starting h2 { margin-top: calc(24.8 * var(--u)); }
+}
+
+@media (min-width: 900px) {
+  /* Access band: rule at 4669. YOUR ACCESS / STARTS HERE Morganite 122 on a 92.7 pitch (capitals
+     4755 and 4848); EXPLORE 175 and AVAILABLE RESIDENCES 67 from x 449 (capitals 4757, 4887). */
+  html:root:not(#fs) .lasha-home .lasha-access h2 {
+    font-size: calc(122 / 0.93705 * var(--u));
+    line-height: calc(92.7 * var(--u));
+    letter-spacing: 0.01em;
+  }
+  html:root:not(#fs) .lasha-home .lasha-access h2 > span { line-height: calc(92.7 * var(--u)); translate: 0 calc(4 * var(--u)); }
+  html:root:not(#fs) .lasha-home .lasha-access-count { padding-left: calc(41 * var(--u)); }
+  /* REGISTER AS A BROKER at 4758 and DOWNLOAD PROJECT MATERIALS at 4865: 38 apart. */
+  html:root:not(#fs) .lasha-home .lasha-access-actions { padding-top: calc(89 * var(--u)); row-gap: calc(38 * var(--u)); gap: calc(38 * var(--u)); }
+  html:root:not(#fs) .lasha-home .lasha-access-count strong { margin-top: 0; translate: 0 calc(-2 * var(--u)); font-size: calc(175 / 0.93705 * var(--u)); letter-spacing: calc(1.13 * var(--u)); }
+  html:root:not(#fs) .lasha-home .lasha-access-count span { margin-top: calc(-8.96 * var(--u)); font-size: calc(67 / 0.93705 * var(--u)); letter-spacing: calc(1.13 * var(--u)); }
+}
+
+/* ==== AIXESS ADVANTAGE ===================================================================== */
+
+/* The 360° services as a list below 900px (the octagon is drawn from 900px). */
+.lnp-journey-octagon,
+.lnp-journey-lines { display: none; }
+.lnp-journey-list { display: grid; gap: 1.75rem; margin: 2.5rem 0 0; padding: 0; list-style: none; }
+.lnp-journey-item {
+  display: grid;
+  grid-template-columns: 3.25rem minmax(0, 1fr);
+  grid-template-rows: auto auto 1fr;
+  column-gap: 1rem;
+  padding-left: 0;
+}
+.lnp-journey-index { grid-row: 1; color: #2557d6; font-family: var(--l-fig); font-size: 2.6rem; font-weight: 700; line-height: 0.85; }
+.lnp-journey-icon { grid-row: 2; width: 2.25rem; height: auto; margin-top: 0.6rem; }
+.lnp-journey-item > :is(h3, p) { grid-column: 2; margin: 0; padding-left: 1rem; border-left: 1.5px solid #9b9a9a; }
+.lnp-journey-item h3 { grid-row: 1; font-family: var(--l-fig); font-size: 2.1rem; font-weight: 700; line-height: 0.85; color: var(--l-ink, #171a1d); }
+.lnp-journey-item p { grid-row: 2 / span 2; padding-top: 0.5rem; font-size: 1rem; font-weight: 500; line-height: 1.1; color: #1e1e1e; }
+html:root[data-time-theme='night'] .lnp-journey-icon { filter: invert(1); }
+html:root[data-time-theme='night'] .lnp-journey-item p { color: var(--l-ink); }
+
+@media (min-width: 900px) {
+  /* Hero: frame 0–686. Blue panel 773 wide, the photo "999 1" 686 × 686 from x 773. */
+  /* The frame's 686 as a minimum: below the header, and with the copy's 16px floor from 900px, the
+     copy can run longer than the panel (English from 900 to 1100px, every translation at 1440), and the
+     button must stay inside it. The 12 under the button is English's own room at 1440. */
+  html:root:not(#fs) .lnp-hero-advantage { height: auto; min-height: calc(686 * var(--u)); grid-template-columns: calc(773 * var(--u)) calc(686 * var(--u)); overflow: hidden; }
+    html:root:not(#fs) .lnp-hero-advantage .lnp-hero-panel {
+    display: block;
+    height: auto;
+    min-height: calc(686 * var(--u));
+    padding: calc(74 * var(--u)) 0 calc(12 * var(--u)) calc(71 * var(--u));
+  }
+  html:root:not(#fs):is([data-time-theme='day'], :not([data-time-theme])) .lnp-hero-advantage .lnp-hero-panel {
+    background: #2557d6;
+  }
+  html:root:not(#fs) .lnp-hero-advantage .lnp-hero-copy { display: block; width: auto; max-width: none; margin: 0; padding: 0; }
+  html:root:not(#fs) .lnp-hero-advantage .lnp-hero-media { width: calc(686 * var(--u)); height: auto; min-height: calc(686 * var(--u)); }
+  html:root:not(#fs) .lnp-hero-advantage .lnp-hero-media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 50%; }
+  /* The frame draws no shade under the header: the labels over the photo take the ink that reads on it (useHeaderInk). */
+  html:root:not(#fs) .lnp-hero-advantage .lnp-hero-media::after { content: none; }
+  /* ABOUT AIXESS: Inter Bold 20, 2% tracked, then the 113.5 rule at x 254. */
+    html:root:not(#fs) .lnp-hero-advantage .lnp-eyebrow {
+    display: flex;
+    align-items: center;
+    margin: 0;
+    font-family: Inter, sans-serif;
+    font-size: calc(20 * var(--u));
+    font-weight: 700;
+    line-height: calc(21.6 * var(--u));
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+  }
+  html:root:not(#fs):is([data-time-theme='day'], :not([data-time-theme])) .lnp-hero-advantage .lnp-eyebrow {
+    color: #fff;
+  }
+  /* TURN YOUR / NETWORK INTO / OPPORTUNITY.: Morganite Bold 140 on 112, 2% tracked, box at 118. */
+    html:root:not(#fs) .lnp-hero-advantage .lnp-hero-title {
+    margin: calc(22.4 * var(--u)) 0 0;
+    font-family: var(--l-fig);
+    font-size: calc(140 / 0.93705 * var(--u));
+    font-weight: 700;
+    line-height: calc(112 * var(--u));
+    letter-spacing: 0.02em;
+    translate: none;
+  }
+  html:root:not(#fs):is([data-time-theme='day'], :not([data-time-theme])) .lnp-hero-advantage .lnp-hero-title {
+    color: #f7f7f4;
+  }
+  html:root:not(#fs) .lnp-hero-advantage .lnp-hero-title > span { display: block; line-height: calc(112 * var(--u)); }
+  /* Body: Inter Medium 16 on 19.4, 4% tracked, 488 wide at 457. */
+    html:root:not(#fs) .lnp-hero-advantage .lnp-hero-body {
+    max-width: calc(488 * var(--u));
+    margin: calc(3 * var(--u)) 0 0;
+    font-size: calc(16 * var(--u));
+    font-weight: 500;
+    line-height: calc(19.4 * var(--u));
+    letter-spacing: 0.04em;
+  }
+  html:root:not(#fs):is([data-time-theme='day'], :not([data-time-theme])) .lnp-hero-advantage .lnp-hero-body {
+    color: #fff;
+  }
+  /* The site's outline buttons in the frame's 267 × 69 size, Inter SemiBold 15, text 32 in. */
+  html:root:not(#fs) .lnp-advantage :is(.lnp-hero-copy, .lnp-advantage-panel) .lasha-button {
+    box-sizing: border-box;
+    width: calc(267 * var(--u));
+    min-width: 0;
+    height: calc(69 * var(--u));
+    min-height: 0;
+    padding: 0 0 0 calc(32 * var(--u));
+    justify-content: flex-start;
+    gap: calc(6 * var(--u));
+    border: 1px solid #f7f7f4;
+    background: transparent;
+    color: #f7f7f4;
+    font-size: calc(15 * var(--u));
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    line-height: 1;
+  }
+  html:root:not(#fs) .lnp-advantage :is(.lnp-hero-copy, .lnp-advantage-panel) .lasha-button .lasha-arrow { flex: 0 0 calc(46.5 * var(--u)); width: calc(46.5 * var(--u)); }
+  html:root:not(#fs) .lnp-hero-advantage .lasha-button { margin: calc(31 * var(--u)) 0 0 calc(-1 * var(--u)); }
+
+  /* Starting points: frame 686–900 on #dce7f0; titles Morganite Bold 65 at x 71 / 547 / 992 (box 737),
+     lines Inter 15 on 18.2, 4% tracked (box 804); rules at x 424 and 891 from 725. */
+    html:root:not(#fs) .lnp-advantage .lnp-starting {
+    height: calc(214 * var(--u));
+    min-height: 0;
+    padding: calc(51 * var(--u)) 0 0 calc(71 * var(--u));
+    grid-template-columns: calc(476 * var(--u)) calc(445 * var(--u)) minmax(0, 1fr);
+    column-gap: 0;
+  }
+  html:root:not(#fs):is([data-time-theme='day'], :not([data-time-theme])) .lnp-advantage .lnp-starting {
+    background: #dce7f0;
+  }
+  html:root:not(#fs) .lnp-advantage .lnp-starting article { position: relative; padding: 0; border: 0; }
+  html:root:not(#fs) .lnp-advantage .lnp-starting article::after { content: none; }
+  html:root:not(#fs) .lnp-advantage .lnp-starting article::before { content: none; }
+  html:root:not(#fs) .lnp-advantage .lnp-starting article + article::before {
+    content: "";
+    position: absolute;
+    top: calc(-12 * var(--u));
+    left: calc(-123 * var(--u));
+    width: 1px;
+    height: calc(159 * var(--u));
+    background: #babfc4;
+  }
+  html:root:not(#fs) .lnp-advantage .lnp-starting article:nth-child(3)::before { left: calc(-101 * var(--u)); height: calc(157 * var(--u)); }
+    html:root:not(#fs) .lnp-advantage .lnp-starting h2 {
+    margin: 0;
+    font-family: var(--l-fig);
+    font-size: calc(65 / 0.93705 * var(--u));
+    font-weight: 700;
+    line-height: calc(65 * var(--u));
+    letter-spacing: 0.02em;
+    translate: none;
+    white-space: nowrap;
+  }
+  html:root:not(#fs):is([data-time-theme='day'], :not([data-time-theme])) .lnp-advantage .lnp-starting h2 {
+    color: #000;
+  }
+    html:root:not(#fs) .lnp-advantage .lnp-starting p {
+    max-width: calc(210 * var(--u));
+    margin: calc(2 * var(--u)) 0 0;
+    font-size: calc(15 * var(--u));
+    font-weight: 400;
+    line-height: calc(18.2 * var(--u));
+    letter-spacing: 0.04em;
+  }
+  html:root:not(#fs):is([data-time-theme='day'], :not([data-time-theme])) .lnp-advantage .lnp-starting p {
+    color: #000;
+  }
+  html:root:not(#fs) .lnp-advantage .lnp-starting article:nth-child(3) p { max-width: calc(309 * var(--u)); }
+
+  /* More than access: frame 900–1579. Photo 656 × 679 (its 1208 layer from x −404), sage panel. */
+  html:root:not(#fs) .lnp-advantage-split { height: calc(679 * var(--u)); min-height: 0; grid-template-columns: calc(656 * var(--u)) calc(784 * var(--u)); }
+  html:root:not(#fs) .lnp-advantage-media { width: 100%; height: calc(679 * var(--u)); object-fit: cover; object-position: 73.19% 50%; }
+    html:root:not(#fs) .lnp-advantage-panel {
+    display: block;
+    padding: calc(81 * var(--u)) 0 0 calc(69 * var(--u));
+  }
+  html:root:not(#fs):is([data-time-theme='day'], :not([data-time-theme])) .lnp-advantage-panel {
+    background: #9bb69e;
+  }
+    html:root:not(#fs) .lnp-advantage-panel .lnp-kicker {
+    display: flex;
+    align-items: center;
+    margin: 0;
+    font-family: Inter, sans-serif;
+    font-size: calc(20 * var(--u));
+    font-weight: 600;
+    line-height: calc(21.6 * var(--u));
+    letter-spacing: 0;
+    text-transform: uppercase;
+  }
+  html:root:not(#fs):is([data-time-theme='day'], :not([data-time-theme])) .lnp-advantage-panel .lnp-kicker {
+    color: #f7f7f4;
+  }
+    html:root:not(#fs) .lnp-advantage-title {
+    /* Right margin = the panel's left inset, so a fitted translation never runs to the screen's edge. */
+    width: auto;
+    margin: calc(31.4 * var(--u)) calc(69 * var(--u)) 0 0;
+    font-family: var(--l-fig);
+    font-size: calc(220 / 0.93705 * var(--u));
+    font-weight: 700;
+    line-height: calc(169.4 * var(--u));
+    letter-spacing: 0;
+    translate: none;
+  }
+  html:root:not(#fs):is([data-time-theme='day'], :not([data-time-theme])) .lnp-advantage-title {
+    color: #f7f7f4;
+  }
+  html:root:not(#fs) .lnp-advantage-title > span { display: block; line-height: calc(169.4 * var(--u)); }
+    html:root:not(#fs) .lnp-advantage-subtitle {
+    max-width: calc(392 * var(--u));
+    margin: calc(-1.8 * var(--u)) 0 0;
+    font-size: calc(16 * var(--u));
+    font-weight: 500;
+    line-height: calc(19.4 * var(--u));
+    letter-spacing: 0;
+  }
+  html:root:not(#fs):is([data-time-theme='day'], :not([data-time-theme])) .lnp-advantage-subtitle {
+    color: #f7f7f4;
+  }
+  html:root:not(#fs) .lnp-advantage-panel .lasha-button { margin-top: calc(51 * var(--u)); }
+
+  /* AIXESS 360° SERVICES: frame 1579–2930. Eyebrow box 1674, title box 1714 (Morganite SemiBold
+     110 on 86.9, its second line blue), a 1.5 #5f5f5f rule at x 426 from 1676, subtitle Inter Bold
+     28 at 1718 and the intro Inter Medium 28 on 30.2 at 1764 from x 498. */
+  html:root:not(#fs) .lnp-care {
+    position: relative;
+    height: calc(1351 * var(--u));
+    min-height: 0;
+    padding: calc(95 * var(--u)) calc(70 * var(--u)) 0;
+  }
+  html:root:not(#fs) .lnp-care-head {
+    position: relative;
+    display: grid;
+    grid-template-columns: calc(428 * var(--u)) calc(860 * var(--u));
+    column-gap: 0;
+    align-items: start;
+    margin: 0;
+  }
+  html:root:not(#fs) .lnp-care-head::before {
+    content: "";
+    position: absolute;
+    top: calc(2 * var(--u));
+    left: calc(356 * var(--u));
+    width: 1.5px;
+    height: calc(277 * var(--u));
+    background: #5f5f5f;
+  }
+    html:root:not(#fs) .lnp-care-eyebrow {
+    margin: 0;
+    font-size: calc(14 * var(--u));
+    font-weight: 700;
+    line-height: calc(15.1 * var(--u));
+    letter-spacing: 0.02em;
+  }
+  html:root:not(#fs):is([data-time-theme='day'], :not([data-time-theme])) .lnp-care-eyebrow {
+    color: #2557d6;
+  }
+    html:root:not(#fs) .lnp-care-head h2 {
+    margin: calc(35.9 * var(--u)) 0 0;
+    font-family: var(--l-fig);
+    font-size: calc(110 / 0.93705 * var(--u));
+    font-weight: 600;
+    line-height: calc(86.9 * var(--u));
+    letter-spacing: 0;
+    text-transform: uppercase;
+    translate: none;
+  }
+  html:root:not(#fs):is([data-time-theme='day'], :not([data-time-theme])) .lnp-care-head h2 {
+    color: #171a1d;
+  }
+  html:root:not(#fs) .lnp-care-head h2 > span { display: block; line-height: calc(86.9 * var(--u)); }
+  /* AIXESS is set at 235 (capitals 1701–1866), 360° SERVICES at 110 (1876–1952). */
+  html:root:not(#fs) .lnp-care-head h2 > span:first-child { font-size: calc(235 / 0.93705 * var(--u)); line-height: calc(166 * var(--u)); }
+    html:root:not(#fs) .lnp-care-head h2 > span + span {
+    margin-top: calc(-8 * var(--u));
+  }
+  html:root:not(#fs):is([data-time-theme='day'], :not([data-time-theme])) .lnp-care-head h2 > span + span {
+    color: #2557d6;
+  }
+  html:root:not(#fs) .lnp-care-copy { margin: 0; padding-top: calc(44 * var(--u)); }
+    html:root:not(#fs) .lnp-care-subtitle {
+    margin: 0;
+    font-size: calc(28 * var(--u));
+    font-weight: 700;
+    line-height: calc(30.2 * var(--u));
+    letter-spacing: 0.02em;
+  }
+  html:root:not(#fs):is([data-time-theme='day'], :not([data-time-theme])) .lnp-care-subtitle {
+    color: #171a1d;
+  }
+    html:root:not(#fs) .lnp-care-intro {
+    max-width: calc(860 * var(--u));
+    margin: calc(15.8 * var(--u)) 0 0;
+    font-size: calc(28 * var(--u));
+    font-weight: 500;
+    line-height: calc(30.2 * var(--u));
+    letter-spacing: 0;
+  }
+  html:root:not(#fs):is([data-time-theme='day'], :not([data-time-theme])) .lnp-care-intro {
+    color: #1e1e1e;
+  }
+  /* The octagon diagram: frame y 2114–2830, everything in frame pixels from its top. */
+  html:root:not(#fs) .lnp-journey { position: absolute; top: calc(535 * var(--u)); left: 0; width: calc(1440 * var(--u)); height: calc(716 * var(--u)); }
+  html:root:not(#fs) .lnp-journey-octagon { display: block; position: absolute; top: calc(199 * var(--u)); left: calc(433 * var(--u)); width: calc(549 * var(--u)); height: calc(296 * var(--u)); }
+  html:root:not(#fs) .lnp-journey-lines { display: block; position: absolute; inset: 0; width: 100%; height: 100%; fill: none; stroke: #9b9a9a; stroke-width: 2.5; }
+  html:root:not(#fs) .lnp-journey-list { display: block; margin: 0; }
+  /* The title and its line follow each other in flow: the title keeps the frame's two lines, so English
+     sits exactly as drawn, and a translation that needs a third line moves its line down with it. */
+  html:root:not(#fs) .lnp-journey-item { position: absolute; display: block; left: calc(var(--x) * var(--u)); top: calc(var(--y) * var(--u)); width: 0; height: auto; min-height: calc(127 * var(--u)); }
+  html:root:not(#fs) .lnp-journey-item::before { content: ""; position: absolute; top: 0; bottom: 0; left: calc(var(--rx) * var(--u)); width: 1.5px; background: #9b9a9a; }
+  html:root:not(#fs) .lnp-journey-index { position: absolute; top: calc(3 * var(--u)); left: 0; font-size: calc(58.6 / 0.93705 * var(--u)); line-height: calc(46.3 * var(--u)); translate: none; }
+  html:root:not(#fs) .lnp-journey-icon { position: absolute; top: calc(var(--iy) * var(--u)); left: calc(var(--ix) * var(--u)); width: calc(var(--iw) * var(--u)); height: auto; margin: 0; }
+  html:root:not(#fs) .lnp-journey-item > :is(h3, p) { position: relative; margin: 0 0 0 calc(var(--tx) * var(--u)); padding: 0; border: 0; }
+    html:root:not(#fs) .lnp-journey-item h3 {
+    margin-top: calc(2 * var(--u));
+    min-height: calc(2 * 42.7 * var(--u));
+    width: calc(var(--tw) * var(--u));
+    font-size: calc(54.02 / 0.93705 * var(--u));
+    line-height: calc(42.7 * var(--u));
+    letter-spacing: 0;
+    translate: none;
+  }
+  html:root:not(#fs):is([data-time-theme='day'], :not([data-time-theme])) .lnp-journey-item h3 {
+    color: #171a1d;
+  }
+    html:root:not(#fs) .lnp-journey-item p {
+    margin-top: calc((96 - 2 - 2 * 42.7) * var(--u));
+    width: calc(var(--dw) * var(--u));
+    padding: 0;
+    font-size: calc(16 * var(--u));
+    line-height: calc(17.3 * var(--u));
+    letter-spacing: 0;
+  }
+  html:root:not(#fs):is([data-time-theme='day'], :not([data-time-theme])) .lnp-journey-item p {
+    color: #1e1e1e;
+  }
+  /* Each service: number at (x, y) of the frame minus 2114, rule, title and icon offsets from it. */
+  html:root:not(#fs) .lnp-journey-item-1 { --x: 88; --y: 0; --rx: 49; --tx: 76; --ix: -18; --iy: 66; --iw: 48; --tw: 224; --dw: 197; }
+  html:root:not(#fs) .lnp-journey-item-2 { --x: 566; --y: 0; --rx: 53; --tx: 80; --ix: -25; --iy: 69.2; --iw: 53; --tw: 122; --dw: 219; }
+  html:root:not(#fs) .lnp-journey-item-3 { --x: 1056; --y: 0; --rx: 53; --tx: 80; --ix: -11; --iy: 69; --iw: 37; --tw: 185; --dw: 230; }
+  html:root:not(#fs) .lnp-journey-item-4 { --x: 1076; --y: 282; --rx: 49; --tx: 76; --ix: -16; --iy: 66; --iw: 42; --tw: 224; --dw: 150; }
+  html:root:not(#fs) .lnp-journey-item-5 { --x: 1056; --y: 569; --rx: 53; --tx: 80; --ix: -14; --iy: 66; --iw: 41; --tw: 252; --dw: 229; }
+  html:root:not(#fs) .lnp-journey-item-6 { --x: 566; --y: 569; --rx: 53; --tx: 80; --ix: -26; --iy: 69; --iw: 56; --tw: 221; --dw: 192; }
+  html:root:not(#fs) .lnp-journey-item-7 { --x: 88; --y: 569; --rx: 49; --tx: 76; --ix: -21; --iy: 68; --iw: 50; --tw: 224; --dw: 197; }
+  html:root:not(#fs) .lnp-journey-item-8 { --x: 88; --y: 282; --rx: 49; --tx: 76; --ix: -11; --iy: 70; --iw: 37; --tw: 132; --dw: 216; }
+}
+
+/* ==== BROKER ACCESS ======================================================================== */
+@media (min-width: 900px) {
+  /* Hero: frame 0–900. Photo "3:4 1" 1672 × 941 from x −67, y −41. Eyebrow box 138, title box
+     180.6–472.6 (EVERYTHING YOU NEED at 147, its 632px width shared by every line), body 470,
+     buttons 554 (293.7 × 82.4 and 303.1 × 82.9, 36.2 apart), note 661. */
+  html:root:not(#fs) .lnp-broker .lasha-page-hero { height: calc(900 * var(--u)); min-height: 0; padding: 0; display: block; overflow: hidden; }
+  html:root:not(#fs) .lnp-broker .lasha-page-hero-media { inset: calc(-41 * var(--u)) auto auto calc(-67 * var(--u)); width: calc(1672 * var(--u)); max-width: none; height: calc(941 * var(--u)); object-fit: cover; object-position: 50% 50%; }
+  html:root:not(#fs) .lnp-broker .lasha-page-hero::after { display: none; }
+  html:root:not(#fs) .lnp-broker .lasha-page-hero-copy { position: absolute; top: calc(139 * var(--u)); left: calc(69 * var(--u)); width: calc(760 * var(--u)); max-width: none; margin: 0; padding: 0; }
+    html:root:not(#fs) .lnp-broker .lasha-page-hero-copy .lasha-eyebrow {
+    margin: 0;
+    font-size: calc(18.9 * var(--u));
+    font-weight: 700;
+    line-height: calc(22.9 * var(--u));
+    letter-spacing: 0.04em;
+  }
+  html:root:not(#fs):is([data-time-theme='day'], :not([data-time-theme])) .lnp-broker .lasha-page-hero-copy .lasha-eyebrow {
+    color: #171a1d;
+  }
+  html:root:not(#fs) .lnp-broker .lasha-page-hero-copy .lasha-eyebrow::after { flex: 0 0 calc(113.5 * var(--u)); width: calc(113.5 * var(--u)); height: 1px; margin-left: calc(24 * var(--u)); background: #171a1d; }
+    html:root:not(#fs) .lnp-broker .lasha-page-hero-title {
+    width: calc(643 * var(--u));
+    height: calc(292 * var(--u));
+    margin: calc(13.7 * var(--u)) 0 0;
+    font-family: var(--l-fig);
+    font-size: calc(147 / 0.93705 * var(--u));
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    translate: none;
+    white-space: nowrap;
+  }
+  html:root:not(#fs):is([data-time-theme='day'], :not([data-time-theme])) .lnp-broker .lasha-page-hero-title {
+    color: #171a1d;
+  }
+  html:root:not(#fs) .lnp-broker .lasha-page-hero-title > span { display: block; width: max-content; line-height: 0.75; }
+    html:root:not(#fs) .lnp-broker .lasha-page-hero-text {
+    max-width: calc(699 * var(--u));
+    margin: calc(3.4 * var(--u)) 0 0;
+    /* Two even lines, as the frame breaks it ("…gives you the / tools, …"). */
+    text-wrap: balance;
+    font-size: calc(17 * var(--u));
+    font-weight: 500;
+    line-height: calc(20.6 * var(--u));
+    letter-spacing: 0.04em;
+  }
+  html:root:not(#fs):is([data-time-theme='day'], :not([data-time-theme])) .lnp-broker .lasha-page-hero-text {
+    color: #171a1d;
+  }
+  html:root:not(#fs) .lnp-broker .it-hero-actions { gap: calc(36.2 * var(--u)); margin: calc(41.8 * var(--u)) 0 0; }
+  html:root:not(#fs) .lnp-broker .it-hero-actions .button {
+    box-sizing: border-box;
+    width: calc(293.7 * var(--u));
+    min-width: 0;
+    height: calc(82.4 * var(--u));
+    min-height: 0;
+    padding: 0 calc(15.5 * var(--u)) 0 calc(21.5 * var(--u));
+    justify-content: space-between;
+    font-size: calc(17.9 * var(--u));
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    line-height: 1;
+  }
+    html:root:not(#fs) .lnp-broker .it-hero-actions .button-primary {
+    border: 0;
+  }
+  html:root:not(#fs):is([data-time-theme='day'], :not([data-time-theme])) .lnp-broker .it-hero-actions .button-primary {
+    background: #2557d6;
+    color: #f4f4f1;
+  }
+    html:root:not(#fs) .lnp-broker .it-hero-actions .button-ghost {
+    width: calc(303.1 * var(--u));
+    height: calc(82.9 * var(--u));
+    border: max(1px, calc(1.19 * var(--u))) solid;
+  }
+  html:root:not(#fs):is([data-time-theme='day'], :not([data-time-theme])) .lnp-broker .it-hero-actions .button-ghost {
+    border-color: #000;
+    background: transparent;
+    color: #171a1d;
+  }
+  html:root:not(#fs) .lnp-broker .it-hero-actions .button .lasha-arrow { flex: 0 0 calc(32.2 * var(--u)); width: calc(32.2 * var(--u)); }
+    html:root:not(#fs) .lnp-broker .it-hero-note {
+    max-width: none;
+    margin: calc(25.1 * var(--u)) 0 0;
+    font-size: calc(14 * var(--u));
+    font-weight: 500;
+    line-height: calc(16.9 * var(--u));
+    letter-spacing: 0.04em;
+  }
+  html:root:not(#fs):is([data-time-theme='day'], :not([data-time-theme])) .lnp-broker .it-hero-note {
+    color: #171a1d;
+  }
+}
+
+@media (min-width: 900px) {
+  /* Who can join: frame 900–1577. Blue panel 0–656, photo "777 1" 656–1041 (its 683 layer from
+     y 894), the list from x 1062: rows at 948 / 1081 / 1214 / 1347 / 1480, 301 rules at 1045 / 1186 /
+     1317 / 1452 from x 1067. */
+  html:root:not(#fs) .lnp-join { height: auto; min-height: calc(677 * var(--u)); grid-template-columns: calc(656 * var(--u)) calc(385 * var(--u)) minmax(0, 1fr); }
+    html:root:not(#fs) .lnp-join-panel {
+    display: block;
+    padding: calc(74 * var(--u)) 0 0 calc(71 * var(--u));
+  }
+  html:root:not(#fs):is([data-time-theme='day'], :not([data-time-theme])) .lnp-join-panel {
+    background: #2557d6;
+  }
+    html:root:not(#fs) .lnp-join-panel .lnp-eyebrow {
+    display: flex;
+    align-items: center;
+    margin: 0;
+    font-size: calc(16 * var(--u));
+    font-weight: 500;
+    line-height: calc(17.3 * var(--u));
+    letter-spacing: 0.02em;
+  }
+  html:root:not(#fs):is([data-time-theme='day'], :not([data-time-theme])) .lnp-join-panel .lnp-eyebrow {
+    color: #fff;
+  }
+  html:root:not(#fs) .lnp-join-panel .lnp-eyebrow::after { flex: 0 0 calc(113.5 * var(--u)); width: calc(113.5 * var(--u)); height: 1px; margin-left: calc(21 * var(--u)); background: #f4f4f1; }
+    html:root:not(#fs) .lnp-join-title {
+    margin: calc(33.7 * var(--u)) 0 0 calc(-1 * var(--u));
+    font-family: var(--l-fig);
+    font-size: calc(190 / 0.93705 * var(--u));
+    font-weight: 700;
+    line-height: calc(152 * var(--u));
+    letter-spacing: 0.02em;
+    translate: none;
+  }
+  html:root:not(#fs):is([data-time-theme='day'], :not([data-time-theme])) .lnp-join-title {
+    color: #f7f7f4;
+  }
+  html:root:not(#fs) .lnp-join-title > span { line-height: calc(152 * var(--u)); }
+    html:root:not(#fs) .lnp-join-panel .lnp-hero-body {
+    max-width: calc(452 * var(--u));
+    margin: calc(6 * var(--u)) 0 0;
+    font-size: calc(16 * var(--u));
+    font-weight: 400;
+    line-height: calc(19.4 * var(--u));
+    letter-spacing: 0.04em;
+  }
+  html:root:not(#fs):is([data-time-theme='day'], :not([data-time-theme])) .lnp-join-panel .lnp-hero-body {
+    color: #f7f7f4;
+  }
+  html:root:not(#fs) .lnp-join-media { height: auto; min-height: calc(677 * var(--u)); }
+  html:root:not(#fs) .lnp-join-media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 100%; }
+  /* The last row follows in flow, so a translation whose line runs longer (German) lengthens the
+     section, and the panel and render beside it, instead of running out of it. */
+  html:root:not(#fs) .lnp-people { position: relative; display: block; height: auto; min-height: calc(677 * var(--u)); margin: 0; padding: 0 0 calc(9 * var(--u)); }
+  html:root:not(#fs) .lnp-people > li {
+    position: absolute;
+    top: calc(var(--top) * var(--u));
+    left: calc(16 * var(--u));
+    display: block;
+    width: calc(340 * var(--u));
+    padding: 0;
+    border: 0;
+  }
+  html:root:not(#fs) .lnp-people > li::before { content: none; }
+  html:root:not(#fs) .lnp-people > li::after { content: ""; position: absolute; top: calc(var(--rule) * var(--u)); left: calc(5 * var(--u)); width: calc(301 * var(--u)); height: 0.5px; background: #5f5f5f; }
+  html:root:not(#fs) .lnp-people > li:last-child::after { content: none; }
+  html:root:not(#fs) .lnp-people > li:nth-child(1) { --top: 48; --rule: 97; --dw: 305; }
+  html:root:not(#fs) .lnp-people > li:nth-child(2) { --top: 181; --rule: 105; --dw: 219; }
+  html:root:not(#fs) .lnp-people > li:nth-child(3) { --top: 314; --rule: 103; --dw: 230; }
+  html:root:not(#fs) .lnp-people > li:nth-child(4) { --top: 447; --rule: 105; --dw: 247; --dy: -2; }
+  html:root:not(#fs) .lnp-people > li:nth-child(5) { --top: 580; --dw: 257; --tx: 37; position: relative; top: auto; margin-top: calc(580 * var(--u)); }
+  html:root:not(#fs) .lnp-people > li:nth-child(5) > div { position: relative; }
+    html:root:not(#fs) .lnp-people .lasha-index {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 0;
+    font-family: var(--l-fig);
+    font-size: calc(40 / 0.93705 * var(--u));
+    font-weight: 700;
+    line-height: calc(40 * var(--u));
+    letter-spacing: 0.05em;
+    translate: none;
+  }
+  html:root:not(#fs):is([data-time-theme='day'], :not([data-time-theme])) .lnp-people .lasha-index {
+    color: #2557d6;
+  }
+  html:root:not(#fs) .lnp-people li > div { position: absolute; top: 0; left: calc(var(--tx, 35) * var(--u)); }
+    html:root:not(#fs) .lnp-people h3 {
+    margin: 0;
+    font-family: var(--l-fig);
+    font-size: calc(40 / 0.93705 * var(--u));
+    font-weight: 600;
+    line-height: calc(40 * var(--u));
+    letter-spacing: 0.03em;
+    translate: none;
+    white-space: nowrap;
+  }
+  html:root:not(#fs):is([data-time-theme='day'], :not([data-time-theme])) .lnp-people h3 {
+    color: #000;
+  }
+  html:root:not(#fs) .lnp-people > li:first-child h3 { letter-spacing: 0; }
+    html:root:not(#fs) .lnp-people p {
+    width: calc(var(--dw) * var(--u));
+    margin: calc((var(--dy, 0) - 3) * var(--u)) 0 0;
+    font-size: calc(14 * var(--u));
+    font-weight: 300;
+    line-height: calc(16.9 * var(--u));
+    letter-spacing: 0.04em;
+  }
+  html:root:not(#fs):is([data-time-theme='day'], :not([data-time-theme])) .lnp-people p {
+    color: #171a1d;
+  }
+}
+
+@media (min-width: 900px) {
+  /* The commercial advantage: frame 1577–2173. A full-width 0.5 rule at 1653, eyebrow box 1726,
+     then from 1751: 10% / DOWN PAYMENT / body at x 70, the 409 × 422 blue box at x 398 (100% /
+     COMMISSION UNLOCKED from x 425) and the photo 602 × 422 at x 837 (its 765.7 × 431 layer from
+     x −7.9). Capitals: figures 1779, titles 2021 (and 2083), body from 2108. */
+  html:root:not(#fs) .lnp-commercial { position: relative; display: flow-root; height: auto; min-height: calc(596 * var(--u)); padding: 0; }
+  html:root:not(#fs) .lnp-commercial::before { content: ""; position: absolute; top: calc(76 * var(--u)); left: 0; width: 100%; height: 0.5px; background: #5f5f5f; }
+    html:root:not(#fs) .lnp-commercial-eyebrow {
+    position: absolute;
+    top: calc(149 * var(--u));
+    left: calc(70 * var(--u));
+    margin: 0;
+    font-size: calc(16 * var(--u));
+    font-weight: 500;
+    line-height: calc(17.3 * var(--u));
+    letter-spacing: 0;
+  }
+  html:root:not(#fs):is([data-time-theme='day'], :not([data-time-theme])) .lnp-commercial-eyebrow {
+    color: #2557d6;
+  }
+  html:root:not(#fs) :is(.lnp-commercial-down, .lnp-commercial-commission) { position: absolute; top: calc(174 * var(--u)); display: block; height: calc(422 * var(--u)); margin: 0; padding: 0; }
+  html:root:not(#fs) :is(.lnp-commercial-down, .lnp-commercial-commission) { --fig-y: 47; --h2-y: -6; --body-y: 17; }
+  /* The 10% column is in flow with the frame's 422 as its height: a translation that needs more lines
+     (Russian ПЕРВОНАЧАЛЬНОГО ВЗНОСА) lengthens the section instead of leaving it. English copy ends 2
+     past the frame's 422; that overhang does not lengthen the section. */
+  html:root:not(#fs) .lnp-commercial-down { position: relative; top: auto; left: calc(70 * var(--u)); width: calc(328 * var(--u)); height: auto; min-height: calc(422 * var(--u)); margin: calc(174 * var(--u)) 0 calc(-2 * var(--u)); }
+  html:root:not(#fs) .lnp-commercial-down .lnp-figure { position: relative; left: calc(-3 * var(--u)); }
+    html:root:not(#fs) .lnp-commercial-commission {
+    left: calc(398 * var(--u));
+    width: calc(409 * var(--u));
+    padding-left: calc(27 * var(--u));
+  }
+  html:root:not(#fs):is([data-time-theme='day'], :not([data-time-theme])) .lnp-commercial-commission {
+    background: #2557d6;
+  }
+  html:root:not(#fs) .lnp-commercial .lnp-figure {
+    margin: calc(var(--fig-y, 0) * var(--u)) 0 0;
+    font-family: var(--l-fig);
+    font-size: calc(300 / 0.93705 * var(--u));
+    font-weight: 700;
+    line-height: calc(234 * var(--u));
+    letter-spacing: 0.02em;
+    translate: none;
+  }
+    html:root:not(#fs):is([data-time-theme='day'], :not([data-time-theme])) .lnp-commercial-down .lnp-figure {
+    color: #171a1d;
+  }
+    html:root:not(#fs):is([data-time-theme='day'], :not([data-time-theme])) .lnp-commercial-commission .lnp-figure {
+    color: #f7f7f4;
+  }
+  html:root:not(#fs) .lnp-commercial h2 {
+    margin: calc(var(--h2-y, 0) * var(--u)) 0 0;
+    font-family: var(--l-fig);
+    font-size: calc(80 / 0.93705 * var(--u));
+    font-weight: 600;
+    line-height: calc(62.4 * var(--u));
+    letter-spacing: 0.02em;
+    translate: none;
+  }
+  html:root:not(#fs) .lnp-commercial h2 > span { display: block; line-height: calc(62.4 * var(--u)); }
+    html:root:not(#fs):is([data-time-theme='day'], :not([data-time-theme])) .lnp-commercial-down h2 {
+    color: #000;
+  }
+    html:root:not(#fs):is([data-time-theme='day'], :not([data-time-theme])) .lnp-commercial-commission h2 {
+    color: #f7f7f4;
+  }
+    html:root:not(#fs) .lnp-commercial-body {
+    max-width: calc(281 * var(--u));
+    margin: calc(var(--body-y, 0) * var(--u)) 0 0;
+    font-size: calc(16 * var(--u));
+    font-weight: 500;
+    line-height: calc(17.3 * var(--u));
+    letter-spacing: 0;
+  }
+  html:root:not(#fs):is([data-time-theme='day'], :not([data-time-theme])) .lnp-commercial-body {
+    color: #171a1d;
+  }
+  html:root:not(#fs) .lnp-commercial-frame { position: absolute; top: calc(174 * var(--u)); left: calc(837 * var(--u)); width: calc(602 * var(--u)); height: calc(422 * var(--u)); overflow: hidden; }
+  html:root:not(#fs) .lnp-commercial-frame img { position: absolute; top: 0; left: calc(-7.9 * var(--u)); width: calc(765.7 * var(--u)); max-width: none; height: calc(431 * var(--u)); min-height: 0; margin: 0; object-fit: cover; object-position: 50% 50%; transform: none; clip-path: none; }
+}
+
+@media (min-width: 900px) {
+  /* How it works: frame 2173–2546 (a full-width 0.5 rule ends it). Eyebrow box 2246, title box 2287
+     (Morganite SemiBold 128 on 99.8); steps from x 512 / 648 / 861 / 1063 / 1269: numbers 2277, 54px
+     rules 2322, titles 2337 (Morganite SemiBold 95), lines 2419 (Inter 13 on 15.7, 4% tracked);
+     column rules at x 626 / 838 / 1037 / 1243 from 2250, 219 long. */
+    html:root:not(#fs) .lnp-process {
+    position: relative;
+    display: block;
+    height: calc(373 * var(--u));
+    min-height: 0;
+    padding: 0;
+    border-bottom: 0.5px solid;
+  }
+  html:root:not(#fs):is([data-time-theme='day'], :not([data-time-theme])) .lnp-process {
+    border-bottom-color: #5f5f5f;
+  }
+  html:root:not(#fs) .lnp-process-heading { position: absolute; top: calc(74 * var(--u)); left: calc(69 * var(--u)); margin: 0; }
+    html:root:not(#fs) .lnp-process-eyebrow {
+    margin: 0;
+    font-size: calc(20 * var(--u));
+    font-weight: 500;
+    line-height: calc(21.6 * var(--u));
+    letter-spacing: 0;
+  }
+  html:root:not(#fs):is([data-time-theme='day'], :not([data-time-theme])) .lnp-process-eyebrow {
+    color: #2557d6;
+  }
+    html:root:not(#fs) .lnp-process h2 {
+    margin: calc(19.4 * var(--u)) 0 0 calc(-1 * var(--u));
+    font-family: var(--l-fig);
+    font-size: calc(128 / 0.93705 * var(--u));
+    font-weight: 600;
+    line-height: calc(99.8 * var(--u));
+    letter-spacing: 0;
+    translate: none;
+  }
+  html:root:not(#fs):is([data-time-theme='day'], :not([data-time-theme])) .lnp-process h2 {
+    color: #000;
+  }
+  html:root:not(#fs) .lnp-process h2 > span { display: block; line-height: calc(99.8 * var(--u)); }
+  html:root:not(#fs) .lnp-steps { position: absolute; inset: 0; display: block; min-height: 0; margin: 0; padding: 0; }
+  html:root:not(#fs) .lnp-steps > li { position: absolute; top: calc(104 * var(--u)); left: calc(var(--x) * var(--u)); display: block; width: calc(240 * var(--u)); padding: 0; border: 0; }
+  /* --cw: the room to the next column's rule (or the frame's right margin), so a long translated
+     title shrinks with the others instead of running past it. */
+  html:root:not(#fs) .lnp-steps > li:nth-child(1) { --x: 512; --dw: 103; --cw: 108; }
+  html:root:not(#fs) .lnp-steps > li:nth-child(2) { --x: 648; --dw: 146; --rx: -22; --cw: 184; }
+  html:root:not(#fs) .lnp-steps > li:nth-child(3) { --x: 861; --dw: 157; --rx: -23; --cw: 170; }
+  html:root:not(#fs) .lnp-steps > li:nth-child(4) { --x: 1063; --dw: 143; --rx: -26; --cw: 174; }
+  html:root:not(#fs) .lnp-steps > li:nth-child(5) { --x: 1269; --dw: 106; --rx: -26; --dy: 1; --cw: 120; }
+  html:root:not(#fs) .lnp-steps > li::before { content: ""; position: absolute; top: calc(-27 * var(--u)); left: calc(var(--rx) * var(--u)); width: 0.5px; height: calc(219 * var(--u)); background: #5f5f5f; }
+  html:root:not(#fs) .lnp-steps > li:first-child::before { content: none; }
+  html:root:not(#fs) .lnp-steps > li::after { content: ""; position: absolute; top: calc(45 * var(--u)); left: 0; width: calc(54 * var(--u)); height: 0.5px; background: #5f5f5f; }
+    html:root:not(#fs) .lnp-steps .lasha-index {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 0;
+    font-family: var(--l-fig);
+    font-size: calc(48 / 0.93705 * var(--u));
+    font-weight: 700;
+    line-height: calc(48 * var(--u));
+    letter-spacing: 0.02em;
+    translate: none;
+  }
+  html:root:not(#fs):is([data-time-theme='day'], :not([data-time-theme])) .lnp-steps .lasha-index {
+    color: #2557d6;
+  }
+    html:root:not(#fs) .lnp-steps h3 {
+    position: absolute;
+    top: calc(60 * var(--u));
+    left: calc(-1 * var(--u));
+    margin: 0;
+    font-family: var(--l-fig);
+    font-size: calc(95 / 0.93705 * var(--u));
+    font-weight: 600;
+    line-height: calc(95 * var(--u));
+    letter-spacing: 0.02em;
+    translate: none;
+    white-space: nowrap;
+  }
+  html:root:not(#fs):is([data-time-theme='day'], :not([data-time-theme])) .lnp-steps h3 {
+    color: #000;
+  }
+    html:root:not(#fs) .lnp-steps p {
+    position: absolute;
+    top: calc((142 + var(--dy, 0)) * var(--u));
+    left: calc(-1 * var(--u));
+    width: calc(var(--dw) * var(--u));
+    max-width: none;
+    margin: 0;
+    font-size: calc(13 * var(--u));
+    font-weight: 400;
+    line-height: calc(15.7 * var(--u));
+    letter-spacing: 0.04em;
+  }
+  html:root:not(#fs):is([data-time-theme='day'], :not([data-time-theme])) .lnp-steps p {
+    color: #171a1d;
+  }
+}
+
+@media (min-width: 900px) {
+  /* The broker workspace: frame 2546–3691. Eyebrow box 2618 (rule at x 429), title box 2656
+     (Morganite SemiBold 150 on 117, second line blue), body 2895 (Inter Medium 21 on 25.6, 557 wide),
+     photo "kk 1" 632 × 421 at x 808, y 2621. A 1300 rule at 3081; services in two columns
+     (01–03 at x 70, 04–06 at x 787) at rows 3136 / 3320 / 3503: number, a 64 rule 45 in, title
+     60.5 in (Morganite SemiBold 69), line 64 down; row rules at 3275 and 3465. */
+    html:root:not(#fs) .lnp-broker .it-section:not(.it-steps) {
+    position: relative;
+    height: calc(1145 * var(--u));
+    min-height: 0;
+    padding: 0;
+  }
+  html:root:not(#fs):is([data-time-theme='day'], :not([data-time-theme])) .lnp-broker .it-section:not(.it-steps) {
+    background: #f7f7f4;
+  }
+  html:root:not(#fs) .lnp-broker .it-workspace-intro { position: static; display: block; }
+  html:root:not(#fs) .lnp-broker .it-workspace-intro .it-heading { position: absolute; top: calc(72 * var(--u)); left: calc(70 * var(--u)); display: block; width: calc(620 * var(--u)); }
+    html:root:not(#fs) .lnp-broker .it-heading .it-eyebrow {
+    display: flex;
+    align-items: center;
+    margin: 0;
+    font-size: calc(18.9 * var(--u));
+    font-weight: 700;
+    line-height: calc(22.9 * var(--u));
+    letter-spacing: 0.04em;
+  }
+  html:root:not(#fs):is([data-time-theme='day'], :not([data-time-theme])) .lnp-broker .it-heading .it-eyebrow {
+    color: #2557d6;
+  }
+  html:root:not(#fs) .lnp-broker .it-heading .it-eyebrow::after { content: ""; flex: 0 0 calc(113.5 * var(--u)); width: calc(113.5 * var(--u)); height: 1px; margin-left: calc(var(--rule-gap, 20) * var(--u)); background: #2557d6; }
+    html:root:not(#fs) .lnp-broker .it-heading h2 {
+    margin: calc(14.1 * var(--u)) 0 0 calc(-2 * var(--u));
+    font-family: var(--l-fig);
+    font-size: calc(150 / 0.93705 * var(--u));
+    font-weight: 600;
+    line-height: calc(117 * var(--u));
+    letter-spacing: 0;
+    translate: none;
+  }
+  html:root:not(#fs):is([data-time-theme='day'], :not([data-time-theme])) .lnp-broker .it-heading h2 {
+    color: #000;
+  }
+  html:root:not(#fs) .lnp-broker .it-heading h2 > span { display: block; font-size: inherit; line-height: calc(117 * var(--u)); }
+    html:root:not(#fs):is([data-time-theme='day'], :not([data-time-theme])) .lnp-broker .it-workspace-intro h2 > span + span {
+    color: #2557d6;
+  }
+    html:root:not(#fs) .lnp-broker .it-heading .it-lead {
+    max-width: calc(557 * var(--u));
+    margin: calc(5 * var(--u)) 0 0;
+    font-size: calc(21 * var(--u));
+    font-weight: 500;
+    line-height: calc(25.6 * var(--u));
+    letter-spacing: 0;
+  }
+  html:root:not(#fs):is([data-time-theme='day'], :not([data-time-theme])) .lnp-broker .it-heading .it-lead {
+    color: #171a1d;
+  }
+  html:root:not(#fs) .lnp-broker .it-workspace-photo { position: absolute; top: calc(74 * var(--u)); left: calc(808 * var(--u)); width: calc(632 * var(--u)); height: calc(421 * var(--u)); max-width: none; margin: 0; object-fit: cover; }
+  html:root:not(#fs) .lnp-broker .it-features { position: absolute; inset: 0; display: block; margin: 0; padding: 0; }
+  html:root:not(#fs) .lnp-broker .it-features::before { content: ""; position: absolute; top: calc(535 * var(--u)); left: calc(70 * var(--u)); width: calc(1300 * var(--u)); height: 0.5px; background: #5f5f5f; }
+    html:root:not(#fs) .lnp-broker .it-feature {
+    position: absolute;
+    top: calc(var(--y) * var(--u));
+    left: calc(var(--x) * var(--u));
+    display: block;
+    width: calc(590 * var(--u));
+    min-height: 0;
+    padding: 0;
+    border: 0;
+    box-shadow: none;
+  }
+  html:root:not(#fs):is([data-time-theme='day'], :not([data-time-theme])) .lnp-broker .it-feature {
+    background: transparent;
+  }
+  html:root:not(#fs) .lnp-broker .it-feature:nth-child(1) { --x: 70; --y: 590; --dw: 409; --rule: 139; --rw: 588; }
+  html:root:not(#fs) .lnp-broker .it-feature:nth-child(2) { --x: 70; --y: 774; --dw: 463; --rule: 145; --rw: 588; }
+  html:root:not(#fs) .lnp-broker .it-feature:nth-child(3) { --x: 70; --y: 957; --dw: 518; }
+  html:root:not(#fs) .lnp-broker .it-feature:nth-child(4) { --x: 787; --y: 590; --dw: 477; --rule: 139; --rw: 583; }
+  html:root:not(#fs) .lnp-broker .it-feature:nth-child(5) { --x: 787; --y: 774; --dw: 424; --rule: 145; --rw: 583; }
+  html:root:not(#fs) .lnp-broker .it-feature:nth-child(6) { --x: 787; --y: 957; --dw: 490; }
+  html:root:not(#fs) .lnp-broker .it-feature::before { content: ""; position: absolute; top: 0; left: calc(45 * var(--u)); width: 0.5px; height: calc(64 * var(--u)); background: #5f5f5f; }
+  html:root:not(#fs) .lnp-broker .it-feature::after { content: ""; position: absolute; top: calc(var(--rule, 0) * var(--u)); left: 0; width: calc(var(--rw, 0) * var(--u)); height: 0.5px; background: #5f5f5f; }
+    html:root:not(#fs) .lnp-broker .it-feature h3 {
+    position: static;
+    margin: 0;
+    padding-left: calc(60.5 * var(--u));
+    font-family: var(--l-fig);
+    font-size: calc(69 / 0.93705 * var(--u));
+    font-weight: 600;
+    line-height: calc(69 * var(--u));
+    letter-spacing: 0;
+    translate: none;
+    white-space: nowrap;
+  }
+  html:root:not(#fs):is([data-time-theme='day'], :not([data-time-theme])) .lnp-broker .it-feature h3 {
+    color: #000;
+  }
+    html:root:not(#fs) .lnp-broker .it-feature-index {
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+  }
+  html:root:not(#fs):is([data-time-theme='day'], :not([data-time-theme])) .lnp-broker .it-feature-index {
+    color: #2557d6;
+  }
+    html:root:not(#fs) .lnp-broker .it-feature p {
+    width: calc(var(--dw) * var(--u));
+    max-width: none;
+    margin: calc(-5 * var(--u)) 0 0 calc(60.5 * var(--u));
+    font-size: calc(16 * var(--u));
+    font-weight: 500;
+    line-height: calc(19.4 * var(--u));
+    letter-spacing: 0.04em;
+  }
+  html:root:not(#fs):is([data-time-theme='day'], :not([data-time-theme])) .lnp-broker .it-feature p {
+    color: #171a1d;
+  }
+
+  /* Three steps: frame 3691–4466 on #dce7f0. Eyebrow box 3747 (rule at x 348), title box 3785;
+     steps at x 70 / 562 / 1054: numbers 4073 (Morganite ExtraBold 96, 5% tracked), joined by 365 blue
+     lines at 4112 that end in 11px squares; titles 4168, lines 4237; button 333 × 66 at 4351. */
+    html:root:not(#fs) .lnp-broker .it-steps {
+    position: relative;
+    height: calc(775 * var(--u));
+    min-height: 0;
+    padding: 0;
+  }
+  html:root:not(#fs):is([data-time-theme='day'], :not([data-time-theme])) .lnp-broker .it-steps {
+    background: #dce7f0;
+  }
+  html:root:not(#fs) .lnp-broker .it-steps .it-heading { --rule-gap: 21; position: absolute; top: calc(56 * var(--u)); left: calc(70 * var(--u)); display: block; width: calc(610 * var(--u)); }
+  html:root:not(#fs) .lnp-broker .it-steps .it-heading h2 { margin-left: 0; }
+  html:root:not(#fs) .lnp-broker .it-step-list { position: absolute; top: calc(382 * var(--u)); left: 0; width: 100%; display: block; margin: 0; padding: 0; }
+  html:root:not(#fs) .lnp-broker .it-step-list > li { position: absolute; top: 0; left: calc(var(--x) * var(--u)); display: block; width: calc(400 * var(--u)); padding: 0; border: 0; }
+  html:root:not(#fs) .lnp-broker .it-step-list > li:nth-child(1) { --x: 70; --dw: 251; }
+  html:root:not(#fs) .lnp-broker .it-step-list > li:nth-child(2) { --x: 562; --dw: 299; }
+  html:root:not(#fs) .lnp-broker .it-step-list > li:nth-child(3) { --x: 1054; --dw: 317; }
+  html:root:not(#fs) .lnp-broker .it-step-list > li:not(:last-child)::before { content: ""; position: absolute; top: calc(39 * var(--u)); left: calc(74 * var(--u)); width: calc(365 * var(--u)); height: 1px; background: #2557d6; }
+  html:root:not(#fs) .lnp-broker .it-step-list > li:not(:last-child)::after { content: ""; position: absolute; top: calc(33 * var(--u)); left: calc(439 * var(--u)); width: calc(11 * var(--u)); height: calc(11 * var(--u)); background: #2557d6; }
+    html:root:not(#fs) .lnp-broker .it-step-list .lasha-index {
+    display: block;
+    margin: 0;
+    font-family: var(--l-fig);
+    font-size: calc(96 / 0.93705 * var(--u));
+    font-weight: 800;
+    line-height: calc(96 * var(--u));
+    letter-spacing: 0.05em;
+    translate: none;
+  }
+  html:root:not(#fs):is([data-time-theme='day'], :not([data-time-theme])) .lnp-broker .it-step-list .lasha-index {
+    color: #2557d6;
+  }
+    html:root:not(#fs) .lnp-broker .it-step-list h3 {
+    position: absolute;
+    top: calc(95 * var(--u));
+    left: 0;
+    margin: 0;
+    font-family: var(--l-fig);
+    font-size: calc(69 / 0.93705 * var(--u));
+    font-weight: 600;
+    line-height: calc(69 * var(--u));
+    letter-spacing: 0;
+    translate: none;
+    white-space: nowrap;
+  }
+  html:root:not(#fs):is([data-time-theme='day'], :not([data-time-theme])) .lnp-broker .it-step-list h3 {
+    color: #000;
+  }
+    html:root:not(#fs) .lnp-broker .it-step-list p {
+    position: absolute;
+    top: calc(164 * var(--u));
+    left: 0;
+    width: calc(var(--dw) * var(--u));
+    max-width: none;
+    margin: 0;
+    font-size: calc(16 * var(--u));
+    font-weight: 500;
+    line-height: calc(19.4 * var(--u));
+    letter-spacing: 0.04em;
+  }
+  html:root:not(#fs):is([data-time-theme='day'], :not([data-time-theme])) .lnp-broker .it-step-list p {
+    color: #171a1d;
+  }
+    html:root:not(#fs) .lnp-broker .it-steps > .button {
+    position: absolute;
+    top: calc(660 * var(--u));
+    left: calc(70 * var(--u));
+    box-sizing: border-box;
+    width: calc(333 * var(--u));
+    min-width: 0;
+    height: calc(66 * var(--u));
+    min-height: 0;
+    margin: 0;
+    padding: 0 calc(18 * var(--u)) 0 calc(21 * var(--u));
+    justify-content: space-between;
+    white-space: nowrap;
+    font-size: calc(17.9 * var(--u));
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    line-height: 1;
+  }
+  html:root:not(#fs):is([data-time-theme='day'], :not([data-time-theme])) .lnp-broker .it-steps > .button {
+    background: #2557d6;
+    color: #f4f4f1;
+  }
+  html:root:not(#fs) .lnp-broker .it-steps > .button .lasha-arrow { flex: 0 0 calc(32.2 * var(--u)); width: calc(32.2 * var(--u)); }
+}
+
+/* ==== REVERANCE ============================================================================ */
+@media (min-width: 900px) {
+  /* Hero: the frame's 900, not the window's height. Market band: the frame's 539, the site's
+     sources line inside it. */
+  html:root:not(#fs) .rv-page .rv-market { height: auto; min-height: calc(539 * var(--u)); }
+  html:root:not(#fs) .rv-page .rv-market .rv-frame { height: auto; min-height: calc(539 * var(--u)); }
+  /* Russian labels sit lower (reverance-figma.css) and the last takes three lines: the band keeps the
+     frame's 39 under them. */
+  html:root:not(#fs):lang(ru) .rv-page :is(.rv-market, .rv-market .rv-frame) { min-height: calc(602 * var(--u)); }
+  html:root:not(#fs) .rv-page .rv-hero { height: calc(900 * var(--u)); min-height: 0; }
+}
+@media (min-width: 900px) {
+  /* Project facts: the frame's 1870–2768 band. The site's facts run longer than the frame's (100% FOREIGN
+     OWNERSHIP takes two lines), so the band keeps the frame's height as a minimum and the site's two
+     notes (not in the frame) follow the facts instead of sitting on them. */
+  html:root:not(#fs) .rv-page .rv-facts { position: relative; height: auto; min-height: calc(898 * var(--u)); }
+  html:root:not(#fs) .rv-page .rv-facts-notes {
+    position: static;
+    max-width: calc(860 * var(--u));
+    margin: calc(24 * var(--u)) 0 0 calc(3 * var(--u));
+    font-size: max(calc(12 * var(--u)), 11px);
+    line-height: calc(15 * var(--u));
+  }
+  html:root:not(#fs) .rv-page .rv-facts-notes p + p { margin-top: calc(5 * var(--u)); }
+}
+@media (min-width: 900px) {
+  /* The hero render's layer: 1673 × 942 from x −107, y −42. */
+  html:root:not(#fs) .rv-page .rv-hero-media { top: calc(-42 * var(--u)); left: calc(-107 * var(--u)); width: calc(1673 * var(--u)); height: calc(942 * var(--u)); object-position: 50% 50%; }
+}
+@media (min-width: 900px) {
+  /* The residence and benefit bands run 1px over the frame's; the next band starts where Figma has it. */
+  html:root:not(#fs) .rv-page .rv-sections > :nth-child(5),
+  html:root:not(#fs) .rv-page .rv-sections > :nth-child(9) { margin-top: calc(-1 * var(--u)); }
+}
+
+/* ==== TRESORA and DOWNTOWN ONE ============================================================= */
+@media (min-width: 900px) {
+  /* Heroes: the frames' 899 (TRESORA) and 932 (DOWNTOWN ONE), copy where the frames place it
+     (eyebrow boxes at 107 and 109) rather than centred in the window. */
+
+  
+
+  
+}
+@media (min-width: 900px) {
+  /* Discover band 899–1828 and the paper block to 7925, as in the frame. */
+  /* The frame's 929 as a minimum: German and Russian copy runs longer than the frame's. */
+  
+  
+}
+
+/* ==== DOWNTOWN ONE ========================================================================= */
+/* Phones: the new parts as a simple column (the frame is desktop). */
+
+/* The highlights band's night ground behind its light type when the photo sits above it on phones. */
+
+@media (min-width: 900px) {
+  
+
+  /* Highlights: frame 932–1959 over "oplaa" (1826 × 1027 from x −164), blurred up to 4px from 77%
+     of its width to 36% leftwards. Title box 1049; six titles from 1241, 114.2 apart, lines 57.4 below. */
+  
+  
+  
+  
+    
+  
+  
+  
+    
+  
+    
+  
+
+  /* Lifestyle: frame 1959–4082 on #dce7f0. Eyebrow box 2025, title box 2076 (179 on 134.2, second
+     line blue), copy 2372 / 2408 (Inter Medium 20 on 24.2); rows at 2530 / 2911 / 3291 / 3669: photo
+     818 × 333, title at x 935 (+6), list at x 934 from +81 with #bababa rules under each item. */
+  
+  
+    
+  
+    
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    
+  
+  
+  /* A row that wraps (Russian) grows, and its hairline moves down with it, the same distance under the
+     letters as on every other row. */
+  
+  
+
+  /* Location: frame 4082–5553. Eyebrow box 4161, title box 4212, copy 4458 (831 wide); the #071126
+     card 1300 × 573 at 4617: map 818 wide ("last map 1" 853.5 × 597.7 from −17.1, −33.4), then from
+     x 923 NEARBY DESTINATIONS (4669), the destinations at 4750 / 4826 / 4910, a 407 rule at 5023 and
+     the closing line at 5063. */
+  
+  
+    
+  
+    
+  
+  
+  
+  
+  
+  
+  
+  
+    
+  
+  
+  
+  
+    
+  
+
+  /* Gallery: frame 5553–7779. Rows at 5553 / 6103 / 6651 / 7201: 790 × 445 photo, two 486 × 212 at
+     x 883 (+0 and +233), caption Inter Medium 24 at +457 and a 1300 #9e9e9e rule at +498. */
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    
+  
+
+  /* Closing band: frame 7779–8358. Eyebrow box 7832 (rule at x 515), title box 7883 (191 on 143.2),
+     copy 8183. */
+  
+  
+  
+    
+  
+  
+  
+  
+  
+}
+@media (min-width: 900px) {
+  /* Downtown One's hero copy is 820 wide (title lines 805), the rule under the last paragraph. */
+  
+  
+  
+  
+}
+@media (min-width: 900px) {
+  /* The fitter spreads the leftover width as tracking from these sizes (the frame's 179.4 and 104.4). */
+  
+  
+  
+}
+@media (min-width: 900px) {
+  /* Fitted titles start from the frame's sizes: lifestyle 193 / 176, location 193 / 117 (capitals
+     135, 123 and 82 high); the second lines are blue. The closing title keeps the frame's 3.82 tracking. */
+  
+  
+  
+  
+}
+@media (min-width: 900px) {
+  
+
+  /* Photo crops as the frame's image layers: a photo box (--bx, --by, --bw × --bh) shows its layer
+     (--lx, --ly from the box, --lw × --lh), clipped to the box. */
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+}
+
+/* The HOME frame's photo is dark glass under the header's right end, in every theme: the sign-in
+   button and the collapsed MENU button take white there so they stay readable. */
+html:root:not(#fs) .lasha-hero > .site-header :is(.login-button, .menu-toggle) { border-color: rgb(255 255 255 / 0.85); background: rgb(0 0 0 / 0.12); color: #fff; }
+html:root:not(#fs) .lasha-hero > .site-header :is(.login-button, .menu-toggle):hover { border-color: #fff; background: #fff; color: #171a1d; }
+
+/* The frames draw no header; the site's floats over every hero (86px tall below 1400px, 101px from
+   1400px). Hero copy is centred between the header's foot and the hero's (or panel's) foot, as on
+   AixcoGlobal (Kemo, 19 November 2026: "look how close things are to navbar ... fix it on all pages"). */
+@media (min-width: 900px) {
+  html:root:not(#fs) body { --site-header-h: 86px; }
+  /* The frame's 686 panel leaves the copy right under the header: the panel grows to keep the same
+     room above the eyebrow and below the button (Kemo, 19 November 2026). */
+  html:root:not(#fs) .lnp-hero-advantage .lnp-hero-panel { display: grid; align-content: safe center; padding-top: calc(var(--site-header-h) + 72 * var(--u)); padding-bottom: calc(72 * var(--u)); }
+  html:root:not(#fs) .lnp-broker .lasha-page-hero-copy { top: var(--site-header-h); bottom: 0; display: grid; align-content: safe center; }
+  /* REVERANCE keeps its copy top-left on the sky, at the frame's 189 but never closer to the header
+     than on the frame at 1440 (88px from the header's foot to the eyebrow). */
+  html:root:not(#fs) .rv-page .rv-hero-copy { top: max(calc(189 * var(--u)), calc(var(--site-header-h) + 58px)); }
+}
+@media (min-width: 1400px) {
+  html:root:not(#fs) body { --site-header-h: 101px; }
+}
+
+/* Text shows in the same case as on the live site (Kemo, 19 November 2026: texts and numbers stay
+   exactly as they are); only the layout follows the frames. */
+html:root:not(#fs) .lasha-home .project-showcase-head .lasha-eyebrow { text-transform: none; }
+html:root:not(#fs) .lasha-home .dp-listing-eyebrow > .dp-listing-line { text-transform: none; }
+html:root:not(#fs) .lasha-home .dp-listing-eyebrow > .dp-listing-category { text-transform: uppercase; }
+html:root:not(#fs) .lasha-home .dp-listing-meta { text-transform: uppercase; }
+
+@media (min-width: 900px) {
+  /* Downtown One's gallery: the frame's four rows and a fifth for the site's other three renders. */
+  
+  
+  
+}
+@media (min-width: 900px) {
+  html:root:not(#fs) .lnp-steps h3 { width: calc(var(--cw) * var(--u)); }
+}
+
+/* The HOME, BROKER ACCESS and REVERANCE heroes keep the day ink over their photo while the photo on
+   screen is a daylight one (a theme whose afternoon or night version has not been made yet). Once
+   the photo shows that theme's own light (ThemedImage sets data-photo-light), the theme's own hero
+   colours apply, as on the live site: light copy over the night photos. */
+html:root:not(#fs) .lasha-home .lasha-hero:has(.lasha-hero-media[data-photo-light='day']) :is(h1, .lasha-hero-copy p) { color: #000; }
+/* The frame's outline EXPLORE INVESTMENTS from 900px; phones keep the solid button (Kemo, 7 October). */
+@media (min-width: 900px) {
+html:root:not(#fs) .lasha-home .lasha-hero:has(.lasha-hero-media[data-photo-light='day']) .lasha-hero-cta { border-color: #171a1d; background: transparent; color: #171a1d; }
+html:root:not(#fs) .lasha-home .lasha-hero:has(.lasha-hero-media[data-photo-light='day']) .lasha-hero-cta:hover { background: #171a1d; color: #f4f4f1; }
+}
+html:root:not(#fs) .rv-page .rv-hero:has(.rv-hero-media[data-photo-light='day']) { --rv-hero-ink: #171a1d; }
+html:root:not(#fs) .lnp-broker .lasha-page-hero:has(> .lasha-page-hero-media[data-photo-light='day']) :is(.lasha-eyebrow, .lasha-page-hero-title, .lasha-page-hero-text, .it-hero-note) { color: #171a1d; }
+html:root:not(#fs) .lnp-broker .lasha-page-hero:has(> .lasha-page-hero-media[data-photo-light='day']) .lasha-eyebrow::after { background: #171a1d; }
+html:root:not(#fs) .lnp-broker .lasha-page-hero:has(> .lasha-page-hero-media[data-photo-light='day']) .it-hero-actions .button-ghost { border-color: #000; background: transparent; color: #171a1d; }
+html:root:not(#fs)[data-time-theme='night'] .lnp-broker .lasha-page-hero:has(> .lasha-page-hero-media[data-photo-light='day']) > .site-header { border-bottom-color: rgb(23 26 29 / 0.3); }
+html:root:not(#fs)[data-time-theme='night'] .lnp-broker .lasha-page-hero:has(> .lasha-page-hero-media[data-photo-light='day']) > .site-header :is(.brand, .desktop-nav > button, .nav-group > button, .time-theme-menu__button, .language-switcher-trigger, .menu-toggle) { color: #171a1d; }
+html:root:not(#fs)[data-time-theme='night'] .lnp-broker .lasha-page-hero:has(> .lasha-page-hero-media[data-photo-light='day']) > .site-header .login-button { border-color: rgb(23 26 29 / 0.8); color: #171a1d; }
+
+/* Russian on the Figma desktop layouts (19 November 2026). Every heading this layer sizes in Morganite
+   units (Figma size / 0.93705) is set in "AiXESS Figma RU" (src/lasha-fonts.css): AiXESS Head's Mid cut,
+   as wide as Morganite at the same size, so Russian keeps the frame's sizes, boxes and line pitches
+   instead of running 1.81x wider. The homepage headings keep their accepted Russian sizes (3 November;
+   only its project figures change, below), and the Broker Access hero title stays AiXESS Head because
+   FittedHeading already fits its lines to the column. */
+@media (min-width: 900px) {
+  html:root:not(#fs):lang(ru) :is(
+    .lnp-hero-advantage .lnp-hero-title, .lnp-advantage .lnp-starting h2, .lnp-advantage-title,
+    .lnp-care-head h2, .lnp-care-head h2 > span, .lnp-journey-index, .lnp-journey-item h3,
+    .lnp-join-title, .lnp-people .lasha-index, .lnp-people h3, .lnp-commercial .lnp-figure, .lnp-commercial h2,
+    .lnp-process h2, .lnp-steps .lasha-index, .lnp-steps h3,
+    .lnp-broker .it-heading h2, .lnp-broker .it-feature h3, .lnp-broker .it-feature h3 > span,
+    .lnp-broker .it-step-list .lasha-index, .lnp-broker .it-step-list h3) {
+    font-family: "AiXESS Figma RU", "AiXESS Head", "Arial Narrow", sans-serif;
+  }
+  /* The homepage project figures ($5,9K, 60%+): Russian kept AiXESS Head on a 0.71 pitch under labels
+     placed for the frame's 97.2, so the labels ran into the figures (live before 19 November 2026 too).
+     They take the frame's size, pitch and plus sign like every other language. */
+  html:root:not(#fs):lang(ru) .lasha-home .project-facts dd {
+    font-family: "AiXESS Figma RU", "AiXESS Head", "Arial Narrow", sans-serif;
+    font-size: calc(90 / 0.93705 * var(--u));
+    line-height: calc(97.2 * var(--u));
+    letter-spacing: 0.01em;
+    translate: none;
+  }
+  html:root:not(#fs):lang(ru) .lasha-home .project-facts dd .lasha-plus { font-family: inherit; font-size: 1em; vertical-align: baseline; margin-left: 0; translate: none; }
+}
+
+/* Buttons at Figma (Kemo, 19 November 2026: "buttons included ... why is arrow so close to edge?").
+   Every button with an arrow takes its frame's exact anatomy, measured from the Figma file: the label
+   --in from the left, the arrow --len long ending --gap from the right (pinned there, whatever the
+   label's width), Figma's stroke --sw (its head grows with the stroke, see LashaArrow) and the frame's
+   box --w × --h as a minimum, so a longer translation widens its button instead of crowding the arrow.
+   All values are frame px. */
+@media (min-width: 900px) {
+  html:root:not(#fs) :is(
+    .lasha-home .lasha-hero-cta, .lasha-home .project-card-actions .lasha-button, .lasha-home .dp-listing .lasha-button,
+    .lasha-home .lasha-access-actions .lasha-button, .lnp-advantage :is(.lnp-hero-copy, .lnp-advantage-panel) .lasha-button,
+    .lnp-broker .it-hero-actions .button, .lnp-broker .it-steps > .button, .rv-page .rv-button, .tresora-page .tr-hero-actions .tr-button,
+    .tresora-page .tr-spaces-actions .tr-button
+  ) {
+    display: inline-flex;
+    box-sizing: border-box;
+    align-items: center;
+    justify-content: space-between;
+    gap: calc(var(--between, 8) * var(--u));
+    width: max-content;
+    min-width: calc(var(--w) * var(--u));
+    max-width: 100%;
+    height: auto;
+    min-height: calc(var(--h) * var(--u));
+    /* Figma measures from the box's outer edge; the padding starts inside the border (--bw: Chrome and
+       Safari draw a 1.19 border as 1px, and a filled button without one sets 0). */
+    padding: 0 calc(var(--gap) * var(--u) - var(--bw, 1px)) 0 calc(var(--in) * var(--u) - var(--bw, 1px));
+  }
+  html:root:not(#fs) :is(
+    .lasha-home .lasha-hero-cta, .lasha-home .project-card-actions .lasha-button, .lasha-home .dp-listing .lasha-button,
+    .lasha-home .lasha-access-actions .lasha-button, .lnp-advantage :is(.lnp-hero-copy, .lnp-advantage-panel) .lasha-button,
+    .lnp-broker .it-hero-actions .button, .lnp-broker .it-steps > .button, .rv-page .rv-button, .tresora-page .tr-hero-actions .tr-button,
+    .tresora-page .tr-spaces-actions .tr-button
+  ) .lasha-arrow {
+    flex: 0 0 calc(var(--len) * var(--u));
+    width: calc(var(--len) * var(--u));
+    min-width: 0;
+    height: calc(8 * var(--u));
+    min-height: 0;
+    margin: 0;
+    /* Figma's stroke at 1440 (0.873 to 1.339), never fainter than 0.85px on smaller screens. */
+    stroke-width: max(calc(var(--sw) * var(--u)), 0.85px);
+  }
+  /* HOME: Explore investments 303 × 61; Explore project (card 217 × 69, Dubai cards 217 × 57);
+     Register as a broker 417 × 69 (Download project materials, the site's own, takes the same). */
+  html:root:not(#fs) .lasha-home .lasha-hero-cta { --w: 303; --h: 61; --in: 21.1; --gap: 14.9; --len: 32.23; --sw: 1.194; }
+  html:root:not(#fs) .lasha-home .project-card-actions .lasha-button { --w: 217; --h: 69; --in: 13; --gap: 16; --len: 25; --sw: 1; }
+  html:root:not(#fs) .lasha-home .dp-listing .lasha-button { --w: 217; --h: 57; --in: 13; --gap: 16; --len: 25; --sw: 1; }
+  html:root:not(#fs) .lasha-home .lasha-access-actions .lasha-button { --w: 417; --h: 69; --in: 30; --gap: 21.5; --len: 46.5; --sw: 1; }
+  /* AiXESS ADVANTAGE: Request access and Partner sign in, 267 × 69. */
+  html:root:not(#fs) .lnp-advantage :is(.lnp-hero-copy, .lnp-advantage-panel) .lasha-button { --w: 267; --h: 69; --in: 32; --gap: 32.5; --len: 46.5; --sw: 1; }
+  /* BROKER ACCESS: Become a partner 293.7 × 82.4, Broker login 303.1 × 82.9, Request broker access 333 × 66. */
+  html:root:not(#fs) .lnp-broker .it-hero-actions .button-primary { --w: 293.7; --h: 82.4; --in: 21.5; --gap: 15.5; --len: 32.23; --sw: 1.194; --bw: 0px; }
+  html:root:not(#fs) .lnp-broker .it-hero-actions .button-ghost { --w: 303.1; --h: 82.9; --in: 21.1; --gap: 15.1; --len: 32.23; --sw: 1.194; }
+  html:root:not(#fs) .lnp-broker .it-steps > .button { --w: 333; --h: 66; --in: 21; --gap: 20.8; --len: 32.23; --sw: 1.194; }
+  /* REVERANCE: 266.2 × 60.2, the label's box ending where the arrow starts. */
+  html:root:not(#fs) .rv-page .rv-button { --w: 266.2; --h: 60.2; --in: 27.9; --gap: 24.9; --len: 40.58; --sw: 0.873; --between: 0; }
+  /* TRESORA and DOWNTOWN ONE heroes: 279 × 69, 63 apart (the row no longer stretches them to its
+     halves); TRESORA spaces: Explore residences 329.4 × 92.4, Request availability 340 × 93. */
+  html:root:not(#fs) .tresora-page .tr-hero-actions { grid-template-columns: repeat(2, max-content); column-gap: calc(63 * var(--u)); }
+  html:root:not(#fs) .tresora-page .tr-hero-actions .tr-button { --w: 279; --h: 69; --in: 18; --gap: 26; --len: 31; --sw: 1; }
+  html:root:not(#fs) .tresora-page .tr-spaces-actions .tr-button-primary { --w: 329.4; --h: 92.4; --in: 24.1; --gap: 17.4; --len: 36.16; --sw: 1.339; }
+  html:root:not(#fs) .tresora-page .tr-spaces-actions .tr-button:not(.tr-button-primary) { --w: 340; --h: 93; --in: 23.7; --gap: 16.8; --len: 36.16; --sw: 1.339; }
+}
+
+/* DOWNTOWN ONE hero: the frame's dusk render has light copy; its day and golden-hour versions have bright
+   skies, so while one of them is on screen the copy takes the deep ink of the project's own navy
+   (colour only, 19 November 2026). The night version keeps the light copy. */
+
+
+/* TRESORA and DOWNTOWN ONE: the developers' renders are dusk scenes, so their copy is light. While the
+   relit day or afternoon version is on screen (data-photo-light), the copy over it takes ink, so it
+   stays readable on the bright sky (Kemo, 19 November 2026: theme photos on every page). */
+@media (min-width: 900px) {
+html:root:not(#fs) .tresora-page :is(.tr-hero, .tr-photo-band):has(> .tr-bg:is([data-photo-light='day'], [data-photo-light='afternoon'])) {
+  --tr-light: #171a1d;
+  color: #171a1d;
+}
+html:root:not(#fs) .tresora-page :is(.tr-hero, .tr-photo-band):has(> .tr-bg:is([data-photo-light='day'], [data-photo-light='afternoon'])) .tr-button {
+  /* Solid, so the label reads over the palms and towers at the photo's foot. */
+  border-color: #171a1d;
+  background: #171a1d;
+  color: #f7f7f4;
+}
+html:root:not(#fs) .tresora-page :is(.tr-hero, .tr-photo-band):has(> .tr-bg:is([data-photo-light='day'], [data-photo-light='afternoon'])) .tr-button:hover {
+  border-color: #2557d6;
+  background: #2557d6;
+  color: #fff;
+}
+}
+
+/* Header labels over a photo take the ink that reads on the photo actually behind them, measured by
+   useHeaderInk (Kemo, 19 November 2026: "make sure that all the texts are visible everywhere despite
+   the time of the day"). Two ids so these win over every page- and theme-specific header rule. */
+html.is-measuring-header-ink * { pointer-events: auto !important; }
+html:root:not(#fs):not(#ink) .site-header [data-ink='dark'],
+html:root:not(#fs):not(#ink) .site-header [data-ink='dark'] svg { color: #171a1d; }
+html:root:not(#fs):not(#ink) .site-header [data-ink='light'],
+html:root:not(#fs):not(#ink) .site-header [data-ink='light'] svg { color: #fff; }
+html:root:not(#fs):not(#ink) .site-header :is(.login-button, .menu-toggle)[data-ink='dark'] { border-color: rgb(23 26 29 / 0.8); background: transparent; }
+html:root:not(#fs):not(#ink) .site-header :is(.login-button, .menu-toggle)[data-ink='light'] { border-color: rgb(255 255 255 / 0.85); background: transparent; }
+html:root:not(#fs):not(#ink) .site-header .login-button[data-ink='dark']:hover { border-color: #171a1d; background: #171a1d; color: #fff; }
+html:root:not(#fs):not(#ink) .site-header .login-button[data-ink='light']:hover { border-color: #fff; background: #fff; color: #171a1d; }
+html:root:not(#fs):not(#ink) .site-header .language-switcher-trigger[data-ink='dark'] { border-color: rgb(23 26 29 / 0.35); background: transparent; }
+html:root:not(#fs):not(#ink) .site-header .language-switcher-trigger[data-ink='light'] { border-color: rgb(255 255 255 / 0.45); background: transparent; }
+html:root:not(#fs):not(#ink) .site-header .time-theme-menu__button[data-ink='dark']:is(:hover, [aria-expanded='true']) { border-color: rgb(23 26 29 / 0.8); }
+html:root:not(#fs):not(#ink) .site-header .time-theme-menu__button[data-ink='light']:is(:hover, [aria-expanded='true']) { border-color: rgb(255 255 255 / 0.8); }
+html:root:not(#fs):not(#ink) .site-header .desktop-nav button[data-ink='dark']::after { background: #171a1d; }
+html:root:not(#fs):not(#ink) .site-header .desktop-nav button[data-ink='light']::after { background: #fff; }
+/* A label that crosses from a pale part of the photo to a dark one: each stretch of its letters takes
+   the ink that reads there (useHeaderInk's --ink-split), the icons and rules the label's main ink. */
+html:root:not(#fs):not(#ink) .site-header [data-ink='split'],
+html:root:not(#fs):not(#ink) .site-header [data-ink='split'] svg { color: var(--ink-major); }
+html:root:not(#fs):not(#ink) .site-header [data-ink='split']:not(.brand) {
+  background-color: transparent;
+  background-image: var(--ink-split);
+  background-repeat: no-repeat;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+html:root:not(#fs):not(#ink) .site-header :is(.login-button, .menu-toggle, .language-switcher-trigger)[data-ink='split'] { border-color: color-mix(in srgb, var(--ink-major) 80%, transparent); }
+html:root:not(#fs):not(#ink) .site-header .login-button[data-ink='split']:hover { background: var(--ink-major); color: var(--ink-minor); -webkit-text-fill-color: var(--ink-minor); }
+html:root:not(#fs):not(#ink) .site-header .desktop-nav button[data-ink='split']::after { background: var(--ink-major); }
+
+/* REVERANCE on phones sets its copy on a band of the photo's own sky above the towers: the band takes
+   the sky of the version on screen (sampled from the top of each), so the night copy is not on a day
+   sky (Kemo, 19 November 2026: every text visible at every time of day). */
+html:root:not(#fs) .rv-page .rv-hero:has(.rv-hero-media[data-photo-light='afternoon']) { background: linear-gradient(90deg, #c9c4ba 0%, #a9b4b8 55%, #93a7b4 100%); }
+html:root:not(#fs) .rv-page .rv-hero:has(.rv-hero-media[data-photo-light='night']) { background: linear-gradient(90deg, #344779 0%, #1c2d5c 45%, #101e45 100%); }
+
+/* The explorer's LIVE 3D tag: white on the deep sage in the afternoon, ink on the light cobalt at
+   night (the theme accent behind it was too pale for white). */
+html:root:not(#fs)[data-time-theme='afternoon'] .model-instruction-index { background: #3c5a41; color: #fff; }
+html:root:not(#fs)[data-time-theme='night'] .model-instruction-index { color: #0c0c0c; }
+/* AiXESS Advantage in the afternoon: the panel's copy is ink, so its buttons are too. */
+html:root:not(#fs)[data-time-theme='afternoon'] .lnp-advantage :is(.lnp-hero-panel, .lnp-advantage-panel) .lasha-button:not(:hover) { border-color: #171a1d; color: #171a1d; }

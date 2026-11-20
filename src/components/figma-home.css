@@ -221,10 +221,14 @@ html:root[data-time-theme='night'] .lasha-home .project-facts dt { color: color-
   :root .lasha-home .project-card-actions { margin-top: auto; padding-top: calc(34.5 * var(--u)); }
   :root .lasha-home .project-card-actions .lasha-button {
     margin-left: calc(2 * var(--u));
-    width: calc(217 * var(--u));
+    /* Figma's 217 wide; a longer label (PROJEKT ENTDECKEN, or any label below 1440 where the
+       type stops shrinking at 12px) widens the button instead of running out of it. */
+    width: auto;
+    min-width: calc(217 * var(--u));
     min-height: 0;
     height: calc(69 * var(--u));
-    padding: 0 calc(16 * var(--u)) 0 calc(14 * var(--u));
+    /* The arrow ends 11.5 from the right edge, where Figma's English button draws it. */
+    padding: 0 calc(10.48 * var(--u)) 0 calc(14 * var(--u));
     justify-content: space-between;
     font-size: max(calc(15 * var(--u)), 12px);
     line-height: normal;

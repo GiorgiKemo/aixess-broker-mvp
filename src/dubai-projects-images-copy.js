@@ -26,6 +26,7 @@ export const DUBAI_IMAGES_COPY = {
     downtown: {
       hero: "Developer rendering of the SAMANA Downtown One tower at dusk",
       map: "SAMANA's illustrative map of Dubai marking Downtown One near the Red Metro Line, with travel-time groups",
+      entertainment: "Rendering of the rooftop entertainment deck with an outdoor cinema, a golf simulator, games tables and a BBQ kitchen",
       gallery: [
         ["downtown-pool", "Developer rendering of the pool deck at twilight"],
         ["downtown-kids", "Developer rendering of the children's play area on the podium"],
@@ -69,6 +70,7 @@ export const DUBAI_IMAGES_COPY = {
     downtown: {
       hero: "Visualisierung des Entwicklers: der Turm SAMANA Downtown One in der Abenddämmerung",
       map: "SAMANAs schematische Karte von Dubai mit Downtown One nahe der Red Metro Line und Fahrzeitgruppen",
+      entertainment: "Visualisierung: Dachterrasse mit Freiluftkino, Golfsimulator, Spieltischen und Grillküche",
       gallery: [
         ["downtown-pool", "Visualisierung des Entwicklers: Pooldeck in der Dämmerung"],
         ["downtown-kids", "Visualisierung des Entwicklers: Kinderspielbereich auf dem Podium"],
@@ -115,6 +117,7 @@ export const DUBAI_IMAGES_COPY = {
     downtown: {
       hero: "Wizualizacja dewelopera: wieża SAMANA Downtown One o zmierzchu",
       map: "Poglądowa mapa Dubaju SAMANA z Downtown One przy czerwonej linii metra i grupami czasów dojazdu",
+      entertainment: "Wizualizacja: taras na dachu z kinem plenerowym, symulatorem golfa, stołami do gier i kuchnią grillową",
       gallery: [
         ["downtown-pool", "Wizualizacja dewelopera: taras basenowy o zmierzchu"],
         ["downtown-kids", "Wizualizacja dewelopera: plac zabaw dla dzieci na podium"],
@@ -161,6 +164,7 @@ export const DUBAI_IMAGES_COPY = {
     downtown: {
       hero: "Vizualizacija investitorja: stolpnica SAMANA Downtown One v mraku",
       map: "Ponazoritveni zemljevid Dubaja družbe SAMANA z Downtown One ob rdeči liniji podzemne železnice in skupinami časov potovanja",
+      entertainment: "Vizualizacija: strešna terasa z zunanjim kinom, golf simulatorjem, mizami za igre in kuhinjo za žar",
       gallery: [
         ["downtown-pool", "Vizualizacija investitorja: bazenska terasa v mraku"],
         ["downtown-kids", "Vizualizacija investitorja: otroško igrišče na podiju"],
@@ -204,6 +208,7 @@ export const DUBAI_IMAGES_COPY = {
     downtown: {
       hero: "Визуализация девелопера: башня SAMANA Downtown One в сумерках",
       map: "Схематичная карта Дубая от SAMANA с Downtown One у красной линии метро и группами времени в пути",
+      entertainment: "Визуализация: терраса на крыше с кинотеатром под открытым небом, гольф-симулятором, игровыми столами и зоной барбекю",
       gallery: [
         ["downtown-pool", "Визуализация девелопера: терраса с бассейном в сумерках"],
         ["downtown-kids", "Визуализация девелопера: детская площадка на подиуме"],

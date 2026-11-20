@@ -1,0 +1,214 @@
+/* DOWNTOWN ONE, built from Lasha's Figma frame "DOWNTOWN ONE" (file mdoKe84QEOkpDthDFO8pyy, node 553:232,
+   1440 x 8358; Kemo, 13 November 2026: "make pixel perfect copy of that figma page design"). The page
+   wrapper also carries .tresora-page, so the frame unit --u, theme colours, eyebrows, titles, buttons and
+   the hero machinery are the TRESORA page's (tresora-figma.css); this file adds the frame's own sections.
+   From 900px every size and distance is the frame's, in frame pixels; below 900px the parts restack.
+   Type (Figma): Morganite Bold titles at 80% (75% for the section titles) line pitch and 2% tracking,
+   Morganite SemiBold 71/72/64 item titles, Inter Medium copy, Inter Bold 18.9 eyebrows. */
+
+.tresora-page.downtown-one-page {
+  --dt-mist: #dce7f0;
+  --dt-panel: #0b1630;
+  --dt-cyan: #3bdcea;
+  --dt-title: var(--tr-ink);
+}
+html:root[data-time-theme='afternoon'] .tresora-page.downtown-one-page { --dt-mist: #e3ebe3; --dt-panel: #1d2b22; --dt-cyan: #9bdca6; }
+html:root[data-time-theme='night'] .tresora-page.downtown-one-page { --dt-mist: #0c0c0c; --dt-panel: #141414; --dt-cyan: #3bdcea; }
+
+.downtown-one-page .dt-accent { color: var(--tr-accent); }
+/* Morganite's left bearing already sits on the frame's edge at these sizes. */
+.tresora-page.downtown-one-page :is(.dt-amenities-title, .dt-location-title, .dt-gallery-title, .dt-more-title) { margin-left: 0; }
+.downtown-one-page .tr-title > .dt-accent,
+.downtown-one-page .tr-fit-line-2.dt-accent { display: block; }
+
+/* ---- hero --------------------------------------------------------------------------------------- */
+
+.tresora-page.downtown-one-page .tr-hero { min-height: max(calc(945 * var(--u)), var(--screen-full, 100lvh)); padding-bottom: calc(var(--hero-bar, 0px) + max(0px, calc(945 * var(--u)) - var(--screen-full, 100lvh))); background: #0c1d44; }
+.tresora-page.downtown-one-page .tr-hero-bg { object-position: 50% 100%; }
+.tresora-page.downtown-one-page .tr-hero-copy > * { width: calc(820 * var(--u)); }
+.tresora-page.downtown-one-page .tr-hero-copy > .tr-hero-title { width: calc(803 * var(--u)); margin-top: calc(40 * var(--u)); }
+.tresora-page.downtown-one-page .tr-hero-copy > .tr-eyebrow::after { margin-left: calc(20 * var(--u)); }
+.tresora-page.downtown-one-page .tr-hero-title .tr-fit-line-1 { font-size: calc(179.37 / 0.93705 * var(--u)); line-height: calc(143.5 * var(--u)); }
+.tresora-page.downtown-one-page .tr-hero-title .tr-fit-line-2 { font-size: calc(104 / 0.93705 * var(--u)); line-height: calc(83.2 * var(--u)); }
+/* The intro runs 820 wide; the frame's rule under it is 624 long. */
+.tresora-page.downtown-one-page .tr-hero-intro {
+  width: calc(820 * var(--u));
+  margin-top: calc(6 * var(--u));
+  padding-bottom: calc(24 * var(--u));
+  border-bottom: 0;
+  background: linear-gradient(rgb(247 247 244 / 0.6), rgb(247 247 244 / 0.6)) 0 100% / calc(624 * var(--u)) 1px no-repeat;
+}
+.tresora-page.downtown-one-page .tr-hero-actions { width: calc(621 * var(--u)); margin-top: calc(32 * var(--u)); }
+
+/* ---- Project highlights (photo band) ---------------------------------------------------------- */
+
+.downtown-one-page .dt-highlights { min-height: calc(1014 * var(--u)); background: #0c1d44; }
+.downtown-one-page .dt-highlights .tr-bg { object-position: 50% 0%; }
+.downtown-one-page .dt-highlights .tr-wrap { padding-top: calc(104 * var(--u)); padding-bottom: calc(72 * var(--u)); }
+.downtown-one-page .dt-highlights-title { --s: 179; }
+.downtown-one-page .dt-facts { margin: calc(49 * var(--u)) 0 0; }
+.downtown-one-page .dt-facts > div { display: flex; flex-direction: column; }
+.downtown-one-page .dt-facts > div + div { margin-top: calc(38.07 * var(--u)); }
+.downtown-one-page .dt-facts dt {
+  position: relative;
+  top: calc(6 * var(--u));
+  margin-left: -0.0105em;
+  font-family: var(--tr-face);
+  font-size: calc(71 / 0.93705 * var(--u));
+  font-weight: 600;
+  font-synthesis: none;
+  line-height: calc(46 * var(--u));
+  letter-spacing: 0.0187em;
+  text-transform: uppercase;
+}
+.downtown-one-page .dt-facts dd {
+  margin: calc(12 * var(--u)) 0 0;
+  font-family: Inter, system-ui, sans-serif;
+  font-size: calc(15 * var(--u));
+  font-weight: 500;
+  line-height: calc(18 * var(--u));
+  letter-spacing: 0.04em;
+}
+
+/* ---- A lifestyle designed around every moment (mist band) ----------------------------------- */
+
+.downtown-one-page .dt-amenities { background: var(--dt-mist); }
+.downtown-one-page .dt-amenities .tr-wrap { padding-top: calc(66 * var(--u)); padding-bottom: calc(81 * var(--u)); }
+.downtown-one-page .dt-amenities .tr-eyebrow::after { margin-left: calc(24 * var(--u)); }
+.downtown-one-page .dt-amenities-title { margin-top: calc(28 * var(--u)); }
+.downtown-one-page .dt-amenities-title > span:first-child { display: block; font-size: calc(191 / 0.93705 * var(--u)); line-height: calc(143.25 * var(--u)); }
+.downtown-one-page .dt-amenities-title > .dt-accent { font-size: calc(171.3 / 0.93705 * var(--u)); line-height: calc(130.5 * var(--u)); }
+.downtown-one-page .dt-amenities-body { max-width: calc(800 * var(--u)); margin-top: calc(23 * var(--u)); }
+.downtown-one-page .dt-amenities-body p + p { margin-top: calc(12 * var(--u)); }
+.downtown-one-page .dt-amenity-rows { margin-top: calc(50 * var(--u)); }
+.downtown-one-page .dt-amenity { display: flex; align-items: flex-start; gap: calc(46 * var(--u)); }
+.downtown-one-page .dt-amenity + .dt-amenity { margin-top: calc(48 * var(--u)); }
+.downtown-one-page .dt-amenity-3 { margin-top: calc(47 * var(--u)) !important; }
+.downtown-one-page .dt-amenity-4 { margin-top: calc(45 * var(--u)) !important; }
+.downtown-one-page .dt-amenity-picture { flex: 0 0 calc(818 * var(--u)); }
+.downtown-one-page .dt-amenity-list { flex: 0 0 calc(436 * var(--u)); min-width: 0; padding-top: calc(6 * var(--u)); }
+.downtown-one-page .dt-amenity-list h3 {
+  margin: 0;
+  font-family: var(--tr-face);
+  font-size: calc(72 / 0.93705 * var(--u));
+  font-weight: 600;
+  font-synthesis: none;
+  line-height: calc(57 * var(--u));
+  letter-spacing: 0.026em;
+  text-transform: uppercase;
+}
+.downtown-one-page .dt-amenity-list ul { margin: calc(18 * var(--u)) 0 0; padding: 0; list-style: none; }
+.downtown-one-page .dt-amenity-list li {
+  padding-block: calc(5 * var(--u)) calc(5 * var(--u));
+  font-family: Inter, system-ui, sans-serif;
+  font-size: calc(20 * var(--u));
+  font-weight: 500;
+  line-height: calc(24 * var(--u));
+}
+.downtown-one-page .dt-amenity-list li:first-child { padding-top: 0; }
+.downtown-one-page .dt-amenity-list li + li { border-top: 1px solid var(--tr-hair); }
+.downtown-one-page .dt-amenity-1 .dt-amenity-list li { padding-block: calc(6 * var(--u)) calc(10 * var(--u)); }
+.downtown-one-page .dt-amenity-1 .dt-amenity-list li:first-child { padding-top: 0; }
+
+/* Pictures in the frame's crops: the image box is placed inside the mask (DubaiProjectPages.jsx). */
+.downtown-one-page .dt-crop { position: relative; overflow: hidden; margin: 0; background: rgb(23 26 29 / 0.08); }
+.downtown-one-page .dt-crop img { position: absolute; display: block; max-width: none; }
+
+/* ---- Downtown Jebel Ali ------------------------------------------------------------------------ */
+
+.downtown-one-page .dt-location .tr-wrap { padding-top: calc(79 * var(--u)); }
+.downtown-one-page .dt-location .tr-eyebrow::after { margin-left: calc(26 * var(--u)); }
+.downtown-one-page .dt-location-title { margin-top: calc(28 * var(--u)); }
+.downtown-one-page .dt-location-title > span:first-child { display: block; font-size: calc(191 / 0.93705 * var(--u)); line-height: calc(143.25 * var(--u)); }
+.downtown-one-page .dt-location-title > .dt-accent { margin-top: calc(-5 * var(--u)); margin-bottom: calc(5 * var(--u)); font-size: calc(108.2 / 0.93705 * var(--u)); line-height: calc(76 * var(--u)); }
+.downtown-one-page .dt-location-body { max-width: calc(845 * var(--u)); margin-top: calc(26 * var(--u)); }
+.downtown-one-page .dt-nearby { display: flex; margin-top: calc(42.5 * var(--u)); background: var(--dt-panel); color: #f7f7f4; }
+.downtown-one-page .dt-map { flex: 0 0 calc(818 * var(--u)); }
+.downtown-one-page .dt-nearby-copy { flex: 1 1 auto; min-width: 0; padding: calc(52 * var(--u)) calc(40 * var(--u)) calc(18 * var(--u)) calc(35 * var(--u)); }
+.downtown-one-page .dt-nearby-copy h3 {
+  margin: 0;
+  font-family: var(--tr-face);
+  font-size: calc(64 / 0.93705 * var(--u));
+  font-weight: 600;
+  font-synthesis: none;
+  line-height: calc(41 * var(--u));
+  letter-spacing: 0.026em;
+  text-transform: uppercase;
+}
+.downtown-one-page .dt-nearby-copy dl { margin: calc(40 * var(--u)) 0 0; padding-bottom: calc(40 * var(--u)); border-bottom: 1px solid rgb(247 247 244 / 0.55); max-width: calc(407 * var(--u)); }
+.downtown-one-page .dt-nearby-copy dl > div + div { margin-top: calc(24 * var(--u)); }
+.downtown-one-page .dt-nearby-copy dt { color: var(--dt-cyan); font-family: Inter, system-ui, sans-serif; font-size: calc(20 * var(--u)); font-weight: 500; line-height: calc(24 * var(--u)); }
+.downtown-one-page .dt-nearby-copy dd { margin: calc(7 * var(--u)) 0 0; font-family: Inter, system-ui, sans-serif; font-size: calc(17 * var(--u)); font-weight: 500; line-height: calc(21 * var(--u)); }
+.downtown-one-page .dt-nearby-copy p { margin: calc(40 * var(--u)) 0 0; max-width: calc(440 * var(--u)); font-family: Inter, system-ui, sans-serif; font-size: calc(19 * var(--u)); font-weight: 500; line-height: calc(23 * var(--u)); }
+
+/* ---- Resident amenities (gallery) -------------------------------------------------------------- */
+
+.downtown-one-page .dt-gallery .tr-wrap { padding-top: calc(175 * var(--u)); padding-bottom: calc(77 * var(--u)); }
+.downtown-one-page .dt-gallery-title { --s: 191; line-height: calc(143.25 * var(--u)); }
+.downtown-one-page .dt-gallery-group { margin: calc(45 * var(--u)) 0 0; padding-bottom: calc(12 * var(--u)); border-bottom: 1px solid var(--tr-hair-strong); }
+.downtown-one-page .dt-gallery-group + .dt-gallery-group { margin-top: calc(51 * var(--u)); }
+.downtown-one-page .dt-gallery-grid { display: grid; grid-template-columns: calc(790 * var(--u)) calc(486 * var(--u)); grid-template-rows: auto auto; column-gap: calc(23 * var(--u)); row-gap: calc(21 * var(--u)); }
+.downtown-one-page .dt-gallery-large { grid-row: span 2; }
+.downtown-one-page .dt-gallery-group figcaption { margin-top: calc(12 * var(--u)); font-family: Inter, system-ui, sans-serif; font-size: calc(24 * var(--u)); font-weight: 500; line-height: calc(29 * var(--u)); letter-spacing: 0.02em; }
+
+/* ---- Discover more (ink band) --------------------------------------------------------------- */
+
+.downtown-one-page .dt-more .tr-wrap { padding-top: calc(53 * var(--u)); padding-bottom: calc(55 * var(--u)); }
+.downtown-one-page .dt-more-title { --s: 191; max-width: calc(841 * var(--u)); margin-top: calc(28 * var(--u)); line-height: calc(143.25 * var(--u)); }
+.downtown-one-page .dt-more-body { max-width: calc(832 * var(--u)); margin-top: calc(14 * var(--u)); }
+
+/* ---- phones ------------------------------------------------------------------------------------- */
+
+@media (max-width: 899px) {
+  .tresora-page.downtown-one-page .tr-hero { min-height: 0; padding-bottom: 0; }
+  .tresora-page.downtown-one-page .tr-hero-copy > *,
+  .tresora-page.downtown-one-page .tr-hero-copy > .tr-hero-title,
+  .tresora-page.downtown-one-page .tr-hero-intro,
+  .tresora-page.downtown-one-page .tr-hero-actions { width: 100%; }
+  .tresora-page.downtown-one-page .tr-hero-intro { background-size: 100% 1px; }
+  .downtown-one-page .dt-highlights { min-height: 0; }
+  .downtown-one-page .dt-highlights .tr-wrap { padding-block: 56px 48px; }
+  .downtown-one-page .dt-facts { margin-top: 28px; }
+  .downtown-one-page .dt-facts > div + div { margin-top: 24px; }
+  .downtown-one-page .dt-facts dt { top: 0; font-size: calc(40px / 0.93705); line-height: 34px; }
+  .downtown-one-page .dt-facts dd { margin-top: 6px; font-size: 15px; line-height: 20px; }
+  .downtown-one-page .dt-amenities .tr-wrap { padding-block: 56px 56px; }
+  .downtown-one-page .dt-amenities-title > span:first-child,
+  .downtown-one-page .dt-location-title > span:first-child { font-size: calc(min(19vw, 96px) / 0.93705); line-height: 0.8; }
+  .downtown-one-page .dt-amenities-title > .dt-accent { font-size: calc(min(17vw, 88px) / 0.93705); line-height: 0.8; }
+  .downtown-one-page .dt-location-title > .dt-accent { font-size: calc(min(10.5vw, 54px) / 0.93705); line-height: 0.85; margin-top: 4px; }
+  .downtown-one-page :is(.dt-amenities-title, .dt-location-title) { margin-top: 14px; overflow-wrap: anywhere; }
+  .downtown-one-page .dt-amenities-body,
+  .downtown-one-page .dt-location-body,
+  .downtown-one-page .dt-more-body { max-width: none; margin-top: 20px; }
+  .downtown-one-page .dt-amenity-rows { margin-top: 32px; }
+  .downtown-one-page .dt-amenity { flex-direction: column; gap: 18px; }
+  .downtown-one-page .dt-amenity + .dt-amenity { margin-top: 40px; }
+  .downtown-one-page .dt-amenity-picture { flex: none; width: 100%; }
+  .downtown-one-page .dt-amenity-list { flex: none; width: 100%; padding-top: 0; }
+  .downtown-one-page .dt-amenity-list h3 { font-size: calc(44px / 0.93705); line-height: 38px; }
+  .downtown-one-page .dt-amenity-list ul { margin-top: 12px; }
+  .downtown-one-page .dt-amenity-list li,
+  .downtown-one-page .dt-amenity-1 .dt-amenity-list li { padding-block: 9px; font-size: 16px; line-height: 20px; }
+  .downtown-one-page .dt-amenity-list li:first-child,
+  .downtown-one-page .dt-amenity-1 .dt-amenity-list li:first-child { padding-top: 0; }
+  .downtown-one-page .dt-location .tr-wrap { padding-top: 56px; }
+  .downtown-one-page .dt-nearby { flex-direction: column; margin-top: 28px; margin-inline: calc(-1 * var(--g, 20px)); }
+  .downtown-one-page .dt-map { flex: none; width: 100%; }
+  .downtown-one-page .dt-nearby-copy { padding: 32px var(--g, 20px) 36px; }
+  .downtown-one-page .dt-nearby-copy h3 { font-size: calc(40px / 0.93705); line-height: 34px; }
+  .downtown-one-page .dt-nearby-copy dl { margin-top: 24px; padding-bottom: 28px; max-width: none; }
+  .downtown-one-page .dt-nearby-copy dl > div + div { margin-top: 18px; }
+  .downtown-one-page .dt-nearby-copy dt { font-size: 18px; line-height: 22px; }
+  .downtown-one-page .dt-nearby-copy dd { margin-top: 4px; font-size: 16px; line-height: 21px; }
+  .downtown-one-page .dt-nearby-copy p { margin-top: 24px; max-width: none; font-size: 16px; line-height: 21px; }
+  .downtown-one-page .dt-gallery .tr-wrap { padding-block: 64px 24px; }
+  .downtown-one-page .dt-gallery-title { line-height: 0.8; }
+  .downtown-one-page .dt-gallery-group { margin-top: 28px; }
+  .downtown-one-page .dt-gallery-group + .dt-gallery-group { margin-top: 36px; }
+  .downtown-one-page .dt-gallery-grid { grid-template-columns: 1fr 1fr; column-gap: 10px; row-gap: 10px; }
+  .downtown-one-page .dt-gallery-large { grid-column: 1 / -1; grid-row: auto; }
+  .downtown-one-page .dt-gallery-group figcaption { margin-top: 12px; font-size: 18px; line-height: 22px; }
+  .downtown-one-page .dt-more .tr-wrap { padding-block: 56px 64px; }
+  .downtown-one-page .dt-more-title { max-width: none; margin-top: 14px; line-height: 0.8; }
+}

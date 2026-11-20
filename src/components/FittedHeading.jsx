@@ -31,8 +31,17 @@ export function FittedHeading({ as: Tag = "h2", children, fillLines = false, max
           if (!width) return;
           const fitted = parseFloat(getComputedStyle(line).fontSize) * available / width;
           if (index === 0) first = fitted;
-          const size = index === 0 ? fitted : Math.min(fitted, first * maxLineRatio);
+          let size = index === 0 ? fitted : Math.min(fitted, first * maxLineRatio);
           line.style.fontSize = `${Math.floor(size * 100) / 100}px`;
+          // A line's width is not proportional to its size: the heading's letter-spacing stays a
+          // fixed number of pixels on every line, and kerning and rounding add a little. Correct
+          // until the line sits inside the width (each pass removes most of what is left over).
+          for (let pass = 0; pass < 4; pass += 1) {
+            const after = line.getBoundingClientRect().width;
+            if (after <= available) break;
+            size *= available / after;
+            line.style.fontSize = `${Math.floor(size * 100) / 100 - (pass ? 0.01 : 0)}px`;
+          }
         });
         heading.dataset.fitReady = "true";
         return;

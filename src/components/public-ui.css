@@ -174,7 +174,7 @@ body .cookie-actions button {
   line-height: 1.3;
   letter-spacing: 0.08em;
 }
-body .access-form input { font-size: var(--public-body); }
+body .access-form :is(input, textarea) { font-size: var(--public-body); }
 body .modal-switch { min-height: 2.75rem; font-size: var(--public-note); line-height: 1.4; }
 
 @media (max-width: 599px) {

@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { themePhoto } from "../data/themePhotos.js";
+import { figmaPhoto, figmaPhotoLight } from "../data/figmaPhotos.js";
 import { registerThemePhoto, useTimeTheme } from "../timeTheme.js";
 
 /* Versions already decoded by this page view (keyed by srcset), and decodes in flight. */
@@ -39,10 +40,16 @@ function nearViewport(node) {
    cross-fades (timeTheme.js), so the photo changes in the same frame as the colours. A photo
    whose new version is not decoded yet keeps the old one until it is, so the box never
    collapses or flashes empty. A photo that has not loaded yet (a lazy card further down)
-   just switches its source, so offscreen cards never fetch more than the version they show. */
-export function ThemedImage({ family, defaultWidth = 1200, sizes, ref: externalRef, ...props }) {
+   just switches its source, so offscreen cards never fetch more than the version they show.
+
+   `figma` names a Figma frame photo (src/data/figmaPhotos.js) instead of a brand photo family: it
+   shows that photo's version for the theme, or the Figma photo itself where it has none.
+   `data-photo-light` says which light the photo on screen shows, for text set over it. */
+export function ThemedImage({ family, figma, defaultWidth = 1200, sizes, ref: externalRef, ...props }) {
   const { theme } = useTimeTheme();
-  const [shown, setShown] = useState(() => ({ theme, family, ...themePhoto(family, theme, defaultWidth) }));
+  const key = figma ?? family;
+  const source = (target) => (figma ? figmaPhoto(figma, defaultWidth, target) : themePhoto(family, target, defaultWidth));
+  const [shown, setShown] = useState(() => ({ theme, key, ...source(theme) }));
   const element = useRef(null);
   const setRef = useCallback(
     (node) => {
@@ -53,8 +60,8 @@ export function ThemedImage({ family, defaultWidth = 1200, sizes, ref: externalR
     [externalRef],
   );
 
-  const stale = shown.theme !== theme || shown.family !== family;
-  const next = stale ? { theme, family, ...themePhoto(family, theme, defaultWidth) } : shown;
+  const stale = shown.theme !== theme || shown.key !== key;
+  const next = stale ? { theme, key, ...source(theme) } : shown;
   // Swap during render when nothing visible would flash: no photo yet, or the new one is ready.
   if (stale && (decoded.has(next.srcSet) || !isLoaded(element.current))) setShown(next);
 
@@ -64,10 +71,10 @@ export function ThemedImage({ family, defaultWidth = 1200, sizes, ref: externalR
         prepare(target) {
           const node = element.current;
           if (!isLoaded(node) || !nearViewport(node)) return Promise.resolve();
-          return decodeVersion(themePhoto(family, target, defaultWidth), sizes);
+          return decodeVersion(figma ? figmaPhoto(figma, defaultWidth, target) : themePhoto(family, target, defaultWidth), sizes);
         },
       }),
-    [family, defaultWidth, sizes],
+    [family, figma, defaultWidth, sizes],
   );
 
   useEffect(() => {
@@ -91,7 +98,8 @@ export function ThemedImage({ family, defaultWidth = 1200, sizes, ref: externalR
       sizes={sizes}
       width={shown.width}
       height={shown.height}
-      data-theme-photo={`${family}-${shown.theme}`}
+      data-theme-photo={`${key}-${shown.theme}`}
+      data-photo-light={figma ? figmaPhotoLight(figma, shown.theme) : shown.theme}
       alt=""
       {...props}
     />

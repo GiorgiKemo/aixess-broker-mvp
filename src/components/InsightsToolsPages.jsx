@@ -1,9 +1,9 @@
-import { useRef } from "react";
+import { Fragment, useRef } from "react";
 import { useLanguage } from "../i18n.jsx";
 import { AIXCO_FAQ } from "../aixco-faq-copy.js";
 import { INSIGHTS_TOOLS_COPY } from "../insights-tools-copy.js";
 import { LashaArrow, LashaPageHero } from "./LashaHomeSections.jsx";
-import { useWordFit } from "./useWordFit.js";
+import { useLineFit, useWordFit } from "./useWordFit.js";
 import "./insights-tools.css";
 import { ThemedImage } from "./ThemedImage.jsx";
 
@@ -14,14 +14,19 @@ function useCopy() {
   return INSIGHTS_TOOLS_COPY[locale] || INSIGHTS_TOOLS_COPY.en;
 }
 
-function SectionHeading({ id, eyebrow, title, copy, children }) {
+// `lines`: the desktop frame draws the title in that many lines above fixed blocks, so a translation
+// is set smaller until it fits them (useLineFit); without it the title only keeps its words inside.
+function SectionHeading({ id, eyebrow, title, copy, lines, children }) {
   const titleRef = useRef(null);
-  useWordFit(titleRef);
+  const unusedRef = useRef(null);
+  useWordFit(lines ? unusedRef : titleRef);
+  useLineFit(lines ? titleRef : unusedRef, { lines: lines || Infinity });
   return (
     <div className="it-heading">
       <div>
         <p className="it-eyebrow">{eyebrow}</p>
-        <h2 id={id} ref={titleRef}>{(Array.isArray(title) ? title : [title]).map((line) => <span key={line}>{line}</span>)}</h2>
+        {/* A space between the lines keeps the heading's accessible name in words. */}
+        <h2 id={id} ref={titleRef}>{(Array.isArray(title) ? title : [title]).map((line, index) => <Fragment key={line}>{index ? " " : null}<span>{line}</span></Fragment>)}</h2>
         {copy && <p className="it-lead">{copy}</p>}
       </div>
       {children}
@@ -145,17 +150,17 @@ function CardMedia({ media, label }) {
 // 22 October 2026: one Broker Access page instead of two). The working calculators and the client
 // PDF offer are broker-only (Klem's voice note, 12 October 2026), so the page only describes them
 // and sends brokers to sign in or apply.
-// By day the photo's sky (left of the hanging plants) and its pale stone terrace (right of them)
-// carry ink header labels; labels over the plants stay white (see useHeaderOnLightSky).
-const BROKER_TOOLS_LIGHT_SKY = { themes: "day", ranges: [[0, 0.72], [0.84, 1]] };
+// By day Lasha's photo (Figma sync, 19 November 2026) is pale sky and white stone under the whole
+// header, so every header label takes ink (see useHeaderOnLightSky).
+const BROKER_TOOLS_LIGHT_SKY = { themes: "day afternoon", ranges: [[0, 1]] };
 
 export function BrokerPlatformHero({ header, eyebrow, onOpenModal }) {
   const { tools: c } = useCopy();
   return (
-    <LashaPageHero header={header} eyebrow={eyebrow} title={c.title.map((line, index) => (index === c.title.length - 1 ? line.replace(/ (?=\S+$)/, "\u00a0") : line))} image="broker-tools-refined" copy={c.copy} variant="coastal" lightSky={BROKER_TOOLS_LIGHT_SKY}>
+    <LashaPageHero header={header} eyebrow={eyebrow} title={c.title.map((line, index) => (index === c.title.length - 1 ? line.replace(/ (?=\S+$)/, "\u00a0") : line))} image="broker-hero" fillTitle copy={c.copy} variant="coastal" lightSky={BROKER_TOOLS_LIGHT_SKY}>
       <div className="page-cta-row it-hero-actions">
         <button className="button button-primary" type="button" onClick={() => onOpenModal("register")}>{c.partner}<LashaArrow length={24} /></button>
-        <button className="button button-ghost" type="button" onClick={() => onOpenModal("login")}>{c.login}</button>
+        <button className="button button-ghost" type="button" onClick={() => onOpenModal("login")}>{c.login}<LashaArrow length={24} /></button>
       </div>
       <p className="it-hero-note">{c.access}</p>
     </LashaPageHero>
@@ -167,9 +172,9 @@ export function BrokerWorkspace() {
   return (
     <section className="it-section it-paper" aria-labelledby="it-workspace-title">
       <div className="it-workspace-intro">
-        <SectionHeading id="it-workspace-title" eyebrow={c.workspaceEyebrow} title={c.workspaceTitle} copy={c.workspaceCopy} />
+        <SectionHeading id="it-workspace-title" eyebrow={c.workspaceEyebrow} title={c.workspaceTitle} copy={c.workspaceCopy} lines={2} />
         {/* Giorgi, 13 October 2026: a simple modern building in place of the old Reverance render. */}
-        <ThemedImage className="it-workspace-photo" family="workspace-building" defaultWidth={800} sizes="(max-width: 899px) 100vw, 40vw" loading="lazy" decoding="async" />
+        <ThemedImage className="it-workspace-photo" figma="broker-workspace" defaultWidth={800} sizes="(max-width: 899px) 100vw, 44vw" alt="" loading="lazy" decoding="async" />
       </div>
       <ol className="it-features">
         {/* Text only (Kemo, 14 October 2026): number, heading and description, no artwork. */}
@@ -184,11 +189,17 @@ export function BrokerWorkspace() {
   );
 }
 
+function splitAfterWords(text, count) {
+  const words = text.split(/\s+/);
+  return words.length > count ? [words.slice(0, count).join(" "), words.slice(count).join(" ")] : [text];
+}
+
 export function BrokerGetStarted({ onOpenModal }) {
   const { tools: c } = useCopy();
   return (
     <section className="it-section it-ink it-steps" aria-labelledby="it-steps-title">
-      <SectionHeading id="it-steps-title" eyebrow={c.stepsEyebrow} title={c.stepsTitle} />
+      {/* Two lines after the second word, as Lasha's frame sets THREE STEPS / TO GET STARTED. */}
+      <SectionHeading id="it-steps-title" eyebrow={c.stepsEyebrow} title={splitAfterWords(c.stepsTitle, 2)} />
       <ol className="it-step-list">
         {c.steps.map(([title, body], index) => (
           <li key={title}>

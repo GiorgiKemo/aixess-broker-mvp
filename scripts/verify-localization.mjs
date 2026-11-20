@@ -87,10 +87,11 @@ try {
           const scan = await page.evaluate(inspectLayout);
           results.push({ locale, route, scrollY: y, ...scan });
         }
-        if (route === "home" || route === "residences") {
+        // The Residence Explorer lives on the Reverance page only (21 October 2026).
+        if (route === "residences") {
           await page.locator(".residence-filter-controls").waitFor({ state: "attached" });
         }
-        if (route === "home" || route === "residences") {
+        if (route === "residences") {
           await page.locator('.residence-filter-controls select option:not([value="all"])').first().waitFor({ state: "attached", timeout: 120000 });
         }
         await page.evaluate(() => scrollTo({ top: 0, behavior: "instant" }));

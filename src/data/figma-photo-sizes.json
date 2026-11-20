@@ -1,0 +1,748 @@
+{
+  "home-hero": {
+    "width": 3174,
+    "height": 1982,
+    "widths": [
+      480,
+      800,
+      1200,
+      1600,
+      2400,
+      3174
+    ],
+    "themes": {
+      "afternoon": {
+        "width": 3174,
+        "height": 1982,
+        "widths": [
+          480,
+          800,
+          1200,
+          1600,
+          2400,
+          3174
+        ]
+      },
+      "night": {
+        "width": 3174,
+        "height": 1982,
+        "widths": [
+          480,
+          800,
+          1200,
+          1600,
+          2400,
+          3174
+        ]
+      }
+    }
+  },
+  "home-about": {
+    "width": 1254,
+    "height": 1254,
+    "widths": [
+      480,
+      800,
+      1200,
+      1254
+    ],
+    "themes": {
+      "afternoon": {
+        "width": 1254,
+        "height": 1254,
+        "widths": [
+          480,
+          800,
+          1200,
+          1254
+        ]
+      },
+      "night": {
+        "width": 1254,
+        "height": 1254,
+        "widths": [
+          480,
+          800,
+          1200,
+          1254
+        ]
+      }
+    }
+  },
+  "home-tresora": {
+    "width": 1786,
+    "height": 880,
+    "widths": [
+      480,
+      800,
+      1200,
+      1600,
+      1786
+    ],
+    "light": "night",
+    "themes": {
+      "afternoon": {
+        "width": 1786,
+        "height": 880,
+        "widths": [
+          480,
+          800,
+          1200,
+          1600,
+          1786
+        ]
+      },
+      "day": {
+        "width": 1786,
+        "height": 880,
+        "widths": [
+          480,
+          800,
+          1200,
+          1600,
+          1786
+        ]
+      }
+    }
+  },
+  "home-downtown": {
+    "width": 1490,
+    "height": 1056,
+    "widths": [
+      480,
+      800,
+      1200,
+      1490
+    ],
+    "light": "night",
+    "themes": {
+      "afternoon": {
+        "width": 1490,
+        "height": 1056,
+        "widths": [
+          480,
+          800,
+          1200,
+          1490
+        ]
+      },
+      "day": {
+        "width": 1490,
+        "height": 1056,
+        "widths": [
+          480,
+          800,
+          1200,
+          1490
+        ]
+      }
+    }
+  },
+  "advantage-hero": {
+    "width": 1254,
+    "height": 1254,
+    "widths": [
+      480,
+      800,
+      1200,
+      1254
+    ],
+    "themes": {
+      "afternoon": {
+        "width": 1254,
+        "height": 1254,
+        "widths": [
+          480,
+          800,
+          1200,
+          1254
+        ]
+      },
+      "night": {
+        "width": 1254,
+        "height": 1254,
+        "widths": [
+          480,
+          800,
+          1200,
+          1254
+        ]
+      }
+    }
+  },
+  "advantage-more": {
+    "width": 1536,
+    "height": 864,
+    "widths": [
+      480,
+      800,
+      1200,
+      1536
+    ],
+    "themes": {
+      "afternoon": {
+        "width": 1536,
+        "height": 864,
+        "widths": [
+          480,
+          800,
+          1200,
+          1536
+        ]
+      },
+      "night": {
+        "width": 1536,
+        "height": 864,
+        "widths": [
+          480,
+          800,
+          1200,
+          1536
+        ]
+      }
+    }
+  },
+  "broker-hero": {
+    "width": 1672,
+    "height": 941,
+    "widths": [
+      480,
+      800,
+      1200,
+      1600,
+      1672
+    ],
+    "themes": {
+      "afternoon": {
+        "width": 1672,
+        "height": 941,
+        "widths": [
+          480,
+          800,
+          1200,
+          1600,
+          1672
+        ]
+      },
+      "night": {
+        "width": 1672,
+        "height": 941,
+        "widths": [
+          480,
+          800,
+          1200,
+          1600,
+          1672
+        ]
+      }
+    }
+  },
+  "broker-join": {
+    "width": 1882,
+    "height": 3344,
+    "widths": [
+      480,
+      800,
+      1200,
+      1600,
+      1882
+    ],
+    "themes": {
+      "afternoon": {
+        "width": 1882,
+        "height": 3344,
+        "widths": [
+          480,
+          800,
+          1200,
+          1600,
+          1882
+        ]
+      },
+      "night": {
+        "width": 1882,
+        "height": 3344,
+        "widths": [
+          480,
+          800,
+          1200,
+          1600,
+          1882
+        ]
+      }
+    }
+  },
+  "broker-commercial": {
+    "width": 3344,
+    "height": 1882,
+    "widths": [
+      480,
+      800,
+      1200,
+      1600,
+      2400,
+      3200
+    ],
+    "themes": {
+      "afternoon": {
+        "width": 3344,
+        "height": 1882,
+        "widths": [
+          480,
+          800,
+          1200,
+          1600,
+          2400,
+          3200
+        ]
+      },
+      "night": {
+        "width": 3344,
+        "height": 1882,
+        "widths": [
+          480,
+          800,
+          1200,
+          1600,
+          2400,
+          3200
+        ]
+      }
+    }
+  },
+  "broker-workspace": {
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      480,
+      800,
+      1200,
+      1536
+    ],
+    "themes": {
+      "afternoon": {
+        "width": 1536,
+        "height": 1024,
+        "widths": [
+          480,
+          800,
+          1200,
+          1536
+        ]
+      },
+      "night": {
+        "width": 1536,
+        "height": 1024,
+        "widths": [
+          480,
+          800,
+          1200,
+          1536
+        ]
+      }
+    }
+  },
+  "reverance-hero": {
+    "width": 3344,
+    "height": 1882,
+    "widths": [
+      480,
+      800,
+      1200,
+      1600,
+      2400,
+      3200
+    ],
+    "themes": {
+      "afternoon": {
+        "width": 3344,
+        "height": 1882,
+        "widths": [
+          480,
+          800,
+          1200,
+          1600,
+          2400,
+          3200
+        ]
+      },
+      "night": {
+        "width": 3344,
+        "height": 1882,
+        "widths": [
+          480,
+          800,
+          1200,
+          1600,
+          2400,
+          3200
+        ]
+      }
+    }
+  },
+  "downtown-hero": {
+    "width": 2980,
+    "height": 2110,
+    "widths": [
+      480,
+      800,
+      1200,
+      1600,
+      2400,
+      2980
+    ],
+    "light": "night",
+    "themes": {
+      "afternoon": {
+        "width": 2980,
+        "height": 2110,
+        "widths": [
+          480,
+          800,
+          1200,
+          1600,
+          2400,
+          2980
+        ]
+      },
+      "day": {
+        "width": 2980,
+        "height": 2110,
+        "widths": [
+          480,
+          800,
+          1200,
+          1600,
+          2400,
+          2980
+        ]
+      }
+    }
+  },
+  "downtown-highlights": {
+    "width": 3344,
+    "height": 1882,
+    "widths": [
+      480,
+      800,
+      1200,
+      1600,
+      2400,
+      3200
+    ],
+    "light": "night",
+    "themes": {
+      "afternoon": {
+        "width": 3344,
+        "height": 1882,
+        "widths": [
+          480,
+          800,
+          1200,
+          1600,
+          2400,
+          3200
+        ]
+      },
+      "day": {
+        "width": 3344,
+        "height": 1882,
+        "widths": [
+          480,
+          800,
+          1200,
+          1600,
+          2400,
+          3200
+        ]
+      }
+    }
+  },
+  "downtown-entertainment": {
+    "width": 1491,
+    "height": 1055,
+    "widths": [
+      480,
+      800,
+      1200,
+      1491
+    ],
+    "light": "night",
+    "themes": {
+      "afternoon": {
+        "width": 1491,
+        "height": 1055,
+        "widths": [
+          480,
+          800,
+          1200,
+          1491
+        ]
+      },
+      "day": {
+        "width": 1491,
+        "height": 1055,
+        "widths": [
+          480,
+          800,
+          1200,
+          1491
+        ]
+      }
+    }
+  },
+  "downtown-map": {
+    "width": 1498,
+    "height": 1050,
+    "widths": [
+      480,
+      800,
+      1200,
+      1498
+    ]
+  },
+  "tresora-fig-hero": {
+    "width": 2880,
+    "height": 1798,
+    "widths": [
+      480,
+      960,
+      1440,
+      1920,
+      2880
+    ],
+    "light": "night",
+    "base": "/assets/dubai/tresora-fig-hero",
+    "themes": {
+      "afternoon": {
+        "width": 2880,
+        "height": 1798,
+        "widths": [
+          480,
+          960,
+          1440,
+          1920,
+          2880
+        ]
+      },
+      "day": {
+        "width": 2880,
+        "height": 1798,
+        "widths": [
+          480,
+          960,
+          1440,
+          1920,
+          2880
+        ]
+      }
+    }
+  },
+  "tresora-fig-discover": {
+    "width": 2880,
+    "height": 1858,
+    "widths": [
+      480,
+      960,
+      1440,
+      1920,
+      2880
+    ],
+    "light": "night",
+    "base": "/assets/dubai/tresora-fig-discover",
+    "themes": {
+      "afternoon": {
+        "width": 2880,
+        "height": 1858,
+        "widths": [
+          480,
+          960,
+          1440,
+          1920,
+          2880
+        ]
+      },
+      "day": {
+        "width": 2880,
+        "height": 1858,
+        "widths": [
+          480,
+          960,
+          1440,
+          1920,
+          2880
+        ]
+      }
+    }
+  },
+  "tresora-fig-spaces": {
+    "width": 1640,
+    "height": 1019,
+    "widths": [
+      480,
+      960,
+      1640
+    ],
+    "light": "day",
+    "base": "/assets/dubai/tresora-fig-spaces",
+    "themes": {
+      "afternoon": {
+        "width": 1640,
+        "height": 1019,
+        "widths": [
+          480,
+          960,
+          1640
+        ]
+      },
+      "night": {
+        "width": 1640,
+        "height": 1019,
+        "widths": [
+          480,
+          960,
+          1640
+        ]
+      }
+    }
+  },
+  "tresora-fig-lifestyle": {
+    "width": 1676,
+    "height": 1122,
+    "widths": [
+      480,
+      960,
+      1676
+    ],
+    "light": "afternoon",
+    "base": "/assets/dubai/tresora-fig-lifestyle",
+    "themes": {
+      "day": {
+        "width": 1676,
+        "height": 1122,
+        "widths": [
+          480,
+          960,
+          1676
+        ]
+      },
+      "night": {
+        "width": 1676,
+        "height": 1122,
+        "widths": [
+          480,
+          960,
+          1676
+        ]
+      }
+    }
+  },
+  "tresora-fig-payment": {
+    "width": 2880,
+    "height": 1466,
+    "widths": [
+      480,
+      960,
+      1440,
+      1920,
+      2880
+    ],
+    "light": "night",
+    "base": "/assets/dubai/tresora-fig-payment",
+    "themes": {
+      "afternoon": {
+        "width": 2880,
+        "height": 1466,
+        "widths": [
+          480,
+          960,
+          1440,
+          1920,
+          2880
+        ]
+      },
+      "day": {
+        "width": 2880,
+        "height": 1466,
+        "widths": [
+          480,
+          960,
+          1440,
+          1920,
+          2880
+        ]
+      }
+    }
+  },
+  "downtown-fig-hero": {
+    "width": 2880,
+    "height": 1890,
+    "widths": [
+      480,
+      960,
+      1440,
+      1920,
+      2880
+    ],
+    "base": "/assets/dubai/downtown-fig-hero",
+    "light": "night",
+    "themes": {
+      "afternoon": {
+        "width": 2880,
+        "height": 1890,
+        "widths": [
+          480,
+          960,
+          1440,
+          1920,
+          2880
+        ]
+      },
+      "day": {
+        "width": 2880,
+        "height": 1890,
+        "widths": [
+          480,
+          960,
+          1440,
+          1920,
+          2880
+        ]
+      }
+    }
+  },
+  "downtown-fig-ent": {
+    "width": 1636,
+    "height": 664,
+    "widths": [
+      480,
+      960,
+      1440,
+      1636
+    ],
+    "base": "/assets/dubai/downtown-fig-ent",
+    "light": "night",
+    "themes": {
+      "afternoon": {
+        "width": 1636,
+        "height": 664,
+        "widths": [
+          480,
+          960,
+          1440,
+          1636
+        ]
+      },
+      "day": {
+        "width": 1636,
+        "height": 664,
+        "widths": [
+          480,
+          960,
+          1440,
+          1636
+        ]
+      }
+    }
+  }
+}

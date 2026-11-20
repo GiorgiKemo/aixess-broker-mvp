@@ -103,14 +103,14 @@ describe("AIXESS navigation pages", () => {
     expect(document.documentElement.dataset.timeTheme).toBe("day");
   });
 
-  it("gives Broker Access the refined coastal hero and the modern workspace building, not the old marina or Reverance render", () => {
+  it("gives Broker Access the Figma frame's hero and workspace photos in every theme, not the old marina or Reverance render", () => {
     window.localStorage.setItem("aixess-time-theme", "afternoon");
     resetTimeThemeForTests();
     window.history.replaceState({}, "", "/#broker-access");
     render(<App />);
-    expect(document.querySelector(".lasha-page-hero-media").dataset.themePhoto).toBe("broker-tools-refined-afternoon");
+    expect(document.querySelector(".lasha-page-hero-media").getAttribute("src")).toMatch(/\/assets\/figma\/broker-hero-/);
     const workspace = document.querySelector(".it-workspace-photo");
-    expect(workspace.dataset.themePhoto).toBe("workspace-building-afternoon");
+    expect(workspace.getAttribute("src")).toMatch(/\/assets\/figma\/broker-workspace-/);
     expect(workspace).toHaveAttribute("loading", "lazy");
     expect(document.body.innerHTML).not.toMatch(/marina-towers|reverance-hero-/);
   });
@@ -121,7 +121,7 @@ describe("AIXESS navigation pages", () => {
     window.history.replaceState({}, "", "/#residences");
     render(<App />);
     const hero = document.querySelector(".rv-hero-media");
-    expect(hero.dataset.themePhoto).toBe("reverance-towers-night");
+    expect(hero.getAttribute("src")).toMatch(/\/assets\/figma\/reverance-hero-/);
     expect(hero.getAttribute("alt")).toMatch(/Official render of the two Project Reverance towers/);
     expect(screen.getByRole("heading", { name: "PROJECT FACTS" })).toBeInTheDocument();
     expect(screen.getByRole("heading", { name: "More Upfront. More Value." })).toBeInTheDocument();
@@ -324,11 +324,11 @@ describe("AIXESS navigation pages", () => {
     expect(screen.getByText("How it works")).toBeInTheDocument();
     expect(screen.getByText("Request AiXESS access")).toBeInTheDocument();
     expect(screen.getByText("Client pays the required down payment")).toBeInTheDocument();
-    expect(screen.getByRole("heading", { name: "LESS ADMINISTRATION.MORE OPPORTUNITY." })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: "LESS ADMINISTRATION. MORE OPPORTUNITY." })).toBeInTheDocument();
     expect(screen.getByRole("heading", { name: "THREE STEPS TO GET STARTED." })).toBeInTheDocument();
     // Klem's order (22 October 2026).
     const order = Array.from(document.querySelectorAll(".lnp-broker h1, .lnp-broker h2, .lnp-commercial-eyebrow")).map((heading) => heading.textContent);
-    expect(order).toEqual(["EVERYTHING YOU NEEDTO SELL. ONE\u00a0PLATFORM.", "YOU DON’TNEED TO BEA BROKER.", "THE COMMERCIAL ADVANTAGE", expect.any(String), expect.any(String), "FROM ACCESSTO COMMISSION", "LESS ADMINISTRATION.MORE OPPORTUNITY.", "THREE STEPS TO GET STARTED."]);
+    expect(order).toEqual(["EVERYTHING YOU NEEDTO SELL. ONE\u00a0PLATFORM.", "YOU DON’TNEED TO BEA BROKER.", "THE COMMERCIAL ADVANTAGE", expect.any(String), expect.any(String), "FROM ACCESSTO COMMISSION", "LESS ADMINISTRATION. MORE OPPORTUNITY.", "THREE STEPS TO GET STARTED."]);
   });
 
   it("submits broker registration request with broker details", async () => {
@@ -376,6 +376,48 @@ describe("AIXESS navigation pages", () => {
     } finally {
       fetchMock.mockRestore();
     }
+  });
+
+  it("opens a TRESORA request as a form and sends it with the project and request", async () => {
+    let capturedBody = null;
+    const fetchMock = vi.spyOn(globalThis, "fetch").mockImplementation(async (input, init) => {
+      if (String(input).endsWith("/api/leads") && init?.method === "POST") {
+        capturedBody = JSON.parse(init.body);
+        return new Response(JSON.stringify({ saved: true, team: true, confirmation: true }), { status: 200, headers: { "content-type": "application/json" } });
+      }
+      return new Response(JSON.stringify({}), { status: 200, headers: { "content-type": "application/json" } });
+    });
+    try {
+      if (!Range.prototype.getBoundingClientRect) Range.prototype.getBoundingClientRect = () => ({ width: 0, height: 0, top: 0, left: 0, right: 0, bottom: 0 });
+      window.history.replaceState({}, "", "/#tresora");
+      render(<App />);
+      const button = document.querySelector("a.tr-button[href^='mailto:']");
+      const label = button.textContent;
+      fireEvent.click(button);
+      const modal = screen.getByRole("dialog");
+      expect(within(modal).getByRole("heading", { name: label })).toBeInTheDocument();
+      fireEvent.change(within(modal).getByLabelText("FIRST NAME"), { target: { value: "Anna" } });
+      fireEvent.change(within(modal).getByLabelText("SURNAME"), { target: { value: "Smith" } });
+      fireEvent.change(within(modal).getByLabelText("PHONE NUMBER"), { target: { value: "+44 7700 900123" } });
+      fireEvent.change(within(modal).getByLabelText("EMAIL ADDRESS"), { target: { value: "anna@example.com" } });
+      fireEvent.change(within(modal).getByLabelText("MESSAGE (OPTIONAL)"), { target: { value: "Two bedrooms, please." } });
+      fireEvent.click(within(modal).getByRole("checkbox"));
+      fireEvent.click(within(modal).getByRole("button", { name: "SEND REQUEST" }));
+      await waitFor(() => expect(screen.getByText(/A confirmation is on its way to anna@example.com/)).toBeInTheDocument());
+      expect(capturedBody).toMatchObject({ kind: "enquiry", project: "TRESORA", request: label, requestEn: label, route: "tresora", name: "Anna Smith", message: "Two bedrooms, please.", locale: "en" });
+    } finally {
+      fetchMock.mockRestore();
+    }
+  });
+
+  it("opens the footer's Write to us as a contact form with a required message", () => {
+    window.history.replaceState({}, "", "/#why-aixess");
+    render(<App />);
+    fireEvent.click(screen.getByRole("link", { name: /WRITE TO US/ }));
+    const modal = screen.getByRole("dialog");
+    expect(within(modal).getByLabelText("MESSAGE")).toBeRequired();
+    expect(within(modal).getByLabelText("PHONE NUMBER (OPTIONAL)")).not.toBeRequired();
+    expect(within(modal).getByRole("button", { name: "SEND MESSAGE" })).toBeInTheDocument();
   });
 
   it("renders the selected page from its shareable hash route", () => {

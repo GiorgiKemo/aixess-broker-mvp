@@ -113,6 +113,12 @@
   .site-footer-contact { grid-template-columns: minmax(0, 1fr); align-items: start; }
   .site-footer-write .button { width: 100%; justify-content: space-between; }
 }
+/* Side by side, each label's line box is as tall as the first line of its value, so the small
+   capitals sit on the value's centre instead of at its top (Kemo 14 Nov: "text on right seems to be
+   bit to down"). Inter's capitals are centred in their line box, so equal line centres line up. */
+@media (min-width: 480px) {
+  .site-footer .site-footer-details dt { padding-top: calc((var(--public-lead) * 1.55 - var(--public-label) * 1.4) / 2); }
+}
 @media (max-width: 479px) {
   .site-footer-details > div { grid-template-columns: minmax(0, 1fr); gap: 0.25rem; }
   .site-footer-legal { flex-direction: column; align-items: flex-start; }

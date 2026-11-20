@@ -13,7 +13,7 @@ function summarize(units) {
 describe("Reverance workbook inventory", () => {
   it("uses the explorer's available inventory for the marketing total", () => {
     const available = applyWorkbookInventory(snapshot).blocks.flatMap(block => block.floors.flatMap(floor => floor.units)).filter(unit => unit.status === "available");
-    expect(getWorkbookAvailableCount()).toBe(165);
+    expect(getWorkbookAvailableCount()).toBe(158);
     expect(getWorkbookAvailableCount()).toBe(available.length);
   });
   it("keeps the supplied workbook rows auditable", () => {
@@ -30,9 +30,9 @@ describe("Reverance workbook inventory", () => {
     const [a, b] = next.blocks.map((block) => block.floors.flatMap((floor) => floor.units));
     expect(a).toHaveLength(180);
     expect(b).toHaveLength(180);
-    expect(summarize(a)).toEqual({ available: 57, reserved: 4, unavailable: 12, sold: 107 });
-    expect(summarize(b)).toEqual({ available: 108, reserved: 4, unavailable: 12, sold: 56 });
-    expect(b.find(unit => unit.name === "1305")).toMatchObject({ status: "available", price: 63180 });
+    expect(summarize(a)).toEqual({ available: 53, unavailable: 12, sold: 115 });
+    expect(summarize(b)).toEqual({ available: 105, reserved: 4, unavailable: 12, sold: 59 });
+    expect(b.find(unit => unit.name === "1305")).toMatchObject({ status: "sold", price: null });
     expect(b.find(unit => unit.name === "1306")).toMatchObject({ status: "sold", price: null });
     expect(a.find((unit) => unit.name === "1301")).toMatchObject({ status: "sold", block: "A" });
     expect(b.find((unit) => unit.name === "510")).toMatchObject({ status: "available", price: 56511, bedrooms: 0 });

@@ -522,13 +522,14 @@ body .modal-copy { color: color-mix(in srgb, var(--l-ink, #171a1d) 78%, transpar
 body .modal-panel .button { font-size: var(--v4-btn); font-weight: 600; letter-spacing: 0.16em; }
 body .access-form label span { color: color-mix(in srgb, var(--l-ink, #171a1d) 68%, transparent); }
 
-body .access-form input {
+body .access-form input,
+body .access-form textarea {
   border-color: color-mix(in srgb, var(--l-ink, #171a1d) 35%, transparent);
   background: var(--l-card, #fff);
   color: var(--l-ink, #171a1d);
 }
 
-body .access-form input::placeholder { color: color-mix(in srgb, var(--l-ink, #171a1d) 42%, transparent); }
+body .access-form :is(input, textarea)::placeholder { color: color-mix(in srgb, var(--l-ink, #171a1d) 42%, transparent); }
 body .modal-panel .button-primary { border-color: var(--l-blue); background: var(--l-blue); color: #f4f4f1; }
 body .modal-panel .button-primary:hover { border-color: var(--l-blue-deep); background: var(--l-blue-deep); }
 body .modal-panel .button-ghost { border-color: var(--l-ink, #171a1d); color: var(--l-ink, #171a1d); }

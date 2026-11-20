@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { useEffect, useId, useLayoutEffect, useRef, useState } from "react";
 import { useLanguage } from "../i18n.jsx";
 import { FittedHeading } from "./FittedHeading.jsx";
 import { NETWORK_COPY } from "../network-copy.js";
@@ -7,12 +7,20 @@ import { HOME_HERO_LINES } from "../project-showcase-copy.js";
 import { useWordFit } from "./useWordFit.js";
 import { ThemedImage } from "./ThemedImage.jsx";
 
-// Lasha's hairline arrows (traced from the Figma frame); sized by the parent's CSS.
+// Lasha's hairline arrows, drawn the way Figma draws them (19 November 2026): a shaft exactly as long as
+// the width the parent's CSS gives the arrow, ending in a 45° head whose arms are 3.2 stroke widths long,
+// so a thicker stroke (`stroke-width` on the arrow) draws a proportionally larger head, as in Figma, and
+// the head never stretches with the shaft. `length` is only the width without CSS.
 export function LashaArrow({ className = "lasha-arrow", length = 24 }) {
+  const head = `lasha-arrow-head-${useId().replace(/[^a-zA-Z0-9_-]/g, "")}`;
   return (
-    <svg className={className} viewBox={`0 0 ${length} 8`} fill="none" stroke="currentColor" aria-hidden="true" focusable="false">
-      <path d={`M0 4H${length - 0.6}`} />
-      <path d={`M${length - 3.8} 0.8L${length - 0.6} 4L${length - 3.8} 7.2`} strokeLinecap="round" strokeLinejoin="round" />
+    <svg className={className} width={length} height="8" fill="none" stroke="currentColor" aria-hidden="true" focusable="false">
+      <defs>
+        <marker id={head} markerUnits="strokeWidth" viewBox="-4 -4 5 8" markerWidth="5" markerHeight="8" refX="0" refY="0" orient="auto" overflow="visible">
+          <path d="M-3.2 -3.2L0 0L-3.2 3.2" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" />
+        </marker>
+      </defs>
+      <line x1="0" y1="50%" x2="100%" y2="50%" markerEnd={`url(#${head})`} />
     </svg>
   );
 }
@@ -71,11 +79,14 @@ export function HomeHero({ children, onNavigate }) {
         <ThemedImage
           ref={mediaRef}
           className="lasha-hero-media"
-          // Dubai skyline in the current theme's light (Benji and Giorgi, 13 October 2026); see themePhotos.js.
-          family="dubai-skyline"
+          // The Figma HOME frame's photo (Kemo, 19 November 2026: pixel for pixel), in its
+          // afternoon and night light where those versions exist.
+          figma="home-hero"
+          defaultWidth={1600}
+          alt=""
           // Portrait phones draw the photo 1.4 × the hero's height and portrait tablets 1.75 ×
-          // (lasha-home.css), so it is about 2–2.5 × the screen height wide; 100vw would pick a soft file.
-          sizes="(max-width: 899px) and (orientation: portrait) and (min-width: 600px) 255vh, (max-width: 899px) and (orientation: portrait) 205vh, 100vw"
+          // (lasha-home.css); from 900px it is 1593 of the frame's 1440 wide (figma-sync.css).
+          sizes="(max-width: 899px) and (orientation: portrait) and (min-width: 600px) 255vh, (max-width: 899px) and (orientation: portrait) 205vh, 111vw"
           fetchPriority="high"
           decoding="async"
           onLoad={() => setMediaReady(true)}
@@ -116,6 +127,9 @@ const PAGE_HERO_IMAGES = {
   front: { src: "reverance-front-1400", srcSet: "reverance-front-700 700w, reverance-front-1400 1400w", position: "70% 18%" },
   facade: { src: "reverance-facade-1200", srcSet: "reverance-facade-600 600w, reverance-facade-1200 1200w", position: "60% 40%" },
   aerial: { src: "reverance-aerial-1200", srcSet: "reverance-aerial-600 600w, reverance-aerial-1200 1200w", position: "70% 30%" },
+  // Broker Access: the photo of Lasha's BROKER ACCESS frame (Figma sync, 19 November 2026), its
+  // 1672 × 941 layer from x −67, y −41 of the 1440 × 900 hero; every theme.
+  "broker-hero": { figma: "broker-hero", position: "50% 50%", sizes: "(max-aspect-ratio: 1/1) 180vh, 116vw" },
   tower: { src: "reverance-tower-1990", srcSet: "reverance-tower-995 995w, reverance-tower-1990 1990w, reverance-tower-2985 2985w", position: "68% 40%" },
 };
 const projectImage = (name) => `/assets/projects/${name}.webp`;
@@ -162,24 +176,33 @@ function useHeaderOnLightSky(ref, ranges, locale) {
 
 // Inner pages open with the homepage's language: the site header floating over a
 // Reverance render, a blue eyebrow and an oversized headline.
-export function LashaPageHero({ header, eyebrow, title, titleAs: Title = "h1", copy, image = "skyline", imageAlt = "", variant, lightSky, children }) {
+export function LashaPageHero({ header, eyebrow, title, titleAs: Title = "h1", fillTitle = false, copy, image = "skyline", imageAlt = "", variant, lightSky, children }) {
   const lines = Array.isArray(title) ? title : [title];
   const media = PAGE_HERO_IMAGES[image] ?? PAGE_HERO_IMAGES.skyline;
   const style = { "--hero-position": media.position, "--hero-position-phone": media.phonePosition ?? media.position };
   const ref = useRef(null);
   const { locale } = useLanguage();
   useHeaderOnLightSky(ref, lightSky?.ranges, locale);
+  // ВОЗМОЖНОСТЬЮ and ПЛАТФОРМА broke mid-word on 320px phones: the title shrinks only then.
+  const titleRef = useRef(null);
+  useWordFit(titleRef, undefined, { words: true });
   return (
     <section ref={ref} className={`lasha-page-hero${variant ? ` lasha-page-hero-${variant}` : ""}`} data-light-sky={lightSky?.themes}>
       {header}
-      {media.family ? (
+      {media.figma ? (
+        <ThemedImage className="lasha-page-hero-media" figma={media.figma} defaultWidth={1600} sizes={media.sizes} style={style} alt={imageAlt} fetchPriority="high" decoding="async" />
+      ) : media.family ? (
         <ThemedImage className="lasha-page-hero-media" family={media.family} sizes={media.sizes ?? pageHeroSizes(media.aspect)} style={style} alt={imageAlt} fetchPriority="high" decoding="async" />
       ) : (
         <img className="lasha-page-hero-media" {...pageHeroSources(media)} sizes="100vw" style={style} alt={imageAlt} decoding="async" />
       )}
       <div className="lasha-page-hero-copy">
         {eyebrow && <p className="lasha-eyebrow">{eyebrow}</p>}
-        <Title className="lasha-page-hero-title">{lines.map((line) => <span key={line}>{line}</span>)}</Title>
+        {/* fillTitle sets every line to the title's width, as Lasha's posters do (Broker Access); the
+            other heroes keep their words whole with titleRef (useWordFit). */}
+        {fillTitle
+          ? <FittedHeading as={Title} className="lasha-page-hero-title" fillLines>{lines.map((line) => <span key={line}>{line}</span>)}</FittedHeading>
+          : <Title className="lasha-page-hero-title" ref={titleRef}>{lines.map((line) => <span key={line}>{line}</span>)}</Title>}
         {copy && <p className="lasha-page-hero-text">{copy}</p>}
         {children}
       </div>
@@ -215,11 +238,12 @@ export function HomeAbout() {
 
   return (
     <section className="lasha-about" id="why-aixess" aria-labelledby="lasha-about-title">
-      <img
+      <ThemedImage
         className="lasha-about-media"
-        src="/assets/projects/reverance-entrance-lasha-754.webp"
-        srcSet="/assets/projects/reverance-entrance-lasha-377.webp 377w, /assets/projects/reverance-entrance-lasha-754.webp 754w, /assets/projects/reverance-entrance-lasha-1508.webp 1508w"
-        sizes="53vw"
+        // The Figma HOME frame's "connection 1" (Kemo, 19 November 2026), in the theme's light.
+        figma="home-about"
+        defaultWidth={800}
+        sizes="(max-width: 899px) 100vw, 53vw"
         alt=""
         loading="lazy"
         decoding="async"

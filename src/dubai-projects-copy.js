@@ -282,6 +282,14 @@ export const DUBAI_PROJECTS_COPY = {
         brochure: "Request Brochure",
         contact: "Contact AiXESS",
       },
+      // Figma DOWNTOWN ONE frame (553:232) headings: the highlights title, the photo gallery and its captions.
+      figma: {
+        amenityLines: ["A Lifestyle Designed", "Around Every Moment"],
+        highlights: "Project Highlights",
+        gallery: "Resident Amenities",
+        exterior: "Exterior",
+        interior: "Interior",
+      },
     },
   },
   de: {
@@ -542,6 +550,14 @@ export const DUBAI_PROJECTS_COPY = {
         ],
         brochure: "Broschüre anfragen",
         contact: "AiXESS kontaktieren",
+      },
+      // Figma DOWNTOWN ONE frame (553:232) headings: the highlights title, the photo gallery and its captions.
+      figma: {
+        amenityLines: ["Ein Lebensstil", "für jeden Moment"],
+        highlights: "Projekt-Highlights",
+        gallery: "Ausstattung für Bewohner",
+        exterior: "Außenansicht",
+        interior: "Interieur",
       },
     },
   },
@@ -804,6 +820,14 @@ export const DUBAI_PROJECTS_COPY = {
         brochure: "Poproś o broszurę",
         contact: "Kontakt z AiXESS",
       },
+      // Figma DOWNTOWN ONE frame (553:232) headings: the highlights title, the photo gallery and its captions.
+      figma: {
+        amenityLines: ["Styl życia zaprojektowany", "na każdą chwilę"],
+        highlights: "Najważniejsze cechy projektu",
+        gallery: "Udogodnienia dla mieszkańców",
+        exterior: "Z zewnątrz",
+        interior: "Wnętrza",
+      },
     },
   },
   sl: {
@@ -1065,6 +1089,14 @@ export const DUBAI_PROJECTS_COPY = {
         brochure: "Zahteva za brošuro",
         contact: "Kontaktirajte AiXESS",
       },
+      // Figma DOWNTOWN ONE frame (553:232) headings: the highlights title, the photo gallery and its captions.
+      figma: {
+        amenityLines: ["Življenjski slog", "za vsak trenutek"],
+        highlights: "Poudarki projekta",
+        gallery: "Ugodnosti za stanovalce",
+        exterior: "Zunanjost",
+        interior: "Notranjost",
+      },
     },
   },
   ru: {
@@ -1325,6 +1357,14 @@ export const DUBAI_PROJECTS_COPY = {
         ],
         brochure: "Запросить брошюру",
         contact: "Связаться с AiXESS",
+      },
+      // Figma DOWNTOWN ONE frame (553:232) headings: the highlights title, the photo gallery and its captions.
+      figma: {
+        amenityLines: ["Стиль жизни", "для каждого момента"],
+        highlights: "Ключевые особенности проекта",
+        gallery: "Удобства для жителей",
+        exterior: "Экстерьер",
+        interior: "Интерьеры",
       },
     },
   },

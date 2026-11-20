@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
+import { useWordFit } from "./useWordFit.js";
 import { LashaArrow, LashaValue, routeLinkClick } from "./LashaHomeSections.jsx";
 import { useLanguage } from "../i18n.jsx";
 import { LASHA_HOME_COPY } from "../lasha-home-copy.js";
@@ -9,6 +10,9 @@ import "./project-showcase.css";
 export function ProjectShowcase({ onNavigate, upcoming = UPCOMING_PROJECTS }) {
   const { locale } = useLanguage();
   const copy = LASHA_HOME_COPY[locale] || LASHA_HOME_COPY.en;
+  // Russian ФИНАНСИРОВАНИЕ lost its last letter to a new line at 900px: the labels shrink together only then.
+  const factsRef = useRef(null);
+  useWordFit(factsRef, "dt", { words: true });
   const showcase = PROJECT_SHOWCASE_COPY[locale] || PROJECT_SHOWCASE_COPY.en;
   const [active, setActive] = useState(0);
   const project = FEATURED_PROJECT;
@@ -60,7 +64,7 @@ export function ProjectShowcase({ onNavigate, upcoming = UPCOMING_PROJECTS }) {
         </div>
 
         <div className="project-feature-side">
-          <dl className="project-facts">
+          <dl className="project-facts" ref={factsRef}>
             {copy.projectFacts.map(([value, label]) => (
               <div key={label}><dd><LashaValue value={value} /></dd><dt>{label}</dt></div>
             ))}
